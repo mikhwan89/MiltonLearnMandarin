@@ -40,8 +40,15 @@ fun MandarinKidsApp() {
     when (currentScreen) {
         Screen.Home -> HomeScreen(
             onScenarioClick = { scenario ->
-                currentScreen = Screen.RolePlay(scenario)
+                currentScreen = Screen.Flashcard(scenario)
             }
+        )
+        is Screen.Flashcard -> FlashcardScreen(
+            scenario = (currentScreen as Screen.Flashcard).scenario,
+            onComplete = {
+                currentScreen = Screen.RolePlay((currentScreen as Screen.Flashcard).scenario)
+            },
+            onBack = { currentScreen = Screen.Home }
         )
         is Screen.RolePlay -> RolePlayScreen(
             scenario = (currentScreen as Screen.RolePlay).scenario,
@@ -56,8 +63,7 @@ fun MandarinKidsApp() {
             onComplete = { currentScreen = Screen.Home },
             onBack = { currentScreen = Screen.Home },
             onTryAgain = {
-                // Restart the scenario
-                currentScreen = Screen.RolePlay((currentScreen as Screen.Quiz).scenario)
+                currentScreen = Screen.Flashcard((currentScreen as Screen.Quiz).scenario)
             }
         )
     }
@@ -65,6 +71,7 @@ fun MandarinKidsApp() {
 
 sealed class Screen {
     object Home : Screen()
+    data class Flashcard(val scenario: Scenario) : Screen()
     data class RolePlay(val scenario: Scenario) : Screen()
     data class Quiz(val scenario: Scenario, val rolePlayScore: Int) : Screen()
 }
