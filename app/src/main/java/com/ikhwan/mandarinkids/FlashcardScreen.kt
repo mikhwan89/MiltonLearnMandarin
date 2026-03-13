@@ -123,7 +123,7 @@ fun FlashcardScreen(
                 )
 
                 Text(
-                    text = if (!isFlipped) "Tap card to reveal" else "Tap card to flip back",
+                    text = if (!isFlipped) "Tap card to reveal translation" else "Tap card to flip back",
                     fontSize = 13.sp,
                     color = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.padding(bottom = 12.dp)
@@ -155,7 +155,7 @@ fun FlashcardScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         if (rotation <= 90f) {
-                            // Front — Chinese character
+                            // Front — Chinese character + pinyin
                             Column(
                                 horizontalAlignment = Alignment.CenterHorizontally,
                                 verticalArrangement = Arrangement.Center,
@@ -168,9 +168,17 @@ fun FlashcardScreen(
                                 )
                                 Text(
                                     text = currentWord.chinese,
-                                    fontSize = 72.sp,
+                                    fontSize = 64.sp,
                                     fontWeight = FontWeight.Bold,
                                     textAlign = TextAlign.Center
+                                )
+                                Text(
+                                    text = currentWord.pinyin,
+                                    fontSize = 24.sp,
+                                    color = MaterialTheme.colorScheme.primary,
+                                    fontWeight = FontWeight.Medium,
+                                    textAlign = TextAlign.Center,
+                                    modifier = Modifier.padding(top = 6.dp)
                                 )
                                 TextButton(onClick = {
                                     tts?.speak(currentWord.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
