@@ -18,13 +18,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ikhwan.mandarinkids.data.scenarios.ScenarioRepository
 import com.ikhwan.mandarinkids.data.models.Scenario
+import com.ikhwan.mandarinkids.ui.theme.MandarinKidsTheme
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MaterialTheme {
+            MandarinKidsTheme {
                 MandarinKidsApp()
             }
         }

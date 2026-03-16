@@ -3,6 +3,11 @@ package com.ikhwan.mandarinkids
 import android.speech.tts.TextToSpeech
 import android.os.Bundle
 import android.speech.tts.UtteranceProgressListener
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -28,6 +33,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.util.*
 import kotlin.coroutines.resume
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
 import com.ikhwan.mandarinkids.data.models.*
 
@@ -240,7 +246,8 @@ fun RolePlayScreen(
                             characterName = scenario.characterName,
                             characterEmoji = scenario.characterEmoji,
                             tts = tts,
-                            speechSpeed = speechSpeed
+                            speechSpeed = speechSpeed,
+                            isSpeaking = isProcessingStep && index == conversationHistory.size - 1
                         )
                     }
                 }
@@ -354,11 +361,24 @@ fun ConversationBubble(
     characterName: String,
     characterEmoji: String,
     tts: TextToSpeech?,
-    speechSpeed: Float
+    speechSpeed: Float,
+    isSpeaking: Boolean = false
 ) {
     val isCharacter = message.speaker == Speaker.CHARACTER
     var showWordDialog by remember { mutableStateOf(false) }
     var selectedWord by remember { mutableStateOf<PinyinWord?>(null) }
+
+    // Bounce animation while character is speaking
+    val infiniteTransition = rememberInfiniteTransition(label = "speaking")
+    val bounceY by infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = if (isSpeaking && isCharacter) -10f else 0f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(350),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "bounceY"
+    )
 
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -368,7 +388,9 @@ fun ConversationBubble(
             Text(
                 text = characterEmoji,
                 fontSize = 40.sp,
-                modifier = Modifier.padding(end = 8.dp)
+                modifier = Modifier
+                    .padding(end = 8.dp)
+                    .graphicsLayer { translationY = bounceY }
             )
         }
 
@@ -675,13 +697,14 @@ fun ResponseOptionButton(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
+                .heightIn(min = 72.dp)
                 .padding(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Surface(
                 color = MaterialTheme.colorScheme.primary,
                 shape = RoundedCornerShape(50),
-                modifier = Modifier.size(32.dp)
+                modifier = Modifier.size(36.dp)
             ) {
                 Box(
                     contentAlignment = Alignment.Center,

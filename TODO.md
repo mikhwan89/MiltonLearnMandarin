@@ -62,7 +62,7 @@ Keep Milton engaged and coming back daily.
 
 ---
 
-## 🔊 4. Audio & Pronunciation Improvements (MEDIUM PRIORITY)
+## ✅ 4. Audio & Pronunciation Improvements ~~(MEDIUM PRIORITY)~~ — DONE
 
 - **Word-level TTS on tap** — already partially implemented; ensure every Chinese word in flashcards and conversation can be tapped to hear pronunciation
 - **Tone marks colour coding** — colour each pinyin syllable by its tone (tone 1 = red, tone 2 = orange, tone 3 = green, tone 4 = blue, neutral = grey) to visually teach tones
