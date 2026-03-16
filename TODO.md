@@ -71,7 +71,7 @@ Keep Milton engaged and coming back daily.
 
 ---
 
-## 🎨 5. UI & Kid-Friendliness (MEDIUM PRIORITY)
+## ✅ 5. UI & Kid-Friendliness ~~(MEDIUM PRIORITY)~~ — DONE
 
 The current UI is functional but designed for adults. Optimise for a 6-year-old.
 
@@ -84,7 +84,7 @@ The current UI is functional but designed for adults. Optimise for a 6-year-old.
 
 ---
 
-## 🏗️ 6. Architecture Improvements (LOW PRIORITY)
+## ✅ 6. Architecture Improvements ~~(LOW PRIORITY)~~ — DONE
 
 Technical improvements to make the codebase easier to maintain and extend.
 
