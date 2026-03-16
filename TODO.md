@@ -4,7 +4,7 @@ This document outlines planned improvements and new features for the app.
 
 ---
 
-## 🃏 1. Flashcard Phase Before Each Scenario (HIGH PRIORITY)
+## ✅ 1. Flashcard Phase Before Each Scenario ~~(HIGH PRIORITY)~~ — DONE
 
 **Your idea:** Before the role-play conversation begins, introduce each vocabulary word used in the scenario through a flashcard session so Milton can memorize the words first.
 
@@ -28,7 +28,7 @@ Flashcard Session → Role-Play Conversation → Quiz
 
 ---
 
-## 📚 2. New Scenarios for Elementary School (HIGH PRIORITY)
+## ✅ 2. New Scenarios for Elementary School ~~(HIGH PRIORITY)~~ — DONE
 
 Current scenarios (6) cover basic playground and classroom situations. Expand to cover more realistic daily interactions for a 6-year-old entering school.
 
