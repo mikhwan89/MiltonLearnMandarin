@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -21,6 +22,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ikhwan.mandarinkids.data.models.PinyinWord
 import com.ikhwan.mandarinkids.data.models.Scenario
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.*
 
 fun Scenario.getFlashcardWords(): List<PinyinWord> {
@@ -40,6 +43,7 @@ fun FlashcardScreen(
     val context = LocalContext.current
     var tts by remember { mutableStateOf<TextToSpeech?>(null) }
     var ttsReady by remember { mutableStateOf(false) }
+    val coroutineScope = rememberCoroutineScope()
 
     val allWords = remember { scenario.getFlashcardWords() }
     var deck by remember { mutableStateOf(allWords) }
@@ -177,15 +181,28 @@ fun FlashcardScreen(
                                 Text(
                                     text = currentWord.pinyin,
                                     fontSize = 24.sp,
-                                    color = MaterialTheme.colorScheme.primary,
+                                    color = ToneUtils.pinyinColor(currentWord.pinyin),
                                     fontWeight = FontWeight.Medium,
                                     textAlign = TextAlign.Center,
                                     modifier = Modifier.padding(top = 6.dp)
                                 )
-                                TextButton(onClick = {
-                                    tts?.speak(currentWord.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
-                                }) {
-                                    Text("🔊 Hear it again", fontSize = 14.sp)
+                                Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                                    TextButton(onClick = {
+                                        tts?.setSpeechRate(1.0f)
+                                        tts?.speak(currentWord.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+                                    }) {
+                                        Text("🔊 Normal", fontSize = 13.sp)
+                                    }
+                                    TextButton(onClick = {
+                                        coroutineScope.launch {
+                                            tts?.setSpeechRate(0.5f)
+                                            tts?.speak(currentWord.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+                                            delay(3000)
+                                            tts?.setSpeechRate(1.0f)
+                                        }
+                                    }) {
+                                        Text("🐢 Slow", fontSize = 13.sp)
+                                    }
                                 }
                             }
                         } else {
@@ -207,11 +224,31 @@ fun FlashcardScreen(
                                 Text(
                                     text = currentWord.pinyin,
                                     fontSize = 26.sp,
-                                    color = MaterialTheme.colorScheme.primary,
+                                    color = ToneUtils.pinyinColor(currentWord.pinyin),
                                     fontWeight = FontWeight.SemiBold,
                                     textAlign = TextAlign.Center
                                 )
-                                Spacer(modifier = Modifier.height(16.dp))
+                                Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                                    TextButton(onClick = {
+                                        tts?.setSpeechRate(1.0f)
+                                        tts?.speak(currentWord.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+                                    }) {
+                                        Icon(Icons.Default.PlayArrow, contentDescription = null, modifier = Modifier.size(16.dp))
+                                        Spacer(modifier = Modifier.width(2.dp))
+                                        Text("Normal", fontSize = 12.sp)
+                                    }
+                                    TextButton(onClick = {
+                                        coroutineScope.launch {
+                                            tts?.setSpeechRate(0.5f)
+                                            tts?.speak(currentWord.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+                                            delay(3000)
+                                            tts?.setSpeechRate(1.0f)
+                                        }
+                                    }) {
+                                        Text("🐢 Slow", fontSize = 12.sp)
+                                    }
+                                }
+                                Spacer(modifier = Modifier.height(8.dp))
                                 Text(
                                     text = "🇬🇧  ${currentWord.english}",
                                     fontSize = 20.sp,

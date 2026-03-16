@@ -28,6 +28,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.util.*
 import kotlin.coroutines.resume
+import androidx.compose.ui.text.font.FontWeight
 import com.ikhwan.mandarinkids.data.models.*
 
 data class ConversationMessage(
@@ -426,24 +427,26 @@ fun ConversationBubble(
 
                     Spacer(modifier = Modifier.height(4.dp))
 
-                    // Clickable pinyin words
+                    // Clickable pinyin words (tap = word detail, tone-coloured)
                     if (message.pinyinWords.isNotEmpty()) {
                         LazyRow(
                             horizontalArrangement = Arrangement.spacedBy(4.dp),
                             modifier = Modifier.padding(vertical = 4.dp)
                         ) {
                             items(message.pinyinWords) { word ->
+                                val toneCol = ToneUtils.pinyinColor(word.pinyin)
                                 Text(
                                     text = word.pinyin,
                                     fontSize = 14.sp,
-                                    color = MaterialTheme.colorScheme.primary,
+                                    color = toneCol,
+                                    fontWeight = FontWeight.SemiBold,
                                     modifier = Modifier
                                         .clickable {
                                             selectedWord = word
                                             showWordDialog = true
                                         }
                                         .background(
-                                            MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
+                                            toneCol.copy(alpha = 0.12f),
                                             RoundedCornerShape(4.dp)
                                         )
                                         .padding(horizontal = 6.dp, vertical = 2.dp)
@@ -486,6 +489,11 @@ fun ConversationBubble(
 
     // Word translation dialog
     if (showWordDialog && selectedWord != null) {
+        val word = selectedWord!!
+        val tone = ToneUtils.detectTone(word.pinyin)
+        val toneCol = ToneUtils.toneColor(tone)
+        val dialogScope = rememberCoroutineScope()
+
         Dialog(onDismissRequest = { showWordDialog = false }) {
             Surface(
                 shape = RoundedCornerShape(16.dp),
@@ -496,28 +504,65 @@ fun ConversationBubble(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = selectedWord!!.chinese,
+                        text = word.chinese,
                         fontSize = 48.sp,
-                        modifier = Modifier.padding(bottom = 8.dp)
+                        modifier = Modifier.padding(bottom = 4.dp)
                     )
                     Text(
-                        text = selectedWord!!.pinyin,
+                        text = word.pinyin,
                         fontSize = 24.sp,
-                        color = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.padding(bottom = 16.dp)
+                        color = toneCol,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(bottom = 4.dp)
                     )
+                    // Tone label with coloured dot
+                    Surface(
+                        color = toneCol.copy(alpha = 0.12f),
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier.padding(bottom = 12.dp)
+                    ) {
+                        Text(
+                            text = ToneUtils.toneLabel(tone),
+                            fontSize = 12.sp,
+                            color = toneCol,
+                            fontWeight = FontWeight.Medium,
+                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
+                        )
+                    }
                     Text(
-                        text = "🇬🇧 ${selectedWord!!.english}",
+                        text = "🇬🇧 ${word.english}",
                         fontSize = 18.sp,
                         modifier = Modifier.padding(bottom = 4.dp)
                     )
                     Text(
-                        text = "🇮🇩 ${selectedWord!!.indonesian}",
+                        text = "🇮🇩 ${word.indonesian}",
                         fontSize = 18.sp,
                         modifier = Modifier.padding(bottom = 16.dp)
                     )
+                    // Play buttons
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        modifier = Modifier.padding(bottom = 12.dp)
+                    ) {
+                        OutlinedButton(onClick = {
+                            tts?.setSpeechRate(speechSpeed)
+                            tts?.speak(word.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+                        }) {
+                            Text("🔊 Normal")
+                        }
+                        OutlinedButton(onClick = {
+                            dialogScope.launch {
+                                tts?.setSpeechRate(0.5f)
+                                tts?.speak(word.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+                                delay(3000)
+                                tts?.setSpeechRate(speechSpeed)
+                            }
+                        }) {
+                            Text("🐢 Slow")
+                        }
+                    }
                     Button(onClick = { showWordDialog = false }) {
-                        Text("OK")
+                        Text("Close")
                     }
                 }
             }
