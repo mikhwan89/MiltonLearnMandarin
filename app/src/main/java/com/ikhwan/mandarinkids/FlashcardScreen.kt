@@ -39,6 +39,7 @@ fun FlashcardScreen(
 ) {
     val context = LocalContext.current
     var tts by remember { mutableStateOf<TextToSpeech?>(null) }
+    var ttsReady by remember { mutableStateOf(false) }
 
     val allWords = remember { scenario.getFlashcardWords() }
     var deck by remember { mutableStateOf(allWords) }
@@ -53,13 +54,14 @@ fun FlashcardScreen(
         tts = TextToSpeech(context) { status ->
             if (status == TextToSpeech.SUCCESS) {
                 tts?.language = Locale.CHINESE
+                ttsReady = true
             }
         }
     }
 
-    // Auto-play when card changes
-    LaunchedEffect(currentIndex, deck.size) {
-        if (currentWord != null && !isFlipped) {
+    // Auto-play when card changes, or when TTS becomes ready for the first card
+    LaunchedEffect(currentIndex, deck.size, ttsReady) {
+        if (ttsReady && currentWord != null && !isFlipped) {
             tts?.speak(currentWord.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
         }
     }
