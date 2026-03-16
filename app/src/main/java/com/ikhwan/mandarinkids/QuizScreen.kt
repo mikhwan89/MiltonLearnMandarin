@@ -6,9 +6,16 @@ import android.media.AudioTrack
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import androidx.compose.animation.*
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
@@ -19,7 +26,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -413,15 +422,33 @@ fun QuizResultsScreen(
     quizScore: Int,
     totalQuestions: Int,
     onComplete: () -> Unit,
-    onTryAgain: (() -> Unit)? = null  // NEW: Try again callback
+    onTryAgain: (() -> Unit)? = null
 ) {
+    val context = LocalContext.current
     val quizPercentage = (quizScore.toFloat() / totalQuestions * 100).toInt()
     val totalScore = rolePlayScore + quizScore
     val isPerfect = quizScore == totalQuestions
 
+    // Calculate stars and save progress once on composition
+    val stars = remember { ProgressManager.calculateStars(quizScore, totalQuestions) }
+    val xpGained = remember { ProgressManager.saveProgress(context, scenario.id, stars) }
+
+    // Bouncing emoji animation for perfect score
+    val infiniteTransition = rememberInfiniteTransition(label = "celebrate")
+    val bounceY by infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = -20f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(400),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "bounceY"
+    )
+
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -433,7 +460,12 @@ fun QuizResultsScreen(
                 else -> "💪📚🌟"
             },
             fontSize = 64.sp,
-            modifier = Modifier.padding(bottom = 24.dp)
+            modifier = Modifier
+                .padding(bottom = 16.dp)
+                .then(
+                    if (isPerfect) Modifier.graphicsLayer { translationY = bounceY }
+                    else Modifier
+                )
         )
 
         Text(
@@ -455,8 +487,41 @@ fun QuizResultsScreen(
             },
             fontSize = 24.sp,
             color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier.padding(bottom = 32.dp)
+            modifier = Modifier.padding(bottom = 16.dp)
         )
+
+        // Star rating
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier.padding(bottom = 8.dp)
+        ) {
+            repeat(3) { i ->
+                Text(
+                    text = if (i < stars) "★" else "☆",
+                    fontSize = 48.sp,
+                    color = if (i < stars) Color(0xFFFFC107) else Color(0xFFBDBDBD)
+                )
+            }
+        }
+
+        // XP gained
+        if (xpGained > 0) {
+            Text(
+                text = "+$xpGained XP",
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF4CAF50),
+                modifier = Modifier.padding(bottom = 24.dp)
+            )
+        } else {
+            Text(
+                text = "No new XP — try for a higher star rating!",
+                fontSize = 13.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(bottom = 24.dp)
+            )
+        }
 
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -504,7 +569,7 @@ fun QuizResultsScreen(
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                Divider()
+                HorizontalDivider()
 
                 Spacer(modifier = Modifier.height(12.dp))
 
@@ -529,12 +594,8 @@ fun QuizResultsScreen(
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        Card(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Column(
-                modifier = Modifier.padding(16.dp)
-            ) {
+        Card(modifier = Modifier.fillMaxWidth()) {
+            Column(modifier = Modifier.padding(16.dp)) {
                 Text(
                     text = "💡 Learning Tip:",
                     fontSize = 14.sp,
@@ -566,10 +627,9 @@ fun QuizResultsScreen(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        // FIXED: Try Again button now works
         if (onTryAgain != null) {
             OutlinedButton(
-                onClick = onTryAgain,  // Use the callback
+                onClick = onTryAgain,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp)
