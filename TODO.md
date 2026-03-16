@@ -63,7 +63,7 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 
 ---
 
-## 5. Repository Interface + Abstraction (MEDIUM PRIORITY)
+## 5. Repository Interface + Abstraction ✅ DONE
 
 **Why:** `ScenarioRepository` currently returns a hardcoded list. Screens call it directly with no abstraction. Once scenarios load from JSON (item 1), the repository will do real I/O. Defining an interface means the source (JSON assets, Room cache, future remote API) can be swapped without touching any screen or ViewModel.
 
@@ -142,7 +142,7 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 | 2 | ~~Split MainActivity.kt~~ ✅ | Small | High — reduces blast radius of any nav/home change |
 | 3 | ~~Centralize TTS~~ ✅ | Small | High — eliminates 3-way duplication |
 | 4 | ~~RolePlayViewModel~~ ✅ | Medium | Medium — consistency with QuizViewModel pattern |
-| 5 | Repository interface | Small | Medium — prerequisite for clean testing |
+| 5 | ~~Repository interface~~ ✅ | Small | Medium — prerequisite for clean testing |
 | 6 | Room for progress | Medium | Medium — enables richer progress queries |
 | 7 | DataStore preferences | Small | Medium — persists user settings |
 | 8 | Jetpack Navigation | Medium | Low — nice to have once screen count grows |

@@ -14,13 +14,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ikhwan.mandarinkids.ProgressManager
 import com.ikhwan.mandarinkids.data.models.Scenario
-import com.ikhwan.mandarinkids.data.scenarios.ScenarioRepository
+import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(onScenarioClick: (Scenario) -> Unit) {
     val context = LocalContext.current
-    val scenarios = remember { ScenarioRepository.getAllScenarios() }
+    val scenarios = remember { JsonScenarioRepository.getAll() }
     val xp = remember { ProgressManager.getTotalXp(context) }
     val streak = remember { ProgressManager.getStreak(context) }
 

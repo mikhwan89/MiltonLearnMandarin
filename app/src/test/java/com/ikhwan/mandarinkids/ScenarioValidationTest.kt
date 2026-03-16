@@ -2,13 +2,13 @@ package com.ikhwan.mandarinkids
 
 import com.ikhwan.mandarinkids.data.models.ResponseType
 import com.ikhwan.mandarinkids.data.models.Speaker
-import com.ikhwan.mandarinkids.data.scenarios.ScenarioRepository
+import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import org.junit.Assert.*
 import org.junit.Test
 
 class ScenarioValidationTest {
 
-    private val scenarios = ScenarioRepository.getAllScenarios()
+    private val scenarios = JsonScenarioRepository.getAll()
 
     @Test
     fun allScenariosHaveAtLeastThreeQuizQuestions() {
