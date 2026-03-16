@@ -13,18 +13,39 @@ fun getScenario7_BorrowingThings(): Scenario {
         dialogues = listOf(
             DialogueStep(
                 id = 1,
-                speaker = Speaker.STUDENT,
-                textChinese = "小明，我可以借你的铅笔吗？",
-                textPinyin = "Xiǎo Míng, wǒ kěyǐ jiè nǐ de qiānbǐ ma?",
-                textEnglish = "Xiao Ming, may I borrow your pencil?",
-                textIndonesian = "Xiao Ming, boleh aku pinjam pensilmu?",
+                speaker = Speaker.CHARACTER,
+                textChinese = "你好！你需要什么吗？",
+                textPinyin = "Nǐ hǎo! Nǐ xūyào shénme ma?",
+                textEnglish = "Hi! Do you need something?",
+                textIndonesian = "Hei! Kamu butuh sesuatu?",
                 pinyinWords = listOf(
-                    PinyinWord("kěyǐ", "可以", "may / can", "boleh"),
-                    PinyinWord("jiè", "借", "borrow", "pinjam"),
-                    PinyinWord("qiānbǐ", "铅笔", "pencil", "pensil"),
-                    PinyinWord("ma", "吗", "question particle", "partikel tanya")
+                    PinyinWord("xūyào", "需要", "need", "butuh"),
+                    PinyinWord("shénme", "什么", "what / something", "sesuatu")
                 ),
-                responseType = ResponseType.LISTEN_ONLY
+                responseType = ResponseType.MULTIPLE_OPTIONS,
+                options = listOf(
+                    ResponseOption(
+                        "小明，我可以借你的铅笔吗？",
+                        "Xiǎo Míng, wǒ kěyǐ jiè nǐ de qiānbǐ ma?",
+                        "Xiao Ming, may I borrow your pencil?",
+                        "Xiao Ming, boleh aku pinjam pensilmu?",
+                        pinyinWords = listOf(
+                            PinyinWord("kěyǐ", "可以", "may / can", "boleh"),
+                            PinyinWord("jiè", "借", "borrow", "pinjam"),
+                            PinyinWord("qiānbǐ", "铅笔", "pencil", "pensil")
+                        )
+                    ),
+                    ResponseOption(
+                        "没事，我只是打招呼！",
+                        "Méi shì, wǒ zhǐshì dǎ zhāohu!",
+                        "Nothing, just saying hi!",
+                        "Tidak ada, cuma menyapa!",
+                        pinyinWords = listOf(
+                            PinyinWord("méi shì", "没事", "nothing / no problem", "tidak ada apa-apa"),
+                            PinyinWord("dǎ zhāohu", "打招呼", "say hi", "menyapa")
+                        )
+                    )
+                )
             ),
             DialogueStep(
                 id = 2,
@@ -35,9 +56,8 @@ fun getScenario7_BorrowingThings(): Scenario {
                 textIndonesian = "Tentu saja! Ini untukmu. Kamu butuh yang lain?",
                 pinyinWords = listOf(
                     PinyinWord("dāngrán", "当然", "of course", "tentu saja"),
-                    PinyinWord("gěi", "给", "give / here", "beri / ini"),
+                    PinyinWord("gěi", "给", "give / here", "ini"),
                     PinyinWord("hái", "还", "also / still", "juga"),
-                    PinyinWord("xūyào", "需要", "need", "butuh"),
                     PinyinWord("bié de", "别的", "other things", "yang lain")
                 ),
                 responseType = ResponseType.MULTIPLE_OPTIONS,

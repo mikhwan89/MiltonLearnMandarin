@@ -13,17 +13,38 @@ fun getScenario8_FeelingUnwell(): Scenario {
         dialogues = listOf(
             DialogueStep(
                 id = 1,
-                speaker = Speaker.STUDENT,
-                textChinese = "老师，我不舒服。",
-                textPinyin = "Lǎoshī, wǒ bù shūfu.",
-                textEnglish = "Teacher, I don't feel well.",
-                textIndonesian = "Guru, saya tidak enak badan.",
+                speaker = Speaker.CHARACTER,
+                textChinese = "你好！你今天看起来不太好。你还好吗？",
+                textPinyin = "Nǐ hǎo! Nǐ jīntiān kàn qǐlái bù tài hǎo. Nǐ hái hǎo ma?",
+                textEnglish = "Hello! You don't look well today. Are you okay?",
+                textIndonesian = "Halo! Kamu terlihat kurang baik hari ini. Kamu baik-baik saja?",
                 pinyinWords = listOf(
-                    PinyinWord("lǎoshī", "老师", "teacher", "guru"),
-                    PinyinWord("bù", "不", "not", "tidak"),
-                    PinyinWord("shūfu", "舒服", "comfortable / well", "nyaman / sehat")
+                    PinyinWord("kàn qǐlái", "看起来", "look / seem", "terlihat"),
+                    PinyinWord("bù tài hǎo", "不太好", "not too well", "kurang baik"),
+                    PinyinWord("hái hǎo", "还好", "okay / alright", "baik-baik saja")
                 ),
-                responseType = ResponseType.LISTEN_ONLY
+                responseType = ResponseType.MULTIPLE_OPTIONS,
+                options = listOf(
+                    ResponseOption(
+                        "老师，我不舒服。",
+                        "Lǎoshī, wǒ bù shūfu.",
+                        "Teacher, I don't feel well.",
+                        "Guru, saya tidak enak badan.",
+                        pinyinWords = listOf(
+                            PinyinWord("bù shūfu", "不舒服", "don't feel well", "tidak enak badan")
+                        )
+                    ),
+                    ResponseOption(
+                        "我还好，谢谢老师！",
+                        "Wǒ hái hǎo, xièxie lǎoshī!",
+                        "I'm okay, thank you teacher!",
+                        "Saya baik-baik saja, terima kasih guru!",
+                        pinyinWords = listOf(
+                            PinyinWord("hái hǎo", "还好", "okay", "baik-baik saja"),
+                            PinyinWord("Xièxie", "谢谢", "Thank you", "Terima kasih")
+                        )
+                    )
+                )
             ),
             DialogueStep(
                 id = 2,

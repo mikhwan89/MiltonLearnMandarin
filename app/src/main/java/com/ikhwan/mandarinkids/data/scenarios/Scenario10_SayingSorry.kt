@@ -22,23 +22,22 @@ fun getScenario10_SayingSorry(): Scenario {
                     PinyinWord("nòng huài", "弄坏", "broke / damaged", "merusak"),
                     PinyinWord("bù gāoxìng", "不高兴", "unhappy", "tidak senang")
                 ),
-                responseType = ResponseType.LISTEN_ONLY
+                responseType = ResponseType.SINGLE_CHOICE,
+                options = listOf(
+                    ResponseOption(
+                        "对不起！我不是故意的。",
+                        "Duìbuqǐ! Wǒ bù shì gùyì de.",
+                        "Sorry! I didn't do it on purpose.",
+                        "Maaf! Aku tidak sengaja.",
+                        pinyinWords = listOf(
+                            PinyinWord("duìbuqǐ", "对不起", "sorry", "maaf"),
+                            PinyinWord("gùyì", "故意", "on purpose", "sengaja")
+                        )
+                    )
+                )
             ),
             DialogueStep(
                 id = 2,
-                speaker = Speaker.STUDENT,
-                textChinese = "对不起！我不是故意的。",
-                textPinyin = "Duìbuqǐ! Wǒ bù shì gùyì de.",
-                textEnglish = "Sorry! I didn't do it on purpose.",
-                textIndonesian = "Maaf! Aku tidak sengaja.",
-                pinyinWords = listOf(
-                    PinyinWord("duìbuqǐ", "对不起", "sorry", "maaf"),
-                    PinyinWord("gùyì", "故意", "on purpose", "sengaja")
-                ),
-                responseType = ResponseType.LISTEN_ONLY
-            ),
-            DialogueStep(
-                id = 3,
                 speaker = Speaker.CHARACTER,
                 textChinese = "你会赔我一支新铅笔吗？",
                 textPinyin = "Nǐ huì péi wǒ yī zhī xīn qiānbǐ ma?",
@@ -76,7 +75,7 @@ fun getScenario10_SayingSorry(): Scenario {
                 )
             ),
             DialogueStep(
-                id = 4,
+                id = 3,
                 speaker = Speaker.CHARACTER,
                 textChinese = "好吧，没关系。我们还是好朋友！",
                 textPinyin = "Hǎo ba, méi guānxi. Wǒmen háishì hǎo péngyou!",

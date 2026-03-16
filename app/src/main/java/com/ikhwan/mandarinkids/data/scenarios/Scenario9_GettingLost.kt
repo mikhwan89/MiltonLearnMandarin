@@ -13,17 +13,40 @@ fun getScenario9_GettingLost(): Scenario {
         dialogues = listOf(
             DialogueStep(
                 id = 1,
-                speaker = Speaker.STUDENT,
-                textChinese = "老师，对不起，我找不到我的教室。",
-                textPinyin = "Lǎoshī, duìbuqǐ, wǒ zhǎo bù dào wǒ de jiàoshì.",
-                textEnglish = "Teacher, sorry, I can't find my classroom.",
-                textIndonesian = "Guru, maaf, saya tidak bisa menemukan kelas saya.",
+                speaker = Speaker.CHARACTER,
+                textChinese = "你好！你看起来迷路了。我可以帮你吗？",
+                textPinyin = "Nǐ hǎo! Nǐ kàn qǐlái mí lù le. Wǒ kěyǐ bāng nǐ ma?",
+                textEnglish = "Hello! You look lost. Can I help you?",
+                textIndonesian = "Halo! Kamu sepertinya tersesat. Bisa aku bantu?",
                 pinyinWords = listOf(
-                    PinyinWord("duìbuqǐ", "对不起", "sorry", "maaf"),
-                    PinyinWord("zhǎo bù dào", "找不到", "can't find", "tidak bisa menemukan"),
-                    PinyinWord("jiàoshì", "教室", "classroom", "ruang kelas")
+                    PinyinWord("kàn qǐlái", "看起来", "look / seem", "sepertinya"),
+                    PinyinWord("mí lù", "迷路", "lost", "tersesat"),
+                    PinyinWord("bāng", "帮", "help", "bantu")
                 ),
-                responseType = ResponseType.LISTEN_ONLY
+                responseType = ResponseType.MULTIPLE_OPTIONS,
+                options = listOf(
+                    ResponseOption(
+                        "老师，对不起，我找不到我的教室。",
+                        "Lǎoshī, duìbuqǐ, wǒ zhǎo bù dào wǒ de jiàoshì.",
+                        "Teacher, sorry, I can't find my classroom.",
+                        "Guru, maaf, saya tidak bisa menemukan kelas saya.",
+                        pinyinWords = listOf(
+                            PinyinWord("duìbuqǐ", "对不起", "sorry", "maaf"),
+                            PinyinWord("zhǎo bù dào", "找不到", "can't find", "tidak bisa menemukan"),
+                            PinyinWord("jiàoshì", "教室", "classroom", "ruang kelas")
+                        )
+                    ),
+                    ResponseOption(
+                        "我迷路了，你能帮我吗？",
+                        "Wǒ mí lù le, nǐ néng bāng wǒ ma?",
+                        "I'm lost, can you help me?",
+                        "Saya tersesat, bisakah kamu membantu saya?",
+                        pinyinWords = listOf(
+                            PinyinWord("mí lù", "迷路", "lost", "tersesat"),
+                            PinyinWord("néng", "能", "can / able to", "bisa")
+                        )
+                    )
+                )
             ),
             DialogueStep(
                 id = 2,
