@@ -14,7 +14,13 @@
       "textEnglish": "You broke my pencil! I'm very unhappy!",
       "textIndonesian": "Kamu merusak pensilku! Aku sangat tidak senang!",
       "pinyinWords": [
+        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
         { "pinyin": "nòng huài", "chinese": "弄坏", "english": "broke / damaged", "indonesian": "merusak" },
+        { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
+        { "pinyin": "wǒ de", "chinese": "我的", "english": "my", "indonesian": "punyaku" },
+        { "pinyin": "qiānbǐ", "chinese": "铅笔", "english": "pencil", "indonesian": "pensil" },
+        { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
+        { "pinyin": "hěn", "chinese": "很", "english": "very", "indonesian": "sangat" },
         { "pinyin": "bù gāoxìng", "chinese": "不高兴", "english": "unhappy", "indonesian": "tidak senang" }
       ],
       "responseType": "SINGLE_CHOICE",
@@ -26,7 +32,10 @@
           "indonesian": "Maaf! Aku tidak sengaja.",
           "pinyinWords": [
             { "pinyin": "duìbuqǐ", "chinese": "对不起", "english": "sorry", "indonesian": "maaf" },
-            { "pinyin": "gùyì", "chinese": "故意", "english": "on purpose", "indonesian": "sengaja" }
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
+            { "pinyin": "bù shì", "chinese": "不是", "english": "not", "indonesian": "bukan" },
+            { "pinyin": "gùyì", "chinese": "故意", "english": "on purpose", "indonesian": "sengaja" },
+            { "pinyin": "de", "chinese": "的", "english": "(particle)", "indonesian": "(partikel)" }
           ],
           "isCorrect": true
         }
@@ -41,10 +50,15 @@
       "textEnglish": "Will you get me a new pencil?",
       "textIndonesian": "Kamu akan mengganti pensilku yang baru?",
       "pinyinWords": [
+        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
         { "pinyin": "huì", "chinese": "会", "english": "will", "indonesian": "akan" },
         { "pinyin": "péi", "chinese": "赔", "english": "compensate / replace", "indonesian": "mengganti" },
+        { "pinyin": "wǒ", "chinese": "我", "english": "me", "indonesian": "aku" },
+        { "pinyin": "yī", "chinese": "一", "english": "one", "indonesian": "satu" },
         { "pinyin": "zhī", "chinese": "支", "english": "measure word for pencils", "indonesian": "satuan untuk pensil" },
-        { "pinyin": "xīn", "chinese": "新", "english": "new", "indonesian": "baru" }
+        { "pinyin": "xīn", "chinese": "新", "english": "new", "indonesian": "baru" },
+        { "pinyin": "qiānbǐ", "chinese": "铅笔", "english": "pencil", "indonesian": "pensil" },
+        { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -54,9 +68,15 @@
           "english": "Okay, I'll bring a new one tomorrow. I'm really sorry!",
           "indonesian": "Baik, aku bawa yang baru besok. Sekali lagi maaf!",
           "pinyinWords": [
+            { "pinyin": "hǎo de", "chinese": "好的", "english": "okay", "indonesian": "baik" },
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
             { "pinyin": "míngtiān", "chinese": "明天", "english": "tomorrow", "indonesian": "besok" },
             { "pinyin": "dài", "chinese": "带", "english": "bring", "indonesian": "bawa" },
-            { "pinyin": "zài yī cì", "chinese": "再一次", "english": "once more / again", "indonesian": "sekali lagi" }
+            { "pinyin": "yī zhī", "chinese": "一支", "english": "one (pencil)", "indonesian": "satu (pensil)" },
+            { "pinyin": "xīn de", "chinese": "新的", "english": "new one", "indonesian": "yang baru" },
+            { "pinyin": "lái", "chinese": "来", "english": "come / bring", "indonesian": "datang" },
+            { "pinyin": "zài yī cì", "chinese": "再一次", "english": "once more / again", "indonesian": "sekali lagi" },
+            { "pinyin": "duìbuqǐ", "chinese": "对不起", "english": "sorry", "indonesian": "maaf" }
           ],
           "isCorrect": true
         },
@@ -66,6 +86,7 @@
           "english": "I don't know. Sorry.",
           "indonesian": "Aku tidak tahu. Maaf.",
           "pinyinWords": [
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
             { "pinyin": "bù zhīdào", "chinese": "不知道", "english": "don't know", "indonesian": "tidak tahu" },
             { "pinyin": "duìbuqǐ", "chinese": "对不起", "english": "sorry", "indonesian": "maaf" }
           ],
@@ -84,6 +105,7 @@
       "pinyinWords": [
         { "pinyin": "hǎo ba", "chinese": "好吧", "english": "alright", "indonesian": "baiklah" },
         { "pinyin": "méi guānxi", "chinese": "没关系", "english": "it's okay", "indonesian": "tidak apa-apa" },
+        { "pinyin": "wǒmen", "chinese": "我们", "english": "we", "indonesian": "kita" },
         { "pinyin": "háishì", "chinese": "还是", "english": "still", "indonesian": "masih" },
         { "pinyin": "hǎo péngyou", "chinese": "好朋友", "english": "good friends", "indonesian": "teman baik" }
       ],
@@ -96,7 +118,11 @@
           "indonesian": "Terima kasih! Kita teman terbaik!",
           "pinyinWords": [
             { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" },
+            { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
+            { "pinyin": "wǒmen", "chinese": "我们", "english": "we", "indonesian": "kita" },
+            { "pinyin": "shì", "chinese": "是", "english": "are", "indonesian": "adalah" },
             { "pinyin": "zuì hǎo", "chinese": "最好", "english": "best", "indonesian": "terbaik" },
+            { "pinyin": "de", "chinese": "的", "english": "(particle)", "indonesian": "(partikel)" },
             { "pinyin": "péngyou", "chinese": "朋友", "english": "friends", "indonesian": "teman" }
           ],
           "isCorrect": true

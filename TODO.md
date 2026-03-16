@@ -4,7 +4,7 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 
 ---
 
-## 1. Scenarios as JSON Assets (HIGH PRIORITY)
+## 1. Scenarios as JSON Assets ✅ DONE
 
 **Why:** The single biggest manageability win. Currently adding or editing a scenario requires writing/editing Kotlin files, which risks compilation errors and requires understanding the full data model. Moving content to JSON means:
 - A new scenario = one new JSON file in `assets/scenarios/`, no Kotlin changes
@@ -23,7 +23,7 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 
 ---
 
-## 2. Split MainActivity.kt (HIGH PRIORITY)
+## 2. Split MainActivity.kt ✅ DONE
 
 **Why:** `MainActivity.kt` currently contains four unrelated things: the `ComponentActivity` setup, the `Screen` sealed class, the top-level `MandarinKidsApp` navigation composable, and the entire `HomeScreen` + `ScenarioCard` UI. Any change to navigation or the home screen requires opening this one large file, increasing the chance of accidental edits to unrelated code.
 
@@ -37,7 +37,7 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 
 ---
 
-## 3. Centralize TTS into a Shared Manager (HIGH PRIORITY)
+## 3. Centralize TTS into a Shared Manager ✅ DONE
 
 **Why:** TTS initialization (`LaunchedEffect`, `DisposableEffect`, language setup) is copy-pasted across `RolePlayScreen.kt`, `QuizScreen.kt`, and `PhrasesScreen.kt`. Any TTS change (add a language, change speech rate default, handle initialization failure) must be made in three places. One missed file = inconsistent behavior.
 
@@ -138,9 +138,9 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 
 | # | Item | Effort | Impact |
 |---|------|--------|--------|
-| 1 | Scenarios as JSON assets | Large | Highest — unlocks content changes with zero Kotlin |
-| 2 | Split MainActivity.kt | Small | High — reduces blast radius of any nav/home change |
-| 3 | Centralize TTS | Small | High — eliminates 3-way duplication |
+| 1 | ~~Scenarios as JSON assets~~ ✅ | Large | Highest — unlocks content changes with zero Kotlin |
+| 2 | ~~Split MainActivity.kt~~ ✅ | Small | High — reduces blast radius of any nav/home change |
+| 3 | ~~Centralize TTS~~ ✅ | Small | High — eliminates 3-way duplication |
 | 4 | RolePlayViewModel | Medium | Medium — consistency with QuizViewModel pattern |
 | 5 | Repository interface | Small | Medium — prerequisite for clean testing |
 | 6 | Room for progress | Medium | Medium — enables richer progress queries |

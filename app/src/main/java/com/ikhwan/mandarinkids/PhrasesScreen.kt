@@ -1,6 +1,5 @@
 package com.ikhwan.mandarinkids
 
-import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -11,10 +10,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import java.util.*
+import com.ikhwan.mandarinkids.tts.TtsManager
+import com.ikhwan.mandarinkids.tts.rememberTtsManager
 
 data class Phrase(
     val chinese: String,
@@ -26,22 +25,7 @@ data class Phrase(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PhrasesScreen(category: String, onBack: () -> Unit) {
-    val context = LocalContext.current
-    var tts by remember { mutableStateOf<TextToSpeech?>(null) }
-
-    // Initialize Text-to-Speech
-    LaunchedEffect(Unit) {
-        tts = TextToSpeech(context) { status ->
-            if (status == TextToSpeech.SUCCESS) {
-                tts?.language = Locale.CHINESE
-            }
-        }
-    }
-
-    DisposableEffect(Unit) {
-        onDispose { tts?.shutdown() }
-    }
-
+    val tts = rememberTtsManager()
     val phrases = getPhrasesByCategory(category)
 
     Scaffold(
@@ -71,7 +55,7 @@ fun PhrasesScreen(category: String, onBack: () -> Unit) {
 }
 
 @Composable
-fun PhraseCard(phrase: Phrase, tts: TextToSpeech?) {
+fun PhraseCard(phrase: Phrase, tts: TtsManager) {
     Card(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -90,7 +74,7 @@ fun PhraseCard(phrase: Phrase, tts: TextToSpeech?) {
             }
 
             IconButton(onClick = {
-                tts?.speak(phrase.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+                tts.speak(phrase.chinese)
             }) {
                 Icon(
                     Icons.Default.PlayArrow,

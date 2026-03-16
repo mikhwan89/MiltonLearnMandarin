@@ -1,8 +1,5 @@
 package com.ikhwan.mandarinkids
 
-import android.speech.tts.TextToSpeech
-import android.os.Bundle
-import android.speech.tts.UtteranceProgressListener
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -31,10 +28,9 @@ import androidx.compose.ui.window.Dialog
 import com.ikhwan.mandarinkids.AppPreferences
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.suspendCancellableCoroutine
-import java.util.*
-import kotlin.coroutines.resume
 import androidx.compose.ui.graphics.graphicsLayer
+import com.ikhwan.mandarinkids.tts.TtsManager
+import com.ikhwan.mandarinkids.tts.rememberTtsManager
 import androidx.compose.ui.text.font.FontWeight
 import com.ikhwan.mandarinkids.data.models.*
 
@@ -55,7 +51,7 @@ fun RolePlayScreen(
     onBack: () -> Unit
 ) {
     val context = LocalContext.current
-    var tts by remember { mutableStateOf<TextToSpeech?>(null) }
+    val tts = rememberTtsManager()
     var currentStepIndex by remember { mutableStateOf(0) }
     var userName by remember { mutableStateOf("") }
     var showNameInput by remember { mutableStateOf(false) }
@@ -72,24 +68,6 @@ fun RolePlayScreen(
 
     // Track if we're currently processing a step
     var isProcessingStep by remember { mutableStateOf(false) }
-
-    // Initialize TTS
-    LaunchedEffect(Unit) {
-        tts = TextToSpeech(context) { status ->
-            if (status == TextToSpeech.SUCCESS) {
-                tts?.language = Locale.CHINESE
-                tts?.setSpeechRate(speechSpeed)
-            }
-        }
-    }
-
-    LaunchedEffect(speechSpeed) {
-        tts?.setSpeechRate(speechSpeed)
-    }
-
-    DisposableEffect(Unit) {
-        onDispose { tts?.shutdown() }
-    }
 
     val currentStep = if (currentStepIndex < scenario.dialogues.size) {
         scenario.dialogues[currentStepIndex]
@@ -135,31 +113,7 @@ fun RolePlayScreen(
 
                 // Speak and wait for completion
                 delay(300)
-                suspendCancellableCoroutine<Unit> { continuation ->
-                    tts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
-                        override fun onStart(utteranceId: String?) {}
-
-                        override fun onDone(utteranceId: String?) {
-                            if (utteranceId == "char_${currentStepIndex}") {
-                                continuation.resume(Unit)
-                            }
-                        }
-
-                        override fun onError(utteranceId: String?) {
-                            if (utteranceId == "char_${currentStepIndex}") {
-                                continuation.resume(Unit)
-                            }
-                        }
-                    })
-
-                    val params = Bundle()
-                    params.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "char_${currentStepIndex}")
-                    tts?.speak(currentStep.textChinese, TextToSpeech.QUEUE_FLUSH, params, "char_${currentStepIndex}")
-
-                    continuation.invokeOnCancellation {
-                        tts?.stop()
-                    }
-                }
+                tts.speakAndAwait(currentStep.textChinese, "char_$currentStepIndex", speechSpeed)
 
                 // Speech complete, wait a bit more
                 delay(800)
@@ -289,8 +243,7 @@ fun RolePlayScreen(
                                             pinyinWords = currentStep.options.first().pinyinWords
                                         )
 
-                                        val params = Bundle()
-                                        tts?.speak(fullResponse, TextToSpeech.QUEUE_FLUSH, params, null)
+                                        tts.speak(fullResponse, speechSpeed)
                                         correctAnswersCount++
 
                                         coroutineScope.launch {
@@ -329,8 +282,7 @@ fun RolePlayScreen(
                                                 pinyinWords = option.pinyinWords
                                             )
 
-                                            val params = Bundle()
-                                            tts?.speak(option.chinese, TextToSpeech.QUEUE_FLUSH, params, null)
+                                            tts.speak(option.chinese, speechSpeed)
 
                                             if (option.isCorrect) {
                                                 correctAnswersCount++
@@ -366,7 +318,7 @@ fun ConversationBubble(
     message: ConversationMessage,
     characterName: String,
     characterEmoji: String,
-    tts: TextToSpeech?,
+    tts: TtsManager,
     speechSpeed: Float,
     isSpeaking: Boolean = false
 ) {
@@ -438,9 +390,7 @@ fun ConversationBubble(
                         if (isCharacter) {
                             IconButton(
                                 onClick = {
-                                    tts?.setSpeechRate(speechSpeed)
-                                    val params = Bundle()
-                                    tts?.speak(message.textChinese, TextToSpeech.QUEUE_FLUSH, params, null)
+                                    tts.speak(message.textChinese, speechSpeed)
                                 },
                                 modifier = Modifier.size(32.dp)
                             ) {
@@ -520,8 +470,6 @@ fun ConversationBubble(
         val word = selectedWord!!
         val tone = ToneUtils.detectTone(word.pinyin)
         val toneCol = ToneUtils.toneColor(tone)
-        val dialogScope = rememberCoroutineScope()
-
         Dialog(onDismissRequest = { showWordDialog = false }) {
             Surface(
                 shape = RoundedCornerShape(16.dp),
@@ -573,18 +521,12 @@ fun ConversationBubble(
                         modifier = Modifier.padding(bottom = 12.dp)
                     ) {
                         OutlinedButton(onClick = {
-                            tts?.setSpeechRate(speechSpeed)
-                            tts?.speak(word.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+                            tts.speak(word.chinese, speechSpeed)
                         }) {
                             Text("🔊 Normal")
                         }
                         OutlinedButton(onClick = {
-                            dialogScope.launch {
-                                tts?.setSpeechRate(0.5f)
-                                tts?.speak(word.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
-                                delay(3000)
-                                tts?.setSpeechRate(speechSpeed)
-                            }
+                            tts.speak(word.chinese, rate = 0.5f)
                         }) {
                             Text("🐢 Slow")
                         }
@@ -602,7 +544,7 @@ fun ConversationBubble(
 fun NameInputSection(
     option: ResponseOption,
     onNameEntered: (String) -> Unit,
-    tts: TextToSpeech?,
+    tts: TtsManager,
     speechSpeed: Float
 ) {
     var name by remember { mutableStateOf("") }
@@ -640,9 +582,7 @@ fun NameInputSection(
 
                 IconButton(
                     onClick = {
-                        tts?.setSpeechRate(speechSpeed)
-                        val params = Bundle()
-                        tts?.speak(option.chinese, TextToSpeech.QUEUE_FLUSH, params, null)
+                        tts.speak(option.chinese, speechSpeed)
                     }
                 ) {
                     Icon(Icons.Default.PlayArrow, "Play")
@@ -682,7 +622,7 @@ fun ResponseOptionButton(
     option: ResponseOption,
     index: Int,
     onClick: () -> Unit,
-    tts: TextToSpeech?,
+    tts: TtsManager,
     speechSpeed: Float
 ) {
     var isPressed by remember { mutableStateOf(false) }
@@ -756,9 +696,7 @@ fun ResponseOptionButton(
 
             IconButton(
                 onClick = {
-                    tts?.setSpeechRate(speechSpeed)
-                    val params = Bundle()
-                    tts?.speak(option.chinese, TextToSpeech.QUEUE_FLUSH, params, null)
+                    tts.speak(option.chinese, speechSpeed)
                 }
             ) {
                 Icon(

@@ -15,6 +15,7 @@
       "textIndonesian": "Sayang, sudah pulang! Bagaimana sekolah hari ini?",
       "pinyinWords": [
         { "pinyin": "bǎobèi", "chinese": "宝贝", "english": "sweetheart / baby", "indonesian": "sayang" },
+        { "pinyin": "huí lái le", "chinese": "回来了", "english": "you're back", "indonesian": "sudah pulang" },
         { "pinyin": "jīntiān", "chinese": "今天", "english": "today", "indonesian": "hari ini" },
         { "pinyin": "xuéxiào", "chinese": "学校", "english": "school", "indonesian": "sekolah" },
         { "pinyin": "zěnmeyàng", "chinese": "怎么样", "english": "how was / how is", "indonesian": "bagaimana" }
@@ -27,7 +28,11 @@
           "english": "Very good! I learned a lot of Chinese today.",
           "indonesian": "Sangat baik! Aku belajar banyak bahasa Mandarin hari ini.",
           "pinyinWords": [
+            { "pinyin": "hěn hǎo", "chinese": "很好", "english": "very good", "indonesian": "sangat baik" },
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
+            { "pinyin": "jīntiān", "chinese": "今天", "english": "today", "indonesian": "hari ini" },
             { "pinyin": "xué", "chinese": "学", "english": "learn", "indonesian": "belajar" },
+            { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
             { "pinyin": "hěn duō", "chinese": "很多", "english": "a lot", "indonesian": "banyak" },
             { "pinyin": "zhōngwén", "chinese": "中文", "english": "Chinese language", "indonesian": "bahasa Mandarin" }
           ],
@@ -57,9 +62,12 @@
       "textIndonesian": "Luar biasa! Kamu kenal teman baru?",
       "pinyinWords": [
         { "pinyin": "tài bàng le", "chinese": "太棒了", "english": "wonderful / amazing", "indonesian": "luar biasa" },
+        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
         { "pinyin": "rènshi", "chinese": "认识", "english": "know / meet", "indonesian": "kenal" },
+        { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
         { "pinyin": "xīn", "chinese": "新", "english": "new", "indonesian": "baru" },
-        { "pinyin": "péngyou", "chinese": "朋友", "english": "friends", "indonesian": "teman" }
+        { "pinyin": "péngyou", "chinese": "朋友", "english": "friends", "indonesian": "teman" },
+        { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -70,7 +78,12 @@
           "indonesian": "Kenal! Aku kenal satu teman bernama Xiao Ming.",
           "pinyinWords": [
             { "pinyin": "rènshi le", "chinese": "认识了", "english": "made friends with", "indonesian": "berkenalan" },
-            { "pinyin": "jiào", "chinese": "叫", "english": "named / called", "indonesian": "bernama" }
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
+            { "pinyin": "yī gè", "chinese": "一个", "english": "one", "indonesian": "satu" },
+            { "pinyin": "jiào", "chinese": "叫", "english": "named / called", "indonesian": "bernama" },
+            { "pinyin": "Xiǎo Míng", "chinese": "小明", "english": "Xiao Ming (name)", "indonesian": "Xiao Ming (nama)" },
+            { "pinyin": "de", "chinese": "的", "english": "(particle)", "indonesian": "(partikel)" },
+            { "pinyin": "péngyou", "chinese": "朋友", "english": "friend", "indonesian": "teman" }
           ],
           "isCorrect": true
         },
@@ -81,7 +94,10 @@
           "indonesian": "Belum, tapi aku sudah kenal gurunya.",
           "pinyinWords": [
             { "pinyin": "hái méiyǒu", "chinese": "还没有", "english": "not yet", "indonesian": "belum" },
-            { "pinyin": "dànshì", "chinese": "但是", "english": "but", "indonesian": "tapi" }
+            { "pinyin": "dànshì", "chinese": "但是", "english": "but", "indonesian": "tapi" },
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
+            { "pinyin": "rènshi le", "chinese": "认识了", "english": "got to know", "indonesian": "berkenalan dengan" },
+            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" }
           ],
           "isCorrect": true
         }
@@ -97,8 +113,10 @@
       "textIndonesian": "Bagus sekali! Kamu suka sekolah?",
       "pinyinWords": [
         { "pinyin": "zhēn hǎo", "chinese": "真好", "english": "how nice / really good", "indonesian": "bagus sekali" },
+        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
         { "pinyin": "xǐhuān", "chinese": "喜欢", "english": "like", "indonesian": "suka" },
-        { "pinyin": "xuéxiào", "chinese": "学校", "english": "school", "indonesian": "sekolah" }
+        { "pinyin": "xuéxiào", "chinese": "学校", "english": "school", "indonesian": "sekolah" },
+        { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -109,7 +127,9 @@
           "indonesian": "Suka! Aku mau pergi lagi besok!",
           "pinyinWords": [
             { "pinyin": "xǐhuān", "chinese": "喜欢", "english": "like", "indonesian": "suka" },
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
             { "pinyin": "míngtiān", "chinese": "明天", "english": "tomorrow", "indonesian": "besok" },
+            { "pinyin": "hái", "chinese": "还", "english": "still / also", "indonesian": "masih / juga" },
             { "pinyin": "xiǎng qù", "chinese": "想去", "english": "want to go", "indonesian": "mau pergi" }
           ],
           "isCorrect": true
@@ -121,6 +141,8 @@
           "indonesian": "Lumayan. Aku agak kangen kamu.",
           "pinyinWords": [
             { "pinyin": "hái kěyǐ", "chinese": "还可以", "english": "it was okay", "indonesian": "lumayan" },
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
+            { "pinyin": "yǒudiǎn", "chinese": "有点", "english": "a little", "indonesian": "agak" },
             { "pinyin": "xiǎng nǐ", "chinese": "想你", "english": "miss you", "indonesian": "kangen kamu" }
           ],
           "isCorrect": true
@@ -137,10 +159,14 @@
       "textIndonesian": "Mama juga kangen kamu! Ganti baju dulu, terus makan, ya?",
       "pinyinWords": [
         { "pinyin": "māma", "chinese": "妈妈", "english": "mummy", "indonesian": "mama" },
+        { "pinyin": "yě", "chinese": "也", "english": "also / too", "indonesian": "juga" },
+        { "pinyin": "xiǎng nǐ", "chinese": "想你", "english": "miss you", "indonesian": "kangen kamu" },
         { "pinyin": "xiān", "chinese": "先", "english": "first", "indonesian": "dulu" },
+        { "pinyin": "qù", "chinese": "去", "english": "go", "indonesian": "pergi" },
         { "pinyin": "huàn yīfu", "chinese": "换衣服", "english": "change clothes", "indonesian": "ganti baju" },
         { "pinyin": "rán hòu", "chinese": "然后", "english": "then / after that", "indonesian": "terus" },
-        { "pinyin": "chīfàn", "chinese": "吃饭", "english": "eat / have a meal", "indonesian": "makan" }
+        { "pinyin": "chīfàn", "chinese": "吃饭", "english": "eat / have a meal", "indonesian": "makan" },
+        { "pinyin": "hǎo ma", "chinese": "好吗", "english": "okay?", "indonesian": "ya?" }
       ],
       "responseType": "SINGLE_CHOICE",
       "options": [
@@ -151,7 +177,10 @@
           "indonesian": "Baik, mama! Aku sayang kamu!",
           "pinyinWords": [
             { "pinyin": "hǎo de", "chinese": "好的", "english": "okay", "indonesian": "baik" },
-            { "pinyin": "ài", "chinese": "爱", "english": "love", "indonesian": "sayang" }
+            { "pinyin": "māma", "chinese": "妈妈", "english": "mummy", "indonesian": "mama" },
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
+            { "pinyin": "ài", "chinese": "爱", "english": "love", "indonesian": "sayang" },
+            { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" }
           ],
           "isCorrect": true
         }

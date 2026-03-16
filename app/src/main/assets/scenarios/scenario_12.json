@@ -16,7 +16,9 @@
       "pinyinWords": [
         { "pinyin": "tóngxuémen", "chinese": "同学们", "english": "students (plural)", "indonesian": "anak-anak / para siswa" },
         { "pinyin": "shéi", "chinese": "谁", "english": "who", "indonesian": "siapa" },
+        { "pinyin": "zhīdào", "chinese": "知道", "english": "know", "indonesian": "tahu" },
         { "pinyin": "dá'àn", "chinese": "答案", "english": "answer", "indonesian": "jawaban" },
+        { "pinyin": "qǐng", "chinese": "请", "english": "please", "indonesian": "tolong" },
         { "pinyin": "jǔshǒu", "chinese": "举手", "english": "raise hand", "indonesian": "angkat tangan" }
       ],
       "responseType": "SINGLE_CHOICE",
@@ -27,6 +29,9 @@
           "english": "(Raises hand) Teacher, I know!",
           "indonesian": "(Angkat tangan) Guru, saya tahu!",
           "pinyinWords": [
+            { "pinyin": "jǔshǒu", "chinese": "举手", "english": "raise hand", "indonesian": "angkat tangan" },
+            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" },
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
             { "pinyin": "zhīdào", "chinese": "知道", "english": "know", "indonesian": "tahu" }
           ],
           "isCorrect": true
@@ -42,7 +47,9 @@
       "textEnglish": "Very good! Please answer.",
       "textIndonesian": "Bagus! Tolong jawab.",
       "pinyinWords": [
+        { "pinyin": "hěn hǎo", "chinese": "很好", "english": "very good", "indonesian": "bagus" },
         { "pinyin": "qǐng", "chinese": "请", "english": "please", "indonesian": "tolong" },
+        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
         { "pinyin": "huídá", "chinese": "回答", "english": "answer / respond", "indonesian": "jawab" }
       ],
       "responseType": "MULTIPLE_OPTIONS",
@@ -54,6 +61,7 @@
           "indonesian": "Jawabannya adalah tiga!",
           "pinyinWords": [
             { "pinyin": "dá'àn", "chinese": "答案", "english": "answer", "indonesian": "jawaban" },
+            { "pinyin": "shì", "chinese": "是", "english": "is", "indonesian": "adalah" },
             { "pinyin": "sān", "chinese": "三", "english": "three", "indonesian": "tiga" }
           ],
           "isCorrect": true
@@ -64,6 +72,8 @@
           "english": "Teacher, I don't know.",
           "indonesian": "Guru, saya tidak tahu.",
           "pinyinWords": [
+            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" },
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
             { "pinyin": "bù zhīdào", "chinese": "不知道", "english": "don't know", "indonesian": "tidak tahu" }
           ],
           "isCorrect": true
@@ -80,9 +90,14 @@
       "textIndonesian": "Benar! Kamu hebat sekali! Ada pertanyaan?",
       "pinyinWords": [
         { "pinyin": "dá duì le", "chinese": "答对了", "english": "answered correctly", "indonesian": "jawaban benar" },
+        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
+        { "pinyin": "zhēn", "chinese": "真", "english": "really / truly", "indonesian": "benar-benar" },
         { "pinyin": "lìhài", "chinese": "厉害", "english": "amazing / impressive", "indonesian": "hebat" },
+        { "pinyin": "yǒu", "chinese": "有", "english": "have", "indonesian": "ada / punya" },
         { "pinyin": "wèntí", "chinese": "问题", "english": "question / problem", "indonesian": "pertanyaan" },
-        { "pinyin": "wèn", "chinese": "问", "english": "ask", "indonesian": "tanya" }
+        { "pinyin": "yào", "chinese": "要", "english": "want to", "indonesian": "mau" },
+        { "pinyin": "wèn", "chinese": "问", "english": "ask", "indonesian": "tanya" },
+        { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -92,6 +107,8 @@
           "english": "Teacher, I have a question.",
           "indonesian": "Guru, saya punya satu pertanyaan.",
           "pinyinWords": [
+            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" },
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
             { "pinyin": "yǒu", "chinese": "有", "english": "have", "indonesian": "punya" },
             { "pinyin": "yī gè", "chinese": "一个", "english": "one", "indonesian": "satu" },
             { "pinyin": "wèntí", "chinese": "问题", "english": "question", "indonesian": "pertanyaan" }
@@ -105,7 +122,9 @@
           "indonesian": "Tidak ada pertanyaan, terima kasih guru!",
           "pinyinWords": [
             { "pinyin": "méiyǒu", "chinese": "没有", "english": "don't have / no", "indonesian": "tidak ada" },
-            { "pinyin": "wèntí", "chinese": "问题", "english": "question", "indonesian": "pertanyaan" }
+            { "pinyin": "wèntí", "chinese": "问题", "english": "question", "indonesian": "pertanyaan" },
+            { "pinyin": "xièxie", "chinese": "谢谢", "english": "thank you", "indonesian": "terima kasih" },
+            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" }
           ],
           "isCorrect": true
         }
@@ -120,7 +139,9 @@
       "textEnglish": "Alright, class is over! See you tomorrow!",
       "textIndonesian": "Baik, kelas selesai! Sampai besok!",
       "pinyinWords": [
+        { "pinyin": "hǎo", "chinese": "好", "english": "good / alright", "indonesian": "baik" },
         { "pinyin": "xià kè", "chinese": "下课", "english": "class is over", "indonesian": "kelas selesai" },
+        { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
         { "pinyin": "míngtiān jiàn", "chinese": "明天见", "english": "see you tomorrow", "indonesian": "sampai besok" }
       ],
       "responseType": "SINGLE_CHOICE",
@@ -131,7 +152,8 @@
           "english": "See you tomorrow, teacher!",
           "indonesian": "Sampai besok, guru!",
           "pinyinWords": [
-            { "pinyin": "míngtiān jiàn", "chinese": "明天见", "english": "see you tomorrow", "indonesian": "sampai besok" }
+            { "pinyin": "míngtiān jiàn", "chinese": "明天见", "english": "see you tomorrow", "indonesian": "sampai besok" },
+            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" }
           ],
           "isCorrect": true
         }

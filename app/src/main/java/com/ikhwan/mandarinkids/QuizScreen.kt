@@ -3,8 +3,6 @@ package com.ikhwan.mandarinkids
 import android.media.AudioAttributes
 import android.media.AudioFormat
 import android.media.AudioTrack
-import android.os.Bundle
-import android.speech.tts.TextToSpeech
 import androidx.compose.animation.*
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -35,8 +33,9 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.*
 import com.ikhwan.mandarinkids.data.models.*
+import com.ikhwan.mandarinkids.tts.TtsManager
+import com.ikhwan.mandarinkids.tts.rememberTtsManager
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -48,26 +47,13 @@ fun QuizScreen(
     onTryAgain: (() -> Unit)? = null  // NEW: Callback for try again
 ) {
     val context = LocalContext.current
-    var tts by remember { mutableStateOf<TextToSpeech?>(null) }
+    val tts = rememberTtsManager()
     val coroutineScope = rememberCoroutineScope()
 
     val vm: QuizViewModel = viewModel(
         key = "${scenario.id}_$rolePlayScore",
         factory = QuizViewModel.factory(scenario, rolePlayScore)
     )
-
-    // Initialize TTS
-    LaunchedEffect(Unit) {
-        tts = TextToSpeech(context) { status ->
-            if (status == TextToSpeech.SUCCESS) {
-                tts?.language = Locale.CHINESE
-            }
-        }
-    }
-
-    DisposableEffect(Unit) {
-        onDispose { tts?.shutdown() }
-    }
 
     val currentQuestion = vm.currentQuestion
 
@@ -255,7 +241,7 @@ fun QuizOptionButton(
     isCorrect: Boolean,
     showFeedback: Boolean,
     onClick: () -> Unit,
-    tts: TextToSpeech?,
+    tts: TtsManager,
     direction: QuizDirection  // NEW: Pass direction
 ) {
     val backgroundColor = when {
@@ -345,8 +331,7 @@ fun QuizOptionButton(
             if (direction == QuizDirection.TRANSLATION_TO_CHINESE) {
                 IconButton(
                     onClick = {
-                        val params = Bundle()
-                        tts?.speak(option.chinese, TextToSpeech.QUEUE_FLUSH, params, null)
+                        tts.speak(option.chinese)
                     },
                     modifier = Modifier.size(40.dp)
                 ) {

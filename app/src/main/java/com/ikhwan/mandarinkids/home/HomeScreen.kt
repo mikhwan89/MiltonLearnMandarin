@@ -1,0 +1,198 @@
+package com.ikhwan.mandarinkids.home
+
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.ikhwan.mandarinkids.ProgressManager
+import com.ikhwan.mandarinkids.data.models.Scenario
+import com.ikhwan.mandarinkids.data.scenarios.ScenarioRepository
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun HomeScreen(onScenarioClick: (Scenario) -> Unit) {
+    val context = LocalContext.current
+    val scenarios = remember { ScenarioRepository.getAllScenarios() }
+    val xp = remember { ProgressManager.getTotalXp(context) }
+    val streak = remember { ProgressManager.getStreak(context) }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Column {
+                        Text("学中文", fontSize = 24.sp)
+                        Text(
+                            "Learn Mandarin for School",
+                            fontSize = 14.sp,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            )
+        }
+    ) { padding ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            // Progress summary card
+            item {
+                Spacer(modifier = Modifier.height(4.dp))
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer
+                    )
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            Text("🔥", fontSize = 28.sp)
+                            Text(
+                                "$streak",
+                                fontSize = 22.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                "day streak",
+                                fontSize = 11.sp,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                        HorizontalDivider(
+                            modifier = Modifier
+                                .height(64.dp)
+                                .width(1.dp)
+                        )
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            Text(
+                                text = when {
+                                    xp >= 180 -> "🌟"
+                                    xp >= 60 -> "⭐"
+                                    else -> "📚"
+                                },
+                                fontSize = 28.sp
+                            )
+                            Text(
+                                "$xp XP",
+                                fontSize = 22.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                ProgressManager.getLevel(xp),
+                                fontSize = 11.sp,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+                }
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "📚 Choose a scenario to practice:",
+                    fontSize = 18.sp,
+                    modifier = Modifier.padding(bottom = 4.dp)
+                )
+            }
+
+            items(scenarios) { scenario ->
+                ScenarioCard(
+                    scenario = scenario,
+                    stars = remember { ProgressManager.getStars(context, scenario.id) },
+                    onClick = { onScenarioClick(scenario) }
+                )
+            }
+
+            item { Spacer(modifier = Modifier.height(8.dp)) }
+        }
+    }
+}
+
+@Composable
+fun ScenarioCard(scenario: Scenario, stars: Int, onClick: () -> Unit) {
+    Card(
+        onClick = onClick,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Character emoji
+            Text(
+                text = scenario.characterEmoji,
+                fontSize = 48.sp,
+                modifier = Modifier.padding(end = 16.dp)
+            )
+
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = scenario.title,
+                    fontSize = 20.sp,
+                    style = MaterialTheme.typography.titleLarge
+                )
+
+                Spacer(modifier = Modifier.height(4.dp))
+
+                Text(
+                    text = scenario.description,
+                    fontSize = 14.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+
+                Spacer(modifier = Modifier.height(4.dp))
+
+                Text(
+                    text = "With: ${scenario.characterName}",
+                    fontSize = 12.sp,
+                    color = MaterialTheme.colorScheme.secondary
+                )
+
+                Spacer(modifier = Modifier.height(6.dp))
+
+                // Star rating
+                if (stars > 0) {
+                    Row {
+                        repeat(3) { i ->
+                            Text(
+                                text = if (i < stars) "★" else "☆",
+                                fontSize = 18.sp,
+                                color = if (i < stars) Color(0xFFFFC107) else Color(0xFFBDBDBD)
+                            )
+                        }
+                    }
+                } else {
+                    Text(
+                        text = "Not played yet",
+                        fontSize = 12.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+
+            // Arrow
+            Text(
+                text = "▶",
+                fontSize = 24.sp,
+                color = MaterialTheme.colorScheme.primary
+            )
+        }
+    }
+}

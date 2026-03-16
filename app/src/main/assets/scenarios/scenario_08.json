@@ -14,9 +14,14 @@
       "textEnglish": "Hello! You don't look well today. Are you okay?",
       "textIndonesian": "Halo! Kamu terlihat kurang baik hari ini. Kamu baik-baik saja?",
       "pinyinWords": [
+        { "pinyin": "Nǐ hǎo", "chinese": "你好", "english": "hello", "indonesian": "halo" },
+        { "pinyin": "Nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
+        { "pinyin": "jīntiān", "chinese": "今天", "english": "today", "indonesian": "hari ini" },
         { "pinyin": "kàn qǐlái", "chinese": "看起来", "english": "look / seem", "indonesian": "terlihat" },
         { "pinyin": "bù tài hǎo", "chinese": "不太好", "english": "not too well", "indonesian": "kurang baik" },
-        { "pinyin": "hái hǎo", "chinese": "还好", "english": "okay / alright", "indonesian": "baik-baik saja" }
+        { "pinyin": "Nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
+        { "pinyin": "hái hǎo", "chinese": "还好", "english": "okay / alright", "indonesian": "baik-baik saja" },
+        { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -26,6 +31,8 @@
           "english": "Teacher, I don't feel well.",
           "indonesian": "Guru, saya tidak enak badan.",
           "pinyinWords": [
+            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" },
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
             { "pinyin": "bù shūfu", "chinese": "不舒服", "english": "don't feel well", "indonesian": "tidak enak badan" }
           ],
           "isCorrect": true
@@ -36,8 +43,10 @@
           "english": "I'm okay, thank you teacher!",
           "indonesian": "Saya baik-baik saja, terima kasih guru!",
           "pinyinWords": [
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
             { "pinyin": "hái hǎo", "chinese": "还好", "english": "okay", "indonesian": "baik-baik saja" },
-            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" }
+            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" },
+            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" }
           ],
           "isCorrect": true
         }
@@ -53,6 +62,8 @@
       "textIndonesian": "Di mana sakitnya? Kepala atau perut?",
       "pinyinWords": [
         { "pinyin": "nǎlǐ", "chinese": "哪里", "english": "where", "indonesian": "di mana" },
+        { "pinyin": "bù shūfu", "chinese": "不舒服", "english": "unwell / hurts", "indonesian": "tidak enak badan" },
+        { "pinyin": "shì", "chinese": "是", "english": "is it", "indonesian": "apakah" },
         { "pinyin": "tóuténg", "chinese": "头疼", "english": "headache", "indonesian": "sakit kepala" },
         { "pinyin": "háishì", "chinese": "还是", "english": "or", "indonesian": "atau" },
         { "pinyin": "dùzi téng", "chinese": "肚子疼", "english": "stomachache", "indonesian": "sakit perut" }
@@ -65,6 +76,7 @@
           "english": "I have a stomachache.",
           "indonesian": "Perut saya sakit.",
           "pinyinWords": [
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
             { "pinyin": "dùzi téng", "chinese": "肚子疼", "english": "stomachache", "indonesian": "sakit perut" }
           ],
           "isCorrect": true
@@ -75,6 +87,7 @@
           "english": "I have a headache.",
           "indonesian": "Kepala saya sakit.",
           "pinyinWords": [
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
             { "pinyin": "tóuténg", "chinese": "头疼", "english": "headache", "indonesian": "sakit kepala" }
           ],
           "isCorrect": true
@@ -90,9 +103,11 @@
       "textEnglish": "Do you need to go to the clinic?",
       "textIndonesian": "Kamu perlu ke UKS?",
       "pinyinWords": [
+        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
         { "pinyin": "xūyào", "chinese": "需要", "english": "need", "indonesian": "perlu" },
         { "pinyin": "qù", "chinese": "去", "english": "go", "indonesian": "pergi" },
-        { "pinyin": "yīwùshì", "chinese": "医务室", "english": "clinic / sick bay", "indonesian": "UKS" }
+        { "pinyin": "yīwùshì", "chinese": "医务室", "english": "clinic / sick bay", "indonesian": "UKS" },
+        { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -103,7 +118,9 @@
           "indonesian": "Iya, saya mau ke UKS.",
           "pinyinWords": [
             { "pinyin": "shì de", "chinese": "是的", "english": "yes", "indonesian": "iya" },
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
             { "pinyin": "xiǎng", "chinese": "想", "english": "want to", "indonesian": "mau" },
+            { "pinyin": "qù", "chinese": "去", "english": "go", "indonesian": "pergi" },
             { "pinyin": "yīwùshì", "chinese": "医务室", "english": "clinic", "indonesian": "UKS" }
           ],
           "isCorrect": true
@@ -115,8 +132,11 @@
           "indonesian": "Tidak apa-apa, minum air saja sudah cukup.",
           "pinyinWords": [
             { "pinyin": "méi guānxi", "chinese": "没关系", "english": "it's okay", "indonesian": "tidak apa-apa" },
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
             { "pinyin": "hē", "chinese": "喝", "english": "drink", "indonesian": "minum" },
-            { "pinyin": "shuǐ", "chinese": "水", "english": "water", "indonesian": "air" }
+            { "pinyin": "diǎn", "chinese": "点", "english": "a bit of", "indonesian": "sedikit" },
+            { "pinyin": "shuǐ", "chinese": "水", "english": "water", "indonesian": "air" },
+            { "pinyin": "jiù hǎo le", "chinese": "就好了", "english": "will be fine", "indonesian": "sudah cukup" }
           ],
           "isCorrect": true
         }
@@ -131,8 +151,13 @@
       "textEnglish": "Okay, I'll take you there. I hope you feel better soon!",
       "textIndonesian": "Baik, saya antar. Semoga cepat sembuh!",
       "pinyinWords": [
+        { "pinyin": "hǎo de", "chinese": "好的", "english": "okay", "indonesian": "baik" },
+        { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
         { "pinyin": "péi", "chinese": "陪", "english": "accompany", "indonesian": "menemani" },
+        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
+        { "pinyin": "qù", "chinese": "去", "english": "go", "indonesian": "pergi" },
         { "pinyin": "xīwàng", "chinese": "希望", "english": "hope", "indonesian": "semoga" },
+        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
         { "pinyin": "kuài diǎn", "chinese": "快点", "english": "quickly / soon", "indonesian": "cepat" },
         { "pinyin": "hǎo qǐlái", "chinese": "好起来", "english": "get better", "indonesian": "sembuh" }
       ],
