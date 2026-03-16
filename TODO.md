@@ -77,7 +77,7 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 
 ---
 
-## 6. Room Database for Progress Persistence (MEDIUM PRIORITY)
+## 6. Room Database for Progress Persistence ✅ DONE
 
 **Why:** `ProgressManager` currently reads/writes `SharedPreferences` directly inside composables and the results screen. This makes it hard to query progress in new ways (e.g. "show all scenarios where stars < 3") without rewriting string key logic. Room gives typed, queryable persistence.
 
@@ -143,7 +143,7 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 | 3 | ~~Centralize TTS~~ ✅ | Small | High — eliminates 3-way duplication |
 | 4 | ~~RolePlayViewModel~~ ✅ | Medium | Medium — consistency with QuizViewModel pattern |
 | 5 | ~~Repository interface~~ ✅ | Small | Medium — prerequisite for clean testing |
-| 6 | Room for progress | Medium | Medium — enables richer progress queries |
+| 6 | ~~Room for progress~~ ✅ | Medium | Medium — enables richer progress queries |
 | 7 | DataStore preferences | Small | Medium — persists user settings |
 | 8 | Jetpack Navigation | Medium | Low — nice to have once screen count grows |
 | 9 | Unit tests | Medium | Low now, high long-term |

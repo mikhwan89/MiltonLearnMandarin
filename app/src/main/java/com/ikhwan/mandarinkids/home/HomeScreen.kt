@@ -15,14 +15,16 @@ import androidx.compose.ui.unit.sp
 import com.ikhwan.mandarinkids.ProgressManager
 import com.ikhwan.mandarinkids.data.models.Scenario
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
+import com.ikhwan.mandarinkids.db.ProgressRepository
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(onScenarioClick: (Scenario) -> Unit) {
     val context = LocalContext.current
     val scenarios = remember { JsonScenarioRepository.getAll() }
-    val xp = remember { ProgressManager.getTotalXp(context) }
-    val streak = remember { ProgressManager.getStreak(context) }
+    val repo = remember { ProgressRepository.getInstance(context) }
+    val xp by repo.getTotalXp().collectAsState(initial = 0)
+    val streak = remember { repo.getStreak() }
 
     Scaffold(
         topBar = {
@@ -110,10 +112,11 @@ fun HomeScreen(onScenarioClick: (Scenario) -> Unit) {
                 )
             }
 
-            items(scenarios) { scenario ->
+            items(scenarios, key = { it.id }) { scenario ->
+                val stars by repo.getStars(scenario.id).collectAsState(initial = 0)
                 ScenarioCard(
                     scenario = scenario,
-                    stars = remember { ProgressManager.getStars(context, scenario.id) },
+                    stars = stars,
                     onClick = { onScenarioClick(scenario) }
                 )
             }

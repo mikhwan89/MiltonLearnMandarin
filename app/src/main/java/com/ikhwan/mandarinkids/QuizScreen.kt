@@ -34,6 +34,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import com.ikhwan.mandarinkids.data.models.*
+import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.tts.TtsManager
 import com.ikhwan.mandarinkids.tts.rememberTtsManager
 
@@ -427,7 +428,10 @@ fun QuizResultsScreen(
 
     // Calculate stars and save progress once on composition
     val stars = remember { ProgressManager.calculateStars(quizScore, totalQuestions) }
-    val xpGained = remember { ProgressManager.saveProgress(context, scenario.id, stars) }
+    var xpGained by remember { mutableStateOf(0) }
+    LaunchedEffect(Unit) {
+        xpGained = ProgressRepository.getInstance(context).saveProgress(scenario.id, stars)
+    }
 
     // Bouncing emoji animation for perfect score
     val infiniteTransition = rememberInfiniteTransition(label = "celebrate")

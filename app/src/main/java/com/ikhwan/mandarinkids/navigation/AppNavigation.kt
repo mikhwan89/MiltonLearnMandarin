@@ -4,8 +4,8 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import com.ikhwan.mandarinkids.FlashcardScreen
-import com.ikhwan.mandarinkids.ProgressManager
 import com.ikhwan.mandarinkids.QuizScreen
+import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.RolePlayScreen
 import com.ikhwan.mandarinkids.home.HomeScreen
 
@@ -16,7 +16,7 @@ fun MandarinKidsApp() {
 
     // Update daily streak once on launch
     LaunchedEffect(Unit) {
-        ProgressManager.checkAndUpdateStreak(context)
+        ProgressRepository.getInstance(context).checkAndUpdateStreak()
     }
 
     // Handle back button
