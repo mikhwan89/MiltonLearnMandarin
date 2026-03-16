@@ -1,0 +1,178 @@
+{
+  "id": "scene7_borrowing_things",
+  "title": "借东西",
+  "description": "Borrowing things from a classmate — pencil, eraser, ruler",
+  "characterName": "同学小明",
+  "characterEmoji": "🧒",
+  "characterRole": "classmate",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你好！你需要什么吗？",
+      "textPinyin": "Nǐ hǎo! Nǐ xūyào shénme ma?",
+      "textEnglish": "Hi! Do you need something?",
+      "textIndonesian": "Hei! Kamu butuh sesuatu?",
+      "pinyinWords": [
+        { "pinyin": "xūyào", "chinese": "需要", "english": "need", "indonesian": "butuh" },
+        { "pinyin": "shénme", "chinese": "什么", "english": "what / something", "indonesian": "sesuatu" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "小明，我可以借你的铅笔吗？",
+          "pinyin": "Xiǎo Míng, wǒ kěyǐ jiè nǐ de qiānbǐ ma?",
+          "english": "Xiao Ming, may I borrow your pencil?",
+          "indonesian": "Xiao Ming, boleh aku pinjam pensilmu?",
+          "pinyinWords": [
+            { "pinyin": "kěyǐ", "chinese": "可以", "english": "may / can", "indonesian": "boleh" },
+            { "pinyin": "jiè", "chinese": "借", "english": "borrow", "indonesian": "pinjam" },
+            { "pinyin": "qiānbǐ", "chinese": "铅笔", "english": "pencil", "indonesian": "pensil" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "没事，我只是打招呼！",
+          "pinyin": "Méi shì, wǒ zhǐshì dǎ zhāohu!",
+          "english": "Nothing, just saying hi!",
+          "indonesian": "Tidak ada, cuma menyapa!",
+          "pinyinWords": [
+            { "pinyin": "méi shì", "chinese": "没事", "english": "nothing / no problem", "indonesian": "tidak ada apa-apa" },
+            { "pinyin": "dǎ zhāohu", "chinese": "打招呼", "english": "say hi", "indonesian": "menyapa" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "当然可以！给你。你还需要别的吗？",
+      "textPinyin": "Dāngrán kěyǐ! Gěi nǐ. Nǐ hái xūyào bié de ma?",
+      "textEnglish": "Of course! Here you go. Do you need anything else?",
+      "textIndonesian": "Tentu saja! Ini untukmu. Kamu butuh yang lain?",
+      "pinyinWords": [
+        { "pinyin": "dāngrán", "chinese": "当然", "english": "of course", "indonesian": "tentu saja" },
+        { "pinyin": "gěi", "chinese": "给", "english": "give / here", "indonesian": "ini" },
+        { "pinyin": "hái", "chinese": "还", "english": "also / still", "indonesian": "juga" },
+        { "pinyin": "bié de", "chinese": "别的", "english": "other things", "indonesian": "yang lain" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "谢谢你！我还需要橡皮。",
+          "pinyin": "Xièxie nǐ! Wǒ hái xūyào xiàngpí.",
+          "english": "Thank you! I also need an eraser.",
+          "indonesian": "Terima kasih! Aku juga butuh penghapus.",
+          "pinyinWords": [
+            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" },
+            { "pinyin": "xiàngpí", "chinese": "橡皮", "english": "eraser", "indonesian": "penghapus" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "不用了，谢谢！",
+          "pinyin": "Bù yòng le, xièxie!",
+          "english": "No need, thank you!",
+          "indonesian": "Tidak perlu, terima kasih!",
+          "pinyinWords": [
+            { "pinyin": "bù yòng", "chinese": "不用", "english": "no need", "indonesian": "tidak perlu" },
+            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "给你橡皮。用完了还给我，好吗？",
+      "textPinyin": "Gěi nǐ xiàngpí. Yòng wán le huán gěi wǒ, hǎo ma?",
+      "textEnglish": "Here's the eraser. Return it when you're done, okay?",
+      "textIndonesian": "Ini penghapusnya. Kembalikan kalau sudah selesai, ya?",
+      "pinyinWords": [
+        { "pinyin": "yòng wán", "chinese": "用完", "english": "finished using", "indonesian": "selesai pakai" },
+        { "pinyin": "huán", "chinese": "还", "english": "return", "indonesian": "kembalikan" },
+        { "pinyin": "hǎo ma", "chinese": "好吗", "english": "okay?", "indonesian": "ya?" }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "好的，用完我还给你。谢谢！",
+          "pinyin": "Hǎo de, yòng wán wǒ huán gěi nǐ. Xièxie!",
+          "english": "Okay, I'll return it when I'm done. Thank you!",
+          "indonesian": "Baik, aku kembalikan kalau sudah selesai. Terima kasih!",
+          "pinyinWords": [
+            { "pinyin": "hǎo de", "chinese": "好的", "english": "okay", "indonesian": "baik" },
+            { "pinyin": "huán gěi", "chinese": "还给", "english": "return to", "indonesian": "kembalikan ke" },
+            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "不客气！我们是好朋友嘛。",
+      "textPinyin": "Bù kèqi! Wǒmen shì hǎo péngyou ma.",
+      "textEnglish": "You're welcome! We're good friends after all.",
+      "textIndonesian": "Sama-sama! Kita kan teman baik.",
+      "pinyinWords": [
+        { "pinyin": "bù kèqi", "chinese": "不客气", "english": "you're welcome", "indonesian": "sama-sama" },
+        { "pinyin": "wǒmen", "chinese": "我们", "english": "we", "indonesian": "kita" },
+        { "pinyin": "hǎo péngyou", "chinese": "好朋友", "english": "good friends", "indonesian": "teman baik" }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'May I borrow your pencil?' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "我可以借你的铅笔吗？", "pinyin": "Wǒ kěyǐ jiè nǐ de qiānbǐ ma?", "translation": "May I borrow your pencil?" },
+        { "chinese": "我要买铅笔。", "pinyin": "Wǒ yào mǎi qiānbǐ.", "translation": "I want to buy a pencil." },
+        { "chinese": "给我铅笔！", "pinyin": "Gěi wǒ qiānbǐ!", "translation": "Give me the pencil!" },
+        { "chinese": "我有铅笔。", "pinyin": "Wǒ yǒu qiānbǐ.", "translation": "I have a pencil." }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "我可以借你的铅笔吗 (Wǒ kěyǐ jiè nǐ de qiānbǐ ma) is the polite way to ask to borrow something."
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "橡皮",
+      "questionPinyin": "xiàngpí",
+      "options": [
+        { "chinese": "", "pinyin": "", "translation": "pencil" },
+        { "chinese": "", "pinyin": "", "translation": "ruler" },
+        { "chinese": "", "pinyin": "", "translation": "eraser" },
+        { "chinese": "", "pinyin": "", "translation": "book" }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "橡皮 (xiàngpí) means eraser."
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'You're welcome' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "谢谢", "pinyin": "Xièxie", "translation": "Thank you" },
+        { "chinese": "不用", "pinyin": "Bù yòng", "translation": "No need" },
+        { "chinese": "不客气", "pinyin": "Bù kèqi", "translation": "You're welcome" },
+        { "chinese": "对不起", "pinyin": "Duìbuqǐ", "translation": "Sorry" }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "不客气 (Bù kèqi) means 'You're welcome'."
+    }
+  ]
+}

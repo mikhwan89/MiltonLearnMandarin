@@ -1,6 +1,9 @@
 package com.ikhwan.mandarinkids.data.models
 
+import kotlinx.serialization.Serializable
+
 // Core scenario data model
+@Serializable
 data class Scenario(
     val id: String,
     val title: String,
@@ -13,6 +16,7 @@ data class Scenario(
 )
 
 // Word breakdown for pinyin learning
+@Serializable
 data class PinyinWord(
     val pinyin: String,
     val chinese: String,
@@ -21,6 +25,7 @@ data class PinyinWord(
 )
 
 // Individual dialogue step in scenario
+@Serializable
 data class DialogueStep(
     val id: Int,
     val speaker: Speaker,
@@ -35,12 +40,14 @@ data class DialogueStep(
 )
 
 // Who is speaking
+@Serializable
 enum class Speaker {
     CHARACTER,  // Teacher, friend, etc.
     STUDENT     // The learner
 }
 
 // Type of response expected
+@Serializable
 enum class ResponseType {
     SINGLE_CHOICE,      // One correct answer
     TEXT_INPUT,         // Type a response
@@ -49,6 +56,7 @@ enum class ResponseType {
 }
 
 // Response option in dialogue
+@Serializable
 data class ResponseOption(
     val chinese: String,
     val pinyin: String,
@@ -59,12 +67,14 @@ data class ResponseOption(
 )
 
 // Quiz direction determines display format
+@Serializable
 enum class QuizDirection {
     CHINESE_TO_TRANSLATION,  // Question in Chinese → Answer in English/Indonesian
     TRANSLATION_TO_CHINESE   // Question in English/Indonesian → Answer in Chinese
 }
 
 // Quiz question model
+@Serializable
 data class QuizQuestion(
     val direction: QuizDirection,
     val questionText: String,
@@ -76,6 +86,7 @@ data class QuizQuestion(
 )
 
 // Quiz option model
+@Serializable
 data class QuizOption(
     val chinese: String,
     val pinyin: String,

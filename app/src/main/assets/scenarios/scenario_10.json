@@ -1,0 +1,152 @@
+{
+  "id": "scene10_saying_sorry",
+  "title": "解决争吵",
+  "description": "Resolving a disagreement — saying sorry and making up with a friend",
+  "characterName": "朋友小红",
+  "characterEmoji": "🧒",
+  "characterRole": "friend",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你弄坏了我的铅笔！我很不高兴！",
+      "textPinyin": "Nǐ nòng huài le wǒ de qiānbǐ! Wǒ hěn bù gāoxìng!",
+      "textEnglish": "You broke my pencil! I'm very unhappy!",
+      "textIndonesian": "Kamu merusak pensilku! Aku sangat tidak senang!",
+      "pinyinWords": [
+        { "pinyin": "nòng huài", "chinese": "弄坏", "english": "broke / damaged", "indonesian": "merusak" },
+        { "pinyin": "bù gāoxìng", "chinese": "不高兴", "english": "unhappy", "indonesian": "tidak senang" }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "对不起！我不是故意的。",
+          "pinyin": "Duìbuqǐ! Wǒ bù shì gùyì de.",
+          "english": "Sorry! I didn't do it on purpose.",
+          "indonesian": "Maaf! Aku tidak sengaja.",
+          "pinyinWords": [
+            { "pinyin": "duìbuqǐ", "chinese": "对不起", "english": "sorry", "indonesian": "maaf" },
+            { "pinyin": "gùyì", "chinese": "故意", "english": "on purpose", "indonesian": "sengaja" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "你会赔我一支新铅笔吗？",
+      "textPinyin": "Nǐ huì péi wǒ yī zhī xīn qiānbǐ ma?",
+      "textEnglish": "Will you get me a new pencil?",
+      "textIndonesian": "Kamu akan mengganti pensilku yang baru?",
+      "pinyinWords": [
+        { "pinyin": "huì", "chinese": "会", "english": "will", "indonesian": "akan" },
+        { "pinyin": "péi", "chinese": "赔", "english": "compensate / replace", "indonesian": "mengganti" },
+        { "pinyin": "zhī", "chinese": "支", "english": "measure word for pencils", "indonesian": "satuan untuk pensil" },
+        { "pinyin": "xīn", "chinese": "新", "english": "new", "indonesian": "baru" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "好的，我明天带一支新的来。再一次对不起！",
+          "pinyin": "Hǎo de, wǒ míngtiān dài yī zhī xīn de lái. Zài yī cì duìbuqǐ!",
+          "english": "Okay, I'll bring a new one tomorrow. I'm really sorry!",
+          "indonesian": "Baik, aku bawa yang baru besok. Sekali lagi maaf!",
+          "pinyinWords": [
+            { "pinyin": "míngtiān", "chinese": "明天", "english": "tomorrow", "indonesian": "besok" },
+            { "pinyin": "dài", "chinese": "带", "english": "bring", "indonesian": "bawa" },
+            { "pinyin": "zài yī cì", "chinese": "再一次", "english": "once more / again", "indonesian": "sekali lagi" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我不知道。对不起。",
+          "pinyin": "Wǒ bù zhīdào. Duìbuqǐ.",
+          "english": "I don't know. Sorry.",
+          "indonesian": "Aku tidak tahu. Maaf.",
+          "pinyinWords": [
+            { "pinyin": "bù zhīdào", "chinese": "不知道", "english": "don't know", "indonesian": "tidak tahu" },
+            { "pinyin": "duìbuqǐ", "chinese": "对不起", "english": "sorry", "indonesian": "maaf" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "好吧，没关系。我们还是好朋友！",
+      "textPinyin": "Hǎo ba, méi guānxi. Wǒmen háishì hǎo péngyou!",
+      "textEnglish": "Alright, it's okay. We're still good friends!",
+      "textIndonesian": "Baiklah, tidak apa-apa. Kita masih teman baik!",
+      "pinyinWords": [
+        { "pinyin": "hǎo ba", "chinese": "好吧", "english": "alright", "indonesian": "baiklah" },
+        { "pinyin": "méi guānxi", "chinese": "没关系", "english": "it's okay", "indonesian": "tidak apa-apa" },
+        { "pinyin": "háishì", "chinese": "还是", "english": "still", "indonesian": "masih" },
+        { "pinyin": "hǎo péngyou", "chinese": "好朋友", "english": "good friends", "indonesian": "teman baik" }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "谢谢你！我们是最好的朋友！",
+          "pinyin": "Xièxie nǐ! Wǒmen shì zuì hǎo de péngyou!",
+          "english": "Thank you! We are the best friends!",
+          "indonesian": "Terima kasih! Kita teman terbaik!",
+          "pinyinWords": [
+            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" },
+            { "pinyin": "zuì hǎo", "chinese": "最好", "english": "best", "indonesian": "terbaik" },
+            { "pinyin": "péngyou", "chinese": "朋友", "english": "friends", "indonesian": "teman" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'I didn't do it on purpose' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "我知道。", "pinyin": "Wǒ zhīdào.", "translation": "I know." },
+        { "chinese": "我不是故意的。", "pinyin": "Wǒ bù shì gùyì de.", "translation": "I didn't do it on purpose." },
+        { "chinese": "对不起！", "pinyin": "Duìbuqǐ!", "translation": "Sorry!" },
+        { "chinese": "没关系。", "pinyin": "Méi guānxi.", "translation": "It's okay." }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "我不是故意的 (Wǒ bù shì gùyì de) means 'I didn't do it on purpose'."
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "明天",
+      "questionPinyin": "míngtiān",
+      "options": [
+        { "chinese": "", "pinyin": "", "translation": "today" },
+        { "chinese": "", "pinyin": "", "translation": "yesterday" },
+        { "chinese": "", "pinyin": "", "translation": "tomorrow" },
+        { "chinese": "", "pinyin": "", "translation": "now" }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "明天 (míngtiān) means tomorrow."
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'best friends' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "好朋友", "pinyin": "hǎo péngyou", "translation": "good friends" },
+        { "chinese": "最好的朋友", "pinyin": "zuì hǎo de péngyou", "translation": "best friends" },
+        { "chinese": "新朋友", "pinyin": "xīn péngyou", "translation": "new friends" },
+        { "chinese": "老朋友", "pinyin": "lǎo péngyou", "translation": "old friends" }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "最好的朋友 (zuì hǎo de péngyou) means 'best friends'. 最 = most/best."
+    }
+  ]
+}

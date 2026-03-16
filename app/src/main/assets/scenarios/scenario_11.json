@@ -1,0 +1,206 @@
+{
+  "id": "scene11_after_school",
+  "title": "回家了",
+  "description": "End of school day — telling your parents what you learned and did",
+  "characterName": "妈妈",
+  "characterEmoji": "👩",
+  "characterRole": "mum",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "宝贝，回来了！今天学校怎么样？",
+      "textPinyin": "Bǎobèi, huí lái le! Jīntiān xuéxiào zěnmeyàng?",
+      "textEnglish": "Sweetie, you're back! How was school today?",
+      "textIndonesian": "Sayang, sudah pulang! Bagaimana sekolah hari ini?",
+      "pinyinWords": [
+        { "pinyin": "bǎobèi", "chinese": "宝贝", "english": "sweetheart / baby", "indonesian": "sayang" },
+        { "pinyin": "jīntiān", "chinese": "今天", "english": "today", "indonesian": "hari ini" },
+        { "pinyin": "xuéxiào", "chinese": "学校", "english": "school", "indonesian": "sekolah" },
+        { "pinyin": "zěnmeyàng", "chinese": "怎么样", "english": "how was / how is", "indonesian": "bagaimana" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "很好！我今天学了很多中文。",
+          "pinyin": "Hěn hǎo! Wǒ jīntiān xué le hěn duō zhōngwén.",
+          "english": "Very good! I learned a lot of Chinese today.",
+          "indonesian": "Sangat baik! Aku belajar banyak bahasa Mandarin hari ini.",
+          "pinyinWords": [
+            { "pinyin": "xué", "chinese": "学", "english": "learn", "indonesian": "belajar" },
+            { "pinyin": "hěn duō", "chinese": "很多", "english": "a lot", "indonesian": "banyak" },
+            { "pinyin": "zhōngwén", "chinese": "中文", "english": "Chinese language", "indonesian": "bahasa Mandarin" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "还好。有点累。",
+          "pinyin": "Hái hǎo. Yǒudiǎn lèi.",
+          "english": "It was okay. A little tired.",
+          "indonesian": "Lumayan. Agak capek.",
+          "pinyinWords": [
+            { "pinyin": "hái hǎo", "chinese": "还好", "english": "okay / not bad", "indonesian": "lumayan" },
+            { "pinyin": "yǒudiǎn", "chinese": "有点", "english": "a little", "indonesian": "agak" },
+            { "pinyin": "lèi", "chinese": "累", "english": "tired", "indonesian": "capek" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "太棒了！你认识了新朋友吗？",
+      "textPinyin": "Tài bàng le! Nǐ rènshi le xīn péngyou ma?",
+      "textEnglish": "Wonderful! Did you make any new friends?",
+      "textIndonesian": "Luar biasa! Kamu kenal teman baru?",
+      "pinyinWords": [
+        { "pinyin": "tài bàng le", "chinese": "太棒了", "english": "wonderful / amazing", "indonesian": "luar biasa" },
+        { "pinyin": "rènshi", "chinese": "认识", "english": "know / meet", "indonesian": "kenal" },
+        { "pinyin": "xīn", "chinese": "新", "english": "new", "indonesian": "baru" },
+        { "pinyin": "péngyou", "chinese": "朋友", "english": "friends", "indonesian": "teman" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "认识了！我认识了一个叫小明的朋友。",
+          "pinyin": "Rènshi le! Wǒ rènshi le yī gè jiào Xiǎo Míng de péngyou.",
+          "english": "Yes! I made a friend called Xiao Ming.",
+          "indonesian": "Kenal! Aku kenal satu teman bernama Xiao Ming.",
+          "pinyinWords": [
+            { "pinyin": "rènshi le", "chinese": "认识了", "english": "made friends with", "indonesian": "berkenalan" },
+            { "pinyin": "jiào", "chinese": "叫", "english": "named / called", "indonesian": "bernama" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "还没有，但是我认识了老师。",
+          "pinyin": "Hái méiyǒu, dànshì wǒ rènshi le lǎoshī.",
+          "english": "Not yet, but I met the teacher.",
+          "indonesian": "Belum, tapi aku sudah kenal gurunya.",
+          "pinyinWords": [
+            { "pinyin": "hái méiyǒu", "chinese": "还没有", "english": "not yet", "indonesian": "belum" },
+            { "pinyin": "dànshì", "chinese": "但是", "english": "but", "indonesian": "tapi" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "真好！你喜欢学校吗？",
+      "textPinyin": "Zhēn hǎo! Nǐ xǐhuān xuéxiào ma?",
+      "textEnglish": "How nice! Do you like school?",
+      "textIndonesian": "Bagus sekali! Kamu suka sekolah?",
+      "pinyinWords": [
+        { "pinyin": "zhēn hǎo", "chinese": "真好", "english": "how nice / really good", "indonesian": "bagus sekali" },
+        { "pinyin": "xǐhuān", "chinese": "喜欢", "english": "like", "indonesian": "suka" },
+        { "pinyin": "xuéxiào", "chinese": "学校", "english": "school", "indonesian": "sekolah" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "喜欢！我明天还想去！",
+          "pinyin": "Xǐhuān! Wǒ míngtiān hái xiǎng qù!",
+          "english": "Yes! I want to go again tomorrow!",
+          "indonesian": "Suka! Aku mau pergi lagi besok!",
+          "pinyinWords": [
+            { "pinyin": "xǐhuān", "chinese": "喜欢", "english": "like", "indonesian": "suka" },
+            { "pinyin": "míngtiān", "chinese": "明天", "english": "tomorrow", "indonesian": "besok" },
+            { "pinyin": "xiǎng qù", "chinese": "想去", "english": "want to go", "indonesian": "mau pergi" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "还可以。我有点想你。",
+          "pinyin": "Hái kěyǐ. Wǒ yǒudiǎn xiǎng nǐ.",
+          "english": "It was okay. I missed you a bit.",
+          "indonesian": "Lumayan. Aku agak kangen kamu.",
+          "pinyinWords": [
+            { "pinyin": "hái kěyǐ", "chinese": "还可以", "english": "it was okay", "indonesian": "lumayan" },
+            { "pinyin": "xiǎng nǐ", "chinese": "想你", "english": "miss you", "indonesian": "kangen kamu" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "妈妈也想你！先去换衣服，然后吃饭，好吗？",
+      "textPinyin": "Māma yě xiǎng nǐ! Xiān qù huàn yīfu, rán hòu chīfàn, hǎo ma?",
+      "textEnglish": "Mummy missed you too! First go change clothes, then we'll eat, okay?",
+      "textIndonesian": "Mama juga kangen kamu! Ganti baju dulu, terus makan, ya?",
+      "pinyinWords": [
+        { "pinyin": "māma", "chinese": "妈妈", "english": "mummy", "indonesian": "mama" },
+        { "pinyin": "xiān", "chinese": "先", "english": "first", "indonesian": "dulu" },
+        { "pinyin": "huàn yīfu", "chinese": "换衣服", "english": "change clothes", "indonesian": "ganti baju" },
+        { "pinyin": "rán hòu", "chinese": "然后", "english": "then / after that", "indonesian": "terus" },
+        { "pinyin": "chīfàn", "chinese": "吃饭", "english": "eat / have a meal", "indonesian": "makan" }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "好的，妈妈！我爱你！",
+          "pinyin": "Hǎo de, māma! Wǒ ài nǐ!",
+          "english": "Okay, mummy! I love you!",
+          "indonesian": "Baik, mama! Aku sayang kamu!",
+          "pinyinWords": [
+            { "pinyin": "hǎo de", "chinese": "好的", "english": "okay", "indonesian": "baik" },
+            { "pinyin": "ài", "chinese": "爱", "english": "love", "indonesian": "sayang" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'I love you' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "我想你。", "pinyin": "Wǒ xiǎng nǐ.", "translation": "I miss you." },
+        { "chinese": "我喜欢你。", "pinyin": "Wǒ xǐhuān nǐ.", "translation": "I like you." },
+        { "chinese": "我爱你。", "pinyin": "Wǒ ài nǐ.", "translation": "I love you." },
+        { "chinese": "我需要你。", "pinyin": "Wǒ xūyào nǐ.", "translation": "I need you." }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "我爱你 (Wǒ ài nǐ) means 'I love you'."
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "太棒了",
+      "questionPinyin": "tài bàng le",
+      "options": [
+        { "chinese": "", "pinyin": "", "translation": "not bad" },
+        { "chinese": "", "pinyin": "", "translation": "wonderful / amazing" },
+        { "chinese": "", "pinyin": "", "translation": "good morning" },
+        { "chinese": "", "pinyin": "", "translation": "goodbye" }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "太棒了 (tài bàng le) means 'wonderful' or 'amazing'."
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'I like school' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "我不喜欢学校。", "pinyin": "Wǒ bù xǐhuān xuéxiào.", "translation": "I don't like school." },
+        { "chinese": "我去学校。", "pinyin": "Wǒ qù xuéxiào.", "translation": "I go to school." },
+        { "chinese": "我喜欢学校。", "pinyin": "Wǒ xǐhuān xuéxiào.", "translation": "I like school." },
+        { "chinese": "学校很大。", "pinyin": "Xuéxiào hěn dà.", "translation": "The school is big." }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "我喜欢学校 (Wǒ xǐhuān xuéxiào) means 'I like school'."
+    }
+  ]
+}

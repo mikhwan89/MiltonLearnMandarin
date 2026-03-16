@@ -1,0 +1,186 @@
+{
+  "id": "scene12_raising_hand",
+  "title": "举手提问",
+  "description": "Raising your hand in class — asking and answering the teacher's questions",
+  "characterName": "Chen 老师",
+  "characterEmoji": "👩‍🏫",
+  "characterRole": "teacher",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "同学们，谁知道答案？请举手！",
+      "textPinyin": "Tóngxuémen, shéi zhīdào dá'àn? Qǐng jǔshǒu!",
+      "textEnglish": "Students, who knows the answer? Please raise your hand!",
+      "textIndonesian": "Anak-anak, siapa yang tahu jawabannya? Tolong angkat tangan!",
+      "pinyinWords": [
+        { "pinyin": "tóngxuémen", "chinese": "同学们", "english": "students (plural)", "indonesian": "anak-anak / para siswa" },
+        { "pinyin": "shéi", "chinese": "谁", "english": "who", "indonesian": "siapa" },
+        { "pinyin": "dá'àn", "chinese": "答案", "english": "answer", "indonesian": "jawaban" },
+        { "pinyin": "jǔshǒu", "chinese": "举手", "english": "raise hand", "indonesian": "angkat tangan" }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "（举手）老师，我知道！",
+          "pinyin": "(Jǔshǒu) Lǎoshī, wǒ zhīdào!",
+          "english": "(Raises hand) Teacher, I know!",
+          "indonesian": "(Angkat tangan) Guru, saya tahu!",
+          "pinyinWords": [
+            { "pinyin": "zhīdào", "chinese": "知道", "english": "know", "indonesian": "tahu" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "很好！请你回答。",
+      "textPinyin": "Hěn hǎo! Qǐng nǐ huídá.",
+      "textEnglish": "Very good! Please answer.",
+      "textIndonesian": "Bagus! Tolong jawab.",
+      "pinyinWords": [
+        { "pinyin": "qǐng", "chinese": "请", "english": "please", "indonesian": "tolong" },
+        { "pinyin": "huídá", "chinese": "回答", "english": "answer / respond", "indonesian": "jawab" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "答案是三！",
+          "pinyin": "Dá'àn shì sān!",
+          "english": "The answer is three!",
+          "indonesian": "Jawabannya adalah tiga!",
+          "pinyinWords": [
+            { "pinyin": "dá'àn", "chinese": "答案", "english": "answer", "indonesian": "jawaban" },
+            { "pinyin": "sān", "chinese": "三", "english": "three", "indonesian": "tiga" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "老师，我不知道。",
+          "pinyin": "Lǎoshī, wǒ bù zhīdào.",
+          "english": "Teacher, I don't know.",
+          "indonesian": "Guru, saya tidak tahu.",
+          "pinyinWords": [
+            { "pinyin": "bù zhīdào", "chinese": "不知道", "english": "don't know", "indonesian": "tidak tahu" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "答对了！你真厉害！有问题要问吗？",
+      "textPinyin": "Dá duì le! Nǐ zhēn lìhài! Yǒu wèntí yào wèn ma?",
+      "textEnglish": "Correct! You're amazing! Do you have any questions?",
+      "textIndonesian": "Benar! Kamu hebat sekali! Ada pertanyaan?",
+      "pinyinWords": [
+        { "pinyin": "dá duì le", "chinese": "答对了", "english": "answered correctly", "indonesian": "jawaban benar" },
+        { "pinyin": "lìhài", "chinese": "厉害", "english": "amazing / impressive", "indonesian": "hebat" },
+        { "pinyin": "wèntí", "chinese": "问题", "english": "question / problem", "indonesian": "pertanyaan" },
+        { "pinyin": "wèn", "chinese": "问", "english": "ask", "indonesian": "tanya" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "老师，我有一个问题。",
+          "pinyin": "Lǎoshī, wǒ yǒu yī gè wèntí.",
+          "english": "Teacher, I have a question.",
+          "indonesian": "Guru, saya punya satu pertanyaan.",
+          "pinyinWords": [
+            { "pinyin": "yǒu", "chinese": "有", "english": "have", "indonesian": "punya" },
+            { "pinyin": "yī gè", "chinese": "一个", "english": "one", "indonesian": "satu" },
+            { "pinyin": "wèntí", "chinese": "问题", "english": "question", "indonesian": "pertanyaan" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "没有问题，谢谢老师！",
+          "pinyin": "Méiyǒu wèntí, xièxie lǎoshī!",
+          "english": "No questions, thank you teacher!",
+          "indonesian": "Tidak ada pertanyaan, terima kasih guru!",
+          "pinyinWords": [
+            { "pinyin": "méiyǒu", "chinese": "没有", "english": "don't have / no", "indonesian": "tidak ada" },
+            { "pinyin": "wèntí", "chinese": "问题", "english": "question", "indonesian": "pertanyaan" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "好，下课了！明天见！",
+      "textPinyin": "Hǎo, xià kè le! Míngtiān jiàn!",
+      "textEnglish": "Alright, class is over! See you tomorrow!",
+      "textIndonesian": "Baik, kelas selesai! Sampai besok!",
+      "pinyinWords": [
+        { "pinyin": "xià kè", "chinese": "下课", "english": "class is over", "indonesian": "kelas selesai" },
+        { "pinyin": "míngtiān jiàn", "chinese": "明天见", "english": "see you tomorrow", "indonesian": "sampai besok" }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "明天见，老师！",
+          "pinyin": "Míngtiān jiàn, lǎoshī!",
+          "english": "See you tomorrow, teacher!",
+          "indonesian": "Sampai besok, guru!",
+          "pinyinWords": [
+            { "pinyin": "míngtiān jiàn", "chinese": "明天见", "english": "see you tomorrow", "indonesian": "sampai besok" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'raise your hand' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "举手", "pinyin": "jǔshǒu", "translation": "raise hand" },
+        { "chinese": "回答", "pinyin": "huídá", "translation": "answer" },
+        { "chinese": "提问", "pinyin": "tíwèn", "translation": "ask a question" },
+        { "chinese": "站起来", "pinyin": "zhàn qǐlái", "translation": "stand up" }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "举手 (jǔshǒu) means 'raise your hand'. 举 = lift, 手 = hand."
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "答对了",
+      "questionPinyin": "dá duì le",
+      "options": [
+        { "chinese": "", "pinyin": "", "translation": "wrong answer" },
+        { "chinese": "", "pinyin": "", "translation": "correct answer" },
+        { "chinese": "", "pinyin": "", "translation": "no answer" },
+        { "chinese": "", "pinyin": "", "translation": "ask a question" }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "答对了 (dá duì le) means 'answered correctly'. 答 = answer, 对 = correct."
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'I have a question' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "我没有问题。", "pinyin": "Wǒ méiyǒu wèntí.", "translation": "I have no questions." },
+        { "chinese": "我不知道。", "pinyin": "Wǒ bù zhīdào.", "translation": "I don't know." },
+        { "chinese": "我有一个问题。", "pinyin": "Wǒ yǒu yī gè wèntí.", "translation": "I have a question." },
+        { "chinese": "请回答。", "pinyin": "Qǐng huídá.", "translation": "Please answer." }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "我有一个问题 (Wǒ yǒu yī gè wèntí) means 'I have a question'."
+    }
+  ]
+}

@@ -24,6 +24,7 @@ import com.ikhwan.mandarinkids.ui.theme.MandarinKidsTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ScenarioRepository.init(applicationContext)
         setContent {
             MandarinKidsTheme {
                 MandarinKidsApp()

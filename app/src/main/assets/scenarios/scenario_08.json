@@ -1,0 +1,200 @@
+{
+  "id": "scene8_feeling_unwell",
+  "title": "我不舒服",
+  "description": "Telling the teacher you feel unwell — stomachache or headache",
+  "characterName": "Li 老师",
+  "characterEmoji": "👩‍🏫",
+  "characterRole": "teacher",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你好！你今天看起来不太好。你还好吗？",
+      "textPinyin": "Nǐ hǎo! Nǐ jīntiān kàn qǐlái bù tài hǎo. Nǐ hái hǎo ma?",
+      "textEnglish": "Hello! You don't look well today. Are you okay?",
+      "textIndonesian": "Halo! Kamu terlihat kurang baik hari ini. Kamu baik-baik saja?",
+      "pinyinWords": [
+        { "pinyin": "kàn qǐlái", "chinese": "看起来", "english": "look / seem", "indonesian": "terlihat" },
+        { "pinyin": "bù tài hǎo", "chinese": "不太好", "english": "not too well", "indonesian": "kurang baik" },
+        { "pinyin": "hái hǎo", "chinese": "还好", "english": "okay / alright", "indonesian": "baik-baik saja" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "老师，我不舒服。",
+          "pinyin": "Lǎoshī, wǒ bù shūfu.",
+          "english": "Teacher, I don't feel well.",
+          "indonesian": "Guru, saya tidak enak badan.",
+          "pinyinWords": [
+            { "pinyin": "bù shūfu", "chinese": "不舒服", "english": "don't feel well", "indonesian": "tidak enak badan" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我还好，谢谢老师！",
+          "pinyin": "Wǒ hái hǎo, xièxie lǎoshī!",
+          "english": "I'm okay, thank you teacher!",
+          "indonesian": "Saya baik-baik saja, terima kasih guru!",
+          "pinyinWords": [
+            { "pinyin": "hái hǎo", "chinese": "还好", "english": "okay", "indonesian": "baik-baik saja" },
+            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "哪里不舒服？是头疼还是肚子疼？",
+      "textPinyin": "Nǎlǐ bù shūfu? Shì tóuténg háishì dùzi téng?",
+      "textEnglish": "Where does it hurt? Is it a headache or stomachache?",
+      "textIndonesian": "Di mana sakitnya? Kepala atau perut?",
+      "pinyinWords": [
+        { "pinyin": "nǎlǐ", "chinese": "哪里", "english": "where", "indonesian": "di mana" },
+        { "pinyin": "tóuténg", "chinese": "头疼", "english": "headache", "indonesian": "sakit kepala" },
+        { "pinyin": "háishì", "chinese": "还是", "english": "or", "indonesian": "atau" },
+        { "pinyin": "dùzi téng", "chinese": "肚子疼", "english": "stomachache", "indonesian": "sakit perut" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我肚子疼。",
+          "pinyin": "Wǒ dùzi téng.",
+          "english": "I have a stomachache.",
+          "indonesian": "Perut saya sakit.",
+          "pinyinWords": [
+            { "pinyin": "dùzi téng", "chinese": "肚子疼", "english": "stomachache", "indonesian": "sakit perut" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我头疼。",
+          "pinyin": "Wǒ tóuténg.",
+          "english": "I have a headache.",
+          "indonesian": "Kepala saya sakit.",
+          "pinyinWords": [
+            { "pinyin": "tóuténg", "chinese": "头疼", "english": "headache", "indonesian": "sakit kepala" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "你需要去医务室吗？",
+      "textPinyin": "Nǐ xūyào qù yīwùshì ma?",
+      "textEnglish": "Do you need to go to the clinic?",
+      "textIndonesian": "Kamu perlu ke UKS?",
+      "pinyinWords": [
+        { "pinyin": "xūyào", "chinese": "需要", "english": "need", "indonesian": "perlu" },
+        { "pinyin": "qù", "chinese": "去", "english": "go", "indonesian": "pergi" },
+        { "pinyin": "yīwùshì", "chinese": "医务室", "english": "clinic / sick bay", "indonesian": "UKS" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "是的，我想去医务室。",
+          "pinyin": "Shì de, wǒ xiǎng qù yīwùshì.",
+          "english": "Yes, I'd like to go to the clinic.",
+          "indonesian": "Iya, saya mau ke UKS.",
+          "pinyinWords": [
+            { "pinyin": "shì de", "chinese": "是的", "english": "yes", "indonesian": "iya" },
+            { "pinyin": "xiǎng", "chinese": "想", "english": "want to", "indonesian": "mau" },
+            { "pinyin": "yīwùshì", "chinese": "医务室", "english": "clinic", "indonesian": "UKS" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "没关系，我喝点水就好了。",
+          "pinyin": "Méi guānxi, wǒ hē diǎn shuǐ jiù hǎo le.",
+          "english": "It's okay, I just need some water.",
+          "indonesian": "Tidak apa-apa, minum air saja sudah cukup.",
+          "pinyinWords": [
+            { "pinyin": "méi guānxi", "chinese": "没关系", "english": "it's okay", "indonesian": "tidak apa-apa" },
+            { "pinyin": "hē", "chinese": "喝", "english": "drink", "indonesian": "minum" },
+            { "pinyin": "shuǐ", "chinese": "水", "english": "water", "indonesian": "air" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "好的，我陪你去。希望你快点好起来！",
+      "textPinyin": "Hǎo de, wǒ péi nǐ qù. Xīwàng nǐ kuài diǎn hǎo qǐlái!",
+      "textEnglish": "Okay, I'll take you there. I hope you feel better soon!",
+      "textIndonesian": "Baik, saya antar. Semoga cepat sembuh!",
+      "pinyinWords": [
+        { "pinyin": "péi", "chinese": "陪", "english": "accompany", "indonesian": "menemani" },
+        { "pinyin": "xīwàng", "chinese": "希望", "english": "hope", "indonesian": "semoga" },
+        { "pinyin": "kuài diǎn", "chinese": "快点", "english": "quickly / soon", "indonesian": "cepat" },
+        { "pinyin": "hǎo qǐlái", "chinese": "好起来", "english": "get better", "indonesian": "sembuh" }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "谢谢老师！",
+          "pinyin": "Xièxie lǎoshī!",
+          "english": "Thank you, teacher!",
+          "indonesian": "Terima kasih, guru!",
+          "pinyinWords": [
+            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" },
+            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'I don't feel well' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "我很好。", "pinyin": "Wǒ hěn hǎo.", "translation": "I'm fine." },
+        { "chinese": "我不舒服。", "pinyin": "Wǒ bù shūfu.", "translation": "I don't feel well." },
+        { "chinese": "我很累。", "pinyin": "Wǒ hěn lèi.", "translation": "I'm very tired." },
+        { "chinese": "我饿了。", "pinyin": "Wǒ è le.", "translation": "I'm hungry." }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "我不舒服 (Wǒ bù shūfu) means 'I don't feel well'."
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "头疼",
+      "questionPinyin": "tóuténg",
+      "options": [
+        { "chinese": "", "pinyin": "", "translation": "stomachache" },
+        { "chinese": "", "pinyin": "", "translation": "headache" },
+        { "chinese": "", "pinyin": "", "translation": "toothache" },
+        { "chinese": "", "pinyin": "", "translation": "fever" }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "头疼 (tóuténg) means headache. 头 = head, 疼 = pain."
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'stomachache' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "头疼", "pinyin": "tóuténg", "translation": "headache" },
+        { "chinese": "肚子疼", "pinyin": "dùzi téng", "translation": "stomachache" },
+        { "chinese": "发烧", "pinyin": "fāshāo", "translation": "fever" },
+        { "chinese": "咳嗽", "pinyin": "késou", "translation": "cough" }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "肚子疼 (dùzi téng) means stomachache. 肚子 = stomach, 疼 = pain."
+    }
+  ]
+}

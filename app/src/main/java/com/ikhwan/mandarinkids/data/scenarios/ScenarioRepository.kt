@@ -1,44 +1,27 @@
 package com.ikhwan.mandarinkids.data.scenarios
 
+import android.content.Context
 import com.ikhwan.mandarinkids.data.models.Scenario
 
 /**
- * Central repository for all learning scenarios
- * Add new scenarios by creating a new file and adding the function here
+ * Central repository for all learning scenarios.
+ * Call init(context) once from MainActivity.onCreate before any screen is shown.
+ * After that, getAllScenarios() returns the loaded list with no further I/O.
+ *
+ * To add a new scenario: create a JSON file in assets/scenarios/ and add its
+ * filename to assets/scenarios/index.json. No Kotlin changes required.
  */
 object ScenarioRepository {
 
-    /**
-     * Returns all available scenarios in order
-     */
-    fun getAllScenarios(): List<Scenario> {
-        return listOf(
-            getScenario1_GreetingTeacher(),
-            getScenario2_MeetingMing(),
-            getScenario3_SnackTime(),
-            getScenario4_AskingBathroom(),
-            getScenario5_Playground(),
-            getScenario6_Goodbye(),
-            getScenario7_BorrowingThings(),
-            getScenario8_FeelingUnwell(),
-            getScenario9_GettingLost(),
-            getScenario10_SayingSorry(),
-            getScenario11_AfterSchool(),
-            getScenario12_RaisingHand()
-        )
+    private var scenarios: List<Scenario> = emptyList()
+
+    fun init(context: Context) {
+        scenarios = JsonScenarioLoader.loadAll(context)
     }
 
-    /**
-     * Get a specific scenario by ID
-     */
-    fun getScenarioById(id: String): Scenario? {
-        return getAllScenarios().find { it.id == id }
-    }
+    fun getAllScenarios(): List<Scenario> = scenarios
 
-    /**
-     * Get total number of scenarios
-     */
-    fun getScenarioCount(): Int {
-        return getAllScenarios().size
-    }
+    fun getScenarioById(id: String): Scenario? = scenarios.find { it.id == id }
+
+    fun getScenarioCount(): Int = scenarios.size
 }

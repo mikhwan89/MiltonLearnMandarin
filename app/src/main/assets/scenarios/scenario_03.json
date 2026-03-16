@@ -1,0 +1,147 @@
+{
+  "id": "scene3_snack_time",
+  "title": "零食时间",
+  "description": "Sharing snacks with Liu Ming",
+  "characterName": "Liu Ming",
+  "characterEmoji": "👦",
+  "characterRole": "friend",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你今天带了什么零食？",
+      "textPinyin": "Nǐ jīntiān dài le shénme língshí?",
+      "textEnglish": "What snack did you bring today?",
+      "textIndonesian": "Kamu bawa cemilan apa hari ini?",
+      "pinyinWords": [
+        { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
+        { "pinyin": "jīntiān", "chinese": "今天", "english": "today", "indonesian": "hari ini" },
+        { "pinyin": "dài", "chinese": "带", "english": "bring", "indonesian": "bawa" },
+        { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
+        { "pinyin": "shénme", "chinese": "什么", "english": "what", "indonesian": "apa" },
+        { "pinyin": "língshí", "chinese": "零食", "english": "snack", "indonesian": "cemilan" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我带了饼干。你要吗？",
+          "pinyin": "Wǒ dài le bǐnggān. Nǐ yào ma?",
+          "english": "I brought cookies. Would you like one?",
+          "indonesian": "Saya bawa biskuit. Kamu mau?",
+          "pinyinWords": [
+            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
+            { "pinyin": "dài", "chinese": "带", "english": "brought", "indonesian": "bawa" },
+            { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
+            { "pinyin": "bǐnggān", "chinese": "饼干", "english": "cookies", "indonesian": "biskuit" },
+            { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
+            { "pinyin": "yào", "chinese": "要", "english": "want", "indonesian": "mau" },
+            { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我带了苹果。你呢？",
+          "pinyin": "Wǒ dài le píngguǒ. Nǐ ne?",
+          "english": "I have an apple. What about you?",
+          "indonesian": "Saya punya apel. Kamu?",
+          "pinyinWords": [
+            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
+            { "pinyin": "dài", "chinese": "带", "english": "brought", "indonesian": "bawa" },
+            { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
+            { "pinyin": "píngguǒ", "chinese": "苹果", "english": "apple", "indonesian": "apel" },
+            { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
+            { "pinyin": "ne", "chinese": "呢", "english": "?", "indonesian": "?" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "谢谢你！你真好！",
+      "textPinyin": "Xièxie nǐ! Nǐ zhēn hǎo!",
+      "textEnglish": "Thank you! You're so nice!",
+      "textIndonesian": "Terima kasih! Kamu baik sekali!",
+      "pinyinWords": [
+        { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" },
+        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
+        { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
+        { "pinyin": "zhēn", "chinese": "真", "english": "really", "indonesian": "benar-benar" },
+        { "pinyin": "hǎo", "chinese": "好", "english": "good/nice", "indonesian": "baik" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "不客气！",
+          "pinyin": "Bú kèqi!",
+          "english": "You're welcome!",
+          "indonesian": "Sama-sama!",
+          "pinyinWords": [
+            { "pinyin": "Bú", "chinese": "不", "english": "not", "indonesian": "tidak" },
+            { "pinyin": "kèqi", "chinese": "客气", "english": "polite", "indonesian": "sopan" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我们是朋友！",
+          "pinyin": "Wǒmen shì péngyou!",
+          "english": "We're friends!",
+          "indonesian": "Kita berteman!",
+          "pinyinWords": [
+            { "pinyin": "Wǒmen", "chinese": "我们", "english": "We", "indonesian": "Kita" },
+            { "pinyin": "shì", "chinese": "是", "english": "are", "indonesian": "adalah" },
+            { "pinyin": "péngyou", "chinese": "朋友", "english": "friends", "indonesian": "teman" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'Thank you' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "你好", "pinyin": "Nǐ hǎo", "translation": "Hello" },
+        { "chinese": "谢谢", "pinyin": "Xièxie", "translation": "Thank you" },
+        { "chinese": "对不起", "pinyin": "Duìbuqǐ", "translation": "Sorry" },
+        { "chinese": "再见", "pinyin": "Zàijiàn", "translation": "Goodbye" }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "谢谢 (Xièxie) means 'Thank you'"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "不客气",
+      "questionPinyin": "Bú kèqi",
+      "options": [
+        { "chinese": "", "pinyin": "", "translation": "Thank you" },
+        { "chinese": "", "pinyin": "", "translation": "You're welcome" },
+        { "chinese": "", "pinyin": "", "translation": "Sorry" },
+        { "chinese": "", "pinyin": "", "translation": "Goodbye" }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "不客气 (Bú kèqi) means 'You're welcome'"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'snack' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "水果", "pinyin": "Shuǐguǒ", "translation": "fruit" },
+        { "chinese": "零食", "pinyin": "Língshí", "translation": "snack" },
+        { "chinese": "饼干", "pinyin": "Bǐnggān", "translation": "cookie" },
+        { "chinese": "苹果", "pinyin": "Píngguǒ", "translation": "apple" }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "零食 (Língshí) means 'snack'"
+    }
+  ]
+}

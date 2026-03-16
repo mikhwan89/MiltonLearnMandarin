@@ -1,0 +1,190 @@
+{
+  "id": "scene9_getting_lost",
+  "title": "迷路了",
+  "description": "Getting lost at school — asking a teacher for directions to class or toilet",
+  "characterName": "陌生老师",
+  "characterEmoji": "👨‍🏫",
+  "characterRole": "teacher",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你好！你看起来迷路了。我可以帮你吗？",
+      "textPinyin": "Nǐ hǎo! Nǐ kàn qǐlái mí lù le. Wǒ kěyǐ bāng nǐ ma?",
+      "textEnglish": "Hello! You look lost. Can I help you?",
+      "textIndonesian": "Halo! Kamu sepertinya tersesat. Bisa aku bantu?",
+      "pinyinWords": [
+        { "pinyin": "kàn qǐlái", "chinese": "看起来", "english": "look / seem", "indonesian": "sepertinya" },
+        { "pinyin": "mí lù", "chinese": "迷路", "english": "lost", "indonesian": "tersesat" },
+        { "pinyin": "bāng", "chinese": "帮", "english": "help", "indonesian": "bantu" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "老师，对不起，我找不到我的教室。",
+          "pinyin": "Lǎoshī, duìbuqǐ, wǒ zhǎo bù dào wǒ de jiàoshì.",
+          "english": "Teacher, sorry, I can't find my classroom.",
+          "indonesian": "Guru, maaf, saya tidak bisa menemukan kelas saya.",
+          "pinyinWords": [
+            { "pinyin": "duìbuqǐ", "chinese": "对不起", "english": "sorry", "indonesian": "maaf" },
+            { "pinyin": "zhǎo bù dào", "chinese": "找不到", "english": "can't find", "indonesian": "tidak bisa menemukan" },
+            { "pinyin": "jiàoshì", "chinese": "教室", "english": "classroom", "indonesian": "ruang kelas" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我迷路了，你能帮我吗？",
+          "pinyin": "Wǒ mí lù le, nǐ néng bāng wǒ ma?",
+          "english": "I'm lost, can you help me?",
+          "indonesian": "Saya tersesat, bisakah kamu membantu saya?",
+          "pinyinWords": [
+            { "pinyin": "mí lù", "chinese": "迷路", "english": "lost", "indonesian": "tersesat" },
+            { "pinyin": "néng", "chinese": "能", "english": "can / able to", "indonesian": "bisa" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "没关系！你是几年级的同学？",
+      "textPinyin": "Méi guānxi! Nǐ shì jǐ niánjí de tóngxué?",
+      "textEnglish": "No problem! What grade are you in?",
+      "textIndonesian": "Tidak apa-apa! Kamu kelas berapa?",
+      "pinyinWords": [
+        { "pinyin": "méi guānxi", "chinese": "没关系", "english": "no problem", "indonesian": "tidak apa-apa" },
+        { "pinyin": "jǐ", "chinese": "几", "english": "what / how many", "indonesian": "berapa" },
+        { "pinyin": "niánjí", "chinese": "年级", "english": "grade / year", "indonesian": "kelas" }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "我是一年级的。我的教室在哪里？",
+          "pinyin": "Wǒ shì yī niánjí de. Wǒ de jiàoshì zài nǎlǐ?",
+          "english": "I'm in grade one. Where is my classroom?",
+          "indonesian": "Saya kelas satu. Di mana kelas saya?",
+          "pinyinWords": [
+            { "pinyin": "yī niánjí", "chinese": "一年级", "english": "grade one", "indonesian": "kelas satu" },
+            { "pinyin": "zài nǎlǐ", "chinese": "在哪里", "english": "where is", "indonesian": "di mana" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "一年级的教室在二楼，左转就到了。",
+      "textPinyin": "Yī niánjí de jiàoshì zài èr lóu, zuǒ zhuǎn jiù dào le.",
+      "textEnglish": "Grade one classrooms are on the second floor, turn left and you're there.",
+      "textIndonesian": "Kelas satu ada di lantai dua, belok kiri langsung sampai.",
+      "pinyinWords": [
+        { "pinyin": "èr lóu", "chinese": "二楼", "english": "second floor", "indonesian": "lantai dua" },
+        { "pinyin": "zuǒ", "chinese": "左", "english": "left", "indonesian": "kiri" },
+        { "pinyin": "zhuǎn", "chinese": "转", "english": "turn", "indonesian": "belok" },
+        { "pinyin": "jiù dào le", "chinese": "就到了", "english": "then you're there", "indonesian": "langsung sampai" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "谢谢老师！",
+          "pinyin": "Xièxie lǎoshī!",
+          "english": "Thank you, teacher!",
+          "indonesian": "Terima kasih, guru!",
+          "pinyinWords": [
+            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" },
+            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "老师，厕所在哪里？",
+          "pinyin": "Lǎoshī, cèsuǒ zài nǎlǐ?",
+          "english": "Teacher, where is the toilet?",
+          "indonesian": "Guru, di mana toilet?",
+          "pinyinWords": [
+            { "pinyin": "cèsuǒ", "chinese": "厕所", "english": "toilet", "indonesian": "toilet" },
+            { "pinyin": "zài nǎlǐ", "chinese": "在哪里", "english": "where is", "indonesian": "di mana" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "厕所就在楼梯旁边。加油！",
+      "textPinyin": "Cèsuǒ jiù zài lóutī pángbiān. Jiāyóu!",
+      "textEnglish": "The toilet is right next to the stairs. You can do it!",
+      "textIndonesian": "Toilet ada di sebelah tangga. Semangat!",
+      "pinyinWords": [
+        { "pinyin": "lóutī", "chinese": "楼梯", "english": "stairs", "indonesian": "tangga" },
+        { "pinyin": "pángbiān", "chinese": "旁边", "english": "next to / beside", "indonesian": "di sebelah" },
+        { "pinyin": "jiāyóu", "chinese": "加油", "english": "you can do it!", "indonesian": "semangat!" }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "谢谢老师，再见！",
+          "pinyin": "Xièxie lǎoshī, zàijiàn!",
+          "english": "Thank you teacher, goodbye!",
+          "indonesian": "Terima kasih guru, selamat tinggal!",
+          "pinyinWords": [
+            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" },
+            { "pinyin": "zàijiàn", "chinese": "再见", "english": "goodbye", "indonesian": "selamat tinggal" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'Where is the toilet?' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "厕所在哪里？", "pinyin": "Cèsuǒ zài nǎlǐ?", "translation": "Where is the toilet?" },
+        { "chinese": "教室在哪里？", "pinyin": "Jiàoshì zài nǎlǐ?", "translation": "Where is the classroom?" },
+        { "chinese": "我找不到了。", "pinyin": "Wǒ zhǎo bù dào le.", "translation": "I can't find it." },
+        { "chinese": "我迷路了。", "pinyin": "Wǒ mí lù le.", "translation": "I'm lost." }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "厕所在哪里 (Cèsuǒ zài nǎlǐ) means 'Where is the toilet?'"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "左转",
+      "questionPinyin": "zuǒ zhuǎn",
+      "options": [
+        { "chinese": "", "pinyin": "", "translation": "turn right" },
+        { "chinese": "", "pinyin": "", "translation": "go straight" },
+        { "chinese": "", "pinyin": "", "translation": "turn left" },
+        { "chinese": "", "pinyin": "", "translation": "go upstairs" }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "左转 (zuǒ zhuǎn) means 'turn left'. 左 = left, 转 = turn."
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'second floor' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "一楼", "pinyin": "yī lóu", "translation": "first floor" },
+        { "chinese": "三楼", "pinyin": "sān lóu", "translation": "third floor" },
+        { "chinese": "二楼", "pinyin": "èr lóu", "translation": "second floor" },
+        { "chinese": "楼梯", "pinyin": "lóutī", "translation": "stairs" }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "二楼 (èr lóu) means second floor. 二 = two, 楼 = floor/building."
+    }
+  ]
+}
