@@ -18,7 +18,13 @@ object ScenarioRepository {
             getScenario3_SnackTime(),
             getScenario4_AskingBathroom(),
             getScenario5_Playground(),
-            getScenario6_Goodbye()
+            getScenario6_Goodbye(),
+            getScenario7_BorrowingThings(),
+            getScenario8_FeelingUnwell(),
+            getScenario9_GettingLost(),
+            getScenario10_SayingSorry(),
+            getScenario11_AfterSchool(),
+            getScenario12_RaisingHand()
         )
     }
 
