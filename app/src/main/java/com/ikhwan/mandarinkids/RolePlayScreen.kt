@@ -29,6 +29,7 @@ import com.ikhwan.mandarinkids.AppPreferences
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ikhwan.mandarinkids.tts.TtsManager
 import com.ikhwan.mandarinkids.tts.rememberTtsManager
 import androidx.compose.ui.text.font.FontWeight
@@ -52,83 +53,67 @@ fun RolePlayScreen(
 ) {
     val context = LocalContext.current
     val tts = rememberTtsManager()
-    var currentStepIndex by remember { mutableStateOf(0) }
-    var userName by remember { mutableStateOf("") }
-    var showNameInput by remember { mutableStateOf(false) }
-    var conversationHistory by remember { mutableStateOf<List<ConversationMessage>>(emptyList()) }
-    var showOptions by remember { mutableStateOf(false) }
     val listState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
-    var correctAnswersCount by remember { mutableStateOf(0) }
-    var speechSpeed by remember { mutableStateOf(1.0f) }
+
+    val vm: RolePlayViewModel = viewModel(
+        key = scenario.id,
+        factory = RolePlayViewModel.factory(scenario)
+    )
 
     val storedSpeed by AppPreferences.speechSpeedFlow(context).collectAsState(initial = 1.0f)
-    // Initialise from stored value once
-    LaunchedEffect(storedSpeed) { speechSpeed = storedSpeed }
-
-    // Track if we're currently processing a step
-    var isProcessingStep by remember { mutableStateOf(false) }
-
-    val currentStep = if (currentStepIndex < scenario.dialogues.size) {
-        scenario.dialogues[currentStepIndex]
-    } else null
+    LaunchedEffect(storedSpeed) { vm.applyStoredSpeed(storedSpeed) }
 
     // Process each step ONCE
-    LaunchedEffect(currentStepIndex) {
+    LaunchedEffect(vm.currentStepIndex) {
         // Prevent re-entry
-        if (isProcessingStep) return@LaunchedEffect
+        if (vm.isProcessingStep) return@LaunchedEffect
+
+        val step = vm.currentStep
 
         // All steps done (e.g. last step was LISTEN_ONLY)
-        if (currentStep == null) {
-            onComplete(correctAnswersCount)
+        if (step == null) {
+            onComplete(vm.correctAnswersCount)
             return@LaunchedEffect
         }
 
-        if (currentStep.speaker == Speaker.CHARACTER) {
-            isProcessingStep = true
-            showOptions = false
-            showNameInput = false
+        if (step.speaker == Speaker.CHARACTER) {
+            vm.beginCharacterTurn()
 
             try {
-                // Wait a bit before starting
                 delay(500)
 
-                // Add message to history
-                conversationHistory = conversationHistory + ConversationMessage(
+                vm.addMessage(ConversationMessage(
                     speaker = Speaker.CHARACTER,
-                    textChinese = currentStep.textChinese,
-                    textPinyin = currentStep.textPinyin,
-                    textEnglish = currentStep.textEnglish,
-                    textIndonesian = currentStep.textIndonesian,
-                    pinyinWords = currentStep.pinyinWords
-                )
+                    textChinese = step.textChinese,
+                    textPinyin = step.textPinyin,
+                    textEnglish = step.textEnglish,
+                    textIndonesian = step.textIndonesian,
+                    pinyinWords = step.pinyinWords
+                ))
 
-                // Scroll to bottom
                 delay(200)
                 coroutineScope.launch {
                     listState.animateScrollToItem(
-                        index = maxOf(0, conversationHistory.size - 1)
+                        index = maxOf(0, vm.conversationHistory.size - 1)
                     )
                 }
 
-                // Speak and wait for completion
                 delay(300)
-                tts.speakAndAwait(currentStep.textChinese, "char_$currentStepIndex", speechSpeed)
+                tts.speakAndAwait(step.textChinese, "char_${vm.currentStepIndex}", vm.speechSpeed)
 
-                // Speech complete, wait a bit more
                 delay(800)
 
-                // Show options or auto-advance
-                if (currentStep.userNameInput) {
-                    showNameInput = true
-                } else if (currentStep.responseType == ResponseType.LISTEN_ONLY) {
+                if (step.userNameInput) {
+                    vm.revealNameInput()
+                } else if (step.responseType == ResponseType.LISTEN_ONLY) {
                     delay(1500)
-                    currentStepIndex++
+                    vm.advanceStep()
                 } else {
-                    showOptions = true
+                    vm.revealOptions()
                 }
             } finally {
-                isProcessingStep = false
+                vm.finishProcessing()
             }
         }
     }
@@ -140,7 +125,7 @@ fun RolePlayScreen(
                     Column {
                         Text(scenario.title, fontSize = 16.sp)
                         Text(
-                            "Step ${currentStepIndex + 1}/${scenario.dialogues.size}",
+                            "Step ${vm.currentStepIndex + 1}/${scenario.dialogues.size}",
                             fontSize = 12.sp,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -154,8 +139,8 @@ fun RolePlayScreen(
                 actions = {
                     IconButton(
                         onClick = {
-                            speechSpeed = if (speechSpeed == 1.0f) 0.7f else 1.0f
-                            coroutineScope.launch { AppPreferences.saveSpeechSpeed(context, speechSpeed) }
+                            vm.toggleSpeechSpeed()
+                            coroutineScope.launch { AppPreferences.saveSpeechSpeed(context, vm.speechSpeed) }
                         }
                     ) {
                         Row(
@@ -168,7 +153,7 @@ fun RolePlayScreen(
                                 modifier = Modifier.size(20.dp)
                             )
                             Text(
-                                text = if (speechSpeed == 1.0f) "1x" else "0.7x",
+                                text = if (vm.speechSpeed == 1.0f) "1x" else "0.7x",
                                 fontSize = 12.sp
                             )
                         }
@@ -183,7 +168,7 @@ fun RolePlayScreen(
                 .padding(padding)
         ) {
             LinearProgressIndicator(
-                progress = { (currentStepIndex + 1).toFloat() / scenario.dialogues.size },
+                progress = { (vm.currentStepIndex + 1).toFloat() / scenario.dialogues.size },
                 modifier = Modifier.fillMaxWidth(),
             )
 
@@ -196,24 +181,24 @@ fun RolePlayScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(16.dp)
-                        .padding(bottom = if (showOptions || showNameInput) 200.dp else 0.dp),
+                        .padding(bottom = if (vm.showOptions || vm.showNameInput) 200.dp else 0.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    items(conversationHistory.size) { index ->
-                        val message = conversationHistory[index]
+                    items(vm.conversationHistory.size) { index ->
+                        val message = vm.conversationHistory[index]
                         ConversationBubble(
                             message = message,
                             characterName = scenario.characterName,
                             characterEmoji = scenario.characterEmoji,
                             tts = tts,
-                            speechSpeed = speechSpeed,
-                            isSpeaking = isProcessingStep && index == conversationHistory.size - 1
+                            speechSpeed = vm.speechSpeed,
+                            isSpeaking = vm.isProcessingStep && index == vm.conversationHistory.size - 1
                         )
                     }
                 }
 
                 // Options overlay at bottom
-                if (currentStep != null && (showOptions || showNameInput)) {
+                if (vm.currentStep != null && (vm.showOptions || vm.showNameInput)) {
                     Surface(
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
@@ -226,39 +211,25 @@ fun RolePlayScreen(
                                 .fillMaxWidth()
                                 .padding(16.dp)
                         ) {
-                            if (showNameInput && currentStep.userNameInput) {
+                            if (vm.showNameInput && vm.currentStep!!.userNameInput) {
                                 NameInputSection(
-                                    option = currentStep.options.first(),
+                                    option = vm.currentStep!!.options.first(),
                                     onNameEntered = { name ->
-                                        userName = name
-                                        showNameInput = false
-
-                                        val fullResponse = "${currentStep.options.first().chinese}${name}"
-                                        conversationHistory = conversationHistory + ConversationMessage(
-                                            speaker = Speaker.STUDENT,
-                                            textChinese = fullResponse,
-                                            textPinyin = "${currentStep.options.first().pinyin} $name",
-                                            textEnglish = "${currentStep.options.first().english} $name",
-                                            textIndonesian = "${currentStep.options.first().indonesian} $name",
-                                            pinyinWords = currentStep.options.first().pinyinWords
-                                        )
-
-                                        tts.speak(fullResponse, speechSpeed)
-                                        correctAnswersCount++
-
+                                        val fullChinese = vm.submitName(name)
+                                        tts.speak(fullChinese, vm.speechSpeed)
                                         coroutineScope.launch {
                                             delay(300)
-                                            listState.animateScrollToItem(conversationHistory.size - 1)
+                                            listState.animateScrollToItem(vm.conversationHistory.size - 1)
                                             delay(2000)
-                                            currentStepIndex++
+                                            vm.advanceStep()
                                         }
                                     },
                                     tts = tts,
-                                    speechSpeed = speechSpeed
+                                    speechSpeed = vm.speechSpeed
                                 )
                             }
 
-                            if (showOptions && !showNameInput) {
+                            if (vm.showOptions && !vm.showNameInput) {
                                 Text(
                                     text = "Choose your response:",
                                     fontSize = 14.sp,
@@ -266,41 +237,26 @@ fun RolePlayScreen(
                                     modifier = Modifier.padding(bottom = 8.dp)
                                 )
 
-                                currentStep.options.forEachIndexed { index, option ->
+                                vm.currentStep!!.options.forEachIndexed { index, option ->
                                     ResponseOptionButton(
                                         option = option,
                                         index = index,
                                         onClick = {
-                                            showOptions = false  // Hide immediately
-
-                                            conversationHistory = conversationHistory + ConversationMessage(
-                                                speaker = Speaker.STUDENT,
-                                                textChinese = option.chinese,
-                                                textPinyin = option.pinyin,
-                                                textEnglish = option.english,
-                                                textIndonesian = option.indonesian,
-                                                pinyinWords = option.pinyinWords
-                                            )
-
-                                            tts.speak(option.chinese, speechSpeed)
-
-                                            if (option.isCorrect) {
-                                                correctAnswersCount++
-                                            }
-
+                                            vm.selectOption(option)
+                                            tts.speak(option.chinese, vm.speechSpeed)
                                             coroutineScope.launch {
                                                 delay(300)
-                                                listState.animateScrollToItem(conversationHistory.size - 1)
+                                                listState.animateScrollToItem(vm.conversationHistory.size - 1)
                                                 delay(2000)
-                                                if (currentStepIndex + 1 >= scenario.dialogues.size) {
-                                                    onComplete(correctAnswersCount)
+                                                if (vm.currentStepIndex + 1 >= scenario.dialogues.size) {
+                                                    onComplete(vm.correctAnswersCount)
                                                 } else {
-                                                    currentStepIndex++
+                                                    vm.advanceStep()
                                                 }
                                             }
                                         },
                                         tts = tts,
-                                        speechSpeed = speechSpeed
+                                        speechSpeed = vm.speechSpeed
                                     )
                                     Spacer(modifier = Modifier.height(8.dp))
                                 }

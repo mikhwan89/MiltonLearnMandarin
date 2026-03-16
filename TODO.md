@@ -50,7 +50,7 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 
 ---
 
-## 4. ViewModel for RolePlayScreen (MEDIUM PRIORITY)
+## 4. ViewModel for RolePlayScreen ✅ DONE
 
 **Why:** `RolePlayScreen.kt` manages all its state via `remember`/`mutableStateOf` directly in the composable. This means state logic and UI rendering are interleaved, making it hard to change one without risking the other. `QuizScreen` already has a `QuizViewModel` — applying the same pattern to `RolePlayScreen` makes the codebase consistent and predictable.
 
@@ -141,7 +141,7 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 | 1 | ~~Scenarios as JSON assets~~ ✅ | Large | Highest — unlocks content changes with zero Kotlin |
 | 2 | ~~Split MainActivity.kt~~ ✅ | Small | High — reduces blast radius of any nav/home change |
 | 3 | ~~Centralize TTS~~ ✅ | Small | High — eliminates 3-way duplication |
-| 4 | RolePlayViewModel | Medium | Medium — consistency with QuizViewModel pattern |
+| 4 | ~~RolePlayViewModel~~ ✅ | Medium | Medium — consistency with QuizViewModel pattern |
 | 5 | Repository interface | Small | Medium — prerequisite for clean testing |
 | 6 | Room for progress | Medium | Medium — enables richer progress queries |
 | 7 | DataStore preferences | Small | Medium — persists user settings |
