@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ikhwan.mandarinkids.data.models.PinyinWord
 import com.ikhwan.mandarinkids.data.models.Scenario
 import kotlinx.coroutines.delay
@@ -45,14 +46,12 @@ fun FlashcardScreen(
     var ttsReady by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
 
-    val allWords = remember { scenario.getFlashcardWords() }
-    var deck by remember { mutableStateOf(allWords) }
-    var currentIndex by remember { mutableStateOf(0) }
-    var isFlipped by remember { mutableStateOf(false) }
-    var masteredCount by remember { mutableStateOf(0) }
-    var showComplete by remember { mutableStateOf(false) }
+    val vm: FlashcardViewModel = viewModel(
+        key = scenario.id,
+        factory = FlashcardViewModel.factory(scenario)
+    )
 
-    val currentWord = if (deck.isNotEmpty() && currentIndex < deck.size) deck[currentIndex] else null
+    val currentWord = vm.currentWord
 
     LaunchedEffect(Unit) {
         tts = TextToSpeech(context) { status ->
@@ -64,9 +63,10 @@ fun FlashcardScreen(
     }
 
     // Auto-play when card changes, or when TTS becomes ready for the first card
-    LaunchedEffect(currentIndex, deck.size, ttsReady) {
-        if (ttsReady && currentWord != null && !isFlipped) {
-            tts?.speak(currentWord.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+    LaunchedEffect(vm.currentIndex, vm.deck.size, ttsReady) {
+        val w = vm.currentWord
+        if (ttsReady && w != null && !vm.isFlipped) {
+            tts?.speak(w.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
         }
     }
 
@@ -75,7 +75,7 @@ fun FlashcardScreen(
     }
 
     val rotation by animateFloatAsState(
-        targetValue = if (isFlipped) 180f else 0f,
+        targetValue = if (vm.isFlipped) 180f else 0f,
         animationSpec = tween(durationMillis = 400),
         label = "cardFlip"
     )
@@ -87,7 +87,7 @@ fun FlashcardScreen(
                     Column {
                         Text("Flashcards 单词卡", fontSize = 16.sp)
                         Text(
-                            "$masteredCount / ${allWords.size} words mastered",
+                            "${vm.masteredCount} / ${vm.allWords.size} words mastered",
                             fontSize = 12.sp,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -101,12 +101,13 @@ fun FlashcardScreen(
             )
         }
     ) { padding ->
-        if (showComplete) {
+        if (vm.showComplete) {
             FlashcardCompleteScreen(
-                totalWords = allWords.size,
+                totalWords = vm.allWords.size,
                 onStartConversation = onComplete
             )
         } else if (currentWord != null) {
+            val word = currentWord
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -115,21 +116,21 @@ fun FlashcardScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 LinearProgressIndicator(
-                    progress = { masteredCount.toFloat() / allWords.size },
+                    progress = { vm.masteredCount.toFloat() / vm.allWords.size },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 8.dp)
                 )
 
                 Text(
-                    text = "${deck.size} card${if (deck.size != 1) "s" else ""} remaining",
+                    text = "${vm.deck.size} card${if (vm.deck.size != 1) "s" else ""} remaining",
                     fontSize = 13.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.padding(bottom = 20.dp)
                 )
 
                 Text(
-                    text = if (!isFlipped) "Tap card to reveal translation" else "Tap card to flip back",
+                    text = if (!vm.isFlipped) "Tap card to reveal translation" else "Tap card to flip back",
                     fontSize = 13.sp,
                     color = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.padding(bottom = 12.dp)
@@ -142,9 +143,9 @@ fun FlashcardScreen(
                         .height(300.dp)
                         .graphicsLayer { rotationY = rotation }
                         .clickable {
-                            isFlipped = !isFlipped
-                            if (!isFlipped) {
-                                tts?.speak(currentWord.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+                            vm.flip()
+                            if (!vm.isFlipped) {
+                                tts?.speak(word.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
                             }
                         },
                     shape = RoundedCornerShape(24.dp),
@@ -173,15 +174,15 @@ fun FlashcardScreen(
                                     modifier = Modifier.padding(bottom = 12.dp)
                                 )
                                 Text(
-                                    text = currentWord.chinese,
+                                    text = word.chinese,
                                     fontSize = 64.sp,
                                     fontWeight = FontWeight.Bold,
                                     textAlign = TextAlign.Center
                                 )
                                 Text(
-                                    text = currentWord.pinyin,
+                                    text = word.pinyin,
                                     fontSize = 24.sp,
-                                    color = ToneUtils.pinyinColor(currentWord.pinyin),
+                                    color = ToneUtils.pinyinColor(word.pinyin),
                                     fontWeight = FontWeight.Medium,
                                     textAlign = TextAlign.Center,
                                     modifier = Modifier.padding(top = 6.dp)
@@ -189,14 +190,14 @@ fun FlashcardScreen(
                                 Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                                     TextButton(onClick = {
                                         tts?.setSpeechRate(1.0f)
-                                        tts?.speak(currentWord.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+                                        tts?.speak(word.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
                                     }) {
                                         Text("🔊 Normal", fontSize = 13.sp)
                                     }
                                     TextButton(onClick = {
                                         coroutineScope.launch {
                                             tts?.setSpeechRate(0.5f)
-                                            tts?.speak(currentWord.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+                                            tts?.speak(word.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
                                             delay(3000)
                                             tts?.setSpeechRate(1.0f)
                                         }
@@ -215,23 +216,23 @@ fun FlashcardScreen(
                                 verticalArrangement = Arrangement.Center
                             ) {
                                 Text(
-                                    text = currentWord.chinese,
+                                    text = word.chinese,
                                     fontSize = 36.sp,
                                     fontWeight = FontWeight.Bold,
                                     textAlign = TextAlign.Center,
                                     modifier = Modifier.padding(bottom = 8.dp)
                                 )
                                 Text(
-                                    text = currentWord.pinyin,
+                                    text = word.pinyin,
                                     fontSize = 26.sp,
-                                    color = ToneUtils.pinyinColor(currentWord.pinyin),
+                                    color = ToneUtils.pinyinColor(word.pinyin),
                                     fontWeight = FontWeight.SemiBold,
                                     textAlign = TextAlign.Center
                                 )
                                 Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                                     TextButton(onClick = {
                                         tts?.setSpeechRate(1.0f)
-                                        tts?.speak(currentWord.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+                                        tts?.speak(word.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
                                     }) {
                                         Icon(Icons.Default.PlayArrow, contentDescription = null, modifier = Modifier.size(16.dp))
                                         Spacer(modifier = Modifier.width(2.dp))
@@ -240,7 +241,7 @@ fun FlashcardScreen(
                                     TextButton(onClick = {
                                         coroutineScope.launch {
                                             tts?.setSpeechRate(0.5f)
-                                            tts?.speak(currentWord.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+                                            tts?.speak(word.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
                                             delay(3000)
                                             tts?.setSpeechRate(1.0f)
                                         }
@@ -250,13 +251,13 @@ fun FlashcardScreen(
                                 }
                                 Spacer(modifier = Modifier.height(8.dp))
                                 Text(
-                                    text = "🇬🇧  ${currentWord.english}",
+                                    text = "🇬🇧  ${word.english}",
                                     fontSize = 20.sp,
                                     textAlign = TextAlign.Center
                                 )
                                 Spacer(modifier = Modifier.height(6.dp))
                                 Text(
-                                    text = "🇮🇩  ${currentWord.indonesian}",
+                                    text = "🇮🇩  ${word.indonesian}",
                                     fontSize = 18.sp,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                                     textAlign = TextAlign.Center
@@ -269,22 +270,14 @@ fun FlashcardScreen(
                 Spacer(modifier = Modifier.height(32.dp))
 
                 // Buttons — only visible after flip
-                if (isFlipped) {
+                if (vm.isFlipped) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
                         OutlinedButton(
                             onClick = {
-                                // Move word to end of deck for another round
-                                val word = deck[currentIndex]
-                                val newDeck = deck.toMutableList().also {
-                                    it.removeAt(currentIndex)
-                                    it.add(word)
-                                }
-                                deck = newDeck
-                                currentIndex = if (currentIndex >= newDeck.size) 0 else currentIndex
-                                isFlipped = false
+                                vm.markStillLearning()
                             },
                             modifier = Modifier
                                 .weight(1f)
@@ -298,15 +291,7 @@ fun FlashcardScreen(
 
                         Button(
                             onClick = {
-                                val newDeck = deck.toMutableList().also { it.removeAt(currentIndex) }
-                                masteredCount++
-                                deck = newDeck
-                                if (newDeck.isEmpty()) {
-                                    showComplete = true
-                                } else {
-                                    currentIndex = if (currentIndex >= newDeck.size) 0 else currentIndex
-                                }
-                                isFlipped = false
+                                vm.markMastered()
                             },
                             modifier = Modifier
                                 .weight(1f)

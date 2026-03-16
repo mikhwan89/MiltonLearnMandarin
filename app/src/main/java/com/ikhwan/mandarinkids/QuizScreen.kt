@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
@@ -48,12 +49,12 @@ fun QuizScreen(
 ) {
     val context = LocalContext.current
     var tts by remember { mutableStateOf<TextToSpeech?>(null) }
-    var currentQuestionIndex by remember { mutableStateOf(0) }
-    var selectedAnswerIndex by remember { mutableStateOf<Int?>(null) }
-    var showFeedback by remember { mutableStateOf(false) }
-    var correctAnswersCount by remember { mutableStateOf(0) }
-    var showResults by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
+
+    val vm: QuizViewModel = viewModel(
+        key = "${scenario.id}_$rolePlayScore",
+        factory = QuizViewModel.factory(scenario, rolePlayScore)
+    )
 
     // Initialize TTS
     LaunchedEffect(Unit) {
@@ -68,9 +69,7 @@ fun QuizScreen(
         onDispose { tts?.shutdown() }
     }
 
-    val currentQuestion = if (currentQuestionIndex < scenario.quizQuestions.size) {
-        scenario.quizQuestions[currentQuestionIndex]
-    } else null
+    val currentQuestion = vm.currentQuestion
 
     Scaffold(
         topBar = {
@@ -79,7 +78,7 @@ fun QuizScreen(
                     Column {
                         Text("Quiz Time! 测验", fontSize = 16.sp)
                         Text(
-                            "Question ${currentQuestionIndex + 1}/${scenario.quizQuestions.size}",
+                            "Question ${vm.currentQuestionIndex + 1}/${vm.scenario.quizQuestions.size}",
                             fontSize = 12.sp,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -93,23 +92,24 @@ fun QuizScreen(
             )
         }
     ) { padding ->
-        if (showResults) {
+        if (vm.showResults) {
             QuizResultsScreen(
-                scenario = scenario,
-                rolePlayScore = rolePlayScore,
-                quizScore = correctAnswersCount,
-                totalQuestions = scenario.quizQuestions.size,
+                scenario = vm.scenario,
+                rolePlayScore = vm.rolePlayScore,
+                quizScore = vm.correctAnswersCount,
+                totalQuestions = vm.scenario.quizQuestions.size,
                 onComplete = onComplete,
                 onTryAgain = onTryAgain  // Pass through the callback
             )
         } else if (currentQuestion != null) {
+            val question = currentQuestion
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(padding)
             ) {
                 LinearProgressIndicator(
-                    progress = { (currentQuestionIndex + 1).toFloat() / scenario.quizQuestions.size },
+                    progress = { (vm.currentQuestionIndex + 1).toFloat() / vm.scenario.quizQuestions.size },
                     modifier = Modifier.fillMaxWidth(),
                 )
 
@@ -130,7 +130,7 @@ fun QuizScreen(
                                 modifier = Modifier.padding(20.dp)
                             ) {
                                 Text(
-                                    text = "Question ${currentQuestionIndex + 1}",
+                                    text = "Question ${vm.currentQuestionIndex + 1}",
                                     fontSize = 14.sp,
                                     color = MaterialTheme.colorScheme.secondary
                                 )
@@ -138,23 +138,23 @@ fun QuizScreen(
                                 Spacer(modifier = Modifier.height(8.dp))
 
                                 // Display question based on direction
-                                when (currentQuestion.direction) {
+                                when (question.direction) {
                                     QuizDirection.CHINESE_TO_TRANSLATION -> {
                                         // Show Chinese + Pinyin
                                         Text(
-                                            text = currentQuestion.questionChinese,
+                                            text = question.questionChinese,
                                             fontSize = 28.sp,
                                             style = MaterialTheme.typography.headlineMedium
                                         )
                                         Spacer(modifier = Modifier.height(4.dp))
                                         Text(
-                                            text = currentQuestion.questionPinyin,
+                                            text = question.questionPinyin,
                                             fontSize = 18.sp,
                                             color = MaterialTheme.colorScheme.secondary
                                         )
                                         Spacer(modifier = Modifier.height(8.dp))
                                         Text(
-                                            text = currentQuestion.questionText,
+                                            text = question.questionText,
                                             fontSize = 16.sp,
                                             color = MaterialTheme.colorScheme.onSurfaceVariant
                                         )
@@ -162,7 +162,7 @@ fun QuizScreen(
                                     QuizDirection.TRANSLATION_TO_CHINESE -> {
                                         // Show English question only
                                         Text(
-                                            text = currentQuestion.questionText,
+                                            text = question.questionText,
                                             fontSize = 20.sp,
                                             style = MaterialTheme.typography.titleLarge
                                         )
@@ -181,51 +181,38 @@ fun QuizScreen(
                     }
 
                     // Answer options
-                    items(currentQuestion.options.size) { index ->
+                    items(question.options.size) { index ->
                         QuizOptionButton(
-                            option = currentQuestion.options[index],
+                            option = question.options[index],
                             index = index,
-                            isSelected = selectedAnswerIndex == index,
-                            isCorrect = index == currentQuestion.correctAnswerIndex,
-                            showFeedback = showFeedback,
+                            isSelected = vm.selectedAnswerIndex == index,
+                            isCorrect = index == question.correctAnswerIndex,
+                            showFeedback = vm.showFeedback,
                             onClick = {
-                                if (!showFeedback) {
-                                    selectedAnswerIndex = index
-                                    showFeedback = true
-
-                                    if (index == currentQuestion.correctAnswerIndex) {
-                                        correctAnswersCount++
-                                        playSuccessSound()
-                                    } else {
-                                        playWrongSound()
-                                    }
-
+                                if (!vm.showFeedback) {
+                                    vm.selectAnswer(index)
+                                    if (index == question.correctAnswerIndex) playSuccessSound()
+                                    else playWrongSound()
                                     coroutineScope.launch {
                                         delay(3000)
-                                        if (currentQuestionIndex + 1 >= scenario.quizQuestions.size) {
-                                            showResults = true
-                                        } else {
-                                            currentQuestionIndex++
-                                            selectedAnswerIndex = null
-                                            showFeedback = false
-                                        }
+                                        vm.advanceQuestion()
                                     }
                                 }
                             },
                             tts = tts,
-                            direction = currentQuestion.direction  // NEW: Pass direction
+                            direction = question.direction  // NEW: Pass direction
                         )
                     }
 
-                    if (showFeedback) {
+                    if (vm.showFeedback) {
                         item {
                             AnimatedVisibility(
                                 visible = true,
                                 enter = fadeIn() + expandVertically()
                             ) {
                                 FeedbackCard(
-                                    isCorrect = selectedAnswerIndex == currentQuestion.correctAnswerIndex,
-                                    explanation = currentQuestion.explanation
+                                    isCorrect = vm.selectedAnswerIndex == question.correctAnswerIndex,
+                                    explanation = question.explanation
                                 )
                             }
                         }

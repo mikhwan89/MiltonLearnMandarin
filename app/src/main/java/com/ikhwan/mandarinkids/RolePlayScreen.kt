@@ -28,6 +28,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import com.ikhwan.mandarinkids.AppPreferences
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -64,6 +65,10 @@ fun RolePlayScreen(
     val coroutineScope = rememberCoroutineScope()
     var correctAnswersCount by remember { mutableStateOf(0) }
     var speechSpeed by remember { mutableStateOf(1.0f) }
+
+    val storedSpeed by AppPreferences.speechSpeedFlow(context).collectAsState(initial = 1.0f)
+    // Initialise from stored value once
+    LaunchedEffect(storedSpeed) { speechSpeed = storedSpeed }
 
     // Track if we're currently processing a step
     var isProcessingStep by remember { mutableStateOf(false) }
@@ -196,6 +201,7 @@ fun RolePlayScreen(
                     IconButton(
                         onClick = {
                             speechSpeed = if (speechSpeed == 1.0f) 0.7f else 1.0f
+                            coroutineScope.launch { AppPreferences.saveSpeechSpeed(context, speechSpeed) }
                         }
                     ) {
                         Row(
