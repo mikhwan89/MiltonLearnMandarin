@@ -107,10 +107,10 @@ Technical improvements to make the codebase easier to maintain and extend.
 
 ## 🐛 Known Issues to Fix
 
-- [ ] Old `spellingchampion` test files still present in git history — clean up
-- [ ] `Divider()` composable is deprecated in newer Material3 — replace with `HorizontalDivider()`
-- [ ] Quiz results screen can overflow on small screens — add scrolling
-- [ ] No empty state shown when a scenario has 0 quiz questions
+- [x] Old `spellingchampion` test files still present in git history — clean up
+- [x] `Divider()` composable is deprecated in newer Material3 — replace with `HorizontalDivider()`
+- [x] Quiz results screen can overflow on small screens — add scrolling
+- [x] No empty state shown when a scenario has 0 quiz questions
 
 ---
 

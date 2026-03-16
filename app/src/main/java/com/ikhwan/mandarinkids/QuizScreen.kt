@@ -219,6 +219,30 @@ fun QuizScreen(
                     }
                 }
             }
+        } else {
+            // No quiz questions available for this scenario
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(padding),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    Text("🎉", fontSize = 64.sp)
+                    Text(
+                        "No quiz for this scenario yet!",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    )
+                    Button(onClick = onComplete) {
+                        Text("Back to Home")
+                    }
+                }
+            }
         }
     }
 }
