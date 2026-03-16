@@ -181,11 +181,11 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 
 | Category | Scenarios it covers |
 |----------|-------------------|
-| **Greetings & Goodbyes** | Hello/goodbye to teacher, meeting peers, end-of-day farewells, first day of school intro |
-| **Making Friends** | Introducing yourself, asking name/age, finding things in common, resolving a disagreement |
-| **At School** | Asking to use the bathroom, borrowing a pencil/eraser, PE class instructions, getting lost |
+| **Essentials** | Hello/goodbye to teacher, meeting peers, introducing yourself, asking name/age, first day of school intro, end-of-day farewells, resolving a disagreement |
+| **At School** | Asking to use the bathroom, borrowing a pencil/eraser, PE class instructions, getting lost on campus |
+| **School Subjects** | Being in maths class, science class, Chinese language class, etc. — student learning from a teacher, answering questions, asking for help understanding, describing what they are studying |
 | **Food & Eating** | Snack time, sharing food, school canteen lunch, saying what you like/don't like |
-| **Feelings & Health** | Describing emotions, telling the teacher you feel unwell, stomachache/headache vocab |
+| **Feelings & Health** | Describing emotions, telling the teacher you feel unwell, stomachache/headache vocab, expressing happiness/sadness/excitement |
 | **Play & Hobbies** | Playground, sports, talking about hobbies, inviting a friend to play |
 
 **Rules for future scenarios:** every new scenario must be assigned exactly one category. If a scenario fits two, pick the most dominant theme.
@@ -197,6 +197,6 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 
 **Data changes needed:**
 - Add a `category: ScenarioCategory` field to the `Scenario` data class.
-- Define a `ScenarioCategory` enum with the 6 values above.
+- Define a `ScenarioCategory` enum with the 6 values above: `ESSENTIALS`, `AT_SCHOOL`, `SCHOOL_SUBJECTS`, `FOOD_AND_EATING`, `FEELINGS_AND_HEALTH`, `PLAY_AND_HOBBIES`.
 - Assign a category to each existing scenario in their JSON files (once JSON migration is done) or in their Kotlin files (before migration).
 - `HomeScreen` groups scenarios by category using `groupBy { it.category }` before rendering.
