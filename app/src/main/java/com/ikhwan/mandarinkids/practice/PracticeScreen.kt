@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -218,15 +219,19 @@ fun PracticeScreen(
                                     )
                                 }
                             }
-                        }
-                    }
 
-                    // ── Hear again button ──────────────────────────────────
-                    OutlinedButton(
-                        onClick = { tts.speak(word.chinese) },
-                        modifier = Modifier.padding(top = 10.dp)
-                    ) {
-                        Text("🔊  Hear again", fontSize = 14.sp)
+                            // Speaker icon — top-right corner of the card
+                            IconButton(
+                                onClick = { tts.speak(word.chinese) },
+                                modifier = Modifier.align(Alignment.TopEnd)
+                            ) {
+                                Icon(
+                                    Icons.Default.VolumeUp,
+                                    contentDescription = "Hear pronunciation",
+                                    tint = MaterialTheme.colorScheme.onPrimaryContainer
+                                )
+                            }
+                        }
                     }
 
                     // ── Note bubble (revealed after answering) ─────────────
