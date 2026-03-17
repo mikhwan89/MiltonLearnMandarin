@@ -92,7 +92,7 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 
 ---
 
-## 7. DataStore for User Preferences (MEDIUM PRIORITY)
+## 7. DataStore for User Preferences ✅ DONE
 
 **Why:** Any user-facing settings (TTS speech rate, display language toggle, slow-mode default) currently have no persistent storage — they reset on every launch. DataStore provides type-safe, async key-value storage that integrates cleanly with Compose via `collectAsState`.
 
@@ -144,7 +144,7 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 | 4 | ~~RolePlayViewModel~~ ✅ | Medium | Medium — consistency with QuizViewModel pattern |
 | 5 | ~~Repository interface~~ ✅ | Small | Medium — prerequisite for clean testing |
 | 6 | ~~Room for progress~~ ✅ | Medium | Medium — enables richer progress queries |
-| 7 | DataStore preferences | Small | Medium — persists user settings |
+| 7 | ~~DataStore preferences~~ ✅ | Small | Medium — persists user settings |
 | 8 | Jetpack Navigation | Medium | Low — nice to have once screen count grows |
 | 9 | Unit tests | Medium | Low now, high long-term |
 

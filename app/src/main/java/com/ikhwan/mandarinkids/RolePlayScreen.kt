@@ -25,7 +25,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
-import com.ikhwan.mandarinkids.AppPreferences
+import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import androidx.compose.ui.graphics.graphicsLayer
@@ -61,7 +61,8 @@ fun RolePlayScreen(
         factory = RolePlayViewModel.factory(scenario)
     )
 
-    val storedSpeed by AppPreferences.speechSpeedFlow(context).collectAsState(initial = 1.0f)
+    val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
+    val storedSpeed by userPrefs.speechRate.collectAsState(initial = 1.0f)
     LaunchedEffect(storedSpeed) { vm.applyStoredSpeed(storedSpeed) }
 
     // Process each step ONCE
@@ -140,7 +141,7 @@ fun RolePlayScreen(
                     IconButton(
                         onClick = {
                             vm.toggleSpeechSpeed()
-                            coroutineScope.launch { AppPreferences.saveSpeechSpeed(context, vm.speechSpeed) }
+                            coroutineScope.launch { userPrefs.saveSpeechRate(vm.speechSpeed) }
                         }
                     ) {
                         Row(
