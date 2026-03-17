@@ -3,6 +3,8 @@ package com.ikhwan.mandarinkids.home
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -19,12 +21,13 @@ import com.ikhwan.mandarinkids.db.ProgressRepository
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(onScenarioClick: (Scenario) -> Unit) {
+fun HomeScreen(onScenarioClick: (Scenario) -> Unit, onPracticeClick: () -> Unit) {
     val context = LocalContext.current
     val scenarios = remember { JsonScenarioRepository.getAll() }
     val repo = remember { ProgressRepository.getInstance(context) }
     val xp by repo.getTotalXp().collectAsState(initial = 0)
     val streak = remember { repo.getStreak() }
+    val masteredCount by repo.getMasteredWordCount().collectAsState(initial = 0)
 
     Scaffold(
         topBar = {
@@ -37,6 +40,11 @@ fun HomeScreen(onScenarioClick: (Scenario) -> Unit) {
                             fontSize = 14.sp,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
+                    }
+                },
+                actions = {
+                    IconButton(onClick = onPracticeClick) {
+                        Icon(Icons.Default.Star, contentDescription = "Practice Mode")
                     }
                 }
             )
@@ -105,6 +113,40 @@ fun HomeScreen(onScenarioClick: (Scenario) -> Unit) {
                     }
                 }
                 Spacer(modifier = Modifier.height(4.dp))
+
+                if (masteredCount > 0) {
+                    Card(
+                        onClick = onPracticeClick,
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.secondaryContainer
+                        )
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp, vertical = 12.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text("🃏", fontSize = 28.sp, modifier = Modifier.padding(end = 12.dp))
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                    "Practice Mode",
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                                Text(
+                                    "$masteredCount word${if (masteredCount != 1) "s" else ""} ready to review",
+                                    fontSize = 13.sp,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                            Text("▶", fontSize = 20.sp, color = MaterialTheme.colorScheme.secondary)
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(4.dp))
+                }
+
                 Text(
                     text = "📚 Choose a scenario to practice:",
                     fontSize = 18.sp,

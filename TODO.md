@@ -65,7 +65,7 @@
 
 ---
 
-## #4 · Feature: Flashcard Practice Mode
+## ✅ #4 · Feature: Flashcard Practice Mode
 
 **What:** A dedicated flashcard training screen accessible from the Home screen via a flashcard icon button. It pools together every flashcard from every scenario that the user has previously marked "Got it" and lets Milton drill them in a focused, game-like session — separate from going through a full scenario.
 

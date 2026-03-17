@@ -15,6 +15,7 @@ import com.ikhwan.mandarinkids.RolePlayScreen
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.home.HomeScreen
+import com.ikhwan.mandarinkids.practice.PracticeScreen
 
 @Composable
 fun MandarinKidsApp() {
@@ -31,8 +32,13 @@ fun MandarinKidsApp() {
             HomeScreen(
                 onScenarioClick = { scenario ->
                     navController.navigate(Routes.flashcard(scenario.id))
-                }
+                },
+                onPracticeClick = { navController.navigate(Routes.PRACTICE) }
             )
+        }
+
+        composable(Routes.PRACTICE) {
+            PracticeScreen(onBack = { navController.popBackStack() })
         }
 
         composable(

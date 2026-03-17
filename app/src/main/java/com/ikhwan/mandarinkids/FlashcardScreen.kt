@@ -45,13 +45,14 @@ fun FlashcardScreen(
     onBack: () -> Unit
 ) {
     val context = LocalContext.current
+    val repo = remember { com.ikhwan.mandarinkids.db.ProgressRepository.getInstance(context) }
     var tts by remember { mutableStateOf<TextToSpeech?>(null) }
     var ttsReady by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
 
     val vm: FlashcardViewModel = viewModel(
         key = scenario.id,
-        factory = FlashcardViewModel.factory(scenario)
+        factory = FlashcardViewModel.factory(scenario, repo)
     )
 
     val currentWord = vm.currentWord

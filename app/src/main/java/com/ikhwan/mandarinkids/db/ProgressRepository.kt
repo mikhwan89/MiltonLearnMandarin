@@ -8,6 +8,7 @@ import java.util.Calendar
 
 class ProgressRepository private constructor(
     private val dao: ProgressDao,
+    private val masteredWordDao: MasteredWordDao,
     private val context: Context
 ) {
 
@@ -36,6 +37,14 @@ class ProgressRepository private constructor(
         )
         return xpGained
     }
+
+    // ── Mastered word persistence ─────────────────────────────────────────
+
+    suspend fun markWordMastered(entity: MasteredWordEntity) = masteredWordDao.upsert(entity)
+
+    fun getAllMasteredWords(): Flow<List<MasteredWordEntity>> = masteredWordDao.getAll()
+
+    fun getMasteredWordCount(): Flow<Int> = masteredWordDao.getTotalCount()
 
     // ── SharedPreferences-backed (streak is app-level, not per-scenario) ─
 
@@ -80,9 +89,11 @@ class ProgressRepository private constructor(
 
         fun getInstance(context: Context): ProgressRepository =
             _instance ?: synchronized(this) {
+                val db = AppDatabase.getInstance(context)
                 _instance ?: ProgressRepository(
-                    AppDatabase.getInstance(context).progressDao(),
-                    context.applicationContext
+                    dao = db.progressDao(),
+                    masteredWordDao = db.masteredWordDao(),
+                    context = context.applicationContext
                 ).also { _instance = it }
             }
     }
