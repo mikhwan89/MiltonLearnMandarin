@@ -130,11 +130,7 @@ fun HomeScreen(
 
             // ── Section header ────────────────────────────────────────────
             item {
-                Text(
-                    text = "📚 Choose a category:",
-                    fontSize = 18.sp,
-                    modifier = Modifier.padding(top = 4.dp, bottom = 4.dp)
-                )
+                SectionHeader(text = "📚 Choose a Category")
             }
 
             // ── Category cards ────────────────────────────────────────────
@@ -231,6 +227,22 @@ private fun WordOfDayDialog(
 }
 
 @Composable
+fun SectionHeader(text: String) {
+    Surface(
+        color = MaterialTheme.colorScheme.primaryContainer,
+        shape = RoundedCornerShape(12.dp),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+        )
+    }
+}
+
+@Composable
 fun CategoryCard(category: ScenarioCategory, scenarioCount: Int, onClick: () -> Unit) {
     Card(
         onClick = onClick,
@@ -286,27 +298,15 @@ fun ScenarioCard(scenario: Scenario, stars: Int, onClick: () -> Unit) {
                 Text(
                     text = scenario.title,
                     fontSize = 20.sp,
-                    style = MaterialTheme.typography.titleLarge
+                    fontWeight = FontWeight.SemiBold
                 )
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = scenario.description,
-                    fontSize = 14.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = "With: ${scenario.characterName}",
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.secondary
-                )
-                Spacer(modifier = Modifier.height(6.dp))
+                Spacer(modifier = Modifier.height(8.dp))
                 if (stars > 0) {
                     Row {
                         repeat(3) { i ->
                             Text(
                                 text = if (i < stars) "★" else "☆",
-                                fontSize = 18.sp,
+                                fontSize = 20.sp,
                                 color = if (i < stars) Color(0xFFFFC107) else Color(0xFFBDBDBD)
                             )
                         }

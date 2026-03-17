@@ -36,7 +36,7 @@ clearly separates the two different activity modes the app already has.
 
 ---
 
-### #4 — Add breathing room to scenario cards
+### ✅ #4 — Add breathing room to scenario cards *(done)*
 **Files:** `home/HomeScreen.kt`
 
 - Increase card internal padding 12dp → 16dp
@@ -46,8 +46,8 @@ clearly separates the two different activity modes the app already has.
 
 ---
 
-### #5 — Replace plain section headers with bold category dividers
-**Files:** `home/HomeScreen.kt`
+### ✅ #5 — Replace plain section headers with bold category dividers *(done)*
+**Files:** `home/HomeScreen.kt`, `home/ScenarioListScreen.kt`
 
 Each category section gets a `MaterialTheme.typography.titleLarge` header with a category emoji
 and a `primaryContainer` background strip — not just a plain `Text()` label.

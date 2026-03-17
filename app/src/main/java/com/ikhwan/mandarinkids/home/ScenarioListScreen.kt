@@ -53,7 +53,11 @@ fun ScenarioListScreen(
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            item { Spacer(modifier = Modifier.height(4.dp)) }
+                item {
+                SectionHeader(
+                    text = "${category.emoji} ${scenarios.size} scenario${if (scenarios.size != 1) "s" else ""}"
+                )
+            }
 
             items(scenarios, key = { it.id }) { scenario ->
                 val stars by repo.getStars(scenario.id).collectAsState(initial = 0)
