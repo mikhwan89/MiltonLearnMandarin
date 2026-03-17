@@ -289,7 +289,9 @@ fun QuizOptionButton(
             .graphicsLayer { scaleX = popScale; scaleY = popScale },
         onClick = onClick,
         colors = CardDefaults.cardColors(
-            containerColor = backgroundColor
+            containerColor = backgroundColor,
+            disabledContainerColor = backgroundColor,
+            disabledContentColor = contentColor
         ),
         enabled = !showFeedback
     ) {

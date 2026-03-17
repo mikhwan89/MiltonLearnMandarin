@@ -264,25 +264,36 @@ fun QuizResultsScreen(
     }
 }
 
+/**
+ * Wrong-answer sound: two dissonant tritone frequencies (Bb4 + E4) with a
+ * descending sawtooth-rich timbre — clearly "wrong" without being too harsh.
+ */
 fun playWrongSound() {
     Thread {
         try {
             val sampleRate = 44100
-            val duration = 0.8
+            val duration = 0.65
             val numSamples = (sampleRate * duration).toInt()
             val samples = ShortArray(numSamples)
 
-            val startFreq = 320.0
-            val endFreq = 80.0
+            val freq1 = 466.16  // Bb4
+            val freq2 = 311.13  // Eb4  — tritone apart (maximally dissonant)
 
             for (i in samples.indices) {
                 val t = i.toDouble() / sampleRate
                 val progress = t / duration
-                val freq = startFreq + (endFreq - startFreq) * progress
-                val phase = (t * freq) % 1.0
-                val wave = if (phase < 0.5) 1.0 else -1.0
-                val envelope = if (progress > 0.8) (1.0 - progress) / 0.2 else 1.0
-                samples[i] = (wave * envelope * Short.MAX_VALUE * 0.7).toInt().toShort()
+                // Pitch slides down 35% over the duration
+                val pitchMod = 1.0 - progress * 0.35
+                // Envelope: instant attack, sustain, then fade last 30%
+                val env = if (progress > 0.70) (1.0 - progress) / 0.30 else 1.0
+                // Sawtooth approximation (1st + harmonics) on both freqs for buzz
+                fun saw(f: Double) =
+                    Math.sin(2.0 * Math.PI * f * pitchMod * t) * 0.55 +
+                    Math.sin(2.0 * Math.PI * f * pitchMod * t * 2) * 0.25 +
+                    Math.sin(2.0 * Math.PI * f * pitchMod * t * 3) * 0.12 +
+                    Math.sin(2.0 * Math.PI * f * pitchMod * t * 4) * 0.08
+                samples[i] = (env * (saw(freq1) * 0.5 + saw(freq2) * 0.5) *
+                               Short.MAX_VALUE * 0.72).toInt().toShort()
             }
 
             val audioTrack = AudioTrack.Builder()
@@ -305,29 +316,42 @@ fun playWrongSound() {
 
             audioTrack.write(samples, 0, numSamples)
             audioTrack.play()
-            Thread.sleep((duration * 1000).toLong() + 200)
+            Thread.sleep((duration * 1000).toLong() + 150)
             audioTrack.release()
         } catch (_: Exception) {}
     }.start()
 }
 
+/**
+ * Correct-answer sound: 5-note ascending major arpeggio (C5→E5→G5→C6→E6)
+ * with warm harmonics and a punchy attack — designed to feel rewarding.
+ */
 fun playSuccessSound() {
     Thread {
         try {
             val sampleRate = 44100
-            val notes = listOf(659.0, 880.0, 1047.0)
-            val noteDuration = 0.18
-            val totalSamples = (sampleRate * noteDuration * notes.size).toInt()
+            // C5, E5, G5, C6, E6 — bright ascending major arpeggio
+            val notes   = listOf(523.25, 659.25, 783.99, 1046.50, 1318.51)
+            val durations = listOf(0.10,   0.10,   0.10,   0.10,   0.22)   // last note held
+            val totalSamples = durations.sumOf { (sampleRate * it).toInt() }
             val samples = ShortArray(totalSamples)
 
             var offset = 0
-            for (freq in notes) {
-                val count = (sampleRate * noteDuration).toInt()
+            for ((idx, freq) in notes.withIndex()) {
+                val dur = durations[idx]
+                val count = (sampleRate * dur).toInt()
                 for (i in 0 until count) {
                     val t = i.toDouble() / sampleRate
-                    val envelope = Math.exp(-6.0 * t)
-                    val wave = Math.sin(2.0 * Math.PI * freq * t)
-                    samples[offset + i] = (envelope * wave * Short.MAX_VALUE * 0.8).toInt().toShort()
+                    val progress = t / dur
+                    // Punchy: tiny linear attack, then exponential decay
+                    val env = (if (progress < 0.015) progress / 0.015 else 1.0) *
+                               Math.exp(-5.0 * progress)
+                    // Warm tone: fundamental + 2nd + 3rd harmonic
+                    val wave = Math.sin(2.0 * Math.PI * freq * t)        * 0.65 +
+                               Math.sin(2.0 * Math.PI * freq * 2.0 * t) * 0.22 +
+                               Math.sin(2.0 * Math.PI * freq * 3.0 * t) * 0.10 +
+                               Math.sin(2.0 * Math.PI * freq * 4.0 * t) * 0.03
+                    samples[offset + i] = (env * wave * Short.MAX_VALUE * 0.85).toInt().toShort()
                 }
                 offset += count
             }
@@ -352,7 +376,7 @@ fun playSuccessSound() {
 
             audioTrack.write(samples, 0, totalSamples)
             audioTrack.play()
-            Thread.sleep((noteDuration * notes.size * 1000).toLong() + 200)
+            Thread.sleep((durations.sum() * 1000).toLong() + 150)
             audioTrack.release()
         } catch (_: Exception) {}
     }.start()
