@@ -293,3 +293,33 @@
 **Data needed:**
 - `hasCompletedOnboarding: Boolean` and `userName: String` in DataStore.
 - `userName` from DataStore should pre-fill the name input in role-play scenarios that ask for the child's name.
+
+---
+
+## #16 · Refactor: Split Large Screen Files into Smaller Composables
+
+**Priority:** Low — nothing is broken, but the files are large enough that finding and editing a specific component requires scrolling through a lot of unrelated code.
+
+**Current problem files:**
+
+| File | Lines | Issue |
+|------|-------|-------|
+| `QuizScreen.kt` | 738 | `QuizResultsScreen` (226 lines) is a full screen crammed into the same file as `QuizScreen` |
+| `RolePlayScreen.kt` | 693 | `ConversationBubble` (250 lines) has a word-detail dialog baked inline; `ConversationMessage` data class lives here instead of in models |
+
+**Specific splits to make:**
+
+*QuizScreen.kt → 3 files:*
+- `QuizScreen.kt` — keep only the main `QuizScreen` composable and `QuizOptionButton`
+- `FeedbackCard.kt` — move `FeedbackCard` composable here
+- `QuizResultsScreen.kt` — move `QuizResultsScreen` composable here (it is effectively a separate screen)
+- Move `playWrongSound()` and `playSuccessSound()` into `tts/TtsManager.kt` or a new `util/SoundUtils.kt`
+
+*RolePlayScreen.kt → 2 files:*
+- `RolePlayScreen.kt` — keep main screen, `NameInputSection`, `ResponseOptionButton`
+- `ConversationBubble.kt` — move `ConversationBubble` composable here; extract the inline word-detail dialog into its own private `WordDetailDialog` composable within the same file
+- Move `ConversationMessage` data class to `data/models/ScenarioModels.kt` where the other models live
+
+**What NOT to do:** Do not change any composable signatures, ViewModel logic, or navigation — this is purely a file organisation change. All public function names stay the same.
+
+**Files affected:** `QuizScreen.kt`, `RolePlayScreen.kt`, `data/models/ScenarioModels.kt`, possibly new `FeedbackCard.kt`, `QuizResultsScreen.kt`, `ConversationBubble.kt`.
