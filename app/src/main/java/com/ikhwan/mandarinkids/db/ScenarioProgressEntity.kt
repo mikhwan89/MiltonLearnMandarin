@@ -8,5 +8,6 @@ data class ScenarioProgressEntity(
     @PrimaryKey val scenarioId: String,
     val stars: Int,
     val xp: Int,
-    val lastPlayedAt: Long = 0L
+    val lastPlayedAt: Long = 0L,
+    val speechRateOverride: Float? = null
 )

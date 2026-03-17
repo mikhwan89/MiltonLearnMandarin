@@ -23,6 +23,19 @@ class ProgressRepository private constructor(
 
     fun getAllProgress(): Flow<List<ScenarioProgressEntity>> = dao.getAll()
 
+    // ── Per-scenario speech rate ──────────────────────────────────────────
+
+    suspend fun getSpeechRateForScenario(scenarioId: String): Float? =
+        dao.getById(scenarioId).first()?.speechRateOverride
+
+    suspend fun saveSpeechRateForScenario(scenarioId: String, rate: Float) {
+        val current = dao.getById(scenarioId).first()
+        dao.upsert(
+            (current ?: ScenarioProgressEntity(scenarioId = scenarioId, stars = 0, xp = 0))
+                .copy(speechRateOverride = rate)
+        )
+    }
+
     // ── Room-backed write ────────────────────────────────────────────────
 
     /** Saves scenario progress. Returns XP gained (0 if no improvement). */

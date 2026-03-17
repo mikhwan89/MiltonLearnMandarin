@@ -106,3 +106,13 @@ data class QuizOption(
     val pinyin: String,
     val translation: String
 )
+
+// A single message in the role-play conversation history
+data class ConversationMessage(
+    val speaker: Speaker,
+    val textChinese: String,
+    val textPinyin: String,
+    val textEnglish: String,
+    val textIndonesian: String,
+    val pinyinWords: List<PinyinWord> = emptyList()
+)
