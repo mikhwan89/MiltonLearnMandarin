@@ -19,4 +19,7 @@ interface ProgressDao {
 
     @Upsert
     suspend fun upsert(entity: ScenarioProgressEntity)
+
+    @Query("DELETE FROM scenario_progress")
+    suspend fun deleteAll()
 }

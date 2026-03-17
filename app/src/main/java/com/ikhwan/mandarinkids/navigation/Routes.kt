@@ -3,6 +3,7 @@ package com.ikhwan.mandarinkids.navigation
 object Routes {
     const val HOME = "home"
     const val PRACTICE = "practice"
+    const val PARENT_DASHBOARD = "parent_dashboard"
     const val CATEGORY = "category/{categoryName}"
     const val FLASHCARD = "flashcard/{scenarioId}"
     const val ROLEPLAY = "roleplay/{scenarioId}"

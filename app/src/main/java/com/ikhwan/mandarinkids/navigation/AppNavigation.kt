@@ -17,6 +17,7 @@ import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.home.HomeScreen
 import com.ikhwan.mandarinkids.home.ScenarioListScreen
+import com.ikhwan.mandarinkids.parent.ParentDashboardScreen
 import com.ikhwan.mandarinkids.practice.PracticeScreen
 
 @Composable
@@ -35,12 +36,17 @@ fun MandarinKidsApp() {
                 onCategoryClick = { category ->
                     navController.navigate(Routes.category(category.name))
                 },
-                onPracticeClick = { navController.navigate(Routes.PRACTICE) }
+                onPracticeClick = { navController.navigate(Routes.PRACTICE) },
+                onParentClick = { navController.navigate(Routes.PARENT_DASHBOARD) }
             )
         }
 
         composable(Routes.PRACTICE) {
             PracticeScreen(onBack = { navController.popBackStack() })
+        }
+
+        composable(Routes.PARENT_DASHBOARD) {
+            ParentDashboardScreen(onBack = { navController.popBackStack() })
         }
 
         composable(

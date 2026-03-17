@@ -4,11 +4,13 @@ import android.content.Context
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import java.security.MessageDigest
 import java.util.Calendar
 
 class ProgressRepository private constructor(
     private val dao: ProgressDao,
     private val masteredWordDao: MasteredWordDao,
+    private val rewardDao: MilestoneRewardDao,
     private val context: Context
 ) {
 
@@ -18,6 +20,8 @@ class ProgressRepository private constructor(
 
     fun getStars(scenarioId: String): Flow<Int> =
         dao.getById(scenarioId).map { it?.stars ?: 0 }
+
+    fun getAllProgress(): Flow<List<ScenarioProgressEntity>> = dao.getAll()
 
     // ── Room-backed write ────────────────────────────────────────────────
 
@@ -39,7 +43,6 @@ class ProgressRepository private constructor(
         // Check scenario-based badges
         if (newStars >= 1) awardBadge(Badge.FIRST_STEPS.id)
         if (newStars >= 3) awardBadge(Badge.PERFECT_SCORE.id)
-        // All Stars: every scenario has 3 stars
         val allProgress = dao.getAll().first()
         if (allProgress.isNotEmpty() && allProgress.all { it.stars >= 3 }) {
             awardBadge(Badge.ALL_STARS.id)
@@ -52,7 +55,6 @@ class ProgressRepository private constructor(
 
     suspend fun markWordMastered(entity: MasteredWordEntity) {
         masteredWordDao.upsert(entity)
-        // Word Collector badge: 10+ mastered words
         val count = masteredWordDao.getTotalCount().first()
         if (count >= 10) awardBadge(Badge.WORD_COLLECTOR.id)
     }
@@ -67,12 +69,25 @@ class ProgressRepository private constructor(
     fun getDueWordCount(now: Long = System.currentTimeMillis()): Flow<Int> =
         masteredWordDao.getDueCount(now)
 
+    // ── Milestone Rewards ─────────────────────────────────────────────────
+
+    suspend fun addReward(type: MilestoneType, targetValue: Int, rewardText: String) =
+        rewardDao.insert(
+            MilestoneReward(
+                milestoneType = type.name,
+                targetValue = targetValue,
+                rewardText = rewardText
+            )
+        )
+
+    fun getAllRewards(): Flow<List<MilestoneReward>> = rewardDao.getAll()
+
+    suspend fun claimReward(id: Int) = rewardDao.claim(id)
+
+    suspend fun deleteReward(id: Int) = rewardDao.delete(id)
+
     // ── Word of the Day ───────────────────────────────────────────────────
 
-    /**
-     * Returns today's word of the day from [words]. Prefers box 1–2 words.
-     * Picks once per calendar day and stores the selection in SharedPreferences.
-     */
     fun getOrPickWordOfDay(words: List<MasteredWordEntity>): MasteredWordEntity? {
         if (words.isEmpty()) return null
         val p = prefs()
@@ -84,7 +99,6 @@ class ProgressRepository private constructor(
             return words.firstOrNull { it.chinese == storedChinese }
         }
 
-        // Pick new word — prefer not-yet-mastered (box 1 or 2)
         val candidates = words.filter { it.boxLevel <= 2 }.ifEmpty { words }
         val picked = candidates.random()
         p.edit()
@@ -99,7 +113,6 @@ class ProgressRepository private constructor(
     fun getEarnedBadges(): Set<String> =
         prefs().getStringSet(KEY_EARNED_BADGES, emptySet()) ?: emptySet()
 
-    /** Awards a badge. Returns true if it was newly earned. */
     fun awardBadge(id: String): Boolean {
         val p = prefs()
         val current = p.getStringSet(KEY_EARNED_BADGES, emptySet())?.toMutableSet() ?: mutableSetOf()
@@ -107,6 +120,30 @@ class ProgressRepository private constructor(
         current.add(id)
         p.edit().putStringSet(KEY_EARNED_BADGES, current).apply()
         return true
+    }
+
+    // ── PIN ───────────────────────────────────────────────────────────────
+
+    fun isPinSet(): Boolean = prefs().getString(KEY_PIN_HASH, "").orEmpty().isNotEmpty()
+
+    fun verifyPin(pin: String): Boolean =
+        sha256(pin) == prefs().getString(KEY_PIN_HASH, "")
+
+    fun setPin(pin: String) {
+        prefs().edit().putString(KEY_PIN_HASH, sha256(pin)).apply()
+    }
+
+    private fun sha256(input: String): String {
+        val bytes = MessageDigest.getInstance("SHA-256").digest(input.toByteArray())
+        return bytes.joinToString("") { "%02x".format(it) }
+    }
+
+    // ── Indonesian toggle ─────────────────────────────────────────────────
+
+    fun getShowIndonesian(): Boolean = prefs().getBoolean(KEY_SHOW_INDONESIAN, true)
+
+    fun setShowIndonesian(value: Boolean) {
+        prefs().edit().putBoolean(KEY_SHOW_INDONESIAN, value).apply()
     }
 
     // ── SharedPreferences-backed (streak) ────────────────────────────────
@@ -128,11 +165,26 @@ class ProgressRepository private constructor(
             .putInt(KEY_STREAK, newStreak)
             .apply()
 
-        // Streak badges
         if (newStreak >= 3) awardBadge(Badge.STREAK_STARTER.id)
         if (newStreak >= 7) awardBadge(Badge.STREAK_CHAMPION.id)
 
         return newStreak
+    }
+
+    // ── Reset all progress ────────────────────────────────────────────────
+
+    suspend fun resetAllProgress() {
+        dao.deleteAll()
+        masteredWordDao.deleteAll()
+        rewardDao.deleteAll()
+        prefs().edit()
+            .remove(KEY_STREAK)
+            .remove(KEY_LAST_OPEN_DATE)
+            .remove(KEY_EARNED_BADGES)
+            .remove(KEY_WORD_OF_DAY_DATE)
+            .remove(KEY_WORD_OF_DAY_CHINESE)
+            // PIN and Indonesian preference intentionally kept
+            .apply()
     }
 
     private fun prefs() = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -155,6 +207,8 @@ class ProgressRepository private constructor(
         private const val KEY_EARNED_BADGES = "earned_badges"
         private const val KEY_WORD_OF_DAY_DATE = "word_of_day_date"
         private const val KEY_WORD_OF_DAY_CHINESE = "word_of_day_chinese"
+        private const val KEY_PIN_HASH = "parent_pin_hash"
+        private const val KEY_SHOW_INDONESIAN = "show_indonesian"
 
         @Volatile private var _instance: ProgressRepository? = null
 
@@ -164,6 +218,7 @@ class ProgressRepository private constructor(
                 _instance ?: ProgressRepository(
                     dao = db.progressDao(),
                     masteredWordDao = db.masteredWordDao(),
+                    rewardDao = db.milestoneRewardDao(),
                     context = context.applicationContext
                 ).also { _instance = it }
             }

@@ -211,7 +211,7 @@
 
 ---
 
-## #12 · Improvement: Parent Dashboard
+## ✅ #12 · Improvement: Parent Dashboard
 
 **What:** A locked section (PIN or hold-to-unlock) on the Home screen that shows a parent-friendly progress summary — which scenarios have been completed, star ratings, XP history, and time spent in the app. Parents can also set custom rewards tied to milestones so the child can see exactly what they are working towards.
 

@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
@@ -33,7 +34,8 @@ import com.ikhwan.mandarinkids.tts.rememberTtsManager
 @Composable
 fun HomeScreen(
     onCategoryClick: (ScenarioCategory) -> Unit,
-    onPracticeClick: () -> Unit
+    onPracticeClick: () -> Unit,
+    onParentClick: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val scenarios = remember { JsonScenarioRepository.getAll() }
@@ -80,6 +82,9 @@ fun HomeScreen(
                 actions = {
                     IconButton(onClick = onPracticeClick) {
                         Icon(Icons.Default.Star, contentDescription = "Practice Mode")
+                    }
+                    IconButton(onClick = onParentClick) {
+                        Icon(Icons.Default.Lock, contentDescription = "Parent Dashboard")
                     }
                 }
             )
