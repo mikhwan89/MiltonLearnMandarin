@@ -5,7 +5,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -30,7 +29,6 @@ import com.ikhwan.mandarinkids.tts.rememberTtsManager
 @Composable
 fun HomeScreen(
     onCategoryClick: (ScenarioCategory) -> Unit,
-    onParentClick: () -> Unit = {},
     showWordOfDayOnLaunch: Boolean = false,
     onWordOfDayShown: () -> Unit = {}
 ) {
@@ -75,11 +73,6 @@ fun HomeScreen(
                         )
                     }
                 },
-                actions = {
-                    IconButton(onClick = onParentClick) {
-                        Icon(Icons.Default.BarChart, contentDescription = "Parent Dashboard")
-                    }
-                }
             )
         }
     ) { padding ->

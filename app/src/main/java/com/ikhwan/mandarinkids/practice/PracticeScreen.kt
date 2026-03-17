@@ -1,8 +1,5 @@
 package com.ikhwan.mandarinkids.practice
 
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -12,7 +9,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -35,19 +31,13 @@ fun PracticeScreen(
     val vm: PracticeSessionViewModel = viewModel(factory = PracticeSessionViewModel.factory(repo))
     val tts: TtsManager = rememberTtsManager()
 
-    // Auto-play TTS when card is flipped to back
+    // Auto-play TTS when a new card appears
     val currentWord = vm.currentWord
-    LaunchedEffect(vm.isFlipped, vm.currentIndex) {
-        if (vm.isFlipped && currentWord != null) {
+    LaunchedEffect(vm.currentIndex) {
+        if (currentWord != null) {
             tts.speak(currentWord.chinese)
         }
     }
-
-    val rotation by animateFloatAsState(
-        targetValue = if (vm.isFlipped) 180f else 0f,
-        animationSpec = tween(durationMillis = 400),
-        label = "cardFlip"
-    )
 
     Scaffold(
         topBar = {
@@ -134,6 +124,28 @@ fun PracticeScreen(
             else -> {
                 val word = vm.currentWord ?: return@Scaffold
 
+                // Build 4 options: correct + 3 distractors, reshuffled per card
+                val options = remember(vm.currentIndex) {
+                    val distractors = vm.allWords
+                        .filter { it.english != word.english }
+                        .shuffled()
+                        .take(3)
+                        .map { it.english }
+                    (distractors + word.english).shuffled()
+                }
+
+                var selectedAnswer by remember(vm.currentIndex) { mutableStateOf<String?>(null) }
+                val isAnswered = selectedAnswer != null
+                val answeredCorrectly = selectedAnswer == word.english
+
+                // Auto-advance 1.5 s after selection
+                LaunchedEffect(selectedAnswer) {
+                    if (selectedAnswer != null) {
+                        kotlinx.coroutines.delay(1500)
+                        if (answeredCorrectly) vm.markRemembered() else vm.markForgotten()
+                    }
+                }
+
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
@@ -152,89 +164,55 @@ fun PracticeScreen(
                         text = "${vm.deck.size} card${if (vm.deck.size != 1) "s" else ""} remaining",
                         fontSize = 13.sp,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(bottom = 20.dp)
+                        modifier = Modifier.padding(bottom = 16.dp)
                     )
 
-                    Text(
-                        text = if (!vm.isFlipped) "Tap card to hear & see translation" else "Tap card to flip back",
-                        fontSize = 13.sp,
-                        color = MaterialTheme.colorScheme.secondary,
-                        modifier = Modifier.padding(bottom = 12.dp)
-                    )
-
-                    // ── Flip card ─────────────────────────────────────────
+                    // ── Word card ──────────────────────────────────────────
                     Card(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(280.dp)
-                            .graphicsLayer { rotationY = rotation }
-                            .clickable { vm.flip() },
+                            .height(200.dp),
                         shape = RoundedCornerShape(24.dp),
                         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
                         colors = CardDefaults.cardColors(
-                            containerColor = if (rotation <= 90f)
-                                MaterialTheme.colorScheme.primaryContainer
-                            else
-                                MaterialTheme.colorScheme.secondaryContainer
+                            containerColor = MaterialTheme.colorScheme.primaryContainer
                         )
                     ) {
                         Box(
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ) {
-                            if (rotation <= 90f) {
-                                // Front — Chinese character only
-                                Column(
-                                    horizontalAlignment = Alignment.CenterHorizontally,
-                                    verticalArrangement = Arrangement.Center,
-                                    modifier = Modifier.padding(24.dp)
-                                ) {
-                                    Text(
-                                        text = word.chinese,
-                                        fontSize = 72.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        textAlign = TextAlign.Center
-                                    )
-                                    Spacer(modifier = Modifier.height(8.dp))
-                                    Text(
-                                        text = "Tap to reveal",
-                                        fontSize = 14.sp,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                        textAlign = TextAlign.Center
-                                    )
-                                }
-                            } else {
-                                // Back — pinyin + translations (counter-rotate to un-mirror)
-                                Column(
-                                    modifier = Modifier
-                                        .graphicsLayer { rotationY = 180f }
-                                        .padding(24.dp),
-                                    horizontalAlignment = Alignment.CenterHorizontally,
-                                    verticalArrangement = Arrangement.Center
-                                ) {
-                                    Text(
-                                        text = word.chinese,
-                                        fontSize = 36.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        textAlign = TextAlign.Center,
-                                        modifier = Modifier.padding(bottom = 6.dp)
-                                    )
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.Center,
+                                modifier = Modifier.padding(16.dp)
+                            ) {
+                                Text(
+                                    text = word.chinese,
+                                    fontSize = if (isAnswered) 48.sp else 72.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    textAlign = TextAlign.Center
+                                )
+                                if (isAnswered) {
+                                    Spacer(modifier = Modifier.height(6.dp))
                                     Text(
                                         text = ToneUtils.coloredAnnotatedPinyin(word.pinyin),
-                                        fontSize = 26.sp,
+                                        fontSize = 22.sp,
                                         fontWeight = FontWeight.SemiBold,
-                                        textAlign = TextAlign.Center,
-                                        modifier = Modifier.padding(bottom = 10.dp)
-                                    )
-                                    Text(
-                                        text = "🇬🇧  ${word.english}",
-                                        fontSize = 18.sp,
                                         textAlign = TextAlign.Center
                                     )
                                     Spacer(modifier = Modifier.height(4.dp))
                                     Text(
                                         text = "🇮🇩  ${word.indonesian}",
-                                        fontSize = 16.sp,
+                                        fontSize = 14.sp,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        textAlign = TextAlign.Center
+                                    )
+                                } else {
+                                    Spacer(modifier = Modifier.height(8.dp))
+                                    Text(
+                                        text = "Which translation is correct?",
+                                        fontSize = 14.sp,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                                         textAlign = TextAlign.Center
                                     )
@@ -243,57 +221,61 @@ fun PracticeScreen(
                         }
                     }
 
-                    // ── Note bubble (below card, fades in on flip) ────────
-                    if (vm.isFlipped && word.note != null) {
+                    // ── Note bubble (revealed after answering) ─────────────
+                    if (isAnswered && word.note != null) {
                         Surface(
                             color = MaterialTheme.colorScheme.tertiaryContainer,
                             shape = RoundedCornerShape(16.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(top = 12.dp)
+                                .padding(top = 10.dp)
                         ) {
                             Text(
                                 text = "💡 ${word.note}",
-                                fontSize = 14.sp,
+                                fontSize = 13.sp,
                                 color = MaterialTheme.colorScheme.onTertiaryContainer,
                                 textAlign = TextAlign.Center,
-                                lineHeight = 20.sp,
-                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+                                lineHeight = 19.sp,
+                                modifier = Modifier.padding(horizontal = 14.dp, vertical = 10.dp)
                             )
                         }
                     }
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    // ── Action buttons (only after flip) ──────────────────
-                    if (vm.isFlipped) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    // ── 4 multiple-choice options ──────────────────────────
+                    options.forEach { option ->
+                        val containerColor = when {
+                            !isAnswered -> MaterialTheme.colorScheme.surface
+                            option == word.english -> Color(0xFF4CAF50)
+                            option == selectedAnswer -> Color(0xFFF44336)
+                            else -> MaterialTheme.colorScheme.surfaceVariant
+                        }
+                        val contentColor = when {
+                            !isAnswered -> MaterialTheme.colorScheme.onSurface
+                            option == word.english || option == selectedAnswer -> Color.White
+                            else -> MaterialTheme.colorScheme.onSurfaceVariant
+                        }
+                        Button(
+                            onClick = { if (!isAnswered) selectedAnswer = option },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 4.dp)
+                                .height(52.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = containerColor,
+                                contentColor = contentColor,
+                                disabledContainerColor = containerColor,
+                                disabledContentColor = contentColor
+                            ),
+                            enabled = !isAnswered,
+                            shape = RoundedCornerShape(12.dp)
                         ) {
-                            OutlinedButton(
-                                onClick = { vm.markForgotten() },
-                                modifier = Modifier.weight(1f).height(60.dp),
-                                colors = ButtonDefaults.outlinedButtonColors(
-                                    contentColor = Color(0xFFF44336)
-                                )
-                            ) {
-                                Text("✗  Forgot it", fontSize = 15.sp)
-                            }
-
-                            Button(
-                                onClick = { vm.markRemembered() },
-                                modifier = Modifier.weight(1f).height(60.dp),
-                                colors = ButtonDefaults.buttonColors(
-                                    containerColor = Color(0xFF4CAF50)
-                                )
-                            ) {
-                                Text("✓  Remember it!", fontSize = 15.sp)
-                            }
+                            Text(option, fontSize = 15.sp, fontWeight = FontWeight.Medium)
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(12.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
 
                     TextButton(onClick = { vm.finishEarly() }) {
                         Text("Finish session early", fontSize = 13.sp)

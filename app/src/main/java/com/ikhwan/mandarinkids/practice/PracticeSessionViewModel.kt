@@ -31,6 +31,9 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
     var isDueSession by mutableStateOf(false)
         private set
 
+    var allWords by mutableStateOf<List<MasteredWordEntity>>(emptyList())
+        private set
+
     val currentWord: MasteredWordEntity?
         get() = if (deck.isNotEmpty() && currentIndex < deck.size) deck[currentIndex] else null
 
@@ -39,6 +42,7 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
             val now = System.currentTimeMillis()
             val allWords = repository.getAllMasteredWords().first()
                 .distinctBy { it.chinese }
+            this@PracticeSessionViewModel.allWords = allWords
 
             val dueWords = allWords.filter { it.nextReviewDate <= now }
 

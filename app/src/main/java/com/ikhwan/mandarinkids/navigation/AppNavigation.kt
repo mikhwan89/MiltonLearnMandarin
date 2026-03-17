@@ -60,8 +60,8 @@ fun MandarinKidsApp() {
                         }
                     )
                     NavigationBarItem(
-                        icon = { Icon(Icons.Default.Star, contentDescription = "Practice") },
-                        label = { Text("Practice") },
+                        icon = { Icon(Icons.Default.Star, contentDescription = "Flashcard") },
+                        label = { Text("Flashcard") },
                         selected = currentRoute == Routes.PRACTICE,
                         onClick = {
                             navController.navigate(Routes.PRACTICE) {
@@ -96,7 +96,6 @@ fun MandarinKidsApp() {
                     onCategoryClick = { category ->
                         navController.navigate(Routes.category(category.name))
                     },
-                    onParentClick = { navController.navigate(Routes.PARENT_DASHBOARD) },
                     showWordOfDayOnLaunch = !wordOfDayShownThisSession,
                     onWordOfDayShown = { wordOfDayShownThisSession = true }
                 )

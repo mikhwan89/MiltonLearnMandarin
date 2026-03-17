@@ -16,6 +16,8 @@ import androidx.compose.ui.unit.sp
 import com.ikhwan.mandarinkids.ProgressManager
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.db.Badge
+import com.ikhwan.mandarinkids.db.MilestoneReward
+import com.ikhwan.mandarinkids.db.MilestoneType
 import com.ikhwan.mandarinkids.db.ProgressRepository
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -30,6 +32,11 @@ fun ProgressScreen() {
     val masteredCount by repo.getMasteredWordCount().collectAsState(initial = 0)
     val allProgress by repo.getAllProgress().collectAsState(initial = emptyList())
     val progressMap = remember(allProgress) { allProgress.associateBy { it.scenarioId } }
+    val allRewards by repo.getAllRewards().collectAsState(initial = emptyList())
+
+    val perfectScenarioCount = remember(progressMap) {
+        progressMap.values.count { it.stars == 3 }
+    }
 
     val earnedBadgeList = remember(masteredCount, streak) {
         val earned = repo.getEarnedBadges()
@@ -166,6 +173,44 @@ fun ProgressScreen() {
                 }
             }
 
+            // ── Milestone Rewards ─────────────────────────────────────────
+            item {
+                Text(
+                    "🎁 Milestone Rewards",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.padding(top = 8.dp)
+                )
+            }
+
+            if (allRewards.isEmpty()) {
+                item {
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.surfaceVariant
+                        )
+                    ) {
+                        Text(
+                            text = "No rewards set yet. Ask a parent to add one in the Parent Dashboard! 🎯",
+                            fontSize = 14.sp,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(16.dp)
+                        )
+                    }
+                }
+            } else {
+                items(allRewards, key = { it.id }) { reward ->
+                    MilestoneRewardCard(
+                        reward = reward,
+                        currentProgress = when (MilestoneType.entries.find { it.name == reward.milestoneType }) {
+                            MilestoneType.PERFECT_SCENARIOS -> perfectScenarioCount
+                            null -> 0
+                        }
+                    )
+                }
+            }
+
             // ── Scenario stars ────────────────────────────────────────────
             item {
                 Text(
@@ -213,6 +258,68 @@ private fun BadgeCard(badge: Badge, modifier: Modifier = Modifier) {
                 fontWeight = FontWeight.Medium,
                 color = MaterialTheme.colorScheme.onTertiaryContainer
             )
+        }
+    }
+}
+
+@Composable
+private fun MilestoneRewardCard(reward: MilestoneReward, currentProgress: Int) {
+    val milestoneType = MilestoneType.entries.find { it.name == reward.milestoneType }
+    val progress = (currentProgress.toFloat() / reward.targetValue).coerceIn(0f, 1f)
+    val isComplete = currentProgress >= reward.targetValue
+
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = if (reward.isClaimed)
+                MaterialTheme.colorScheme.surfaceVariant
+            else if (isComplete)
+                MaterialTheme.colorScheme.tertiaryContainer
+            else
+                MaterialTheme.colorScheme.surface
+        )
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(if (reward.isClaimed) "✅" else if (isComplete) "🎉" else "🎯", fontSize = 28.sp)
+                Spacer(modifier = Modifier.width(12.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = reward.rewardText,
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                    Text(
+                        text = "${milestoneType?.label ?: reward.milestoneType}: $currentProgress / ${reward.targetValue}",
+                        fontSize = 12.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+                if (reward.isClaimed) {
+                    Surface(
+                        color = MaterialTheme.colorScheme.primary,
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Text(
+                            "Claimed!",
+                            fontSize = 11.sp,
+                            color = MaterialTheme.colorScheme.onPrimary,
+                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                        )
+                    }
+                }
+            }
+            if (!reward.isClaimed) {
+                Spacer(modifier = Modifier.height(10.dp))
+                LinearProgressIndicator(
+                    progress = { progress },
+                    modifier = Modifier.fillMaxWidth(),
+                    color = if (isComplete) Color(0xFF4CAF50) else MaterialTheme.colorScheme.primary
+                )
+            }
         }
     }
 }
