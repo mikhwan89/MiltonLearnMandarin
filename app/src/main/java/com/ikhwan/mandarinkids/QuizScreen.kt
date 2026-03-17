@@ -276,8 +276,9 @@ fun QuizOptionButton(
         else -> MaterialTheme.colorScheme.onSurface
     }
 
+    val isCorrectAndSelected = showFeedback && isSelected && isCorrect
     val popScale by animateFloatAsState(
-        targetValue = if (showFeedback && isCorrect) 1.04f else 1f,
+        targetValue = if (isCorrectAndSelected) 1.08f else 1f,
         animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy),
         label = "correctPop"
     )
@@ -295,6 +296,7 @@ fun QuizOptionButton(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
+                .heightIn(min = 72.dp)
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {

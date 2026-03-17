@@ -119,7 +119,7 @@ val containerColor by animateColorAsState(
 
 ## 🧠 Quiz Screen Polish
 
-### #11 — Scale pop animation on correct answer
+### ✅ #11 — Scale pop animation on correct answer *(done)*
 **Files:** `QuizScreen.kt` (`QuizOptionButton`)
 
 On correct selection, animate scale 1.0 → 1.08 → 1.0:
@@ -133,7 +133,7 @@ Modifier.graphicsLayer { scaleX = scale; scaleY = scale }
 
 ---
 
-### #12 — Enforce min height on quiz option buttons + larger Chinese text
+### ✅ #12 — Enforce min height on quiz option buttons + larger Chinese text *(done)*
 **Files:** `QuizScreen.kt` (`QuizOptionButton`)
 
 Add `Modifier.heightIn(min = 72.dp)` on each option button.
