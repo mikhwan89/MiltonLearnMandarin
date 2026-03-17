@@ -349,6 +349,12 @@
           "indonesian": "Matematika agak sulit, tapi saya akan berusaha.",
           "pinyinWords": [
             {
+              "pinyin": "shùxué",
+              "chinese": "数学",
+              "english": "maths",
+              "indonesian": "matematika"
+            },
+            {
               "pinyin": "yǒudiǎn nán",
               "chinese": "有点难",
               "english": "a bit hard / difficult",
@@ -361,10 +367,29 @@
               "indonesian": "tapi"
             },
             {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "huì",
+              "chinese": "会",
+              "english": "will",
+              "indonesian": "akan"
+            },
+            {
               "pinyin": "nǔlì",
               "chinese": "努力",
               "english": "work hard / try hard",
               "indonesian": "berusaha keras"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(softening particle)",
+              "indonesian": "(partikel penegas)",
+              "note": "的 at the end of a sentence softens it, like saying 'I will, I promise!'"
             }
           ],
           "isCorrect": true
@@ -405,10 +430,23 @@
           "indonesian": "pasti"
         },
         {
+          "pinyin": "huì",
+          "chinese": "会",
+          "english": "will",
+          "indonesian": "akan"
+        },
+        {
           "pinyin": "yuèláiyuè hǎo",
           "chinese": "越来越好",
           "english": "better and better",
           "indonesian": "semakin bagus"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(softening particle)",
+          "indonesian": "(partikel penegas)",
+          "note": "的 at the end of a sentence softens it, like saying 'I will, I promise!'"
         }
       ],
       "responseType": "LISTEN_ONLY",

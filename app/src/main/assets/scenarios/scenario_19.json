@@ -54,6 +54,12 @@
           "indonesian": "Saya paling suka bermain sepak bola!",
           "pinyinWords": [
             {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
               "pinyin": "zuì xǐhuān",
               "chinese": "最喜欢",
               "english": "like the most / favourite",
@@ -81,6 +87,12 @@
           "indonesian": "Saya paling suka berenang!",
           "pinyinWords": [
             {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
               "pinyin": "zuì xǐhuān",
               "chinese": "最喜欢",
               "english": "like the most / favourite",
@@ -101,6 +113,12 @@
           "english": "I like playing basketball!",
           "indonesian": "Saya suka bermain basket!",
           "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
             {
               "pinyin": "xǐhuān",
               "chinese": "喜欢",
@@ -180,6 +198,12 @@
           "indonesian": "Saya sudah berlatih agak lama, lumayan!",
           "pinyinWords": [
             {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
               "pinyin": "liàn le",
               "chinese": "练了",
               "english": "practiced",
@@ -207,6 +231,12 @@
           "indonesian": "Saya masih belajar, tapi saya sangat berusaha!",
           "pinyinWords": [
             {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
               "pinyin": "hái zài xué",
               "chinese": "还在学",
               "english": "still learning",
@@ -217,6 +247,12 @@
               "chinese": "但是",
               "english": "but",
               "indonesian": "tapi"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
             },
             {
               "pinyin": "hěn nǔlì",
@@ -303,6 +339,12 @@
               "indonesian": "Iya / Benar"
             },
             {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
               "pinyin": "měitiān",
               "chinese": "每天",
               "english": "every day",
@@ -324,6 +366,12 @@
           "indonesian": "Saya sering olahraga, tapi tidak setiap hari.",
           "pinyinWords": [
             {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
               "pinyin": "jīngcháng",
               "chinese": "经常",
               "english": "often / frequently",
@@ -334,6 +382,12 @@
               "chinese": "运动",
               "english": "exercise",
               "indonesian": "olahraga"
+            },
+            {
+              "pinyin": "dàn",
+              "chinese": "但",
+              "english": "but",
+              "indonesian": "tapi"
             },
             {
               "pinyin": "bù shì měitiān",

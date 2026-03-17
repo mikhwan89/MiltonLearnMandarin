@@ -51,6 +51,18 @@
           "indonesian": "apa"
         },
         {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we / us",
+          "indonesian": "kita"
+        },
+        {
+          "pinyin": "yǒu",
+          "chinese": "有",
+          "english": "have / there is",
+          "indonesian": "punya / ada"
+        },
+        {
           "pinyin": "mǐfàn",
           "chinese": "米饭",
           "english": "rice",
@@ -171,6 +183,18 @@
           "chinese": "什么菜",
           "english": "what dish",
           "indonesian": "lauk apa"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "yǒu",
+          "chinese": "有",
+          "english": "have / there is",
+          "indonesian": "ada"
         },
         {
           "pinyin": "chǎo jīdàn",

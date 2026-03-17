@@ -405,6 +405,13 @@
           "chinese": "好朋友",
           "english": "good friends",
           "indonesian": "teman baik"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "嘛",
+          "english": "after all / you know",
+          "indonesian": "kan / memang",
+          "note": "嘛 softens a statement — like saying 'you know!' or 'of course!'"
         }
       ],
       "responseType": "LISTEN_ONLY",

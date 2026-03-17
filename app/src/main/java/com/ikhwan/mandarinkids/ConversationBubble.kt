@@ -99,17 +99,15 @@ fun ConversationBubble(
                             fontSize = 18.sp,
                             modifier = Modifier.weight(1f)
                         )
-                        if (isCharacter) {
-                            IconButton(
-                                onClick = { tts.speak(message.textChinese, speechSpeed) },
-                                modifier = Modifier.size(32.dp)
-                            ) {
-                                Icon(
-                                    Icons.Default.PlayArrow,
-                                    contentDescription = "Play",
-                                    modifier = Modifier.size(20.dp)
-                                )
-                            }
+                        IconButton(
+                            onClick = { tts.speak(message.textChinese, speechSpeed) },
+                            modifier = Modifier.size(32.dp)
+                        ) {
+                            Icon(
+                                Icons.Default.PlayArrow,
+                                contentDescription = "Play pronunciation",
+                                modifier = Modifier.size(20.dp)
+                            )
                         }
                     }
 

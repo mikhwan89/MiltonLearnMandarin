@@ -118,6 +118,13 @@
               "chinese": "准备好",
               "english": "ready",
               "indonesian": "siap"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "done! / just happened",
+              "indonesian": "sudah terjadi",
+              "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'"
             }
           ],
           "isCorrect": true
@@ -268,16 +275,35 @@
           "indonesian": "Bu/Pak Guru, saya masih belajar, bisakah kamu mengajari saya?",
           "pinyinWords": [
             {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
               "pinyin": "hái zài xué",
               "chinese": "还在学",
               "english": "still learning",
               "indonesian": "masih belajar"
             },
             {
+              "pinyin": "nǐ",
+              "chinese": "你",
+              "english": "you",
+              "indonesian": "kamu"
+            },
+            {
               "pinyin": "néng jiāo wǒ",
               "chinese": "能教我",
               "english": "can teach me",
               "indonesian": "bisa mengajari saya"
+            },
+            {
+              "pinyin": "ma",
+              "chinese": "吗",
+              "english": "(yes/no question word)",
+              "indonesian": "(kata tanya ya/tidak)",
+              "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
             }
           ],
           "isCorrect": true

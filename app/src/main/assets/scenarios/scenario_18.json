@@ -90,6 +90,13 @@
               "chinese": "一起玩",
               "english": "play together",
               "indonesian": "bermain bersama"
+            },
+            {
+              "pinyin": "ba",
+              "chinese": "吧",
+              "english": "let's! / shall we?",
+              "indonesian": "ayo!",
+              "note": "吧 is used when you suggest something. '我们走吧！' means 'Let's go!'"
             }
           ],
           "isCorrect": true
@@ -193,16 +200,40 @@
           "indonesian": "Boleh! Petak umpet adalah permainan favoritku!",
           "pinyinWords": [
             {
+              "pinyin": "hǎo de",
+              "chinese": "好的",
+              "english": "okay / alright",
+              "indonesian": "baik"
+            },
+            {
               "pinyin": "zhuō mícáng",
               "chinese": "捉迷藏",
               "english": "hide and seek",
               "indonesian": "petak umpet"
             },
             {
+              "pinyin": "shì",
+              "chinese": "是",
+              "english": "is",
+              "indonesian": "adalah"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I / my",
+              "indonesian": "saya / milikku"
+            },
+            {
               "pinyin": "zuì xǐhuān",
               "chinese": "最喜欢",
               "english": "favourite / like the most",
               "indonesian": "paling suka / favorit"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(linking particle — like 's)",
+              "indonesian": "(partikel penghubung)"
             },
             {
               "pinyin": "yóuxì",
@@ -301,6 +332,12 @@
       "textEnglish": "Haha! You found me! You're so good! Let's play again next time!",
       "textIndonesian": "Haha! Kamu menemukan saya! Kamu hebat sekali! Main lagi lain kali!",
       "pinyinWords": [
+        {
+          "pinyin": "hā",
+          "chinese": "哈",
+          "english": "ha (laughing sound)",
+          "indonesian": "ha (suara tertawa)"
+        },
         {
           "pinyin": "Nǐ",
           "chinese": "你",

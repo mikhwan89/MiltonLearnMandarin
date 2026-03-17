@@ -87,6 +87,18 @@
           "indonesian": "Saya agak sedih hari ini.",
           "pinyinWords": [
             {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "jīntiān",
+              "chinese": "今天",
+              "english": "today",
+              "indonesian": "hari ini"
+            },
+            {
               "pinyin": "yǒudiǎn",
               "chinese": "有点",
               "english": "a bit / a little",
@@ -107,6 +119,18 @@
           "english": "I'm very excited today!",
           "indonesian": "Saya sangat antusias hari ini!",
           "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "jīntiān",
+              "chinese": "今天",
+              "english": "today",
+              "indonesian": "hari ini"
+            },
             {
               "pinyin": "hěn",
               "chinese": "很",
@@ -186,6 +210,12 @@
               "indonesian": "hari ini"
             },
             {
+              "pinyin": "yǒu",
+              "chinese": "有",
+              "english": "have / there is",
+              "indonesian": "ada"
+            },
+            {
               "pinyin": "tǐyù kè",
               "chinese": "体育课",
               "english": "PE class",
@@ -211,6 +241,12 @@
               "chinese": "妈妈",
               "english": "mom",
               "indonesian": "ibu"
+            },
+            {
+              "pinyin": "jīntiān",
+              "chinese": "今天",
+              "english": "today",
+              "indonesian": "hari ini"
             },
             {
               "pinyin": "lái jiē wǒ",
@@ -273,6 +309,12 @@
           "indonesian": "Ada! Saya kadang-kadang takut petir.",
           "pinyinWords": [
             {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
               "pinyin": "yǒushíhou",
               "chinese": "有时候",
               "english": "sometimes",
@@ -299,6 +341,12 @@
           "english": "I'm sometimes scared of the dark.",
           "indonesian": "Saya kadang-kadang takut gelap.",
           "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
             {
               "pinyin": "yǒushíhou",
               "chinese": "有时候",
@@ -333,6 +381,24 @@
               "indonesian": "tidak terlalu"
             },
             {
+              "pinyin": "hàipà",
+              "chinese": "害怕",
+              "english": "afraid / scared",
+              "indonesian": "takut"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
               "pinyin": "yǒnggǎn",
               "chinese": "勇敢",
               "english": "brave / courageous",
@@ -359,6 +425,18 @@
           "indonesian": "Kita semua"
         },
         {
+          "pinyin": "huì",
+          "chinese": "会",
+          "english": "will / will have",
+          "indonesian": "akan"
+        },
+        {
+          "pinyin": "yǒu",
+          "chinese": "有",
+          "english": "have / there is",
+          "indonesian": "punya / ada"
+        },
+        {
           "pinyin": "gèzhǒng",
           "chinese": "各种",
           "english": "all kinds of / various",
@@ -377,6 +455,18 @@
           "indonesian": "sedih"
         },
         {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(linking word)",
+          "indonesian": "(kata penghubung)"
+        },
+        {
+          "pinyin": "shíhou",
+          "chinese": "时候",
+          "english": "time / moment",
+          "indonesian": "waktu / saat"
+        },
+        {
           "pinyin": "lái zhǎo wǒ",
           "chinese": "来找我",
           "english": "come find me",
@@ -387,6 +477,13 @@
           "chinese": "聊天",
           "english": "chat / talk",
           "indonesian": "ngobrol / bicara"
+        },
+        {
+          "pinyin": "ba",
+          "chinese": "吧",
+          "english": "let's! / shall we?",
+          "indonesian": "ayo!",
+          "note": "吧 is used when you suggest something. '我们走吧！' means 'Let's go!'"
         }
       ],
       "responseType": "LISTEN_ONLY",

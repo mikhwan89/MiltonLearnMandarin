@@ -157,6 +157,18 @@
           "indonesian": "Saya punya ayah, ibu, dan seorang adik laki-laki.",
           "pinyinWords": [
             {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "yǒu",
+              "chinese": "有",
+              "english": "have",
+              "indonesian": "punya"
+            },
+            {
               "pinyin": "bàba",
               "chinese": "爸爸",
               "english": "dad",
@@ -167,6 +179,18 @@
               "chinese": "妈妈",
               "english": "mom",
               "indonesian": "ibu"
+            },
+            {
+              "pinyin": "hé",
+              "chinese": "和",
+              "english": "and",
+              "indonesian": "dan"
+            },
+            {
+              "pinyin": "yī gè",
+              "chinese": "一个",
+              "english": "one",
+              "indonesian": "satu"
             },
             {
               "pinyin": "dìdi",
@@ -184,6 +208,18 @@
           "indonesian": "Saya punya ayah, ibu, dan seorang adik perempuan.",
           "pinyinWords": [
             {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "yǒu",
+              "chinese": "有",
+              "english": "have",
+              "indonesian": "punya"
+            },
+            {
               "pinyin": "bàba",
               "chinese": "爸爸",
               "english": "dad",
@@ -194,6 +230,18 @@
               "chinese": "妈妈",
               "english": "mom",
               "indonesian": "ibu"
+            },
+            {
+              "pinyin": "hé",
+              "chinese": "和",
+              "english": "and",
+              "indonesian": "dan"
+            },
+            {
+              "pinyin": "yī gè",
+              "chinese": "一个",
+              "english": "one",
+              "indonesian": "satu"
             },
             {
               "pinyin": "mèimei",
@@ -267,10 +315,22 @@
           "indonesian": "Saya paling suka bermain dengan ibu!",
           "pinyinWords": [
             {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
               "pinyin": "zuì xǐhuān",
               "chinese": "最喜欢",
               "english": "like the most",
               "indonesian": "paling suka"
+            },
+            {
+              "pinyin": "hé",
+              "chinese": "和",
+              "english": "and / with",
+              "indonesian": "dan / bersama"
             },
             {
               "pinyin": "māma",
@@ -294,10 +354,22 @@
           "indonesian": "Saya paling suka bermain dengan ayah!",
           "pinyinWords": [
             {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
               "pinyin": "zuì xǐhuān",
               "chinese": "最喜欢",
               "english": "like the most",
               "indonesian": "paling suka"
+            },
+            {
+              "pinyin": "hé",
+              "chinese": "和",
+              "english": "and / with",
+              "indonesian": "dan / bersama"
             },
             {
               "pinyin": "bàba",
@@ -321,10 +393,22 @@
           "indonesian": "Saya paling suka bermain dengan adik-adik!",
           "pinyinWords": [
             {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
               "pinyin": "zuì xǐhuān",
               "chinese": "最喜欢",
               "english": "like the most",
               "indonesian": "paling suka"
+            },
+            {
+              "pinyin": "hé",
+              "chinese": "和",
+              "english": "and / with",
+              "indonesian": "dan / bersama"
             },
             {
               "pinyin": "dìdi mèimei",
