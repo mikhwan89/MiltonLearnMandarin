@@ -254,37 +254,52 @@ fun PracticeScreen(
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(12.dp))
 
-                    // ── 4 multiple-choice options ──────────────────────────
-                    options.forEach { option ->
-                        val containerColor = when {
-                            !isAnswered -> MaterialTheme.colorScheme.surface
-                            option == word.english -> Color(0xFF4CAF50)
-                            option == selectedAnswer -> Color(0xFFF44336)
-                            else -> MaterialTheme.colorScheme.surfaceVariant
-                        }
-                        val contentColor = when {
-                            !isAnswered -> MaterialTheme.colorScheme.onSurface
-                            option == word.english || option == selectedAnswer -> Color.White
-                            else -> MaterialTheme.colorScheme.onSurfaceVariant
-                        }
-                        Button(
-                            onClick = { if (!isAnswered) selectedAnswer = option },
+                    // ── 4 multiple-choice options in a 2×2 grid ────────────
+                    val rows = options.chunked(2)
+                    rows.forEach { rowOptions ->
+                        Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(vertical = 4.dp)
-                                .height(52.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = containerColor,
-                                contentColor = contentColor,
-                                disabledContainerColor = containerColor,
-                                disabledContentColor = contentColor
-                            ),
-                            enabled = !isAnswered,
-                            shape = RoundedCornerShape(12.dp)
+                                .padding(vertical = 4.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
-                            Text(option, fontSize = 15.sp, fontWeight = FontWeight.Medium)
+                            rowOptions.forEach { option ->
+                                val containerColor = when {
+                                    !isAnswered -> MaterialTheme.colorScheme.surface
+                                    option == word.english -> Color(0xFF4CAF50)
+                                    option == selectedAnswer -> Color(0xFFF44336)
+                                    else -> MaterialTheme.colorScheme.surfaceVariant
+                                }
+                                val contentColor = when {
+                                    !isAnswered -> MaterialTheme.colorScheme.onSurface
+                                    option == word.english || option == selectedAnswer -> Color.White
+                                    else -> MaterialTheme.colorScheme.onSurfaceVariant
+                                }
+                                Button(
+                                    onClick = { if (!isAnswered) selectedAnswer = option },
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .height(64.dp),
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = containerColor,
+                                        contentColor = contentColor,
+                                        disabledContainerColor = containerColor,
+                                        disabledContentColor = contentColor
+                                    ),
+                                    enabled = !isAnswered,
+                                    shape = RoundedCornerShape(12.dp)
+                                ) {
+                                    Text(
+                                        option,
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.Medium,
+                                        textAlign = TextAlign.Center,
+                                        lineHeight = 18.sp
+                                    )
+                                }
+                            }
                         }
                     }
 
