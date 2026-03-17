@@ -221,6 +221,14 @@ fun PracticeScreen(
                         }
                     }
 
+                    // ── Hear again button ──────────────────────────────────
+                    OutlinedButton(
+                        onClick = { tts.speak(word.chinese) },
+                        modifier = Modifier.padding(top = 10.dp)
+                    ) {
+                        Text("🔊  Hear again", fontSize = 14.sp)
+                    }
+
                     // ── Note bubble (revealed after answering) ─────────────
                     if (isAnswered && word.note != null) {
                         Surface(

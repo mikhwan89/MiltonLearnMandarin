@@ -297,8 +297,13 @@ fun ScenarioCard(scenario: Scenario, stars: Int, onClick: () -> Unit) {
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = scenario.title,
-                    fontSize = 20.sp,
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold
+                )
+                Text(
+                    text = scenario.description,
+                    fontSize = 13.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 if (stars > 0) {
