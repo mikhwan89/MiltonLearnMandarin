@@ -6,6 +6,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -86,7 +87,7 @@ fun MandarinKidsApp() {
         NavHost(
             navController = navController,
             startDestination = Routes.HOME,
-            modifier = androidx.compose.ui.Modifier.padding(padding)
+            modifier = Modifier.padding(padding)
         ) {
 
             composable(Routes.HOME) {
