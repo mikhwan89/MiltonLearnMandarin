@@ -9,8 +9,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -271,6 +272,7 @@ fun RolePlayScreen(
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ConversationBubble(
     message: ConversationMessage,
@@ -334,7 +336,9 @@ fun ConversationBubble(
                 )
             ) {
                 Column(
-                    modifier = Modifier.padding(12.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(12.dp)
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically
@@ -365,11 +369,12 @@ fun ConversationBubble(
 
                     // Clickable pinyin words (tap = word detail, tone-coloured)
                     if (message.pinyinWords.isNotEmpty()) {
-                        LazyRow(
+                        FlowRow(
                             horizontalArrangement = Arrangement.spacedBy(4.dp),
+                            verticalArrangement = Arrangement.spacedBy(4.dp),
                             modifier = Modifier.padding(vertical = 4.dp)
                         ) {
-                            items(message.pinyinWords) { word ->
+                            message.pinyinWords.forEach { word ->
                                 val toneCol = ToneUtils.pinyinColor(word.pinyin)
                                 Text(
                                     text = word.pinyin,
