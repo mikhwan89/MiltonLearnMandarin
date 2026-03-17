@@ -31,7 +31,7 @@
 
 ---
 
-## #2 · Bug Fix: Pinyin Text Wrapping
+## #2 · Bug Fix: Pinyin Text Wrapping ✅ DONE
 
 **Problem:** Pinyin text in the dialogue/flashcard views overflows horizontally — the user has to scroll right to see the full pinyin. Mandarin characters and translation text wrap correctly; pinyin should behave the same way.
 
