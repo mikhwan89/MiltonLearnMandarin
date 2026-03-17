@@ -213,16 +213,31 @@
 
 ## #12 · Improvement: Parent Dashboard
 
-**What:** A locked section (PIN or hold-to-unlock) on the Home screen that shows a parent-friendly progress summary — which scenarios have been completed, star ratings, XP history, and time spent in the app.
+**What:** A locked section (PIN or hold-to-unlock) on the Home screen that shows a parent-friendly progress summary — which scenarios have been completed, star ratings, XP history, and time spent in the app. Parents can also set custom rewards tied to milestones so the child can see exactly what they are working towards.
 
 **Behaviour:**
+
+*Progress summary (parent view):*
 - Accessible via a small settings/parent icon on the Home screen.
 - Requires a 4-digit PIN to enter (set on first use).
 - Shows: per-scenario star rating, total XP, current level, daily streak, total sessions, total time spent.
 - Option to reset all progress (with confirmation).
 - Option to toggle Indonesian translations on/off globally (saves to DataStore).
 
+*Milestone rewards (parent sets, child sees):*
+- Inside the dashboard, a "Rewards" section lets the parent create reward promises tied to a specific milestone.
+- Each reward has: a milestone type (reach XP threshold / earn X stars on a scenario / complete X scenarios / hit a streak), the target value, and a free-text reward description (e.g. "Ice cream at your favourite shop!" or "New toy of your choice!").
+- Multiple rewards can be active at the same time.
+- Rewards are marked as "claimed" manually by the parent once delivered — this clears them from the child's view.
+
+*Child-facing reward banner:*
+- On the Home screen, below the XP/level display, a "My Rewards" section shows all active (unclaimed) reward cards.
+- Each card shows: the reward description the parent wrote, a progress bar or counter toward the milestone (e.g. "320 / 500 XP"), and a celebratory animation when the milestone is reached.
+- When a milestone is hit, the card glows/pulses and shows "You did it! Tell Mum/Dad to unlock your reward!" — the card stays visible until the parent marks it as claimed inside the dashboard.
+- Completed-but-unclaimed rewards are visually distinct (e.g. gold border) from in-progress ones.
+
 **Data needed:**
+- `MilestoneReward` Room entity: `id`, `milestoneType` (enum), `targetValue`, `rewardText`, `isClaimed`, `createdAt`.
 - Session duration needs to be tracked — record session start/end time in Room.
 - PIN stored in DataStore (hashed, not plaintext).
 
