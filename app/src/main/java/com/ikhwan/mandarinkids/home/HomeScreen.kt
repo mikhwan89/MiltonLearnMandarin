@@ -32,6 +32,7 @@ fun HomeScreen(
     val xp by repo.getTotalXp().collectAsState(initial = 0)
     val streak = remember { repo.getStreak() }
     val masteredCount by repo.getMasteredWordCount().collectAsState(initial = 0)
+    val dueCount by repo.getDueWordCount().collectAsState(initial = 0)
 
     // Only show categories that have at least one scenario
     val activeCategories = remember(scenarios) {
@@ -136,7 +137,8 @@ fun HomeScreen(
                                     fontWeight = FontWeight.SemiBold
                                 )
                                 Text(
-                                    "$masteredCount word${if (masteredCount != 1) "s" else ""} ready to review",
+                                    if (dueCount > 0) "$dueCount word${if (dueCount != 1) "s" else ""} due today"
+                                    else "$masteredCount word${if (masteredCount != 1) "s" else ""} in library",
                                     fontSize = 13.sp,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )

@@ -118,7 +118,7 @@
 
 ---
 
-## #6 · Feature: Spaced Repetition for Flashcards
+## ✅ #6 · Feature: Spaced Repetition for Flashcards
 
 **What:** Instead of showing flashcards in a fixed order, use a simple spaced repetition algorithm (like Leitner boxes) so words Milton struggles with come up more often, and words he knows well appear less frequently.
 

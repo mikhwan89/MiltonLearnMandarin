@@ -27,16 +27,28 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
         private set
     var showSummary by mutableStateOf(false)
         private set
+    /** True when the deck was built from due-today words rather than the full library. */
+    var isDueSession by mutableStateOf(false)
+        private set
 
     val currentWord: MasteredWordEntity?
         get() = if (deck.isNotEmpty() && currentIndex < deck.size) deck[currentIndex] else null
 
     init {
         viewModelScope.launch {
-            // Take a one-shot snapshot; deduplicate by Chinese character across scenarios
-            val words = repository.getAllMasteredWords().first()
+            val now = System.currentTimeMillis()
+            val allWords = repository.getAllMasteredWords().first()
                 .distinctBy { it.chinese }
-                .shuffled()
+
+            val dueWords = allWords.filter { it.nextReviewDate <= now }
+
+            val words = if (dueWords.isNotEmpty()) {
+                isDueSession = true
+                dueWords.shuffled()
+            } else {
+                allWords.shuffled()
+            }
+
             deck = words
             totalStartCount = words.size
             isLoading = false
@@ -47,20 +59,28 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
         isFlipped = !isFlipped
     }
 
-    /** Card was remembered — retire it for this session. */
+    /** Card was remembered — promote its box level and retire for this session. */
     fun markRemembered() {
+        val word = deck[currentIndex]
         val newDeck = deck.toMutableList().also { it.removeAt(currentIndex) }
         rememberedCount++
         deck = newDeck
         isFlipped = false
-        if (newDeck.isEmpty()) {
-            showSummary = true
-        } else {
-            currentIndex = if (currentIndex >= newDeck.size) 0 else currentIndex
+        if (newDeck.isEmpty()) showSummary = true
+        else currentIndex = if (currentIndex >= newDeck.size) 0 else currentIndex
+
+        viewModelScope.launch {
+            val newBox = (word.boxLevel + 1).coerceAtMost(5)
+            repository.markWordMastered(
+                word.copy(
+                    boxLevel = newBox,
+                    nextReviewDate = System.currentTimeMillis() + boxIntervalMs(newBox)
+                )
+            )
         }
     }
 
-    /** Card was forgotten — move it to the back of the queue. */
+    /** Card was forgotten — reset to box 1, due immediately, move to back of queue. */
     fun markForgotten() {
         val word = deck[currentIndex]
         val newDeck = deck.toMutableList().also {
@@ -70,6 +90,12 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
         deck = newDeck
         currentIndex = if (currentIndex >= newDeck.size) 0 else currentIndex
         isFlipped = false
+
+        viewModelScope.launch {
+            repository.markWordMastered(
+                word.copy(boxLevel = 1, nextReviewDate = 0L)
+            )
+        }
     }
 
     /** User chose to end the session early. */
@@ -78,6 +104,18 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
     }
 
     companion object {
+        /** Returns the review interval in milliseconds for the given box level. */
+        fun boxIntervalMs(box: Int): Long {
+            val days = when (box) {
+                1 -> 1L
+                2 -> 2L
+                3 -> 4L
+                4 -> 7L
+                else -> 14L
+            }
+            return days * 24 * 60 * 60 * 1000L
+        }
+
         fun factory(repository: ProgressRepository) = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T =

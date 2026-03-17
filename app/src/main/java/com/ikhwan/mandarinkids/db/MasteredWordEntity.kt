@@ -13,5 +13,9 @@ data class MasteredWordEntity(
     val english: String,
     val indonesian: String,
     val note: String?,
-    val masteredAt: Long = System.currentTimeMillis()
+    val masteredAt: Long = System.currentTimeMillis(),
+    /** Leitner box level 1–5. All words start at 1. */
+    val boxLevel: Int = 1,
+    /** Epoch millis when this word is next due for review. 0 = due immediately. */
+    val nextReviewDate: Long = 0L
 )

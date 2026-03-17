@@ -46,6 +46,12 @@ class ProgressRepository private constructor(
 
     fun getMasteredWordCount(): Flow<Int> = masteredWordDao.getTotalCount()
 
+    fun getDueWords(now: Long = System.currentTimeMillis()): Flow<List<MasteredWordEntity>> =
+        masteredWordDao.getDueWords(now)
+
+    fun getDueWordCount(now: Long = System.currentTimeMillis()): Flow<Int> =
+        masteredWordDao.getDueCount(now)
+
     // ── SharedPreferences-backed (streak is app-level, not per-scenario) ─
 
     fun getStreak(): Int = prefs().getInt(KEY_STREAK, 0)

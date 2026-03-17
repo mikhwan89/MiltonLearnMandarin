@@ -56,7 +56,8 @@ fun PracticeScreen(
                         Text("Practice Mode 复习", fontSize = 16.sp)
                         if (!vm.isLoading && vm.totalStartCount > 0) {
                             Text(
-                                "${vm.rememberedCount} / ${vm.totalStartCount} remembered",
+                                if (vm.isDueSession) "Due today · ${vm.rememberedCount} / ${vm.totalStartCount} remembered"
+                                else "Full review · ${vm.rememberedCount} / ${vm.totalStartCount} remembered",
                                 fontSize = 12.sp,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
