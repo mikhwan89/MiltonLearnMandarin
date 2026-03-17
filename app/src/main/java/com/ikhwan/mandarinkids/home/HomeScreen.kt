@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ikhwan.mandarinkids.ProgressManager
 import com.ikhwan.mandarinkids.data.models.Scenario
+import com.ikhwan.mandarinkids.data.models.ScenarioCategory
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.db.ProgressRepository
 
@@ -154,13 +155,31 @@ fun HomeScreen(onScenarioClick: (Scenario) -> Unit, onPracticeClick: () -> Unit)
                 )
             }
 
-            items(scenarios, key = { it.id }) { scenario ->
-                val stars by repo.getStars(scenario.id).collectAsState(initial = 0)
-                ScenarioCard(
-                    scenario = scenario,
-                    stars = stars,
-                    onClick = { onScenarioClick(scenario) }
-                )
+            // Group by category, preserving the enum declaration order
+            val grouped = ScenarioCategory.entries
+                .mapNotNull { cat ->
+                    val inCat = scenarios.filter { it.category == cat }
+                    if (inCat.isEmpty()) null else cat to inCat
+                }
+
+            grouped.forEach { (category, catScenarios) ->
+                item(key = "header_${category.name}") {
+                    Text(
+                        text = category.displayName,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.padding(top = 12.dp, bottom = 2.dp)
+                    )
+                }
+                items(catScenarios, key = { it.id }) { scenario ->
+                    val stars by repo.getStars(scenario.id).collectAsState(initial = 0)
+                    ScenarioCard(
+                        scenario = scenario,
+                        stars = stars,
+                        onClick = { onScenarioClick(scenario) }
+                    )
+                }
             }
 
             item { Spacer(modifier = Modifier.height(8.dp)) }

@@ -14,16 +14,66 @@
       "textEnglish": "Hi! You're sitting next to me. I'm Liu Ming.",
       "textIndonesian": "Hai! Kamu duduk di sebelah saya. Nama saya Liu Ming.",
       "pinyinWords": [
-        { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
-        { "pinyin": "hǎo", "chinese": "好", "english": "hello", "indonesian": "halo" },
-        { "pinyin": "zuò", "chinese": "坐", "english": "sit", "indonesian": "duduk" },
-        { "pinyin": "zài", "chinese": "在", "english": "at", "indonesian": "di" },
-        { "pinyin": "wǒ", "chinese": "我", "english": "my", "indonesian": "saya" },
-        { "pinyin": "pángbiān", "chinese": "旁边", "english": "next to", "indonesian": "sebelah" },
-        { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
-        { "pinyin": "jiào", "chinese": "叫", "english": "am called", "indonesian": "bernama" },
-        { "pinyin": "Liú", "chinese": "刘", "english": "Liu", "indonesian": "Liu" },
-        { "pinyin": "Míng", "chinese": "明", "english": "Ming", "indonesian": "Ming" }
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "hǎo",
+          "chinese": "好",
+          "english": "hello",
+          "indonesian": "halo"
+        },
+        {
+          "pinyin": "zuò",
+          "chinese": "坐",
+          "english": "sit",
+          "indonesian": "duduk"
+        },
+        {
+          "pinyin": "zài",
+          "chinese": "在",
+          "english": "at",
+          "indonesian": "di"
+        },
+        {
+          "pinyin": "wǒ",
+          "chinese": "我",
+          "english": "my",
+          "indonesian": "saya"
+        },
+        {
+          "pinyin": "pángbiān",
+          "chinese": "旁边",
+          "english": "next to",
+          "indonesian": "sebelah"
+        },
+        {
+          "pinyin": "Wǒ",
+          "chinese": "我",
+          "english": "I",
+          "indonesian": "Saya"
+        },
+        {
+          "pinyin": "jiào",
+          "chinese": "叫",
+          "english": "am called",
+          "indonesian": "bernama"
+        },
+        {
+          "pinyin": "Liú",
+          "chinese": "刘",
+          "english": "Liu",
+          "indonesian": "Liu"
+        },
+        {
+          "pinyin": "Míng",
+          "chinese": "明",
+          "english": "Ming",
+          "indonesian": "Ming"
+        }
       ],
       "responseType": "LISTEN_ONLY",
       "options": [],
@@ -37,10 +87,30 @@
       "textEnglish": "What's your name?",
       "textIndonesian": "Siapa nama kamu?",
       "pinyinWords": [
-        { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
-        { "pinyin": "jiào", "chinese": "叫", "english": "are called", "indonesian": "bernama" },
-        { "pinyin": "shénme", "chinese": "什么", "english": "what", "indonesian": "apa" },
-        { "pinyin": "míngzi", "chinese": "名字", "english": "name", "indonesian": "nama" }
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "jiào",
+          "chinese": "叫",
+          "english": "are called",
+          "indonesian": "bernama"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        },
+        {
+          "pinyin": "míngzi",
+          "chinese": "名字",
+          "english": "name",
+          "indonesian": "nama"
+        }
       ],
       "responseType": "SINGLE_CHOICE",
       "options": [
@@ -50,12 +120,42 @@
           "english": "Hi Liu Ming! I'm",
           "indonesian": "Hai Liu Ming! Nama saya",
           "pinyinWords": [
-            { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
-            { "pinyin": "hǎo", "chinese": "好", "english": "hello", "indonesian": "halo" },
-            { "pinyin": "Liú", "chinese": "刘", "english": "Liu", "indonesian": "Liu" },
-            { "pinyin": "Míng", "chinese": "明", "english": "Ming", "indonesian": "Ming" },
-            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
-            { "pinyin": "jiào", "chinese": "叫", "english": "am called", "indonesian": "bernama" }
+            {
+              "pinyin": "Nǐ",
+              "chinese": "你",
+              "english": "You",
+              "indonesian": "Kamu"
+            },
+            {
+              "pinyin": "hǎo",
+              "chinese": "好",
+              "english": "hello",
+              "indonesian": "halo"
+            },
+            {
+              "pinyin": "Liú",
+              "chinese": "刘",
+              "english": "Liu",
+              "indonesian": "Liu"
+            },
+            {
+              "pinyin": "Míng",
+              "chinese": "明",
+              "english": "Ming",
+              "indonesian": "Ming"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "jiào",
+              "chinese": "叫",
+              "english": "am called",
+              "indonesian": "bernama"
+            }
           ],
           "isCorrect": true
         }
@@ -70,15 +170,61 @@
       "textEnglish": "Nice to meet you! Do you want to be friends?",
       "textIndonesian": "Senang bertemu denganmu! Mau jadi teman?",
       "pinyinWords": [
-        { "pinyin": "Hěn", "chinese": "很", "english": "Very", "indonesian": "Sangat" },
-        { "pinyin": "gāoxìng", "chinese": "高兴", "english": "happy", "indonesian": "senang" },
-        { "pinyin": "rènshi", "chinese": "认识", "english": "to meet", "indonesian": "bertemu" },
-        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
-        { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
-        { "pinyin": "xiǎng", "chinese": "想", "english": "want", "indonesian": "mau" },
-        { "pinyin": "zuò", "chinese": "做", "english": "be/become", "indonesian": "jadi" },
-        { "pinyin": "péngyou", "chinese": "朋友", "english": "friends", "indonesian": "teman" },
-        { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
+        {
+          "pinyin": "Hěn",
+          "chinese": "很",
+          "english": "Very",
+          "indonesian": "Sangat"
+        },
+        {
+          "pinyin": "gāoxìng",
+          "chinese": "高兴",
+          "english": "happy",
+          "indonesian": "senang"
+        },
+        {
+          "pinyin": "rènshi",
+          "chinese": "认识",
+          "english": "to meet",
+          "indonesian": "bertemu"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "xiǎng",
+          "chinese": "想",
+          "english": "want",
+          "indonesian": "mau"
+        },
+        {
+          "pinyin": "zuò",
+          "chinese": "做",
+          "english": "be/become",
+          "indonesian": "jadi"
+        },
+        {
+          "pinyin": "péngyou",
+          "chinese": "朋友",
+          "english": "friends",
+          "indonesian": "teman"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "? (yes/no question word)",
+          "indonesian": "? (kata tanya ya/tidak)",
+          "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+        }
       ],
       "responseType": "SINGLE_CHOICE",
       "options": [
@@ -88,11 +234,37 @@
           "english": "Yes! I'd like that!",
           "indonesian": "Ya! Saya mau!",
           "pinyinWords": [
-            { "pinyin": "Hǎo", "chinese": "好", "english": "Good", "indonesian": "Baik" },
-            { "pinyin": "de", "chinese": "的", "english": "'s — shows who it belongs to", "indonesian": "punya (kepunyaan)", "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!" },
-            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
-            { "pinyin": "hěn", "chinese": "很", "english": "very", "indonesian": "sangat" },
-            { "pinyin": "xiǎng", "chinese": "想", "english": "want", "indonesian": "mau" }
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "Good",
+              "indonesian": "Baik"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "'s — shows who it belongs to",
+              "indonesian": "punya (kepunyaan)",
+              "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want",
+              "indonesian": "mau"
+            }
           ],
           "isCorrect": true
         }
@@ -107,10 +279,26 @@
       "questionChinese": "很高兴认识你",
       "questionPinyin": "Hěn gāoxìng rènshi nǐ",
       "options": [
-        { "chinese": "", "pinyin": "", "translation": "Goodbye" },
-        { "chinese": "", "pinyin": "", "translation": "Nice to meet you" },
-        { "chinese": "", "pinyin": "", "translation": "What's your name?" },
-        { "chinese": "", "pinyin": "", "translation": "Thank you" }
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Goodbye"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Nice to meet you"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "What's your name?"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Thank you"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "很高兴认识你 (Hěn gāoxìng rènshi nǐ) means 'Nice to meet you'"
@@ -121,10 +309,26 @@
       "questionChinese": "",
       "questionPinyin": "",
       "options": [
-        { "chinese": "老师", "pinyin": "Lǎoshī", "translation": "teacher" },
-        { "chinese": "朋友", "pinyin": "Péngyou", "translation": "friend" },
-        { "chinese": "同学", "pinyin": "Tóngxué", "translation": "classmate" },
-        { "chinese": "名字", "pinyin": "Míngzi", "translation": "name" }
+        {
+          "chinese": "老师",
+          "pinyin": "Lǎoshī",
+          "translation": "teacher"
+        },
+        {
+          "chinese": "朋友",
+          "pinyin": "Péngyou",
+          "translation": "friend"
+        },
+        {
+          "chinese": "同学",
+          "pinyin": "Tóngxué",
+          "translation": "classmate"
+        },
+        {
+          "chinese": "名字",
+          "pinyin": "Míngzi",
+          "translation": "name"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "朋友 (Péngyou) means 'friend'"
@@ -135,13 +339,30 @@
       "questionChinese": "你叫什么名字？",
       "questionPinyin": "Nǐ jiào shénme míngzi?",
       "options": [
-        { "chinese": "", "pinyin": "", "translation": "How are you?" },
-        { "chinese": "", "pinyin": "", "translation": "What's your name?" },
-        { "chinese": "", "pinyin": "", "translation": "Where are you from?" },
-        { "chinese": "", "pinyin": "", "translation": "Do you want to be friends?" }
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "How are you?"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "What's your name?"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Where are you from?"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Do you want to be friends?"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "你叫什么名字？(Nǐ jiào shénme míngzi?) means 'What's your name?'"
     }
-  ]
+  ],
+  "category": "ESSENTIALS"
 }

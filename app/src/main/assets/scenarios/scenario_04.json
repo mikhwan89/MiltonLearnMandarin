@@ -14,10 +14,31 @@
       "textEnglish": "Yes? What do you need?",
       "textIndonesian": "Ya? Ada apa?",
       "pinyinWords": [
-        { "pinyin": "Yǒu", "chinese": "有", "english": "Have", "indonesian": "Ada" },
-        { "pinyin": "shénme", "chinese": "什么", "english": "what", "indonesian": "apa" },
-        { "pinyin": "shì", "chinese": "事", "english": "matter/thing", "indonesian": "hal" },
-        { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
+        {
+          "pinyin": "Yǒu",
+          "chinese": "有",
+          "english": "Have",
+          "indonesian": "Ada"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        },
+        {
+          "pinyin": "shì",
+          "chinese": "事",
+          "english": "matter/thing",
+          "indonesian": "hal"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "? (yes/no question word)",
+          "indonesian": "? (kata tanya ya/tidak)",
+          "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+        }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -27,12 +48,43 @@
           "english": "Teacher, may I go to the restroom?",
           "indonesian": "Guru, boleh saya ke toilet?",
           "pinyinWords": [
-            { "pinyin": "Lǎoshī", "chinese": "老师", "english": "Teacher", "indonesian": "Guru" },
-            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
-            { "pinyin": "kěyǐ", "chinese": "可以", "english": "may/can", "indonesian": "boleh" },
-            { "pinyin": "qù", "chinese": "去", "english": "go", "indonesian": "pergi" },
-            { "pinyin": "xǐshǒujiān", "chinese": "洗手间", "english": "restroom", "indonesian": "toilet" },
-            { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
+            {
+              "pinyin": "Lǎoshī",
+              "chinese": "老师",
+              "english": "Teacher",
+              "indonesian": "Guru"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "kěyǐ",
+              "chinese": "可以",
+              "english": "may/can",
+              "indonesian": "boleh"
+            },
+            {
+              "pinyin": "qù",
+              "chinese": "去",
+              "english": "go",
+              "indonesian": "pergi"
+            },
+            {
+              "pinyin": "xǐshǒujiān",
+              "chinese": "洗手间",
+              "english": "restroom",
+              "indonesian": "toilet"
+            },
+            {
+              "pinyin": "ma",
+              "chinese": "吗",
+              "english": "? (yes/no question word)",
+              "indonesian": "? (kata tanya ya/tidak)",
+              "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+            }
           ],
           "isCorrect": true
         },
@@ -42,11 +94,36 @@
           "english": "Teacher, I need to go to the bathroom",
           "indonesian": "Guru, saya mau ke kamar mandi",
           "pinyinWords": [
-            { "pinyin": "Lǎoshī", "chinese": "老师", "english": "Teacher", "indonesian": "Guru" },
-            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
-            { "pinyin": "yào", "chinese": "要", "english": "need/want", "indonesian": "mau" },
-            { "pinyin": "qù", "chinese": "去", "english": "go", "indonesian": "pergi" },
-            { "pinyin": "cèsuǒ", "chinese": "厕所", "english": "bathroom", "indonesian": "kamar mandi" }
+            {
+              "pinyin": "Lǎoshī",
+              "chinese": "老师",
+              "english": "Teacher",
+              "indonesian": "Guru"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "yào",
+              "chinese": "要",
+              "english": "need/want",
+              "indonesian": "mau"
+            },
+            {
+              "pinyin": "qù",
+              "chinese": "去",
+              "english": "go",
+              "indonesian": "pergi"
+            },
+            {
+              "pinyin": "cèsuǒ",
+              "chinese": "厕所",
+              "english": "bathroom",
+              "indonesian": "kamar mandi"
+            }
           ],
           "isCorrect": true
         }
@@ -61,11 +138,36 @@
       "textEnglish": "Yes, you may. Go quickly and come back quickly.",
       "textIndonesian": "Boleh. Cepat pergi cepat kembali.",
       "pinyinWords": [
-        { "pinyin": "Kěyǐ", "chinese": "可以", "english": "Can/May", "indonesian": "Boleh" },
-        { "pinyin": "Kuài", "chinese": "快", "english": "Quick", "indonesian": "Cepat" },
-        { "pinyin": "qù", "chinese": "去", "english": "go", "indonesian": "pergi" },
-        { "pinyin": "kuài", "chinese": "快", "english": "quick", "indonesian": "cepat" },
-        { "pinyin": "huí", "chinese": "回", "english": "return", "indonesian": "kembali" }
+        {
+          "pinyin": "Kěyǐ",
+          "chinese": "可以",
+          "english": "Can/May",
+          "indonesian": "Boleh"
+        },
+        {
+          "pinyin": "Kuài",
+          "chinese": "快",
+          "english": "Quick",
+          "indonesian": "Cepat"
+        },
+        {
+          "pinyin": "qù",
+          "chinese": "去",
+          "english": "go",
+          "indonesian": "pergi"
+        },
+        {
+          "pinyin": "kuài",
+          "chinese": "快",
+          "english": "quick",
+          "indonesian": "cepat"
+        },
+        {
+          "pinyin": "huí",
+          "chinese": "回",
+          "english": "return",
+          "indonesian": "kembali"
+        }
       ],
       "responseType": "SINGLE_CHOICE",
       "options": [
@@ -75,8 +177,18 @@
           "english": "Thank you, teacher!",
           "indonesian": "Terima kasih, guru!",
           "pinyinWords": [
-            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" },
-            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" }
+            {
+              "pinyin": "Xièxie",
+              "chinese": "谢谢",
+              "english": "Thank you",
+              "indonesian": "Terima kasih"
+            },
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            }
           ],
           "isCorrect": true
         }
@@ -91,10 +203,26 @@
       "questionChinese": "",
       "questionPinyin": "",
       "options": [
-        { "chinese": "我要", "pinyin": "Wǒ yào", "translation": "I want" },
-        { "chinese": "我可以", "pinyin": "Wǒ kěyǐ", "translation": "May I" },
-        { "chinese": "我有", "pinyin": "Wǒ yǒu", "translation": "I have" },
-        { "chinese": "我是", "pinyin": "Wǒ shì", "translation": "I am" }
+        {
+          "chinese": "我要",
+          "pinyin": "Wǒ yào",
+          "translation": "I want"
+        },
+        {
+          "chinese": "我可以",
+          "pinyin": "Wǒ kěyǐ",
+          "translation": "May I"
+        },
+        {
+          "chinese": "我有",
+          "pinyin": "Wǒ yǒu",
+          "translation": "I have"
+        },
+        {
+          "chinese": "我是",
+          "pinyin": "Wǒ shì",
+          "translation": "I am"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "我可以 (Wǒ kěyǐ) means 'May I' - more polite than 我要"
@@ -105,10 +233,26 @@
       "questionChinese": "洗手间",
       "questionPinyin": "Xǐshǒujiān",
       "options": [
-        { "chinese": "", "pinyin": "", "translation": "classroom" },
-        { "chinese": "", "pinyin": "", "translation": "restroom" },
-        { "chinese": "", "pinyin": "", "translation": "cafeteria" },
-        { "chinese": "", "pinyin": "", "translation": "playground" }
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "classroom"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "restroom"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "cafeteria"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "playground"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "洗手间 (Xǐshǒujiān) means 'restroom'"
@@ -119,13 +263,30 @@
       "questionChinese": "",
       "questionPinyin": "",
       "options": [
-        { "chinese": "同学", "pinyin": "Tóngxué", "translation": "classmate" },
-        { "chinese": "老师", "pinyin": "Lǎoshī", "translation": "teacher" },
-        { "chinese": "朋友", "pinyin": "Péngyou", "translation": "friend" },
-        { "chinese": "学生", "pinyin": "Xuésheng", "translation": "student" }
+        {
+          "chinese": "同学",
+          "pinyin": "Tóngxué",
+          "translation": "classmate"
+        },
+        {
+          "chinese": "老师",
+          "pinyin": "Lǎoshī",
+          "translation": "teacher"
+        },
+        {
+          "chinese": "朋友",
+          "pinyin": "Péngyou",
+          "translation": "friend"
+        },
+        {
+          "chinese": "学生",
+          "pinyin": "Xuésheng",
+          "translation": "student"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "老师 (Lǎoshī) means 'teacher'"
     }
-  ]
+  ],
+  "category": "AT_SCHOOL"
 }

@@ -14,13 +14,49 @@
       "textEnglish": "Class is over! Don't forget your homework. See you tomorrow!",
       "textIndonesian": "Kelas selesai! Jangan lupa PR. Sampai besok!",
       "pinyinWords": [
-        { "pinyin": "Xiàkè", "chinese": "下课", "english": "Class over", "indonesian": "Kelas selesai" },
-        { "pinyin": "le", "chinese": "了", "english": "done! / just happened", "indonesian": "sudah terjadi", "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'" },
-        { "pinyin": "Bié", "chinese": "别", "english": "Don't", "indonesian": "Jangan" },
-        { "pinyin": "wàng", "chinese": "忘", "english": "forget", "indonesian": "lupa" },
-        { "pinyin": "zuòyè", "chinese": "作业", "english": "homework", "indonesian": "PR" },
-        { "pinyin": "Míngtiān", "chinese": "明天", "english": "Tomorrow", "indonesian": "Besok" },
-        { "pinyin": "jiàn", "chinese": "见", "english": "see", "indonesian": "jumpa" }
+        {
+          "pinyin": "Xiàkè",
+          "chinese": "下课",
+          "english": "Class over",
+          "indonesian": "Kelas selesai"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "done! / just happened",
+          "indonesian": "sudah terjadi",
+          "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'"
+        },
+        {
+          "pinyin": "Bié",
+          "chinese": "别",
+          "english": "Don't",
+          "indonesian": "Jangan"
+        },
+        {
+          "pinyin": "wàng",
+          "chinese": "忘",
+          "english": "forget",
+          "indonesian": "lupa"
+        },
+        {
+          "pinyin": "zuòyè",
+          "chinese": "作业",
+          "english": "homework",
+          "indonesian": "PR"
+        },
+        {
+          "pinyin": "Míngtiān",
+          "chinese": "明天",
+          "english": "Tomorrow",
+          "indonesian": "Besok"
+        },
+        {
+          "pinyin": "jiàn",
+          "chinese": "见",
+          "english": "see",
+          "indonesian": "jumpa"
+        }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -30,10 +66,30 @@
           "english": "Goodbye, teacher! See you tomorrow!",
           "indonesian": "Sampai jumpa, guru! Sampai besok!",
           "pinyinWords": [
-            { "pinyin": "Zàijiàn", "chinese": "再见", "english": "Goodbye", "indonesian": "Sampai jumpa" },
-            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" },
-            { "pinyin": "Míngtiān", "chinese": "明天", "english": "Tomorrow", "indonesian": "Besok" },
-            { "pinyin": "jiàn", "chinese": "见", "english": "see", "indonesian": "jumpa" }
+            {
+              "pinyin": "Zàijiàn",
+              "chinese": "再见",
+              "english": "Goodbye",
+              "indonesian": "Sampai jumpa"
+            },
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
+              "pinyin": "Míngtiān",
+              "chinese": "明天",
+              "english": "Tomorrow",
+              "indonesian": "Besok"
+            },
+            {
+              "pinyin": "jiàn",
+              "chinese": "见",
+              "english": "see",
+              "indonesian": "jumpa"
+            }
           ],
           "isCorrect": true
         },
@@ -43,14 +99,55 @@
           "english": "Thank you, teacher! Have a good day!",
           "indonesian": "Terima kasih, guru! Semoga harimu menyenangkan!",
           "pinyinWords": [
-            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" },
-            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" },
-            { "pinyin": "Zhù", "chinese": "祝", "english": "Wish", "indonesian": "Semoga" },
-            { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
-            { "pinyin": "yǒu", "chinese": "有", "english": "have", "indonesian": "punya" },
-            { "pinyin": "měihǎo", "chinese": "美好", "english": "wonderful", "indonesian": "menyenangkan" },
-            { "pinyin": "de", "chinese": "的", "english": "'s — shows who it belongs to", "indonesian": "punya (kepunyaan)", "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!" },
-            { "pinyin": "yītiān", "chinese": "一天", "english": "day", "indonesian": "hari" }
+            {
+              "pinyin": "Xièxie",
+              "chinese": "谢谢",
+              "english": "Thank you",
+              "indonesian": "Terima kasih"
+            },
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
+              "pinyin": "Zhù",
+              "chinese": "祝",
+              "english": "Wish",
+              "indonesian": "Semoga"
+            },
+            {
+              "pinyin": "nǐ",
+              "chinese": "你",
+              "english": "you",
+              "indonesian": "kamu"
+            },
+            {
+              "pinyin": "yǒu",
+              "chinese": "有",
+              "english": "have",
+              "indonesian": "punya"
+            },
+            {
+              "pinyin": "měihǎo",
+              "chinese": "美好",
+              "english": "wonderful",
+              "indonesian": "menyenangkan"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "'s — shows who it belongs to",
+              "indonesian": "punya (kepunyaan)",
+              "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!"
+            },
+            {
+              "pinyin": "yītiān",
+              "chinese": "一天",
+              "english": "day",
+              "indonesian": "hari"
+            }
           ],
           "isCorrect": true
         }
@@ -65,17 +162,72 @@
       "textEnglish": "You did great today! Liu Ming is waiting for you too.",
       "textIndonesian": "Kamu hebat hari ini! Liu Ming juga menunggumu.",
       "pinyinWords": [
-        { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
-        { "pinyin": "jīntiān", "chinese": "今天", "english": "today", "indonesian": "hari ini" },
-        { "pinyin": "biǎoxiàn", "chinese": "表现", "english": "performance", "indonesian": "penampilan" },
-        { "pinyin": "hěn", "chinese": "很", "english": "very", "indonesian": "sangat" },
-        { "pinyin": "hǎo", "chinese": "好", "english": "good", "indonesian": "baik" },
-        { "pinyin": "Liú", "chinese": "刘", "english": "Liu", "indonesian": "Liu" },
-        { "pinyin": "Míng", "chinese": "明", "english": "Ming", "indonesian": "Ming" },
-        { "pinyin": "yě", "chinese": "也", "english": "also", "indonesian": "juga" },
-        { "pinyin": "zài", "chinese": "在", "english": "currently", "indonesian": "sedang" },
-        { "pinyin": "děng", "chinese": "等", "english": "wait", "indonesian": "menunggu" },
-        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" }
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "biǎoxiàn",
+          "chinese": "表现",
+          "english": "performance",
+          "indonesian": "penampilan"
+        },
+        {
+          "pinyin": "hěn",
+          "chinese": "很",
+          "english": "very",
+          "indonesian": "sangat"
+        },
+        {
+          "pinyin": "hǎo",
+          "chinese": "好",
+          "english": "good",
+          "indonesian": "baik"
+        },
+        {
+          "pinyin": "Liú",
+          "chinese": "刘",
+          "english": "Liu",
+          "indonesian": "Liu"
+        },
+        {
+          "pinyin": "Míng",
+          "chinese": "明",
+          "english": "Ming",
+          "indonesian": "Ming"
+        },
+        {
+          "pinyin": "yě",
+          "chinese": "也",
+          "english": "also",
+          "indonesian": "juga"
+        },
+        {
+          "pinyin": "zài",
+          "chinese": "在",
+          "english": "currently",
+          "indonesian": "sedang"
+        },
+        {
+          "pinyin": "děng",
+          "chinese": "等",
+          "english": "wait",
+          "indonesian": "menunggu"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        }
       ],
       "responseType": "SINGLE_CHOICE",
       "options": [
@@ -85,16 +237,67 @@
           "english": "See you tomorrow, Liu Ming! Thanks for being my friend!",
           "indonesian": "Sampai besok, Liu Ming! Terima kasih sudah jadi temanku!",
           "pinyinWords": [
-            { "pinyin": "Míngtiān", "chinese": "明天", "english": "Tomorrow", "indonesian": "Besok" },
-            { "pinyin": "jiàn", "chinese": "见", "english": "see", "indonesian": "jumpa" },
-            { "pinyin": "Liú", "chinese": "刘", "english": "Liu", "indonesian": "Liu" },
-            { "pinyin": "Míng", "chinese": "明", "english": "Ming", "indonesian": "Ming" },
-            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" },
-            { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
-            { "pinyin": "zuò", "chinese": "做", "english": "be", "indonesian": "jadi" },
-            { "pinyin": "wǒ", "chinese": "我", "english": "my", "indonesian": "aku" },
-            { "pinyin": "de", "chinese": "的", "english": "'s — shows who it belongs to", "indonesian": "punya (kepunyaan)", "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!" },
-            { "pinyin": "péngyou", "chinese": "朋友", "english": "friend", "indonesian": "teman" }
+            {
+              "pinyin": "Míngtiān",
+              "chinese": "明天",
+              "english": "Tomorrow",
+              "indonesian": "Besok"
+            },
+            {
+              "pinyin": "jiàn",
+              "chinese": "见",
+              "english": "see",
+              "indonesian": "jumpa"
+            },
+            {
+              "pinyin": "Liú",
+              "chinese": "刘",
+              "english": "Liu",
+              "indonesian": "Liu"
+            },
+            {
+              "pinyin": "Míng",
+              "chinese": "明",
+              "english": "Ming",
+              "indonesian": "Ming"
+            },
+            {
+              "pinyin": "Xièxie",
+              "chinese": "谢谢",
+              "english": "Thank you",
+              "indonesian": "Terima kasih"
+            },
+            {
+              "pinyin": "nǐ",
+              "chinese": "你",
+              "english": "you",
+              "indonesian": "kamu"
+            },
+            {
+              "pinyin": "zuò",
+              "chinese": "做",
+              "english": "be",
+              "indonesian": "jadi"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "my",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "'s — shows who it belongs to",
+              "indonesian": "punya (kepunyaan)",
+              "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!"
+            },
+            {
+              "pinyin": "péngyou",
+              "chinese": "朋友",
+              "english": "friend",
+              "indonesian": "teman"
+            }
           ],
           "isCorrect": true
         }
@@ -109,10 +312,26 @@
       "questionChinese": "",
       "questionPinyin": "",
       "options": [
-        { "chinese": "你好", "pinyin": "Nǐ hǎo", "translation": "Hello" },
-        { "chinese": "再见", "pinyin": "Zàijiàn", "translation": "Goodbye" },
-        { "chinese": "谢谢", "pinyin": "Xièxie", "translation": "Thank you" },
-        { "chinese": "早上好", "pinyin": "Zǎoshang hǎo", "translation": "Good morning" }
+        {
+          "chinese": "你好",
+          "pinyin": "Nǐ hǎo",
+          "translation": "Hello"
+        },
+        {
+          "chinese": "再见",
+          "pinyin": "Zàijiàn",
+          "translation": "Goodbye"
+        },
+        {
+          "chinese": "谢谢",
+          "pinyin": "Xièxie",
+          "translation": "Thank you"
+        },
+        {
+          "chinese": "早上好",
+          "pinyin": "Zǎoshang hǎo",
+          "translation": "Good morning"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "再见 (Zàijiàn) means 'Goodbye'"
@@ -123,10 +342,26 @@
       "questionChinese": "明天见",
       "questionPinyin": "Míngtiān jiàn",
       "options": [
-        { "chinese": "", "pinyin": "", "translation": "Good morning" },
-        { "chinese": "", "pinyin": "", "translation": "See you tomorrow" },
-        { "chinese": "", "pinyin": "", "translation": "Thank you" },
-        { "chinese": "", "pinyin": "", "translation": "You're welcome" }
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Good morning"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "See you tomorrow"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Thank you"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "You're welcome"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "明天见 (Míngtiān jiàn) means 'See you tomorrow'"
@@ -137,13 +372,30 @@
       "questionChinese": "",
       "questionPinyin": "",
       "options": [
-        { "chinese": "教室", "pinyin": "Jiàoshì", "translation": "classroom" },
-        { "chinese": "作业", "pinyin": "Zuòyè", "translation": "homework" },
-        { "chinese": "老师", "pinyin": "Lǎoshī", "translation": "teacher" },
-        { "chinese": "同学", "pinyin": "Tóngxué", "translation": "classmate" }
+        {
+          "chinese": "教室",
+          "pinyin": "Jiàoshì",
+          "translation": "classroom"
+        },
+        {
+          "chinese": "作业",
+          "pinyin": "Zuòyè",
+          "translation": "homework"
+        },
+        {
+          "chinese": "老师",
+          "pinyin": "Lǎoshī",
+          "translation": "teacher"
+        },
+        {
+          "chinese": "同学",
+          "pinyin": "Tóngxué",
+          "translation": "classmate"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "作业 (Zuòyè) means 'homework'"
     }
-  ]
+  ],
+  "category": "ESSENTIALS"
 }

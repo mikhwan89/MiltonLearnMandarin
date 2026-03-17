@@ -14,14 +14,55 @@
       "textEnglish": "You broke my pencil! I'm very unhappy!",
       "textIndonesian": "Kamu merusak pensilku! Aku sangat tidak senang!",
       "pinyinWords": [
-        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
-        { "pinyin": "nòng huài", "chinese": "弄坏", "english": "broke / damaged", "indonesian": "merusak" },
-        { "pinyin": "le", "chinese": "了", "english": "done! / just happened", "indonesian": "sudah terjadi", "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'" },
-        { "pinyin": "wǒ de", "chinese": "我的", "english": "my", "indonesian": "punyaku" },
-        { "pinyin": "qiānbǐ", "chinese": "铅笔", "english": "pencil", "indonesian": "pensil" },
-        { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
-        { "pinyin": "hěn", "chinese": "很", "english": "very", "indonesian": "sangat" },
-        { "pinyin": "bù gāoxìng", "chinese": "不高兴", "english": "unhappy", "indonesian": "tidak senang" }
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "nòng huài",
+          "chinese": "弄坏",
+          "english": "broke / damaged",
+          "indonesian": "merusak"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "done! / just happened",
+          "indonesian": "sudah terjadi",
+          "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'"
+        },
+        {
+          "pinyin": "wǒ de",
+          "chinese": "我的",
+          "english": "my",
+          "indonesian": "punyaku"
+        },
+        {
+          "pinyin": "qiānbǐ",
+          "chinese": "铅笔",
+          "english": "pencil",
+          "indonesian": "pensil"
+        },
+        {
+          "pinyin": "wǒ",
+          "chinese": "我",
+          "english": "I",
+          "indonesian": "aku"
+        },
+        {
+          "pinyin": "hěn",
+          "chinese": "很",
+          "english": "very",
+          "indonesian": "sangat"
+        },
+        {
+          "pinyin": "bù gāoxìng",
+          "chinese": "不高兴",
+          "english": "unhappy",
+          "indonesian": "tidak senang"
+        }
       ],
       "responseType": "SINGLE_CHOICE",
       "options": [
@@ -31,11 +72,37 @@
           "english": "Sorry! I didn't do it on purpose.",
           "indonesian": "Maaf! Aku tidak sengaja.",
           "pinyinWords": [
-            { "pinyin": "duìbuqǐ", "chinese": "对不起", "english": "sorry", "indonesian": "maaf" },
-            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
-            { "pinyin": "bù shì", "chinese": "不是", "english": "not", "indonesian": "bukan" },
-            { "pinyin": "gùyì", "chinese": "故意", "english": "on purpose", "indonesian": "sengaja" },
-            { "pinyin": "de", "chinese": "的", "english": "'s — shows who it belongs to", "indonesian": "punya (kepunyaan)", "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!" }
+            {
+              "pinyin": "duìbuqǐ",
+              "chinese": "对不起",
+              "english": "sorry",
+              "indonesian": "maaf"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "bù shì",
+              "chinese": "不是",
+              "english": "not",
+              "indonesian": "bukan"
+            },
+            {
+              "pinyin": "gùyì",
+              "chinese": "故意",
+              "english": "on purpose",
+              "indonesian": "sengaja"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "'s — shows who it belongs to",
+              "indonesian": "punya (kepunyaan)",
+              "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!"
+            }
           ],
           "isCorrect": true
         }
@@ -50,15 +117,61 @@
       "textEnglish": "Will you get me a new pencil?",
       "textIndonesian": "Kamu akan mengganti pensilku yang baru?",
       "pinyinWords": [
-        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
-        { "pinyin": "huì", "chinese": "会", "english": "will", "indonesian": "akan" },
-        { "pinyin": "péi", "chinese": "赔", "english": "compensate / replace", "indonesian": "mengganti" },
-        { "pinyin": "wǒ", "chinese": "我", "english": "me", "indonesian": "aku" },
-        { "pinyin": "yī", "chinese": "一", "english": "one", "indonesian": "satu" },
-        { "pinyin": "zhī", "chinese": "支", "english": "measure word for pencils", "indonesian": "satuan untuk pensil" },
-        { "pinyin": "xīn", "chinese": "新", "english": "new", "indonesian": "baru" },
-        { "pinyin": "qiānbǐ", "chinese": "铅笔", "english": "pencil", "indonesian": "pensil" },
-        { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "huì",
+          "chinese": "会",
+          "english": "will",
+          "indonesian": "akan"
+        },
+        {
+          "pinyin": "péi",
+          "chinese": "赔",
+          "english": "compensate / replace",
+          "indonesian": "mengganti"
+        },
+        {
+          "pinyin": "wǒ",
+          "chinese": "我",
+          "english": "me",
+          "indonesian": "aku"
+        },
+        {
+          "pinyin": "yī",
+          "chinese": "一",
+          "english": "one",
+          "indonesian": "satu"
+        },
+        {
+          "pinyin": "zhī",
+          "chinese": "支",
+          "english": "measure word for pencils",
+          "indonesian": "satuan untuk pensil"
+        },
+        {
+          "pinyin": "xīn",
+          "chinese": "新",
+          "english": "new",
+          "indonesian": "baru"
+        },
+        {
+          "pinyin": "qiānbǐ",
+          "chinese": "铅笔",
+          "english": "pencil",
+          "indonesian": "pensil"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "? (yes/no question word)",
+          "indonesian": "? (kata tanya ya/tidak)",
+          "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+        }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -68,15 +181,60 @@
           "english": "Okay, I'll bring a new one tomorrow. I'm really sorry!",
           "indonesian": "Baik, aku bawa yang baru besok. Sekali lagi maaf!",
           "pinyinWords": [
-            { "pinyin": "hǎo de", "chinese": "好的", "english": "okay", "indonesian": "baik" },
-            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
-            { "pinyin": "míngtiān", "chinese": "明天", "english": "tomorrow", "indonesian": "besok" },
-            { "pinyin": "dài", "chinese": "带", "english": "bring", "indonesian": "bawa" },
-            { "pinyin": "yī zhī", "chinese": "一支", "english": "one (pencil)", "indonesian": "satu (pensil)" },
-            { "pinyin": "xīn de", "chinese": "新的", "english": "new one", "indonesian": "yang baru" },
-            { "pinyin": "lái", "chinese": "来", "english": "come / bring", "indonesian": "datang" },
-            { "pinyin": "zài yī cì", "chinese": "再一次", "english": "once more / again", "indonesian": "sekali lagi" },
-            { "pinyin": "duìbuqǐ", "chinese": "对不起", "english": "sorry", "indonesian": "maaf" }
+            {
+              "pinyin": "hǎo de",
+              "chinese": "好的",
+              "english": "okay",
+              "indonesian": "baik"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "míngtiān",
+              "chinese": "明天",
+              "english": "tomorrow",
+              "indonesian": "besok"
+            },
+            {
+              "pinyin": "dài",
+              "chinese": "带",
+              "english": "bring",
+              "indonesian": "bawa"
+            },
+            {
+              "pinyin": "yī zhī",
+              "chinese": "一支",
+              "english": "one (pencil)",
+              "indonesian": "satu (pensil)"
+            },
+            {
+              "pinyin": "xīn de",
+              "chinese": "新的",
+              "english": "new one",
+              "indonesian": "yang baru"
+            },
+            {
+              "pinyin": "lái",
+              "chinese": "来",
+              "english": "come / bring",
+              "indonesian": "datang"
+            },
+            {
+              "pinyin": "zài yī cì",
+              "chinese": "再一次",
+              "english": "once more / again",
+              "indonesian": "sekali lagi"
+            },
+            {
+              "pinyin": "duìbuqǐ",
+              "chinese": "对不起",
+              "english": "sorry",
+              "indonesian": "maaf"
+            }
           ],
           "isCorrect": true
         },
@@ -86,9 +244,24 @@
           "english": "I don't know. Sorry.",
           "indonesian": "Aku tidak tahu. Maaf.",
           "pinyinWords": [
-            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
-            { "pinyin": "bù zhīdào", "chinese": "不知道", "english": "don't know", "indonesian": "tidak tahu" },
-            { "pinyin": "duìbuqǐ", "chinese": "对不起", "english": "sorry", "indonesian": "maaf" }
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "bù zhīdào",
+              "chinese": "不知道",
+              "english": "don't know",
+              "indonesian": "tidak tahu"
+            },
+            {
+              "pinyin": "duìbuqǐ",
+              "chinese": "对不起",
+              "english": "sorry",
+              "indonesian": "maaf"
+            }
           ],
           "isCorrect": true
         }
@@ -103,11 +276,36 @@
       "textEnglish": "Alright, it's okay. We're still good friends!",
       "textIndonesian": "Baiklah, tidak apa-apa. Kita masih teman baik!",
       "pinyinWords": [
-        { "pinyin": "hǎo ba", "chinese": "好吧", "english": "alright", "indonesian": "baiklah" },
-        { "pinyin": "méi guānxi", "chinese": "没关系", "english": "it's okay", "indonesian": "tidak apa-apa" },
-        { "pinyin": "wǒmen", "chinese": "我们", "english": "we", "indonesian": "kita" },
-        { "pinyin": "háishì", "chinese": "还是", "english": "still", "indonesian": "masih" },
-        { "pinyin": "hǎo péngyou", "chinese": "好朋友", "english": "good friends", "indonesian": "teman baik" }
+        {
+          "pinyin": "hǎo ba",
+          "chinese": "好吧",
+          "english": "alright",
+          "indonesian": "baiklah"
+        },
+        {
+          "pinyin": "méi guānxi",
+          "chinese": "没关系",
+          "english": "it's okay",
+          "indonesian": "tidak apa-apa"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we",
+          "indonesian": "kita"
+        },
+        {
+          "pinyin": "háishì",
+          "chinese": "还是",
+          "english": "still",
+          "indonesian": "masih"
+        },
+        {
+          "pinyin": "hǎo péngyou",
+          "chinese": "好朋友",
+          "english": "good friends",
+          "indonesian": "teman baik"
+        }
       ],
       "responseType": "SINGLE_CHOICE",
       "options": [
@@ -117,13 +315,49 @@
           "english": "Thank you! We are the best friends!",
           "indonesian": "Terima kasih! Kita teman terbaik!",
           "pinyinWords": [
-            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" },
-            { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
-            { "pinyin": "wǒmen", "chinese": "我们", "english": "we", "indonesian": "kita" },
-            { "pinyin": "shì", "chinese": "是", "english": "are", "indonesian": "adalah" },
-            { "pinyin": "zuì hǎo", "chinese": "最好", "english": "best", "indonesian": "terbaik" },
-            { "pinyin": "de", "chinese": "的", "english": "'s — shows who it belongs to", "indonesian": "punya (kepunyaan)", "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!" },
-            { "pinyin": "péngyou", "chinese": "朋友", "english": "friends", "indonesian": "teman" }
+            {
+              "pinyin": "Xièxie",
+              "chinese": "谢谢",
+              "english": "Thank you",
+              "indonesian": "Terima kasih"
+            },
+            {
+              "pinyin": "nǐ",
+              "chinese": "你",
+              "english": "you",
+              "indonesian": "kamu"
+            },
+            {
+              "pinyin": "wǒmen",
+              "chinese": "我们",
+              "english": "we",
+              "indonesian": "kita"
+            },
+            {
+              "pinyin": "shì",
+              "chinese": "是",
+              "english": "are",
+              "indonesian": "adalah"
+            },
+            {
+              "pinyin": "zuì hǎo",
+              "chinese": "最好",
+              "english": "best",
+              "indonesian": "terbaik"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "'s — shows who it belongs to",
+              "indonesian": "punya (kepunyaan)",
+              "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!"
+            },
+            {
+              "pinyin": "péngyou",
+              "chinese": "朋友",
+              "english": "friends",
+              "indonesian": "teman"
+            }
           ],
           "isCorrect": true
         }
@@ -138,10 +372,26 @@
       "questionChinese": "",
       "questionPinyin": "",
       "options": [
-        { "chinese": "我知道。", "pinyin": "Wǒ zhīdào.", "translation": "I know." },
-        { "chinese": "我不是故意的。", "pinyin": "Wǒ bù shì gùyì de.", "translation": "I didn't do it on purpose." },
-        { "chinese": "对不起！", "pinyin": "Duìbuqǐ!", "translation": "Sorry!" },
-        { "chinese": "没关系。", "pinyin": "Méi guānxi.", "translation": "It's okay." }
+        {
+          "chinese": "我知道。",
+          "pinyin": "Wǒ zhīdào.",
+          "translation": "I know."
+        },
+        {
+          "chinese": "我不是故意的。",
+          "pinyin": "Wǒ bù shì gùyì de.",
+          "translation": "I didn't do it on purpose."
+        },
+        {
+          "chinese": "对不起！",
+          "pinyin": "Duìbuqǐ!",
+          "translation": "Sorry!"
+        },
+        {
+          "chinese": "没关系。",
+          "pinyin": "Méi guānxi.",
+          "translation": "It's okay."
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "我不是故意的 (Wǒ bù shì gùyì de) means 'I didn't do it on purpose'."
@@ -152,10 +402,26 @@
       "questionChinese": "明天",
       "questionPinyin": "míngtiān",
       "options": [
-        { "chinese": "", "pinyin": "", "translation": "today" },
-        { "chinese": "", "pinyin": "", "translation": "yesterday" },
-        { "chinese": "", "pinyin": "", "translation": "tomorrow" },
-        { "chinese": "", "pinyin": "", "translation": "now" }
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "today"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "yesterday"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "tomorrow"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "now"
+        }
       ],
       "correctAnswerIndex": 2,
       "explanation": "明天 (míngtiān) means tomorrow."
@@ -166,13 +432,30 @@
       "questionChinese": "",
       "questionPinyin": "",
       "options": [
-        { "chinese": "好朋友", "pinyin": "hǎo péngyou", "translation": "good friends" },
-        { "chinese": "最好的朋友", "pinyin": "zuì hǎo de péngyou", "translation": "best friends" },
-        { "chinese": "新朋友", "pinyin": "xīn péngyou", "translation": "new friends" },
-        { "chinese": "老朋友", "pinyin": "lǎo péngyou", "translation": "old friends" }
+        {
+          "chinese": "好朋友",
+          "pinyin": "hǎo péngyou",
+          "translation": "good friends"
+        },
+        {
+          "chinese": "最好的朋友",
+          "pinyin": "zuì hǎo de péngyou",
+          "translation": "best friends"
+        },
+        {
+          "chinese": "新朋友",
+          "pinyin": "xīn péngyou",
+          "translation": "new friends"
+        },
+        {
+          "chinese": "老朋友",
+          "pinyin": "lǎo péngyou",
+          "translation": "old friends"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "最好的朋友 (zuì hǎo de péngyou) means 'best friends'. 最 = most/best."
     }
-  ]
+  ],
+  "category": "ESSENTIALS"
 }

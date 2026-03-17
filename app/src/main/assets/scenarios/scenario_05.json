@@ -14,10 +14,30 @@
       "textEnglish": "We're playing dodgeball!",
       "textIndonesian": "Kami sedang main bola sodok!",
       "pinyinWords": [
-        { "pinyin": "Wǒmen", "chinese": "我们", "english": "We", "indonesian": "Kami" },
-        { "pinyin": "zài", "chinese": "在", "english": "currently", "indonesian": "sedang" },
-        { "pinyin": "wán", "chinese": "玩", "english": "play", "indonesian": "main" },
-        { "pinyin": "duǒbìqiú", "chinese": "躲避球", "english": "dodgeball", "indonesian": "bola sodok" }
+        {
+          "pinyin": "Wǒmen",
+          "chinese": "我们",
+          "english": "We",
+          "indonesian": "Kami"
+        },
+        {
+          "pinyin": "zài",
+          "chinese": "在",
+          "english": "currently",
+          "indonesian": "sedang"
+        },
+        {
+          "pinyin": "wán",
+          "chinese": "玩",
+          "english": "play",
+          "indonesian": "main"
+        },
+        {
+          "pinyin": "duǒbìqiú",
+          "chinese": "躲避球",
+          "english": "dodgeball",
+          "indonesian": "bola sodok"
+        }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -27,11 +47,37 @@
           "english": "Can I play with you?",
           "indonesian": "Boleh saya ikut main?",
           "pinyinWords": [
-            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
-            { "pinyin": "kěyǐ", "chinese": "可以", "english": "can", "indonesian": "boleh" },
-            { "pinyin": "yīqǐ", "chinese": "一起", "english": "together", "indonesian": "bersama" },
-            { "pinyin": "wán", "chinese": "玩", "english": "play", "indonesian": "main" },
-            { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "kěyǐ",
+              "chinese": "可以",
+              "english": "can",
+              "indonesian": "boleh"
+            },
+            {
+              "pinyin": "yīqǐ",
+              "chinese": "一起",
+              "english": "together",
+              "indonesian": "bersama"
+            },
+            {
+              "pinyin": "wán",
+              "chinese": "玩",
+              "english": "play",
+              "indonesian": "main"
+            },
+            {
+              "pinyin": "ma",
+              "chinese": "吗",
+              "english": "? (yes/no question word)",
+              "indonesian": "? (kata tanya ya/tidak)",
+              "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+            }
           ],
           "isCorrect": true
         },
@@ -41,10 +87,30 @@
           "english": "That looks fun!",
           "indonesian": "Kelihatan seru!",
           "pinyinWords": [
-            { "pinyin": "Kàn", "chinese": "看", "english": "Look", "indonesian": "Lihat" },
-            { "pinyin": "qǐlai", "chinese": "起来", "english": "seems", "indonesian": "kelihatan" },
-            { "pinyin": "hěn", "chinese": "很", "english": "very", "indonesian": "sangat" },
-            { "pinyin": "hǎowán", "chinese": "好玩", "english": "fun", "indonesian": "seru" }
+            {
+              "pinyin": "Kàn",
+              "chinese": "看",
+              "english": "Look",
+              "indonesian": "Lihat"
+            },
+            {
+              "pinyin": "qǐlai",
+              "chinese": "起来",
+              "english": "seems",
+              "indonesian": "kelihatan"
+            },
+            {
+              "pinyin": "hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "hǎowán",
+              "chinese": "好玩",
+              "english": "fun",
+              "indonesian": "seru"
+            }
           ],
           "isCorrect": true
         }
@@ -59,12 +125,43 @@
       "textEnglish": "Of course! Do you know how to play?",
       "textIndonesian": "Tentu saja! Kamu bisa main?",
       "pinyinWords": [
-        { "pinyin": "Dāngrán", "chinese": "当然", "english": "Of course", "indonesian": "Tentu saja" },
-        { "pinyin": "kěyǐ", "chinese": "可以", "english": "can", "indonesian": "boleh" },
-        { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
-        { "pinyin": "huì", "chinese": "会", "english": "know how", "indonesian": "bisa" },
-        { "pinyin": "wán", "chinese": "玩", "english": "play", "indonesian": "main" },
-        { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
+        {
+          "pinyin": "Dāngrán",
+          "chinese": "当然",
+          "english": "Of course",
+          "indonesian": "Tentu saja"
+        },
+        {
+          "pinyin": "kěyǐ",
+          "chinese": "可以",
+          "english": "can",
+          "indonesian": "boleh"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "huì",
+          "chinese": "会",
+          "english": "know how",
+          "indonesian": "bisa"
+        },
+        {
+          "pinyin": "wán",
+          "chinese": "玩",
+          "english": "play",
+          "indonesian": "main"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "? (yes/no question word)",
+          "indonesian": "? (kata tanya ya/tidak)",
+          "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+        }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -74,10 +171,30 @@
           "english": "Yes! I love playing!",
           "indonesian": "Bisa! Saya suka main!",
           "pinyinWords": [
-            { "pinyin": "Huì", "chinese": "会", "english": "Know how", "indonesian": "Bisa" },
-            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
-            { "pinyin": "xǐhuan", "chinese": "喜欢", "english": "like", "indonesian": "suka" },
-            { "pinyin": "wán", "chinese": "玩", "english": "play", "indonesian": "main" }
+            {
+              "pinyin": "Huì",
+              "chinese": "会",
+              "english": "Know how",
+              "indonesian": "Bisa"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "xǐhuan",
+              "chinese": "喜欢",
+              "english": "like",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "wán",
+              "chinese": "玩",
+              "english": "play",
+              "indonesian": "main"
+            }
           ],
           "isCorrect": true
         },
@@ -87,14 +204,55 @@
           "english": "Not really. Can you teach me?",
           "indonesian": "Tidak terlalu bisa. Bisa ajari saya?",
           "pinyinWords": [
-            { "pinyin": "Bú", "chinese": "不", "english": "Not", "indonesian": "Tidak" },
-            { "pinyin": "tài", "chinese": "太", "english": "too", "indonesian": "terlalu" },
-            { "pinyin": "huì", "chinese": "会", "english": "know how", "indonesian": "bisa" },
-            { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
-            { "pinyin": "néng", "chinese": "能", "english": "can", "indonesian": "bisa" },
-            { "pinyin": "jiāo", "chinese": "教", "english": "teach", "indonesian": "ajari" },
-            { "pinyin": "wǒ", "chinese": "我", "english": "me", "indonesian": "saya" },
-            { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
+            {
+              "pinyin": "Bú",
+              "chinese": "不",
+              "english": "Not",
+              "indonesian": "Tidak"
+            },
+            {
+              "pinyin": "tài",
+              "chinese": "太",
+              "english": "too",
+              "indonesian": "terlalu"
+            },
+            {
+              "pinyin": "huì",
+              "chinese": "会",
+              "english": "know how",
+              "indonesian": "bisa"
+            },
+            {
+              "pinyin": "Nǐ",
+              "chinese": "你",
+              "english": "You",
+              "indonesian": "Kamu"
+            },
+            {
+              "pinyin": "néng",
+              "chinese": "能",
+              "english": "can",
+              "indonesian": "bisa"
+            },
+            {
+              "pinyin": "jiāo",
+              "chinese": "教",
+              "english": "teach",
+              "indonesian": "ajari"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "me",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "ma",
+              "chinese": "吗",
+              "english": "? (yes/no question word)",
+              "indonesian": "? (kata tanya ya/tidak)",
+              "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+            }
           ],
           "isCorrect": true
         }
@@ -109,12 +267,44 @@
       "textEnglish": "Great! Let's start!",
       "textIndonesian": "Bagus! Ayo mulai!",
       "pinyinWords": [
-        { "pinyin": "Tài", "chinese": "太", "english": "Too/Very", "indonesian": "Sangat" },
-        { "pinyin": "hǎo", "chinese": "好", "english": "good", "indonesian": "bagus" },
-        { "pinyin": "le", "chinese": "了", "english": "done! / just happened", "indonesian": "sudah terjadi", "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'" },
-        { "pinyin": "Wǒmen", "chinese": "我们", "english": "We", "indonesian": "Kita" },
-        { "pinyin": "kāishǐ", "chinese": "开始", "english": "start", "indonesian": "mulai" },
-        { "pinyin": "ba", "chinese": "吧", "english": "let's! / right?", "indonesian": "ayo! / kan?", "note": "吧 is used when you suggest something or check if you're right. '我们走吧！' means 'Let's go!' and '对吧？' means 'Right?'" }
+        {
+          "pinyin": "Tài",
+          "chinese": "太",
+          "english": "Too/Very",
+          "indonesian": "Sangat"
+        },
+        {
+          "pinyin": "hǎo",
+          "chinese": "好",
+          "english": "good",
+          "indonesian": "bagus"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "done! / just happened",
+          "indonesian": "sudah terjadi",
+          "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'"
+        },
+        {
+          "pinyin": "Wǒmen",
+          "chinese": "我们",
+          "english": "We",
+          "indonesian": "Kita"
+        },
+        {
+          "pinyin": "kāishǐ",
+          "chinese": "开始",
+          "english": "start",
+          "indonesian": "mulai"
+        },
+        {
+          "pinyin": "ba",
+          "chinese": "吧",
+          "english": "let's! / right?",
+          "indonesian": "ayo! / kan?",
+          "note": "吧 is used when you suggest something or check if you're right. '我们走吧！' means 'Let's go!' and '对吧？' means 'Right?'"
+        }
       ],
       "responseType": "LISTEN_ONLY",
       "options": [],
@@ -128,10 +318,26 @@
       "questionChinese": "我可以一起玩吗？",
       "questionPinyin": "Wǒ kěyǐ yīqǐ wán ma?",
       "options": [
-        { "chinese": "", "pinyin": "", "translation": "I don't want to play" },
-        { "chinese": "", "pinyin": "", "translation": "Can I play with you?" },
-        { "chinese": "", "pinyin": "", "translation": "I'm tired" },
-        { "chinese": "", "pinyin": "", "translation": "What are you playing?" }
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "I don't want to play"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Can I play with you?"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "I'm tired"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "What are you playing?"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "我可以一起玩吗？(Wǒ kěyǐ yīqǐ wán ma?) means 'Can I play with you?'"
@@ -142,10 +348,26 @@
       "questionChinese": "",
       "questionPinyin": "",
       "options": [
-        { "chinese": "你好吗", "pinyin": "Nǐ hǎo ma", "translation": "How are you" },
-        { "chinese": "你能教我吗", "pinyin": "Nǐ néng jiāo wǒ ma", "translation": "Can you teach me" },
-        { "chinese": "你叫什么", "pinyin": "Nǐ jiào shénme", "translation": "What's your name" },
-        { "chinese": "你喜欢吗", "pinyin": "Nǐ xǐhuan ma", "translation": "Do you like it" }
+        {
+          "chinese": "你好吗",
+          "pinyin": "Nǐ hǎo ma",
+          "translation": "How are you"
+        },
+        {
+          "chinese": "你能教我吗",
+          "pinyin": "Nǐ néng jiāo wǒ ma",
+          "translation": "Can you teach me"
+        },
+        {
+          "chinese": "你叫什么",
+          "pinyin": "Nǐ jiào shénme",
+          "translation": "What's your name"
+        },
+        {
+          "chinese": "你喜欢吗",
+          "pinyin": "Nǐ xǐhuan ma",
+          "translation": "Do you like it"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "你能教我吗？(Nǐ néng jiāo wǒ ma?) means 'Can you teach me?'"
@@ -156,13 +378,30 @@
       "questionChinese": "当然可以",
       "questionPinyin": "Dāngrán kěyǐ",
       "options": [
-        { "chinese": "", "pinyin": "", "translation": "No, you can't" },
-        { "chinese": "", "pinyin": "", "translation": "Of course you can" },
-        { "chinese": "", "pinyin": "", "translation": "I don't know" },
-        { "chinese": "", "pinyin": "", "translation": "Maybe later" }
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "No, you can't"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Of course you can"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "I don't know"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Maybe later"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "当然可以 (Dāngrán kěyǐ) means 'Of course you can'"
     }
-  ]
+  ],
+  "category": "PLAY_AND_HOBBIES"
 }

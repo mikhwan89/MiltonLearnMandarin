@@ -2,6 +2,17 @@ package com.ikhwan.mandarinkids.data.models
 
 import kotlinx.serialization.Serializable
 
+// Category grouping for the Home screen
+@Serializable
+enum class ScenarioCategory(val displayName: String) {
+    ESSENTIALS("Essentials"),
+    AT_SCHOOL("At School"),
+    SCHOOL_SUBJECTS("School Subjects"),
+    FOOD_AND_EATING("Food & Eating"),
+    FEELINGS_AND_HEALTH("Feelings & Health"),
+    PLAY_AND_HOBBIES("Play & Hobbies")
+}
+
 // Core scenario data model
 @Serializable
 data class Scenario(
@@ -11,6 +22,7 @@ data class Scenario(
     val characterName: String,
     val characterEmoji: String,
     val characterRole: String,
+    val category: ScenarioCategory = ScenarioCategory.ESSENTIALS,
     val dialogues: List<DialogueStep>,
     val quizQuestions: List<QuizQuestion>
 )

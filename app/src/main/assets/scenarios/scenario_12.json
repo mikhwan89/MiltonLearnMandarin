@@ -14,12 +14,42 @@
       "textEnglish": "Students, who knows the answer? Please raise your hand!",
       "textIndonesian": "Anak-anak, siapa yang tahu jawabannya? Tolong angkat tangan!",
       "pinyinWords": [
-        { "pinyin": "tóngxuémen", "chinese": "同学们", "english": "students (plural)", "indonesian": "anak-anak / para siswa" },
-        { "pinyin": "shéi", "chinese": "谁", "english": "who", "indonesian": "siapa" },
-        { "pinyin": "zhīdào", "chinese": "知道", "english": "know", "indonesian": "tahu" },
-        { "pinyin": "dá'àn", "chinese": "答案", "english": "answer", "indonesian": "jawaban" },
-        { "pinyin": "qǐng", "chinese": "请", "english": "please", "indonesian": "tolong" },
-        { "pinyin": "jǔshǒu", "chinese": "举手", "english": "raise hand", "indonesian": "angkat tangan" }
+        {
+          "pinyin": "tóngxuémen",
+          "chinese": "同学们",
+          "english": "students (plural)",
+          "indonesian": "anak-anak / para siswa"
+        },
+        {
+          "pinyin": "shéi",
+          "chinese": "谁",
+          "english": "who",
+          "indonesian": "siapa"
+        },
+        {
+          "pinyin": "zhīdào",
+          "chinese": "知道",
+          "english": "know",
+          "indonesian": "tahu"
+        },
+        {
+          "pinyin": "dá'àn",
+          "chinese": "答案",
+          "english": "answer",
+          "indonesian": "jawaban"
+        },
+        {
+          "pinyin": "qǐng",
+          "chinese": "请",
+          "english": "please",
+          "indonesian": "tolong"
+        },
+        {
+          "pinyin": "jǔshǒu",
+          "chinese": "举手",
+          "english": "raise hand",
+          "indonesian": "angkat tangan"
+        }
       ],
       "responseType": "SINGLE_CHOICE",
       "options": [
@@ -29,10 +59,30 @@
           "english": "(Raises hand) Teacher, I know!",
           "indonesian": "(Angkat tangan) Guru, saya tahu!",
           "pinyinWords": [
-            { "pinyin": "jǔshǒu", "chinese": "举手", "english": "raise hand", "indonesian": "angkat tangan" },
-            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" },
-            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
-            { "pinyin": "zhīdào", "chinese": "知道", "english": "know", "indonesian": "tahu" }
+            {
+              "pinyin": "jǔshǒu",
+              "chinese": "举手",
+              "english": "raise hand",
+              "indonesian": "angkat tangan"
+            },
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "zhīdào",
+              "chinese": "知道",
+              "english": "know",
+              "indonesian": "tahu"
+            }
           ],
           "isCorrect": true
         }
@@ -47,10 +97,30 @@
       "textEnglish": "Very good! Please answer.",
       "textIndonesian": "Bagus! Tolong jawab.",
       "pinyinWords": [
-        { "pinyin": "hěn hǎo", "chinese": "很好", "english": "very good", "indonesian": "bagus" },
-        { "pinyin": "qǐng", "chinese": "请", "english": "please", "indonesian": "tolong" },
-        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
-        { "pinyin": "huídá", "chinese": "回答", "english": "answer / respond", "indonesian": "jawab" }
+        {
+          "pinyin": "hěn hǎo",
+          "chinese": "很好",
+          "english": "very good",
+          "indonesian": "bagus"
+        },
+        {
+          "pinyin": "qǐng",
+          "chinese": "请",
+          "english": "please",
+          "indonesian": "tolong"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "huídá",
+          "chinese": "回答",
+          "english": "answer / respond",
+          "indonesian": "jawab"
+        }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -60,9 +130,24 @@
           "english": "The answer is three!",
           "indonesian": "Jawabannya adalah tiga!",
           "pinyinWords": [
-            { "pinyin": "dá'àn", "chinese": "答案", "english": "answer", "indonesian": "jawaban" },
-            { "pinyin": "shì", "chinese": "是", "english": "is", "indonesian": "adalah" },
-            { "pinyin": "sān", "chinese": "三", "english": "three", "indonesian": "tiga" }
+            {
+              "pinyin": "dá'àn",
+              "chinese": "答案",
+              "english": "answer",
+              "indonesian": "jawaban"
+            },
+            {
+              "pinyin": "shì",
+              "chinese": "是",
+              "english": "is",
+              "indonesian": "adalah"
+            },
+            {
+              "pinyin": "sān",
+              "chinese": "三",
+              "english": "three",
+              "indonesian": "tiga"
+            }
           ],
           "isCorrect": true
         },
@@ -72,9 +157,24 @@
           "english": "Teacher, I don't know.",
           "indonesian": "Guru, saya tidak tahu.",
           "pinyinWords": [
-            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" },
-            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
-            { "pinyin": "bù zhīdào", "chinese": "不知道", "english": "don't know", "indonesian": "tidak tahu" }
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "bù zhīdào",
+              "chinese": "不知道",
+              "english": "don't know",
+              "indonesian": "tidak tahu"
+            }
           ],
           "isCorrect": true
         }
@@ -89,15 +189,61 @@
       "textEnglish": "Correct! You're amazing! Do you have any questions?",
       "textIndonesian": "Benar! Kamu hebat sekali! Ada pertanyaan?",
       "pinyinWords": [
-        { "pinyin": "dá duì le", "chinese": "答对了", "english": "answered correctly", "indonesian": "jawaban benar" },
-        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
-        { "pinyin": "zhēn", "chinese": "真", "english": "really / truly", "indonesian": "benar-benar" },
-        { "pinyin": "lìhài", "chinese": "厉害", "english": "amazing / impressive", "indonesian": "hebat" },
-        { "pinyin": "yǒu", "chinese": "有", "english": "have", "indonesian": "ada / punya" },
-        { "pinyin": "wèntí", "chinese": "问题", "english": "question / problem", "indonesian": "pertanyaan" },
-        { "pinyin": "yào", "chinese": "要", "english": "want to", "indonesian": "mau" },
-        { "pinyin": "wèn", "chinese": "问", "english": "ask", "indonesian": "tanya" },
-        { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
+        {
+          "pinyin": "dá duì le",
+          "chinese": "答对了",
+          "english": "answered correctly",
+          "indonesian": "jawaban benar"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "zhēn",
+          "chinese": "真",
+          "english": "really / truly",
+          "indonesian": "benar-benar"
+        },
+        {
+          "pinyin": "lìhài",
+          "chinese": "厉害",
+          "english": "amazing / impressive",
+          "indonesian": "hebat"
+        },
+        {
+          "pinyin": "yǒu",
+          "chinese": "有",
+          "english": "have",
+          "indonesian": "ada / punya"
+        },
+        {
+          "pinyin": "wèntí",
+          "chinese": "问题",
+          "english": "question / problem",
+          "indonesian": "pertanyaan"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "want to",
+          "indonesian": "mau"
+        },
+        {
+          "pinyin": "wèn",
+          "chinese": "问",
+          "english": "ask",
+          "indonesian": "tanya"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "? (yes/no question word)",
+          "indonesian": "? (kata tanya ya/tidak)",
+          "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+        }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -107,11 +253,36 @@
           "english": "Teacher, I have a question.",
           "indonesian": "Guru, saya punya satu pertanyaan.",
           "pinyinWords": [
-            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" },
-            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
-            { "pinyin": "yǒu", "chinese": "有", "english": "have", "indonesian": "punya" },
-            { "pinyin": "yī gè", "chinese": "一个", "english": "one", "indonesian": "satu" },
-            { "pinyin": "wèntí", "chinese": "问题", "english": "question", "indonesian": "pertanyaan" }
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "yǒu",
+              "chinese": "有",
+              "english": "have",
+              "indonesian": "punya"
+            },
+            {
+              "pinyin": "yī gè",
+              "chinese": "一个",
+              "english": "one",
+              "indonesian": "satu"
+            },
+            {
+              "pinyin": "wèntí",
+              "chinese": "问题",
+              "english": "question",
+              "indonesian": "pertanyaan"
+            }
           ],
           "isCorrect": true
         },
@@ -121,10 +292,30 @@
           "english": "No questions, thank you teacher!",
           "indonesian": "Tidak ada pertanyaan, terima kasih guru!",
           "pinyinWords": [
-            { "pinyin": "méiyǒu", "chinese": "没有", "english": "don't have / no", "indonesian": "tidak ada" },
-            { "pinyin": "wèntí", "chinese": "问题", "english": "question", "indonesian": "pertanyaan" },
-            { "pinyin": "xièxie", "chinese": "谢谢", "english": "thank you", "indonesian": "terima kasih" },
-            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" }
+            {
+              "pinyin": "méiyǒu",
+              "chinese": "没有",
+              "english": "don't have / no",
+              "indonesian": "tidak ada"
+            },
+            {
+              "pinyin": "wèntí",
+              "chinese": "问题",
+              "english": "question",
+              "indonesian": "pertanyaan"
+            },
+            {
+              "pinyin": "xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            },
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            }
           ],
           "isCorrect": true
         }
@@ -139,10 +330,31 @@
       "textEnglish": "Alright, class is over! See you tomorrow!",
       "textIndonesian": "Baik, kelas selesai! Sampai besok!",
       "pinyinWords": [
-        { "pinyin": "hǎo", "chinese": "好", "english": "good / alright", "indonesian": "baik" },
-        { "pinyin": "xià kè", "chinese": "下课", "english": "class is over", "indonesian": "kelas selesai" },
-        { "pinyin": "le", "chinese": "了", "english": "done! / just happened", "indonesian": "sudah terjadi", "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'" },
-        { "pinyin": "míngtiān jiàn", "chinese": "明天见", "english": "see you tomorrow", "indonesian": "sampai besok" }
+        {
+          "pinyin": "hǎo",
+          "chinese": "好",
+          "english": "good / alright",
+          "indonesian": "baik"
+        },
+        {
+          "pinyin": "xià kè",
+          "chinese": "下课",
+          "english": "class is over",
+          "indonesian": "kelas selesai"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "done! / just happened",
+          "indonesian": "sudah terjadi",
+          "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'"
+        },
+        {
+          "pinyin": "míngtiān jiàn",
+          "chinese": "明天见",
+          "english": "see you tomorrow",
+          "indonesian": "sampai besok"
+        }
       ],
       "responseType": "SINGLE_CHOICE",
       "options": [
@@ -152,8 +364,18 @@
           "english": "See you tomorrow, teacher!",
           "indonesian": "Sampai besok, guru!",
           "pinyinWords": [
-            { "pinyin": "míngtiān jiàn", "chinese": "明天见", "english": "see you tomorrow", "indonesian": "sampai besok" },
-            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" }
+            {
+              "pinyin": "míngtiān jiàn",
+              "chinese": "明天见",
+              "english": "see you tomorrow",
+              "indonesian": "sampai besok"
+            },
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            }
           ],
           "isCorrect": true
         }
@@ -168,10 +390,26 @@
       "questionChinese": "",
       "questionPinyin": "",
       "options": [
-        { "chinese": "举手", "pinyin": "jǔshǒu", "translation": "raise hand" },
-        { "chinese": "回答", "pinyin": "huídá", "translation": "answer" },
-        { "chinese": "提问", "pinyin": "tíwèn", "translation": "ask a question" },
-        { "chinese": "站起来", "pinyin": "zhàn qǐlái", "translation": "stand up" }
+        {
+          "chinese": "举手",
+          "pinyin": "jǔshǒu",
+          "translation": "raise hand"
+        },
+        {
+          "chinese": "回答",
+          "pinyin": "huídá",
+          "translation": "answer"
+        },
+        {
+          "chinese": "提问",
+          "pinyin": "tíwèn",
+          "translation": "ask a question"
+        },
+        {
+          "chinese": "站起来",
+          "pinyin": "zhàn qǐlái",
+          "translation": "stand up"
+        }
       ],
       "correctAnswerIndex": 0,
       "explanation": "举手 (jǔshǒu) means 'raise your hand'. 举 = lift, 手 = hand."
@@ -182,10 +420,26 @@
       "questionChinese": "答对了",
       "questionPinyin": "dá duì le",
       "options": [
-        { "chinese": "", "pinyin": "", "translation": "wrong answer" },
-        { "chinese": "", "pinyin": "", "translation": "correct answer" },
-        { "chinese": "", "pinyin": "", "translation": "no answer" },
-        { "chinese": "", "pinyin": "", "translation": "ask a question" }
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "wrong answer"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "correct answer"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "no answer"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "ask a question"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "答对了 (dá duì le) means 'answered correctly'. 答 = answer, 对 = correct."
@@ -196,13 +450,30 @@
       "questionChinese": "",
       "questionPinyin": "",
       "options": [
-        { "chinese": "我没有问题。", "pinyin": "Wǒ méiyǒu wèntí.", "translation": "I have no questions." },
-        { "chinese": "我不知道。", "pinyin": "Wǒ bù zhīdào.", "translation": "I don't know." },
-        { "chinese": "我有一个问题。", "pinyin": "Wǒ yǒu yī gè wèntí.", "translation": "I have a question." },
-        { "chinese": "请回答。", "pinyin": "Qǐng huídá.", "translation": "Please answer." }
+        {
+          "chinese": "我没有问题。",
+          "pinyin": "Wǒ méiyǒu wèntí.",
+          "translation": "I have no questions."
+        },
+        {
+          "chinese": "我不知道。",
+          "pinyin": "Wǒ bù zhīdào.",
+          "translation": "I don't know."
+        },
+        {
+          "chinese": "我有一个问题。",
+          "pinyin": "Wǒ yǒu yī gè wèntí.",
+          "translation": "I have a question."
+        },
+        {
+          "chinese": "请回答。",
+          "pinyin": "Qǐng huídá.",
+          "translation": "Please answer."
+        }
       ],
       "correctAnswerIndex": 2,
       "explanation": "我有一个问题 (Wǒ yǒu yī gè wèntí) means 'I have a question'."
     }
-  ]
+  ],
+  "category": "AT_SCHOOL"
 }

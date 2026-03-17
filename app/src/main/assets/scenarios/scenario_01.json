@@ -14,14 +14,54 @@
       "textEnglish": "Good morning! You must be the new student. Welcome!",
       "textIndonesian": "Selamat pagi! Kamu pasti siswa baru. Selamat datang!",
       "pinyinWords": [
-        { "pinyin": "Zǎoshang", "chinese": "早上", "english": "Morning", "indonesian": "Pagi" },
-        { "pinyin": "hǎo", "chinese": "好", "english": "good", "indonesian": "baik" },
-        { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
-        { "pinyin": "yīdìng", "chinese": "一定", "english": "must", "indonesian": "pasti" },
-        { "pinyin": "shì", "chinese": "是", "english": "are", "indonesian": "adalah" },
-        { "pinyin": "xīn", "chinese": "新", "english": "new", "indonesian": "baru" },
-        { "pinyin": "tóngxué", "chinese": "同学", "english": "student", "indonesian": "siswa" },
-        { "pinyin": "Huānyíng", "chinese": "欢迎", "english": "Welcome", "indonesian": "Selamat datang" }
+        {
+          "pinyin": "Zǎoshang",
+          "chinese": "早上",
+          "english": "Morning",
+          "indonesian": "Pagi"
+        },
+        {
+          "pinyin": "hǎo",
+          "chinese": "好",
+          "english": "good",
+          "indonesian": "baik"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "yīdìng",
+          "chinese": "一定",
+          "english": "must",
+          "indonesian": "pasti"
+        },
+        {
+          "pinyin": "shì",
+          "chinese": "是",
+          "english": "are",
+          "indonesian": "adalah"
+        },
+        {
+          "pinyin": "xīn",
+          "chinese": "新",
+          "english": "new",
+          "indonesian": "baru"
+        },
+        {
+          "pinyin": "tóngxué",
+          "chinese": "同学",
+          "english": "student",
+          "indonesian": "siswa"
+        },
+        {
+          "pinyin": "Huānyíng",
+          "chinese": "欢迎",
+          "english": "Welcome",
+          "indonesian": "Selamat datang"
+        }
       ],
       "responseType": "LISTEN_ONLY",
       "options": [],
@@ -35,10 +75,30 @@
       "textEnglish": "What is your name?",
       "textIndonesian": "Siapa nama kamu?",
       "pinyinWords": [
-        { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
-        { "pinyin": "jiào", "chinese": "叫", "english": "are called", "indonesian": "bernama" },
-        { "pinyin": "shénme", "chinese": "什么", "english": "what", "indonesian": "apa" },
-        { "pinyin": "míngzi", "chinese": "名字", "english": "name", "indonesian": "nama" }
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "jiào",
+          "chinese": "叫",
+          "english": "are called",
+          "indonesian": "bernama"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        },
+        {
+          "pinyin": "míngzi",
+          "chinese": "名字",
+          "english": "name",
+          "indonesian": "nama"
+        }
       ],
       "responseType": "SINGLE_CHOICE",
       "options": [
@@ -48,11 +108,36 @@
           "english": "Good morning, teacher! My name is",
           "indonesian": "Selamat pagi, guru! Nama saya",
           "pinyinWords": [
-            { "pinyin": "Zǎoshang", "chinese": "早上", "english": "Morning", "indonesian": "Pagi" },
-            { "pinyin": "hǎo", "chinese": "好", "english": "good", "indonesian": "baik" },
-            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" },
-            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
-            { "pinyin": "jiào", "chinese": "叫", "english": "am called", "indonesian": "bernama" }
+            {
+              "pinyin": "Zǎoshang",
+              "chinese": "早上",
+              "english": "Morning",
+              "indonesian": "Pagi"
+            },
+            {
+              "pinyin": "hǎo",
+              "chinese": "好",
+              "english": "good",
+              "indonesian": "baik"
+            },
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "jiào",
+              "chinese": "叫",
+              "english": "am called",
+              "indonesian": "bernama"
+            }
           ],
           "isCorrect": true
         }
@@ -67,14 +152,54 @@
       "textEnglish": "You're very polite! Nice to meet you!",
       "textIndonesian": "Kamu sangat sopan! Senang bertemu denganmu!",
       "pinyinWords": [
-        { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
-        { "pinyin": "hěn", "chinese": "很", "english": "very", "indonesian": "sangat" },
-        { "pinyin": "yǒu", "chinese": "有", "english": "have", "indonesian": "punya" },
-        { "pinyin": "lǐmào", "chinese": "礼貌", "english": "polite", "indonesian": "sopan" },
-        { "pinyin": "Hěn", "chinese": "很", "english": "Very", "indonesian": "Sangat" },
-        { "pinyin": "gāoxìng", "chinese": "高兴", "english": "happy", "indonesian": "senang" },
-        { "pinyin": "rènshi", "chinese": "认识", "english": "to meet", "indonesian": "bertemu" },
-        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" }
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "hěn",
+          "chinese": "很",
+          "english": "very",
+          "indonesian": "sangat"
+        },
+        {
+          "pinyin": "yǒu",
+          "chinese": "有",
+          "english": "have",
+          "indonesian": "punya"
+        },
+        {
+          "pinyin": "lǐmào",
+          "chinese": "礼貌",
+          "english": "polite",
+          "indonesian": "sopan"
+        },
+        {
+          "pinyin": "Hěn",
+          "chinese": "很",
+          "english": "Very",
+          "indonesian": "Sangat"
+        },
+        {
+          "pinyin": "gāoxìng",
+          "chinese": "高兴",
+          "english": "happy",
+          "indonesian": "senang"
+        },
+        {
+          "pinyin": "rènshi",
+          "chinese": "认识",
+          "english": "to meet",
+          "indonesian": "bertemu"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -84,10 +209,30 @@
           "english": "Nice to meet you!",
           "indonesian": "Senang bertemu denganmu!",
           "pinyinWords": [
-            { "pinyin": "Hěn", "chinese": "很", "english": "Very", "indonesian": "Sangat" },
-            { "pinyin": "gāoxìng", "chinese": "高兴", "english": "happy", "indonesian": "senang" },
-            { "pinyin": "rènshi", "chinese": "认识", "english": "to meet", "indonesian": "bertemu" },
-            { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" }
+            {
+              "pinyin": "Hěn",
+              "chinese": "很",
+              "english": "Very",
+              "indonesian": "Sangat"
+            },
+            {
+              "pinyin": "gāoxìng",
+              "chinese": "高兴",
+              "english": "happy",
+              "indonesian": "senang"
+            },
+            {
+              "pinyin": "rènshi",
+              "chinese": "认识",
+              "english": "to meet",
+              "indonesian": "bertemu"
+            },
+            {
+              "pinyin": "nǐ",
+              "chinese": "你",
+              "english": "you",
+              "indonesian": "kamu"
+            }
           ],
           "isCorrect": true
         },
@@ -97,8 +242,18 @@
           "english": "Thank you, teacher!",
           "indonesian": "Terima kasih, guru!",
           "pinyinWords": [
-            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" },
-            { "pinyin": "lǎoshī", "chinese": "老师", "english": "teacher", "indonesian": "guru" }
+            {
+              "pinyin": "Xièxie",
+              "chinese": "谢谢",
+              "english": "Thank you",
+              "indonesian": "Terima kasih"
+            },
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            }
           ],
           "isCorrect": true
         }
@@ -113,10 +268,26 @@
       "questionChinese": "",
       "questionPinyin": "",
       "options": [
-        { "chinese": "早上好，老师", "pinyin": "Zǎoshang hǎo, lǎoshī", "translation": "Good morning, teacher" },
-        { "chinese": "你好", "pinyin": "Nǐ hǎo", "translation": "Hello" },
-        { "chinese": "再见", "pinyin": "Zàijiàn", "translation": "Goodbye" },
-        { "chinese": "谢谢", "pinyin": "Xièxie", "translation": "Thank you" }
+        {
+          "chinese": "早上好，老师",
+          "pinyin": "Zǎoshang hǎo, lǎoshī",
+          "translation": "Good morning, teacher"
+        },
+        {
+          "chinese": "你好",
+          "pinyin": "Nǐ hǎo",
+          "translation": "Hello"
+        },
+        {
+          "chinese": "再见",
+          "pinyin": "Zàijiàn",
+          "translation": "Goodbye"
+        },
+        {
+          "chinese": "谢谢",
+          "pinyin": "Xièxie",
+          "translation": "Thank you"
+        }
       ],
       "correctAnswerIndex": 0,
       "explanation": "早上好，老师 (Zǎoshang hǎo, lǎoshī) means 'Good morning, teacher'"
@@ -127,10 +298,26 @@
       "questionChinese": "很高兴认识你",
       "questionPinyin": "Hěn gāoxìng rènshi nǐ",
       "options": [
-        { "chinese": "", "pinyin": "", "translation": "Goodbye" },
-        { "chinese": "", "pinyin": "", "translation": "Nice to meet you" },
-        { "chinese": "", "pinyin": "", "translation": "Thank you" },
-        { "chinese": "", "pinyin": "", "translation": "Good morning" }
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Goodbye"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Nice to meet you"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Thank you"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Good morning"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "很高兴认识你 (Hěn gāoxìng rènshi nǐ) means 'Nice to meet you'"
@@ -141,13 +328,30 @@
       "questionChinese": "",
       "questionPinyin": "",
       "options": [
-        { "chinese": "再见", "pinyin": "Zàijiàn", "translation": "Goodbye" },
-        { "chinese": "谢谢", "pinyin": "Xièxie", "translation": "Thank you" },
-        { "chinese": "对不起", "pinyin": "Duìbuqǐ", "translation": "Sorry" },
-        { "chinese": "你好", "pinyin": "Nǐ hǎo", "translation": "Hello" }
+        {
+          "chinese": "再见",
+          "pinyin": "Zàijiàn",
+          "translation": "Goodbye"
+        },
+        {
+          "chinese": "谢谢",
+          "pinyin": "Xièxie",
+          "translation": "Thank you"
+        },
+        {
+          "chinese": "对不起",
+          "pinyin": "Duìbuqǐ",
+          "translation": "Sorry"
+        },
+        {
+          "chinese": "你好",
+          "pinyin": "Nǐ hǎo",
+          "translation": "Hello"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "谢谢 (Xièxie) means 'Thank you'"
     }
-  ]
+  ],
+  "category": "ESSENTIALS"
 }

@@ -88,7 +88,7 @@
 
 ---
 
-## #5 · Feature: Scenario Categories on Home Screen
+## ✅ #5 · Feature: Scenario Categories on Home Screen
 
 **What:** Group the scenario cards on the Home screen under category headers instead of a flat list. Makes it easier to find relevant scenarios as the library grows beyond 16.
 
