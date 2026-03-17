@@ -32,9 +32,9 @@ private fun masteryColor(level: Int): Color = when {
 }
 
 private fun masteryEmoji(level: Int): String = when {
-    level <= 3 -> "🔴"
-    level <= 6 -> "🟡"
-    else       -> "🟢"
+    level <= 3 -> "☆"
+    level <= 6 -> "★"
+    else       -> "🌟"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

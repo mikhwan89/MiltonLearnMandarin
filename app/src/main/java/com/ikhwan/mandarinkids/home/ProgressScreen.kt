@@ -46,6 +46,7 @@ fun ProgressScreen() {
     val perfectScenarioCount = remember(progressMap) {
         progressMap.values.count { it.stars == 3 }
     }
+    val highMasteryCount by repo.getHighMasteryWordCount().collectAsState(initial = 0)
 
     val earnedBadgeList = remember(masteredCount, streak) {
         val earned = repo.getEarnedBadges()
@@ -208,6 +209,7 @@ fun ProgressScreen() {
                         reward = reward,
                         currentProgress = when (MilestoneType.entries.find { it.name == reward.milestoneType }) {
                             MilestoneType.PERFECT_SCENARIOS -> perfectScenarioCount
+                            MilestoneType.HIGH_MASTERY_WORDS -> highMasteryCount
                             null -> 0
                         },
                         parentUnlocked = rewardsUnlocked,
@@ -237,8 +239,8 @@ fun ProgressScreen() {
         AddRewardDialog(
             totalScenarios = scenarios.size,
             onDismiss = { showAddReward = false },
-            onAdd = { target, text ->
-                scope.launch { repo.addReward(MilestoneType.PERFECT_SCENARIOS, target, text) }
+            onAdd = { type, target, text ->
+                scope.launch { repo.addReward(type, target, text) }
                 showAddReward = false
             }
         )
@@ -325,7 +327,12 @@ private fun MilestoneRewardCard(
 }
 
 @Composable
-private fun AddRewardDialog(totalScenarios: Int, onDismiss: () -> Unit, onAdd: (Int, String) -> Unit) {
+private fun AddRewardDialog(
+    totalScenarios: Int,
+    onDismiss: () -> Unit,
+    onAdd: (MilestoneType, Int, String) -> Unit
+) {
+    var selectedType by remember { mutableStateOf(MilestoneType.PERFECT_SCENARIOS) }
     var targetText by remember { mutableStateOf("") }
     var rewardText by remember { mutableStateOf("") }
 
@@ -334,12 +341,29 @@ private fun AddRewardDialog(totalScenarios: Int, onDismiss: () -> Unit, onAdd: (
         title = { Text("Add Milestone Reward") },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                Text("Set a reward for when Milton gets 3 stars on a number of scenarios.",
+                Text("Choose what Milton needs to achieve:",
                     fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                MilestoneType.entries.forEach { type ->
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        RadioButton(
+                            selected = selectedType == type,
+                            onClick = { selectedType = type; targetText = "" }
+                        )
+                        Text("${type.emoji} ${type.label}", fontSize = 13.sp)
+                    }
+                }
                 OutlinedTextField(
                     value = targetText,
                     onValueChange = { targetText = it.filter { c -> c.isDigit() } },
-                    label = { Text("Number of 3-star scenarios (max $totalScenarios)") },
+                    label = {
+                        Text(when (selectedType) {
+                            MilestoneType.PERFECT_SCENARIOS -> "Number of 3-star scenarios (max $totalScenarios)"
+                            MilestoneType.HIGH_MASTERY_WORDS -> "Number of words at mastery 7+"
+                        })
+                    },
                     modifier = Modifier.fillMaxWidth()
                 )
                 OutlinedTextField(
@@ -352,9 +376,10 @@ private fun AddRewardDialog(totalScenarios: Int, onDismiss: () -> Unit, onAdd: (
         },
         confirmButton = {
             TextButton(onClick = {
-                val target = targetText.toIntOrNull()?.coerceIn(1, totalScenarios) ?: return@TextButton
+                val maxTarget = if (selectedType == MilestoneType.PERFECT_SCENARIOS) totalScenarios else 999
+                val target = targetText.toIntOrNull()?.coerceIn(1, maxTarget) ?: return@TextButton
                 if (rewardText.isBlank()) return@TextButton
-                onAdd(target, rewardText)
+                onAdd(selectedType, target, rewardText)
             }) { Text("Add") }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text("Cancel") } }

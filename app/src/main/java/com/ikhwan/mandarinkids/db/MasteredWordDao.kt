@@ -24,6 +24,9 @@ interface MasteredWordDao {
     @Query("SELECT COUNT(*) FROM mastered_words WHERE nextReviewDate <= :now")
     fun getDueCount(now: Long): Flow<Int>
 
+    @Query("SELECT COUNT(DISTINCT chinese) FROM mastered_words WHERE boxLevel >= 7")
+    fun getHighMasteryWordCount(): Flow<Int>
+
     @Query("DELETE FROM mastered_words")
     suspend fun deleteAll()
 }

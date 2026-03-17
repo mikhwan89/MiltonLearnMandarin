@@ -3,8 +3,9 @@ package com.ikhwan.mandarinkids.db
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-enum class MilestoneType(val label: String, val unit: String) {
-    PERFECT_SCENARIOS("Scenarios with 3 stars", "scenarios")
+enum class MilestoneType(val label: String, val unit: String, val emoji: String) {
+    PERFECT_SCENARIOS("Scenarios with 3 stars", "scenarios", "⭐"),
+    HIGH_MASTERY_WORDS("Flashcard words at mastery 7+", "words", "🌟")
 }
 
 @Entity(tableName = "milestone_rewards")

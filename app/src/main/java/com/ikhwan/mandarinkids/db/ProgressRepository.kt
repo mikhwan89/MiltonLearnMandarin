@@ -82,6 +82,8 @@ class ProgressRepository private constructor(
     fun getDueWordCount(now: Long = System.currentTimeMillis()): Flow<Int> =
         masteredWordDao.getDueCount(now)
 
+    fun getHighMasteryWordCount(): Flow<Int> = masteredWordDao.getHighMasteryWordCount()
+
     // ── Milestone Rewards ─────────────────────────────────────────────────
 
     suspend fun addReward(type: MilestoneType, targetValue: Int, rewardText: String) =

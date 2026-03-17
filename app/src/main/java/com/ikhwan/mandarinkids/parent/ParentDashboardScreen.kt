@@ -38,6 +38,7 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
     val masteredCount by repo.getMasteredWordCount().collectAsState(initial = 0)
     val allProgress by repo.getAllProgress().collectAsState(initial = emptyList())
     val allRewards by repo.getAllRewards().collectAsState(initial = emptyList())
+    val highMasteryCount by repo.getHighMasteryWordCount().collectAsState(initial = 0)
     val earnedBadges = remember(masteredCount, allProgress) { repo.getEarnedBadges() }
     var showIndonesian by remember { mutableStateOf(repo.getShowIndonesian()) }
     var showResetConfirm by remember { mutableStateOf(false) }
@@ -236,6 +237,7 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
                     RewardItem(
                         reward = reward,
                         perfectCount = perfectCount,
+                        highMasteryCount = highMasteryCount,
                         unlocked = rewardsUnlocked,
                         onClaim = { scope.launch { repo.claimReward(reward.id) } },
                         onDelete = { scope.launch { repo.deleteReward(reward.id) } }
@@ -312,8 +314,8 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
         AddRewardDialog(
             totalScenarios = JsonScenarioRepository.getAll().size,
             onDismiss = { showAddReward = false },
-            onAdd = { target, text ->
-                scope.launch { repo.addReward(MilestoneType.PERFECT_SCENARIOS, target, text) }
+            onAdd = { type, target, text ->
+                scope.launch { repo.addReward(type, target, text) }
                 showAddReward = false
             }
         )
@@ -324,12 +326,19 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
 private fun RewardItem(
     reward: MilestoneReward,
     perfectCount: Int,
+    highMasteryCount: Int,
     unlocked: Boolean,
     onClaim: () -> Unit,
     onDelete: () -> Unit
 ) {
-    val progress = (perfectCount.toFloat() / reward.targetValue.toFloat()).coerceIn(0f, 1f)
-    val reached = perfectCount >= reward.targetValue
+    val milestoneType = MilestoneType.entries.find { it.name == reward.milestoneType }
+    val currentProgress = when (milestoneType) {
+        MilestoneType.PERFECT_SCENARIOS -> perfectCount
+        MilestoneType.HIGH_MASTERY_WORDS -> highMasteryCount
+        null -> 0
+    }
+    val progress = (currentProgress.toFloat() / reward.targetValue.toFloat()).coerceIn(0f, 1f)
+    val reached = currentProgress >= reward.targetValue
 
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -344,7 +353,7 @@ private fun RewardItem(
                 Column(modifier = Modifier.weight(1f)) {
                     Text(reward.rewardText, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
                     Text(
-                        "Get 3 stars on ${reward.targetValue} scenario${if (reward.targetValue != 1) "s" else ""}",
+                        "${milestoneType?.label ?: reward.milestoneType}: $currentProgress / ${reward.targetValue}",
                         fontSize = 11.sp,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -371,7 +380,7 @@ private fun RewardItem(
                     modifier = Modifier.fillMaxWidth()
                 )
                 Text(
-                    "$perfectCount / ${reward.targetValue} perfect scenarios",
+                    "$currentProgress / ${reward.targetValue} ${milestoneType?.unit ?: ""}",
                     fontSize = 11.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.align(Alignment.End)
@@ -385,8 +394,9 @@ private fun RewardItem(
 private fun AddRewardDialog(
     totalScenarios: Int,
     onDismiss: () -> Unit,
-    onAdd: (Int, String) -> Unit
+    onAdd: (MilestoneType, Int, String) -> Unit
 ) {
+    var selectedType by remember { mutableStateOf(MilestoneType.PERFECT_SCENARIOS) }
     var targetText by remember { mutableStateOf("") }
     var rewardText by remember { mutableStateOf("") }
 
@@ -396,14 +406,31 @@ private fun AddRewardDialog(
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 Text(
-                    "Set a reward for when Milton gets 3 stars on a number of scenarios.",
+                    "Choose what Milton needs to achieve:",
                     fontSize = 13.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
+                MilestoneType.entries.forEach { type ->
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        RadioButton(
+                            selected = selectedType == type,
+                            onClick = { selectedType = type; targetText = "" }
+                        )
+                        Text("${type.emoji} ${type.label}", fontSize = 13.sp)
+                    }
+                }
                 OutlinedTextField(
                     value = targetText,
                     onValueChange = { targetText = it.filter { c -> c.isDigit() } },
-                    label = { Text("Number of 3-star scenarios (max $totalScenarios)") },
+                    label = {
+                        Text(when (selectedType) {
+                            MilestoneType.PERFECT_SCENARIOS -> "Number of 3-star scenarios (max $totalScenarios)"
+                            MilestoneType.HIGH_MASTERY_WORDS -> "Number of words at mastery 7+"
+                        })
+                    },
                     modifier = Modifier.fillMaxWidth()
                 )
                 OutlinedTextField(
@@ -417,10 +444,10 @@ private fun AddRewardDialog(
         confirmButton = {
             TextButton(
                 onClick = {
-                    val target = targetText.toIntOrNull()?.coerceIn(1, totalScenarios)
-                        ?: return@TextButton
+                    val maxTarget = if (selectedType == MilestoneType.PERFECT_SCENARIOS) totalScenarios else 999
+                    val target = targetText.toIntOrNull()?.coerceIn(1, maxTarget) ?: return@TextButton
                     if (rewardText.isBlank()) return@TextButton
-                    onAdd(target, rewardText)
+                    onAdd(selectedType, target, rewardText)
                 }
             ) { Text("Add") }
         },
