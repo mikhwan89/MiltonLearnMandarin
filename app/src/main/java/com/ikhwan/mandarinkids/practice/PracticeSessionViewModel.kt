@@ -19,25 +19,27 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
         private set
     var currentIndex by mutableStateOf(0)
         private set
-    var isFlipped by mutableStateOf(false)
-        private set
-    var rememberedCount by mutableStateOf(0)
+    /** Words answered correctly in this session. */
+    var correctCount by mutableStateOf(0)
         private set
     var totalStartCount by mutableStateOf(0)
         private set
     var showSummary by mutableStateOf(false)
         private set
-    /** True when the deck was built from due-today words rather than the full library. */
-    var isDueSession by mutableStateOf(false)
-        private set
-
-    var allWords by mutableStateOf<List<MasteredWordEntity>>(emptyList())
-        private set
     /** Increments every time we advance to a new card — use as a `remember` key in the UI. */
     var cardToken by mutableStateOf(0)
         private set
-    /** Null = all words; non-null = filter to this scenarioId. */
-    var activeFilter by mutableStateOf<String?>(null)
+
+    /** Full deduplicated library of mastered words. */
+    var allWords by mutableStateOf<List<MasteredWordEntity>>(emptyList())
+        private set
+
+    /** Distinct mastery levels (1-10) that exist in the library, sorted ascending. */
+    var availableLevels by mutableStateOf<List<Int>>(emptyList())
+        private set
+
+    /** Currently selected mastery levels — words at these levels form the session deck. */
+    var selectedLevels by mutableStateOf<Set<Int>>(emptySet())
         private set
 
     val currentWord: MasteredWordEntity?
@@ -45,53 +47,57 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
 
     init {
         viewModelScope.launch {
-            val now = System.currentTimeMillis()
-            val allWords = repository.getAllMasteredWords().first()
+            val words = repository.getAllMasteredWords().first()
                 .distinctBy { it.chinese }
-            this@PracticeSessionViewModel.allWords = allWords
+            allWords = words
 
-            val dueWords = allWords.filter { it.nextReviewDate <= now }
+            val levels = words.map { it.boxLevel }.distinct().sorted()
+            availableLevels = levels
 
-            val words = if (dueWords.isNotEmpty()) {
-                isDueSession = true
-                dueWords.shuffled()
-            } else {
-                allWords.shuffled()
-            }
-
-            deck = words
-            totalStartCount = words.size
+            // Default: 3 lowest mastery levels
+            val defaultLevels = levels.take(3).toSet()
+            selectedLevels = defaultLevels
+            buildDeck(defaultLevels, words)
             isLoading = false
         }
     }
 
-    fun flip() {
-        isFlipped = !isFlipped
+    private fun buildDeck(levels: Set<Int>, source: List<MasteredWordEntity> = allWords) {
+        val filtered = source.filter { it.boxLevel in levels }
+        deck = filtered.shuffled()
+        totalStartCount = filtered.size
+        correctCount = 0
+        currentIndex = 0
+        cardToken++
+        showSummary = false
     }
 
-    /** Card was remembered — promote its box level and retire for this session. */
+    /** Toggle a mastery level on/off. Always keeps at least one level selected. */
+    fun toggleLevel(level: Int) {
+        val newLevels = if (level in selectedLevels) selectedLevels - level else selectedLevels + level
+        if (newLevels.isEmpty()) return
+        selectedLevels = newLevels
+        buildDeck(newLevels)
+    }
+
+    /** Card answered correctly — +1 mastery (max 10), retire from this session's deck. */
     fun markRemembered() {
         val word = deck[currentIndex]
         val newDeck = deck.toMutableList().also { it.removeAt(currentIndex) }
-        rememberedCount++
+        correctCount++
         deck = newDeck
-        isFlipped = false
         cardToken++
         if (newDeck.isEmpty()) showSummary = true
         else currentIndex = if (currentIndex >= newDeck.size) 0 else currentIndex
 
         viewModelScope.launch {
-            val newBox = (word.boxLevel + 1).coerceAtMost(5)
             repository.markWordMastered(
-                word.copy(
-                    boxLevel = newBox,
-                    nextReviewDate = System.currentTimeMillis() + boxIntervalMs(newBox)
-                )
+                word.copy(boxLevel = (word.boxLevel + 1).coerceAtMost(10))
             )
         }
     }
 
-    /** Card was forgotten — reset to box 1, due immediately, move to back of queue. */
+    /** Card answered wrong — -1 mastery (min 1), move to back of queue. */
     fun markForgotten() {
         val word = deck[currentIndex]
         val newDeck = deck.toMutableList().also {
@@ -100,57 +106,18 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
         }
         deck = newDeck
         currentIndex = if (currentIndex >= newDeck.size) 0 else currentIndex
-        isFlipped = false
         cardToken++
 
         viewModelScope.launch {
             repository.markWordMastered(
-                word.copy(boxLevel = 1, nextReviewDate = 0L)
+                word.copy(boxLevel = (word.boxLevel - 1).coerceAtLeast(1))
             )
         }
     }
 
-    /** User chose to end the session early. */
-    fun finishEarly() {
-        showSummary = true
-    }
-
-    /** Rebuild the deck filtered to a specific scenario (null = all words). */
-    fun setScenarioFilter(scenarioId: String?) {
-        if (scenarioId == activeFilter) return
-        activeFilter = scenarioId
-        val filtered = if (scenarioId == null) allWords
-                       else allWords.filter { it.scenarioId == scenarioId }
-        val now = System.currentTimeMillis()
-        val dueWords = filtered.filter { it.nextReviewDate <= now }
-        val words = if (dueWords.isNotEmpty()) {
-            isDueSession = true
-            dueWords.shuffled()
-        } else {
-            isDueSession = false
-            filtered.shuffled()
-        }
-        deck = words
-        totalStartCount = words.size
-        rememberedCount = 0
-        currentIndex = 0
-        cardToken++
-        showSummary = false
-    }
+    fun finishEarly() { showSummary = true }
 
     companion object {
-        /** Returns the review interval in milliseconds for the given box level. */
-        fun boxIntervalMs(box: Int): Long {
-            val days = when (box) {
-                1 -> 1L
-                2 -> 2L
-                3 -> 4L
-                4 -> 7L
-                else -> 14L
-            }
-            return days * 24 * 60 * 60 * 1000L
-        }
-
         fun factory(repository: ProgressRepository) = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T =

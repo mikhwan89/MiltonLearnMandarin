@@ -19,34 +19,41 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ikhwan.mandarinkids.ToneUtils
-import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.tts.TtsManager
 import com.ikhwan.mandarinkids.tts.rememberTtsManager
 import com.ikhwan.mandarinkids.ui.ConfettiEffect
 
+/** Emoji + container color for a mastery level 1-10. */
+private fun masteryColor(level: Int): Color = when {
+    level <= 3 -> Color(0xFFEF5350)   // red — still learning
+    level <= 6 -> Color(0xFFFFA726)   // orange — getting there
+    else       -> Color(0xFF66BB6A)   // green — near mastered
+}
+
+private fun masteryEmoji(level: Int): String = when {
+    level <= 3 -> "🔴"
+    level <= 6 -> "🟡"
+    else       -> "🟢"
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PracticeScreen(
-    onBack: () -> Unit
-) {
+fun PracticeScreen(onBack: () -> Unit) {
     val context = LocalContext.current
     val repo = remember { ProgressRepository.getInstance(context) }
     val vm: PracticeSessionViewModel = viewModel(factory = PracticeSessionViewModel.factory(repo))
     val tts: TtsManager = rememberTtsManager()
 
-    // Auto-play TTS when a new card appears (cardToken always changes, even if index stays 0)
+    // Auto-play TTS on every new card
     val currentWord = vm.currentWord
     LaunchedEffect(vm.cardToken) {
-        if (currentWord != null) {
-            tts.speak(currentWord.chinese)
-        }
+        if (currentWord != null) tts.speak(currentWord.chinese)
     }
 
-    // Build scenario filter list from mastered words (stable across recompositions)
-    val scenarioList = remember(vm.allWords) {
-        val ids = vm.allWords.map { it.scenarioId }.distinct()
-        ids.mapNotNull { id -> JsonScenarioRepository.getById(id) }
+    // Word count per mastery level (for chip labels)
+    val levelCounts = remember(vm.allWords) {
+        vm.allWords.groupBy { it.boxLevel }.mapValues { it.value.size }
     }
 
     Scaffold(
@@ -57,8 +64,7 @@ fun PracticeScreen(
                         Text("Flashcard Practice 复习", fontSize = 16.sp)
                         if (!vm.isLoading && vm.totalStartCount > 0) {
                             Text(
-                                if (vm.isDueSession) "Due today · ${vm.rememberedCount} / ${vm.totalStartCount} done"
-                                else "Full review · ${vm.rememberedCount} / ${vm.totalStartCount} done",
+                                "Session: ${vm.correctCount} / ${vm.totalStartCount} correct",
                                 fontSize = 12.sp,
                                 color = MaterialTheme.colorScheme.onSecondaryContainer
                             )
@@ -80,56 +86,41 @@ fun PracticeScreen(
     ) { padding ->
 
         when {
-            // ── Loading ──────────────────────────────────────────────────
+            // ── Loading ───────────────────────────────────────────────────
             vm.isLoading -> {
-                Box(
-                    modifier = Modifier.fillMaxSize().padding(padding),
-                    contentAlignment = Alignment.Center
-                ) {
+                Box(modifier = Modifier.fillMaxSize().padding(padding), contentAlignment = Alignment.Center) {
                     CircularProgressIndicator()
                 }
             }
 
-            // ── Summary ──────────────────────────────────────────────────
+            // ── Summary ───────────────────────────────────────────────────
             vm.showSummary -> {
                 PracticeSummaryScreen(
-                    remembered = vm.rememberedCount,
+                    correct = vm.correctCount,
                     total = vm.totalStartCount,
                     onDone = onBack
                 )
             }
 
-            // ── Empty state ──────────────────────────────────────────────
-            vm.totalStartCount == 0 -> {
+            // ── No mastered words at all ───────────────────────────────────
+            vm.allWords.isEmpty() -> {
                 Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(padding)
-                        .padding(32.dp),
+                    modifier = Modifier.fillMaxSize().padding(padding).padding(32.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text("📭", fontSize = 80.sp)
                     Spacer(modifier = Modifier.height(24.dp))
-                    Text(
-                        "No words to practise yet!",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Center
-                    )
+                    Text("No words to practise yet!", fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
-                        "Complete some scenario flashcards first and tap \"Got it!\" on words you know. They'll show up here for extra practice.",
-                        fontSize = 16.sp,
-                        textAlign = TextAlign.Center,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        lineHeight = 24.sp
+                        "Complete some scenario flashcards first. Words you master will appear here.",
+                        fontSize = 16.sp, textAlign = TextAlign.Center,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 24.sp
                     )
                     Spacer(modifier = Modifier.height(40.dp))
-                    Button(
-                        onClick = onBack,
-                        modifier = Modifier.fillMaxWidth().height(56.dp)
-                    ) {
+                    Button(onClick = onBack, modifier = Modifier.fillMaxWidth().height(56.dp)) {
                         Text("Go to Scenarios →", fontSize = 16.sp)
                     }
                 }
@@ -139,13 +130,11 @@ fun PracticeScreen(
             else -> {
                 val word = vm.currentWord ?: return@Scaffold
 
-                // Build 4 options: correct + 3 distractors, reshuffled per card
+                // 4 options: correct + 3 distractors
                 val options = remember(vm.cardToken) {
                     val distractors = vm.allWords
                         .filter { it.english != word.english }
-                        .shuffled()
-                        .take(3)
-                        .map { it.english }
+                        .shuffled().take(3).map { it.english }
                     (distractors + word.english).shuffled()
                 }
 
@@ -153,7 +142,6 @@ fun PracticeScreen(
                 val isAnswered = selectedAnswer != null
                 val answeredCorrectly = selectedAnswer == word.english
 
-                // Auto-advance 1.5 s after selection
                 LaunchedEffect(selectedAnswer) {
                     if (selectedAnswer != null) {
                         kotlinx.coroutines.delay(1500)
@@ -168,62 +156,62 @@ fun PracticeScreen(
                         .padding(horizontal = 16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    // ── Scenario filter chips ──────────────────────────────
-                    if (scenarioList.isNotEmpty()) {
-                        LazyRow(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 8.dp),
-                            horizontalArrangement = Arrangement.spacedBy(8.dp)
-                        ) {
-                            item {
-                                FilterChip(
-                                    selected = vm.activeFilter == null,
-                                    onClick = { vm.setScenarioFilter(null) },
-                                    label = { Text("All") }
+
+                    // ── Mastery level filter chips ─────────────────────────
+                    LazyRow(
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        items(vm.availableLevels) { level ->
+                            val count = levelCounts[level] ?: 0
+                            val selected = level in vm.selectedLevels
+                            val chipColor = masteryColor(level)
+                            FilterChip(
+                                selected = selected,
+                                onClick = { vm.toggleLevel(level) },
+                                label = {
+                                    Text(
+                                        "${masteryEmoji(level)} $level · $count",
+                                        fontSize = 13.sp
+                                    )
+                                },
+                                colors = FilterChipDefaults.filterChipColors(
+                                    selectedContainerColor = chipColor.copy(alpha = 0.25f),
+                                    selectedLabelColor = chipColor,
+                                    selectedLeadingIconColor = chipColor
+                                ),
+                                border = FilterChipDefaults.filterChipBorder(
+                                    enabled = true,
+                                    selected = selected,
+                                    selectedBorderColor = chipColor,
+                                    selectedBorderWidth = 1.5.dp
                                 )
-                            }
-                            items(scenarioList) { scenario ->
-                                FilterChip(
-                                    selected = vm.activeFilter == scenario.id,
-                                    onClick = { vm.setScenarioFilter(scenario.id) },
-                                    label = {
-                                        Text("${scenario.characterEmoji} ${scenario.description}")
-                                    }
-                                )
-                            }
+                            )
                         }
                     }
 
+                    // ── Session progress bar ───────────────────────────────
                     LinearProgressIndicator(
-                        progress = { vm.rememberedCount.toFloat() / vm.totalStartCount },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 0.dp, vertical = 4.dp)
+                        progress = { vm.correctCount.toFloat() / vm.totalStartCount },
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
                     )
-
                     Text(
-                        text = "${vm.deck.size} card${if (vm.deck.size != 1) "s" else ""} remaining",
+                        "${vm.deck.size} card${if (vm.deck.size != 1) "s" else ""} remaining",
                         fontSize = 13.sp,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(bottom = 12.dp, top = 4.dp)
+                        modifier = Modifier.padding(bottom = 10.dp, top = 2.dp)
                     )
 
                     // ── Word card ──────────────────────────────────────────
                     Card(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(200.dp),
+                        modifier = Modifier.fillMaxWidth().height(190.dp),
                         shape = RoundedCornerShape(24.dp),
                         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
                         colors = CardDefaults.cardColors(
                             containerColor = MaterialTheme.colorScheme.primaryContainer
                         )
                     ) {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
+                        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                             Column(
                                 horizontalAlignment = Alignment.CenterHorizontally,
                                 verticalArrangement = Arrangement.Center,
@@ -231,79 +219,72 @@ fun PracticeScreen(
                             ) {
                                 Text(
                                     text = word.chinese,
-                                    fontSize = if (isAnswered) 48.sp else 72.sp,
+                                    fontSize = if (isAnswered) 44.sp else 68.sp,
                                     fontWeight = FontWeight.Bold,
                                     textAlign = TextAlign.Center
                                 )
                                 if (isAnswered) {
                                     Spacer(modifier = Modifier.height(6.dp))
                                     Text(
-                                        text = ToneUtils.coloredAnnotatedPinyin(word.pinyin),
-                                        fontSize = 22.sp,
-                                        fontWeight = FontWeight.SemiBold,
+                                        ToneUtils.coloredAnnotatedPinyin(word.pinyin),
+                                        fontSize = 20.sp, fontWeight = FontWeight.SemiBold,
                                         textAlign = TextAlign.Center
                                     )
                                     Spacer(modifier = Modifier.height(4.dp))
                                     Text(
-                                        text = "🇮🇩  ${word.indonesian}",
-                                        fontSize = 14.sp,
+                                        "🇮🇩  ${word.indonesian}", fontSize = 13.sp,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                                         textAlign = TextAlign.Center
                                     )
                                 } else {
                                     Spacer(modifier = Modifier.height(8.dp))
-                                    Text(
-                                        text = "Which translation is correct?",
-                                        fontSize = 14.sp,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                        textAlign = TextAlign.Center
-                                    )
+                                    // Mastery rating badge
+                                    Surface(
+                                        color = masteryColor(word.boxLevel).copy(alpha = 0.15f),
+                                        shape = RoundedCornerShape(8.dp)
+                                    ) {
+                                        Text(
+                                            "${masteryEmoji(word.boxLevel)} Mastery ${word.boxLevel}/10",
+                                            fontSize = 12.sp,
+                                            color = masteryColor(word.boxLevel),
+                                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
+                                        )
+                                    }
                                 }
                             }
-
-                            // Speaker icon — top-right corner of the card
+                            // Speaker icon — top-right corner
                             IconButton(
                                 onClick = { tts.speak(word.chinese) },
                                 modifier = Modifier.align(Alignment.TopEnd)
                             ) {
-                                Icon(
-                                    Icons.Default.VolumeUp,
-                                    contentDescription = "Hear pronunciation",
-                                    tint = MaterialTheme.colorScheme.onPrimaryContainer
-                                )
+                                Icon(Icons.Default.VolumeUp, "Hear pronunciation",
+                                    tint = MaterialTheme.colorScheme.onPrimaryContainer)
                             }
                         }
                     }
 
-                    // ── Note bubble (revealed after answering) ─────────────
+                    // ── Note bubble ────────────────────────────────────────
                     if (isAnswered && word.note != null) {
                         Surface(
                             color = MaterialTheme.colorScheme.tertiaryContainer,
                             shape = RoundedCornerShape(16.dp),
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = 10.dp)
+                            modifier = Modifier.fillMaxWidth().padding(top = 8.dp)
                         ) {
                             Text(
-                                text = "💡 ${word.note}",
-                                fontSize = 13.sp,
+                                "💡 ${word.note}", fontSize = 13.sp,
                                 color = MaterialTheme.colorScheme.onTertiaryContainer,
-                                textAlign = TextAlign.Center,
-                                lineHeight = 19.sp,
-                                modifier = Modifier.padding(horizontal = 14.dp, vertical = 10.dp)
+                                textAlign = TextAlign.Center, lineHeight = 19.sp,
+                                modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp)
                             )
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(12.dp))
+                    Spacer(modifier = Modifier.height(10.dp))
 
-                    // ── 4 multiple-choice options in a 2×2 grid ────────────
-                    val rows = options.chunked(2)
-                    rows.forEach { rowOptions ->
+                    // ── 2×2 answer grid ────────────────────────────────────
+                    options.chunked(2).forEach { rowOptions ->
                         Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 4.dp),
+                            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
                             rowOptions.forEach { option ->
@@ -320,32 +301,22 @@ fun PracticeScreen(
                                 }
                                 Button(
                                     onClick = { if (!isAnswered) selectedAnswer = option },
-                                    modifier = Modifier
-                                        .weight(1f)
-                                        .height(64.dp),
+                                    modifier = Modifier.weight(1f).height(64.dp),
                                     colors = ButtonDefaults.buttonColors(
-                                        containerColor = containerColor,
-                                        contentColor = contentColor,
-                                        disabledContainerColor = containerColor,
-                                        disabledContentColor = contentColor
+                                        containerColor = containerColor, contentColor = contentColor,
+                                        disabledContainerColor = containerColor, disabledContentColor = contentColor
                                     ),
                                     enabled = !isAnswered,
                                     shape = RoundedCornerShape(12.dp)
                                 ) {
-                                    Text(
-                                        option,
-                                        fontSize = 14.sp,
-                                        fontWeight = FontWeight.Medium,
-                                        textAlign = TextAlign.Center,
-                                        lineHeight = 18.sp
-                                    )
+                                    Text(option, fontSize = 14.sp, fontWeight = FontWeight.Medium,
+                                        textAlign = TextAlign.Center, lineHeight = 18.sp)
                                 }
                             }
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(8.dp))
-
+                    Spacer(modifier = Modifier.height(4.dp))
                     TextButton(onClick = { vm.finishEarly() }) {
                         Text("Finish session early", fontSize = 13.sp)
                     }
@@ -356,13 +327,8 @@ fun PracticeScreen(
 }
 
 @Composable
-private fun PracticeSummaryScreen(
-    remembered: Int,
-    total: Int,
-    onDone: () -> Unit
-) {
-    val stillPractising = total - remembered
-    val isPerfect = remembered == total
+private fun PracticeSummaryScreen(correct: Int, total: Int, onDone: () -> Unit) {
+    val isPerfect = correct == total
     var showConfetti by remember { mutableStateOf(isPerfect) }
     LaunchedEffect(isPerfect) {
         if (isPerfect) {
@@ -372,69 +338,37 @@ private fun PracticeSummaryScreen(
     }
 
     Box(modifier = Modifier.fillMaxSize()) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(32.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(if (remembered == total) "🎉" else "👏", fontSize = 80.sp)
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(
-            text = if (remembered == total) "Perfect Session!" else "Practice Complete!",
-            fontSize = 28.sp,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center
-        )
-        Spacer(modifier = Modifier.height(24.dp))
-
-        // Stats row
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
+        Column(
+            modifier = Modifier.fillMaxSize().padding(32.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-            StatItem(label = "Reviewed", value = "$total", emoji = "📋")
-            StatItem(label = "Remembered", value = "$remembered", emoji = "✅")
-            if (stillPractising > 0) {
-                StatItem(label = "Keep going", value = "$stillPractising", emoji = "🔁")
+            Text(if (isPerfect) "🎉" else "👏", fontSize = 80.sp)
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                if (isPerfect) "Perfect Session!" else "Session Complete!",
+                fontSize = 28.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(24.dp))
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+                StatItem("Reviewed", "$total", "📋")
+                StatItem("Correct", "$correct", "✅")
+                if (correct < total) StatItem("Missed", "${total - correct}", "🔁")
+            }
+            Spacer(modifier = Modifier.height(32.dp))
+            Text(
+                if (isPerfect) "You got every word right! Amazing work! 🌟"
+                else "Good practice! Keep going to raise your mastery ratings.",
+                fontSize = 15.sp, textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 22.sp,
+                modifier = Modifier.padding(bottom = 24.dp)
+            )
+            Button(onClick = onDone, modifier = Modifier.fillMaxWidth().height(60.dp)) {
+                Text("Done", fontSize = 18.sp)
             }
         }
-
-        Spacer(modifier = Modifier.height(40.dp))
-
-        if (stillPractising > 0) {
-            Text(
-                text = "You're getting there! Keep practising the $stillPractising remaining words.",
-                fontSize = 15.sp,
-                textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                lineHeight = 22.sp,
-                modifier = Modifier.padding(bottom = 24.dp)
-            )
-        } else {
-            Text(
-                text = "You remembered every word in this session. Amazing!",
-                fontSize = 15.sp,
-                textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                lineHeight = 22.sp,
-                modifier = Modifier.padding(bottom = 24.dp)
-            )
-        }
-
-        Button(
-            onClick = onDone,
-            modifier = Modifier.fillMaxWidth().height(60.dp)
-        ) {
-            Text("Done", fontSize = 18.sp)
-        }
-    } // end Column
-
-    if (showConfetti) {
-        ConfettiEffect()
+        if (showConfetti) ConfettiEffect()
     }
-    } // end Box
 }
 
 @Composable
