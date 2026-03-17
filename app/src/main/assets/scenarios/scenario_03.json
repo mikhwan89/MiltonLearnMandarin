@@ -340,6 +340,36 @@
       ],
       "correctAnswerIndex": 1,
       "explanation": "零食 (Língshí) means 'snack'"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "我饿了",
+      "questionPinyin": "Wǒ è le",
+      "options": [
+        {
+          "chinese": "I am hungry",
+          "pinyin": "",
+          "translation": "I am hungry"
+        },
+        {
+          "chinese": "I am thirsty",
+          "pinyin": "",
+          "translation": "I am thirsty"
+        },
+        {
+          "chinese": "I am full",
+          "pinyin": "",
+          "translation": "I am full"
+        },
+        {
+          "chinese": "I am tired",
+          "pinyin": "",
+          "translation": "I am tired"
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "我饿了 (Wǒ è le) means 'I am hungry' — 饿 means hungry and 了 shows it just happened!"
     }
   ],
   "category": "FOOD_AND_EATING"

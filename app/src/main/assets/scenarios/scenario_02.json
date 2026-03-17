@@ -362,6 +362,36 @@
       ],
       "correctAnswerIndex": 1,
       "explanation": "你叫什么名字？(Nǐ jiào shénme míngzi?) means 'What's your name?'"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "你叫什么名字",
+      "questionPinyin": "Nǐ jiào shénme míngzi",
+      "options": [
+        {
+          "chinese": "What is your name?",
+          "pinyin": "",
+          "translation": "What is your name?"
+        },
+        {
+          "chinese": "How old are you?",
+          "pinyin": "",
+          "translation": "How old are you?"
+        },
+        {
+          "chinese": "Where are you from?",
+          "pinyin": "",
+          "translation": "Where are you from?"
+        },
+        {
+          "chinese": "Do you want to play?",
+          "pinyin": "",
+          "translation": "Do you want to play?"
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "你叫什么名字 (Nǐ jiào shénme míngzi) means 'What is your name?' — use this to introduce yourself!"
     }
   ],
   "category": "ESSENTIALS"

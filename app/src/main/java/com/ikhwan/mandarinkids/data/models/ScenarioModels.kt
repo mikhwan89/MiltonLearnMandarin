@@ -83,7 +83,8 @@ data class ResponseOption(
 @Serializable
 enum class QuizDirection {
     CHINESE_TO_TRANSLATION,  // Question in Chinese → Answer in English/Indonesian
-    TRANSLATION_TO_CHINESE   // Question in English/Indonesian → Answer in Chinese
+    TRANSLATION_TO_CHINESE,  // Question in English/Indonesian → Answer in Chinese
+    AUDIO_TO_TRANSLATION     // TTS plays the word → Answer in English/Indonesian (ear training)
 }
 
 // Quiz question model

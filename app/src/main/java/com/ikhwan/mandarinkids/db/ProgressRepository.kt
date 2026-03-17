@@ -35,12 +35,27 @@ class ProgressRepository private constructor(
                 lastPlayedAt = System.currentTimeMillis()
             )
         )
+
+        // Check scenario-based badges
+        if (newStars >= 1) awardBadge(Badge.FIRST_STEPS.id)
+        if (newStars >= 3) awardBadge(Badge.PERFECT_SCORE.id)
+        // All Stars: every scenario has 3 stars
+        val allProgress = dao.getAll().first()
+        if (allProgress.isNotEmpty() && allProgress.all { it.stars >= 3 }) {
+            awardBadge(Badge.ALL_STARS.id)
+        }
+
         return xpGained
     }
 
     // ── Mastered word persistence ─────────────────────────────────────────
 
-    suspend fun markWordMastered(entity: MasteredWordEntity) = masteredWordDao.upsert(entity)
+    suspend fun markWordMastered(entity: MasteredWordEntity) {
+        masteredWordDao.upsert(entity)
+        // Word Collector badge: 10+ mastered words
+        val count = masteredWordDao.getTotalCount().first()
+        if (count >= 10) awardBadge(Badge.WORD_COLLECTOR.id)
+    }
 
     fun getAllMasteredWords(): Flow<List<MasteredWordEntity>> = masteredWordDao.getAll()
 
@@ -52,7 +67,49 @@ class ProgressRepository private constructor(
     fun getDueWordCount(now: Long = System.currentTimeMillis()): Flow<Int> =
         masteredWordDao.getDueCount(now)
 
-    // ── SharedPreferences-backed (streak is app-level, not per-scenario) ─
+    // ── Word of the Day ───────────────────────────────────────────────────
+
+    /**
+     * Returns today's word of the day from [words]. Prefers box 1–2 words.
+     * Picks once per calendar day and stores the selection in SharedPreferences.
+     */
+    fun getOrPickWordOfDay(words: List<MasteredWordEntity>): MasteredWordEntity? {
+        if (words.isEmpty()) return null
+        val p = prefs()
+        val today = todayString()
+        val storedDate = p.getString(KEY_WORD_OF_DAY_DATE, "") ?: ""
+        val storedChinese = p.getString(KEY_WORD_OF_DAY_CHINESE, "") ?: ""
+
+        if (storedDate == today && storedChinese.isNotEmpty()) {
+            return words.firstOrNull { it.chinese == storedChinese }
+        }
+
+        // Pick new word — prefer not-yet-mastered (box 1 or 2)
+        val candidates = words.filter { it.boxLevel <= 2 }.ifEmpty { words }
+        val picked = candidates.random()
+        p.edit()
+            .putString(KEY_WORD_OF_DAY_DATE, today)
+            .putString(KEY_WORD_OF_DAY_CHINESE, picked.chinese)
+            .apply()
+        return picked
+    }
+
+    // ── Badges ────────────────────────────────────────────────────────────
+
+    fun getEarnedBadges(): Set<String> =
+        prefs().getStringSet(KEY_EARNED_BADGES, emptySet()) ?: emptySet()
+
+    /** Awards a badge. Returns true if it was newly earned. */
+    fun awardBadge(id: String): Boolean {
+        val p = prefs()
+        val current = p.getStringSet(KEY_EARNED_BADGES, emptySet())?.toMutableSet() ?: mutableSetOf()
+        if (id in current) return false
+        current.add(id)
+        p.edit().putStringSet(KEY_EARNED_BADGES, current).apply()
+        return true
+    }
+
+    // ── SharedPreferences-backed (streak) ────────────────────────────────
 
     fun getStreak(): Int = prefs().getInt(KEY_STREAK, 0)
 
@@ -70,6 +127,11 @@ class ProgressRepository private constructor(
             .putString(KEY_LAST_OPEN_DATE, today)
             .putInt(KEY_STREAK, newStreak)
             .apply()
+
+        // Streak badges
+        if (newStreak >= 3) awardBadge(Badge.STREAK_STARTER.id)
+        if (newStreak >= 7) awardBadge(Badge.STREAK_CHAMPION.id)
+
         return newStreak
     }
 
@@ -90,6 +152,9 @@ class ProgressRepository private constructor(
         private const val PREFS_NAME = "milton_progress"
         private const val KEY_STREAK = "streak"
         private const val KEY_LAST_OPEN_DATE = "last_open_date"
+        private const val KEY_EARNED_BADGES = "earned_badges"
+        private const val KEY_WORD_OF_DAY_DATE = "word_of_day_date"
+        private const val KEY_WORD_OF_DAY_CHINESE = "word_of_day_chinese"
 
         @Volatile private var _instance: ProgressRepository? = null
 

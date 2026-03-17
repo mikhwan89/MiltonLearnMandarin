@@ -351,6 +351,36 @@
       ],
       "correctAnswerIndex": 1,
       "explanation": "谢谢 (Xièxie) means 'Thank you'"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "早上好",
+      "questionPinyin": "Zǎoshang hǎo",
+      "options": [
+        {
+          "chinese": "Good morning",
+          "pinyin": "",
+          "translation": "Good morning"
+        },
+        {
+          "chinese": "Goodbye",
+          "pinyin": "",
+          "translation": "Goodbye"
+        },
+        {
+          "chinese": "Thank you",
+          "pinyin": "",
+          "translation": "Thank you"
+        },
+        {
+          "chinese": "My name is",
+          "pinyin": "",
+          "translation": "My name is"
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "早上好 (Zǎoshang hǎo) means 'Good morning' — you say this to greet people in the morning!"
     }
   ],
   "category": "ESSENTIALS"

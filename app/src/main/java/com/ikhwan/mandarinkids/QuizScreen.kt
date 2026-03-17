@@ -58,6 +58,15 @@ fun QuizScreen(
 
     val currentQuestion = vm.currentQuestion
 
+    // Auto-play TTS when an audio-mode question loads
+    LaunchedEffect(vm.currentQuestionIndex) {
+        val q = vm.currentQuestion
+        if (q != null && q.direction == QuizDirection.AUDIO_TO_TRANSLATION) {
+            delay(300)
+            tts.speak(q.questionChinese)
+        }
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -153,6 +162,23 @@ fun QuizScreen(
                                             fontSize = 20.sp,
                                             style = MaterialTheme.typography.titleLarge
                                         )
+                                    }
+                                    QuizDirection.AUDIO_TO_TRANSLATION -> {
+                                        // Show speaker UI — no text hint
+                                        Text(
+                                            text = "🎧 Listen and choose!",
+                                            fontSize = 18.sp,
+                                            fontWeight = FontWeight.SemiBold,
+                                            modifier = Modifier.padding(bottom = 12.dp)
+                                        )
+                                        Button(
+                                            onClick = { tts.speak(question.questionChinese) },
+                                            modifier = Modifier.align(Alignment.CenterHorizontally)
+                                        ) {
+                                            Icon(Icons.Default.PlayArrow, contentDescription = null)
+                                            Spacer(modifier = Modifier.width(8.dp))
+                                            Text("Play again", fontSize = 15.sp)
+                                        }
                                     }
                                 }
                             }
@@ -316,7 +342,8 @@ fun QuizOptionButton(
                                 MaterialTheme.colorScheme.secondary
                         )
                     }
-                    QuizDirection.CHINESE_TO_TRANSLATION -> {
+                    QuizDirection.CHINESE_TO_TRANSLATION,
+                    QuizDirection.AUDIO_TO_TRANSLATION -> {
                         // Show English/Indonesian translation only
                         Text(
                             text = option.translation,

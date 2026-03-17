@@ -133,7 +133,7 @@
 
 ---
 
-## #7 · Feature: Word of the Day
+## ✅ #7 · Feature: Word of the Day
 
 **What:** Each day the app surfaces one word Milton hasn't fully mastered yet — shown as a banner or card on the Home screen. Tapping it plays the TTS and shows the flashcard for that word.
 
@@ -148,7 +148,7 @@
 
 ---
 
-## #8 · Feature: Achievements and Badges
+## ✅ #8 · Feature: Achievements and Badges
 
 **What:** Reward Milton with visual badges for milestones to keep him motivated. Badges appear on the Home screen in a dedicated row and can be tapped to see what they are for.
 
@@ -169,7 +169,7 @@
 
 ---
 
-## #9 · Feature: Listening Mode Quiz
+## ✅ #9 · Feature: Listening Mode Quiz
 
 **What:** A reverse-quiz mode where TTS plays a Chinese word or sentence and the child picks the correct English/Indonesian meaning from multiple options — training the ear rather than reading recognition.
 
