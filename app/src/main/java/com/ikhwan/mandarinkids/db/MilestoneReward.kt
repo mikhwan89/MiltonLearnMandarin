@@ -4,10 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 enum class MilestoneType(val label: String, val unit: String) {
-    XP_THRESHOLD("Reach XP", "XP"),
-    SCENARIOS_COMPLETED("Complete scenarios", "scenarios"),
-    STREAK_DAYS("Streak days", "days"),
-    WORDS_MASTERED("Master words", "words")
+    PERFECT_SCENARIOS("Scenarios with 3 stars", "scenarios")
 }
 
 @Entity(tableName = "milestone_rewards")

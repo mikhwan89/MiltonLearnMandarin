@@ -3,11 +3,12 @@ package com.ikhwan.mandarinkids.parent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.LockOpen
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -29,41 +30,7 @@ import kotlinx.coroutines.launch
 fun ParentDashboardScreen(onBack: () -> Unit) {
     val context = LocalContext.current
     val repo = remember { ProgressRepository.getInstance(context) }
-
-    // Auth state — if PIN is set, require verify first
-    var authenticated by remember { mutableStateOf(!repo.isPinSet()) }
-    var settingPin by remember { mutableStateOf(false) }
-
-    if (!authenticated) {
-        if (settingPin) {
-            PinScreen(
-                mode = PinMode.SET,
-                onSuccess = { authenticated = true },
-                onBack = { settingPin = false },
-                onVerify = { false },
-                onSetPin = { repo.setPin(it) }
-            )
-        } else {
-            // First-time: no PIN set yet → go to SET flow
-            PinScreen(
-                mode = PinMode.VERIFY,
-                onSuccess = { authenticated = true },
-                onBack = onBack,
-                onVerify = { repo.verifyPin(it) },
-                onSetPin = {}
-            )
-        }
-        return
-    }
-
-    Dashboard(repo = repo, onBack = onBack)
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun Dashboard(repo: ProgressRepository, onBack: () -> Unit) {
     val scope = rememberCoroutineScope()
-    val context = LocalContext.current
     val scenarios = remember { JsonScenarioRepository.getAll() }
 
     val xp by repo.getTotalXp().collectAsState(initial = 0)
@@ -74,13 +41,35 @@ private fun Dashboard(repo: ProgressRepository, onBack: () -> Unit) {
     val earnedBadges = remember(masteredCount, allProgress) { repo.getEarnedBadges() }
     var showIndonesian by remember { mutableStateOf(repo.getShowIndonesian()) }
     var showResetConfirm by remember { mutableStateOf(false) }
+
+    // Rewards section PIN state
+    var rewardsUnlocked by remember { mutableStateOf(false) }
+    var showPinForRewards by remember { mutableStateOf(false) }
     var showAddReward by remember { mutableStateOf(false) }
-    var showChangePinInfo by remember { mutableStateOf(false) }
+
+    val perfectCount = allProgress.count { it.stars >= 3 }
+
+    // PIN overlay for rewards section
+    if (showPinForRewards) {
+        val pinMode = if (repo.isPinSet()) PinMode.VERIFY else PinMode.SET
+        PinScreen(
+            mode = pinMode,
+            onSuccess = {
+                showPinForRewards = false
+                rewardsUnlocked = true
+                if (showAddReward) { /* will open after unlock */ }
+            },
+            onBack = { showPinForRewards = false },
+            onVerify = { repo.verifyPin(it) },
+            onSetPin = { repo.setPin(it) }
+        )
+        return
+    }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("👪 Parent Dashboard") },
+                title = { Text("Dashboard") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
@@ -116,18 +105,16 @@ private fun Dashboard(repo: ProgressRepository, onBack: () -> Unit) {
                         StatColumn("⭐", "$xp XP", "Total XP")
                         StatColumn("📚", "$masteredCount", "Words")
                         StatColumn(
-                            "✅",
-                            "${allProgress.count { it.stars > 0 }}/${scenarios.size}",
-                            "Scenarios"
+                            "🌟",
+                            "$perfectCount/${scenarios.size}",
+                            "3-star"
                         )
                     }
                 }
             }
 
             // ── Per-scenario stars ────────────────────────────────────────
-            item {
-                SectionHeader("🎯 Scenario Progress")
-            }
+            item { SectionHeader("🎯 Scenario Progress") }
             items(scenarios) { scenario ->
                 val progress = allProgress.firstOrNull { it.scenarioId == scenario.id }
                 val stars = progress?.stars ?: 0
@@ -142,14 +129,19 @@ private fun Dashboard(repo: ProgressRepository, onBack: () -> Unit) {
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(scenario.title, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
-                            Text(scenario.category.displayName, fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            Text(
+                                scenario.category.displayName,
+                                fontSize = 11.sp,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
                         }
                         Row {
                             repeat(3) { i ->
                                 Text(
                                     text = if (i < stars) "★" else "☆",
                                     fontSize = 18.sp,
-                                    color = if (i < stars) Color(0xFFFFC107) else MaterialTheme.colorScheme.outlineVariant
+                                    color = if (i < stars) Color(0xFFFFC107)
+                                    else MaterialTheme.colorScheme.outlineVariant
                                 )
                             }
                         }
@@ -170,11 +162,7 @@ private fun Dashboard(repo: ProgressRepository, onBack: () -> Unit) {
                                     .padding(vertical = 4.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Text(
-                                    badge.emoji,
-                                    fontSize = 22.sp,
-                                    modifier = Modifier.width(36.dp)
-                                )
+                                Text(badge.emoji, fontSize = 22.sp, modifier = Modifier.width(36.dp))
                                 Column(modifier = Modifier.weight(1f)) {
                                     Text(
                                         badge.label,
@@ -192,7 +180,8 @@ private fun Dashboard(repo: ProgressRepository, onBack: () -> Unit) {
                                 Text(
                                     if (earned) "✅" else "○",
                                     fontSize = 16.sp,
-                                    color = if (earned) Color(0xFF4CAF50) else MaterialTheme.colorScheme.outlineVariant
+                                    color = if (earned) Color(0xFF4CAF50)
+                                    else MaterialTheme.colorScheme.outlineVariant
                                 )
                             }
                         }
@@ -200,22 +189,43 @@ private fun Dashboard(repo: ProgressRepository, onBack: () -> Unit) {
                 }
             }
 
-            // ── Rewards Management ────────────────────────────────────────
+            // ── Milestone Rewards By Parent ───────────────────────────────
             item {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    SectionHeader("🎁 Milestone Rewards", modifier = Modifier.weight(1f))
-                    IconButton(onClick = { showAddReward = true }) {
-                        Icon(Icons.Default.Add, contentDescription = "Add Reward")
+                    SectionHeader("🎁 Milestone Reward By Parent", modifier = Modifier.weight(1f))
+                    if (rewardsUnlocked) {
+                        IconButton(onClick = { showAddReward = true }) {
+                            Icon(Icons.Default.Add, contentDescription = "Add Reward")
+                        }
+                        IconButton(onClick = { rewardsUnlocked = false }) {
+                            Icon(Icons.Default.Lock, contentDescription = "Lock", tint = MaterialTheme.colorScheme.onSurfaceVariant)
+                        }
+                    } else {
+                        IconButton(onClick = { showPinForRewards = true }) {
+                            Icon(Icons.Default.LockOpen, contentDescription = "Unlock to manage")
+                        }
                     }
                 }
             }
+
+            if (!rewardsUnlocked) {
+                item {
+                    Text(
+                        "🔐 Tap the unlock icon to manage rewards",
+                        fontSize = 12.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(start = 4.dp, bottom = 4.dp)
+                    )
+                }
+            }
+
             if (allRewards.isEmpty()) {
                 item {
                     Text(
-                        "No rewards set. Tap + to add one.",
+                        "No rewards set yet. Unlock and tap + to add one.",
                         fontSize = 13.sp,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.padding(start = 4.dp, bottom = 8.dp)
@@ -225,10 +235,8 @@ private fun Dashboard(repo: ProgressRepository, onBack: () -> Unit) {
                 items(allRewards, key = { it.id }) { reward ->
                     RewardItem(
                         reward = reward,
-                        xp = xp,
-                        masteredCount = masteredCount,
-                        streak = streak,
-                        scenariosCompleted = allProgress.count { it.stars > 0 },
+                        perfectCount = perfectCount,
+                        unlocked = rewardsUnlocked,
                         onClaim = { scope.launch { repo.claimReward(reward.id) } },
                         onDelete = { scope.launch { repo.deleteReward(reward.id) } }
                     )
@@ -240,7 +248,6 @@ private fun Dashboard(repo: ProgressRepository, onBack: () -> Unit) {
                 SectionHeader("⚙️ Settings")
                 Card(modifier = Modifier.fillMaxWidth()) {
                     Column {
-                        // Indonesian toggle
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -264,15 +271,6 @@ private fun Dashboard(repo: ProgressRepository, onBack: () -> Unit) {
                             )
                         }
                         HorizontalDivider()
-                        // Change PIN
-                        TextButton(
-                            onClick = { showChangePinInfo = true },
-                            modifier = Modifier.padding(horizontal = 8.dp)
-                        ) {
-                            Text("🔑 Change PIN")
-                        }
-                        HorizontalDivider()
-                        // Reset progress
                         TextButton(
                             onClick = { showResetConfirm = true },
                             modifier = Modifier.padding(horizontal = 8.dp),
@@ -310,22 +308,12 @@ private fun Dashboard(repo: ProgressRepository, onBack: () -> Unit) {
         )
     }
 
-    if (showChangePinInfo) {
-        AlertDialog(
-            onDismissRequest = { showChangePinInfo = false },
-            title = { Text("Change PIN") },
-            text = { Text("To set a new PIN, go back and re-enter this screen — you'll be prompted for the new PIN after clearing the old one. (Full PIN change flow coming soon.)") },
-            confirmButton = {
-                TextButton(onClick = { showChangePinInfo = false }) { Text("OK") }
-            }
-        )
-    }
-
-    if (showAddReward) {
+    if (showAddReward && rewardsUnlocked) {
         AddRewardDialog(
+            totalScenarios = JsonScenarioRepository.getAll().size,
             onDismiss = { showAddReward = false },
-            onAdd = { type, target, text ->
-                scope.launch { repo.addReward(type, target, text) }
+            onAdd = { target, text ->
+                scope.launch { repo.addReward(MilestoneType.PERFECT_SCENARIOS, target, text) }
                 showAddReward = false
             }
         )
@@ -335,23 +323,13 @@ private fun Dashboard(repo: ProgressRepository, onBack: () -> Unit) {
 @Composable
 private fun RewardItem(
     reward: MilestoneReward,
-    xp: Int,
-    masteredCount: Int,
-    streak: Int,
-    scenariosCompleted: Int,
+    perfectCount: Int,
+    unlocked: Boolean,
     onClaim: () -> Unit,
     onDelete: () -> Unit
 ) {
-    val type = MilestoneType.entries.firstOrNull { it.name == reward.milestoneType }
-    val currentValue = when (type) {
-        MilestoneType.XP_THRESHOLD -> xp
-        MilestoneType.WORDS_MASTERED -> masteredCount
-        MilestoneType.STREAK_DAYS -> streak
-        MilestoneType.SCENARIOS_COMPLETED -> scenariosCompleted
-        null -> 0
-    }
-    val progress = (currentValue.toFloat() / reward.targetValue.toFloat()).coerceIn(0f, 1f)
-    val reached = currentValue >= reward.targetValue
+    val progress = (perfectCount.toFloat() / reward.targetValue.toFloat()).coerceIn(0f, 1f)
+    val reached = perfectCount >= reward.targetValue
 
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -364,28 +342,26 @@ private fun RewardItem(
         Column(modifier = Modifier.padding(12.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Column(modifier = Modifier.weight(1f)) {
+                    Text(reward.rewardText, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
                     Text(
-                        reward.rewardText,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                    Text(
-                        "${type?.label ?: reward.milestoneType}: ${reward.targetValue} ${type?.unit ?: ""}",
+                        "Get 3 stars on ${reward.targetValue} scenario${if (reward.targetValue != 1) "s" else ""}",
                         fontSize = 11.sp,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
                 if (reward.isClaimed) {
                     Text("✅ Claimed", fontSize = 12.sp, color = Color(0xFF4CAF50))
-                } else if (reached) {
+                } else if (reached && unlocked) {
                     TextButton(onClick = onClaim) { Text("Claim!") }
                 }
-                IconButton(onClick = onDelete) {
-                    Icon(
-                        Icons.Default.Delete,
-                        contentDescription = "Delete",
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
+                if (unlocked) {
+                    IconButton(onClick = onDelete) {
+                        Icon(
+                            Icons.Default.Delete,
+                            contentDescription = "Delete",
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                 }
             }
             if (!reward.isClaimed) {
@@ -395,7 +371,7 @@ private fun RewardItem(
                     modifier = Modifier.fillMaxWidth()
                 )
                 Text(
-                    "$currentValue / ${reward.targetValue} ${type?.unit ?: ""}",
+                    "$perfectCount / ${reward.targetValue} perfect scenarios",
                     fontSize = 11.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.align(Alignment.End)
@@ -405,64 +381,35 @@ private fun RewardItem(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun AddRewardDialog(
+    totalScenarios: Int,
     onDismiss: () -> Unit,
-    onAdd: (MilestoneType, Int, String) -> Unit
+    onAdd: (Int, String) -> Unit
 ) {
-    var selectedType by remember { mutableStateOf(MilestoneType.XP_THRESHOLD) }
     var targetText by remember { mutableStateOf("") }
     var rewardText by remember { mutableStateOf("") }
-    var typeExpanded by remember { mutableStateOf(false) }
 
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text("Add Milestone Reward") },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                // Milestone type dropdown
-                ExposedDropdownMenuBox(
-                    expanded = typeExpanded,
-                    onExpandedChange = { typeExpanded = it }
-                ) {
-                    OutlinedTextField(
-                        value = selectedType.label,
-                        onValueChange = {},
-                        readOnly = true,
-                        label = { Text("Milestone Type") },
-                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = typeExpanded) },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .menuAnchor()
-                    )
-                    ExposedDropdownMenu(
-                        expanded = typeExpanded,
-                        onDismissRequest = { typeExpanded = false }
-                    ) {
-                        MilestoneType.entries.forEach { type ->
-                            DropdownMenuItem(
-                                text = { Text("${type.label} (${type.unit})") },
-                                onClick = {
-                                    selectedType = type
-                                    typeExpanded = false
-                                }
-                            )
-                        }
-                    }
-                }
-
+                Text(
+                    "Set a reward for when Milton gets 3 stars on a number of scenarios.",
+                    fontSize = 13.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
                 OutlinedTextField(
                     value = targetText,
                     onValueChange = { targetText = it.filter { c -> c.isDigit() } },
-                    label = { Text("Target value (${selectedType.unit})") },
+                    label = { Text("Number of 3-star scenarios (max $totalScenarios)") },
                     modifier = Modifier.fillMaxWidth()
                 )
-
                 OutlinedTextField(
                     value = rewardText,
                     onValueChange = { rewardText = it },
-                    label = { Text("Reward description (e.g. Ice cream!)") },
+                    label = { Text("Reward (e.g. Ice cream trip!)") },
                     modifier = Modifier.fillMaxWidth()
                 )
             }
@@ -470,9 +417,10 @@ private fun AddRewardDialog(
         confirmButton = {
             TextButton(
                 onClick = {
-                    val target = targetText.toIntOrNull() ?: return@TextButton
+                    val target = targetText.toIntOrNull()?.coerceIn(1, totalScenarios)
+                        ?: return@TextButton
                     if (rewardText.isBlank()) return@TextButton
-                    onAdd(selectedType, target, rewardText)
+                    onAdd(target, rewardText)
                 }
             ) { Text("Add") }
         },
