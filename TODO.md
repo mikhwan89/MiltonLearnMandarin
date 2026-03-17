@@ -184,7 +184,7 @@
 
 ---
 
-## #10 · Feature: Stroke Order Animation for Chinese Characters
+## ✅ #10 · Feature: Stroke Order Animation for Chinese Characters
 
 **What:** In the flashcard view, show an animated stroke order diagram for each Chinese character so Milton can learn how to write the character correctly, not just recognise it.
 
@@ -198,7 +198,7 @@
 
 ---
 
-## #11 · Improvement: Celebratory Animations on Correct Answers
+## ✅ #11 · Improvement: Celebratory Animations on Correct Answers
 
 **What:** Add a brief, fun animation when the child picks the correct answer or finishes a scenario — confetti, a star burst, or a bouncing emoji. Makes correct answers feel rewarding for a 5-year-old.
 

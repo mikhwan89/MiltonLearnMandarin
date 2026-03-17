@@ -5,10 +5,14 @@ import android.media.AudioFormat
 import android.media.AudioTrack
 import androidx.compose.animation.*
 import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import com.ikhwan.mandarinkids.ui.ConfettiEffect
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
@@ -284,8 +288,16 @@ fun QuizOptionButton(
         else -> MaterialTheme.colorScheme.onSurface
     }
 
+    val popScale by animateFloatAsState(
+        targetValue = if (showFeedback && isCorrect) 1.04f else 1f,
+        animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy),
+        label = "correctPop"
+    )
+
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .graphicsLayer { scaleX = popScale; scaleY = popScale },
         onClick = onClick,
         colors = CardDefaults.cardColors(
             containerColor = backgroundColor
@@ -460,6 +472,14 @@ fun QuizResultsScreen(
         xpGained = ProgressRepository.getInstance(context).saveProgress(scenario.id, stars)
     }
 
+    var showConfetti by remember { mutableStateOf(isPerfect) }
+    LaunchedEffect(isPerfect) {
+        if (isPerfect) {
+            kotlinx.coroutines.delay(2600)
+            showConfetti = false
+        }
+    }
+
     // Bouncing emoji animation for perfect score
     val infiniteTransition = rememberInfiniteTransition(label = "celebrate")
     val bounceY by infiniteTransition.animateFloat(
@@ -472,6 +492,7 @@ fun QuizResultsScreen(
         label = "bounceY"
     )
 
+    Box(modifier = Modifier.fillMaxSize()) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -664,7 +685,12 @@ fun QuizResultsScreen(
                 Text("Try Again 再试一次", fontSize = 18.sp)
             }
         }
+    } // end Column
+
+    if (showConfetti) {
+        ConfettiEffect()
     }
+    } // end Box
 }
 
 private fun playWrongSound() {

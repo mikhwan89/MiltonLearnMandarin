@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ikhwan.mandarinkids.data.models.PinyinWord
 import com.ikhwan.mandarinkids.data.models.Scenario
+import com.ikhwan.mandarinkids.ui.StrokeOrderSheet
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
@@ -56,6 +57,7 @@ fun FlashcardScreen(
     )
 
     val currentWord = vm.currentWord
+    var showStrokeOrder by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         tts = TextToSpeech(context) { status ->
@@ -208,6 +210,9 @@ fun FlashcardScreen(
                                         Text("🐢 Slow", fontSize = 13.sp)
                                     }
                                 }
+                                TextButton(onClick = { showStrokeOrder = true }) {
+                                    Text("✏️ How to write", fontSize = 13.sp)
+                                }
                             }
                         } else {
                             // Back — pinyin + translations (counter-rotate to un-mirror)
@@ -341,6 +346,14 @@ fun FlashcardScreen(
                 }
             }
         }
+    }
+
+    if (showStrokeOrder && currentWord != null) {
+        StrokeOrderSheet(
+            chinese = currentWord.chinese,
+            pinyin = currentWord.pinyin,
+            onDismiss = { showStrokeOrder = false }
+        )
     }
 }
 

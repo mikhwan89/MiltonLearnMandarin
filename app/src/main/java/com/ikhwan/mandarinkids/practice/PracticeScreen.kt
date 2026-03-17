@@ -23,6 +23,7 @@ import com.ikhwan.mandarinkids.ToneUtils
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.tts.TtsManager
 import com.ikhwan.mandarinkids.tts.rememberTtsManager
+import com.ikhwan.mandarinkids.ui.ConfettiEffect
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -310,6 +311,16 @@ private fun PracticeSummaryScreen(
     onDone: () -> Unit
 ) {
     val stillPractising = total - remembered
+    val isPerfect = remembered == total
+    var showConfetti by remember { mutableStateOf(isPerfect) }
+    LaunchedEffect(isPerfect) {
+        if (isPerfect) {
+            kotlinx.coroutines.delay(2600)
+            showConfetti = false
+        }
+    }
+
+    Box(modifier = Modifier.fillMaxSize()) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -367,7 +378,12 @@ private fun PracticeSummaryScreen(
         ) {
             Text("Done", fontSize = 18.sp)
         }
+    } // end Column
+
+    if (showConfetti) {
+        ConfettiEffect()
     }
+    } // end Box
 }
 
 @Composable
