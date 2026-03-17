@@ -1,6 +1,8 @@
 package com.ikhwan.mandarinkids.practice
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -17,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ikhwan.mandarinkids.ToneUtils
+import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.tts.TtsManager
 import com.ikhwan.mandarinkids.tts.rememberTtsManager
@@ -40,18 +43,24 @@ fun PracticeScreen(
         }
     }
 
+    // Build scenario filter list from mastered words (stable across recompositions)
+    val scenarioList = remember(vm.allWords) {
+        val ids = vm.allWords.map { it.scenarioId }.distinct()
+        ids.mapNotNull { id -> JsonScenarioRepository.getById(id) }
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
                     Column {
-                        Text("Practice Mode 复习", fontSize = 16.sp)
+                        Text("Flashcard Practice 复习", fontSize = 16.sp)
                         if (!vm.isLoading && vm.totalStartCount > 0) {
                             Text(
-                                if (vm.isDueSession) "Due today · ${vm.rememberedCount} / ${vm.totalStartCount} remembered"
-                                else "Full review · ${vm.rememberedCount} / ${vm.totalStartCount} remembered",
+                                if (vm.isDueSession) "Due today · ${vm.rememberedCount} / ${vm.totalStartCount} done"
+                                else "Full review · ${vm.rememberedCount} / ${vm.totalStartCount} done",
                                 fontSize = 12.sp,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                color = MaterialTheme.colorScheme.onSecondaryContainer
                             )
                         }
                     }
@@ -60,7 +69,12 @@ fun PracticeScreen(
                     IconButton(onClick = onBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back")
                     }
-                }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                )
             )
         }
     ) { padding ->
@@ -151,21 +165,48 @@ fun PracticeScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(padding)
-                        .padding(16.dp),
+                        .padding(horizontal = 16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    // ── Scenario filter chips ──────────────────────────────
+                    if (scenarioList.isNotEmpty()) {
+                        LazyRow(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 8.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            item {
+                                FilterChip(
+                                    selected = vm.activeFilter == null,
+                                    onClick = { vm.setScenarioFilter(null) },
+                                    label = { Text("All") }
+                                )
+                            }
+                            items(scenarioList) { scenario ->
+                                FilterChip(
+                                    selected = vm.activeFilter == scenario.id,
+                                    onClick = { vm.setScenarioFilter(scenario.id) },
+                                    label = {
+                                        Text("${scenario.characterEmoji} ${scenario.description}")
+                                    }
+                                )
+                            }
+                        }
+                    }
+
                     LinearProgressIndicator(
                         progress = { vm.rememberedCount.toFloat() / vm.totalStartCount },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(bottom = 8.dp)
+                            .padding(horizontal = 0.dp, vertical = 4.dp)
                     )
 
                     Text(
                         text = "${vm.deck.size} card${if (vm.deck.size != 1) "s" else ""} remaining",
                         fontSize = 13.sp,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(bottom = 16.dp)
+                        modifier = Modifier.padding(bottom = 12.dp, top = 4.dp)
                     )
 
                     // ── Word card ──────────────────────────────────────────

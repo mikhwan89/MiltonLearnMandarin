@@ -56,8 +56,8 @@ and a `primaryContainer` background strip — not just a plain `Text()` label.
 
 ## 🎮 Learn vs Practice Split
 
-### #6 — Dedicated Practice tab screen
-**Files:** new `PracticeScreen.kt`, `MainActivity.kt`
+### ✅ #6 — Dedicated Practice tab screen *(done)*
+**Files:** `practice/PracticeScreen.kt`, `practice/PracticeSessionViewModel.kt`
 
 Currently practice mode is a banner buried below scenario content. Give it a proper full screen:
 - Top: category/scenario picker or "all words" mode
@@ -66,11 +66,11 @@ Currently practice mode is a banner buried below scenario content. Give it a pro
 
 ---
 
-### #7 — Visual distinction between Learn and Practice modes
-**Files:** `home/HomeScreen.kt`, new `PracticeScreen.kt`
+### ✅ #7 — Visual distinction between Learn and Practice modes *(done)*
+**Files:** `navigation/AppNavigation.kt`, `practice/PracticeScreen.kt`
 
-- **Learn tab** (scenario mode): story icon 💬, warm `primaryContainer` tone
-- **Practice tab** (flashcard drill): flashcard icon 🃏, cool `secondaryContainer` tone
+- **Learn tab** (scenario mode): School icon 🏫, warm `primaryContainer` tone
+- **Flashcard tab** (flashcard drill): Style/cards icon 🃏, cool `secondaryContainer` TopAppBar
 
 Make it visually obvious to a 5-year-old that these are different activities.
 

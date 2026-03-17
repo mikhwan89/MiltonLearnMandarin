@@ -36,6 +36,9 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
     /** Increments every time we advance to a new card — use as a `remember` key in the UI. */
     var cardToken by mutableStateOf(0)
         private set
+    /** Null = all words; non-null = filter to this scenarioId. */
+    var activeFilter by mutableStateOf<String?>(null)
+        private set
 
     val currentWord: MasteredWordEntity?
         get() = if (deck.isNotEmpty() && currentIndex < deck.size) deck[currentIndex] else null
@@ -110,6 +113,29 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
     /** User chose to end the session early. */
     fun finishEarly() {
         showSummary = true
+    }
+
+    /** Rebuild the deck filtered to a specific scenario (null = all words). */
+    fun setScenarioFilter(scenarioId: String?) {
+        if (scenarioId == activeFilter) return
+        activeFilter = scenarioId
+        val filtered = if (scenarioId == null) allWords
+                       else allWords.filter { it.scenarioId == scenarioId }
+        val now = System.currentTimeMillis()
+        val dueWords = filtered.filter { it.nextReviewDate <= now }
+        val words = if (dueWords.isNotEmpty()) {
+            isDueSession = true
+            dueWords.shuffled()
+        } else {
+            isDueSession = false
+            filtered.shuffled()
+        }
+        deck = words
+        totalStartCount = words.size
+        rememberedCount = 0
+        currentIndex = 0
+        cardToken++
+        showSummary = false
     }
 
     companion object {

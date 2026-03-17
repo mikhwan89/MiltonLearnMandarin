@@ -3,8 +3,8 @@ package com.ikhwan.mandarinkids.navigation
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BarChart
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.School
+import androidx.compose.material.icons.filled.Style
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -49,7 +49,7 @@ fun MandarinKidsApp() {
             if (currentRoute in topLevelRoutes) {
                 NavigationBar {
                     NavigationBarItem(
-                        icon = { Icon(Icons.Default.Home, contentDescription = "Learn") },
+                        icon = { Icon(Icons.Default.School, contentDescription = "Learn") },
                         label = { Text("Learn") },
                         selected = currentRoute == Routes.HOME,
                         onClick = {
@@ -60,7 +60,7 @@ fun MandarinKidsApp() {
                         }
                     )
                     NavigationBarItem(
-                        icon = { Icon(Icons.Default.Star, contentDescription = "Flashcard") },
+                        icon = { Icon(Icons.Default.Style, contentDescription = "Flashcard") },
                         label = { Text("Flashcard") },
                         selected = currentRoute == Routes.PRACTICE,
                         onClick = {
