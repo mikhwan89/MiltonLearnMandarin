@@ -133,7 +133,7 @@ fun ConversationBubble(
                                             showWordDialog = true
                                         }
                                         .background(pillBg, RoundedCornerShape(4.dp))
-                                        .padding(horizontal = 6.dp, vertical = 2.dp)
+                                        .padding(horizontal = 8.dp, vertical = 4.dp)
                                 )
                             }
                         }

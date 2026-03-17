@@ -51,8 +51,53 @@
           "indonesian": "orang"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
+        {
+          "chinese": "我家有三个人。",
+          "pinyin": "Wǒ jiā yǒu sān gè rén.",
+          "english": "My family has 3 people.",
+          "indonesian": "Keluargaku ada 3 orang.",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I / my",
+              "indonesian": "Saya / milikku"
+            },
+            {
+              "pinyin": "jiā",
+              "chinese": "家",
+              "english": "family / home",
+              "indonesian": "keluarga / rumah"
+            },
+            {
+              "pinyin": "yǒu",
+              "chinese": "有",
+              "english": "have / there are",
+              "indonesian": "punya / ada"
+            },
+            {
+              "pinyin": "sān",
+              "chinese": "三",
+              "english": "three",
+              "indonesian": "tiga"
+            },
+            {
+              "pinyin": "gè",
+              "chinese": "个",
+              "english": "people (counter word)",
+              "indonesian": "orang (kata bantu bilangan)"
+            },
+            {
+              "pinyin": "rén",
+              "chinese": "人",
+              "english": "person / people",
+              "indonesian": "orang"
+            }
+          ],
+          "isCorrect": true
+        },
         {
           "chinese": "我家有四个人。",
           "pinyin": "Wǒ jiā yǒu sì gè rén.",
@@ -150,6 +195,52 @@
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
+        {
+          "chinese": "我只有爸爸和妈妈。我是独生子。",
+          "pinyin": "Wǒ zhǐ yǒu bàba hé māma. Wǒ shì dúshēngzǐ.",
+          "english": "I only have dad and mom. I am an only child.",
+          "indonesian": "Saya hanya punya ayah dan ibu. Saya anak tunggal.",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "zhǐ yǒu",
+              "chinese": "只有",
+              "english": "only have",
+              "indonesian": "hanya punya"
+            },
+            {
+              "pinyin": "bàba",
+              "chinese": "爸爸",
+              "english": "dad",
+              "indonesian": "ayah"
+            },
+            {
+              "pinyin": "hé",
+              "chinese": "和",
+              "english": "and",
+              "indonesian": "dan"
+            },
+            {
+              "pinyin": "māma",
+              "chinese": "妈妈",
+              "english": "mom",
+              "indonesian": "ibu"
+            },
+            {
+              "pinyin": "dúshēngzǐ",
+              "chinese": "独生子",
+              "english": "only child (boy)",
+              "indonesian": "anak tunggal (laki-laki)",
+              "note": "独生子 means an only child (boy). 独 means alone, 生 means born, 子 means son. For a girl it's 独生女 (dúshēngnǚ)."
+            }
+          ],
+          "isCorrect": true
+        },
         {
           "chinese": "我有爸爸、妈妈和一个弟弟。",
           "pinyin": "Wǒ yǒu bàba, māma hé yī gè dìdi.",
@@ -387,10 +478,10 @@
           "isCorrect": true
         },
         {
-          "chinese": "我最喜欢和弟弟妹妹一起玩！",
-          "pinyin": "Wǒ zuì xǐhuān hé dìdi mèimei yīqǐ wán!",
-          "english": "I like playing with my younger siblings the most!",
-          "indonesian": "Saya paling suka bermain dengan adik-adik!",
+          "chinese": "我最喜欢和朋友们一起玩！",
+          "pinyin": "Wǒ zuì xǐhuān hé péngyoumen yīqǐ wán!",
+          "english": "I like playing with my friends the most!",
+          "indonesian": "Saya paling suka bermain dengan teman-teman!",
           "pinyinWords": [
             {
               "pinyin": "Wǒ",
@@ -411,10 +502,10 @@
               "indonesian": "dan / bersama"
             },
             {
-              "pinyin": "dìdi mèimei",
-              "chinese": "弟弟妹妹",
-              "english": "younger siblings",
-              "indonesian": "adik-adik"
+              "pinyin": "péngyoumen",
+              "chinese": "朋友们",
+              "english": "friends",
+              "indonesian": "teman-teman"
             },
             {
               "pinyin": "yīqǐ wán",
@@ -541,34 +632,34 @@
       "explanation": "妈妈 (māma) means 'mom' — it sounds like 'mama' in many languages!"
     },
     {
-      "direction": "TRANSLATION_TO_CHINESE",
-      "questionText": "How do you say 'younger brother' in Mandarin?",
-      "questionChinese": "",
-      "questionPinyin": "",
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does 独生子 mean?",
+      "questionChinese": "独生子",
+      "questionPinyin": "dúshēngzǐ",
       "options": [
         {
-          "chinese": "姐姐",
-          "pinyin": "jiějie",
-          "translation": "older sister"
-        },
-        {
-          "chinese": "哥哥",
-          "pinyin": "gēge",
+          "chinese": "",
+          "pinyin": "",
           "translation": "older brother"
         },
         {
-          "chinese": "弟弟",
-          "pinyin": "dìdi",
-          "translation": "younger brother"
+          "chinese": "",
+          "pinyin": "",
+          "translation": "only child (boy)"
         },
         {
-          "chinese": "妹妹",
-          "pinyin": "mèimei",
+          "chinese": "",
+          "pinyin": "",
           "translation": "younger sister"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "family member"
         }
       ],
-      "correctAnswerIndex": 2,
-      "explanation": "弟弟 (dìdi) means 'younger brother'. Chinese has different words for older and younger siblings!"
+      "correctAnswerIndex": 1,
+      "explanation": "独生子 (dúshēngzǐ) means 'only child' (a boy). 独 = alone, 生 = born, 子 = son. Milton is a 独生子!"
     },
     {
       "direction": "AUDIO_TO_TRANSLATION",

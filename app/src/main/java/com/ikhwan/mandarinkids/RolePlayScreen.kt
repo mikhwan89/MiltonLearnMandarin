@@ -306,10 +306,10 @@ fun NameInputSection(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(text = option.chinese, fontSize = 16.sp)
+                    Text(text = option.chinese, fontSize = 18.sp)
                     Text(
                         text = option.pinyin,
-                        fontSize = 12.sp,
+                        fontSize = 14.sp,
                         color = MaterialTheme.colorScheme.secondary
                     )
                     Text(
@@ -414,7 +414,7 @@ fun ResponseOptionButton(
 
                 Text(
                     text = option.pinyin,
-                    fontSize = 12.sp,
+                    fontSize = 14.sp,
                     color = MaterialTheme.colorScheme.secondary
                 )
 

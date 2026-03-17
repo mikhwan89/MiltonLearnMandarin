@@ -297,7 +297,7 @@ fun ScenarioCard(scenario: Scenario, stars: Int, onClick: () -> Unit) {
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = scenario.title,
-                    fontSize = 18.sp,
+                    fontSize = 20.sp,
                     fontWeight = FontWeight.SemiBold
                 )
                 Text(

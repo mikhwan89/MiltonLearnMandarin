@@ -1,0 +1,475 @@
+{
+  "id": "scene20_allergy",
+  "title": "我对牛奶过敏",
+  "description": "Telling the canteen auntie about your food allergies",
+  "characterName": "食堂阿姨",
+  "characterEmoji": "👩‍🍳",
+  "characterRole": "canteen_auntie",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "小朋友，今天有巧克力蛋糕，要不要？",
+      "textPinyin": "Xiǎo péngyou, jīntiān yǒu qiǎokèlì dàngāo, yào bu yào?",
+      "textEnglish": "Little friend, today we have chocolate cake — would you like some?",
+      "textIndonesian": "Anak kecil, hari ini ada kue cokelat, mau tidak?",
+      "pinyinWords": [
+        {
+          "pinyin": "Xiǎo péngyou",
+          "chinese": "小朋友",
+          "english": "little friend / child",
+          "indonesian": "anak kecil / teman kecil"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "yǒu",
+          "chinese": "有",
+          "english": "have / there is",
+          "indonesian": "ada / punya"
+        },
+        {
+          "pinyin": "qiǎokèlì",
+          "chinese": "巧克力",
+          "english": "chocolate",
+          "indonesian": "cokelat"
+        },
+        {
+          "pinyin": "dàngāo",
+          "chinese": "蛋糕",
+          "english": "cake",
+          "indonesian": "kue"
+        },
+        {
+          "pinyin": "yào bu yào",
+          "chinese": "要不要",
+          "english": "would you like some?",
+          "indonesian": "mau tidak?",
+          "note": "要不要 is a quick way to offer a choice: '要' means want/yes, '不要' means don't want/no. It's like saying 'yes or no?'."
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "谢谢，但是我对巧克力过敏。",
+          "pinyin": "Xièxie, dànshì wǒ duì qiǎokèlì guòmǐn.",
+          "english": "Thank you, but I am allergic to chocolate.",
+          "indonesian": "Terima kasih, tapi saya alergi cokelat.",
+          "pinyinWords": [
+            {
+              "pinyin": "Xièxie",
+              "chinese": "谢谢",
+              "english": "Thank you",
+              "indonesian": "Terima kasih"
+            },
+            {
+              "pinyin": "dànshì",
+              "chinese": "但是",
+              "english": "but",
+              "indonesian": "tetapi"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "duì",
+              "chinese": "对",
+              "english": "to / towards (used before allergy trigger)",
+              "indonesian": "terhadap",
+              "note": "我对...过敏 is the pattern for saying you're allergic to something. '我对花生过敏' = 'I am allergic to peanuts'."
+            },
+            {
+              "pinyin": "qiǎokèlì",
+              "chinese": "巧克力",
+              "english": "chocolate",
+              "indonesian": "cokelat"
+            },
+            {
+              "pinyin": "guòmǐn",
+              "chinese": "过敏",
+              "english": "allergic / allergy",
+              "indonesian": "alergi"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "哦！那你能喝牛奶吗？",
+      "textPinyin": "Ò! Nà nǐ néng hē niúnǎi ma?",
+      "textEnglish": "Oh! Can you drink milk then?",
+      "textIndonesian": "Oh! Kalau begitu, kamu bisa minum susu?",
+      "pinyinWords": [
+        {
+          "pinyin": "Ò",
+          "chinese": "哦",
+          "english": "Oh! (understanding)",
+          "indonesian": "Oh!"
+        },
+        {
+          "pinyin": "Nà",
+          "chinese": "那",
+          "english": "then / in that case",
+          "indonesian": "kalau begitu"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "néng",
+          "chinese": "能",
+          "english": "can / able to",
+          "indonesian": "bisa"
+        },
+        {
+          "pinyin": "hē",
+          "chinese": "喝",
+          "english": "drink",
+          "indonesian": "minum"
+        },
+        {
+          "pinyin": "niúnǎi",
+          "chinese": "牛奶",
+          "english": "cow's milk",
+          "indonesian": "susu sapi",
+          "note": "牛 means cow, 奶 means milk. So 牛奶 literally means 'cow milk'!"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(question word)",
+          "indonesian": "(kata tanya)"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "不行。我也对牛奶过敏。我不能喝牛奶。",
+          "pinyin": "Bù xíng. Wǒ yě duì niúnǎi guòmǐn. Wǒ bù néng hē niúnǎi.",
+          "english": "No. I am also allergic to cow's milk. I cannot drink milk.",
+          "indonesian": "Tidak bisa. Saya juga alergi susu sapi. Saya tidak bisa minum susu.",
+          "pinyinWords": [
+            {
+              "pinyin": "Bù xíng",
+              "chinese": "不行",
+              "english": "not okay / cannot",
+              "indonesian": "tidak bisa",
+              "note": "不行 literally means 'not okay'. It's a polite way to say something is not possible for you."
+            },
+            {
+              "pinyin": "Wǒ yě",
+              "chinese": "我也",
+              "english": "I also",
+              "indonesian": "saya juga"
+            },
+            {
+              "pinyin": "duì niúnǎi guòmǐn",
+              "chinese": "对牛奶过敏",
+              "english": "allergic to cow's milk",
+              "indonesian": "alergi susu sapi"
+            },
+            {
+              "pinyin": "Wǒ bù néng",
+              "chinese": "我不能",
+              "english": "I cannot",
+              "indonesian": "saya tidak bisa"
+            },
+            {
+              "pinyin": "hē niúnǎi",
+              "chinese": "喝牛奶",
+              "english": "drink milk",
+              "indonesian": "minum susu"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "那芝士呢？奶酪也不行吗？",
+      "textPinyin": "Nà zhīshì ne? Nǎilào yě bù xíng ma?",
+      "textEnglish": "What about cheese? Can't have cheese either?",
+      "textIndonesian": "Kalau keju bagaimana? Keju juga tidak boleh?",
+      "pinyinWords": [
+        {
+          "pinyin": "Nà",
+          "chinese": "那",
+          "english": "then / what about",
+          "indonesian": "kalau"
+        },
+        {
+          "pinyin": "zhīshì",
+          "chinese": "芝士",
+          "english": "cheese",
+          "indonesian": "keju",
+          "note": "芝士 (zhīshì) sounds like the English word 'cheese'! It's borrowed from English."
+        },
+        {
+          "pinyin": "ne",
+          "chinese": "呢",
+          "english": "(what about...?)",
+          "indonesian": "(bagaimana dengan...?)",
+          "note": "呢 at the end of a word asks 'what about ___?' Very useful!"
+        },
+        {
+          "pinyin": "Nǎilào",
+          "chinese": "奶酪",
+          "english": "cheese / dairy",
+          "indonesian": "keju / produk susu"
+        },
+        {
+          "pinyin": "yě",
+          "chinese": "也",
+          "english": "also / either",
+          "indonesian": "juga"
+        },
+        {
+          "pinyin": "bù xíng",
+          "chinese": "不行",
+          "english": "not okay / cannot",
+          "indonesian": "tidak bisa"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(question word)",
+          "indonesian": "(kata tanya)"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "对，芝士也不行。所有牛奶制品我都不能吃。",
+          "pinyin": "Duì, zhīshì yě bù xíng. Suǒyǒu niúnǎi zhìpǐn wǒ dōu bù néng chī.",
+          "english": "Yes, cheese is not okay either. I cannot eat any dairy products at all.",
+          "indonesian": "Ya, keju juga tidak boleh. Semua produk susu sapi tidak bisa saya makan.",
+          "pinyinWords": [
+            {
+              "pinyin": "Duì",
+              "chinese": "对",
+              "english": "Yes / correct / right",
+              "indonesian": "Ya / benar"
+            },
+            {
+              "pinyin": "zhīshì yě bù xíng",
+              "chinese": "芝士也不行",
+              "english": "cheese is also not okay",
+              "indonesian": "keju juga tidak boleh"
+            },
+            {
+              "pinyin": "Suǒyǒu",
+              "chinese": "所有",
+              "english": "all / every",
+              "indonesian": "semua"
+            },
+            {
+              "pinyin": "niúnǎi zhìpǐn",
+              "chinese": "牛奶制品",
+              "english": "dairy products",
+              "indonesian": "produk susu sapi",
+              "note": "制品 (zhìpǐn) means 'products made from'. So 牛奶制品 = things made from cow's milk — like cheese, butter, and ice cream!"
+            },
+            {
+              "pinyin": "wǒ dōu bù néng chī",
+              "chinese": "我都不能吃",
+              "english": "I cannot eat any of them",
+              "indonesian": "saya tidak bisa makan semuanya"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "明白了！谢谢你告诉我。你真勇敢！我帮你找合适的食物。",
+      "textPinyin": "Míngbái le! Xièxie nǐ gàosu wǒ. Nǐ zhēn yǒnggǎn! Wǒ bāng nǐ zhǎo héshì de shíwù.",
+      "textEnglish": "I understand! Thank you for telling me. You are very brave! I will help you find suitable food.",
+      "textIndonesian": "Mengerti! Terima kasih sudah memberitahu saya. Kamu sangat berani! Saya akan bantu carikan makanan yang cocok.",
+      "pinyinWords": [
+        {
+          "pinyin": "Míngbái le",
+          "chinese": "明白了",
+          "english": "I understand now",
+          "indonesian": "Sudah mengerti"
+        },
+        {
+          "pinyin": "Xièxie nǐ gàosu wǒ",
+          "chinese": "谢谢你告诉我",
+          "english": "Thank you for telling me",
+          "indonesian": "Terima kasih sudah memberitahu saya"
+        },
+        {
+          "pinyin": "Nǐ zhēn yǒnggǎn",
+          "chinese": "你真勇敢",
+          "english": "You are really brave",
+          "indonesian": "Kamu sungguh berani",
+          "note": "勇敢 (yǒnggǎn) means brave or courageous. Speaking up about your allergy IS brave!"
+        },
+        {
+          "pinyin": "Wǒ bāng nǐ",
+          "chinese": "我帮你",
+          "english": "I will help you",
+          "indonesian": "Saya akan bantu kamu"
+        },
+        {
+          "pinyin": "zhǎo",
+          "chinese": "找",
+          "english": "find / look for",
+          "indonesian": "mencari"
+        },
+        {
+          "pinyin": "héshì de shíwù",
+          "chinese": "合适的食物",
+          "english": "suitable food",
+          "indonesian": "makanan yang cocok"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does 过敏 mean?",
+      "questionChinese": "过敏",
+      "questionPinyin": "guòmǐn",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "delicious"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "allergy / allergic"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "hungry"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "medicine"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "过敏 (guòmǐn) means allergy or allergic. Remember: 我对...过敏 means 'I am allergic to...'"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'chocolate' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "牛奶",
+          "pinyin": "niúnǎi",
+          "translation": "milk"
+        },
+        {
+          "chinese": "蛋糕",
+          "pinyin": "dàngāo",
+          "translation": "cake"
+        },
+        {
+          "chinese": "巧克力",
+          "pinyin": "qiǎokèlì",
+          "translation": "chocolate"
+        },
+        {
+          "chinese": "芝士",
+          "pinyin": "zhīshì",
+          "translation": "cheese"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "巧克力 (qiǎokèlì) means chocolate — it even sounds a little bit like 'chocolate'!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does 牛奶 mean?",
+      "questionChinese": "牛奶",
+      "questionPinyin": "niúnǎi",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "juice"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "water"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "cow's milk"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "soup"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "牛奶 (niúnǎi) means cow's milk! 牛 means cow and 奶 means milk. Easy to remember!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'I cannot eat'?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "我不喜欢吃",
+          "pinyin": "wǒ bù xǐhuān chī",
+          "translation": "I don't like to eat"
+        },
+        {
+          "chinese": "我不能吃",
+          "pinyin": "wǒ bù néng chī",
+          "translation": "I cannot eat"
+        },
+        {
+          "chinese": "我不想吃",
+          "pinyin": "wǒ bù xiǎng chī",
+          "translation": "I don't want to eat"
+        },
+        {
+          "chinese": "我已经吃了",
+          "pinyin": "wǒ yǐjīng chī le",
+          "translation": "I already ate"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "我不能吃 (wǒ bù néng chī) means 'I cannot eat'. 不能 means 'cannot' — very important for telling others about your allergy!"
+    }
+  ],
+  "category": "FEELINGS_AND_HEALTH"
+}

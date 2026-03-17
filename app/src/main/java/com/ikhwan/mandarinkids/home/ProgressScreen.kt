@@ -361,7 +361,7 @@ private fun AddRewardDialog(
                     label = {
                         Text(when (selectedType) {
                             MilestoneType.PERFECT_SCENARIOS -> "Number of 3-star scenarios (max $totalScenarios)"
-                            MilestoneType.HIGH_MASTERY_WORDS -> "Number of words at mastery 7+"
+                            MilestoneType.HIGH_MASTERY_WORDS -> "Number of words at full mastery (10/10)"
                         })
                     },
                     modifier = Modifier.fillMaxWidth()

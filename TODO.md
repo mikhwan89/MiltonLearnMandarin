@@ -1,231 +1,167 @@
-# MiltonLearnMandarin — UI/UX Improvement Backlog
+# MiltonLearnMandarin — Improvement Backlog
 
-Inspired by Duolingo, Drops, and other top language learning apps.
-Ordered roughly by impact. Each item includes the target file(s).
-
----
-
-## 🏠 Home Screen Redesign
-
-### ✅ #1 — Remove badge row from Home *(done)*
-**Files:** `home/HomeScreen.kt`
-
-The badge chips clutter the home screen. Badges should live on a dedicated Progress tab.
-Remove the `BadgeChip` row and the wrapping card entirely from `HomeScreen`.
+Ordered roughly by impact. Items #1–5 are highest-leverage.
 
 ---
 
-### ✅ #2 — Convert Word of Day to launch-time popup (not a persistent card) *(done)*
-**Files:** `home/HomeScreen.kt`, `MainActivity.kt`
+## 📖 New Scenarios (Content Expansion)
 
-Word of Day should appear once as a `Dialog` / `BottomSheet` when the app opens — then dismiss and never reappear until tomorrow. Remove the always-visible `WordOfDayCard` from the home LazyColumn.
-Use a `LaunchedEffect(Unit)` in `MandarinKidsApp` to show it once per session.
+We have 19 scenarios. Target: 30+. Add in priority order below.
 
----
+### #1 — Food & Eating batch (2 new scenarios)
+**Category:** `FOOD_AND_EATING`
 
-### ✅ #3 — Add bottom navigation bar (Learn / Flashcard / Progress) *(done)*
-**Files:** `navigation/AppNavigation.kt`, `navigation/Routes.kt`
+- **场景 A — 水果摊 (At the Fruit Stand):** Buy fruit from a vendor. Vocab: 苹果, 香蕉, 西瓜, 多少钱, 请给我…
+- **场景 B — 我会做饭 (Cooking with Mum/Dad):** Help prepare a simple meal. Vocab: 切, 炒, 好吃, 我帮你, 锅
 
-Replace the single-screen home with a 3-tab bottom nav:
-- **Learn** — scenario list (current home content, cleaned up)
-- **Flashcard** — dedicated flashcard/drill mode with 4-option multiple choice
-- **Progress** — XP, streak, stars per scenario, badges, milestone rewards
-
-Use `NavigationBar` + `NavigationBarItem` (MD3). This mirrors Duolingo's tab structure and
-clearly separates the two different activity modes the app already has.
+Add as `scenario_20.json` and `scenario_21.json`.
 
 ---
 
-### ✅ #4 — Add breathing room to scenario cards *(done)*
-**Files:** `home/HomeScreen.kt`
+### #2 — Around the House batch (2 new scenarios)
+**Category:** `HOME` *(new category)*
 
-- Increase card internal padding 12dp → 16dp
-- Add `verticalArrangement = Arrangement.spacedBy(12.dp)` between cards
-- Reduce text density on each card: show emoji + title + star rating only
-- Move category label to the section header; remove XP number from the card
+- **场景 A — 起床啦 (Morning Routine):** Wake up, brush teeth, get dressed. Vocab: 起床, 刷牙, 穿衣服, 快点, 早饭
+- **场景 B — 睡觉时间 (Bedtime):** Goodnight routine with family. Vocab: 晚安, 我爱你, 做好梦, 关灯, 讲故事
 
----
-
-### ✅ #5 — Replace plain section headers with bold category dividers *(done)*
-**Files:** `home/HomeScreen.kt`, `home/ScenarioListScreen.kt`
-
-Each category section gets a `MaterialTheme.typography.titleLarge` header with a category emoji
-and a `primaryContainer` background strip — not just a plain `Text()` label.
+Add as `scenario_22.json` and `scenario_23.json`.
 
 ---
 
-## 🎮 Learn vs Practice Split
+### #3 — Animals & Nature batch (2 new scenarios)
+**Category:** `ANIMALS` *(new category)*
 
-### ✅ #6 — Dedicated Practice tab screen *(done)*
-**Files:** `practice/PracticeScreen.kt`, `practice/PracticeSessionViewModel.kt`
+- **场景 A — 动物园 (At the Zoo):** Visit animals, ask what they are. Vocab: 老虎, 大象, 长颈鹿, 猴子, 我想看
+- **场景 B — 我的宠物 (My Pet):** Talk about a pet (dog/cat). Vocab: 狗, 猫, 喂食, 好可爱, 它叫什么名字
 
-Currently practice mode is a banner buried below scenario content. Give it a proper full screen:
-- Top: category/scenario picker or "all words" mode
-- Main: one flashcard at a time, large tap targets
-- Progress bar showing cards remaining in session
+Add as `scenario_24.json` and `scenario_25.json`.
 
 ---
 
-### ✅ #7 — Visual distinction between Learn and Practice modes *(done)*
-**Files:** `navigation/AppNavigation.kt`, `practice/PracticeScreen.kt`
+### #4 — School Subjects batch (2 new scenarios)
+**Category:** `SCHOOL_SUBJECTS`
 
-- **Learn tab** (scenario mode): School icon 🏫, warm `primaryContainer` tone
-- **Flashcard tab** (flashcard drill): Style/cards icon 🃏, cool `secondaryContainer` TopAppBar
+- **场景 A — 美术课 (Art Class):** Draw and describe a picture. Vocab: 画画, 颜色, 红色, 蓝色, 漂亮
+- **场景 B — 音乐课 (Music Class):** Sing a simple song, name instruments. Vocab: 唱歌, 钢琴, 鼓, 一起唱, 好听
 
-Make it visually obvious to a 5-year-old that these are different activities.
-
----
-
-## 💬 RolePlay Screen Polish
-
-### ✅ #8 — Character emoji bounce during speaking *(done)*
-**Files:** `ConversationBubble.kt`
-
-Add `infiniteRepeatable` bounce on the character emoji when `isSpeaking = true`.
-Use `animateFloatAsState` → `graphicsLayer { translationY = bounce }` with
-`spring(DampingRatioMediumBouncy)` for a gentle bob.
+Add as `scenario_26.json` and `scenario_27.json`.
 
 ---
 
-### ✅ #9 — Animate options panel sliding up from bottom *(done)*
-**Files:** `RolePlayScreen.kt`
+### #5 — Health & Feelings batch (1 new scenario)
+**Category:** `FEELINGS_AND_HEALTH`
 
-When `vm.showOptions` becomes true, wrap the options `Surface` in:
-```kotlin
-AnimatedVisibility(
-    visible = vm.showOptions,
-    enter = slideInVertically { it } + fadeIn(),
-    exit = slideOutVertically { it } + fadeOut()
-)
-```
+- **场景 — 看医生 (At the Doctor):** Describe symptoms, receive reassurance. Vocab: 发烧, 头疼, 肚子疼, 打针, 快好了
+
+Add as `scenario_28.json`.
 
 ---
 
-### ✅ #10 — Larger response option touch targets + bigger Chinese text *(done)*
-**Files:** `RolePlayScreen.kt` (`ResponseOptionButton`)
+### #6 — Shopping & Errands (1 new scenario)
+**Category:** `ESSENTIALS`
 
-- Min height: 72dp → **80dp**
-- Number badge: 36dp → **40dp**
-- Chinese text: 16sp → **18sp**
-- `animateColorAsState` on `isPressed` container colour (replace instant switch):
-```kotlin
-val containerColor by animateColorAsState(
-    if (isPressed) MaterialTheme.colorScheme.primaryContainer
-    else MaterialTheme.colorScheme.surface
-)
-```
+- **场景 — 去超市 (At the Supermarket):** Help parent pick items, handle the cashier. Vocab: 多少钱, 找零, 谢谢, 不客气, 我要买
+
+Add as `scenario_29.json`.
 
 ---
 
-## 🧠 Quiz Screen Polish
+## 🎮 New Game Modes
 
-### ✅ #11 — Scale pop animation on correct answer *(done)*
-**Files:** `QuizScreen.kt` (`QuizOptionButton`)
+### #7 — Listening Challenge mode
+**Files:** new `practice/ListeningChallengeScreen.kt`
 
-On correct selection, animate scale 1.0 → 1.08 → 1.0:
-```kotlin
-val scale by animateFloatAsState(
-    if (isCorrectAndSelected) 1.08f else 1.0f,
-    animationSpec = spring(Spring.DampingRatioMediumBouncy)
-)
-Modifier.graphicsLayer { scaleX = scale; scaleY = scale }
-```
+A reverse of the flashcard: play TTS audio only (no Chinese text shown), then pick the correct English meaning from 4 options. Tests listening comprehension without reading support. Add as a second mode inside the Flashcard tab — toggle between "Read → Choose" and "Listen → Choose".
 
 ---
 
-### ✅ #12 — Enforce min height on quiz option buttons + larger Chinese text *(done)*
-**Files:** `QuizScreen.kt` (`QuizOptionButton`)
+### #8 — Tone Trainer mode
+**Files:** new `practice/ToneTrainerScreen.kt`
 
-Add `Modifier.heightIn(min = 72.dp)` on each option button.
-Chinese text in options: minimum **18sp**.
-
----
-
-## 🏆 Results Screen Polish
-
-### ✅ #13 — Bounce animation on trophy/emoji for any result (not just confetti) *(done)*
-**Files:** `QuizResultsScreen.kt`
-
-Confetti already fires on perfect score. For non-perfect results, add a gentle
-`infiniteRepeatable` bounce on the result emoji so the screen never feels static.
+Show a syllable in pinyin WITHOUT the tone mark (e.g. "ma"), play audio, and ask the child to pick the correct tone: 1st 2nd 3rd 4th Neutral. Color-coded buttons matching `ToneUtils` colours. Great for ear training. Add as a third mode option in the Flashcard tab.
 
 ---
 
-### ✅ #14 — CTA button sizing on results screen *(done)*
-**Files:** `QuizResultsScreen.kt`
+### #9 — Sentence Builder mini-game
+**Files:** new `practice/SentenceBuilderScreen.kt`
 
-- Primary CTA (Continue / Back to Home): `height = 56.dp`, `fillMaxWidth`, `Button`
-- Secondary CTA (Try Again): `OutlinedButton`, same width, below primary
-- Ensure 12dp gap between the two buttons
+Given a reference English sentence and a shuffled set of Chinese word tiles, the child drags/taps tiles into the correct order. Draw sentences from existing scenario dialogues so no new content is needed. Add as optional activity at the end of each scenario (alongside the existing quiz).
 
 ---
 
-## 🎨 Global Visual Polish
+## 🏅 Engagement & Gamification
 
-### ✅ #15 — Audit all Icon composables for missing contentDescription *(done)*
-**Files:** all screen files
+### #10 — Level-up full-screen celebration
+**Files:** `home/ProgressScreen.kt`, `navigation/AppNavigation.kt`
 
-Every `Icon` must have a non-null descriptive `contentDescription`.
-Known gaps to check: Speed toggle icon, Play buttons in `ConversationBubble`, Back arrow.
-Run `/uiux` for a full pass.
+When total XP crosses a `ProgressManager` level threshold, show a full-screen animated celebration (confetti + big level badge) before returning to the home tab. Currently level-up is silent. One `LaunchedEffect` comparing old vs new level after any XP change.
 
 ---
 
-### ✅ #16 — Replace Spacer chains with Arrangement.spacedBy *(done)*
-**Files:** `RolePlayScreen.kt`, `QuizScreen.kt`, `home/HomeScreen.kt`
+### #11 — Unlock scenario characters as collectibles
+**Files:** `home/ProgressScreen.kt`, `data/models/ScenarioModels.kt`
 
-Anywhere 3+ `Spacer(Modifier.height(X))` appear in a `Column`, switch to
-`Column(verticalArrangement = Arrangement.spacedBy(Xdp))`.
-
----
-
-### ✅ #17 — Consistent corner radii across all cards *(done)*
-**Files:** all screen files
-
-- Cards: `RoundedCornerShape(16.dp)`
-- Badges / pills: `RoundedCornerShape(50)`
-- Buttons: default MD3 (no override needed)
-
-Audit for any cards still using 8dp or 12dp.
+When a scenario is 3-starred, its character emoji is "unlocked" and shown in a special Collected Characters grid on the Progress screen. Locked characters appear as ❓. Creates a clear visual collection goal for a 5-year-old.
 
 ---
 
-### ✅ #18 — Move XP + streak + badges to dedicated Progress tab *(done)*
-**Files:** new `ProgressScreen.kt`
+### #12 — Daily practice goal & home screen ring
+**Files:** `home/HomeScreen.kt`, `db/ProgressRepository.kt`
 
-A dedicated screen:
-- Streak counter 🔥 N days — large, prominent
-- Total XP — large number
-- Per-scenario star grid (all scenarios with ★★★ display)
-- Badge collection (currently buried on home)
-
-This clears the remaining clutter off the Learn tab home.
+Show a circular progress ring on the Home tab header: "Today: 3 / 5 words practised". Track a simple daily word-review count in `ProgressRepository`. Resets at midnight. Gives Milton a tangible daily target beyond streaks.
 
 ---
 
-## 🔤 Typography Audit
+## 🔔 Notifications & Parent Tools
 
-### #19 — Chinese text size audit across all screens
-**Files:** all screen files
+### #13 — Daily reminder notification
+**Files:** new `notifications/ReminderWorker.kt`
 
-- Primary Chinese display: minimum **20sp**
-- Secondary / option Chinese text: minimum **18sp**
-- Pinyin below Chinese: minimum **14sp**
-- Run `/uiux` on each screen to catch violations
+Use `WorkManager` with a `PeriodicWorkRequest` (daily, at a parent-configurable time set in Parent Dashboard) to fire a local notification: "Time to practise with Milton! 🐼". Opt-in, configured from the Parent Dashboard.
 
 ---
 
-### #20 — Verify pinyin tone colours in ConversationBubble
-**Files:** `ConversationBubble.kt`
+### #14 — Weekly progress summary for parent
+**Files:** `parent/ParentDashboardScreen.kt`
 
-Confirm word pills use `ToneUtils` colours for each syllable.
-Pill padding: `horizontal = 8.dp, vertical = 4.dp` minimum (up from 6/2).
+A "This Week" card showing: scenarios completed, words reviewed, XP gained, streak status. Data already exists in Room — just aggregate over the last 7 days. Gives the parent visibility without needing to dig through the Progress tab.
+
+---
+
+## 🖼️ Content Quality
+
+### #15 — Cultural notes on scenario completion
+**Files:** `data/models/ScenarioModels.kt`, `QuizResultsScreen.kt`
+
+Add an optional `culturalNote: String?` field to `Scenario`. Display it as a fun fact card on the Results screen after completing a scenario (e.g. "In China, students greet teachers by standing up — 起立!"). Write one note per scenario.
+
+---
+
+### #16 — Vocabulary browser (all words by category)
+**Files:** new `home/VocabBrowserScreen.kt`
+
+A searchable, scrollable list of every `PinyinWord` across all scenarios, grouped by scenario category. Tapping a word opens the existing `WordDetailDialog`. Accessible from the Learn tab as a secondary entry point. Useful for revision without replaying full scenarios.
+
+---
+
+## 🛠️ Technical Improvements
+
+### #17 — Tablet / large screen two-pane layout
+**Files:** `navigation/AppNavigation.kt`, `home/HomeScreen.kt`
+
+On screens wider than 600dp (detected via `LocalConfiguration`), show the scenario list on the left and the active scenario/roleplay on the right in a two-pane layout. No new screens needed — just conditional layout wrapping.
+
+---
+
+### #18 — Progress data export for parent
+**Files:** `parent/ParentDashboardScreen.kt`
+
+Add a "Share Progress" button that generates a plain-text or simple HTML summary of Milton's stats (XP, streak, stars per scenario, mastered words) and shares it via the Android share sheet (`Intent.ACTION_SEND`). No backend needed.
 
 ---
 
 ## Notes
 
-- Run `/uiux [ScreenName]` to perform a full 7-lens audit before implementing any screen's changes.
-- UI-only edits — do not change game logic, data models, or TTS behaviour.
-- Test each change mentally: *Can a 5-year-old tap this without frustration? Is feedback immediate?*
-- Items #1–3 (bottom nav + home clean-up) are the highest-leverage changes and should be done first.
+- New scenarios must include: Chinese title, English title, `characterEmoji`, `characterName`, dialogues with `pinyinWords`, and at least 3 quiz questions. Both English and Indonesian translations required in all content.
+- Run `/uiux [ScreenName]` before implementing any new screen.
+- Test each feature: *Can a 5-year-old use this without frustration? Is reward feedback immediate?*
