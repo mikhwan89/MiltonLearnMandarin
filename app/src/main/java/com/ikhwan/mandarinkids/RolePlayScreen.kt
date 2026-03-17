@@ -1,5 +1,11 @@
 package com.ikhwan.mandarinkids
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -183,11 +189,14 @@ fun RolePlayScreen(
                 }
 
                 // Options overlay at bottom
-                if (vm.currentStep != null && (vm.showOptions || vm.showNameInput)) {
+                AnimatedVisibility(
+                    visible = vm.currentStep != null && (vm.showOptions || vm.showNameInput),
+                    enter = slideInVertically { it } + fadeIn(),
+                    exit = slideOutVertically { it } + fadeOut(),
+                    modifier = Modifier.align(Alignment.BottomCenter)
+                ) {
                     Surface(
-                        modifier = Modifier
-                            .align(Alignment.BottomCenter)
-                            .fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth(),
                         shadowElevation = 8.dp,
                         color = MaterialTheme.colorScheme.surface
                     ) {
@@ -340,6 +349,11 @@ fun ResponseOptionButton(
     speechSpeed: Float
 ) {
     var isPressed by remember { mutableStateOf(false) }
+    val containerColor by animateColorAsState(
+        targetValue = if (isPressed) MaterialTheme.colorScheme.primaryContainer
+                      else MaterialTheme.colorScheme.surface,
+        label = "buttonColor"
+    )
 
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -347,24 +361,19 @@ fun ResponseOptionButton(
             isPressed = true
             onClick()
         },
-        colors = CardDefaults.cardColors(
-            containerColor = if (isPressed)
-                MaterialTheme.colorScheme.primaryContainer
-            else
-                MaterialTheme.colorScheme.surface
-        )
+        colors = CardDefaults.cardColors(containerColor = containerColor)
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(min = 72.dp)
+                .heightIn(min = 80.dp)
                 .padding(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Surface(
                 color = MaterialTheme.colorScheme.primary,
                 shape = RoundedCornerShape(50),
-                modifier = Modifier.size(36.dp)
+                modifier = Modifier.size(40.dp)
             ) {
                 Box(
                     contentAlignment = Alignment.Center,
@@ -383,7 +392,7 @@ fun ResponseOptionButton(
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = option.chinese,
-                    fontSize = 16.sp,
+                    fontSize = 18.sp,
                     style = MaterialTheme.typography.titleMedium
                 )
 

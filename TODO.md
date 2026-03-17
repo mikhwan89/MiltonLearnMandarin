@@ -78,7 +78,7 @@ Make it visually obvious to a 5-year-old that these are different activities.
 
 ## 💬 RolePlay Screen Polish
 
-### #8 — Character emoji bounce during speaking
+### ✅ #8 — Character emoji bounce during speaking *(done)*
 **Files:** `ConversationBubble.kt`
 
 Add `infiniteRepeatable` bounce on the character emoji when `isSpeaking = true`.
@@ -87,7 +87,7 @@ Use `animateFloatAsState` → `graphicsLayer { translationY = bounce }` with
 
 ---
 
-### #9 — Animate options panel sliding up from bottom
+### ✅ #9 — Animate options panel sliding up from bottom *(done)*
 **Files:** `RolePlayScreen.kt`
 
 When `vm.showOptions` becomes true, wrap the options `Surface` in:
@@ -101,7 +101,7 @@ AnimatedVisibility(
 
 ---
 
-### #10 — Larger response option touch targets + bigger Chinese text
+### ✅ #10 — Larger response option touch targets + bigger Chinese text *(done)*
 **Files:** `RolePlayScreen.kt` (`ResponseOptionButton`)
 
 - Min height: 72dp → **80dp**
