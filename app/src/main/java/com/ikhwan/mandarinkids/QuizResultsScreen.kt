@@ -55,11 +55,12 @@ fun QuizResultsScreen(
     }
 
     val infiniteTransition = rememberInfiniteTransition(label = "celebrate")
+    // Perfect: big excited bounce; non-perfect: gentle idle bob so screen never feels static
     val bounceY by infiniteTransition.animateFloat(
         initialValue = 0f,
-        targetValue = -20f,
+        targetValue = if (isPerfect) -20f else -8f,
         animationSpec = infiniteRepeatable(
-            animation = tween(400),
+            animation = tween(if (isPerfect) 400 else 600),
             repeatMode = RepeatMode.Reverse
         ),
         label = "bounceY"
@@ -83,10 +84,7 @@ fun QuizResultsScreen(
                 fontSize = 64.sp,
                 modifier = Modifier
                     .padding(bottom = 16.dp)
-                    .then(
-                        if (isPerfect) Modifier.graphicsLayer { translationY = bounceY }
-                        else Modifier
-                    )
+                    .graphicsLayer { translationY = bounceY }
             )
 
             Text(

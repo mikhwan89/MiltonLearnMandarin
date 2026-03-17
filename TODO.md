@@ -143,7 +143,7 @@ Chinese text in options: minimum **18sp**.
 
 ## 🏆 Results Screen Polish
 
-### #13 — Bounce animation on trophy/emoji for any result (not just confetti)
+### ✅ #13 — Bounce animation on trophy/emoji for any result (not just confetti) *(done)*
 **Files:** `QuizResultsScreen.kt`
 
 Confetti already fires on perfect score. For non-perfect results, add a gentle
@@ -151,7 +151,7 @@ Confetti already fires on perfect score. For non-perfect results, add a gentle
 
 ---
 
-### #14 — CTA button sizing on results screen
+### ✅ #14 — CTA button sizing on results screen *(done)*
 **Files:** `QuizResultsScreen.kt`
 
 - Primary CTA (Continue / Back to Home): `height = 56.dp`, `fillMaxWidth`, `Button`
