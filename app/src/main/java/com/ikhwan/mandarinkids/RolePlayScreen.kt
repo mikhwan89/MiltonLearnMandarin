@@ -375,21 +375,20 @@ fun ConversationBubble(
                             modifier = Modifier.padding(vertical = 4.dp)
                         ) {
                             message.pinyinWords.forEach { word ->
-                                val toneCol = ToneUtils.pinyinColor(word.pinyin)
+                                // Use the first syllable's color for the pill background
+                                val pillBg = ToneUtils.pinyinColor(
+                                    ToneUtils.splitSyllables(word.pinyin).first()
+                                ).copy(alpha = 0.12f)
                                 Text(
-                                    text = word.pinyin,
+                                    text = ToneUtils.coloredAnnotatedPinyin(word.pinyin),
                                     fontSize = 14.sp,
-                                    color = toneCol,
                                     fontWeight = FontWeight.SemiBold,
                                     modifier = Modifier
                                         .clickable {
                                             selectedWord = word
                                             showWordDialog = true
                                         }
-                                        .background(
-                                            toneCol.copy(alpha = 0.12f),
-                                            RoundedCornerShape(4.dp)
-                                        )
+                                        .background(pillBg, RoundedCornerShape(4.dp))
                                         .padding(horizontal = 6.dp, vertical = 2.dp)
                                 )
                             }
@@ -431,8 +430,7 @@ fun ConversationBubble(
     // Word translation dialog
     if (showWordDialog && selectedWord != null) {
         val word = selectedWord!!
-        val tone = ToneUtils.detectTone(word.pinyin)
-        val toneCol = ToneUtils.toneColor(tone)
+        val syllables = ToneUtils.splitSyllables(word.pinyin)
         Dialog(onDismissRequest = { showWordDialog = false }) {
             Surface(
                 shape = RoundedCornerShape(16.dp),
@@ -448,25 +446,32 @@ fun ConversationBubble(
                         modifier = Modifier.padding(bottom = 4.dp)
                     )
                     Text(
-                        text = word.pinyin,
+                        text = ToneUtils.coloredAnnotatedPinyin(word.pinyin),
                         fontSize = 24.sp,
-                        color = toneCol,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.padding(bottom = 4.dp)
                     )
-                    // Tone label with coloured dot
-                    Surface(
-                        color = toneCol.copy(alpha = 0.12f),
-                        shape = RoundedCornerShape(12.dp),
+                    // One tone badge per syllable
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(4.dp),
                         modifier = Modifier.padding(bottom = 12.dp)
                     ) {
-                        Text(
-                            text = ToneUtils.toneLabel(tone),
-                            fontSize = 12.sp,
-                            color = toneCol,
-                            fontWeight = FontWeight.Medium,
-                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
-                        )
+                        syllables.forEach { syllable ->
+                            val tone = ToneUtils.detectTone(syllable)
+                            val toneCol = ToneUtils.toneColor(tone)
+                            Surface(
+                                color = toneCol.copy(alpha = 0.12f),
+                                shape = RoundedCornerShape(12.dp)
+                            ) {
+                                Text(
+                                    text = ToneUtils.toneLabel(tone),
+                                    fontSize = 12.sp,
+                                    color = toneCol,
+                                    fontWeight = FontWeight.Medium,
+                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
+                                )
+                            }
+                        }
                     }
                     Text(
                         text = "🇬🇧 ${word.english}",

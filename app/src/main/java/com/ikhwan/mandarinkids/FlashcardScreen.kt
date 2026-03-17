@@ -183,9 +183,8 @@ fun FlashcardScreen(
                                     textAlign = TextAlign.Center
                                 )
                                 Text(
-                                    text = word.pinyin,
+                                    text = ToneUtils.coloredAnnotatedPinyin(word.pinyin),
                                     fontSize = 24.sp,
-                                    color = ToneUtils.pinyinColor(word.pinyin),
                                     fontWeight = FontWeight.Medium,
                                     textAlign = TextAlign.Center,
                                     modifier = Modifier.padding(top = 6.dp)
@@ -226,9 +225,8 @@ fun FlashcardScreen(
                                     modifier = Modifier.padding(bottom = 8.dp)
                                 )
                                 Text(
-                                    text = word.pinyin,
+                                    text = ToneUtils.coloredAnnotatedPinyin(word.pinyin),
                                     fontSize = 26.sp,
-                                    color = ToneUtils.pinyinColor(word.pinyin),
                                     fontWeight = FontWeight.SemiBold,
                                     textAlign = TextAlign.Center
                                 )
