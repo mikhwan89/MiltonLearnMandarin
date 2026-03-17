@@ -7,7 +7,7 @@ Ordered roughly by impact. Each item includes the target file(s).
 
 ## 🏠 Home Screen Redesign
 
-### #1 — Remove badge row from Home
+### ✅ #1 — Remove badge row from Home *(done)*
 **Files:** `home/HomeScreen.kt`
 
 The badge chips clutter the home screen. Badges should live on a dedicated Progress tab.
@@ -15,7 +15,7 @@ Remove the `BadgeChip` row and the wrapping card entirely from `HomeScreen`.
 
 ---
 
-### #2 — Convert Word of Day to launch-time popup (not a persistent card)
+### ✅ #2 — Convert Word of Day to launch-time popup (not a persistent card) *(done)*
 **Files:** `home/HomeScreen.kt`, `MainActivity.kt`
 
 Word of Day should appear once as a `Dialog` / `BottomSheet` when the app opens — then dismiss and never reappear until tomorrow. Remove the always-visible `WordOfDayCard` from the home LazyColumn.
@@ -23,13 +23,13 @@ Use a `LaunchedEffect(Unit)` in `MandarinKidsApp` to show it once per session.
 
 ---
 
-### #3 — Add bottom navigation bar (Learn / Practice / Progress)
-**Files:** `MainActivity.kt`, new `BottomNavBar.kt`
+### ✅ #3 — Add bottom navigation bar (Learn / Flashcard / Progress) *(done)*
+**Files:** `navigation/AppNavigation.kt`, `navigation/Routes.kt`
 
 Replace the single-screen home with a 3-tab bottom nav:
 - **Learn** — scenario list (current home content, cleaned up)
-- **Practice** — dedicated flashcard/drill mode (replaces the buried practice banner)
-- **Progress** — XP, streak, stars per scenario, badges
+- **Flashcard** — dedicated flashcard/drill mode with 4-option multiple choice
+- **Progress** — XP, streak, stars per scenario, badges, milestone rewards
 
 Use `NavigationBar` + `NavigationBarItem` (MD3). This mirrors Duolingo's tab structure and
 clearly separates the two different activity modes the app already has.
