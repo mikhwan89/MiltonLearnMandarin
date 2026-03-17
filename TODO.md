@@ -106,7 +106,7 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 
 ---
 
-## 8. Jetpack Navigation (LOW PRIORITY)
+## 8. Jetpack Navigation ✅ DONE
 
 **Why:** The manual `Screen` sealed class + `currentScreen` state in `MandarinKidsApp` works today, but adding a new screen requires editing `AppNavigation.kt` (the routing `when` block) and passing lambdas through multiple levels. Jetpack Navigation gives each screen its own route and removes the need for deeply threaded `onNavigate` callbacks.
 
@@ -145,7 +145,7 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 | 5 | ~~Repository interface~~ ✅ | Small | Medium — prerequisite for clean testing |
 | 6 | ~~Room for progress~~ ✅ | Medium | Medium — enables richer progress queries |
 | 7 | ~~DataStore preferences~~ ✅ | Small | Medium — persists user settings |
-| 8 | Jetpack Navigation | Medium | Low — nice to have once screen count grows |
+| 8 | ~~Jetpack Navigation~~ ✅ | Medium | Low — nice to have once screen count grows |
 | 9 | Unit tests | Medium | Low now, high long-term |
 
 ---

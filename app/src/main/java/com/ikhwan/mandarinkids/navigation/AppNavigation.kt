@@ -1,57 +1,96 @@
 package com.ikhwan.mandarinkids.navigation
 
-import androidx.activity.compose.BackHandler
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.ikhwan.mandarinkids.FlashcardScreen
 import com.ikhwan.mandarinkids.QuizScreen
-import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.RolePlayScreen
+import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
+import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.home.HomeScreen
 
 @Composable
 fun MandarinKidsApp() {
-    var currentScreen by remember { mutableStateOf<Screen>(Screen.Home) }
+    val navController = rememberNavController()
     val context = LocalContext.current
 
-    // Update daily streak once on launch
     LaunchedEffect(Unit) {
         ProgressRepository.getInstance(context).checkAndUpdateStreak()
     }
 
-    // Handle back button
-    BackHandler(enabled = currentScreen != Screen.Home) {
-        currentScreen = Screen.Home
-    }
+    NavHost(navController = navController, startDestination = Routes.HOME) {
 
-    when (currentScreen) {
-        Screen.Home -> HomeScreen(
-            onScenarioClick = { scenario ->
-                currentScreen = Screen.Flashcard(scenario)
-            }
-        )
-        is Screen.Flashcard -> FlashcardScreen(
-            scenario = (currentScreen as Screen.Flashcard).scenario,
-            onComplete = {
-                currentScreen = Screen.RolePlay((currentScreen as Screen.Flashcard).scenario)
-            },
-            onBack = { currentScreen = Screen.Home }
-        )
-        is Screen.RolePlay -> RolePlayScreen(
-            scenario = (currentScreen as Screen.RolePlay).scenario,
-            onComplete = { score ->
-                currentScreen = Screen.Quiz((currentScreen as Screen.RolePlay).scenario, score)
-            },
-            onBack = { currentScreen = Screen.Home }
-        )
-        is Screen.Quiz -> QuizScreen(
-            scenario = (currentScreen as Screen.Quiz).scenario,
-            rolePlayScore = (currentScreen as Screen.Quiz).rolePlayScore,
-            onComplete = { currentScreen = Screen.Home },
-            onBack = { currentScreen = Screen.Home },
-            onTryAgain = {
-                currentScreen = Screen.Flashcard((currentScreen as Screen.Quiz).scenario)
-            }
-        )
+        composable(Routes.HOME) {
+            HomeScreen(
+                onScenarioClick = { scenario ->
+                    navController.navigate(Routes.flashcard(scenario.id))
+                }
+            )
+        }
+
+        composable(
+            route = Routes.FLASHCARD,
+            arguments = listOf(navArgument("scenarioId") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val scenarioId = backStackEntry.arguments?.getString("scenarioId") ?: return@composable
+            val scenario = remember(scenarioId) { JsonScenarioRepository.getById(scenarioId) }
+                ?: return@composable
+            FlashcardScreen(
+                scenario = scenario,
+                onComplete = { navController.navigate(Routes.roleplay(scenarioId)) },
+                onBack = { navController.popBackStack() }
+            )
+        }
+
+        composable(
+            route = Routes.ROLEPLAY,
+            arguments = listOf(navArgument("scenarioId") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val scenarioId = backStackEntry.arguments?.getString("scenarioId") ?: return@composable
+            val scenario = remember(scenarioId) { JsonScenarioRepository.getById(scenarioId) }
+                ?: return@composable
+            RolePlayScreen(
+                scenario = scenario,
+                onComplete = { score ->
+                    navController.navigate(Routes.quiz(scenarioId, score))
+                },
+                onBack = { navController.popBackStack() }
+            )
+        }
+
+        composable(
+            route = Routes.QUIZ,
+            arguments = listOf(
+                navArgument("scenarioId") { type = NavType.StringType },
+                navArgument("rolePlayScore") { type = NavType.IntType }
+            )
+        ) { backStackEntry ->
+            val scenarioId = backStackEntry.arguments?.getString("scenarioId") ?: return@composable
+            val rolePlayScore = backStackEntry.arguments?.getInt("rolePlayScore") ?: 0
+            val scenario = remember(scenarioId) { JsonScenarioRepository.getById(scenarioId) }
+                ?: return@composable
+            QuizScreen(
+                scenario = scenario,
+                rolePlayScore = rolePlayScore,
+                onComplete = {
+                    navController.navigate(Routes.HOME) {
+                        popUpTo(Routes.HOME) { inclusive = true }
+                    }
+                },
+                onBack = { navController.popBackStack() },
+                onTryAgain = {
+                    navController.navigate(Routes.flashcard(scenarioId)) {
+                        popUpTo(Routes.HOME)
+                    }
+                }
+            )
+        }
     }
 }
