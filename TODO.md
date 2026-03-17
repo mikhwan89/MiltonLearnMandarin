@@ -1,5 +1,39 @@
 # Milton Learn Mandarin — Feature Backlog
 
+## Bug Fix: Pinyin Text Wrapping
+
+**Problem:** Pinyin text in the dialogue/flashcard views overflows horizontally — the user has to scroll right to see the full pinyin. Mandarin characters and translation text wrap correctly; pinyin should behave the same way.
+
+**What to fix:**
+- Pinyin text must wrap to a new line instead of overflowing off-screen.
+- No pinyin should ever be hidden or require horizontal scrolling to reveal.
+- Visual behaviour should match the Mandarin character line and the English/Indonesian translation line — all wrap, all fully visible.
+
+**Files likely affected:** `RolePlayScreen.kt`, `FlashcardScreen.kt` (wherever pinyin `Text` composables are rendered) — check for `softWrap = false`, fixed widths, or missing `modifier = Modifier.fillMaxWidth()` on pinyin elements.
+
+---
+
+## Bug Fix: Pinyin Tone Colour Coding for Multi-Syllable Words
+
+**Problem:** Colour coding is applied per whole word, so a two-syllable word like "pángbiān" (旁边) renders in a single colour even though each syllable has a different tone. The colour should reflect the tone of each individual syllable.
+
+**What to fix:**
+- Split each pinyin word into its constituent syllables before applying colour.
+- Assign a tone colour to each syllable independently based on its tone mark (ā/á/ǎ/à = tones 1–4, no mark = neutral).
+- Render the syllables inline in a single line using an `AnnotatedString` or a `Row` of coloured `Text` spans so the word reads as one unit with mixed colours.
+- Example: "pángbiān" → "páng" in tone-2 colour + "biān" in tone-1 colour, displayed side-by-side with no gap.
+
+**Tone colour reference (existing convention in the app):**
+- Tone 1 (ā) — red
+- Tone 2 (á) — orange/yellow
+- Tone 3 (ǎ) — green
+- Tone 4 (à) — blue
+- Neutral (a) — grey
+
+**Files likely affected:** Wherever `getToneColor()` or equivalent is called and pinyin colour is applied — likely `RolePlayScreen.kt`, `FlashcardScreen.kt`, possibly a shared utility function.
+
+---
+
 ## Feature: Flashcard Practice Mode
 
 **What:** A dedicated flashcard training screen accessible from the Home screen via a flashcard icon button. It pools together every flashcard from every scenario that the user has previously marked "Got it" and lets Milton drill them in a focused, game-like session — separate from going through a full scenario.
