@@ -44,7 +44,7 @@
 
 ---
 
-## #3 · Bug Fix: Pinyin Tone Colour Coding for Multi-Syllable Words
+## #3 · Bug Fix: Pinyin Tone Colour Coding for Multi-Syllable Words ✅ DONE
 
 **Problem:** Colour coding is applied per whole word, so a two-syllable word like "pángbiān" (旁边) renders in a single colour even though each syllable has a different tone. The colour should reflect the tone of each individual syllable.
 
