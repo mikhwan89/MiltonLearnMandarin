@@ -3,6 +3,8 @@ package com.ikhwan.mandarinkids.practice
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -31,10 +33,17 @@ private fun masteryColor(level: Int): Color = when {
     else       -> Color(0xFF66BB6A)   // green — near mastered
 }
 
-private fun masteryEmoji(level: Int): String = when {
-    level <= 3 -> "☆"
-    level <= 6 -> "★"
-    else       -> "🌟"
+private fun masteryEmoji(level: Int): String = when (level) {
+    1  -> "\u2B52"  // ⭒ small star outline
+    2  -> "\u2729"  // ✩ stress outlined white star
+    3  -> "\u272C"  // ✬ open centre black star
+    4  -> "\u272E"  // ✮ circled white star
+    5  -> "\u272D"  // ✭ outlined black star
+    6  -> "\u2B51"  // ⭑ black small star
+    7  -> "\u2605"  // ★ black star
+    8  -> "\u272F"  // ✯ pinwheel star
+    9  -> "\u2730"  // ✰ shadowed white star
+    else -> "🌟"   // 10 — glowing star
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -153,6 +162,7 @@ fun PracticeScreen(onBack: () -> Unit) {
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(padding)
+                        .verticalScroll(rememberScrollState())
                         .padding(horizontal = 16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
