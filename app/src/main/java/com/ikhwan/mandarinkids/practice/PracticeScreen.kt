@@ -3,6 +3,8 @@ package com.ikhwan.mandarinkids.practice
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import com.ikhwan.mandarinkids.playSuccessSound
+import com.ikhwan.mandarinkids.playWrongSound
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -310,7 +312,13 @@ fun PracticeScreen(onBack: () -> Unit) {
                                     else -> MaterialTheme.colorScheme.onSurfaceVariant
                                 }
                                 Button(
-                                    onClick = { if (!isAnswered) selectedAnswer = option },
+                                    onClick = {
+                                        if (!isAnswered) {
+                                            selectedAnswer = option
+                                            if (option == word.english) playSuccessSound()
+                                            else playWrongSound()
+                                        }
+                                    },
                                     modifier = Modifier.weight(1f).height(64.dp),
                                     colors = ButtonDefaults.buttonColors(
                                         containerColor = containerColor, contentColor = contentColor,
