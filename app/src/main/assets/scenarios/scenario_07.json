@@ -18,7 +18,7 @@
         { "pinyin": "Nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
         { "pinyin": "xūyào", "chinese": "需要", "english": "need", "indonesian": "butuh" },
         { "pinyin": "shénme", "chinese": "什么", "english": "what / something", "indonesian": "sesuatu" },
-        { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
+        { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -34,7 +34,7 @@
             { "pinyin": "jiè", "chinese": "借", "english": "borrow", "indonesian": "pinjam" },
             { "pinyin": "nǐ de", "chinese": "你的", "english": "your", "indonesian": "punyamu" },
             { "pinyin": "qiānbǐ", "chinese": "铅笔", "english": "pencil", "indonesian": "pensil" },
-            { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
+            { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
           ],
           "isCorrect": true
         },
@@ -69,7 +69,7 @@
         { "pinyin": "hái", "chinese": "还", "english": "also / still", "indonesian": "juga" },
         { "pinyin": "xūyào", "chinese": "需要", "english": "need", "indonesian": "butuh" },
         { "pinyin": "bié de", "chinese": "别的", "english": "other things", "indonesian": "yang lain" },
-        { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
+        { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -95,7 +95,7 @@
           "indonesian": "Tidak perlu, terima kasih!",
           "pinyinWords": [
             { "pinyin": "bù yòng", "chinese": "不用", "english": "no need", "indonesian": "tidak perlu" },
-            { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
+            { "pinyin": "le", "chinese": "了", "english": "done! / just happened", "indonesian": "sudah terjadi", "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'" },
             { "pinyin": "xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" }
           ],
           "isCorrect": true
@@ -114,7 +114,7 @@
         { "pinyin": "gěi nǐ", "chinese": "给你", "english": "here you go / for you", "indonesian": "ini untukmu" },
         { "pinyin": "xiàngpí", "chinese": "橡皮", "english": "eraser", "indonesian": "penghapus" },
         { "pinyin": "yòng wán", "chinese": "用完", "english": "finished using", "indonesian": "selesai pakai" },
-        { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
+        { "pinyin": "le", "chinese": "了", "english": "done! / just happened", "indonesian": "sudah terjadi", "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'" },
         { "pinyin": "huán", "chinese": "还", "english": "return", "indonesian": "kembalikan" },
         { "pinyin": "gěi wǒ", "chinese": "给我", "english": "give back to me", "indonesian": "ke aku" },
         { "pinyin": "hǎo ma", "chinese": "好吗", "english": "okay?", "indonesian": "ya?" }

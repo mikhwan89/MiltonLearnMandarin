@@ -21,7 +21,8 @@ data class PinyinWord(
     val pinyin: String,
     val chinese: String,
     val english: String,
-    val indonesian: String
+    val indonesian: String,
+    val note: String? = null   // Child-friendly explanation shown in flashcard/dialog
 )
 
 // Individual dialogue step in scenario

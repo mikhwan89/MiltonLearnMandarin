@@ -78,7 +78,7 @@
         { "pinyin": "xiǎng", "chinese": "想", "english": "want", "indonesian": "mau" },
         { "pinyin": "zuò", "chinese": "做", "english": "be/become", "indonesian": "jadi" },
         { "pinyin": "péngyou", "chinese": "朋友", "english": "friends", "indonesian": "teman" },
-        { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
+        { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
       ],
       "responseType": "SINGLE_CHOICE",
       "options": [
@@ -89,7 +89,7 @@
           "indonesian": "Ya! Saya mau!",
           "pinyinWords": [
             { "pinyin": "Hǎo", "chinese": "好", "english": "Good", "indonesian": "Baik" },
-            { "pinyin": "de", "chinese": "的", "english": "(particle)", "indonesian": "(partikel)" },
+            { "pinyin": "de", "chinese": "的", "english": "'s — shows who it belongs to", "indonesian": "punya (kepunyaan)", "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!" },
             { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
             { "pinyin": "hěn", "chinese": "很", "english": "very", "indonesian": "sangat" },
             { "pinyin": "xiǎng", "chinese": "想", "english": "want", "indonesian": "mau" }

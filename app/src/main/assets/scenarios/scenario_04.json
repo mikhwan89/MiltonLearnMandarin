@@ -17,7 +17,7 @@
         { "pinyin": "Yǒu", "chinese": "有", "english": "Have", "indonesian": "Ada" },
         { "pinyin": "shénme", "chinese": "什么", "english": "what", "indonesian": "apa" },
         { "pinyin": "shì", "chinese": "事", "english": "matter/thing", "indonesian": "hal" },
-        { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
+        { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -32,7 +32,7 @@
             { "pinyin": "kěyǐ", "chinese": "可以", "english": "may/can", "indonesian": "boleh" },
             { "pinyin": "qù", "chinese": "去", "english": "go", "indonesian": "pergi" },
             { "pinyin": "xǐshǒujiān", "chinese": "洗手间", "english": "restroom", "indonesian": "toilet" },
-            { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
+            { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
           ],
           "isCorrect": true
         },

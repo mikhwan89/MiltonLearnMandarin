@@ -262,6 +262,22 @@ fun FlashcardScreen(
                                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                                     textAlign = TextAlign.Center
                                 )
+                                if (word.note != null) {
+                                    Spacer(modifier = Modifier.height(12.dp))
+                                    Surface(
+                                        color = MaterialTheme.colorScheme.tertiaryContainer,
+                                        shape = RoundedCornerShape(12.dp)
+                                    ) {
+                                        Text(
+                                            text = "💡 ${word.note}",
+                                            fontSize = 13.sp,
+                                            color = MaterialTheme.colorScheme.onTertiaryContainer,
+                                            textAlign = TextAlign.Center,
+                                            lineHeight = 18.sp,
+                                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)
+                                        )
+                                    }
+                                }
                             }
                         }
                     }

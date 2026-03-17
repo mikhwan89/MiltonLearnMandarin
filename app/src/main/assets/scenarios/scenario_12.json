@@ -97,7 +97,7 @@
         { "pinyin": "wèntí", "chinese": "问题", "english": "question / problem", "indonesian": "pertanyaan" },
         { "pinyin": "yào", "chinese": "要", "english": "want to", "indonesian": "mau" },
         { "pinyin": "wèn", "chinese": "问", "english": "ask", "indonesian": "tanya" },
-        { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
+        { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -141,7 +141,7 @@
       "pinyinWords": [
         { "pinyin": "hǎo", "chinese": "好", "english": "good / alright", "indonesian": "baik" },
         { "pinyin": "xià kè", "chinese": "下课", "english": "class is over", "indonesian": "kelas selesai" },
-        { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
+        { "pinyin": "le", "chinese": "了", "english": "done! / just happened", "indonesian": "sudah terjadi", "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'" },
         { "pinyin": "míngtiān jiàn", "chinese": "明天见", "english": "see you tomorrow", "indonesian": "sampai besok" }
       ],
       "responseType": "SINGLE_CHOICE",

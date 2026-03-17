@@ -17,7 +17,7 @@
         { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
         { "pinyin": "jīntiān", "chinese": "今天", "english": "today", "indonesian": "hari ini" },
         { "pinyin": "dài", "chinese": "带", "english": "bring", "indonesian": "bawa" },
-        { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
+        { "pinyin": "le", "chinese": "了", "english": "done! / just happened", "indonesian": "sudah terjadi", "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'" },
         { "pinyin": "shénme", "chinese": "什么", "english": "what", "indonesian": "apa" },
         { "pinyin": "língshí", "chinese": "零食", "english": "snack", "indonesian": "cemilan" }
       ],
@@ -31,11 +31,11 @@
           "pinyinWords": [
             { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
             { "pinyin": "dài", "chinese": "带", "english": "brought", "indonesian": "bawa" },
-            { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
+            { "pinyin": "le", "chinese": "了", "english": "done! / just happened", "indonesian": "sudah terjadi", "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'" },
             { "pinyin": "bǐnggān", "chinese": "饼干", "english": "cookies", "indonesian": "biskuit" },
             { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
             { "pinyin": "yào", "chinese": "要", "english": "want", "indonesian": "mau" },
-            { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
+            { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
           ],
           "isCorrect": true
         },
@@ -47,10 +47,10 @@
           "pinyinWords": [
             { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
             { "pinyin": "dài", "chinese": "带", "english": "brought", "indonesian": "bawa" },
-            { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
+            { "pinyin": "le", "chinese": "了", "english": "done! / just happened", "indonesian": "sudah terjadi", "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'" },
             { "pinyin": "píngguǒ", "chinese": "苹果", "english": "apple", "indonesian": "apel" },
             { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
-            { "pinyin": "ne", "chinese": "呢", "english": "?", "indonesian": "?" }
+            { "pinyin": "ne", "chinese": "呢", "english": "And you? / What about...?", "indonesian": "Kalau kamu? / Bagaimana dengan...?", "note": "呢 means 'And what about you?' Use it to ask the same question back. If someone asks '你好吗？', reply '你呢？' to ask them back!" }
           ],
           "isCorrect": true
         }

@@ -18,12 +18,12 @@
         { "pinyin": "Nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
         { "pinyin": "kàn qǐlái", "chinese": "看起来", "english": "look / seem", "indonesian": "sepertinya" },
         { "pinyin": "mí lù", "chinese": "迷路", "english": "lost", "indonesian": "tersesat" },
-        { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
+        { "pinyin": "le", "chinese": "了", "english": "done! / just happened", "indonesian": "sudah terjadi", "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'" },
         { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
         { "pinyin": "kěyǐ", "chinese": "可以", "english": "can", "indonesian": "bisa" },
         { "pinyin": "bāng", "chinese": "帮", "english": "help", "indonesian": "bantu" },
         { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
-        { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
+        { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -50,12 +50,12 @@
           "pinyinWords": [
             { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
             { "pinyin": "mí lù", "chinese": "迷路", "english": "lost", "indonesian": "tersesat" },
-            { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
+            { "pinyin": "le", "chinese": "了", "english": "done! / just happened", "indonesian": "sudah terjadi", "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'" },
             { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
             { "pinyin": "néng", "chinese": "能", "english": "can / able to", "indonesian": "bisa" },
             { "pinyin": "bāng", "chinese": "帮", "english": "help", "indonesian": "bantu" },
             { "pinyin": "wǒ", "chinese": "我", "english": "me", "indonesian": "saya" },
-            { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
+            { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
           ],
           "isCorrect": true
         }
@@ -75,7 +75,7 @@
         { "pinyin": "shì", "chinese": "是", "english": "are", "indonesian": "adalah" },
         { "pinyin": "jǐ", "chinese": "几", "english": "what / how many", "indonesian": "berapa" },
         { "pinyin": "niánjí", "chinese": "年级", "english": "grade / year", "indonesian": "kelas" },
-        { "pinyin": "de", "chinese": "的", "english": "(particle)", "indonesian": "(partikel)" },
+        { "pinyin": "de", "chinese": "的", "english": "'s — shows who it belongs to", "indonesian": "punya (kepunyaan)", "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!" },
         { "pinyin": "tóngxué", "chinese": "同学", "english": "student / classmate", "indonesian": "siswa" }
       ],
       "responseType": "SINGLE_CHOICE",
@@ -89,7 +89,7 @@
             { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "saya" },
             { "pinyin": "shì", "chinese": "是", "english": "am", "indonesian": "adalah" },
             { "pinyin": "yī niánjí", "chinese": "一年级", "english": "grade one", "indonesian": "kelas satu" },
-            { "pinyin": "de", "chinese": "的", "english": "(particle)", "indonesian": "(partikel)" },
+            { "pinyin": "de", "chinese": "的", "english": "'s — shows who it belongs to", "indonesian": "punya (kepunyaan)", "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!" },
             { "pinyin": "wǒ de", "chinese": "我的", "english": "my", "indonesian": "punya saya" },
             { "pinyin": "jiàoshì", "chinese": "教室", "english": "classroom", "indonesian": "kelas" },
             { "pinyin": "zài nǎlǐ", "chinese": "在哪里", "english": "where is", "indonesian": "di mana" }
@@ -108,7 +108,7 @@
       "textIndonesian": "Kelas satu ada di lantai dua, belok kiri langsung sampai.",
       "pinyinWords": [
         { "pinyin": "yī niánjí", "chinese": "一年级", "english": "grade one", "indonesian": "kelas satu" },
-        { "pinyin": "de", "chinese": "的", "english": "(particle)", "indonesian": "(partikel)" },
+        { "pinyin": "de", "chinese": "的", "english": "'s — shows who it belongs to", "indonesian": "punya (kepunyaan)", "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!" },
         { "pinyin": "jiàoshì", "chinese": "教室", "english": "classroom", "indonesian": "ruang kelas" },
         { "pinyin": "zài", "chinese": "在", "english": "is at", "indonesian": "ada di" },
         { "pinyin": "èr lóu", "chinese": "二楼", "english": "second floor", "indonesian": "lantai dua" },

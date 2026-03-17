@@ -16,7 +16,7 @@
       "pinyinWords": [
         { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
         { "pinyin": "nòng huài", "chinese": "弄坏", "english": "broke / damaged", "indonesian": "merusak" },
-        { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
+        { "pinyin": "le", "chinese": "了", "english": "done! / just happened", "indonesian": "sudah terjadi", "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'" },
         { "pinyin": "wǒ de", "chinese": "我的", "english": "my", "indonesian": "punyaku" },
         { "pinyin": "qiānbǐ", "chinese": "铅笔", "english": "pencil", "indonesian": "pensil" },
         { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
@@ -35,7 +35,7 @@
             { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
             { "pinyin": "bù shì", "chinese": "不是", "english": "not", "indonesian": "bukan" },
             { "pinyin": "gùyì", "chinese": "故意", "english": "on purpose", "indonesian": "sengaja" },
-            { "pinyin": "de", "chinese": "的", "english": "(particle)", "indonesian": "(partikel)" }
+            { "pinyin": "de", "chinese": "的", "english": "'s — shows who it belongs to", "indonesian": "punya (kepunyaan)", "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!" }
           ],
           "isCorrect": true
         }
@@ -58,7 +58,7 @@
         { "pinyin": "zhī", "chinese": "支", "english": "measure word for pencils", "indonesian": "satuan untuk pensil" },
         { "pinyin": "xīn", "chinese": "新", "english": "new", "indonesian": "baru" },
         { "pinyin": "qiānbǐ", "chinese": "铅笔", "english": "pencil", "indonesian": "pensil" },
-        { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
+        { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -122,7 +122,7 @@
             { "pinyin": "wǒmen", "chinese": "我们", "english": "we", "indonesian": "kita" },
             { "pinyin": "shì", "chinese": "是", "english": "are", "indonesian": "adalah" },
             { "pinyin": "zuì hǎo", "chinese": "最好", "english": "best", "indonesian": "terbaik" },
-            { "pinyin": "de", "chinese": "的", "english": "(particle)", "indonesian": "(partikel)" },
+            { "pinyin": "de", "chinese": "的", "english": "'s — shows who it belongs to", "indonesian": "punya (kepunyaan)", "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!" },
             { "pinyin": "péngyou", "chinese": "朋友", "english": "friends", "indonesian": "teman" }
           ],
           "isCorrect": true

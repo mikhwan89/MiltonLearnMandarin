@@ -31,7 +31,7 @@
             { "pinyin": "kěyǐ", "chinese": "可以", "english": "can", "indonesian": "boleh" },
             { "pinyin": "yīqǐ", "chinese": "一起", "english": "together", "indonesian": "bersama" },
             { "pinyin": "wán", "chinese": "玩", "english": "play", "indonesian": "main" },
-            { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
+            { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
           ],
           "isCorrect": true
         },
@@ -64,7 +64,7 @@
         { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
         { "pinyin": "huì", "chinese": "会", "english": "know how", "indonesian": "bisa" },
         { "pinyin": "wán", "chinese": "玩", "english": "play", "indonesian": "main" },
-        { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
+        { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -94,7 +94,7 @@
             { "pinyin": "néng", "chinese": "能", "english": "can", "indonesian": "bisa" },
             { "pinyin": "jiāo", "chinese": "教", "english": "teach", "indonesian": "ajari" },
             { "pinyin": "wǒ", "chinese": "我", "english": "me", "indonesian": "saya" },
-            { "pinyin": "ma", "chinese": "吗", "english": "?", "indonesian": "?" }
+            { "pinyin": "ma", "chinese": "吗", "english": "? (yes/no question word)", "indonesian": "? (kata tanya ya/tidak)", "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!" }
           ],
           "isCorrect": true
         }
@@ -111,10 +111,10 @@
       "pinyinWords": [
         { "pinyin": "Tài", "chinese": "太", "english": "Too/Very", "indonesian": "Sangat" },
         { "pinyin": "hǎo", "chinese": "好", "english": "good", "indonesian": "bagus" },
-        { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)" },
+        { "pinyin": "le", "chinese": "了", "english": "done! / just happened", "indonesian": "sudah terjadi", "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'" },
         { "pinyin": "Wǒmen", "chinese": "我们", "english": "We", "indonesian": "Kita" },
         { "pinyin": "kāishǐ", "chinese": "开始", "english": "start", "indonesian": "mulai" },
-        { "pinyin": "ba", "chinese": "吧", "english": "(suggestion)", "indonesian": "(ajakan)" }
+        { "pinyin": "ba", "chinese": "吧", "english": "let's! / right?", "indonesian": "ayo! / kan?", "note": "吧 is used when you suggest something or check if you're right. '我们走吧！' means 'Let's go!' and '对吧？' means 'Right?'" }
       ],
       "responseType": "LISTEN_ONLY",
       "options": [],
