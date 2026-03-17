@@ -256,4 +256,4 @@ The app works entirely offline. All scenario content is bundled as JSON assets. 
 
 ## License
 
-Private project — all rights reserved. Built with ❤️ for Milton.
+This project is released into the public domain under the [MIT License](LICENSE). Feel free to copy, fork, modify, and use it for anything — no permission needed. Built with ❤️ for Milton.
