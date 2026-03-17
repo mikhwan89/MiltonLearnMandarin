@@ -4,13 +4,13 @@ import kotlinx.serialization.Serializable
 
 // Category grouping for the Home screen
 @Serializable
-enum class ScenarioCategory(val displayName: String) {
-    ESSENTIALS("Essentials"),
-    AT_SCHOOL("At School"),
-    SCHOOL_SUBJECTS("School Subjects"),
-    FOOD_AND_EATING("Food & Eating"),
-    FEELINGS_AND_HEALTH("Feelings & Health"),
-    PLAY_AND_HOBBIES("Play & Hobbies")
+enum class ScenarioCategory(val displayName: String, val emoji: String) {
+    ESSENTIALS("Essentials", "👋"),
+    AT_SCHOOL("At School", "🏫"),
+    SCHOOL_SUBJECTS("School Subjects", "📖"),
+    FOOD_AND_EATING("Food & Eating", "🍎"),
+    FEELINGS_AND_HEALTH("Feelings & Health", "💗"),
+    PLAY_AND_HOBBIES("Play & Hobbies", "⚽")
 }
 
 // Core scenario data model

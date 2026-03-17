@@ -12,9 +12,11 @@ import androidx.navigation.navArgument
 import com.ikhwan.mandarinkids.FlashcardScreen
 import com.ikhwan.mandarinkids.QuizScreen
 import com.ikhwan.mandarinkids.RolePlayScreen
+import com.ikhwan.mandarinkids.data.models.ScenarioCategory
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.home.HomeScreen
+import com.ikhwan.mandarinkids.home.ScenarioListScreen
 import com.ikhwan.mandarinkids.practice.PracticeScreen
 
 @Composable
@@ -30,8 +32,8 @@ fun MandarinKidsApp() {
 
         composable(Routes.HOME) {
             HomeScreen(
-                onScenarioClick = { scenario ->
-                    navController.navigate(Routes.flashcard(scenario.id))
+                onCategoryClick = { category ->
+                    navController.navigate(Routes.category(category.name))
                 },
                 onPracticeClick = { navController.navigate(Routes.PRACTICE) }
             )
@@ -39,6 +41,21 @@ fun MandarinKidsApp() {
 
         composable(Routes.PRACTICE) {
             PracticeScreen(onBack = { navController.popBackStack() })
+        }
+
+        composable(
+            route = Routes.CATEGORY,
+            arguments = listOf(navArgument("categoryName") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val categoryName = backStackEntry.arguments?.getString("categoryName") ?: return@composable
+            val category = ScenarioCategory.entries.find { it.name == categoryName } ?: return@composable
+            ScenarioListScreen(
+                category = category,
+                onScenarioClick = { scenario ->
+                    navController.navigate(Routes.flashcard(scenario.id))
+                },
+                onBack = { navController.popBackStack() }
+            )
         }
 
         composable(

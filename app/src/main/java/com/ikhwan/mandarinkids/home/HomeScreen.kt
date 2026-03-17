@@ -22,13 +22,21 @@ import com.ikhwan.mandarinkids.db.ProgressRepository
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(onScenarioClick: (Scenario) -> Unit, onPracticeClick: () -> Unit) {
+fun HomeScreen(
+    onCategoryClick: (ScenarioCategory) -> Unit,
+    onPracticeClick: () -> Unit
+) {
     val context = LocalContext.current
     val scenarios = remember { JsonScenarioRepository.getAll() }
     val repo = remember { ProgressRepository.getInstance(context) }
     val xp by repo.getTotalXp().collectAsState(initial = 0)
     val streak = remember { repo.getStreak() }
     val masteredCount by repo.getMasteredWordCount().collectAsState(initial = 0)
+
+    // Only show categories that have at least one scenario
+    val activeCategories = remember(scenarios) {
+        ScenarioCategory.entries.filter { cat -> scenarios.any { it.category == cat } }
+    }
 
     Scaffold(
         topBar = {
@@ -58,7 +66,7 @@ fun HomeScreen(onScenarioClick: (Scenario) -> Unit, onPracticeClick: () -> Unit)
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // Progress summary card
+            // ── Progress summary card ─────────────────────────────────────
             item {
                 Spacer(modifier = Modifier.height(4.dp))
                 Card(
@@ -75,11 +83,7 @@ fun HomeScreen(onScenarioClick: (Scenario) -> Unit, onPracticeClick: () -> Unit)
                     ) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text("🔥", fontSize = 28.sp)
-                            Text(
-                                "$streak",
-                                fontSize = 22.sp,
-                                fontWeight = FontWeight.Bold
-                            )
+                            Text("$streak", fontSize = 22.sp, fontWeight = FontWeight.Bold)
                             Text(
                                 "day streak",
                                 fontSize = 11.sp,
@@ -87,9 +91,7 @@ fun HomeScreen(onScenarioClick: (Scenario) -> Unit, onPracticeClick: () -> Unit)
                             )
                         }
                         HorizontalDivider(
-                            modifier = Modifier
-                                .height(64.dp)
-                                .width(1.dp)
+                            modifier = Modifier.height(64.dp).width(1.dp)
                         )
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text(
@@ -100,11 +102,7 @@ fun HomeScreen(onScenarioClick: (Scenario) -> Unit, onPracticeClick: () -> Unit)
                                 },
                                 fontSize = 28.sp
                             )
-                            Text(
-                                "$xp XP",
-                                fontSize = 22.sp,
-                                fontWeight = FontWeight.Bold
-                            )
+                            Text("$xp XP", fontSize = 22.sp, fontWeight = FontWeight.Bold)
                             Text(
                                 ProgressManager.getLevel(xp),
                                 fontSize = 11.sp,
@@ -115,6 +113,7 @@ fun HomeScreen(onScenarioClick: (Scenario) -> Unit, onPracticeClick: () -> Unit)
                 }
                 Spacer(modifier = Modifier.height(4.dp))
 
+                // ── Practice Mode banner (only when words are ready) ──────
                 if (masteredCount > 0) {
                     Card(
                         onClick = onPracticeClick,
@@ -149,40 +148,58 @@ fun HomeScreen(onScenarioClick: (Scenario) -> Unit, onPracticeClick: () -> Unit)
                 }
 
                 Text(
-                    text = "📚 Choose a scenario to practice:",
+                    text = "📚 Choose a category:",
                     fontSize = 18.sp,
                     modifier = Modifier.padding(bottom = 4.dp)
                 )
             }
 
-            // Group by category, preserving the enum declaration order
-            val grouped = ScenarioCategory.entries
-                .mapNotNull { cat ->
-                    val inCat = scenarios.filter { it.category == cat }
-                    if (inCat.isEmpty()) null else cat to inCat
-                }
-
-            grouped.forEach { (category, catScenarios) ->
-                item(key = "header_${category.name}") {
-                    Text(
-                        text = category.displayName,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.padding(top = 12.dp, bottom = 2.dp)
-                    )
-                }
-                items(catScenarios, key = { it.id }) { scenario ->
-                    val stars by repo.getStars(scenario.id).collectAsState(initial = 0)
-                    ScenarioCard(
-                        scenario = scenario,
-                        stars = stars,
-                        onClick = { onScenarioClick(scenario) }
-                    )
-                }
+            // ── Category cards ────────────────────────────────────────────
+            items(activeCategories, key = { it.name }) { category ->
+                val scenariosInCat = scenarios.filter { it.category == category }
+                CategoryCard(
+                    category = category,
+                    scenarioCount = scenariosInCat.size,
+                    onClick = { onCategoryClick(category) }
+                )
             }
 
             item { Spacer(modifier = Modifier.height(8.dp)) }
+        }
+    }
+}
+
+@Composable
+fun CategoryCard(category: ScenarioCategory, scenarioCount: Int, onClick: () -> Unit) {
+    Card(
+        onClick = onClick,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = category.emoji,
+                fontSize = 48.sp,
+                modifier = Modifier.padding(end = 16.dp)
+            )
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = category.displayName,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "$scenarioCount scenario${if (scenarioCount != 1) "s" else ""}",
+                    fontSize = 14.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Text("▶", fontSize = 24.sp, color = MaterialTheme.colorScheme.primary)
         }
     }
 }
@@ -199,39 +216,30 @@ fun ScenarioCard(scenario: Scenario, stars: Int, onClick: () -> Unit) {
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Character emoji
             Text(
                 text = scenario.characterEmoji,
                 fontSize = 48.sp,
                 modifier = Modifier.padding(end = 16.dp)
             )
-
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = scenario.title,
                     fontSize = 20.sp,
                     style = MaterialTheme.typography.titleLarge
                 )
-
                 Spacer(modifier = Modifier.height(4.dp))
-
                 Text(
                     text = scenario.description,
                     fontSize = 14.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
-
                 Spacer(modifier = Modifier.height(4.dp))
-
                 Text(
                     text = "With: ${scenario.characterName}",
                     fontSize = 12.sp,
                     color = MaterialTheme.colorScheme.secondary
                 )
-
                 Spacer(modifier = Modifier.height(6.dp))
-
-                // Star rating
                 if (stars > 0) {
                     Row {
                         repeat(3) { i ->
@@ -250,13 +258,7 @@ fun ScenarioCard(scenario: Scenario, stars: Int, onClick: () -> Unit) {
                     )
                 }
             }
-
-            // Arrow
-            Text(
-                text = "▶",
-                fontSize = 24.sp,
-                color = MaterialTheme.colorScheme.primary
-            )
+            Text("▶", fontSize = 24.sp, color = MaterialTheme.colorScheme.primary)
         }
     }
 }
