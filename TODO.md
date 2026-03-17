@@ -120,7 +120,7 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 
 ---
 
-## 9. Unit Tests for Core Logic (LOW PRIORITY)
+## 9. Unit Tests for Core Logic ✅ DONE
 
 **Why:** There are currently no unit tests. This means any refactor has no safety net. The highest-value tests to write are the ones that catch data/logic bugs before they reach the UI.
 
@@ -146,7 +146,7 @@ The goal of this roadmap is to make the codebase manageable for small, targeted 
 | 6 | ~~Room for progress~~ ✅ | Medium | Medium — enables richer progress queries |
 | 7 | ~~DataStore preferences~~ ✅ | Small | Medium — persists user settings |
 | 8 | ~~Jetpack Navigation~~ ✅ | Medium | Low — nice to have once screen count grows |
-| 9 | Unit tests | Medium | Low now, high long-term |
+| 9 | ~~Unit tests~~ ✅ | Medium | Low now, high long-term |
 
 ---
 
