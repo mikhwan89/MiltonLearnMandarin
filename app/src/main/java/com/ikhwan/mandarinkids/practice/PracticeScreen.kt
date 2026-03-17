@@ -31,9 +31,9 @@ fun PracticeScreen(
     val vm: PracticeSessionViewModel = viewModel(factory = PracticeSessionViewModel.factory(repo))
     val tts: TtsManager = rememberTtsManager()
 
-    // Auto-play TTS when a new card appears
+    // Auto-play TTS when a new card appears (cardToken always changes, even if index stays 0)
     val currentWord = vm.currentWord
-    LaunchedEffect(vm.currentIndex) {
+    LaunchedEffect(vm.cardToken) {
         if (currentWord != null) {
             tts.speak(currentWord.chinese)
         }
@@ -125,7 +125,7 @@ fun PracticeScreen(
                 val word = vm.currentWord ?: return@Scaffold
 
                 // Build 4 options: correct + 3 distractors, reshuffled per card
-                val options = remember(vm.currentIndex) {
+                val options = remember(vm.cardToken) {
                     val distractors = vm.allWords
                         .filter { it.english != word.english }
                         .shuffled()
@@ -134,7 +134,7 @@ fun PracticeScreen(
                     (distractors + word.english).shuffled()
                 }
 
-                var selectedAnswer by remember(vm.currentIndex) { mutableStateOf<String?>(null) }
+                var selectedAnswer by remember(vm.cardToken) { mutableStateOf<String?>(null) }
                 val isAnswered = selectedAnswer != null
                 val answeredCorrectly = selectedAnswer == word.english
 

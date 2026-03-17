@@ -33,6 +33,9 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
 
     var allWords by mutableStateOf<List<MasteredWordEntity>>(emptyList())
         private set
+    /** Increments every time we advance to a new card — use as a `remember` key in the UI. */
+    var cardToken by mutableStateOf(0)
+        private set
 
     val currentWord: MasteredWordEntity?
         get() = if (deck.isNotEmpty() && currentIndex < deck.size) deck[currentIndex] else null
@@ -70,6 +73,7 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
         rememberedCount++
         deck = newDeck
         isFlipped = false
+        cardToken++
         if (newDeck.isEmpty()) showSummary = true
         else currentIndex = if (currentIndex >= newDeck.size) 0 else currentIndex
 
@@ -94,6 +98,7 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
         deck = newDeck
         currentIndex = if (currentIndex >= newDeck.size) 0 else currentIndex
         isFlipped = false
+        cardToken++
 
         viewModelScope.launch {
             repository.markWordMastered(
