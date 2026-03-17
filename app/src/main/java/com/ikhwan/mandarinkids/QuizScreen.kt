@@ -167,7 +167,7 @@ fun QuizScreen(
                                             onClick = { tts.speak(question.questionChinese) },
                                             modifier = Modifier.align(Alignment.CenterHorizontally)
                                         ) {
-                                            Icon(Icons.Default.PlayArrow, contentDescription = null)
+                                            Icon(Icons.Default.PlayArrow, contentDescription = "Play question audio")
                                             Spacer(modifier = Modifier.width(8.dp))
                                             Text("Play again", fontSize = 15.sp)
                                         }

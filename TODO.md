@@ -162,7 +162,7 @@ Confetti already fires on perfect score. For non-perfect results, add a gentle
 
 ## 🎨 Global Visual Polish
 
-### #15 — Audit all Icon composables for missing contentDescription
+### ✅ #15 — Audit all Icon composables for missing contentDescription *(done)*
 **Files:** all screen files
 
 Every `Icon` must have a non-null descriptive `contentDescription`.
@@ -171,7 +171,7 @@ Run `/uiux` for a full pass.
 
 ---
 
-### #16 — Replace Spacer chains with Arrangement.spacedBy
+### ✅ #16 — Replace Spacer chains with Arrangement.spacedBy *(done)*
 **Files:** `RolePlayScreen.kt`, `QuizScreen.kt`, `home/HomeScreen.kt`
 
 Anywhere 3+ `Spacer(Modifier.height(X))` appear in a `Column`, switch to
@@ -179,7 +179,7 @@ Anywhere 3+ `Spacer(Modifier.height(X))` appear in a `Column`, switch to
 
 ---
 
-### #17 — Consistent corner radii across all cards
+### ✅ #17 — Consistent corner radii across all cards *(done)*
 **Files:** all screen files
 
 - Cards: `RoundedCornerShape(16.dp)`
@@ -190,7 +190,7 @@ Audit for any cards still using 8dp or 12dp.
 
 ---
 
-### #18 — Move XP + streak + badges to dedicated Progress tab
+### ✅ #18 — Move XP + streak + badges to dedicated Progress tab *(done)*
 **Files:** new `ProgressScreen.kt`
 
 A dedicated screen:

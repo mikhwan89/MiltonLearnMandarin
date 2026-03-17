@@ -148,15 +148,14 @@ fun QuizResultsScreen(
             ) {
                 Column(
                     modifier = Modifier.padding(24.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     Text(
                         text = "Your Results",
                         fontSize = 18.sp,
                         color = MaterialTheme.colorScheme.secondary
                     )
-
-                    Spacer(modifier = Modifier.height(16.dp))
 
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -170,8 +169,6 @@ fun QuizResultsScreen(
                         )
                     }
 
-                    Spacer(modifier = Modifier.height(12.dp))
-
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
@@ -184,11 +181,7 @@ fun QuizResultsScreen(
                         )
                     }
 
-                    Spacer(modifier = Modifier.height(12.dp))
-
                     HorizontalDivider()
-
-                    Spacer(modifier = Modifier.height(12.dp))
 
                     Row(
                         modifier = Modifier.fillMaxWidth(),

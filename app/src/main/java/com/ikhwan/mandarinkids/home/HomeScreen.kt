@@ -199,7 +199,7 @@ private fun WordOfDayDialog(
                     Spacer(modifier = Modifier.height(10.dp))
                     Surface(
                         color = MaterialTheme.colorScheme.tertiaryContainer,
-                        shape = RoundedCornerShape(12.dp),
+                        shape = RoundedCornerShape(16.dp),
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
@@ -214,7 +214,7 @@ private fun WordOfDayDialog(
                 }
                 Spacer(modifier = Modifier.height(12.dp))
                 OutlinedButton(onClick = onPlay) {
-                    Icon(Icons.Default.PlayArrow, contentDescription = null)
+                    Icon(Icons.Default.PlayArrow, contentDescription = "Play word pronunciation")
                     Spacer(modifier = Modifier.width(6.dp))
                     Text("Play again")
                 }
@@ -230,7 +230,7 @@ private fun WordOfDayDialog(
 fun SectionHeader(text: String) {
     Surface(
         color = MaterialTheme.colorScheme.primaryContainer,
-        shape = RoundedCornerShape(12.dp),
+        shape = RoundedCornerShape(16.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
         Text(

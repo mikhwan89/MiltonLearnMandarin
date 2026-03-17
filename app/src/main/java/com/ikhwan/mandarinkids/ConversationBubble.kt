@@ -218,7 +218,7 @@ private fun WordDetailDialog(
                         val toneCol = ToneUtils.toneColor(tone)
                         Surface(
                             color = toneCol.copy(alpha = 0.12f),
-                            shape = RoundedCornerShape(12.dp)
+                            shape = RoundedCornerShape(50)
                         ) {
                             Text(
                                 text = ToneUtils.toneLabel(tone),
@@ -243,7 +243,7 @@ private fun WordDetailDialog(
                 if (word.note != null) {
                     Surface(
                         color = MaterialTheme.colorScheme.tertiaryContainer,
-                        shape = RoundedCornerShape(12.dp),
+                        shape = RoundedCornerShape(16.dp),
                         modifier = Modifier.padding(bottom = 16.dp)
                     ) {
                         Text(

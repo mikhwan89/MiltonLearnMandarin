@@ -300,7 +300,7 @@ private fun MilestoneRewardCard(
                     )
                 }
                 if (reward.isClaimed) {
-                    Surface(color = MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(8.dp)) {
+                    Surface(color = MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(50)) {
                         Text("Claimed!", fontSize = 11.sp, color = MaterialTheme.colorScheme.onPrimary,
                             modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
                     }

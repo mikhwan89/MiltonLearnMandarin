@@ -241,7 +241,7 @@ fun FlashcardScreen(
                                         tts?.setSpeechRate(1.0f)
                                         tts?.speak(word.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
                                     }) {
-                                        Icon(Icons.Default.PlayArrow, contentDescription = null, modifier = Modifier.size(16.dp))
+                                        Icon(Icons.Default.PlayArrow, contentDescription = "Play pronunciation", modifier = Modifier.size(16.dp))
                                         Spacer(modifier = Modifier.width(2.dp))
                                         Text("Normal", fontSize = 12.sp)
                                     }

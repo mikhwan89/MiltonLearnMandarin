@@ -253,7 +253,7 @@ fun PracticeScreen(onBack: () -> Unit) {
                                     // Mastery rating badge
                                     Surface(
                                         color = masteryColor(word.boxLevel).copy(alpha = 0.15f),
-                                        shape = RoundedCornerShape(8.dp)
+                                        shape = RoundedCornerShape(50)
                                     ) {
                                         Text(
                                             "${masteryEmoji(word.boxLevel)} Mastery ${word.boxLevel}/10",
