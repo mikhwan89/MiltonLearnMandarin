@@ -39,10 +39,10 @@ private fun masteryEmoji(level: Int): String = when (level) {
     3  -> "\u272C"  // ✬ open centre black star
     4  -> "\u272E"  // ✮ circled white star
     5  -> "\u272D"  // ✭ outlined black star
-    6  -> "\u2B51"  // ⭑ black small star
-    7  -> "\u2605"  // ★ black star
+    6  -> "\u2605"  // ★ black star
+    7  -> "\u2B51"  // ⭑ black small star
     8  -> "\u272F"  // ✯ pinwheel star
-    9  -> "\u2730"  // ✰ shadowed white star
+    9  -> "\u2B50"  // ⭐ medium white star
     else -> "🌟"   // 10 — glowing star
 }
 
