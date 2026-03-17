@@ -32,11 +32,11 @@ private fun hanziHtml(character: String): String = """
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: transparent; display: flex; justify-content: center; align-items: center; height: 100vh; }
-    #target { }
+    html, body { width: 260px; height: 260px; overflow: hidden; background: transparent; }
+    #target { width: 260px; height: 260px; display: block; }
   </style>
 </head>
 <body>
@@ -46,7 +46,7 @@ private fun hanziHtml(character: String): String = """
     HanziWriter.create('target', '$character', {
       width: 260,
       height: 260,
-      padding: 10,
+      padding: 16,
       showOutline: true,
       strokeColor: '#1565C0',
       outlineColor: '#BBDEFB',
@@ -118,6 +118,10 @@ fun StrokeOrderSheet(
                             WebView(ctx).apply {
                                 settings.javaScriptEnabled = true
                                 settings.allowFileAccess = true
+                                settings.loadWithOverviewMode = true
+                                settings.useWideViewPort = false
+                                isVerticalScrollBarEnabled = false
+                                isHorizontalScrollBarEnabled = false
                                 webViewClient = WebViewClient()
                                 setBackgroundColor(0x00000000) // transparent
                             }
