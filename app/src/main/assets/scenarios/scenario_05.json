@@ -120,22 +120,35 @@
     {
       "id": 2,
       "speaker": "CHARACTER",
-      "textChinese": "当然可以！你会玩吗？",
-      "textPinyin": "Dāngrán kěyǐ! Nǐ huì wán ma?",
-      "textEnglish": "Of course! Do you know how to play?",
-      "textIndonesian": "Tentu saja! Kamu bisa main?",
+      "textChinese": "来加入我们吧！你会玩吗？",
+      "textPinyin": "Lái jiārù wǒmen ba! Nǐ huì wán ma?",
+      "textEnglish": "Come join us! Do you know how to play?",
+      "textIndonesian": "Ayo bergabung dengan kami! Kamu bisa main?",
       "pinyinWords": [
         {
-          "pinyin": "Dāngrán",
-          "chinese": "当然",
-          "english": "Of course",
-          "indonesian": "Tentu saja"
+          "pinyin": "Lái",
+          "chinese": "来",
+          "english": "Come",
+          "indonesian": "Ayo"
         },
         {
-          "pinyin": "kěyǐ",
-          "chinese": "可以",
-          "english": "can",
-          "indonesian": "boleh"
+          "pinyin": "jiārù",
+          "chinese": "加入",
+          "english": "join",
+          "indonesian": "bergabung"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "us",
+          "indonesian": "kami"
+        },
+        {
+          "pinyin": "ba",
+          "chinese": "吧",
+          "english": "let's!",
+          "indonesian": "ayo!",
+          "note": "吧 is used when you suggest something. '我们走吧！' means 'Let's go!'"
         },
         {
           "pinyin": "Nǐ",
@@ -262,41 +275,58 @@
     {
       "id": 3,
       "speaker": "CHARACTER",
-      "textChinese": "太好了！我们开始吧！",
-      "textPinyin": "Tài hǎo le! Wǒmen kāishǐ ba!",
-      "textEnglish": "Great! Let's start!",
-      "textIndonesian": "Bagus! Ayo mulai!",
+      "textChinese": "没关系，我来教你！我们一起玩吧！",
+      "textPinyin": "Méi guānxi, wǒ lái jiāo nǐ! Wǒmen yīqǐ wán ba!",
+      "textEnglish": "No worries, I'll teach you! Let's play together!",
+      "textIndonesian": "Tidak apa-apa, aku ajari kamu! Ayo bermain bersama!",
       "pinyinWords": [
         {
-          "pinyin": "Tài",
-          "chinese": "太",
-          "english": "Too/Very",
-          "indonesian": "Sangat"
+          "pinyin": "Méi guānxi",
+          "chinese": "没关系",
+          "english": "No worries / No problem",
+          "indonesian": "Tidak apa-apa"
         },
         {
-          "pinyin": "hǎo",
-          "chinese": "好",
-          "english": "good",
-          "indonesian": "bagus"
+          "pinyin": "wǒ",
+          "chinese": "我",
+          "english": "I",
+          "indonesian": "aku"
         },
         {
-          "pinyin": "le",
-          "chinese": "了",
-          "english": "done! / just happened",
-          "indonesian": "sudah terjadi",
-          "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'"
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "will",
+          "indonesian": "akan"
+        },
+        {
+          "pinyin": "jiāo",
+          "chinese": "教",
+          "english": "teach",
+          "indonesian": "ajari"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
         },
         {
           "pinyin": "Wǒmen",
           "chinese": "我们",
-          "english": "We",
+          "english": "We / let's",
           "indonesian": "Kita"
         },
         {
-          "pinyin": "kāishǐ",
-          "chinese": "开始",
-          "english": "start",
-          "indonesian": "mulai"
+          "pinyin": "yīqǐ",
+          "chinese": "一起",
+          "english": "together",
+          "indonesian": "bersama"
+        },
+        {
+          "pinyin": "wán",
+          "chinese": "玩",
+          "english": "play",
+          "indonesian": "main"
         },
         {
           "pinyin": "ba",

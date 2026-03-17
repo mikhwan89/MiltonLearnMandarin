@@ -132,16 +132,16 @@
     {
       "id": 2,
       "speaker": "CHARACTER",
-      "textChinese": "太棒了！你认识了新朋友吗？",
-      "textPinyin": "Tài bàng le! Nǐ rènshi le xīn péngyou ma?",
-      "textEnglish": "Wonderful! Did you make any new friends?",
-      "textIndonesian": "Luar biasa! Kamu kenal teman baru?",
+      "textChinese": "好的！你认识了新朋友吗？",
+      "textPinyin": "Hǎo de! Nǐ rènshi le xīn péngyou ma?",
+      "textEnglish": "I see! Did you make any new friends?",
+      "textIndonesian": "Baik! Kamu kenal teman baru?",
       "pinyinWords": [
         {
-          "pinyin": "tài bàng le",
-          "chinese": "太棒了",
-          "english": "wonderful / amazing",
-          "indonesian": "luar biasa"
+          "pinyin": "hǎo de",
+          "chinese": "好的",
+          "english": "I see / okay",
+          "indonesian": "baik"
         },
         {
           "pinyin": "nǐ",
@@ -398,10 +398,10 @@
     {
       "id": 4,
       "speaker": "CHARACTER",
-      "textChinese": "妈妈也想你！先去换衣服，然后吃饭，好吗？",
-      "textPinyin": "Māma yě xiǎng nǐ! Xiān qù huàn yīfu, rán hòu chīfàn, hǎo ma?",
-      "textEnglish": "Mummy missed you too! First go change clothes, then we'll eat, okay?",
-      "textIndonesian": "Mama juga kangen kamu! Ganti baju dulu, terus makan, ya?",
+      "textChinese": "妈妈也很高兴！先去换衣服，然后吃饭，好吗？",
+      "textPinyin": "Māma yě hěn gāoxìng! Xiān qù huàn yīfu, rán hòu chīfàn, hǎo ma?",
+      "textEnglish": "Mummy is so happy too! First go change clothes, then we'll eat, okay?",
+      "textIndonesian": "Mama juga sangat senang! Ganti baju dulu, terus makan, ya?",
       "pinyinWords": [
         {
           "pinyin": "māma",
@@ -416,10 +416,10 @@
           "indonesian": "juga"
         },
         {
-          "pinyin": "xiǎng nǐ",
-          "chinese": "想你",
-          "english": "miss you",
-          "indonesian": "kangen kamu"
+          "pinyin": "hěn gāoxìng",
+          "chinese": "很高兴",
+          "english": "very happy",
+          "indonesian": "sangat senang"
         },
         {
           "pinyin": "xiān",

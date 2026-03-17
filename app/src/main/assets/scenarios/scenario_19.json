@@ -128,10 +128,10 @@
     {
       "id": 2,
       "speaker": "CHARACTER",
-      "textChinese": "哇，真的吗？你踢得好吗？",
-      "textPinyin": "Wā, zhēn de ma? Nǐ tī de hǎo ma?",
-      "textEnglish": "Wow, really? Are you good at it?",
-      "textIndonesian": "Wah, benarkah? Kamu jago?",
+      "textChinese": "哇，真的吗？你练了很久了吗？",
+      "textPinyin": "Wā, zhēn de ma? Nǐ liàn le hěn jiǔ le ma?",
+      "textEnglish": "Wow, really? Have you been practicing for a long time?",
+      "textIndonesian": "Wah, benarkah? Kamu sudah lama berlatih?",
       "pinyinWords": [
         {
           "pinyin": "Wā",
@@ -159,25 +159,37 @@
           "indonesian": "Kamu"
         },
         {
-          "pinyin": "tī de hǎo",
-          "chinese": "踢得好",
-          "english": "good at kicking / play well",
-          "indonesian": "pandai menendang / bermain dengan bagus"
+          "pinyin": "liàn le",
+          "chinese": "练了",
+          "english": "practiced",
+          "indonesian": "sudah berlatih"
+        },
+        {
+          "pinyin": "hěn jiǔ",
+          "chinese": "很久",
+          "english": "a long time",
+          "indonesian": "lama sekali"
         }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
-          "chinese": "我踢得还可以！",
-          "pinyin": "Wǒ tī de hái kěyǐ!",
-          "english": "I'm alright at it!",
-          "indonesian": "Saya lumayan bisa!",
+          "chinese": "我练了一段时间，还可以！",
+          "pinyin": "Wǒ liàn le yī duàn shíjiān, hái kěyǐ!",
+          "english": "I've been practicing for a while, and I'm alright!",
+          "indonesian": "Saya sudah berlatih agak lama, lumayan!",
           "pinyinWords": [
             {
-              "pinyin": "tī de",
-              "chinese": "踢得",
-              "english": "play (football) at a level of",
-              "indonesian": "bermain sepak bola dengan"
+              "pinyin": "liàn le",
+              "chinese": "练了",
+              "english": "practiced",
+              "indonesian": "sudah berlatih"
+            },
+            {
+              "pinyin": "yī duàn shíjiān",
+              "chinese": "一段时间",
+              "english": "for a while / some time",
+              "indonesian": "agak lama / beberapa waktu"
             },
             {
               "pinyin": "hái kěyǐ",
@@ -338,10 +350,10 @@
     {
       "id": 4,
       "speaker": "CHARACTER",
-      "textChinese": "我们以后一起去踢球吧！运动让我们更健康！",
-      "textPinyin": "Wǒmen yǐhòu yīqǐ qù tī qiú ba! Yùndòng ràng wǒmen gèng jiànkāng!",
-      "textEnglish": "Let's go kick a ball together sometime! Sports make us healthier!",
-      "textIndonesian": "Ayo kita main bola bersama nanti! Olahraga membuat kita lebih sehat!",
+      "textChinese": "我们以后一起运动吧！运动让我们更健康！",
+      "textPinyin": "Wǒmen yǐhòu yīqǐ yùndòng ba! Yùndòng ràng wǒmen gèng jiànkāng!",
+      "textEnglish": "Let's exercise together sometime! Sports make us healthier!",
+      "textIndonesian": "Ayo kita olahraga bersama nanti! Olahraga membuat kita lebih sehat!",
       "pinyinWords": [
         {
           "pinyin": "Wǒmen",
@@ -352,7 +364,7 @@
         {
           "pinyin": "yǐhòu",
           "chinese": "以后",
-          "english": "later / in the future / sometime",
+          "english": "later / sometime",
           "indonesian": "nanti / suatu saat"
         },
         {
@@ -362,10 +374,17 @@
           "indonesian": "bersama"
         },
         {
-          "pinyin": "qù tī qiú",
-          "chinese": "去踢球",
-          "english": "go kick a ball",
-          "indonesian": "pergi main bola"
+          "pinyin": "yùndòng",
+          "chinese": "运动",
+          "english": "exercise / do sport",
+          "indonesian": "berolahraga"
+        },
+        {
+          "pinyin": "ba",
+          "chinese": "吧",
+          "english": "let's!",
+          "indonesian": "ayo!",
+          "note": "吧 is used when you suggest something. '我们走吧！' means 'Let's go!'"
         },
         {
           "pinyin": "yùndòng",

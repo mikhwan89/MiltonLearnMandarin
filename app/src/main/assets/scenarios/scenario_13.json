@@ -315,10 +315,10 @@
           "isCorrect": true
         },
         {
-          "chinese": "我最喜欢和弟弟一起玩！",
-          "pinyin": "Wǒ zuì xǐhuān hé dìdi yīqǐ wán!",
-          "english": "I like playing with my younger brother the most!",
-          "indonesian": "Saya paling suka bermain dengan adik laki-laki!",
+          "chinese": "我最喜欢和弟弟妹妹一起玩！",
+          "pinyin": "Wǒ zuì xǐhuān hé dìdi mèimei yīqǐ wán!",
+          "english": "I like playing with my younger siblings the most!",
+          "indonesian": "Saya paling suka bermain dengan adik-adik!",
           "pinyinWords": [
             {
               "pinyin": "zuì xǐhuān",
@@ -327,10 +327,10 @@
               "indonesian": "paling suka"
             },
             {
-              "pinyin": "dìdi",
-              "chinese": "弟弟",
-              "english": "younger brother",
-              "indonesian": "adik laki-laki"
+              "pinyin": "dìdi mèimei",
+              "chinese": "弟弟妹妹",
+              "english": "younger siblings",
+              "indonesian": "adik-adik"
             },
             {
               "pinyin": "yīqǐ wán",

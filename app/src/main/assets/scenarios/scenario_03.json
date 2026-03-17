@@ -160,16 +160,16 @@
     {
       "id": 2,
       "speaker": "CHARACTER",
-      "textChinese": "谢谢你！你真好！",
-      "textPinyin": "Xièxie nǐ! Nǐ zhēn hǎo!",
-      "textEnglish": "Thank you! You're so nice!",
-      "textIndonesian": "Terima kasih! Kamu baik sekali!",
+      "textChinese": "哇，你带了好吃的！我们一起吃吧！",
+      "textPinyin": "Wā, nǐ dài le hǎo chī de! Wǒmen yīqǐ chī ba!",
+      "textEnglish": "Wow, you brought yummy food! Let's eat together!",
+      "textIndonesian": "Wah, kamu bawa makanan enak! Ayo makan bersama!",
       "pinyinWords": [
         {
-          "pinyin": "Xièxie",
-          "chinese": "谢谢",
-          "english": "Thank you",
-          "indonesian": "Terima kasih"
+          "pinyin": "Wā",
+          "chinese": "哇",
+          "english": "Wow",
+          "indonesian": "Wah"
         },
         {
           "pinyin": "nǐ",
@@ -178,22 +178,41 @@
           "indonesian": "kamu"
         },
         {
-          "pinyin": "Nǐ",
-          "chinese": "你",
-          "english": "You",
-          "indonesian": "Kamu"
+          "pinyin": "dài le",
+          "chinese": "带了",
+          "english": "brought",
+          "indonesian": "membawa"
         },
         {
-          "pinyin": "zhēn",
-          "chinese": "真",
-          "english": "really",
-          "indonesian": "benar-benar"
+          "pinyin": "hǎo chī de",
+          "chinese": "好吃的",
+          "english": "yummy food",
+          "indonesian": "makanan enak"
         },
         {
-          "pinyin": "hǎo",
-          "chinese": "好",
-          "english": "good/nice",
-          "indonesian": "baik"
+          "pinyin": "Wǒmen",
+          "chinese": "我们",
+          "english": "we / let's",
+          "indonesian": "kita"
+        },
+        {
+          "pinyin": "yīqǐ",
+          "chinese": "一起",
+          "english": "together",
+          "indonesian": "bersama"
+        },
+        {
+          "pinyin": "chī",
+          "chinese": "吃",
+          "english": "eat",
+          "indonesian": "makan"
+        },
+        {
+          "pinyin": "ba",
+          "chinese": "吧",
+          "english": "let's!",
+          "indonesian": "ayo!",
+          "note": "吧 is used when you suggest something. '我们走吧！' means 'Let's go!'"
         }
       ],
       "responseType": "MULTIPLE_OPTIONS",

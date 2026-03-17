@@ -128,40 +128,41 @@
     {
       "id": 2,
       "speaker": "CHARACTER",
-      "textChinese": "哇！你为什么这么开心？",
-      "textPinyin": "Wā! Nǐ wèishénme zhème kāixīn?",
-      "textEnglish": "Wow! Why are you so happy?",
-      "textIndonesian": "Wah! Mengapa kamu sangat senang?",
+      "textChinese": "真的吗？今天发生了什么事？",
+      "textPinyin": "Zhēn de ma? Jīntiān fāshēng le shénme shì?",
+      "textEnglish": "Really? What happened today?",
+      "textIndonesian": "Benarkah? Apa yang terjadi hari ini?",
       "pinyinWords": [
         {
-          "pinyin": "Wā",
-          "chinese": "哇",
-          "english": "Wow",
-          "indonesian": "Wah"
+          "pinyin": "Zhēn de",
+          "chinese": "真的",
+          "english": "Really / Truly",
+          "indonesian": "Benarkah / Sungguh"
         },
         {
-          "pinyin": "Nǐ",
-          "chinese": "你",
-          "english": "You",
-          "indonesian": "Kamu"
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(question word)",
+          "indonesian": "(kata tanya)",
+          "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
         },
         {
-          "pinyin": "wèishénme",
-          "chinese": "为什么",
-          "english": "why",
-          "indonesian": "mengapa / kenapa"
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
         },
         {
-          "pinyin": "zhème",
-          "chinese": "这么",
-          "english": "so / this",
-          "indonesian": "begitu / sangat"
+          "pinyin": "fāshēng le",
+          "chinese": "发生了",
+          "english": "happened",
+          "indonesian": "terjadi"
         },
         {
-          "pinyin": "kāixīn",
-          "chinese": "开心",
-          "english": "happy",
-          "indonesian": "senang"
+          "pinyin": "shénme shì",
+          "chinese": "什么事",
+          "english": "what happened / what thing",
+          "indonesian": "apa yang terjadi"
         }
       ],
       "responseType": "MULTIPLE_OPTIONS",

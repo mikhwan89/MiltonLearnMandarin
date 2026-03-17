@@ -184,34 +184,28 @@
     {
       "id": 3,
       "speaker": "CHARACTER",
-      "textChinese": "答对了！你真厉害！有问题要问吗？",
-      "textPinyin": "Dá duì le! Nǐ zhēn lìhài! Yǒu wèntí yào wèn ma?",
-      "textEnglish": "Correct! You're amazing! Do you have any questions?",
-      "textIndonesian": "Benar! Kamu hebat sekali! Ada pertanyaan?",
+      "textChinese": "做得好！继续努力！有问题要问吗？",
+      "textPinyin": "Zuò de hǎo! Jìxù nǔlì! Yǒu wèntí yào wèn ma?",
+      "textEnglish": "Well done! Keep trying! Do you have any questions?",
+      "textIndonesian": "Bagus! Terus semangat! Ada pertanyaan?",
       "pinyinWords": [
         {
-          "pinyin": "dá duì le",
-          "chinese": "答对了",
-          "english": "answered correctly",
-          "indonesian": "jawaban benar"
+          "pinyin": "zuò de hǎo",
+          "chinese": "做得好",
+          "english": "well done / did well",
+          "indonesian": "bagus"
         },
         {
-          "pinyin": "nǐ",
-          "chinese": "你",
-          "english": "you",
-          "indonesian": "kamu"
+          "pinyin": "jìxù",
+          "chinese": "继续",
+          "english": "continue / keep",
+          "indonesian": "terus"
         },
         {
-          "pinyin": "zhēn",
-          "chinese": "真",
-          "english": "really / truly",
-          "indonesian": "benar-benar"
-        },
-        {
-          "pinyin": "lìhài",
-          "chinese": "厉害",
-          "english": "amazing / impressive",
-          "indonesian": "hebat"
+          "pinyin": "nǔlì",
+          "chinese": "努力",
+          "english": "try hard / work hard",
+          "indonesian": "semangat / berusaha"
         },
         {
           "pinyin": "yǒu",

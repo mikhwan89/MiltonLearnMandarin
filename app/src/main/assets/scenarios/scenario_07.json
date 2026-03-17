@@ -101,16 +101,16 @@
           "isCorrect": true
         },
         {
-          "chinese": "没事，我只是打招呼！",
-          "pinyin": "Méi shì, wǒ zhǐshì dǎ zhāohu!",
-          "english": "Nothing, just saying hi!",
-          "indonesian": "Tidak ada, cuma menyapa!",
+          "chinese": "小明，我可以借你的尺子吗？",
+          "pinyin": "Xiǎo Míng, wǒ kěyǐ jiè nǐ de chǐzi ma?",
+          "english": "Xiao Ming, may I borrow your ruler?",
+          "indonesian": "Xiao Ming, boleh aku pinjam penggaris kamu?",
           "pinyinWords": [
             {
-              "pinyin": "méi shì",
-              "chinese": "没事",
-              "english": "nothing / no problem",
-              "indonesian": "tidak ada apa-apa"
+              "pinyin": "Xiǎo Míng",
+              "chinese": "小明",
+              "english": "Xiao Ming (name)",
+              "indonesian": "Xiao Ming (nama)"
             },
             {
               "pinyin": "wǒ",
@@ -119,16 +119,35 @@
               "indonesian": "aku"
             },
             {
-              "pinyin": "zhǐshì",
-              "chinese": "只是",
-              "english": "just / only",
-              "indonesian": "cuma"
+              "pinyin": "kěyǐ",
+              "chinese": "可以",
+              "english": "may / can",
+              "indonesian": "boleh"
             },
             {
-              "pinyin": "dǎ zhāohu",
-              "chinese": "打招呼",
-              "english": "say hi",
-              "indonesian": "menyapa"
+              "pinyin": "jiè",
+              "chinese": "借",
+              "english": "borrow",
+              "indonesian": "pinjam"
+            },
+            {
+              "pinyin": "nǐ de",
+              "chinese": "你的",
+              "english": "your",
+              "indonesian": "punyamu"
+            },
+            {
+              "pinyin": "chǐzi",
+              "chinese": "尺子",
+              "english": "ruler",
+              "indonesian": "penggaris"
+            },
+            {
+              "pinyin": "ma",
+              "chinese": "吗",
+              "english": "? (yes/no question word)",
+              "indonesian": "? (kata tanya ya/tidak)",
+              "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
             }
           ],
           "isCorrect": true
@@ -275,62 +294,61 @@
     {
       "id": 3,
       "speaker": "CHARACTER",
-      "textChinese": "给你橡皮。用完了还给我，好吗？",
-      "textPinyin": "Gěi nǐ xiàngpí. Yòng wán le huán gěi wǒ, hǎo ma?",
-      "textEnglish": "Here's the eraser. Return it when you're done, okay?",
-      "textIndonesian": "Ini penghapusnya. Kembalikan kalau sudah selesai, ya?",
+      "textChinese": "没关系！有需要随时来找我，我们是好朋友！",
+      "textPinyin": "Méi guānxi! Yǒu xūyào suíshí lái zhǎo wǒ, wǒmen shì hǎo péngyou!",
+      "textEnglish": "No problem! Come find me anytime you need something — we're good friends!",
+      "textIndonesian": "Tidak apa-apa! Kapan saja butuh sesuatu, datangi aku — kita teman baik!",
       "pinyinWords": [
         {
-          "pinyin": "gěi nǐ",
-          "chinese": "给你",
-          "english": "here you go / for you",
-          "indonesian": "ini untukmu"
+          "pinyin": "méi guānxi",
+          "chinese": "没关系",
+          "english": "no problem",
+          "indonesian": "tidak apa-apa"
         },
         {
-          "pinyin": "xiàngpí",
-          "chinese": "橡皮",
-          "english": "eraser",
-          "indonesian": "penghapus"
+          "pinyin": "yǒu xūyào",
+          "chinese": "有需要",
+          "english": "if you need something",
+          "indonesian": "kalau butuh sesuatu"
         },
         {
-          "pinyin": "yòng wán",
-          "chinese": "用完",
-          "english": "finished using",
-          "indonesian": "selesai pakai"
+          "pinyin": "suíshí",
+          "chinese": "随时",
+          "english": "anytime",
+          "indonesian": "kapan saja"
         },
         {
-          "pinyin": "le",
-          "chinese": "了",
-          "english": "done! / just happened",
-          "indonesian": "sudah terjadi",
-          "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'"
+          "pinyin": "lái zhǎo wǒ",
+          "chinese": "来找我",
+          "english": "come find me",
+          "indonesian": "datangi aku"
         },
         {
-          "pinyin": "huán",
-          "chinese": "还",
-          "english": "return",
-          "indonesian": "kembalikan"
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we",
+          "indonesian": "kita"
         },
         {
-          "pinyin": "gěi wǒ",
-          "chinese": "给我",
-          "english": "give back to me",
-          "indonesian": "ke aku"
+          "pinyin": "shì",
+          "chinese": "是",
+          "english": "are",
+          "indonesian": "adalah"
         },
         {
-          "pinyin": "hǎo ma",
-          "chinese": "好吗",
-          "english": "okay?",
-          "indonesian": "ya?"
+          "pinyin": "hǎo péngyou",
+          "chinese": "好朋友",
+          "english": "good friends",
+          "indonesian": "teman baik"
         }
       ],
       "responseType": "SINGLE_CHOICE",
       "options": [
         {
-          "chinese": "好的，用完我还给你。谢谢！",
-          "pinyin": "Hǎo de, yòng wán wǒ huán gěi nǐ. Xièxie!",
-          "english": "Okay, I'll return it when I'm done. Thank you!",
-          "indonesian": "Baik, aku kembalikan kalau sudah selesai. Terima kasih!",
+          "chinese": "好的，谢谢你！",
+          "pinyin": "Hǎo de, xièxie nǐ!",
+          "english": "Okay, thank you!",
+          "indonesian": "Baik, terima kasih!",
           "pinyinWords": [
             {
               "pinyin": "hǎo de",
@@ -339,34 +357,16 @@
               "indonesian": "baik"
             },
             {
-              "pinyin": "yòng wán",
-              "chinese": "用完",
-              "english": "finished using",
-              "indonesian": "selesai pakai"
-            },
-            {
-              "pinyin": "wǒ",
-              "chinese": "我",
-              "english": "I",
-              "indonesian": "aku"
-            },
-            {
-              "pinyin": "huán gěi",
-              "chinese": "还给",
-              "english": "return to",
-              "indonesian": "kembalikan ke"
+              "pinyin": "xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
             },
             {
               "pinyin": "nǐ",
               "chinese": "你",
               "english": "you",
               "indonesian": "kamu"
-            },
-            {
-              "pinyin": "Xièxie",
-              "chinese": "谢谢",
-              "english": "Thank you",
-              "indonesian": "Terima kasih"
             }
           ],
           "isCorrect": true

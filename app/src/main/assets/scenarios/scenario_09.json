@@ -409,11 +409,17 @@
     {
       "id": 4,
       "speaker": "CHARACTER",
-      "textChinese": "厕所就在楼梯旁边。加油！",
-      "textPinyin": "Cèsuǒ jiù zài lóutī pángbiān. Jiāyóu!",
-      "textEnglish": "The toilet is right next to the stairs. You can do it!",
-      "textIndonesian": "Toilet ada di sebelah tangga. Semangat!",
+      "textChinese": "不客气！厕所就在楼梯旁边。祝你今天顺利！",
+      "textPinyin": "Bù kèqi! Cèsuǒ jiù zài lóutī pángbiān. Zhù nǐ jīntiān shùnlì!",
+      "textEnglish": "You're welcome! The toilet is right next to the stairs. Have a good day!",
+      "textIndonesian": "Sama-sama! Toilet ada di sebelah tangga. Semoga harimu lancar!",
       "pinyinWords": [
+        {
+          "pinyin": "bù kèqi",
+          "chinese": "不客气",
+          "english": "you're welcome",
+          "indonesian": "sama-sama"
+        },
         {
           "pinyin": "cèsuǒ",
           "chinese": "厕所",
@@ -439,10 +445,22 @@
           "indonesian": "di sebelah"
         },
         {
-          "pinyin": "jiāyóu",
-          "chinese": "加油",
-          "english": "you can do it!",
-          "indonesian": "semangat!"
+          "pinyin": "zhù nǐ",
+          "chinese": "祝你",
+          "english": "wish you",
+          "indonesian": "semoga kamu"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "shùnlì",
+          "chinese": "顺利",
+          "english": "smooth / go well",
+          "indonesian": "lancar"
         }
       ],
       "responseType": "SINGLE_CHOICE",

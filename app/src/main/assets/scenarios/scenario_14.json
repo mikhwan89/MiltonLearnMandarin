@@ -288,16 +288,28 @@
     {
       "id": 4,
       "speaker": "CHARACTER",
-      "textChinese": "做得很好！今天的体育课真有趣！",
-      "textPinyin": "Zuò de hěn hǎo! Jīntiān de tǐyù kè zhēn yǒuqù!",
-      "textEnglish": "Well done! Today's PE class was really fun!",
-      "textIndonesian": "Bagus sekali! Pelajaran olahraga hari ini sungguh menyenangkan!",
+      "textChinese": "太好了！我来帮你！今天的体育课真有趣！",
+      "textPinyin": "Tài hǎo le! Wǒ lái bāng nǐ! Jīntiān de tǐyù kè zhēn yǒuqù!",
+      "textEnglish": "Great! I'll help you! Today's PE class was really fun!",
+      "textIndonesian": "Bagus sekali! Aku akan membantumu! Pelajaran olahraga hari ini sungguh menyenangkan!",
       "pinyinWords": [
         {
-          "pinyin": "Zuò de hěn hǎo",
-          "chinese": "做得很好",
-          "english": "Well done / did very well",
+          "pinyin": "Tài hǎo le",
+          "chinese": "太好了",
+          "english": "Great / Wonderful",
           "indonesian": "Bagus sekali"
+        },
+        {
+          "pinyin": "wǒ lái",
+          "chinese": "我来",
+          "english": "I will",
+          "indonesian": "aku akan"
+        },
+        {
+          "pinyin": "bāng nǐ",
+          "chinese": "帮你",
+          "english": "help you",
+          "indonesian": "membantumu"
         },
         {
           "pinyin": "jīntiān",
