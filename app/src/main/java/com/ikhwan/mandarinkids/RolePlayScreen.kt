@@ -188,77 +188,93 @@ fun RolePlayScreen(
                     }
                 }
 
-                // Options overlay at bottom
-                AnimatedVisibility(
+                // Options overlay at bottom — extracted to break out of ColumnScope
+                OptionsSlidePanel(
                     visible = vm.currentStep != null && (vm.showOptions || vm.showNameInput),
-                    enter = slideInVertically { it } + fadeIn(),
-                    exit = slideOutVertically { it } + fadeOut(),
-                    modifier = Modifier.align(Alignment.BottomCenter)
+                    modifier = Modifier.align(Alignment.BottomCenter).fillMaxWidth()
                 ) {
-                    Surface(
-                        modifier = Modifier.fillMaxWidth(),
-                        shadowElevation = 8.dp,
-                        color = MaterialTheme.colorScheme.surface
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
                     ) {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp)
-                        ) {
-                            if (vm.showNameInput && vm.currentStep!!.userNameInput) {
-                                NameInputSection(
-                                    option = vm.currentStep!!.options.first(),
-                                    onNameEntered = { name ->
-                                        val fullChinese = vm.submitName(name)
-                                        tts.speak(fullChinese, vm.speechSpeed)
+                        if (vm.showNameInput && vm.currentStep!!.userNameInput) {
+                            NameInputSection(
+                                option = vm.currentStep!!.options.first(),
+                                onNameEntered = { name ->
+                                    val fullChinese = vm.submitName(name)
+                                    tts.speak(fullChinese, vm.speechSpeed)
+                                    coroutineScope.launch {
+                                        delay(300)
+                                        listState.animateScrollToItem(vm.conversationHistory.size - 1)
+                                        delay(2000)
+                                        vm.advanceStep()
+                                    }
+                                },
+                                tts = tts,
+                                speechSpeed = vm.speechSpeed
+                            )
+                        }
+
+                        if (vm.showOptions && !vm.showNameInput) {
+                            Text(
+                                text = "Choose your response:",
+                                fontSize = 14.sp,
+                                color = MaterialTheme.colorScheme.secondary,
+                                modifier = Modifier.padding(bottom = 8.dp)
+                            )
+
+                            vm.currentStep!!.options.forEachIndexed { index, option ->
+                                ResponseOptionButton(
+                                    option = option,
+                                    index = index,
+                                    onClick = {
+                                        vm.selectOption(option)
+                                        tts.speak(option.chinese, vm.speechSpeed)
                                         coroutineScope.launch {
                                             delay(300)
                                             listState.animateScrollToItem(vm.conversationHistory.size - 1)
                                             delay(2000)
-                                            vm.advanceStep()
+                                            if (vm.currentStepIndex + 1 >= scenario.dialogues.size) {
+                                                onComplete(vm.correctAnswersCount)
+                                            } else {
+                                                vm.advanceStep()
+                                            }
                                         }
                                     },
                                     tts = tts,
                                     speechSpeed = vm.speechSpeed
                                 )
-                            }
-
-                            if (vm.showOptions && !vm.showNameInput) {
-                                Text(
-                                    text = "Choose your response:",
-                                    fontSize = 14.sp,
-                                    color = MaterialTheme.colorScheme.secondary,
-                                    modifier = Modifier.padding(bottom = 8.dp)
-                                )
-
-                                vm.currentStep!!.options.forEachIndexed { index, option ->
-                                    ResponseOptionButton(
-                                        option = option,
-                                        index = index,
-                                        onClick = {
-                                            vm.selectOption(option)
-                                            tts.speak(option.chinese, vm.speechSpeed)
-                                            coroutineScope.launch {
-                                                delay(300)
-                                                listState.animateScrollToItem(vm.conversationHistory.size - 1)
-                                                delay(2000)
-                                                if (vm.currentStepIndex + 1 >= scenario.dialogues.size) {
-                                                    onComplete(vm.correctAnswersCount)
-                                                } else {
-                                                    vm.advanceStep()
-                                                }
-                                            }
-                                        },
-                                        tts = tts,
-                                        speechSpeed = vm.speechSpeed
-                                    )
-                                    Spacer(modifier = Modifier.height(8.dp))
-                                }
+                                Spacer(modifier = Modifier.height(8.dp))
                             }
                         }
                     }
                 }
             }
+        }
+    }
+}
+
+/** Wraps content in a bottom-sliding Surface. Extracted from RolePlayScreen to avoid
+ *  ColumnScope receiver shadowing the top-level AnimatedVisibility overload. */
+@Composable
+private fun OptionsSlidePanel(
+    visible: Boolean,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+) {
+    AnimatedVisibility(
+        visible = visible,
+        modifier = modifier,
+        enter = slideInVertically { it } + fadeIn(),
+        exit = slideOutVertically { it } + fadeOut()
+    ) {
+        Surface(
+            modifier = Modifier.fillMaxWidth(),
+            shadowElevation = 8.dp,
+            color = MaterialTheme.colorScheme.surface
+        ) {
+            content()
         }
     }
 }
