@@ -35,12 +35,12 @@ private fun masteryColor(level: Int): Color = when {
 
 private fun masteryEmoji(level: Int): String = when (level) {
     1  -> "\u2B52"  // ⭒ small star outline
-    2  -> "\u2729"  // ✩ stress outlined white star
-    3  -> "\u272C"  // ✬ open centre black star
-    4  -> "\u272E"  // ✮ circled white star
-    5  -> "\u272D"  // ✭ outlined black star
-    6  -> "\u2605"  // ★ black star
-    7  -> "\u2B51"  // ⭑ black small star
+    2  -> "\u2B51"  // ⭑ black small star
+    3  -> "\u2729"  // ✩ stress outlined white star
+    4  -> "\u272C"  // ✬ open centre black star
+    5  -> "\u272E"  // ✮ circled white star
+    6  -> "\u272D"  // ✭ outlined black star
+    7  -> "\u2605"  // ★ black star
     8  -> "\u272F"  // ✯ pinwheel star
     9  -> "\u2B50"  // ⭐ medium white star
     else -> "🌟"   // 10 — glowing star
