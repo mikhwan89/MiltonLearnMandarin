@@ -1,0 +1,498 @@
+{
+  "id": "scene16_canteen_lunch",
+  "title": "学校食堂",
+  "description": "Ordering lunch at the school canteen from the canteen auntie",
+  "characterName": "食堂阿姨",
+  "characterEmoji": "👩‍🍳",
+  "characterRole": "canteen auntie",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "小朋友，今天你想吃什么？我们有米饭和面条。",
+      "textPinyin": "Xiǎopéngyou, jīntiān nǐ xiǎng chī shénme? Wǒmen yǒu mǐfàn hé miàntiáo.",
+      "textEnglish": "Little one, what would you like to eat today? We have rice and noodles.",
+      "textIndonesian": "Anak kecil, hari ini kamu mau makan apa? Kami punya nasi dan mie.",
+      "pinyinWords": [
+        {
+          "pinyin": "Xiǎopéngyou",
+          "chinese": "小朋友",
+          "english": "little one / young friend",
+          "indonesian": "anak kecil / adik"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "xiǎng",
+          "chinese": "想",
+          "english": "want to / would like to",
+          "indonesian": "mau / ingin"
+        },
+        {
+          "pinyin": "chī",
+          "chinese": "吃",
+          "english": "eat",
+          "indonesian": "makan"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        },
+        {
+          "pinyin": "mǐfàn",
+          "chinese": "米饭",
+          "english": "rice",
+          "indonesian": "nasi"
+        },
+        {
+          "pinyin": "hé",
+          "chinese": "和",
+          "english": "and",
+          "indonesian": "dan"
+        },
+        {
+          "pinyin": "miàntiáo",
+          "chinese": "面条",
+          "english": "noodles",
+          "indonesian": "mie"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "阿姨，我要米饭，谢谢！",
+          "pinyin": "Āyí, wǒ yào mǐfàn, xièxie!",
+          "english": "Auntie, I want rice, thank you!",
+          "indonesian": "Tante, saya mau nasi, terima kasih!",
+          "pinyinWords": [
+            {
+              "pinyin": "Āyí",
+              "chinese": "阿姨",
+              "english": "auntie",
+              "indonesian": "tante / bibi"
+            },
+            {
+              "pinyin": "wǒ yào",
+              "chinese": "我要",
+              "english": "I want",
+              "indonesian": "saya mau"
+            },
+            {
+              "pinyin": "mǐfàn",
+              "chinese": "米饭",
+              "english": "rice",
+              "indonesian": "nasi"
+            },
+            {
+              "pinyin": "xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "阿姨，我要面条，谢谢！",
+          "pinyin": "Āyí, wǒ yào miàntiáo, xièxie!",
+          "english": "Auntie, I want noodles, thank you!",
+          "indonesian": "Tante, saya mau mie, terima kasih!",
+          "pinyinWords": [
+            {
+              "pinyin": "Āyí",
+              "chinese": "阿姨",
+              "english": "auntie",
+              "indonesian": "tante / bibi"
+            },
+            {
+              "pinyin": "wǒ yào",
+              "chinese": "我要",
+              "english": "I want",
+              "indonesian": "saya mau"
+            },
+            {
+              "pinyin": "miàntiáo",
+              "chinese": "面条",
+              "english": "noodles",
+              "indonesian": "mie"
+            },
+            {
+              "pinyin": "xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "好的！你要加什么菜？今天有炒鸡蛋和炒蔬菜。",
+      "textPinyin": "Hǎo de! Nǐ yào jiā shénme cài? Jīntiān yǒu chǎo jīdàn hé chǎo shūcài.",
+      "textEnglish": "Okay! What dishes would you like to add? Today we have stir-fried eggs and stir-fried vegetables.",
+      "textIndonesian": "Baik! Kamu mau tambah lauk apa? Hari ini ada telur goreng dan sayuran tumis.",
+      "pinyinWords": [
+        {
+          "pinyin": "Hǎo de",
+          "chinese": "好的",
+          "english": "Okay / Alright",
+          "indonesian": "Baik / Oke"
+        },
+        {
+          "pinyin": "Nǐ yào",
+          "chinese": "你要",
+          "english": "You want",
+          "indonesian": "Kamu mau"
+        },
+        {
+          "pinyin": "jiā",
+          "chinese": "加",
+          "english": "add",
+          "indonesian": "tambah"
+        },
+        {
+          "pinyin": "shénme cài",
+          "chinese": "什么菜",
+          "english": "what dish",
+          "indonesian": "lauk apa"
+        },
+        {
+          "pinyin": "chǎo jīdàn",
+          "chinese": "炒鸡蛋",
+          "english": "stir-fried eggs",
+          "indonesian": "telur goreng"
+        },
+        {
+          "pinyin": "hé",
+          "chinese": "和",
+          "english": "and",
+          "indonesian": "dan"
+        },
+        {
+          "pinyin": "chǎo shūcài",
+          "chinese": "炒蔬菜",
+          "english": "stir-fried vegetables",
+          "indonesian": "sayuran tumis"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我要炒鸡蛋，谢谢阿姨！",
+          "pinyin": "Wǒ yào chǎo jīdàn, xièxie āyí!",
+          "english": "I want stir-fried eggs, thank you auntie!",
+          "indonesian": "Saya mau telur goreng, terima kasih tante!",
+          "pinyinWords": [
+            {
+              "pinyin": "wǒ yào",
+              "chinese": "我要",
+              "english": "I want",
+              "indonesian": "saya mau"
+            },
+            {
+              "pinyin": "chǎo jīdàn",
+              "chinese": "炒鸡蛋",
+              "english": "stir-fried eggs",
+              "indonesian": "telur goreng"
+            },
+            {
+              "pinyin": "xièxie āyí",
+              "chinese": "谢谢阿姨",
+              "english": "thank you auntie",
+              "indonesian": "terima kasih tante"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我要炒蔬菜，谢谢阿姨！",
+          "pinyin": "Wǒ yào chǎo shūcài, xièxie āyí!",
+          "english": "I want stir-fried vegetables, thank you auntie!",
+          "indonesian": "Saya mau sayuran tumis, terima kasih tante!",
+          "pinyinWords": [
+            {
+              "pinyin": "wǒ yào",
+              "chinese": "我要",
+              "english": "I want",
+              "indonesian": "saya mau"
+            },
+            {
+              "pinyin": "chǎo shūcài",
+              "chinese": "炒蔬菜",
+              "english": "stir-fried vegetables",
+              "indonesian": "sayuran tumis"
+            },
+            {
+              "pinyin": "xièxie āyí",
+              "chinese": "谢谢阿姨",
+              "english": "thank you auntie",
+              "indonesian": "terima kasih tante"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "给你！要多喝水，好吗？",
+      "textPinyin": "Gěi nǐ! Yào duō hē shuǐ, hǎo ma?",
+      "textEnglish": "Here you go! Remember to drink more water, okay?",
+      "textIndonesian": "Ini untukmu! Ingat banyak minum air, ya?",
+      "pinyinWords": [
+        {
+          "pinyin": "Gěi nǐ",
+          "chinese": "给你",
+          "english": "Here you go / for you",
+          "indonesian": "Ini untukmu"
+        },
+        {
+          "pinyin": "Yào",
+          "chinese": "要",
+          "english": "must / need to",
+          "indonesian": "harus / perlu"
+        },
+        {
+          "pinyin": "duō",
+          "chinese": "多",
+          "english": "more / a lot",
+          "indonesian": "lebih banyak"
+        },
+        {
+          "pinyin": "hē",
+          "chinese": "喝",
+          "english": "drink",
+          "indonesian": "minum"
+        },
+        {
+          "pinyin": "shuǐ",
+          "chinese": "水",
+          "english": "water",
+          "indonesian": "air"
+        },
+        {
+          "pinyin": "hǎo ma",
+          "chinese": "好吗",
+          "english": "okay? / alright?",
+          "indonesian": "ya? / oke?",
+          "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "好的，谢谢阿姨！",
+          "pinyin": "Hǎo de, xièxie āyí!",
+          "english": "Okay, thank you auntie!",
+          "indonesian": "Baik, terima kasih tante!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "Okay / Alright",
+              "indonesian": "Baik / Oke"
+            },
+            {
+              "pinyin": "xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            },
+            {
+              "pinyin": "āyí",
+              "chinese": "阿姨",
+              "english": "auntie",
+              "indonesian": "tante / bibi"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "慢慢吃，好好享受午饭！",
+      "textPinyin": "Màn màn chī, hǎohǎo xiǎngshòu wǔfàn!",
+      "textEnglish": "Eat slowly, enjoy your lunch!",
+      "textIndonesian": "Makan pelan-pelan, nikmati makan siangmu!",
+      "pinyinWords": [
+        {
+          "pinyin": "Màn màn",
+          "chinese": "慢慢",
+          "english": "slowly / take your time",
+          "indonesian": "pelan-pelan"
+        },
+        {
+          "pinyin": "chī",
+          "chinese": "吃",
+          "english": "eat",
+          "indonesian": "makan"
+        },
+        {
+          "pinyin": "hǎohǎo",
+          "chinese": "好好",
+          "english": "properly / nicely / well",
+          "indonesian": "dengan baik"
+        },
+        {
+          "pinyin": "xiǎngshòu",
+          "chinese": "享受",
+          "english": "enjoy",
+          "indonesian": "nikmati"
+        },
+        {
+          "pinyin": "wǔfàn",
+          "chinese": "午饭",
+          "english": "lunch",
+          "indonesian": "makan siang"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'rice' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "面条",
+          "pinyin": "miàntiáo",
+          "translation": "noodles"
+        },
+        {
+          "chinese": "包子",
+          "pinyin": "bāozi",
+          "translation": "steamed bun"
+        },
+        {
+          "chinese": "米饭",
+          "pinyin": "mǐfàn",
+          "translation": "rice"
+        },
+        {
+          "chinese": "馒头",
+          "pinyin": "mántou",
+          "translation": "plain steamed bun"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "米饭 (mǐfàn) means 'rice' — 米 means rice grains and 饭 means cooked food!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "面条",
+      "questionPinyin": "miàntiáo",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "rice"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "bread"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "noodles"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "soup"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "面条 (miàntiáo) means 'noodles' — a very popular food in China!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'I want...' when ordering food?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "我有",
+          "pinyin": "wǒ yǒu",
+          "translation": "I have"
+        },
+        {
+          "chinese": "我要",
+          "pinyin": "wǒ yào",
+          "translation": "I want"
+        },
+        {
+          "chinese": "我是",
+          "pinyin": "wǒ shì",
+          "translation": "I am"
+        },
+        {
+          "chinese": "我去",
+          "pinyin": "wǒ qù",
+          "translation": "I go"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "我要 (wǒ yào) means 'I want' — use this when ordering food or asking for something!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "好吃",
+      "questionPinyin": "hǎochī",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "very full"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "delicious"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "hungry"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "thirsty"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "好吃 (hǎochī) means 'delicious' — 好 means good and 吃 means eat, so good-to-eat = delicious!"
+    }
+  ],
+  "category": "FOOD_AND_EATING"
+}

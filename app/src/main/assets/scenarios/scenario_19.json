@@ -1,0 +1,523 @@
+{
+  "id": "scene19_favourite_sport",
+  "title": "我最喜欢的运动",
+  "description": "Talking about your favourite sport and hobbies with a classmate",
+  "characterName": "同学小华",
+  "characterEmoji": "🧒",
+  "characterRole": "classmate",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你好！你喜欢什么运动？",
+      "textPinyin": "Nǐ hǎo! Nǐ xǐhuān shénme yùndòng?",
+      "textEnglish": "Hi! What sport do you like?",
+      "textIndonesian": "Hai! Kamu suka olahraga apa?",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ hǎo",
+          "chinese": "你好",
+          "english": "Hello / Hi",
+          "indonesian": "Halo / Hai"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "xǐhuān",
+          "chinese": "喜欢",
+          "english": "like",
+          "indonesian": "suka"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        },
+        {
+          "pinyin": "yùndòng",
+          "chinese": "运动",
+          "english": "sport / exercise",
+          "indonesian": "olahraga"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我最喜欢踢足球！",
+          "pinyin": "Wǒ zuì xǐhuān tī zúqiú!",
+          "english": "I like playing football the most!",
+          "indonesian": "Saya paling suka bermain sepak bola!",
+          "pinyinWords": [
+            {
+              "pinyin": "zuì xǐhuān",
+              "chinese": "最喜欢",
+              "english": "like the most / favourite",
+              "indonesian": "paling suka / favorit"
+            },
+            {
+              "pinyin": "tī",
+              "chinese": "踢",
+              "english": "kick / play (football)",
+              "indonesian": "menendang / bermain (sepak bola)"
+            },
+            {
+              "pinyin": "zúqiú",
+              "chinese": "足球",
+              "english": "football / soccer",
+              "indonesian": "sepak bola"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我最喜欢游泳！",
+          "pinyin": "Wǒ zuì xǐhuān yóuyǒng!",
+          "english": "I like swimming the most!",
+          "indonesian": "Saya paling suka berenang!",
+          "pinyinWords": [
+            {
+              "pinyin": "zuì xǐhuān",
+              "chinese": "最喜欢",
+              "english": "like the most / favourite",
+              "indonesian": "paling suka / favorit"
+            },
+            {
+              "pinyin": "yóuyǒng",
+              "chinese": "游泳",
+              "english": "swimming",
+              "indonesian": "berenang"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我喜欢打篮球！",
+          "pinyin": "Wǒ xǐhuān dǎ lánqiú!",
+          "english": "I like playing basketball!",
+          "indonesian": "Saya suka bermain basket!",
+          "pinyinWords": [
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "dǎ",
+              "chinese": "打",
+              "english": "play (ball sports)",
+              "indonesian": "bermain (olahraga bola)"
+            },
+            {
+              "pinyin": "lánqiú",
+              "chinese": "篮球",
+              "english": "basketball",
+              "indonesian": "basket"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "哇，真的吗？你踢得好吗？",
+      "textPinyin": "Wā, zhēn de ma? Nǐ tī de hǎo ma?",
+      "textEnglish": "Wow, really? Are you good at it?",
+      "textIndonesian": "Wah, benarkah? Kamu jago?",
+      "pinyinWords": [
+        {
+          "pinyin": "Wā",
+          "chinese": "哇",
+          "english": "Wow",
+          "indonesian": "Wah"
+        },
+        {
+          "pinyin": "zhēn de",
+          "chinese": "真的",
+          "english": "really? / truly",
+          "indonesian": "benarkah / sungguh"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(question word)",
+          "indonesian": "(kata tanya)",
+          "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "tī de hǎo",
+          "chinese": "踢得好",
+          "english": "good at kicking / play well",
+          "indonesian": "pandai menendang / bermain dengan bagus"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我踢得还可以！",
+          "pinyin": "Wǒ tī de hái kěyǐ!",
+          "english": "I'm alright at it!",
+          "indonesian": "Saya lumayan bisa!",
+          "pinyinWords": [
+            {
+              "pinyin": "tī de",
+              "chinese": "踢得",
+              "english": "play (football) at a level of",
+              "indonesian": "bermain sepak bola dengan"
+            },
+            {
+              "pinyin": "hái kěyǐ",
+              "chinese": "还可以",
+              "english": "alright / not bad",
+              "indonesian": "lumayan / cukup bagus"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我还在学，但是我很努力！",
+          "pinyin": "Wǒ hái zài xué, dànshì wǒ hěn nǔlì!",
+          "english": "I'm still learning, but I try very hard!",
+          "indonesian": "Saya masih belajar, tapi saya sangat berusaha!",
+          "pinyinWords": [
+            {
+              "pinyin": "hái zài xué",
+              "chinese": "还在学",
+              "english": "still learning",
+              "indonesian": "masih belajar"
+            },
+            {
+              "pinyin": "dànshì",
+              "chinese": "但是",
+              "english": "but",
+              "indonesian": "tapi"
+            },
+            {
+              "pinyin": "hěn nǔlì",
+              "chinese": "很努力",
+              "english": "try very hard",
+              "indonesian": "sangat berusaha keras"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "我最喜欢跑步！你每天都运动吗？",
+      "textPinyin": "Wǒ zuì xǐhuān pǎobù! Nǐ měitiān dōu yùndòng ma?",
+      "textEnglish": "My favourite is running! Do you exercise every day?",
+      "textIndonesian": "Favorit saya adalah lari! Kamu olahraga setiap hari?",
+      "pinyinWords": [
+        {
+          "pinyin": "Wǒ",
+          "chinese": "我",
+          "english": "I / my",
+          "indonesian": "Saya / milikku"
+        },
+        {
+          "pinyin": "zuì xǐhuān",
+          "chinese": "最喜欢",
+          "english": "like the most / favourite",
+          "indonesian": "paling suka / favorit"
+        },
+        {
+          "pinyin": "pǎobù",
+          "chinese": "跑步",
+          "english": "running",
+          "indonesian": "berlari"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "měitiān",
+          "chinese": "每天",
+          "english": "every day",
+          "indonesian": "setiap hari"
+        },
+        {
+          "pinyin": "dōu",
+          "chinese": "都",
+          "english": "all / every time",
+          "indonesian": "semua / selalu"
+        },
+        {
+          "pinyin": "yùndòng",
+          "chinese": "运动",
+          "english": "exercise / do sport",
+          "indonesian": "berolahraga"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(question word)",
+          "indonesian": "(kata tanya)",
+          "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "是的！我每天都运动。",
+          "pinyin": "Shì de! Wǒ měitiān dōu yùndòng.",
+          "english": "Yes! I exercise every day.",
+          "indonesian": "Iya! Saya olahraga setiap hari.",
+          "pinyinWords": [
+            {
+              "pinyin": "Shì de",
+              "chinese": "是的",
+              "english": "Yes / That's right",
+              "indonesian": "Iya / Benar"
+            },
+            {
+              "pinyin": "měitiān",
+              "chinese": "每天",
+              "english": "every day",
+              "indonesian": "setiap hari"
+            },
+            {
+              "pinyin": "dōu yùndòng",
+              "chinese": "都运动",
+              "english": "always exercise",
+              "indonesian": "selalu olahraga"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我经常运动，但不是每天。",
+          "pinyin": "Wǒ jīngcháng yùndòng, dàn bù shì měitiān.",
+          "english": "I exercise often, but not every day.",
+          "indonesian": "Saya sering olahraga, tapi tidak setiap hari.",
+          "pinyinWords": [
+            {
+              "pinyin": "jīngcháng",
+              "chinese": "经常",
+              "english": "often / frequently",
+              "indonesian": "sering"
+            },
+            {
+              "pinyin": "yùndòng",
+              "chinese": "运动",
+              "english": "exercise",
+              "indonesian": "olahraga"
+            },
+            {
+              "pinyin": "bù shì měitiān",
+              "chinese": "不是每天",
+              "english": "not every day",
+              "indonesian": "tidak setiap hari"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "我们以后一起去踢球吧！运动让我们更健康！",
+      "textPinyin": "Wǒmen yǐhòu yīqǐ qù tī qiú ba! Yùndòng ràng wǒmen gèng jiànkāng!",
+      "textEnglish": "Let's go kick a ball together sometime! Sports make us healthier!",
+      "textIndonesian": "Ayo kita main bola bersama nanti! Olahraga membuat kita lebih sehat!",
+      "pinyinWords": [
+        {
+          "pinyin": "Wǒmen",
+          "chinese": "我们",
+          "english": "We / us",
+          "indonesian": "Kita"
+        },
+        {
+          "pinyin": "yǐhòu",
+          "chinese": "以后",
+          "english": "later / in the future / sometime",
+          "indonesian": "nanti / suatu saat"
+        },
+        {
+          "pinyin": "yīqǐ",
+          "chinese": "一起",
+          "english": "together",
+          "indonesian": "bersama"
+        },
+        {
+          "pinyin": "qù tī qiú",
+          "chinese": "去踢球",
+          "english": "go kick a ball",
+          "indonesian": "pergi main bola"
+        },
+        {
+          "pinyin": "yùndòng",
+          "chinese": "运动",
+          "english": "sport / exercise",
+          "indonesian": "olahraga"
+        },
+        {
+          "pinyin": "ràng wǒmen",
+          "chinese": "让我们",
+          "english": "make us / let us",
+          "indonesian": "membuat kita"
+        },
+        {
+          "pinyin": "gèng",
+          "chinese": "更",
+          "english": "even more",
+          "indonesian": "lebih"
+        },
+        {
+          "pinyin": "jiànkāng",
+          "chinese": "健康",
+          "english": "healthy",
+          "indonesian": "sehat"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'football' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "篮球",
+          "pinyin": "lánqiú",
+          "translation": "basketball"
+        },
+        {
+          "chinese": "游泳",
+          "pinyin": "yóuyǒng",
+          "translation": "swimming"
+        },
+        {
+          "chinese": "足球",
+          "pinyin": "zúqiú",
+          "translation": "football"
+        },
+        {
+          "chinese": "跑步",
+          "pinyin": "pǎobù",
+          "translation": "running"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "足球 (zúqiú) means 'football' — 足 means foot and 球 means ball, so foot-ball!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "游泳",
+      "questionPinyin": "yóuyǒng",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "running"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "basketball"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "swimming"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "football"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "游泳 (yóuyǒng) means 'swimming' — a great sport to stay healthy!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'my favourite is...' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "我最不喜欢",
+          "pinyin": "wǒ zuì bù xǐhuān",
+          "translation": "I like the least"
+        },
+        {
+          "chinese": "我最喜欢",
+          "pinyin": "wǒ zuì xǐhuān",
+          "translation": "my favourite is / I like the most"
+        },
+        {
+          "chinese": "我也喜欢",
+          "pinyin": "wǒ yě xǐhuān",
+          "translation": "I also like"
+        },
+        {
+          "chinese": "我不喜欢",
+          "pinyin": "wǒ bù xǐhuān",
+          "translation": "I don't like"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "我最喜欢 (wǒ zuì xǐhuān) means 'my favourite is' — 最 means most and 喜欢 means like!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "运动",
+      "questionPinyin": "yùndòng",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "food"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "sport"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "school"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "game"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "运动 (yùndòng) means 'sport / exercise' — staying active and healthy is very important!"
+    }
+  ],
+  "category": "PLAY_AND_HOBBIES"
+}

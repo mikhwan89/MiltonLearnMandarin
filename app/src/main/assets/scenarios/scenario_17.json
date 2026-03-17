@@ -1,0 +1,519 @@
+{
+  "id": "scene17_talking_feelings",
+  "title": "说说我的心情",
+  "description": "Talking about your feelings and emotions with a classmate",
+  "characterName": "同学小红",
+  "characterEmoji": "🧒‍♀️",
+  "characterRole": "classmate",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你好！你今天心情怎么样？",
+      "textPinyin": "Nǐ hǎo! Nǐ jīntiān xīnqíng zěnmeyàng?",
+      "textEnglish": "Hi! How are you feeling today?",
+      "textIndonesian": "Hai! Bagaimana perasaanmu hari ini?",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ hǎo",
+          "chinese": "你好",
+          "english": "Hello / Hi",
+          "indonesian": "Halo / Hai"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "xīnqíng",
+          "chinese": "心情",
+          "english": "mood / feelings",
+          "indonesian": "suasana hati / perasaan"
+        },
+        {
+          "pinyin": "zěnmeyàng",
+          "chinese": "怎么样",
+          "english": "how / what is it like",
+          "indonesian": "bagaimana"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我今天很开心！",
+          "pinyin": "Wǒ jīntiān hěn kāixīn!",
+          "english": "I'm very happy today!",
+          "indonesian": "Saya sangat senang hari ini!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "jīntiān",
+              "chinese": "今天",
+              "english": "today",
+              "indonesian": "hari ini"
+            },
+            {
+              "pinyin": "hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "kāixīn",
+              "chinese": "开心",
+              "english": "happy",
+              "indonesian": "senang / bahagia"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我今天有点难过。",
+          "pinyin": "Wǒ jīntiān yǒudiǎn nánguò.",
+          "english": "I'm a bit sad today.",
+          "indonesian": "Saya agak sedih hari ini.",
+          "pinyinWords": [
+            {
+              "pinyin": "yǒudiǎn",
+              "chinese": "有点",
+              "english": "a bit / a little",
+              "indonesian": "agak / sedikit"
+            },
+            {
+              "pinyin": "nánguò",
+              "chinese": "难过",
+              "english": "sad",
+              "indonesian": "sedih"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我今天很兴奋！",
+          "pinyin": "Wǒ jīntiān hěn xīngfèn!",
+          "english": "I'm very excited today!",
+          "indonesian": "Saya sangat antusias hari ini!",
+          "pinyinWords": [
+            {
+              "pinyin": "hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "xīngfèn",
+              "chinese": "兴奋",
+              "english": "excited",
+              "indonesian": "antusias / bersemangat"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "哇！你为什么这么开心？",
+      "textPinyin": "Wā! Nǐ wèishénme zhème kāixīn?",
+      "textEnglish": "Wow! Why are you so happy?",
+      "textIndonesian": "Wah! Mengapa kamu sangat senang?",
+      "pinyinWords": [
+        {
+          "pinyin": "Wā",
+          "chinese": "哇",
+          "english": "Wow",
+          "indonesian": "Wah"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "wèishénme",
+          "chinese": "为什么",
+          "english": "why",
+          "indonesian": "mengapa / kenapa"
+        },
+        {
+          "pinyin": "zhème",
+          "chinese": "这么",
+          "english": "so / this",
+          "indonesian": "begitu / sangat"
+        },
+        {
+          "pinyin": "kāixīn",
+          "chinese": "开心",
+          "english": "happy",
+          "indonesian": "senang"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "因为今天有体育课！",
+          "pinyin": "Yīnwèi jīntiān yǒu tǐyù kè!",
+          "english": "Because today we have PE class!",
+          "indonesian": "Karena hari ini ada pelajaran olahraga!",
+          "pinyinWords": [
+            {
+              "pinyin": "Yīnwèi",
+              "chinese": "因为",
+              "english": "because",
+              "indonesian": "karena"
+            },
+            {
+              "pinyin": "jīntiān",
+              "chinese": "今天",
+              "english": "today",
+              "indonesian": "hari ini"
+            },
+            {
+              "pinyin": "tǐyù kè",
+              "chinese": "体育课",
+              "english": "PE class",
+              "indonesian": "pelajaran olahraga"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "因为妈妈今天来接我！",
+          "pinyin": "Yīnwèi māma jīntiān lái jiē wǒ!",
+          "english": "Because mom is picking me up today!",
+          "indonesian": "Karena ibu hari ini akan menjemputku!",
+          "pinyinWords": [
+            {
+              "pinyin": "Yīnwèi",
+              "chinese": "因为",
+              "english": "because",
+              "indonesian": "karena"
+            },
+            {
+              "pinyin": "māma",
+              "chinese": "妈妈",
+              "english": "mom",
+              "indonesian": "ibu"
+            },
+            {
+              "pinyin": "lái jiē wǒ",
+              "chinese": "来接我",
+              "english": "coming to pick me up",
+              "indonesian": "datang menjemputku"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "你有没有害怕的时候？",
+      "textPinyin": "Nǐ yǒu méiyǒu hàipà de shíhou?",
+      "textEnglish": "Do you ever feel scared?",
+      "textIndonesian": "Apakah kamu pernah merasa takut?",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "yǒu méiyǒu",
+          "chinese": "有没有",
+          "english": "have or not / do you ever",
+          "indonesian": "pernah atau tidak / apakah pernah"
+        },
+        {
+          "pinyin": "hàipà",
+          "chinese": "害怕",
+          "english": "scared / afraid",
+          "indonesian": "takut"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(linking word)",
+          "indonesian": "(kata penghubung)",
+          "note": "的 is like 's in English — it shows something belongs to someone. '我的书' = 'my book'."
+        },
+        {
+          "pinyin": "shíhou",
+          "chinese": "时候",
+          "english": "time / moment",
+          "indonesian": "waktu / saat"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "有！我有时候害怕打雷。",
+          "pinyin": "Yǒu! Wǒ yǒushíhou hàipà dǎléi.",
+          "english": "Yes! I'm sometimes scared of thunder.",
+          "indonesian": "Ada! Saya kadang-kadang takut petir.",
+          "pinyinWords": [
+            {
+              "pinyin": "yǒushíhou",
+              "chinese": "有时候",
+              "english": "sometimes",
+              "indonesian": "kadang-kadang"
+            },
+            {
+              "pinyin": "hàipà",
+              "chinese": "害怕",
+              "english": "scared / afraid",
+              "indonesian": "takut"
+            },
+            {
+              "pinyin": "dǎléi",
+              "chinese": "打雷",
+              "english": "thunder",
+              "indonesian": "petir / guntur"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我有时候害怕黑暗。",
+          "pinyin": "Wǒ yǒushíhou hàipà hēi'àn.",
+          "english": "I'm sometimes scared of the dark.",
+          "indonesian": "Saya kadang-kadang takut gelap.",
+          "pinyinWords": [
+            {
+              "pinyin": "yǒushíhou",
+              "chinese": "有时候",
+              "english": "sometimes",
+              "indonesian": "kadang-kadang"
+            },
+            {
+              "pinyin": "hàipà",
+              "chinese": "害怕",
+              "english": "scared / afraid",
+              "indonesian": "takut"
+            },
+            {
+              "pinyin": "hēi'àn",
+              "chinese": "黑暗",
+              "english": "the dark / darkness",
+              "indonesian": "gelap / kegelapan"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "不怎么害怕，我很勇敢！",
+          "pinyin": "Bù zěnme hàipà, wǒ hěn yǒnggǎn!",
+          "english": "Not really scared, I'm very brave!",
+          "indonesian": "Tidak terlalu takut, saya sangat berani!",
+          "pinyinWords": [
+            {
+              "pinyin": "bù zěnme",
+              "chinese": "不怎么",
+              "english": "not really / not much",
+              "indonesian": "tidak terlalu"
+            },
+            {
+              "pinyin": "yǒnggǎn",
+              "chinese": "勇敢",
+              "english": "brave / courageous",
+              "indonesian": "berani"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "我们都会有各种心情！难过的时候，来找我聊天吧！",
+      "textPinyin": "Wǒmen dōu huì yǒu gèzhǒng xīnqíng! Nánguò de shíhou, lái zhǎo wǒ liáotiān ba!",
+      "textEnglish": "We all have different feelings! When you're sad, come talk to me!",
+      "textIndonesian": "Kita semua pasti punya berbagai perasaan! Kalau sedih, ayo datang ngobrol denganku!",
+      "pinyinWords": [
+        {
+          "pinyin": "Wǒmen dōu",
+          "chinese": "我们都",
+          "english": "We all",
+          "indonesian": "Kita semua"
+        },
+        {
+          "pinyin": "gèzhǒng",
+          "chinese": "各种",
+          "english": "all kinds of / various",
+          "indonesian": "berbagai jenis"
+        },
+        {
+          "pinyin": "xīnqíng",
+          "chinese": "心情",
+          "english": "feelings / mood",
+          "indonesian": "perasaan / suasana hati"
+        },
+        {
+          "pinyin": "Nánguò",
+          "chinese": "难过",
+          "english": "sad",
+          "indonesian": "sedih"
+        },
+        {
+          "pinyin": "lái zhǎo wǒ",
+          "chinese": "来找我",
+          "english": "come find me",
+          "indonesian": "datang mencari saya"
+        },
+        {
+          "pinyin": "liáotiān",
+          "chinese": "聊天",
+          "english": "chat / talk",
+          "indonesian": "ngobrol / bicara"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'happy' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "难过",
+          "pinyin": "nánguò",
+          "translation": "sad"
+        },
+        {
+          "chinese": "害怕",
+          "pinyin": "hàipà",
+          "translation": "scared"
+        },
+        {
+          "chinese": "开心",
+          "pinyin": "kāixīn",
+          "translation": "happy"
+        },
+        {
+          "chinese": "生气",
+          "pinyin": "shēngqì",
+          "translation": "angry"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "开心 (kāixīn) means 'happy' — 开 means open and 心 means heart, so an open heart means you're happy!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "难过",
+      "questionPinyin": "nánguò",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "happy"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "excited"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "sad"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "scared"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "难过 (nánguò) means 'sad' — it literally means something like 'hard to get through', which describes how sad feels!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'angry' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "兴奋",
+          "pinyin": "xīngfèn",
+          "translation": "excited"
+        },
+        {
+          "chinese": "开心",
+          "pinyin": "kāixīn",
+          "translation": "happy"
+        },
+        {
+          "chinese": "害怕",
+          "pinyin": "hàipà",
+          "translation": "scared"
+        },
+        {
+          "chinese": "生气",
+          "pinyin": "shēngqì",
+          "translation": "angry"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "生气 (shēngqì) means 'angry' — remember this by thinking of anger making your blood 'boil with energy'!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "害怕",
+      "questionPinyin": "hàipà",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "happy"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "sad"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "angry"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "scared"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "害怕 (hàipà) means 'scared / afraid' — it's a feeling you get when something frightens you!"
+    }
+  ],
+  "category": "FEELINGS_AND_HEALTH"
+}

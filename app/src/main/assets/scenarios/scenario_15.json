@@ -1,0 +1,542 @@
+{
+  "id": "scene15_maths_class",
+  "title": "数学课",
+  "description": "Maths class — answering addition and subtraction questions from the teacher",
+  "characterName": "陈老师",
+  "characterEmoji": "🧮",
+  "characterRole": "maths teacher",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "同学们，我们来做数学题！三加二等于几？",
+      "textPinyin": "Tóngxuémen, wǒmen lái zuò shùxué tí! Sān jiā èr děngyú jǐ?",
+      "textEnglish": "Everyone, let's do some maths! What is 3 plus 2?",
+      "textIndonesian": "Teman-teman, mari kita kerjakan soal matematika! Tiga tambah dua sama dengan berapa?",
+      "pinyinWords": [
+        {
+          "pinyin": "Tóngxuémen",
+          "chinese": "同学们",
+          "english": "Everyone / classmates",
+          "indonesian": "Teman-teman / semua siswa"
+        },
+        {
+          "pinyin": "wǒmen lái",
+          "chinese": "我们来",
+          "english": "let's",
+          "indonesian": "mari kita"
+        },
+        {
+          "pinyin": "zuò",
+          "chinese": "做",
+          "english": "do",
+          "indonesian": "mengerjakan"
+        },
+        {
+          "pinyin": "shùxué tí",
+          "chinese": "数学题",
+          "english": "maths problems",
+          "indonesian": "soal matematika"
+        },
+        {
+          "pinyin": "sān",
+          "chinese": "三",
+          "english": "three",
+          "indonesian": "tiga"
+        },
+        {
+          "pinyin": "jiā",
+          "chinese": "加",
+          "english": "plus / add",
+          "indonesian": "tambah / plus"
+        },
+        {
+          "pinyin": "èr",
+          "chinese": "二",
+          "english": "two",
+          "indonesian": "dua"
+        },
+        {
+          "pinyin": "děngyú",
+          "chinese": "等于",
+          "english": "equals",
+          "indonesian": "sama dengan"
+        },
+        {
+          "pinyin": "jǐ",
+          "chinese": "几",
+          "english": "how many / what number",
+          "indonesian": "berapa"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "三加二等于五！",
+          "pinyin": "Sān jiā èr děngyú wǔ!",
+          "english": "3 plus 2 equals 5!",
+          "indonesian": "Tiga tambah dua sama dengan lima!",
+          "pinyinWords": [
+            {
+              "pinyin": "sān",
+              "chinese": "三",
+              "english": "three",
+              "indonesian": "tiga"
+            },
+            {
+              "pinyin": "jiā",
+              "chinese": "加",
+              "english": "plus / add",
+              "indonesian": "tambah"
+            },
+            {
+              "pinyin": "èr",
+              "chinese": "二",
+              "english": "two",
+              "indonesian": "dua"
+            },
+            {
+              "pinyin": "děngyú",
+              "chinese": "等于",
+              "english": "equals",
+              "indonesian": "sama dengan"
+            },
+            {
+              "pinyin": "wǔ",
+              "chinese": "五",
+              "english": "five",
+              "indonesian": "lima"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "答对了！你很聪明。那五减三等于几？",
+      "textPinyin": "Dá duì le! Nǐ hěn cōngming. Nà wǔ jiǎn sān děngyú jǐ?",
+      "textEnglish": "Correct! You're very clever. So what is 5 minus 3?",
+      "textIndonesian": "Benar! Kamu sangat pintar. Jadi lima kurang tiga sama dengan berapa?",
+      "pinyinWords": [
+        {
+          "pinyin": "Dá duì",
+          "chinese": "答对",
+          "english": "answered correctly",
+          "indonesian": "menjawab dengan benar"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(shows action just happened)",
+          "indonesian": "(menunjukkan sesuatu baru saja terjadi)",
+          "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "hěn",
+          "chinese": "很",
+          "english": "very",
+          "indonesian": "sangat"
+        },
+        {
+          "pinyin": "cōngming",
+          "chinese": "聪明",
+          "english": "clever / smart",
+          "indonesian": "pintar / cerdas"
+        },
+        {
+          "pinyin": "Nà",
+          "chinese": "那",
+          "english": "then / so",
+          "indonesian": "kalau begitu / jadi"
+        },
+        {
+          "pinyin": "wǔ",
+          "chinese": "五",
+          "english": "five",
+          "indonesian": "lima"
+        },
+        {
+          "pinyin": "jiǎn",
+          "chinese": "减",
+          "english": "minus / subtract",
+          "indonesian": "kurang / minus"
+        },
+        {
+          "pinyin": "sān",
+          "chinese": "三",
+          "english": "three",
+          "indonesian": "tiga"
+        },
+        {
+          "pinyin": "děngyú",
+          "chinese": "等于",
+          "english": "equals",
+          "indonesian": "sama dengan"
+        },
+        {
+          "pinyin": "jǐ",
+          "chinese": "几",
+          "english": "how many / what number",
+          "indonesian": "berapa"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "五减三等于二！",
+          "pinyin": "Wǔ jiǎn sān děngyú èr!",
+          "english": "5 minus 3 equals 2!",
+          "indonesian": "Lima kurang tiga sama dengan dua!",
+          "pinyinWords": [
+            {
+              "pinyin": "wǔ",
+              "chinese": "五",
+              "english": "five",
+              "indonesian": "lima"
+            },
+            {
+              "pinyin": "jiǎn",
+              "chinese": "减",
+              "english": "minus / subtract",
+              "indonesian": "kurang"
+            },
+            {
+              "pinyin": "sān",
+              "chinese": "三",
+              "english": "three",
+              "indonesian": "tiga"
+            },
+            {
+              "pinyin": "děngyú",
+              "chinese": "等于",
+              "english": "equals",
+              "indonesian": "sama dengan"
+            },
+            {
+              "pinyin": "èr",
+              "chinese": "二",
+              "english": "two",
+              "indonesian": "dua"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "老师，答案是二。",
+          "pinyin": "Lǎoshī, dá'àn shì èr.",
+          "english": "Teacher, the answer is 2.",
+          "indonesian": "Bu/Pak Guru, jawabannya adalah dua.",
+          "pinyinWords": [
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
+              "pinyin": "dá'àn",
+              "chinese": "答案",
+              "english": "answer",
+              "indonesian": "jawaban"
+            },
+            {
+              "pinyin": "shì",
+              "chinese": "是",
+              "english": "is",
+              "indonesian": "adalah"
+            },
+            {
+              "pinyin": "èr",
+              "chinese": "二",
+              "english": "two",
+              "indonesian": "dua"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "太棒了！你喜欢数学吗？",
+      "textPinyin": "Tài bàng le! Nǐ xǐhuān shùxué ma?",
+      "textEnglish": "Excellent! Do you like maths?",
+      "textIndonesian": "Luar biasa! Kamu suka matematika?",
+      "pinyinWords": [
+        {
+          "pinyin": "Tài bàng",
+          "chinese": "太棒",
+          "english": "Excellent / awesome",
+          "indonesian": "Luar biasa / keren"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(exclamation — makes it stronger)",
+          "indonesian": "(kata seru — memperkuat ekspresi)",
+          "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "xǐhuān",
+          "chinese": "喜欢",
+          "english": "like",
+          "indonesian": "suka"
+        },
+        {
+          "pinyin": "shùxué",
+          "chinese": "数学",
+          "english": "maths",
+          "indonesian": "matematika"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(question word)",
+          "indonesian": "(kata tanya)",
+          "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "喜欢！数学很好玩！",
+          "pinyin": "Xǐhuān! Shùxué hěn hǎowán!",
+          "english": "Yes! Maths is fun!",
+          "indonesian": "Suka! Matematika sangat menyenangkan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Xǐhuān",
+              "chinese": "喜欢",
+              "english": "like / yes I like it",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "shùxué",
+              "chinese": "数学",
+              "english": "maths",
+              "indonesian": "matematika"
+            },
+            {
+              "pinyin": "hěn hǎowán",
+              "chinese": "很好玩",
+              "english": "very fun",
+              "indonesian": "sangat menyenangkan"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "数学有点难，但我会努力的。",
+          "pinyin": "Shùxué yǒudiǎn nán, dàn wǒ huì nǔlì de.",
+          "english": "Maths is a bit hard, but I'll work hard.",
+          "indonesian": "Matematika agak sulit, tapi saya akan berusaha.",
+          "pinyinWords": [
+            {
+              "pinyin": "yǒudiǎn nán",
+              "chinese": "有点难",
+              "english": "a bit hard / difficult",
+              "indonesian": "agak sulit"
+            },
+            {
+              "pinyin": "dàn",
+              "chinese": "但",
+              "english": "but",
+              "indonesian": "tapi"
+            },
+            {
+              "pinyin": "nǔlì",
+              "chinese": "努力",
+              "english": "work hard / try hard",
+              "indonesian": "berusaha keras"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "继续努力，你一定会越来越好的！",
+      "textPinyin": "Jìxù nǔlì, nǐ yīdìng huì yuèláiyuè hǎo de!",
+      "textEnglish": "Keep working hard, you'll keep getting better and better!",
+      "textIndonesian": "Terus berusaha, kamu pasti akan semakin bagus!",
+      "pinyinWords": [
+        {
+          "pinyin": "Jìxù",
+          "chinese": "继续",
+          "english": "continue / keep",
+          "indonesian": "terus / lanjutkan"
+        },
+        {
+          "pinyin": "nǔlì",
+          "chinese": "努力",
+          "english": "work hard / try hard",
+          "indonesian": "berusaha keras"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "yīdìng",
+          "chinese": "一定",
+          "english": "definitely / surely",
+          "indonesian": "pasti"
+        },
+        {
+          "pinyin": "yuèláiyuè hǎo",
+          "chinese": "越来越好",
+          "english": "better and better",
+          "indonesian": "semakin bagus"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'maths' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "科学",
+          "pinyin": "kēxué",
+          "translation": "science"
+        },
+        {
+          "chinese": "语文",
+          "pinyin": "yǔwén",
+          "translation": "Chinese language"
+        },
+        {
+          "chinese": "数学",
+          "pinyin": "shùxué",
+          "translation": "maths"
+        },
+        {
+          "chinese": "体育",
+          "pinyin": "tǐyù",
+          "translation": "PE"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "数学 (shùxué) means 'maths' — 数 relates to numbers and 学 means learning!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "等于",
+      "questionPinyin": "děngyú",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "add"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "subtract"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "multiply"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "equals"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "等于 (děngyú) means 'equals' — you use it in maths like 三加二等于五 (3+2=5)!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'very clever / smart' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "很高兴",
+          "pinyin": "hěn gāoxìng",
+          "translation": "very happy"
+        },
+        {
+          "chinese": "很聪明",
+          "pinyin": "hěn cōngming",
+          "translation": "very clever / smart"
+        },
+        {
+          "chinese": "很有趣",
+          "pinyin": "hěn yǒuqù",
+          "translation": "very interesting"
+        },
+        {
+          "chinese": "很努力",
+          "pinyin": "hěn nǔlì",
+          "translation": "very hardworking"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "很聪明 (hěn cōngming) means 'very clever / smart' — 很 means very and 聪明 means clever!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "加",
+      "questionPinyin": "jiā",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "minus"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "equals"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "add"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "multiply"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "加 (jiā) means 'add / plus' — you use it in maths sums like 三加二 (3 plus 2)!"
+    }
+  ],
+  "category": "SCHOOL_SUBJECTS"
+}

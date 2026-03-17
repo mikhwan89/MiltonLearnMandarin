@@ -1,0 +1,476 @@
+{
+  "id": "scene18_lets_play",
+  "title": "我们一起玩吧",
+  "description": "Inviting a classmate to play hide and seek during break time",
+  "characterName": "同学小明",
+  "characterEmoji": "🧒",
+  "characterRole": "classmate",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "休息时间到了！你要出去玩吗？",
+      "textPinyin": "Xiūxi shíjiān dào le! Nǐ yào chūqù wán ma?",
+      "textEnglish": "Break time is here! Are you going out to play?",
+      "textIndonesian": "Waktu istirahat tiba! Kamu mau keluar bermain?",
+      "pinyinWords": [
+        {
+          "pinyin": "Xiūxi shíjiān",
+          "chinese": "休息时间",
+          "english": "break time / rest time",
+          "indonesian": "waktu istirahat"
+        },
+        {
+          "pinyin": "dào",
+          "chinese": "到",
+          "english": "arrived / here",
+          "indonesian": "tiba / sudah"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(shows it just arrived)",
+          "indonesian": "(menunjukkan baru saja tiba)",
+          "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "want to",
+          "indonesian": "mau"
+        },
+        {
+          "pinyin": "chūqù",
+          "chinese": "出去",
+          "english": "go outside",
+          "indonesian": "keluar"
+        },
+        {
+          "pinyin": "wán",
+          "chinese": "玩",
+          "english": "play",
+          "indonesian": "bermain"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(question word)",
+          "indonesian": "(kata tanya)",
+          "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "要！我们一起玩吧！",
+          "pinyin": "Yào! Wǒmen yīqǐ wán ba!",
+          "english": "Yes! Let's play together!",
+          "indonesian": "Mau! Ayo kita main bersama!",
+          "pinyinWords": [
+            {
+              "pinyin": "Yào",
+              "chinese": "要",
+              "english": "Yes / want to",
+              "indonesian": "Mau"
+            },
+            {
+              "pinyin": "wǒmen",
+              "chinese": "我们",
+              "english": "we / us",
+              "indonesian": "kita"
+            },
+            {
+              "pinyin": "yīqǐ wán",
+              "chinese": "一起玩",
+              "english": "play together",
+              "indonesian": "bermain bersama"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好啊！你想玩什么？",
+          "pinyin": "Hǎo a! Nǐ xiǎng wán shénme?",
+          "english": "Sure! What do you want to play?",
+          "indonesian": "Boleh! Kamu mau main apa?",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo a",
+              "chinese": "好啊",
+              "english": "Sure / Great",
+              "indonesian": "Boleh / Oke"
+            },
+            {
+              "pinyin": "Nǐ xiǎng",
+              "chinese": "你想",
+              "english": "you want to",
+              "indonesian": "kamu mau"
+            },
+            {
+              "pinyin": "wán shénme",
+              "chinese": "玩什么",
+              "english": "play what",
+              "indonesian": "main apa"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "我们来玩捉迷藏，好不好？",
+      "textPinyin": "Wǒmen lái wán zhuō mícáng, hǎo bù hǎo?",
+      "textEnglish": "Let's play hide and seek, okay?",
+      "textIndonesian": "Kita main petak umpet, mau tidak?",
+      "pinyinWords": [
+        {
+          "pinyin": "Wǒmen lái",
+          "chinese": "我们来",
+          "english": "Let's",
+          "indonesian": "Ayo kita"
+        },
+        {
+          "pinyin": "wán",
+          "chinese": "玩",
+          "english": "play",
+          "indonesian": "main / bermain"
+        },
+        {
+          "pinyin": "zhuō mícáng",
+          "chinese": "捉迷藏",
+          "english": "hide and seek",
+          "indonesian": "petak umpet"
+        },
+        {
+          "pinyin": "hǎo bù hǎo",
+          "chinese": "好不好",
+          "english": "okay or not? / is that okay?",
+          "indonesian": "mau tidak? / oke?"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "好！捉迷藏很好玩！",
+          "pinyin": "Hǎo! Zhuō mícáng hěn hǎowán!",
+          "english": "Great! Hide and seek is so fun!",
+          "indonesian": "Mau! Petak umpet sangat menyenangkan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "Great / Okay",
+              "indonesian": "Mau / Oke"
+            },
+            {
+              "pinyin": "zhuō mícáng",
+              "chinese": "捉迷藏",
+              "english": "hide and seek",
+              "indonesian": "petak umpet"
+            },
+            {
+              "pinyin": "hěn hǎowán",
+              "chinese": "很好玩",
+              "english": "very fun",
+              "indonesian": "sangat menyenangkan"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好的！捉迷藏是我最喜欢的游戏！",
+          "pinyin": "Hǎo de! Zhuō mícáng shì wǒ zuì xǐhuān de yóuxì!",
+          "english": "Okay! Hide and seek is my favourite game!",
+          "indonesian": "Boleh! Petak umpet adalah permainan favoritku!",
+          "pinyinWords": [
+            {
+              "pinyin": "zhuō mícáng",
+              "chinese": "捉迷藏",
+              "english": "hide and seek",
+              "indonesian": "petak umpet"
+            },
+            {
+              "pinyin": "zuì xǐhuān",
+              "chinese": "最喜欢",
+              "english": "favourite / like the most",
+              "indonesian": "paling suka / favorit"
+            },
+            {
+              "pinyin": "yóuxì",
+              "chinese": "游戏",
+              "english": "game",
+              "indonesian": "permainan"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "你来当鬼！数到十，然后来找我们！",
+      "textPinyin": "Nǐ lái dāng guǐ! Shǔ dào shí, ránhòu lái zhǎo wǒmen!",
+      "textEnglish": "You be 'it'! Count to ten, then come find us!",
+      "textIndonesian": "Kamu jadi penjaga! Hitung sampai sepuluh, lalu cari kami!",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ lái",
+          "chinese": "你来",
+          "english": "You (be)",
+          "indonesian": "Kamu (jadi)"
+        },
+        {
+          "pinyin": "dāng guǐ",
+          "chinese": "当鬼",
+          "english": "be 'it' / be the seeker",
+          "indonesian": "jadi penjaga / jadi pencari"
+        },
+        {
+          "pinyin": "Shǔ dào",
+          "chinese": "数到",
+          "english": "count to",
+          "indonesian": "hitung sampai"
+        },
+        {
+          "pinyin": "shí",
+          "chinese": "十",
+          "english": "ten",
+          "indonesian": "sepuluh"
+        },
+        {
+          "pinyin": "ránhòu",
+          "chinese": "然后",
+          "english": "then / after that",
+          "indonesian": "kemudian / lalu"
+        },
+        {
+          "pinyin": "lái zhǎo wǒmen",
+          "chinese": "来找我们",
+          "english": "come find us",
+          "indonesian": "datang mencari kami"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "好的！一、二、三、四、五、六、七、八、九、十！我来了！",
+          "pinyin": "Hǎo de! Yī, èr, sān, sì, wǔ, liù, qī, bā, jiǔ, shí! Wǒ lái le!",
+          "english": "Okay! One, two, three, four, five, six, seven, eight, nine, ten! Coming!",
+          "indonesian": "Baik! Satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh! Saya datang!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "Okay",
+              "indonesian": "Baik"
+            },
+            {
+              "pinyin": "yī èr sān sì wǔ liù qī bā jiǔ shí",
+              "chinese": "一二三四五六七八九十",
+              "english": "one two three four five six seven eight nine ten",
+              "indonesian": "satu dua tiga empat lima enam tujuh delapan sembilan sepuluh"
+            },
+            {
+              "pinyin": "Wǒ lái le",
+              "chinese": "我来了",
+              "english": "I'm coming",
+              "indonesian": "Saya datang"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "哈哈！你找到我了！你真厉害！下次再玩！",
+      "textPinyin": "Hāhā! Nǐ zhǎodào wǒ le! Nǐ zhēn lìhài! Xià cì zài wán!",
+      "textEnglish": "Haha! You found me! You're so good! Let's play again next time!",
+      "textIndonesian": "Haha! Kamu menemukan saya! Kamu hebat sekali! Main lagi lain kali!",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "zhǎodào",
+          "chinese": "找到",
+          "english": "found",
+          "indonesian": "menemukan"
+        },
+        {
+          "pinyin": "wǒ",
+          "chinese": "我",
+          "english": "me",
+          "indonesian": "saya"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(shows action is complete)",
+          "indonesian": "(menunjukkan aksi selesai)",
+          "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'"
+        },
+        {
+          "pinyin": "zhēn lìhài",
+          "chinese": "真厉害",
+          "english": "so good / amazing",
+          "indonesian": "hebat sekali"
+        },
+        {
+          "pinyin": "Xià cì",
+          "chinese": "下次",
+          "english": "next time",
+          "indonesian": "lain kali"
+        },
+        {
+          "pinyin": "zài wán",
+          "chinese": "再玩",
+          "english": "play again",
+          "indonesian": "main lagi"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'let's play together' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "我们一起学",
+          "pinyin": "wǒmen yīqǐ xué",
+          "translation": "let's study together"
+        },
+        {
+          "chinese": "我们一起玩",
+          "pinyin": "wǒmen yīqǐ wán",
+          "translation": "let's play together"
+        },
+        {
+          "chinese": "我们一起走",
+          "pinyin": "wǒmen yīqǐ zǒu",
+          "translation": "let's walk together"
+        },
+        {
+          "chinese": "我们一起吃",
+          "pinyin": "wǒmen yīqǐ chī",
+          "translation": "let's eat together"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "我们一起玩 (wǒmen yīqǐ wán) means 'let's play together' — 一起 means together and 玩 means play!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "捉迷藏",
+      "questionPinyin": "zhuō mícáng",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "tag"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "football"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "hide and seek"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "jump rope"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "捉迷藏 (zhuō mícáng) means 'hide and seek' — a classic playground game!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'break time' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "上课时间",
+          "pinyin": "shàngkè shíjiān",
+          "translation": "class time"
+        },
+        {
+          "chinese": "睡觉时间",
+          "pinyin": "shuìjiào shíjiān",
+          "translation": "sleep time"
+        },
+        {
+          "chinese": "休息时间",
+          "pinyin": "xiūxi shíjiān",
+          "translation": "break time"
+        },
+        {
+          "chinese": "吃饭时间",
+          "pinyin": "chīfàn shíjiān",
+          "translation": "meal time"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "休息时间 (xiūxi shíjiān) means 'break time' — 休息 means rest and 时间 means time!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "好玩",
+      "questionPinyin": "hǎowán",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "boring"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "difficult"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "fun"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "easy"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "好玩 (hǎowán) means 'fun' — 好 means good and 玩 means play, so good-to-play = fun!"
+    }
+  ],
+  "category": "PLAY_AND_HOBBIES"
+}

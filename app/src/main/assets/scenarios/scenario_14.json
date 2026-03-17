@@ -1,0 +1,462 @@
+{
+  "id": "scene14_pe_class",
+  "title": "体育课",
+  "description": "PE class — warm up, run, jump and follow the teacher's instructions",
+  "characterName": "李老师",
+  "characterEmoji": "🏃",
+  "characterRole": "PE teacher",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "同学们，今天我们上体育课！准备好了吗？",
+      "textPinyin": "Tóngxuémen, jīntiān wǒmen shàng tǐyù kè! Zhǔnbèi hǎo le ma?",
+      "textEnglish": "Everyone, today we have PE class! Are you ready?",
+      "textIndonesian": "Teman-teman, hari ini kita ada pelajaran olahraga! Sudah siap?",
+      "pinyinWords": [
+        {
+          "pinyin": "Tóngxuémen",
+          "chinese": "同学们",
+          "english": "Everyone / classmates",
+          "indonesian": "Teman-teman / semua siswa"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we / us",
+          "indonesian": "kami / kita"
+        },
+        {
+          "pinyin": "shàng",
+          "chinese": "上",
+          "english": "have (a class)",
+          "indonesian": "mengikuti (pelajaran)"
+        },
+        {
+          "pinyin": "tǐyù kè",
+          "chinese": "体育课",
+          "english": "PE class",
+          "indonesian": "pelajaran olahraga"
+        },
+        {
+          "pinyin": "Zhǔnbèi hǎo",
+          "chinese": "准备好",
+          "english": "ready",
+          "indonesian": "siap"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(completion word)",
+          "indonesian": "(kata selesai)",
+          "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(question word)",
+          "indonesian": "(kata tanya)",
+          "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "准备好了，老师！",
+          "pinyin": "Zhǔnbèi hǎo le, lǎoshī!",
+          "english": "Ready, teacher!",
+          "indonesian": "Sudah siap, Bu/Pak Guru!",
+          "pinyinWords": [
+            {
+              "pinyin": "Zhǔnbèi hǎo",
+              "chinese": "准备好",
+              "english": "ready",
+              "indonesian": "siap"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(done / completed)",
+              "indonesian": "(sudah selesai)",
+              "note": "Say 了 after something that just happened. Like '我吃了！' (I ate!). It's like saying 'done!'"
+            },
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "老师，我准备好了！",
+          "pinyin": "Lǎoshī, wǒ zhǔnbèi hǎo le!",
+          "english": "Teacher, I'm ready!",
+          "indonesian": "Bu/Pak Guru, saya sudah siap!",
+          "pinyinWords": [
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "zhǔnbèi hǎo",
+              "chinese": "准备好",
+              "english": "ready",
+              "indonesian": "siap"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "好！我们先跑步热身。跟我来，跑！",
+      "textPinyin": "Hǎo! Wǒmen xiān pǎobù rèshēn. Gēn wǒ lái, pǎo!",
+      "textEnglish": "Good! Let's run first to warm up. Follow me, run!",
+      "textIndonesian": "Bagus! Kita lari dulu untuk pemanasan. Ikuti saya, lari!",
+      "pinyinWords": [
+        {
+          "pinyin": "Hǎo",
+          "chinese": "好",
+          "english": "Good",
+          "indonesian": "Bagus"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we / let's",
+          "indonesian": "kami / kita"
+        },
+        {
+          "pinyin": "xiān",
+          "chinese": "先",
+          "english": "first",
+          "indonesian": "dulu / pertama"
+        },
+        {
+          "pinyin": "pǎobù",
+          "chinese": "跑步",
+          "english": "run / running",
+          "indonesian": "berlari"
+        },
+        {
+          "pinyin": "rèshēn",
+          "chinese": "热身",
+          "english": "warm up",
+          "indonesian": "pemanasan"
+        },
+        {
+          "pinyin": "Gēn wǒ lái",
+          "chinese": "跟我来",
+          "english": "Follow me",
+          "indonesian": "Ikuti saya"
+        },
+        {
+          "pinyin": "pǎo",
+          "chinese": "跑",
+          "english": "run",
+          "indonesian": "lari"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "停！现在我们来跳绳。你会跳绳吗？",
+      "textPinyin": "Tíng! Xiànzài wǒmen lái tiàoshéng. Nǐ huì tiàoshéng ma?",
+      "textEnglish": "Stop! Now let's jump rope. Can you jump rope?",
+      "textIndonesian": "Berhenti! Sekarang kita lompat tali. Kamu bisa lompat tali?",
+      "pinyinWords": [
+        {
+          "pinyin": "Tíng",
+          "chinese": "停",
+          "english": "Stop",
+          "indonesian": "Berhenti"
+        },
+        {
+          "pinyin": "Xiànzài",
+          "chinese": "现在",
+          "english": "Now",
+          "indonesian": "Sekarang"
+        },
+        {
+          "pinyin": "wǒmen lái",
+          "chinese": "我们来",
+          "english": "let's",
+          "indonesian": "kita akan"
+        },
+        {
+          "pinyin": "tiàoshéng",
+          "chinese": "跳绳",
+          "english": "jump rope",
+          "indonesian": "lompat tali"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "huì",
+          "chinese": "会",
+          "english": "can / know how to",
+          "indonesian": "bisa"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(question word)",
+          "indonesian": "(kata tanya)",
+          "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我会跳绳！",
+          "pinyin": "Wǒ huì tiàoshéng!",
+          "english": "I can jump rope!",
+          "indonesian": "Saya bisa lompat tali!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "huì",
+              "chinese": "会",
+              "english": "can / know how to",
+              "indonesian": "bisa"
+            },
+            {
+              "pinyin": "tiàoshéng",
+              "chinese": "跳绳",
+              "english": "jump rope",
+              "indonesian": "lompat tali"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "老师，我还在学，你能教我吗？",
+          "pinyin": "Lǎoshī, wǒ hái zài xué, nǐ néng jiāo wǒ ma?",
+          "english": "Teacher, I'm still learning, can you teach me?",
+          "indonesian": "Bu/Pak Guru, saya masih belajar, bisakah kamu mengajari saya?",
+          "pinyinWords": [
+            {
+              "pinyin": "hái zài xué",
+              "chinese": "还在学",
+              "english": "still learning",
+              "indonesian": "masih belajar"
+            },
+            {
+              "pinyin": "néng jiāo wǒ",
+              "chinese": "能教我",
+              "english": "can teach me",
+              "indonesian": "bisa mengajari saya"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "做得很好！今天的体育课真有趣！",
+      "textPinyin": "Zuò de hěn hǎo! Jīntiān de tǐyù kè zhēn yǒuqù!",
+      "textEnglish": "Well done! Today's PE class was really fun!",
+      "textIndonesian": "Bagus sekali! Pelajaran olahraga hari ini sungguh menyenangkan!",
+      "pinyinWords": [
+        {
+          "pinyin": "Zuò de hěn hǎo",
+          "chinese": "做得很好",
+          "english": "Well done / did very well",
+          "indonesian": "Bagus sekali"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "'s (belonging)",
+          "indonesian": "(kepemilikan)",
+          "note": "的 is like 's in English — it shows something belongs to someone. '我的书' = 'my book'."
+        },
+        {
+          "pinyin": "tǐyù kè",
+          "chinese": "体育课",
+          "english": "PE class",
+          "indonesian": "pelajaran olahraga"
+        },
+        {
+          "pinyin": "zhēn",
+          "chinese": "真",
+          "english": "really / truly",
+          "indonesian": "sungguh"
+        },
+        {
+          "pinyin": "yǒuqù",
+          "chinese": "有趣",
+          "english": "interesting / fun",
+          "indonesian": "menyenangkan / menarik"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'PE class' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "数学课",
+          "pinyin": "shùxué kè",
+          "translation": "maths class"
+        },
+        {
+          "chinese": "体育课",
+          "pinyin": "tǐyù kè",
+          "translation": "PE class"
+        },
+        {
+          "chinese": "音乐课",
+          "pinyin": "yīnyuè kè",
+          "translation": "music class"
+        },
+        {
+          "chinese": "美术课",
+          "pinyin": "měishù kè",
+          "translation": "art class"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "体育课 (tǐyù kè) means 'PE class' — 体育 means physical education and 课 means class!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "跑步",
+      "questionPinyin": "pǎobù",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "jump"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "swim"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "run"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "walk"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "跑步 (pǎobù) means 'run' — 跑 means to run and 步 means steps!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'I'm ready' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "我来了",
+          "pinyin": "wǒ lái le",
+          "translation": "I'm coming"
+        },
+        {
+          "chinese": "我准备好了",
+          "pinyin": "wǒ zhǔnbèi hǎo le",
+          "translation": "I'm ready"
+        },
+        {
+          "chinese": "我知道了",
+          "pinyin": "wǒ zhīdào le",
+          "translation": "I know"
+        },
+        {
+          "chinese": "我回来了",
+          "pinyin": "wǒ huí lái le",
+          "translation": "I'm back"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "我准备好了 (wǒ zhǔnbèi hǎo le) means 'I'm ready' — 准备好 means 'prepared/ready' and 了 shows it's done!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "跳绳",
+      "questionPinyin": "tiàoshéng",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "swimming"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "running"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "jump rope"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "climbing"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "跳绳 (tiàoshéng) means 'jump rope' — 跳 means jump and 绳 means rope!"
+    }
+  ],
+  "category": "AT_SCHOOL"
+}

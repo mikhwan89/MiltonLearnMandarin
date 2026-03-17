@@ -1,0 +1,521 @@
+{
+  "id": "scene13_family_intro",
+  "title": "介绍我的家人",
+  "description": "Introducing your family members to your teacher",
+  "characterName": "Wang 老师",
+  "characterEmoji": "👩‍🏫",
+  "characterRole": "teacher",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你家有几个人？",
+      "textPinyin": "Nǐ jiā yǒu jǐ gè rén?",
+      "textEnglish": "How many people are in your family?",
+      "textIndonesian": "Ada berapa orang di keluargamu?",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "jiā",
+          "chinese": "家",
+          "english": "family / home",
+          "indonesian": "keluarga / rumah"
+        },
+        {
+          "pinyin": "yǒu",
+          "chinese": "有",
+          "english": "have / there are",
+          "indonesian": "punya / ada"
+        },
+        {
+          "pinyin": "jǐ",
+          "chinese": "几",
+          "english": "how many",
+          "indonesian": "berapa"
+        },
+        {
+          "pinyin": "gè",
+          "chinese": "个",
+          "english": "people (counter word)",
+          "indonesian": "orang (kata bantu bilangan)"
+        },
+        {
+          "pinyin": "rén",
+          "chinese": "人",
+          "english": "person / people",
+          "indonesian": "orang"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "我家有四个人。",
+          "pinyin": "Wǒ jiā yǒu sì gè rén.",
+          "english": "My family has 4 people.",
+          "indonesian": "Keluargaku ada 4 orang.",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I / my",
+              "indonesian": "Saya / milikku"
+            },
+            {
+              "pinyin": "jiā",
+              "chinese": "家",
+              "english": "family / home",
+              "indonesian": "keluarga / rumah"
+            },
+            {
+              "pinyin": "yǒu",
+              "chinese": "有",
+              "english": "have / there are",
+              "indonesian": "punya / ada"
+            },
+            {
+              "pinyin": "sì",
+              "chinese": "四",
+              "english": "four",
+              "indonesian": "empat"
+            },
+            {
+              "pinyin": "gè",
+              "chinese": "个",
+              "english": "people (counter word)",
+              "indonesian": "orang (kata bantu bilangan)"
+            },
+            {
+              "pinyin": "rén",
+              "chinese": "人",
+              "english": "person / people",
+              "indonesian": "orang"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "你能介绍你的家人吗？",
+      "textPinyin": "Nǐ néng jièshào nǐ de jiārén ma?",
+      "textEnglish": "Can you introduce your family members?",
+      "textIndonesian": "Bisakah kamu memperkenalkan anggota keluargamu?",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "néng",
+          "chinese": "能",
+          "english": "can / able to",
+          "indonesian": "bisa"
+        },
+        {
+          "pinyin": "jièshào",
+          "chinese": "介绍",
+          "english": "introduce",
+          "indonesian": "memperkenalkan"
+        },
+        {
+          "pinyin": "nǐ de",
+          "chinese": "你的",
+          "english": "your",
+          "indonesian": "milikmu",
+          "note": "的 is like 's in English — it shows something belongs to someone. '我的书' = 'my book'."
+        },
+        {
+          "pinyin": "jiārén",
+          "chinese": "家人",
+          "english": "family members",
+          "indonesian": "anggota keluarga"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(question word)",
+          "indonesian": "(kata tanya)",
+          "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我有爸爸、妈妈和一个弟弟。",
+          "pinyin": "Wǒ yǒu bàba, māma hé yī gè dìdi.",
+          "english": "I have dad, mom, and a younger brother.",
+          "indonesian": "Saya punya ayah, ibu, dan seorang adik laki-laki.",
+          "pinyinWords": [
+            {
+              "pinyin": "bàba",
+              "chinese": "爸爸",
+              "english": "dad",
+              "indonesian": "ayah"
+            },
+            {
+              "pinyin": "māma",
+              "chinese": "妈妈",
+              "english": "mom",
+              "indonesian": "ibu"
+            },
+            {
+              "pinyin": "dìdi",
+              "chinese": "弟弟",
+              "english": "younger brother",
+              "indonesian": "adik laki-laki"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我有爸爸、妈妈和一个妹妹。",
+          "pinyin": "Wǒ yǒu bàba, māma hé yī gè mèimei.",
+          "english": "I have dad, mom, and a younger sister.",
+          "indonesian": "Saya punya ayah, ibu, dan seorang adik perempuan.",
+          "pinyinWords": [
+            {
+              "pinyin": "bàba",
+              "chinese": "爸爸",
+              "english": "dad",
+              "indonesian": "ayah"
+            },
+            {
+              "pinyin": "māma",
+              "chinese": "妈妈",
+              "english": "mom",
+              "indonesian": "ibu"
+            },
+            {
+              "pinyin": "mèimei",
+              "chinese": "妹妹",
+              "english": "younger sister",
+              "indonesian": "adik perempuan"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "你最喜欢和谁一起玩？",
+      "textPinyin": "Nǐ zuì xǐhuān hé shuí yīqǐ wán?",
+      "textEnglish": "Who do you like playing with the most?",
+      "textIndonesian": "Kamu paling suka bermain dengan siapa?",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "zuì",
+          "chinese": "最",
+          "english": "most / favourite",
+          "indonesian": "paling"
+        },
+        {
+          "pinyin": "xǐhuān",
+          "chinese": "喜欢",
+          "english": "like",
+          "indonesian": "suka"
+        },
+        {
+          "pinyin": "hé",
+          "chinese": "和",
+          "english": "with / and",
+          "indonesian": "dengan / dan"
+        },
+        {
+          "pinyin": "shuí",
+          "chinese": "谁",
+          "english": "who",
+          "indonesian": "siapa"
+        },
+        {
+          "pinyin": "yīqǐ",
+          "chinese": "一起",
+          "english": "together",
+          "indonesian": "bersama"
+        },
+        {
+          "pinyin": "wán",
+          "chinese": "玩",
+          "english": "play",
+          "indonesian": "bermain"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我最喜欢和妈妈一起玩！",
+          "pinyin": "Wǒ zuì xǐhuān hé māma yīqǐ wán!",
+          "english": "I like playing with mom the most!",
+          "indonesian": "Saya paling suka bermain dengan ibu!",
+          "pinyinWords": [
+            {
+              "pinyin": "zuì xǐhuān",
+              "chinese": "最喜欢",
+              "english": "like the most",
+              "indonesian": "paling suka"
+            },
+            {
+              "pinyin": "māma",
+              "chinese": "妈妈",
+              "english": "mom",
+              "indonesian": "ibu"
+            },
+            {
+              "pinyin": "yīqǐ wán",
+              "chinese": "一起玩",
+              "english": "play together",
+              "indonesian": "bermain bersama"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我最喜欢和爸爸一起玩！",
+          "pinyin": "Wǒ zuì xǐhuān hé bàba yīqǐ wán!",
+          "english": "I like playing with dad the most!",
+          "indonesian": "Saya paling suka bermain dengan ayah!",
+          "pinyinWords": [
+            {
+              "pinyin": "zuì xǐhuān",
+              "chinese": "最喜欢",
+              "english": "like the most",
+              "indonesian": "paling suka"
+            },
+            {
+              "pinyin": "bàba",
+              "chinese": "爸爸",
+              "english": "dad",
+              "indonesian": "ayah"
+            },
+            {
+              "pinyin": "yīqǐ wán",
+              "chinese": "一起玩",
+              "english": "play together",
+              "indonesian": "bermain bersama"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我最喜欢和弟弟一起玩！",
+          "pinyin": "Wǒ zuì xǐhuān hé dìdi yīqǐ wán!",
+          "english": "I like playing with my younger brother the most!",
+          "indonesian": "Saya paling suka bermain dengan adik laki-laki!",
+          "pinyinWords": [
+            {
+              "pinyin": "zuì xǐhuān",
+              "chinese": "最喜欢",
+              "english": "like the most",
+              "indonesian": "paling suka"
+            },
+            {
+              "pinyin": "dìdi",
+              "chinese": "弟弟",
+              "english": "younger brother",
+              "indonesian": "adik laki-laki"
+            },
+            {
+              "pinyin": "yīqǐ wán",
+              "chinese": "一起玩",
+              "english": "play together",
+              "indonesian": "bermain bersama"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "你的家人真好！谢谢你的介绍！",
+      "textPinyin": "Nǐ de jiārén zhēn hǎo! Xièxie nǐ de jièshào!",
+      "textEnglish": "Your family sounds wonderful! Thank you for the introduction!",
+      "textIndonesian": "Keluargamu luar biasa! Terima kasih atas perkenalannya!",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ de",
+          "chinese": "你的",
+          "english": "your",
+          "indonesian": "milikmu",
+          "note": "的 is like 's in English — it shows something belongs to someone. '我的书' = 'my book'."
+        },
+        {
+          "pinyin": "jiārén",
+          "chinese": "家人",
+          "english": "family members",
+          "indonesian": "anggota keluarga"
+        },
+        {
+          "pinyin": "zhēn",
+          "chinese": "真",
+          "english": "really / truly",
+          "indonesian": "sungguh / benar-benar"
+        },
+        {
+          "pinyin": "hǎo",
+          "chinese": "好",
+          "english": "good / wonderful",
+          "indonesian": "baik / luar biasa"
+        },
+        {
+          "pinyin": "Xièxie",
+          "chinese": "谢谢",
+          "english": "Thank you",
+          "indonesian": "Terima kasih"
+        },
+        {
+          "pinyin": "jièshào",
+          "chinese": "介绍",
+          "english": "introduction",
+          "indonesian": "perkenalan"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'dad' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "爸爸",
+          "pinyin": "bàba",
+          "translation": "dad"
+        },
+        {
+          "chinese": "妈妈",
+          "pinyin": "māma",
+          "translation": "mom"
+        },
+        {
+          "chinese": "老师",
+          "pinyin": "lǎoshī",
+          "translation": "teacher"
+        },
+        {
+          "chinese": "哥哥",
+          "pinyin": "gēge",
+          "translation": "older brother"
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "爸爸 (bàba) means 'dad' — it even sounds a bit like 'papa'!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "妈妈",
+      "questionPinyin": "māma",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "dad"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "mom"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "teacher"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "friend"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "妈妈 (māma) means 'mom' — it sounds like 'mama' in many languages!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'younger brother' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "姐姐",
+          "pinyin": "jiějie",
+          "translation": "older sister"
+        },
+        {
+          "chinese": "哥哥",
+          "pinyin": "gēge",
+          "translation": "older brother"
+        },
+        {
+          "chinese": "弟弟",
+          "pinyin": "dìdi",
+          "translation": "younger brother"
+        },
+        {
+          "chinese": "妹妹",
+          "pinyin": "mèimei",
+          "translation": "younger sister"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "弟弟 (dìdi) means 'younger brother'. Chinese has different words for older and younger siblings!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "家人",
+      "questionPinyin": "jiārén",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "friend"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "family members"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "teacher"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "classmate"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "家人 (jiārén) means 'family members' — 家 means home and 人 means people!"
+    }
+  ],
+  "category": "ESSENTIALS"
+}

@@ -243,7 +243,7 @@
 
 ---
 
-## #13 · Improvement: More Scenarios
+## ✅ #13 · Improvement: More Scenarios
 
 **What:** Expand the scenario library beyond the current 6 to cover more real-world situations a child in school would encounter. Target: 20+ scenarios across all 6 categories.
 
