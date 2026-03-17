@@ -2,7 +2,7 @@
 
 ---
 
-## #1 · Improvement: Child-Friendly Particle Explanations in Flashcards
+## #1 · Improvement: Child-Friendly Particle Explanations in Flashcards ✅ DONE
 
 **Problem:** Grammar particles like 了 (le), 的 (de), 吗 (ma), 呢 (ne), 把 (bǎ) currently show only "particle" as their English translation. A 5-year-old has no idea what a particle is and gains nothing from that label.
 
