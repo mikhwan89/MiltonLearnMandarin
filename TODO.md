@@ -1,5 +1,34 @@
 # Milton Learn Mandarin — Feature Backlog
 
+## Improvement: Child-Friendly Particle Explanations in Flashcards
+
+**Problem:** Grammar particles like 了 (le), 的 (de), 吗 (ma), 呢 (ne), 把 (bǎ) currently show only "particle" as their English translation. A 5-year-old has no idea what a particle is and gains nothing from that label.
+
+**What to fix:**
+- Replace or supplement the bare "particle" translation with a plain-English explanation written at a 5-year-old level.
+- The explanation should answer: *what does this word do in a sentence?* and *when would I say it?*
+- Where possible, include a short example sentence in Chinese + pinyin + English so the child sees the word in action.
+
+**Suggested explanations per particle (reference for content editors):**
+
+| Word | Pinyin | Current | Child-friendly replacement |
+|------|--------|---------|---------------------------|
+| 了 | le | particle | "You say 了 after something that just happened. Like 'I ate! 我吃了！'" |
+| 的 | de | particle | "的 is like 's in English — it shows something belongs to someone. '我的书' = 'my book'." |
+| 吗 | ma | particle | "Put 吗 at the end of a sentence to turn it into a yes/no question. '你好吗？' = 'Are you well?'" |
+| 呢 | ne | particle | "呢 means 'And what about…?' You use it to ask the same question back. '你呢？' = 'And you?'" |
+| 把 | bǎ | particle | "把 is used before the thing you are doing something to. '把书放下' = 'Put the book down'." |
+
+**How to implement:**
+- Add a `note` field (optional `String?`) to the `PinyinWord` data model and JSON schema.
+- Populate `note` for all particle words across all scenario JSON files.
+- In the flashcard UI, show the `note` below the translation in a slightly smaller, softer style when it is present — no UI change needed for words without a note.
+- The `note` field can also be used for non-particle words that benefit from extra context (e.g. measure words, directional complements).
+
+**Files affected:** `data/models/ScenarioModels.kt` (add `note` field), all scenario JSON files (add notes to particle entries), flashcard UI composable (render note when present).
+
+---
+
 ## Bug Fix: Pinyin Text Wrapping
 
 **Problem:** Pinyin text in the dialogue/flashcard views overflows horizontally — the user has to scroll right to see the full pinyin. Mandarin characters and translation text wrap correctly; pinyin should behave the same way.
