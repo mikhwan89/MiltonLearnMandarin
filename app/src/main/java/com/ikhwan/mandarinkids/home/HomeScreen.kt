@@ -1,15 +1,12 @@
 package com.ikhwan.mandarinkids.home
 
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -25,7 +22,6 @@ import com.ikhwan.mandarinkids.ToneUtils
 import com.ikhwan.mandarinkids.data.models.Scenario
 import com.ikhwan.mandarinkids.data.models.ScenarioCategory
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
-import com.ikhwan.mandarinkids.db.Badge
 import com.ikhwan.mandarinkids.db.MasteredWordEntity
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.tts.rememberTtsManager
@@ -34,8 +30,9 @@ import com.ikhwan.mandarinkids.tts.rememberTtsManager
 @Composable
 fun HomeScreen(
     onCategoryClick: (ScenarioCategory) -> Unit,
-    onPracticeClick: () -> Unit,
-    onParentClick: () -> Unit = {}
+    onParentClick: () -> Unit = {},
+    showWordOfDayOnLaunch: Boolean = false,
+    onWordOfDayShown: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val scenarios = remember { JsonScenarioRepository.getAll() }
@@ -44,23 +41,22 @@ fun HomeScreen(
 
     val xp by repo.getTotalXp().collectAsState(initial = 0)
     val streak = remember { repo.getStreak() }
-    val masteredCount by repo.getMasteredWordCount().collectAsState(initial = 0)
-    val dueCount by repo.getDueWordCount().collectAsState(initial = 0)
     val allMasteredWords by repo.getAllMasteredWords().collectAsState(initial = emptyList())
 
-    // Badges — read once and update when composition changes
-    val earnedBadges = remember(masteredCount, streak) { repo.getEarnedBadges() }
-    val earnedBadgeList = remember(earnedBadges) {
-        Badge.entries.filter { it.id in earnedBadges }
-    }
-
-    // Word of the Day — computed once per day from mastered words
     val wordOfDay: MasteredWordEntity? = remember(allMasteredWords) {
         if (allMasteredWords.isEmpty()) null
         else repo.getOrPickWordOfDay(allMasteredWords)
     }
 
     var showWordOfDayDialog by remember { mutableStateOf(false) }
+
+    // Show word-of-day popup automatically once per session
+    LaunchedEffect(wordOfDay) {
+        if (wordOfDay != null && showWordOfDayOnLaunch) {
+            showWordOfDayDialog = true
+            onWordOfDayShown()
+        }
+    }
 
     val activeCategories = remember(scenarios) {
         ScenarioCategory.entries.filter { cat -> scenarios.any { it.category == cat } }
@@ -80,11 +76,8 @@ fun HomeScreen(
                     }
                 },
                 actions = {
-                    IconButton(onClick = onPracticeClick) {
-                        Icon(Icons.Default.Star, contentDescription = "Practice Mode")
-                    }
                     IconButton(onClick = onParentClick) {
-                        Icon(Icons.Default.BarChart, contentDescription = "Dashboard")
+                        Icon(Icons.Default.BarChart, contentDescription = "Parent Dashboard")
                     }
                 }
             )
@@ -142,115 +135,6 @@ fun HomeScreen(
                 }
             }
 
-            // ── Badges row ────────────────────────────────────────────────
-            if (earnedBadgeList.isNotEmpty()) {
-                item {
-                    Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.tertiaryContainer
-                        )
-                    ) {
-                        Column(modifier = Modifier.padding(12.dp)) {
-                            Text(
-                                "🏅 Your Badges",
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.onTertiaryContainer,
-                                modifier = Modifier.padding(bottom = 8.dp)
-                            )
-                            Row(
-                                modifier = Modifier.horizontalScroll(rememberScrollState()),
-                                horizontalArrangement = Arrangement.spacedBy(8.dp)
-                            ) {
-                                earnedBadgeList.forEach { badge ->
-                                    BadgeChip(badge)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            // ── Word of the Day ───────────────────────────────────────────
-            if (wordOfDay != null) {
-                item {
-                    Card(
-                        onClick = { showWordOfDayDialog = true },
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.secondaryContainer
-                        )
-                    ) {
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 16.dp, vertical = 12.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Text("📅", fontSize = 28.sp, modifier = Modifier.padding(end = 12.dp))
-                            Column(modifier = Modifier.weight(1f)) {
-                                Text(
-                                    "Word of the Day",
-                                    fontSize = 13.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                                Text(
-                                    wordOfDay.chinese,
-                                    fontSize = 26.sp,
-                                    fontWeight = FontWeight.Bold
-                                )
-                                Text(
-                                    wordOfDay.english,
-                                    fontSize = 13.sp,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            }
-                            IconButton(onClick = { tts.speak(wordOfDay.chinese) }) {
-                                Icon(Icons.Default.PlayArrow, contentDescription = "Play")
-                            }
-                        }
-                    }
-                }
-            }
-
-            // ── Practice Mode banner ──────────────────────────────────────
-            if (masteredCount > 0) {
-                item {
-                    Card(
-                        onClick = onPracticeClick,
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.primaryContainer
-                        )
-                    ) {
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 16.dp, vertical = 12.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Text("🃏", fontSize = 28.sp, modifier = Modifier.padding(end = 12.dp))
-                            Column(modifier = Modifier.weight(1f)) {
-                                Text(
-                                    "Practice Mode",
-                                    fontSize = 16.sp,
-                                    fontWeight = FontWeight.SemiBold
-                                )
-                                Text(
-                                    if (dueCount > 0) "$dueCount word${if (dueCount != 1) "s" else ""} due today"
-                                    else "$masteredCount word${if (masteredCount != 1) "s" else ""} in library",
-                                    fontSize = 13.sp,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            }
-                            Text("▶", fontSize = 20.sp, color = MaterialTheme.colorScheme.secondary)
-                        }
-                    }
-                }
-            }
-
             // ── Section header ────────────────────────────────────────────
             item {
                 Text(
@@ -274,7 +158,7 @@ fun HomeScreen(
         }
     }
 
-    // ── Word of the Day dialog ────────────────────────────────────────────
+    // ── Word of the Day dialog (launch-time popup) ────────────────────────
     if (showWordOfDayDialog && wordOfDay != null) {
         WordOfDayDialog(
             word = wordOfDay,
@@ -282,23 +166,6 @@ fun HomeScreen(
             onPlay = { tts.speak(wordOfDay.chinese) }
         )
         LaunchedEffect(Unit) { tts.speak(wordOfDay.chinese) }
-    }
-}
-
-@Composable
-private fun BadgeChip(badge: Badge) {
-    Surface(
-        shape = RoundedCornerShape(50),
-        color = MaterialTheme.colorScheme.onTertiaryContainer.copy(alpha = 0.08f),
-        tonalElevation = 1.dp
-    ) {
-        Column(
-            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(badge.emoji, fontSize = 22.sp)
-            Text(badge.label, fontSize = 10.sp, color = MaterialTheme.colorScheme.onTertiaryContainer)
-        }
     }
 }
 
