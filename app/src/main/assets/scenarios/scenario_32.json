@@ -406,10 +406,16 @@
       "textIndonesian": "Perasaan bersemangat itu bagus! Tapi ingat tidur lebih awal, supaya besok ada tenaga!",
       "pinyinWords": [
         {
-          "pinyin": "Xīngfèn de gǎnjué",
-          "chinese": "兴奋的感觉",
-          "english": "the feeling of excitement",
-          "indonesian": "perasaan bersemangat"
+          "pinyin": "Xīngfèn",
+          "chinese": "兴奋",
+          "english": "excitement",
+          "indonesian": "bersemangat"
+        },
+        {
+          "pinyin": "de gǎnjué",
+          "chinese": "的感觉",
+          "english": "the feeling of",
+          "indonesian": "perasaan"
         },
         {
           "pinyin": "hěn hǎo",

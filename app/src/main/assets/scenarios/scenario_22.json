@@ -183,10 +183,16 @@
               "indonesian": "potong sayuran"
             },
             {
-              "pinyin": "Wǒ huì xiǎoxīn de",
-              "chinese": "我会小心的",
-              "english": "I will be careful",
-              "indonesian": "Saya akan hati-hati"
+              "pinyin": "Wǒ huì",
+              "chinese": "我会",
+              "english": "I will",
+              "indonesian": "Saya akan"
+            },
+            {
+              "pinyin": "xiǎoxīn de",
+              "chinese": "小心的",
+              "english": "be careful",
+              "indonesian": "hati-hati"
             }
           ],
           "isCorrect": true

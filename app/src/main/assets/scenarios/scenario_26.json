@@ -40,10 +40,16 @@
           "indonesian": "ayo menggambar"
         },
         {
-          "pinyin": "Nǐ xiǎng huà shénme",
-          "chinese": "你想画什么",
-          "english": "what do you want to draw?",
-          "indonesian": "kamu mau menggambar apa?"
+          "pinyin": "Nǐ xiǎng huà",
+          "chinese": "你想画",
+          "english": "what do you want to draw",
+          "indonesian": "kamu mau menggambar"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what?",
+          "indonesian": "apa?"
         }
       ],
       "responseType": "MULTIPLE_OPTIONS",
@@ -67,10 +73,16 @@
               "indonesian": "hewan"
             },
             {
-              "pinyin": "Wǒ yào huà lǎohǔ",
-              "chinese": "我要画老虎",
-              "english": "I want to draw a tiger",
-              "indonesian": "Saya mau menggambar harimau"
+              "pinyin": "Wǒ yào huà",
+              "chinese": "我要画",
+              "english": "I want to draw",
+              "indonesian": "Saya mau menggambar"
+            },
+            {
+              "pinyin": "lǎohǔ",
+              "chinese": "老虎",
+              "english": "tiger",
+              "indonesian": "harimau"
             }
           ],
           "isCorrect": true
@@ -127,10 +139,16 @@
               "indonesian": "keluargaku"
             },
             {
-              "pinyin": "Bàba māma hé wǒ",
-              "chinese": "爸爸妈妈和我",
-              "english": "dad, mom and me",
-              "indonesian": "ayah, ibu, dan saya"
+              "pinyin": "Bàba māma",
+              "chinese": "爸爸妈妈",
+              "english": "Mum and Dad",
+              "indonesian": "ayah dan ibu"
+            },
+            {
+              "pinyin": "hé wǒ",
+              "chinese": "和我",
+              "english": "and me",
+              "indonesian": "dan saya"
             }
           ],
           "isCorrect": true
@@ -165,10 +183,16 @@
           "indonesian": "warna"
         },
         {
-          "pinyin": "Nǐ xǐhuān shénme yánsè",
-          "chinese": "你喜欢什么颜色",
-          "english": "what colour do you like?",
-          "indonesian": "kamu suka warna apa?"
+          "pinyin": "Nǐ xǐhuān",
+          "chinese": "你喜欢",
+          "english": "you like",
+          "indonesian": "kamu suka"
+        },
+        {
+          "pinyin": "shénme yánsè",
+          "chinese": "什么颜色",
+          "english": "what colour?",
+          "indonesian": "warna apa?"
         }
       ],
       "responseType": "MULTIPLE_OPTIONS",
@@ -338,17 +362,29 @@
           "indonesian": "Wah!"
         },
         {
-          "pinyin": "huà de hěn piàoliang",
-          "chinese": "画得很漂亮",
-          "english": "drew it very beautifully",
-          "indonesian": "menggambarnya sangat cantik",
+          "pinyin": "huà de",
+          "chinese": "画得",
+          "english": "drew (result)",
+          "indonesian": "menggambarnya",
           "note": "得 (de) connects a verb to a description of how well it was done. 画得很漂亮 = drew it beautifully. 跑得很快 = ran very fast!"
         },
         {
-          "pinyin": "Nǐ zhēn yǒu tiānfèn",
-          "chinese": "你真有天分",
-          "english": "you really have talent",
-          "indonesian": "kamu benar-benar berbakat"
+          "pinyin": "hěn piàoliang",
+          "chinese": "很漂亮",
+          "english": "very beautiful",
+          "indonesian": "sangat cantik"
+        },
+        {
+          "pinyin": "Nǐ zhēn",
+          "chinese": "你真",
+          "english": "you really",
+          "indonesian": "kamu sungguh"
+        },
+        {
+          "pinyin": "yǒu tiānfèn",
+          "chinese": "有天分",
+          "english": "have talent",
+          "indonesian": "berbakat"
         },
         {
           "pinyin": "Jìxù nǔlì",

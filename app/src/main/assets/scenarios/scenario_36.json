@@ -222,10 +222,16 @@
       "textIndonesian": "Apa yang bisa kamu lakukan ketika takut?",
       "pinyinWords": [
         {
-          "pinyin": "Hàipà de shíhou",
-          "chinese": "害怕的时候",
-          "english": "when (you are) scared",
-          "indonesian": "ketika (kamu) takut"
+          "pinyin": "Hàipà",
+          "chinese": "害怕",
+          "english": "scared",
+          "indonesian": "takut"
+        },
+        {
+          "pinyin": "de shíhou",
+          "chinese": "的时候",
+          "english": "when (you are)",
+          "indonesian": "ketika (kamu)"
         },
         {
           "pinyin": "kěyǐ",

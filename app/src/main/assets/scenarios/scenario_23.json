@@ -210,10 +210,16 @@
               "indonesian": "baik"
             },
             {
-              "pinyin": "Wǒ zài chuān yīfu le",
-              "chinese": "我在穿衣服了",
-              "english": "I am getting dressed",
-              "indonesian": "Saya sedang pakai baju"
+              "pinyin": "Wǒ zài chuān",
+              "chinese": "我在穿",
+              "english": "I am putting on",
+              "indonesian": "Saya sedang pakai"
+            },
+            {
+              "pinyin": "yīfu le",
+              "chinese": "衣服了",
+              "english": "clothes (in progress)",
+              "indonesian": "baju (sedang berlangsung)"
             },
             {
               "pinyin": "Hěn kuài",
@@ -309,17 +315,29 @@
               "indonesian": "luar biasa"
             },
             {
-              "pinyin": "Wǒ dùzi è le",
-              "chinese": "我肚子饿了",
-              "english": "I am hungry",
-              "indonesian": "Saya lapar",
+              "pinyin": "Wǒ dùzi",
+              "chinese": "我肚子",
+              "english": "my tummy",
+              "indonesian": "perut saya",
               "note": "肚子 means stomach/tummy and 饿 means hungry. 我肚子饿了 = my tummy is hungry!"
             },
             {
-              "pinyin": "Wǒ yào chī zǎofàn",
-              "chinese": "我要吃早饭",
-              "english": "I want to eat breakfast",
-              "indonesian": "Saya mau sarapan"
+              "pinyin": "è le",
+              "chinese": "饿了",
+              "english": "is hungry",
+              "indonesian": "lapar sekarang"
+            },
+            {
+              "pinyin": "Wǒ yào chī",
+              "chinese": "我要吃",
+              "english": "I want to eat",
+              "indonesian": "Saya mau makan"
+            },
+            {
+              "pinyin": "zǎofàn",
+              "chinese": "早饭",
+              "english": "breakfast",
+              "indonesian": "sarapan"
             }
           ],
           "isCorrect": true
@@ -355,10 +373,16 @@
           "note": "书 means book and 包 means bag. 书包 = book bag = school bag!"
         },
         {
-          "pinyin": "wǒmen chūfā ba",
-          "chinese": "我们出发吧",
-          "english": "let us go / let us set off",
-          "indonesian": "kita berangkat",
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we / let's",
+          "indonesian": "kita"
+        },
+        {
+          "pinyin": "chūfā ba",
+          "chinese": "出发吧",
+          "english": "let's set off",
+          "indonesian": "berangkat",
           "note": "出发 means to set off or depart. 吧 at the end softens a suggestion — like saying 'shall we?'"
         }
       ],

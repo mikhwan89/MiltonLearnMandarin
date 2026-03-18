@@ -307,10 +307,22 @@
               "indonesian": "Baik"
             },
             {
-              "pinyin": "yī èr sān sì wǔ liù qī bā jiǔ shí",
-              "chinese": "一二三四五六七八九十",
-              "english": "one two three four five six seven eight nine ten",
-              "indonesian": "satu dua tiga empat lima enam tujuh delapan sembilan sepuluh"
+              "pinyin": "yī èr sān sì",
+              "chinese": "一二三四",
+              "english": "one two three four",
+              "indonesian": "satu dua tiga empat"
+            },
+            {
+              "pinyin": "wǔ liù qī bā",
+              "chinese": "五六七八",
+              "english": "five six seven eight",
+              "indonesian": "lima enam tujuh delapan"
+            },
+            {
+              "pinyin": "jiǔ shí",
+              "chinese": "九十",
+              "english": "nine ten",
+              "indonesian": "sembilan sepuluh"
             },
             {
               "pinyin": "Wǒ lái le",

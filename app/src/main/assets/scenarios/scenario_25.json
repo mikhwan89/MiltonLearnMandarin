@@ -204,16 +204,34 @@
               "indonesian": "Wah!"
             },
             {
-              "pinyin": "Hóuzi zhēn de hǎo kě'ài",
-              "chinese": "猴子真的好可爱",
-              "english": "the monkeys are really so cute",
-              "indonesian": "monyetnya benar-benar lucu"
+              "pinyin": "Hóuzi",
+              "chinese": "猴子",
+              "english": "monkeys",
+              "indonesian": "monyet"
             },
             {
-              "pinyin": "Tā zài zuò shénme",
-              "chinese": "它在做什么",
-              "english": "what is it doing?",
-              "indonesian": "Sedang apa dia?"
+              "pinyin": "zhēn de",
+              "chinese": "真的",
+              "english": "really",
+              "indonesian": "benar-benar"
+            },
+            {
+              "pinyin": "hǎo kě'ài",
+              "chinese": "好可爱",
+              "english": "so cute",
+              "indonesian": "lucu sekali"
+            },
+            {
+              "pinyin": "Tā zài",
+              "chinese": "它在",
+              "english": "it is (doing)",
+              "indonesian": "dia sedang"
+            },
+            {
+              "pinyin": "zuò shénme",
+              "chinese": "做什么",
+              "english": "doing what?",
+              "indonesian": "melakukan apa?"
             }
           ],
           "isCorrect": true
@@ -225,16 +243,28 @@
           "indonesian": "Monyet seru sekali! Saya juga mau panjat pohon!",
           "pinyinWords": [
             {
-              "pinyin": "Hóuzi hǎo hào wán",
-              "chinese": "猴子好好玩",
-              "english": "monkeys are so fun",
-              "indonesian": "monyet seru sekali"
+              "pinyin": "Hóuzi",
+              "chinese": "猴子",
+              "english": "monkeys",
+              "indonesian": "monyet"
             },
             {
-              "pinyin": "Wǒ yě xiǎng pá shù",
-              "chinese": "我也想爬树",
-              "english": "I also want to climb trees",
-              "indonesian": "saya juga mau panjat pohon"
+              "pinyin": "hǎo hào wán",
+              "chinese": "好好玩",
+              "english": "so much fun",
+              "indonesian": "seru sekali"
+            },
+            {
+              "pinyin": "Wǒ yě xiǎng",
+              "chinese": "我也想",
+              "english": "I also want to",
+              "indonesian": "saya juga mau"
+            },
+            {
+              "pinyin": "pá shù",
+              "chinese": "爬树",
+              "english": "climb trees",
+              "indonesian": "panjat pohon"
             }
           ],
           "isCorrect": true
@@ -311,16 +341,28 @@
               "indonesian": "dia perlu makan"
             },
             {
-              "pinyin": "hěn gāo de shùyè",
-              "chinese": "很高的树叶",
-              "english": "very tall tree leaves",
-              "indonesian": "daun pohon yang sangat tinggi"
+              "pinyin": "hěn gāo de",
+              "chinese": "很高的",
+              "english": "very tall",
+              "indonesian": "yang sangat tinggi"
             },
             {
-              "pinyin": "Chángjǐnglù hǎo gāo",
-              "chinese": "长颈鹿好高",
-              "english": "giraffes are so tall",
-              "indonesian": "jerapah sangat tinggi"
+              "pinyin": "shùyè",
+              "chinese": "树叶",
+              "english": "leaves",
+              "indonesian": "daun pohon"
+            },
+            {
+              "pinyin": "Chángjǐnglù",
+              "chinese": "长颈鹿",
+              "english": "giraffe",
+              "indonesian": "jerapah"
+            },
+            {
+              "pinyin": "hǎo gāo",
+              "chinese": "好高",
+              "english": "so tall",
+              "indonesian": "sangat tinggi"
             }
           ],
           "isCorrect": true
@@ -344,10 +386,22 @@
               "indonesian": "tapi / tetapi"
             },
             {
-              "pinyin": "chángjǐnglù zhēn de hǎo lìhai",
-              "chinese": "长颈鹿真的好厉害",
-              "english": "giraffes are really so amazing",
-              "indonesian": "jerapah benar-benar luar biasa"
+              "pinyin": "chángjǐnglù",
+              "chinese": "长颈鹿",
+              "english": "giraffe",
+              "indonesian": "jerapah"
+            },
+            {
+              "pinyin": "zhēn de",
+              "chinese": "真的",
+              "english": "really",
+              "indonesian": "benar-benar"
+            },
+            {
+              "pinyin": "hǎo lìhai",
+              "chinese": "好厉害",
+              "english": "so impressive",
+              "indonesian": "luar biasa"
             }
           ],
           "isCorrect": true
@@ -376,10 +430,16 @@
           "indonesian": "harimau"
         },
         {
-          "pinyin": "Dàjiā yào zhàn hǎo",
-          "chinese": "大家要站好",
-          "english": "everyone stand properly",
-          "indonesian": "semua harus berdiri dengan baik"
+          "pinyin": "Dàjiā",
+          "chinese": "大家",
+          "english": "everyone",
+          "indonesian": "semua orang"
+        },
+        {
+          "pinyin": "yào zhàn hǎo",
+          "chinese": "要站好",
+          "english": "stand properly",
+          "indonesian": "harus berdiri dengan baik"
         },
         {
           "pinyin": "bù néng",
@@ -437,10 +497,16 @@
           "indonesian": "Harimau terlihat gagah! Saya sedikit takut!",
           "pinyinWords": [
             {
-              "pinyin": "Lǎohǔ hǎo wēifēng",
-              "chinese": "老虎好威风",
-              "english": "the tiger is so majestic",
-              "indonesian": "harimau terlihat gagah"
+              "pinyin": "Lǎohǔ",
+              "chinese": "老虎",
+              "english": "the tiger",
+              "indonesian": "harimau"
+            },
+            {
+              "pinyin": "hǎo wēifēng",
+              "chinese": "好威风",
+              "english": "so majestic",
+              "indonesian": "terlihat gagah"
             },
             {
               "pinyin": "Wǒ yǒu yīdiǎn",
@@ -476,10 +542,16 @@
           "indonesian": "milik hari ini"
         },
         {
-          "pinyin": "dòngwùyuán cānguān",
-          "chinese": "动物园参观",
-          "english": "zoo visit",
-          "indonesian": "kunjungan kebun binatang"
+          "pinyin": "dòngwùyuán",
+          "chinese": "动物园",
+          "english": "zoo",
+          "indonesian": "kebun binatang"
+        },
+        {
+          "pinyin": "cānguān",
+          "chinese": "参观",
+          "english": "visit",
+          "indonesian": "kunjungan"
         },
         {
           "pinyin": "jiéshù le",
@@ -488,10 +560,16 @@
           "indonesian": "sudah selesai"
         },
         {
-          "pinyin": "zuì xǐhuān nǎ gè dòngwù",
-          "chinese": "最喜欢哪个动物",
-          "english": "which animal do you like the most",
-          "indonesian": "hewan mana yang paling kamu sukai"
+          "pinyin": "zuì xǐhuān",
+          "chinese": "最喜欢",
+          "english": "like the most",
+          "indonesian": "paling suka"
+        },
+        {
+          "pinyin": "nǎ gè dòngwù",
+          "chinese": "哪个动物",
+          "english": "which animal",
+          "indonesian": "hewan mana"
         }
       ],
       "responseType": "MULTIPLE_OPTIONS",
@@ -503,10 +581,16 @@
           "indonesian": "Saya paling suka harimau! Dia terlihat gagah!",
           "pinyinWords": [
             {
-              "pinyin": "Wǒ zuì xǐhuān lǎohǔ",
-              "chinese": "我最喜欢老虎",
-              "english": "I liked the tiger the most",
-              "indonesian": "Saya paling suka harimau"
+              "pinyin": "Wǒ zuì xǐhuān",
+              "chinese": "我最喜欢",
+              "english": "I like the most",
+              "indonesian": "Saya paling suka"
+            },
+            {
+              "pinyin": "lǎohǔ",
+              "chinese": "老虎",
+              "english": "tiger",
+              "indonesian": "harimau"
             },
             {
               "pinyin": "Tā hǎo wēifēng",
@@ -524,16 +608,28 @@
           "indonesian": "Saya paling suka jerapah! Lehernya sangat panjang!",
           "pinyinWords": [
             {
-              "pinyin": "Wǒ zuì xǐhuān chángjǐnglù",
-              "chinese": "我最喜欢长颈鹿",
-              "english": "I liked the giraffe the most",
-              "indonesian": "Saya paling suka jerapah"
+              "pinyin": "Wǒ zuì xǐhuān",
+              "chinese": "我最喜欢",
+              "english": "I like the most",
+              "indonesian": "Saya paling suka"
             },
             {
-              "pinyin": "Tā de bózi hǎo cháng",
-              "chinese": "它的脖子好长",
-              "english": "its neck is so long",
-              "indonesian": "lehernya sangat panjang"
+              "pinyin": "chángjǐnglù",
+              "chinese": "长颈鹿",
+              "english": "giraffe",
+              "indonesian": "jerapah"
+            },
+            {
+              "pinyin": "Tā de bózi",
+              "chinese": "它的脖子",
+              "english": "its neck",
+              "indonesian": "lehernya"
+            },
+            {
+              "pinyin": "hǎo cháng",
+              "chinese": "好长",
+              "english": "so long",
+              "indonesian": "sangat panjang"
             }
           ],
           "isCorrect": true
@@ -545,16 +641,28 @@
           "indonesian": "Saya paling suka monyet! Mereka sangat seru!",
           "pinyinWords": [
             {
-              "pinyin": "Wǒ zuì xǐhuān hóuzi",
-              "chinese": "我最喜欢猴子",
-              "english": "I liked the monkeys the most",
-              "indonesian": "Saya paling suka monyet"
+              "pinyin": "Wǒ zuì xǐhuān",
+              "chinese": "我最喜欢",
+              "english": "I like the most",
+              "indonesian": "Saya paling suka"
             },
             {
-              "pinyin": "Tāmen tài hào wán le",
-              "chinese": "它们太好玩了",
-              "english": "they were so fun",
-              "indonesian": "mereka sangat seru"
+              "pinyin": "hóuzi",
+              "chinese": "猴子",
+              "english": "monkeys",
+              "indonesian": "monyet"
+            },
+            {
+              "pinyin": "Tāmen",
+              "chinese": "它们",
+              "english": "they / them",
+              "indonesian": "mereka"
+            },
+            {
+              "pinyin": "tài hào wán le",
+              "chinese": "太好玩了",
+              "english": "so much fun",
+              "indonesian": "sangat seru"
             }
           ],
           "isCorrect": true
@@ -583,17 +691,29 @@
           "indonesian": "semua orang"
         },
         {
-          "pinyin": "jīntiān xué le hěn duō",
-          "chinese": "今天学了很多",
-          "english": "learned so much today",
-          "indonesian": "belajar banyak hari ini"
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
         },
         {
-          "pinyin": "Wǒmen huí xuéxiào ba",
-          "chinese": "我们回学校吧",
-          "english": "let us go back to school",
-          "indonesian": "ayo kita kembali ke sekolah",
+          "pinyin": "xué le hěn duō",
+          "chinese": "学了很多",
+          "english": "learned a lot",
+          "indonesian": "belajar banyak"
+        },
+        {
+          "pinyin": "Wǒmen huí",
+          "chinese": "我们回",
+          "english": "let's go back",
+          "indonesian": "kita kembali ke",
           "note": "回 means to return or go back. 回家 = go home, 回学校 = go back to school. 吧 makes it a friendly suggestion!"
+        },
+        {
+          "pinyin": "xuéxiào ba",
+          "chinese": "学校吧",
+          "english": "to school",
+          "indonesian": "sekolah yuk"
         }
       ],
       "responseType": "LISTEN_ONLY",

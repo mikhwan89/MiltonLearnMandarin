@@ -396,10 +396,16 @@
       "textIndonesian": "Ketika kamu senang, bagikan kebahagiaan itu kepada orang lain! Dengan begitu semua orang ikut senang!",
       "pinyinWords": [
         {
-          "pinyin": "Kāixīn de shíhou",
-          "chinese": "开心的时候",
-          "english": "when (you are) happy",
-          "indonesian": "ketika (kamu) senang"
+          "pinyin": "Kāixīn",
+          "chinese": "开心",
+          "english": "happy",
+          "indonesian": "senang"
+        },
+        {
+          "pinyin": "de shíhou",
+          "chinese": "的时候",
+          "english": "when (you are)",
+          "indonesian": "ketika (kamu)"
         },
         {
           "pinyin": "yào",

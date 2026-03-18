@@ -28,11 +28,17 @@
           "indonesian": "waktunya sudah tiba"
         },
         {
-          "pinyin": "Bǎ wánjù shōu hǎo",
-          "chinese": "把玩具收好",
-          "english": "put toys away neatly",
-          "indonesian": "rapikan mainan",
+          "pinyin": "Bǎ wánjù",
+          "chinese": "把玩具",
+          "english": "the toys (take)",
+          "indonesian": "mainannya",
           "note": "把 is used to move the object before the verb. 把玩具收好 = take the toys and put them away. Very common pattern!"
+        },
+        {
+          "pinyin": "shōu hǎo",
+          "chinese": "收好",
+          "english": "put away neatly",
+          "indonesian": "rapikan / simpan dengan baik"
         }
       ],
       "responseType": "MULTIPLE_OPTIONS",
@@ -50,10 +56,16 @@
               "indonesian": "baik mama"
             },
             {
-              "pinyin": "wǒ shōu hǎo wánjù le",
-              "chinese": "我收好玩具了",
-              "english": "I have put the toys away",
-              "indonesian": "saya sudah rapikan mainannya"
+              "pinyin": "wǒ shōu hǎo",
+              "chinese": "我收好",
+              "english": "I tidied up",
+              "indonesian": "saya sudah rapikan"
+            },
+            {
+              "pinyin": "wánjù le",
+              "chinese": "玩具了",
+              "english": "the toys (done)",
+              "indonesian": "mainannya (selesai)"
             }
           ],
           "isCorrect": true
@@ -149,10 +161,16 @@
               "indonesian": "Saya pergi mandi"
             },
             {
-              "pinyin": "Xǐ hǎo le jiù lái",
-              "chinese": "洗好了就来",
-              "english": "will come right when done",
-              "indonesian": "habis mandi langsung kesini"
+              "pinyin": "Xǐ hǎo le",
+              "chinese": "洗好了",
+              "english": "done washing",
+              "indonesian": "habis mandi"
+            },
+            {
+              "pinyin": "jiù lái",
+              "chinese": "就来",
+              "english": "come right over",
+              "indonesian": "langsung kesini"
             }
           ],
           "isCorrect": true
@@ -209,10 +227,16 @@
               "indonesian": "luar biasa"
             },
             {
-              "pinyin": "Wǒ xǐhuān tīng gùshi",
-              "chinese": "我喜欢听故事",
-              "english": "I love listening to stories",
-              "indonesian": "Saya suka mendengar cerita",
+              "pinyin": "Wǒ xǐhuān",
+              "chinese": "我喜欢",
+              "english": "I like / I love",
+              "indonesian": "Saya suka"
+            },
+            {
+              "pinyin": "tīng gùshi",
+              "chinese": "听故事",
+              "english": "listening to stories",
+              "indonesian": "mendengar cerita",
               "note": "听 means to listen or hear. 听故事 = listen to a story. 听音乐 = listen to music!"
             },
             {
@@ -236,10 +260,16 @@
       "textIndonesian": "Ceritanya sudah selesai. Matikan lampu, selamat malam! Mama sayang kamu!",
       "pinyinWords": [
         {
-          "pinyin": "Gùshi jiǎng wán le",
-          "chinese": "故事讲完了",
-          "english": "the story is finished",
-          "indonesian": "ceritanya sudah selesai"
+          "pinyin": "Gùshi",
+          "chinese": "故事",
+          "english": "story",
+          "indonesian": "cerita"
+        },
+        {
+          "pinyin": "jiǎng wán le",
+          "chinese": "讲完了",
+          "english": "finished telling",
+          "indonesian": "sudah selesai diceritakan"
         },
         {
           "pinyin": "Guān dēng",

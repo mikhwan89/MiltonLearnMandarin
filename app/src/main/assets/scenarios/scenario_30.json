@@ -78,10 +78,16 @@
               "indonesian": "dan juga"
             },
             {
-              "pinyin": "bù xiǎng chī dōngxi",
-              "chinese": "不想吃东西",
-              "english": "don't want to eat anything",
-              "indonesian": "tidak mau makan apa-apa"
+              "pinyin": "bù xiǎng chī",
+              "chinese": "不想吃",
+              "english": "don't want to eat",
+              "indonesian": "tidak mau makan"
+            },
+            {
+              "pinyin": "dōngxi",
+              "chinese": "东西",
+              "english": "anything",
+              "indonesian": "apa-apa"
             }
           ],
           "isCorrect": true
@@ -186,11 +192,17 @@
       "textIndonesian": "Saya mengerti. Kamu perlu minum obat. Kalau disuntik, akan lebih cepat sembuh. Tapi akan sedikit sakit.",
       "pinyinWords": [
         {
-          "pinyin": "Nǐ xūyào chī yào",
-          "chinese": "你需要吃药",
-          "english": "you need to take medicine",
-          "indonesian": "kamu perlu minum obat",
+          "pinyin": "Nǐ xūyào",
+          "chinese": "你需要",
+          "english": "you need to",
+          "indonesian": "kamu perlu",
           "note": "吃药 literally means 'eat medicine' — Chinese says 吃 (eat) for taking pills. 喝药 = drink medicine (liquid). Both are common!"
+        },
+        {
+          "pinyin": "chī yào",
+          "chinese": "吃药",
+          "english": "take medicine",
+          "indonesian": "minum obat"
         },
         {
           "pinyin": "Dǎzhēn",
@@ -200,10 +212,16 @@
           "note": "打 means to hit/do and 针 means needle. 打针 = get a needle = injection. Brave children say 不怕！"
         },
         {
-          "pinyin": "huì hǎo de gèng kuài",
-          "chinese": "会好得更快",
-          "english": "will recover faster",
-          "indonesian": "akan lebih cepat sembuh"
+          "pinyin": "huì hǎo de",
+          "chinese": "会好得",
+          "english": "will recover",
+          "indonesian": "akan sembuh"
+        },
+        {
+          "pinyin": "gèng kuài",
+          "chinese": "更快",
+          "english": "faster",
+          "indonesian": "lebih cepat"
         },
         {
           "pinyin": "Búguò",
@@ -239,10 +257,16 @@
               "indonesian": "saya sangat berani"
             },
             {
-              "pinyin": "Wǒ bù pà dǎzhēn",
-              "chinese": "我不怕打针",
-              "english": "I am not scared of injections",
-              "indonesian": "Saya tidak takut disuntik"
+              "pinyin": "Wǒ bù pà",
+              "chinese": "我不怕",
+              "english": "I am not scared",
+              "indonesian": "Saya tidak takut"
+            },
+            {
+              "pinyin": "dǎzhēn",
+              "chinese": "打针",
+              "english": "of injections",
+              "indonesian": "disuntik"
             }
           ],
           "isCorrect": true
@@ -254,16 +278,28 @@
           "indonesian": "Saya sedikit takut, tapi saya akan tahan!",
           "pinyinWords": [
             {
-              "pinyin": "Wǒ yǒu yīdiǎn hàipà",
-              "chinese": "我有一点害怕",
-              "english": "I am a little scared",
-              "indonesian": "Saya sedikit takut"
+              "pinyin": "Wǒ yǒu yīdiǎn",
+              "chinese": "我有一点",
+              "english": "I am a little",
+              "indonesian": "Saya sedikit"
             },
             {
-              "pinyin": "wǒ huì rěn zhù de",
-              "chinese": "我会忍住的",
-              "english": "I will hold on / I will endure it",
-              "indonesian": "saya akan tahan",
+              "pinyin": "hàipà",
+              "chinese": "害怕",
+              "english": "scared",
+              "indonesian": "takut"
+            },
+            {
+              "pinyin": "wǒ huì",
+              "chinese": "我会",
+              "english": "I will",
+              "indonesian": "saya akan"
+            },
+            {
+              "pinyin": "rěn zhù de",
+              "chinese": "忍住的",
+              "english": "hold on / endure it",
+              "indonesian": "tahan",
               "note": "忍 (rěn) means to endure or hold on. 忍住 = hold it in / resist. 忍住不哭 = hold back from crying!"
             }
           ],
@@ -293,10 +329,16 @@
           "indonesian": "selesai minum obat"
         },
         {
-          "pinyin": "jiù huì kuài hǎo le",
-          "chinese": "就会快好了",
-          "english": "will recover soon",
-          "indonesian": "akan segera sembuh"
+          "pinyin": "jiù huì",
+          "chinese": "就会",
+          "english": "then will",
+          "indonesian": "akan"
+        },
+        {
+          "pinyin": "kuài hǎo le",
+          "chinese": "快好了",
+          "english": "recover soon",
+          "indonesian": "segera sembuh"
         },
         {
           "pinyin": "Duō hē shuǐ",

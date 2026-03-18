@@ -393,10 +393,16 @@
       "textIndonesian": "Ketika bosan, kamu bisa gunakan otakmu dan pikirkan ide-ide baru!",
       "pinyinWords": [
         {
-          "pinyin": "Wúliáo de shíhou",
-          "chinese": "无聊的时候",
-          "english": "when (you are) bored",
-          "indonesian": "ketika (kamu) bosan"
+          "pinyin": "Wúliáo",
+          "chinese": "无聊",
+          "english": "bored",
+          "indonesian": "bosan"
+        },
+        {
+          "pinyin": "de shíhou",
+          "chinese": "的时候",
+          "english": "when (you are)",
+          "indonesian": "ketika (kamu)"
         },
         {
           "pinyin": "kěyǐ",

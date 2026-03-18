@@ -349,10 +349,16 @@
       "textIndonesian": "Ketika kamu sedih, ceritakan ke Ayah dan Mama. Kami selalu menyayangimu!",
       "pinyinWords": [
         {
-          "pinyin": "Nánguò de shíhou",
-          "chinese": "难过的时候",
-          "english": "when (you are) sad",
-          "indonesian": "ketika (kamu) sedih"
+          "pinyin": "Nánguò",
+          "chinese": "难过",
+          "english": "sad",
+          "indonesian": "sedih"
+        },
+        {
+          "pinyin": "de shíhou",
+          "chinese": "的时候",
+          "english": "when (you are)",
+          "indonesian": "ketika (kamu)"
         },
         {
           "pinyin": "yào",

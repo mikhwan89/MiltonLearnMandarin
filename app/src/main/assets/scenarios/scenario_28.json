@@ -34,10 +34,16 @@
           "indonesian": "percobaan / eksperimen"
         },
         {
-          "pinyin": "Nǐ xǐhuān kēxué ma",
-          "chinese": "你喜欢科学吗",
-          "english": "do you like science?",
-          "indonesian": "kamu suka sains?"
+          "pinyin": "Nǐ xǐhuān",
+          "chinese": "你喜欢",
+          "english": "do you like",
+          "indonesian": "kamu suka"
+        },
+        {
+          "pinyin": "kēxué ma",
+          "chinese": "科学吗",
+          "english": "science?",
+          "indonesian": "sains?"
         }
       ],
       "responseType": "MULTIPLE_OPTIONS",
@@ -55,17 +61,29 @@
               "indonesian": "suka"
             },
             {
-              "pinyin": "Kēxué hěn yǒuqù",
-              "chinese": "科学很有趣",
-              "english": "science is very interesting",
-              "indonesian": "sains sangat menarik",
+              "pinyin": "Kēxué",
+              "chinese": "科学",
+              "english": "science",
+              "indonesian": "sains"
+            },
+            {
+              "pinyin": "hěn yǒuqù",
+              "chinese": "很有趣",
+              "english": "is very interesting",
+              "indonesian": "sangat menarik",
               "note": "有趣 (yǒuqù) means interesting or fun. 很有趣！= very interesting! You can use this for anything you find fascinating."
             },
             {
-              "pinyin": "Wǒ xiǎng zhīdào wèishénme",
-              "chinese": "我想知道为什么",
-              "english": "I want to know why",
-              "indonesian": "saya ingin tahu kenapa"
+              "pinyin": "Wǒ xiǎng zhīdào",
+              "chinese": "我想知道",
+              "english": "I want to know",
+              "indonesian": "saya ingin tahu"
+            },
+            {
+              "pinyin": "wèishénme",
+              "chinese": "为什么",
+              "english": "why",
+              "indonesian": "kenapa"
             }
           ],
           "isCorrect": true
@@ -89,10 +107,16 @@
               "indonesian": "sangat sulit"
             },
             {
-              "pinyin": "dànshì hěn hǎowán",
-              "chinese": "但是很好玩",
-              "english": "but very fun",
-              "indonesian": "tapi sangat menyenangkan"
+              "pinyin": "dànshì",
+              "chinese": "但是",
+              "english": "but",
+              "indonesian": "tapi"
+            },
+            {
+              "pinyin": "hěn hǎowán",
+              "chinese": "很好玩",
+              "english": "very fun",
+              "indonesian": "sangat menyenangkan"
             }
           ],
           "isCorrect": true
@@ -135,10 +159,16 @@
           "indonesian": "tanam ke dalam tanah"
         },
         {
-          "pinyin": "huì zhǎng chū shénme",
-          "chinese": "会长出什么",
-          "english": "what will grow out?",
-          "indonesian": "apa yang akan tumbuh?"
+          "pinyin": "huì zhǎng chū",
+          "chinese": "会长出",
+          "english": "will grow out",
+          "indonesian": "akan tumbuh"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what?",
+          "indonesian": "apa?"
         }
       ],
       "responseType": "SINGLE_CHOICE",
@@ -150,10 +180,16 @@
           "indonesian": "Akan tumbuh tanaman! Biji perlu air dan sinar matahari!",
           "pinyinWords": [
             {
-              "pinyin": "Huì zhǎng chū zhíwù",
-              "chinese": "会长出植物",
-              "english": "a plant will grow",
-              "indonesian": "akan tumbuh tanaman"
+              "pinyin": "Huì zhǎng chū",
+              "chinese": "会长出",
+              "english": "will grow out",
+              "indonesian": "akan tumbuh"
+            },
+            {
+              "pinyin": "zhíwù",
+              "chinese": "植物",
+              "english": "a plant",
+              "indonesian": "tanaman"
             },
             {
               "pinyin": "Zhǒngzi xūyào",
@@ -200,16 +236,34 @@
           "indonesian": "tanaman perlu"
         },
         {
-          "pinyin": "shuǐ yángguāng hé tǔ",
-          "chinese": "水阳光和土",
-          "english": "water, sunlight and soil",
-          "indonesian": "air, sinar matahari, dan tanah"
+          "pinyin": "shuǐ",
+          "chinese": "水",
+          "english": "water",
+          "indonesian": "air"
         },
         {
-          "pinyin": "shì bu shì hěn yǒuqù",
-          "chinese": "是不是很有趣",
-          "english": "is it not very interesting?",
-          "indonesian": "menarik kan?"
+          "pinyin": "yángguāng",
+          "chinese": "阳光",
+          "english": "sunlight",
+          "indonesian": "sinar matahari"
+        },
+        {
+          "pinyin": "hé tǔ",
+          "chinese": "和土",
+          "english": "and soil",
+          "indonesian": "dan tanah"
+        },
+        {
+          "pinyin": "shì bu shì",
+          "chinese": "是不是",
+          "english": "is it not",
+          "indonesian": "menarik kan"
+        },
+        {
+          "pinyin": "hěn yǒuqù",
+          "chinese": "很有趣",
+          "english": "very interesting?",
+          "indonesian": "sangat menarik?"
         }
       ],
       "responseType": "MULTIPLE_OPTIONS",
@@ -233,10 +287,16 @@
               "indonesian": "saya besar nanti"
             },
             {
-              "pinyin": "xiǎng dāng kēxuéjiā",
-              "chinese": "想当科学家",
-              "english": "want to be a scientist",
-              "indonesian": "mau jadi ilmuwan",
+              "pinyin": "xiǎng dāng",
+              "chinese": "想当",
+              "english": "want to be",
+              "indonesian": "mau jadi"
+            },
+            {
+              "pinyin": "kēxuéjiā",
+              "chinese": "科学家",
+              "english": "scientist",
+              "indonesian": "ilmuwan",
               "note": "家 at the end of a profession word means a person who is an expert in that field. 科学家 = scientist, 音乐家 = musician, 画家 = painter!"
             }
           ],
@@ -255,10 +315,16 @@
               "indonesian": "sangat menarik"
             },
             {
-              "pinyin": "Wǒ hái yǒu hěn duō wèntí",
-              "chinese": "我还有很多问题",
-              "english": "I still have many questions",
-              "indonesian": "Saya masih punya banyak pertanyaan"
+              "pinyin": "Wǒ hái yǒu",
+              "chinese": "我还有",
+              "english": "I still have",
+              "indonesian": "Saya masih punya"
+            },
+            {
+              "pinyin": "hěn duō wèntí",
+              "chinese": "很多问题",
+              "english": "many questions",
+              "indonesian": "banyak pertanyaan"
             }
           ],
           "isCorrect": true
@@ -275,23 +341,41 @@
       "textIndonesian": "Bagus! Semakin banyak pertanyaan semakin baik! Ilmuwan memang harus banyak bertanya kenapa! Kerja bagus, teman-teman!",
       "pinyinWords": [
         {
-          "pinyin": "Wèntí yuè duō yuè hǎo",
-          "chinese": "问题越多越好",
-          "english": "the more questions the better",
-          "indonesian": "semakin banyak pertanyaan semakin baik",
+          "pinyin": "Wèntí yuè duō",
+          "chinese": "问题越多",
+          "english": "the more questions",
+          "indonesian": "semakin banyak pertanyaan",
           "note": "越...越... is a great pattern! It means 'the more... the more...'. 越多越好 = the more the better!"
         },
         {
-          "pinyin": "Kēxuéjiā jiù shì yào",
-          "chinese": "科学家就是要",
-          "english": "scientists need to",
-          "indonesian": "ilmuwan memang harus"
+          "pinyin": "yuè hǎo",
+          "chinese": "越好",
+          "english": "the better",
+          "indonesian": "semakin baik"
         },
         {
-          "pinyin": "duō wèn wèishénme",
-          "chinese": "多问为什么",
-          "english": "ask why a lot",
-          "indonesian": "banyak bertanya kenapa"
+          "pinyin": "Kēxuéjiā",
+          "chinese": "科学家",
+          "english": "scientists",
+          "indonesian": "ilmuwan"
+        },
+        {
+          "pinyin": "jiù shì yào",
+          "chinese": "就是要",
+          "english": "need to / just have to",
+          "indonesian": "memang harus"
+        },
+        {
+          "pinyin": "duō wèn",
+          "chinese": "多问",
+          "english": "ask a lot",
+          "indonesian": "banyak bertanya"
+        },
+        {
+          "pinyin": "wèishénme",
+          "chinese": "为什么",
+          "english": "why",
+          "indonesian": "kenapa"
         },
         {
           "pinyin": "Zuò de hǎo",

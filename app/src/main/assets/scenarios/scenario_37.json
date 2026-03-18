@@ -547,10 +547,16 @@
           "note": "帮忙 means 'to help' and 帮了很多忙 means 'helped a lot' — 忙 here means 'busy matters/tasks'!"
         },
         {
-          "pinyin": "Mǎi dōngxi de shíhou",
-          "chinese": "买东西的时候",
+          "pinyin": "Mǎi dōngxi",
+          "chinese": "买东西",
           "english": "when shopping",
           "indonesian": "saat belanja"
+        },
+        {
+          "pinyin": "de shíhou",
+          "chinese": "的时候",
+          "english": "at the time / when doing it",
+          "indonesian": "saat itu / ketika"
         },
         {
           "pinyin": "yào",

@@ -177,9 +177,16 @@
               "indonesian": "saya juga"
             },
             {
-              "pinyin": "duì niúnǎi guòmǐn",
-              "chinese": "对牛奶过敏",
-              "english": "allergic to cow's milk",
+              "pinyin": "duì",
+              "chinese": "对",
+              "english": "allergic to (start of pattern)",
+              "indonesian": "terhadap",
+              "note": "我对...过敏 is the pattern for saying you're allergic to something. '我对花生过敏' = 'I am allergic to peanuts'."
+            },
+            {
+              "pinyin": "niúnǎi guòmǐn",
+              "chinese": "牛奶过敏",
+              "english": "milk allergy",
               "indonesian": "alergi susu sapi"
             },
             {
@@ -268,10 +275,16 @@
               "indonesian": "Ya / benar"
             },
             {
-              "pinyin": "zhīshì yě bù xíng",
-              "chinese": "芝士也不行",
-              "english": "cheese is also not okay",
-              "indonesian": "keju juga tidak boleh"
+              "pinyin": "zhīshì",
+              "chinese": "芝士",
+              "english": "cheese",
+              "indonesian": "keju"
+            },
+            {
+              "pinyin": "yě bù xíng",
+              "chinese": "也不行",
+              "english": "also not okay",
+              "indonesian": "juga tidak boleh"
             },
             {
               "pinyin": "Suǒyǒu",
@@ -287,10 +300,16 @@
               "note": "制品 (zhìpǐn) means 'products made from'. So 牛奶制品 = things made from cow's milk — like cheese, butter, and ice cream!"
             },
             {
-              "pinyin": "wǒ dōu bù néng chī",
-              "chinese": "我都不能吃",
-              "english": "I cannot eat any of them",
-              "indonesian": "saya tidak bisa makan semuanya"
+              "pinyin": "wǒ dōu",
+              "chinese": "我都",
+              "english": "I (all / none of them)",
+              "indonesian": "saya semua"
+            },
+            {
+              "pinyin": "bù néng chī",
+              "chinese": "不能吃",
+              "english": "cannot eat",
+              "indonesian": "tidak bisa makan"
             }
           ],
           "isCorrect": true
@@ -313,10 +332,16 @@
           "indonesian": "Sudah mengerti"
         },
         {
-          "pinyin": "Xièxie nǐ gàosu wǒ",
-          "chinese": "谢谢你告诉我",
-          "english": "Thank you for telling me",
-          "indonesian": "Terima kasih sudah memberitahu saya"
+          "pinyin": "Xièxie nǐ",
+          "chinese": "谢谢你",
+          "english": "Thank you",
+          "indonesian": "Terima kasih"
+        },
+        {
+          "pinyin": "gàosu wǒ",
+          "chinese": "告诉我",
+          "english": "for telling me",
+          "indonesian": "sudah memberitahu saya"
         },
         {
           "pinyin": "Nǐ zhēn yǒnggǎn",
@@ -338,10 +363,16 @@
           "indonesian": "mencari"
         },
         {
-          "pinyin": "héshì de shíwù",
-          "chinese": "合适的食物",
-          "english": "suitable food",
-          "indonesian": "makanan yang cocok"
+          "pinyin": "héshì de",
+          "chinese": "合适的",
+          "english": "suitable",
+          "indonesian": "yang cocok"
+        },
+        {
+          "pinyin": "shíwù",
+          "chinese": "食物",
+          "english": "food",
+          "indonesian": "makanan"
         }
       ],
       "responseType": "LISTEN_ONLY",

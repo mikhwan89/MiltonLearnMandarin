@@ -41,16 +41,28 @@
           "indonesian": "kalau / jika"
         },
         {
-          "pinyin": "tóngxué shuāidǎo le",
-          "chinese": "同学摔倒了",
-          "english": "a classmate fell down",
-          "indonesian": "teman kelas jatuh"
+          "pinyin": "tóngxué",
+          "chinese": "同学",
+          "english": "classmate",
+          "indonesian": "teman kelas"
         },
         {
-          "pinyin": "nǐ huì zěnme zuò",
-          "chinese": "你会怎么做",
-          "english": "what would you do?",
-          "indonesian": "apa yang akan kamu lakukan?"
+          "pinyin": "shuāidǎo le",
+          "chinese": "摔倒了",
+          "english": "fell down",
+          "indonesian": "jatuh"
+        },
+        {
+          "pinyin": "nǐ huì",
+          "chinese": "你会",
+          "english": "what would you",
+          "indonesian": "apa yang akan kamu"
+        },
+        {
+          "pinyin": "zěnme zuò",
+          "chinese": "怎么做",
+          "english": "do?",
+          "indonesian": "lakukan?"
         }
       ],
       "responseType": "MULTIPLE_OPTIONS",
@@ -62,10 +74,16 @@
           "indonesian": "Saya akan berlari ke sana untuk membantunya berdiri!",
           "pinyinWords": [
             {
-              "pinyin": "Wǒ huì pǎo guòqù",
-              "chinese": "我会跑过去",
-              "english": "I would run over there",
-              "indonesian": "Saya akan berlari ke sana"
+              "pinyin": "Wǒ huì pǎo",
+              "chinese": "我会跑",
+              "english": "I would run",
+              "indonesian": "Saya akan berlari"
+            },
+            {
+              "pinyin": "guòqù",
+              "chinese": "过去",
+              "english": "over there",
+              "indonesian": "ke sana"
             },
             {
               "pinyin": "bāng tā",
@@ -168,10 +186,16 @@
               "indonesian": "Saya bisa"
             },
             {
-              "pinyin": "bǎ wǒ de qiānbǐ",
-              "chinese": "把我的铅笔",
-              "english": "take my pencil",
-              "indonesian": "ambil pensilku"
+              "pinyin": "bǎ wǒ de",
+              "chinese": "把我的",
+              "english": "take my",
+              "indonesian": "ambil"
+            },
+            {
+              "pinyin": "qiānbǐ",
+              "chinese": "铅笔",
+              "english": "pencil",
+              "indonesian": "pensil"
             },
             {
               "pinyin": "jiè gěi tā",
@@ -190,10 +214,16 @@
           "indonesian": "Kita bisa berbagi pakai! Saya kasih ke kamu kalau sudah selesai!",
           "pinyinWords": [
             {
-              "pinyin": "Wǒmen kěyǐ yīqǐ",
-              "chinese": "我们可以一起",
-              "english": "we can together",
-              "indonesian": "kita bisa bersama"
+              "pinyin": "Wǒmen kěyǐ",
+              "chinese": "我们可以",
+              "english": "we can",
+              "indonesian": "kita bisa"
+            },
+            {
+              "pinyin": "yīqǐ",
+              "chinese": "一起",
+              "english": "together",
+              "indonesian": "bersama"
             },
             {
               "pinyin": "fēnxiǎng",
@@ -203,10 +233,16 @@
               "note": "分享 means to share. 分 means divide, 享 means enjoy. Sharing = dividing so everyone can enjoy!"
             },
             {
-              "pinyin": "yòng wán le gěi nǐ",
-              "chinese": "用完了给你",
-              "english": "give to you when done",
-              "indonesian": "kasih ke kamu kalau sudah selesai"
+              "pinyin": "yòng wán le",
+              "chinese": "用完了",
+              "english": "when done",
+              "indonesian": "kalau sudah selesai"
+            },
+            {
+              "pinyin": "gěi nǐ",
+              "chinese": "给你",
+              "english": "give to you",
+              "indonesian": "kasih ke kamu"
             }
           ],
           "isCorrect": true
@@ -229,23 +265,41 @@
           "indonesian": "luar biasa"
         },
         {
-          "pinyin": "Fēnxiǎng hěn měihǎo",
-          "chinese": "分享很美好",
-          "english": "sharing is wonderful",
-          "indonesian": "berbagi itu indah"
+          "pinyin": "Fēnxiǎng",
+          "chinese": "分享",
+          "english": "sharing",
+          "indonesian": "berbagi"
         },
         {
-          "pinyin": "Rúguǒ yǒu rén bāngzhù le nǐ",
-          "chinese": "如果有人帮助了你",
-          "english": "if someone helped you",
-          "indonesian": "kalau ada orang yang membantumu"
+          "pinyin": "hěn měihǎo",
+          "chinese": "很美好",
+          "english": "is wonderful",
+          "indonesian": "itu indah"
         },
         {
-          "pinyin": "nǐ yīnggāi shuō shénme",
-          "chinese": "你应该说什么",
-          "english": "what should you say?",
-          "indonesian": "apa yang harus kamu ucapkan?",
+          "pinyin": "Rúguǒ yǒu rén",
+          "chinese": "如果有人",
+          "english": "if someone",
+          "indonesian": "kalau ada orang"
+        },
+        {
+          "pinyin": "bāngzhù le nǐ",
+          "chinese": "帮助了你",
+          "english": "helped you",
+          "indonesian": "yang membantumu"
+        },
+        {
+          "pinyin": "nǐ yīnggāi",
+          "chinese": "你应该",
+          "english": "what should you",
+          "indonesian": "apa yang harus kamu",
           "note": "应该 (yīnggāi) means should or ought to. 你应该... = you should... A useful word for talking about the right thing to do!"
+        },
+        {
+          "pinyin": "shuō shénme",
+          "chinese": "说什么",
+          "english": "say?",
+          "indonesian": "ucapkan?"
         }
       ],
       "responseType": "SINGLE_CHOICE",
@@ -269,10 +323,16 @@
               "indonesian": "kamu baik sekali"
             },
             {
-              "pinyin": "Wǒ yě huì bāngzhù nǐ de",
-              "chinese": "我也会帮助你的",
-              "english": "I will help you too",
-              "indonesian": "Saya juga akan membantumu"
+              "pinyin": "Wǒ yě huì",
+              "chinese": "我也会",
+              "english": "I will also",
+              "indonesian": "Saya juga akan"
+            },
+            {
+              "pinyin": "bāngzhù nǐ de",
+              "chinese": "帮助你的",
+              "english": "help you",
+              "indonesian": "membantumu"
             }
           ],
           "isCorrect": true
@@ -289,10 +349,16 @@
       "textIndonesian": "Luar biasa jawabannya! Ingat: bersikap baik kepada orang lain, orang lain juga akan bersikap baik kepadamu. Ini adalah pelajaran terpenting dalam budi pekerti!",
       "pinyinWords": [
         {
-          "pinyin": "Shuō de tài hǎo le",
-          "chinese": "说得太好了",
-          "english": "wonderfully said",
-          "indonesian": "luar biasa jawabannya"
+          "pinyin": "Shuō de",
+          "chinese": "说得",
+          "english": "said",
+          "indonesian": "jawabannya"
+        },
+        {
+          "pinyin": "tài hǎo le",
+          "chinese": "太好了",
+          "english": "wonderfully",
+          "indonesian": "luar biasa"
         },
         {
           "pinyin": "Jìzhù",
@@ -307,17 +373,29 @@
           "indonesian": "bersikap baik kepada orang lain"
         },
         {
-          "pinyin": "rén yě huì duì nǐ hǎo",
-          "chinese": "人也会对你好",
-          "english": "others will also be good to you",
-          "indonesian": "orang lain juga akan bersikap baik kepadamu"
+          "pinyin": "rén yě huì",
+          "chinese": "人也会",
+          "english": "others will also",
+          "indonesian": "orang lain juga akan"
         },
         {
-          "pinyin": "zuì zhòngyào de dàolǐ",
-          "chinese": "最重要的道理",
-          "english": "the most important lesson / principle",
-          "indonesian": "pelajaran terpenting",
+          "pinyin": "duì nǐ hǎo",
+          "chinese": "对你好",
+          "english": "be good to you",
+          "indonesian": "bersikap baik kepadamu"
+        },
+        {
+          "pinyin": "zuì zhòngyào",
+          "chinese": "最重要",
+          "english": "the most important",
+          "indonesian": "terpenting",
           "note": "道理 (dàolǐ) means a principle, lesson, or reason. 这个道理 = this lesson/truth. A very important word in Chinese moral education!"
+        },
+        {
+          "pinyin": "de dàolǐ",
+          "chinese": "的道理",
+          "english": "lesson / principle",
+          "indonesian": "pelajaran"
         }
       ],
       "responseType": "LISTEN_ONLY",
