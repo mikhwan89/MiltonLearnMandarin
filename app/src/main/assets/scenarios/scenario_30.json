@@ -1,0 +1,379 @@
+{
+  "id": "scene30_at_the_doctor",
+  "title": "看医生",
+  "description": "At the doctor — describing symptoms, getting examined, and being brave about medicine",
+  "characterName": "医生",
+  "characterEmoji": "👨‍⚕️",
+  "characterRole": "doctor",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你好！今天来看医生，你哪里不舒服？",
+      "textPinyin": "Nǐ hǎo! Jīntiān lái kàn yīshēng, nǐ nǎlǐ bù shūfu?",
+      "textEnglish": "Hello! You came to see the doctor today — where do you feel unwell?",
+      "textIndonesian": "Halo! Hari ini datang ke dokter — di mana kamu merasa tidak enak badan?",
+      "pinyinWords": [
+        {
+          "pinyin": "kàn yīshēng",
+          "chinese": "看医生",
+          "english": "see a doctor",
+          "indonesian": "ke dokter",
+          "note": "看 can mean 'see' or 'visit'. 看医生 = see the doctor. 看书 = read a book. 看电视 = watch TV!"
+        },
+        {
+          "pinyin": "nǎlǐ",
+          "chinese": "哪里",
+          "english": "where",
+          "indonesian": "di mana"
+        },
+        {
+          "pinyin": "bù shūfu",
+          "chinese": "不舒服",
+          "english": "unwell / uncomfortable",
+          "indonesian": "tidak enak badan",
+          "note": "舒服 means comfortable. 不舒服 = not comfortable = feeling unwell. 我不舒服 = I don't feel well."
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我头疼。我头很痛。",
+          "pinyin": "Wǒ tóuténg. Wǒ tóu hěn tòng.",
+          "english": "I have a headache. My head hurts a lot.",
+          "indonesian": "Kepala saya sakit. Kepala saya sangat sakit.",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ tóuténg",
+              "chinese": "我头疼",
+              "english": "I have a headache",
+              "indonesian": "Kepala saya sakit",
+              "note": "头 = head, 疼 = ache/hurt. 头疼 = headache. 肚子疼 = stomachache. 牙疼 = toothache!"
+            },
+            {
+              "pinyin": "hěn tòng",
+              "chinese": "很痛",
+              "english": "hurts a lot",
+              "indonesian": "sangat sakit"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我肚子疼。而且我不想吃东西。",
+          "pinyin": "Wǒ dùzi téng. Érqiě wǒ bù xiǎng chī dōngxi.",
+          "english": "I have a stomachache. And I don't want to eat anything.",
+          "indonesian": "Perut saya sakit. Dan saya tidak mau makan apa-apa.",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ dùzi téng",
+              "chinese": "我肚子疼",
+              "english": "I have a stomachache",
+              "indonesian": "Perut saya sakit"
+            },
+            {
+              "pinyin": "Érqiě",
+              "chinese": "而且",
+              "english": "and also / furthermore",
+              "indonesian": "dan juga"
+            },
+            {
+              "pinyin": "bù xiǎng chī dōngxi",
+              "chinese": "不想吃东西",
+              "english": "don't want to eat anything",
+              "indonesian": "tidak mau makan apa-apa"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我发烧了。身体很热，很难受。",
+          "pinyin": "Wǒ fāshāo le. Shēntǐ hěn rè, hěn nánshòu.",
+          "english": "I have a fever. My body is very hot and I feel terrible.",
+          "indonesian": "Saya demam. Badan saya sangat panas dan tidak enak.",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ fāshāo le",
+              "chinese": "我发烧了",
+              "english": "I have a fever",
+              "indonesian": "Saya demam",
+              "note": "发烧 means fever — 发 means to develop/emit, 烧 means to burn. 发烧 = body is burning up!"
+            },
+            {
+              "pinyin": "Shēntǐ hěn rè",
+              "chinese": "身体很热",
+              "english": "body is very hot",
+              "indonesian": "badan sangat panas"
+            },
+            {
+              "pinyin": "hěn nánshòu",
+              "chinese": "很难受",
+              "english": "feel terrible / feel awful",
+              "indonesian": "sangat tidak enak badan"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "我来检查一下。张开嘴巴，说'啊'！",
+      "textPinyin": "Wǒ lái jiǎnchá yīxià. Zhāng kāi zuǐba, shuō 'ā'!",
+      "textEnglish": "Let me examine you. Open your mouth and say 'ahh'!",
+      "textIndonesian": "Biar saya periksa. Buka mulut, bilang 'aaa'!",
+      "pinyinWords": [
+        {
+          "pinyin": "Wǒ lái jiǎnchá",
+          "chinese": "我来检查",
+          "english": "let me examine",
+          "indonesian": "biar saya periksa"
+        },
+        {
+          "pinyin": "yīxià",
+          "chinese": "一下",
+          "english": "a moment / quickly",
+          "indonesian": "sebentar",
+          "note": "一下 after a verb means 'do it briefly' or 'just a quick...'. 看一下 = take a quick look. 等一下 = wait a moment!"
+        },
+        {
+          "pinyin": "Zhāng kāi zuǐba",
+          "chinese": "张开嘴巴",
+          "english": "open your mouth wide",
+          "indonesian": "buka mulut"
+        },
+        {
+          "pinyin": "shuō ā",
+          "chinese": "说啊",
+          "english": "say 'ahh'",
+          "indonesian": "bilang 'aaa'"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "啊～！（张开嘴巴）",
+          "pinyin": "Ā～! (Zhāng kāi zuǐba)",
+          "english": "Ahh! (opens mouth wide)",
+          "indonesian": "Aaa! (membuka mulut lebar-lebar)",
+          "pinyinWords": [
+            {
+              "pinyin": "Ā",
+              "chinese": "啊",
+              "english": "Ahh!",
+              "indonesian": "Aaa!"
+            },
+            {
+              "pinyin": "Zhāng kāi zuǐba",
+              "chinese": "张开嘴巴",
+              "english": "opens mouth wide",
+              "indonesian": "membuka mulut lebar-lebar"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "嗯，我明白了。你需要吃药。打针的话，会好得更快。不过会有一点点疼。",
+      "textPinyin": "Ń, wǒ míngbái le. Nǐ xūyào chī yào. Dǎzhēn de huà, huì hǎo de gèng kuài. Búguò huì yǒu yīdiǎndiǎn téng.",
+      "textEnglish": "I see. You need to take medicine. Getting an injection will make you recover faster. But it will hurt a tiny bit.",
+      "textIndonesian": "Saya mengerti. Kamu perlu minum obat. Kalau disuntik, akan lebih cepat sembuh. Tapi akan sedikit sakit.",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ xūyào chī yào",
+          "chinese": "你需要吃药",
+          "english": "you need to take medicine",
+          "indonesian": "kamu perlu minum obat",
+          "note": "吃药 literally means 'eat medicine' — Chinese says 吃 (eat) for taking pills. 喝药 = drink medicine (liquid). Both are common!"
+        },
+        {
+          "pinyin": "Dǎzhēn",
+          "chinese": "打针",
+          "english": "get an injection / shot",
+          "indonesian": "disuntik",
+          "note": "打 means to hit/do and 针 means needle. 打针 = get a needle = injection. Brave children say 不怕！"
+        },
+        {
+          "pinyin": "huì hǎo de gèng kuài",
+          "chinese": "会好得更快",
+          "english": "will recover faster",
+          "indonesian": "akan lebih cepat sembuh"
+        },
+        {
+          "pinyin": "Búguò",
+          "chinese": "不过",
+          "english": "however / but",
+          "indonesian": "tapi / namun"
+        },
+        {
+          "pinyin": "yīdiǎndiǎn téng",
+          "chinese": "一点点疼",
+          "english": "hurt a tiny bit",
+          "indonesian": "sedikit sakit"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "好吧，我很勇敢！我不怕打针！",
+          "pinyin": "Hǎo ba, wǒ hěn yǒnggǎn! Wǒ bù pà dǎzhēn!",
+          "english": "Okay, I am very brave! I am not scared of injections!",
+          "indonesian": "Baiklah, saya sangat berani! Saya tidak takut disuntik!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo ba",
+              "chinese": "好吧",
+              "english": "okay / alright then",
+              "indonesian": "baiklah"
+            },
+            {
+              "pinyin": "wǒ hěn yǒnggǎn",
+              "chinese": "我很勇敢",
+              "english": "I am very brave",
+              "indonesian": "saya sangat berani"
+            },
+            {
+              "pinyin": "Wǒ bù pà dǎzhēn",
+              "chinese": "我不怕打针",
+              "english": "I am not scared of injections",
+              "indonesian": "Saya tidak takut disuntik"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我有一点害怕，但是我会忍住的！",
+          "pinyin": "Wǒ yǒu yīdiǎn hàipà, dànshì wǒ huì rěn zhù de!",
+          "english": "I am a little scared, but I will hold on!",
+          "indonesian": "Saya sedikit takut, tapi saya akan tahan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ yǒu yīdiǎn hàipà",
+              "chinese": "我有一点害怕",
+              "english": "I am a little scared",
+              "indonesian": "Saya sedikit takut"
+            },
+            {
+              "pinyin": "wǒ huì rěn zhù de",
+              "chinese": "我会忍住的",
+              "english": "I will hold on / I will endure it",
+              "indonesian": "saya akan tahan",
+              "note": "忍 (rěn) means to endure or hold on. 忍住 = hold it in / resist. 忍住不哭 = hold back from crying!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "很勇敢！药吃完就会快好了。多喝水，多休息！",
+      "textPinyin": "Hěn yǒnggǎn! Yào chī wán jiù huì kuài hǎo le. Duō hē shuǐ, duō xiūxi!",
+      "textEnglish": "Very brave! Once you finish the medicine you will recover soon. Drink lots of water and get lots of rest!",
+      "textIndonesian": "Sangat berani! Setelah selesai minum obat akan segera sembuh. Banyak minum air dan banyak istirahat!",
+      "pinyinWords": [
+        {
+          "pinyin": "Hěn yǒnggǎn",
+          "chinese": "很勇敢",
+          "english": "very brave",
+          "indonesian": "sangat berani"
+        },
+        {
+          "pinyin": "Yào chī wán",
+          "chinese": "药吃完",
+          "english": "finish taking medicine",
+          "indonesian": "selesai minum obat"
+        },
+        {
+          "pinyin": "jiù huì kuài hǎo le",
+          "chinese": "就会快好了",
+          "english": "will recover soon",
+          "indonesian": "akan segera sembuh"
+        },
+        {
+          "pinyin": "Duō hē shuǐ",
+          "chinese": "多喝水",
+          "english": "drink lots of water",
+          "indonesian": "banyak minum air",
+          "note": "多 before a verb means 'do more of it'. 多喝水 = drink more water. 多吃饭 = eat more. 多睡觉 = sleep more!"
+        },
+        {
+          "pinyin": "duō xiūxi",
+          "chinese": "多休息",
+          "english": "get lots of rest",
+          "indonesian": "banyak istirahat"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does 发烧 mean?",
+      "questionChinese": "发烧",
+      "questionPinyin": "fāshāo",
+      "options": [
+        { "chinese": "", "pinyin": "", "translation": "headache" },
+        { "chinese": "", "pinyin": "", "translation": "fever" },
+        { "chinese": "", "pinyin": "", "translation": "stomachache" },
+        { "chinese": "", "pinyin": "", "translation": "cough" }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "发烧 (fāshāo) means fever! 烧 = burn. When you have a fever your body feels like it's burning!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'I have a stomachache'?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "我头疼", "pinyin": "wǒ tóuténg", "translation": "I have a headache" },
+        { "chinese": "我不舒服", "pinyin": "wǒ bù shūfu", "translation": "I feel unwell" },
+        { "chinese": "我肚子疼", "pinyin": "wǒ dùzi téng", "translation": "I have a stomachache" },
+        { "chinese": "我发烧了", "pinyin": "wǒ fāshāo le", "translation": "I have a fever" }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "我肚子疼 (wǒ dùzi téng)! 肚子 = tummy/stomach, 疼 = ache/hurt. Tell the doctor straight away!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does 打针 mean?",
+      "questionChinese": "打针",
+      "questionPinyin": "dǎzhēn",
+      "options": [
+        { "chinese": "", "pinyin": "", "translation": "take medicine" },
+        { "chinese": "", "pinyin": "", "translation": "see a doctor" },
+        { "chinese": "", "pinyin": "", "translation": "get an injection / shot" },
+        { "chinese": "", "pinyin": "", "translation": "rest" }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "打针 (dǎzhēn) means get an injection! 针 = needle. Be brave — it's over quickly!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "多休息",
+      "questionPinyin": "duō xiūxi",
+      "options": [
+        { "chinese": "", "pinyin": "", "translation": "take medicine" },
+        { "chinese": "", "pinyin": "", "translation": "drink more water" },
+        { "chinese": "", "pinyin": "", "translation": "get lots of rest" },
+        { "chinese": "", "pinyin": "", "translation": "go to the hospital" }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "多休息 (duō xiūxi) means get lots of rest! 多 = more/lots, 休息 = rest. The doctor's top advice!"
+    }
+  ],
+  "category": "FEELINGS_AND_HEALTH"
+}

@@ -1,0 +1,594 @@
+{
+  "id": "scene31_happiness",
+  "title": "我好开心！",
+  "description": "Expressing happiness — sharing good news with mum after a great day at school",
+  "characterName": "妈妈",
+  "characterEmoji": "👩",
+  "characterRole": "Mum",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "宝贝，你今天看起来很开心！发生什么好事了？",
+      "textPinyin": "Bǎobèi, nǐ jīntiān kàn qǐlái hěn kāixīn! Fāshēng shénme hǎo shì le?",
+      "textEnglish": "Sweetie, you look very happy today! Did something good happen?",
+      "textIndonesian": "Sayang, kamu terlihat sangat senang hari ini! Ada hal baik yang terjadi?",
+      "pinyinWords": [
+        {
+          "pinyin": "Bǎobèi",
+          "chinese": "宝贝",
+          "english": "Sweetie / baby",
+          "indonesian": "Sayang"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "kàn qǐlái",
+          "chinese": "看起来",
+          "english": "look / seem",
+          "indonesian": "terlihat / tampak"
+        },
+        {
+          "pinyin": "hěn",
+          "chinese": "很",
+          "english": "very",
+          "indonesian": "sangat"
+        },
+        {
+          "pinyin": "kāixīn",
+          "chinese": "开心",
+          "english": "happy",
+          "indonesian": "senang / gembira"
+        },
+        {
+          "pinyin": "Fāshēng",
+          "chinese": "发生",
+          "english": "happen",
+          "indonesian": "terjadi"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        },
+        {
+          "pinyin": "hǎo shì",
+          "chinese": "好事",
+          "english": "good thing",
+          "indonesian": "hal baik"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(completion word)",
+          "indonesian": "(kata selesai)",
+          "note": "了 at the end of a question means 'Did something happen?' — it signals a change or new situation."
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "妈妈，我今天得了金星！老师表扬我了！",
+          "pinyin": "Māma, wǒ jīntiān dé le jīn xīng! Lǎoshī biǎoyáng wǒ le!",
+          "english": "Mum, I got a gold star today! Teacher praised me!",
+          "indonesian": "Mama, aku dapat bintang emas hari ini! Guru memuji aku!",
+          "pinyinWords": [
+            {
+              "pinyin": "Māma",
+              "chinese": "妈妈",
+              "english": "Mum",
+              "indonesian": "Mama"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "jīntiān",
+              "chinese": "今天",
+              "english": "today",
+              "indonesian": "hari ini"
+            },
+            {
+              "pinyin": "dé le",
+              "chinese": "得了",
+              "english": "got / received",
+              "indonesian": "mendapat"
+            },
+            {
+              "pinyin": "jīn xīng",
+              "chinese": "金星",
+              "english": "gold star",
+              "indonesian": "bintang emas"
+            },
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
+              "pinyin": "biǎoyáng",
+              "chinese": "表扬",
+              "english": "praise / commend",
+              "indonesian": "memuji"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "me",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(just happened)",
+              "indonesian": "(baru saja terjadi)",
+              "note": "Say 了 after something that just happened. '老师表扬我了' = 'Teacher just praised me!'"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "妈妈！今天很好玩！我和朋友一起玩了！",
+          "pinyin": "Māma! Jīntiān hěn hǎo wán! Wǒ hé péngyǒu yīqǐ wán le!",
+          "english": "Mum! Today was so fun! I played with my friends!",
+          "indonesian": "Mama! Hari ini sangat seru! Aku bermain bersama teman-teman!",
+          "pinyinWords": [
+            {
+              "pinyin": "Māma",
+              "chinese": "妈妈",
+              "english": "Mum",
+              "indonesian": "Mama"
+            },
+            {
+              "pinyin": "jīntiān",
+              "chinese": "今天",
+              "english": "today",
+              "indonesian": "hari ini"
+            },
+            {
+              "pinyin": "hěn hǎo wán",
+              "chinese": "很好玩",
+              "english": "very fun",
+              "indonesian": "sangat seru / menyenangkan"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "hé",
+              "chinese": "和",
+              "english": "and / with",
+              "indonesian": "dan / bersama"
+            },
+            {
+              "pinyin": "péngyǒu",
+              "chinese": "朋友",
+              "english": "friend",
+              "indonesian": "teman"
+            },
+            {
+              "pinyin": "yīqǐ",
+              "chinese": "一起",
+              "english": "together",
+              "indonesian": "bersama"
+            },
+            {
+              "pinyin": "wán le",
+              "chinese": "玩了",
+              "english": "played (already done)",
+              "indonesian": "sudah bermain"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "真的吗？太棒了！妈妈为你骄傲！",
+      "textPinyin": "Zhēn de ma? Tài bàng le! Māma wèi nǐ jiāoào!",
+      "textEnglish": "Really? That's awesome! Mum is proud of you!",
+      "textIndonesian": "Benarkah? Luar biasa! Mama bangga padamu!",
+      "pinyinWords": [
+        {
+          "pinyin": "Zhēn de",
+          "chinese": "真的",
+          "english": "Really / truly",
+          "indonesian": "Benarkah / sungguh"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(question word)",
+          "indonesian": "(kata tanya)",
+          "note": "Put 吗 at the end of any sentence to make it a yes/no question!"
+        },
+        {
+          "pinyin": "Tài bàng le",
+          "chinese": "太棒了",
+          "english": "That's awesome / amazing",
+          "indonesian": "Luar biasa sekali"
+        },
+        {
+          "pinyin": "Māma",
+          "chinese": "妈妈",
+          "english": "Mum",
+          "indonesian": "Mama"
+        },
+        {
+          "pinyin": "wèi nǐ",
+          "chinese": "为你",
+          "english": "for you / because of you",
+          "indonesian": "untukmu / karenamu"
+        },
+        {
+          "pinyin": "jiāoào",
+          "chinese": "骄傲",
+          "english": "proud",
+          "indonesian": "bangga"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "你现在感觉怎么样？",
+      "textPinyin": "Nǐ xiànzài gǎnjué zěnmeyàng?",
+      "textEnglish": "How do you feel right now?",
+      "textIndonesian": "Bagaimana perasaanmu sekarang?",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "xiànzài",
+          "chinese": "现在",
+          "english": "now",
+          "indonesian": "sekarang"
+        },
+        {
+          "pinyin": "gǎnjué",
+          "chinese": "感觉",
+          "english": "feel / feeling",
+          "indonesian": "merasa / perasaan"
+        },
+        {
+          "pinyin": "zěnmeyàng",
+          "chinese": "怎么样",
+          "english": "how / how is it",
+          "indonesian": "bagaimana"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我好开心！我的心情很好！",
+          "pinyin": "Wǒ hǎo kāixīn! Wǒ de xīnqíng hěn hǎo!",
+          "english": "I'm so happy! My mood is great!",
+          "indonesian": "Aku sangat senang! Suasana hatiku sangat baik!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "hǎo",
+              "chinese": "好",
+              "english": "so / very (intensifier)",
+              "indonesian": "sangat (penguat)",
+              "note": "好 can mean 'good' but here it means 'so/very' — like saying 'I'm SO happy!'"
+            },
+            {
+              "pinyin": "kāixīn",
+              "chinese": "开心",
+              "english": "happy",
+              "indonesian": "senang / gembira"
+            },
+            {
+              "pinyin": "wǒ de",
+              "chinese": "我的",
+              "english": "my",
+              "indonesian": "milikku"
+            },
+            {
+              "pinyin": "xīnqíng",
+              "chinese": "心情",
+              "english": "mood / feeling",
+              "indonesian": "suasana hati / perasaan"
+            },
+            {
+              "pinyin": "hěn hǎo",
+              "chinese": "很好",
+              "english": "very good",
+              "indonesian": "sangat baik"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我很高兴！我想唱歌跳舞！",
+          "pinyin": "Wǒ hěn gāoxìng! Wǒ xiǎng chànggē tiàowǔ!",
+          "english": "I'm very happy! I want to sing and dance!",
+          "indonesian": "Aku sangat gembira! Aku ingin bernyanyi dan menari!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "gāoxìng",
+              "chinese": "高兴",
+              "english": "happy / glad",
+              "indonesian": "gembira / senang"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "ingin"
+            },
+            {
+              "pinyin": "chànggē",
+              "chinese": "唱歌",
+              "english": "sing a song",
+              "indonesian": "bernyanyi"
+            },
+            {
+              "pinyin": "tiàowǔ",
+              "chinese": "跳舞",
+              "english": "dance",
+              "indonesian": "menari"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "开心的时候，要把快乐分享给别人！这样大家都开心！",
+      "textPinyin": "Kāixīn de shíhou, yào bǎ kuàilè fēnxiǎng gěi biérén! Zhèyàng dàjiā dōu kāixīn!",
+      "textEnglish": "When you're happy, share the joy with others! That way everyone is happy!",
+      "textIndonesian": "Ketika kamu senang, bagikan kebahagiaan itu kepada orang lain! Dengan begitu semua orang ikut senang!",
+      "pinyinWords": [
+        {
+          "pinyin": "Kāixīn de shíhou",
+          "chinese": "开心的时候",
+          "english": "when (you are) happy",
+          "indonesian": "ketika (kamu) senang"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "should / need to",
+          "indonesian": "harus / perlu"
+        },
+        {
+          "pinyin": "bǎ",
+          "chinese": "把",
+          "english": "(action marker — moves object before verb)",
+          "indonesian": "(penanda tindakan)",
+          "note": "把 is used to move the object in front of the verb. '把快乐分享' = 'take joy and share it'"
+        },
+        {
+          "pinyin": "kuàilè",
+          "chinese": "快乐",
+          "english": "joy / happiness",
+          "indonesian": "kebahagiaan / rasa senang"
+        },
+        {
+          "pinyin": "fēnxiǎng",
+          "chinese": "分享",
+          "english": "share",
+          "indonesian": "berbagi"
+        },
+        {
+          "pinyin": "gěi",
+          "chinese": "给",
+          "english": "to / for",
+          "indonesian": "kepada / untuk"
+        },
+        {
+          "pinyin": "biérén",
+          "chinese": "别人",
+          "english": "others / other people",
+          "indonesian": "orang lain"
+        },
+        {
+          "pinyin": "Zhèyàng",
+          "chinese": "这样",
+          "english": "this way / so",
+          "indonesian": "dengan begitu"
+        },
+        {
+          "pinyin": "dàjiā",
+          "chinese": "大家",
+          "english": "everyone",
+          "indonesian": "semua orang"
+        },
+        {
+          "pinyin": "dōu",
+          "chinese": "都",
+          "english": "all / both",
+          "indonesian": "semua / juga"
+        },
+        {
+          "pinyin": "kāixīn",
+          "chinese": "开心",
+          "english": "happy",
+          "indonesian": "senang"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'happy' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "难过",
+          "pinyin": "nánguò",
+          "translation": "sad"
+        },
+        {
+          "chinese": "害怕",
+          "pinyin": "hàipà",
+          "translation": "scared"
+        },
+        {
+          "chinese": "开心",
+          "pinyin": "kāixīn",
+          "translation": "happy"
+        },
+        {
+          "chinese": "无聊",
+          "pinyin": "wúliáo",
+          "translation": "bored"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "开心 (kāixīn) means 'happy' — literally 'open heart'! When your heart opens up, you feel happy!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "骄傲",
+      "questionPinyin": "jiāoào",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "happy"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "proud"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "excited"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "surprised"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "骄傲 (jiāoào) means 'proud' — Mum says 妈妈为你骄傲 (Māma wèi nǐ jiāoào) = 'Mum is proud of you'!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'mood / feeling' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "感觉",
+          "pinyin": "gǎnjué",
+          "translation": "feel / feeling"
+        },
+        {
+          "chinese": "心情",
+          "pinyin": "xīnqíng",
+          "translation": "mood"
+        },
+        {
+          "chinese": "表扬",
+          "pinyin": "biǎoyáng",
+          "translation": "praise"
+        },
+        {
+          "chinese": "分享",
+          "pinyin": "fēnxiǎng",
+          "translation": "share"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "心情 (xīnqíng) means 'mood' — 心 means heart and 情 means feeling. Your heart's feeling = your mood!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "高兴",
+      "questionPinyin": "gāoxìng",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "sad"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "angry"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "tired"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "happy / glad"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "高兴 (gāoxìng) means 'happy / glad' — similar to 开心 but used in slightly more formal situations!"
+    }
+  ],
+  "category": "FEELINGS_AND_HEALTH"
+}

@@ -1,0 +1,561 @@
+{
+  "id": "scene35_hunger",
+  "title": "我饿了！",
+  "description": "Expressing hunger — telling Mum you're hungry and choosing what to eat for lunch",
+  "characterName": "妈妈",
+  "characterEmoji": "👩",
+  "characterRole": "Mum",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "宝贝，怎么了？",
+      "textPinyin": "Bǎobèi, zěnme le?",
+      "textEnglish": "Sweetie, what's up?",
+      "textIndonesian": "Sayang, ada apa?",
+      "pinyinWords": [
+        {
+          "pinyin": "Bǎobèi",
+          "chinese": "宝贝",
+          "english": "Sweetie / baby",
+          "indonesian": "Sayang"
+        },
+        {
+          "pinyin": "zěnme le",
+          "chinese": "怎么了",
+          "english": "what's up / what's wrong",
+          "indonesian": "ada apa",
+          "note": "怎么了 means 'What's wrong?' or 'What's up?' — a handy phrase for any situation!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "妈妈，我肚子饿了！我要吃东西！",
+          "pinyin": "Māma, wǒ dùzi è le! Wǒ yào chī dōngxi!",
+          "english": "Mum, my tummy is hungry! I want to eat something!",
+          "indonesian": "Mama, perutku lapar! Aku mau makan sesuatu!",
+          "pinyinWords": [
+            {
+              "pinyin": "Māma",
+              "chinese": "妈妈",
+              "english": "Mum",
+              "indonesian": "Mama"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "dùzi",
+              "chinese": "肚子",
+              "english": "tummy / belly",
+              "indonesian": "perut"
+            },
+            {
+              "pinyin": "è le",
+              "chinese": "饿了",
+              "english": "hungry now",
+              "indonesian": "lapar sekarang",
+              "note": "饿 means hungry. 了 shows it's happening NOW — my tummy just got hungry!"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "yào",
+              "chinese": "要",
+              "english": "want to / need to",
+              "indonesian": "mau / ingin"
+            },
+            {
+              "pinyin": "chī",
+              "chinese": "吃",
+              "english": "eat",
+              "indonesian": "makan"
+            },
+            {
+              "pinyin": "dōngxi",
+              "chinese": "东西",
+              "english": "something / food",
+              "indonesian": "sesuatu / makanan"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "妈妈，我好饿！我的肚子在叫了！",
+          "pinyin": "Māma, wǒ hǎo è! Wǒ de dùzi zài jiào le!",
+          "english": "Mum, I'm so hungry! My tummy is growling!",
+          "indonesian": "Mama, aku sangat lapar! Perutku sudah bunyi!",
+          "pinyinWords": [
+            {
+              "pinyin": "Māma",
+              "chinese": "妈妈",
+              "english": "Mum",
+              "indonesian": "Mama"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "hǎo è",
+              "chinese": "好饿",
+              "english": "SO hungry",
+              "indonesian": "sangat lapar"
+            },
+            {
+              "pinyin": "wǒ de",
+              "chinese": "我的",
+              "english": "My",
+              "indonesian": "Milikku"
+            },
+            {
+              "pinyin": "dùzi",
+              "chinese": "肚子",
+              "english": "tummy",
+              "indonesian": "perut"
+            },
+            {
+              "pinyin": "zài jiào",
+              "chinese": "在叫",
+              "english": "is growling / is calling",
+              "indonesian": "sedang bunyi / berteriak"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(new situation)",
+              "indonesian": "(situasi baru)",
+              "note": "在叫了 = 'is now growling' — 了 shows the tummy STARTED growling!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "哎呀！已经到午饭时间了！你想吃什么？",
+      "textPinyin": "Āiyā! Yǐjīng dào wǔfàn shíjiān le! Nǐ xiǎng chī shénme?",
+      "textEnglish": "Oh my! It's already lunchtime! What do you want to eat?",
+      "textIndonesian": "Aduh! Sudah waktunya makan siang! Kamu mau makan apa?",
+      "pinyinWords": [
+        {
+          "pinyin": "Āiyā",
+          "chinese": "哎呀",
+          "english": "Oh my! / Oops!",
+          "indonesian": "Aduh! / Ya ampun!"
+        },
+        {
+          "pinyin": "Yǐjīng",
+          "chinese": "已经",
+          "english": "already",
+          "indonesian": "sudah"
+        },
+        {
+          "pinyin": "dào",
+          "chinese": "到",
+          "english": "arrive / reach",
+          "indonesian": "tiba / sampai"
+        },
+        {
+          "pinyin": "wǔfàn",
+          "chinese": "午饭",
+          "english": "lunch",
+          "indonesian": "makan siang"
+        },
+        {
+          "pinyin": "shíjiān",
+          "chinese": "时间",
+          "english": "time",
+          "indonesian": "waktu"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(new situation)",
+          "indonesian": "(situasi baru)",
+          "note": "已经...了 together means 'it is already...' — 已经到了 = 'has already arrived!'"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "xiǎng",
+          "chinese": "想",
+          "english": "want to",
+          "indonesian": "ingin"
+        },
+        {
+          "pinyin": "chī",
+          "chinese": "吃",
+          "english": "eat",
+          "indonesian": "makan"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我想吃米饭！",
+          "pinyin": "Wǒ xiǎng chī mǐfàn!",
+          "english": "I want to eat rice!",
+          "indonesian": "Aku ingin makan nasi!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiǎng chī",
+              "chinese": "想吃",
+              "english": "want to eat",
+              "indonesian": "ingin makan"
+            },
+            {
+              "pinyin": "mǐfàn",
+              "chinese": "米饭",
+              "english": "rice",
+              "indonesian": "nasi"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我想吃面条！",
+          "pinyin": "Wǒ xiǎng chī miàntiáo!",
+          "english": "I want to eat noodles!",
+          "indonesian": "Aku ingin makan mie!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiǎng chī",
+              "chinese": "想吃",
+              "english": "want to eat",
+              "indonesian": "ingin makan"
+            },
+            {
+              "pinyin": "miàntiáo",
+              "chinese": "面条",
+              "english": "noodles",
+              "indonesian": "mie"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "好！妈妈帮你做。先去洗手！吃饭前要洗手！",
+      "textPinyin": "Hǎo! Māma bāng nǐ zuò. Xiān qù xǐshǒu! Chīfàn qián yào xǐshǒu!",
+      "textEnglish": "OK! Mum will make it for you. Go wash your hands first! You must wash hands before eating!",
+      "textIndonesian": "Baik! Mama akan membuatkannya. Cuci tangan dulu! Harus cuci tangan sebelum makan!",
+      "pinyinWords": [
+        {
+          "pinyin": "Hǎo",
+          "chinese": "好",
+          "english": "OK",
+          "indonesian": "Baik"
+        },
+        {
+          "pinyin": "Māma",
+          "chinese": "妈妈",
+          "english": "Mum",
+          "indonesian": "Mama"
+        },
+        {
+          "pinyin": "bāng nǐ",
+          "chinese": "帮你",
+          "english": "help you / for you",
+          "indonesian": "membantumu / untukmu"
+        },
+        {
+          "pinyin": "zuò",
+          "chinese": "做",
+          "english": "make / cook",
+          "indonesian": "membuat / memasak"
+        },
+        {
+          "pinyin": "Xiān",
+          "chinese": "先",
+          "english": "First",
+          "indonesian": "Dulu / Pertama"
+        },
+        {
+          "pinyin": "qù",
+          "chinese": "去",
+          "english": "go",
+          "indonesian": "pergi"
+        },
+        {
+          "pinyin": "xǐshǒu",
+          "chinese": "洗手",
+          "english": "wash hands",
+          "indonesian": "cuci tangan"
+        },
+        {
+          "pinyin": "Chīfàn qián",
+          "chinese": "吃饭前",
+          "english": "before eating",
+          "indonesian": "sebelum makan"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "must / need to",
+          "indonesian": "harus"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "好的，妈妈！我去洗手！",
+          "pinyin": "Hǎo de, māma! Wǒ qù xǐshǒu!",
+          "english": "OK, Mum! I'll go wash my hands!",
+          "indonesian": "Baik, Mama! Aku pergi cuci tangan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "OK / alright",
+              "indonesian": "Baik / oke"
+            },
+            {
+              "pinyin": "māma",
+              "chinese": "妈妈",
+              "english": "Mum",
+              "indonesian": "Mama"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "qù",
+              "chinese": "去",
+              "english": "go",
+              "indonesian": "pergi"
+            },
+            {
+              "pinyin": "xǐshǒu",
+              "chinese": "洗手",
+              "english": "wash hands",
+              "indonesian": "cuci tangan"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "做得好！吃饭前洗手，保持卫生很重要！开饭啦！",
+      "textPinyin": "Zuò de hǎo! Chīfàn qián xǐshǒu, bǎochí wèishēng hěn zhòngyào! Kāifàn la!",
+      "textEnglish": "Well done! Washing hands before eating is important for good hygiene! Time to eat!",
+      "textIndonesian": "Bagus sekali! Mencuci tangan sebelum makan sangat penting untuk kebersihan! Makan yuk!",
+      "pinyinWords": [
+        {
+          "pinyin": "Zuò de hǎo",
+          "chinese": "做得好",
+          "english": "Well done! / Did it well",
+          "indonesian": "Bagus sekali!"
+        },
+        {
+          "pinyin": "Chīfàn qián",
+          "chinese": "吃饭前",
+          "english": "before eating",
+          "indonesian": "sebelum makan"
+        },
+        {
+          "pinyin": "xǐshǒu",
+          "chinese": "洗手",
+          "english": "wash hands",
+          "indonesian": "cuci tangan"
+        },
+        {
+          "pinyin": "bǎochí",
+          "chinese": "保持",
+          "english": "maintain / keep",
+          "indonesian": "menjaga"
+        },
+        {
+          "pinyin": "wèishēng",
+          "chinese": "卫生",
+          "english": "hygiene / cleanliness",
+          "indonesian": "kebersihan"
+        },
+        {
+          "pinyin": "hěn zhòngyào",
+          "chinese": "很重要",
+          "english": "very important",
+          "indonesian": "sangat penting"
+        },
+        {
+          "pinyin": "Kāifàn la",
+          "chinese": "开饭啦",
+          "english": "Time to eat! / Food is ready!",
+          "indonesian": "Makan yuk! / Makanan sudah siap!"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'hungry' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "渴",
+          "pinyin": "kě",
+          "translation": "thirsty"
+        },
+        {
+          "chinese": "累",
+          "pinyin": "lèi",
+          "translation": "tired"
+        },
+        {
+          "chinese": "饱",
+          "pinyin": "bǎo",
+          "translation": "full"
+        },
+        {
+          "chinese": "饿",
+          "pinyin": "è",
+          "translation": "hungry"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "饿 (è) means 'hungry' — and 饱 (bǎo) means 'full'. After eating, you go from 饿 to 饱!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "米饭",
+      "questionPinyin": "mǐfàn",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "noodles"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "bread"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "rice"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "soup"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "米饭 (mǐfàn) means 'rice' — 米 means uncooked rice grain and 饭 means cooked food/meal. 米饭 = cooked rice!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'wash hands' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "洗澡",
+          "pinyin": "xǐzǎo",
+          "translation": "take a bath"
+        },
+        {
+          "chinese": "洗脸",
+          "pinyin": "xǐliǎn",
+          "translation": "wash face"
+        },
+        {
+          "chinese": "洗手",
+          "pinyin": "xǐshǒu",
+          "translation": "wash hands"
+        },
+        {
+          "chinese": "洗头",
+          "pinyin": "xǐtóu",
+          "translation": "wash hair"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "洗手 (xǐshǒu) means 'wash hands' — 洗 means 'wash' and 手 means 'hands'. Always wash 手 before you eat!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "午饭",
+      "questionPinyin": "wǔfàn",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "breakfast"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "lunch"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "dinner"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "snack"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "午饭 (wǔfàn) means 'lunch' — 午 means midday and 饭 means meal. Midday meal = lunch! 早饭 is breakfast and 晚饭 is dinner!"
+    }
+  ],
+  "category": "FOOD_AND_EATING"
+}

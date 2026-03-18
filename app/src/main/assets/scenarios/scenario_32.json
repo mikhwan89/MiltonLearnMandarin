@@ -1,0 +1,592 @@
+{
+  "id": "scene32_excitement",
+  "title": "我好兴奋！",
+  "description": "Expressing excitement — Dad announces a trip to the amusement park tomorrow",
+  "characterName": "爸爸",
+  "characterEmoji": "👨",
+  "characterRole": "Dad",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "宝贝，告诉你一个好消息！明天我们要去游乐园！",
+      "textPinyin": "Bǎobèi, gàosù nǐ yīgè hǎo xiāoxi! Míngtiān wǒmen yào qù yóulèyuán!",
+      "textEnglish": "Sweetie, I have good news for you! Tomorrow we're going to the amusement park!",
+      "textIndonesian": "Sayang, ada kabar baik untukmu! Besok kita akan pergi ke taman bermain!",
+      "pinyinWords": [
+        {
+          "pinyin": "Bǎobèi",
+          "chinese": "宝贝",
+          "english": "Sweetie / baby",
+          "indonesian": "Sayang"
+        },
+        {
+          "pinyin": "gàosù",
+          "chinese": "告诉",
+          "english": "tell",
+          "indonesian": "memberitahu"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "yīgè",
+          "chinese": "一个",
+          "english": "one (measure word)",
+          "indonesian": "satu (kata ukur)"
+        },
+        {
+          "pinyin": "hǎo xiāoxi",
+          "chinese": "好消息",
+          "english": "good news",
+          "indonesian": "kabar baik"
+        },
+        {
+          "pinyin": "Míngtiān",
+          "chinese": "明天",
+          "english": "Tomorrow",
+          "indonesian": "Besok"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we / us",
+          "indonesian": "kami / kita"
+        },
+        {
+          "pinyin": "yào qù",
+          "chinese": "要去",
+          "english": "going to / will go",
+          "indonesian": "akan pergi"
+        },
+        {
+          "pinyin": "yóulèyuán",
+          "chinese": "游乐园",
+          "english": "amusement park",
+          "indonesian": "taman bermain / taman hiburan"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "哇！我好兴奋！太棒了！",
+          "pinyin": "Wā! Wǒ hǎo xīngfèn! Tài bàng le!",
+          "english": "Wow! I'm so excited! That's awesome!",
+          "indonesian": "Wah! Aku sangat bersemangat! Luar biasa!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wā",
+              "chinese": "哇",
+              "english": "Wow",
+              "indonesian": "Wah"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "hǎo",
+              "chinese": "好",
+              "english": "so / very (intensifier)",
+              "indonesian": "sangat",
+              "note": "好 here means 'SO' — like saying 'I'm SO excited!' It makes the feeling stronger!"
+            },
+            {
+              "pinyin": "xīngfèn",
+              "chinese": "兴奋",
+              "english": "excited",
+              "indonesian": "bersemangat / antusias"
+            },
+            {
+              "pinyin": "Tài bàng le",
+              "chinese": "太棒了",
+              "english": "That's awesome!",
+              "indonesian": "Luar biasa!"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "爸爸！真的吗？我等不及了！",
+          "pinyin": "Bàba! Zhēn de ma? Wǒ děng bù jí le!",
+          "english": "Dad! Really? I can't wait!",
+          "indonesian": "Ayah! Benarkah? Aku tidak sabar menunggu!",
+          "pinyinWords": [
+            {
+              "pinyin": "Bàba",
+              "chinese": "爸爸",
+              "english": "Dad",
+              "indonesian": "Ayah"
+            },
+            {
+              "pinyin": "Zhēn de",
+              "chinese": "真的",
+              "english": "really / truly",
+              "indonesian": "benarkah / sungguh"
+            },
+            {
+              "pinyin": "ma",
+              "chinese": "吗",
+              "english": "(yes/no question word)",
+              "indonesian": "(kata tanya ya/tidak)",
+              "note": "Put 吗 at the end of any sentence to make it a yes/no question!"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "děng bù jí",
+              "chinese": "等不及",
+              "english": "can't wait",
+              "indonesian": "tidak sabar menunggu"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(shows new feeling/situation)",
+              "indonesian": "(menunjukkan situasi baru)",
+              "note": "了 here shows how you NOW feel — I can't wait (any more)!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "对！是真的！你最想玩什么？",
+      "textPinyin": "Duì! Shì zhēn de! Nǐ zuì xiǎng wán shénme?",
+      "textEnglish": "Yes! It's true! What do you most want to play?",
+      "textIndonesian": "Ya! Ini sungguhan! Apa yang paling ingin kamu mainkan?",
+      "pinyinWords": [
+        {
+          "pinyin": "Duì",
+          "chinese": "对",
+          "english": "Yes / correct / right",
+          "indonesian": "Ya / benar"
+        },
+        {
+          "pinyin": "Shì zhēn de",
+          "chinese": "是真的",
+          "english": "It's true / it's real",
+          "indonesian": "Ini sungguhan"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "zuì",
+          "chinese": "最",
+          "english": "most",
+          "indonesian": "paling"
+        },
+        {
+          "pinyin": "xiǎng",
+          "chinese": "想",
+          "english": "want to",
+          "indonesian": "ingin"
+        },
+        {
+          "pinyin": "wán",
+          "chinese": "玩",
+          "english": "play",
+          "indonesian": "bermain"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我想坐过山车！",
+          "pinyin": "Wǒ xiǎng zuò guòshānchē!",
+          "english": "I want to ride the roller coaster!",
+          "indonesian": "Aku ingin naik roller coaster!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "ingin"
+            },
+            {
+              "pinyin": "zuò",
+              "chinese": "坐",
+              "english": "sit / ride",
+              "indonesian": "duduk / naik"
+            },
+            {
+              "pinyin": "guòshānchē",
+              "chinese": "过山车",
+              "english": "roller coaster",
+              "indonesian": "roller coaster"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我想玩旋转木马！",
+          "pinyin": "Wǒ xiǎng wán xuánzhuǎn mùmǎ!",
+          "english": "I want to ride the merry-go-round!",
+          "indonesian": "Aku ingin naik komidi putar!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "ingin"
+            },
+            {
+              "pinyin": "wán",
+              "chinese": "玩",
+              "english": "play / ride",
+              "indonesian": "bermain / naik"
+            },
+            {
+              "pinyin": "xuánzhuǎn mùmǎ",
+              "chinese": "旋转木马",
+              "english": "merry-go-round",
+              "indonesian": "komidi putar"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "好！那我们明天早点出发！今晚早点睡觉，好不好？",
+      "textPinyin": "Hǎo! Nà wǒmen míngtiān zǎo diǎn chūfā! Jīn wǎn zǎo diǎn shuìjiào, hǎo bù hǎo?",
+      "textEnglish": "Great! Then let's set off early tomorrow! Sleep early tonight, OK?",
+      "textIndonesian": "Bagus! Kalau begitu besok kita berangkat pagi-pagi! Malam ini tidur lebih awal, ya?",
+      "pinyinWords": [
+        {
+          "pinyin": "Hǎo",
+          "chinese": "好",
+          "english": "Good / OK",
+          "indonesian": "Bagus / Baik"
+        },
+        {
+          "pinyin": "Nà",
+          "chinese": "那",
+          "english": "Then / in that case",
+          "indonesian": "Kalau begitu"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we / let's",
+          "indonesian": "kita"
+        },
+        {
+          "pinyin": "míngtiān",
+          "chinese": "明天",
+          "english": "tomorrow",
+          "indonesian": "besok"
+        },
+        {
+          "pinyin": "zǎo diǎn",
+          "chinese": "早点",
+          "english": "a bit earlier",
+          "indonesian": "lebih awal"
+        },
+        {
+          "pinyin": "chūfā",
+          "chinese": "出发",
+          "english": "set off / depart",
+          "indonesian": "berangkat"
+        },
+        {
+          "pinyin": "Jīn wǎn",
+          "chinese": "今晚",
+          "english": "tonight",
+          "indonesian": "malam ini"
+        },
+        {
+          "pinyin": "shuìjiào",
+          "chinese": "睡觉",
+          "english": "sleep",
+          "indonesian": "tidur"
+        },
+        {
+          "pinyin": "hǎo bù hǎo",
+          "chinese": "好不好",
+          "english": "OK? / good?",
+          "indonesian": "ya? / boleh?",
+          "note": "好不好 is a friendly way to ask 'OK?' — literally 'good or not good?' Great for asking agreement!"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "好的，爸爸！我现在就去睡！",
+          "pinyin": "Hǎo de, bàba! Wǒ xiànzài jiù qù shuì!",
+          "english": "OK, Dad! I'll go to sleep right now!",
+          "indonesian": "Baik, Ayah! Aku langsung pergi tidur sekarang!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "OK / alright",
+              "indonesian": "Baik / oke"
+            },
+            {
+              "pinyin": "bàba",
+              "chinese": "爸爸",
+              "english": "Dad",
+              "indonesian": "Ayah"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiànzài",
+              "chinese": "现在",
+              "english": "now",
+              "indonesian": "sekarang"
+            },
+            {
+              "pinyin": "jiù",
+              "chinese": "就",
+              "english": "right away / immediately",
+              "indonesian": "langsung / segera"
+            },
+            {
+              "pinyin": "qù shuì",
+              "chinese": "去睡",
+              "english": "go to sleep",
+              "indonesian": "pergi tidur"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "兴奋的感觉很好！但是要记得早睡，明天才有精神！",
+      "textPinyin": "Xīngfèn de gǎnjué hěn hǎo! Dànshì yào jìde zǎo shuì, míngtiān cái yǒu jīngshén!",
+      "textEnglish": "The feeling of excitement is great! But remember to sleep early, so you have energy tomorrow!",
+      "textIndonesian": "Perasaan bersemangat itu bagus! Tapi ingat tidur lebih awal, supaya besok ada tenaga!",
+      "pinyinWords": [
+        {
+          "pinyin": "Xīngfèn de gǎnjué",
+          "chinese": "兴奋的感觉",
+          "english": "the feeling of excitement",
+          "indonesian": "perasaan bersemangat"
+        },
+        {
+          "pinyin": "hěn hǎo",
+          "chinese": "很好",
+          "english": "very good",
+          "indonesian": "sangat baik"
+        },
+        {
+          "pinyin": "Dànshì",
+          "chinese": "但是",
+          "english": "But / however",
+          "indonesian": "Tapi / namun"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "need to / must",
+          "indonesian": "harus"
+        },
+        {
+          "pinyin": "jìde",
+          "chinese": "记得",
+          "english": "remember",
+          "indonesian": "ingat"
+        },
+        {
+          "pinyin": "zǎo shuì",
+          "chinese": "早睡",
+          "english": "sleep early",
+          "indonesian": "tidur lebih awal"
+        },
+        {
+          "pinyin": "míngtiān",
+          "chinese": "明天",
+          "english": "tomorrow",
+          "indonesian": "besok"
+        },
+        {
+          "pinyin": "cái",
+          "chinese": "才",
+          "english": "then / only then",
+          "indonesian": "baru bisa / barulah",
+          "note": "才 means 'only then can...' — sleep early, THEN you'll have energy. It shows a condition!"
+        },
+        {
+          "pinyin": "yǒu jīngshén",
+          "chinese": "有精神",
+          "english": "have energy / be energetic",
+          "indonesian": "punya tenaga / bersemangat"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'excited' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "开心",
+          "pinyin": "kāixīn",
+          "translation": "happy"
+        },
+        {
+          "chinese": "兴奋",
+          "pinyin": "xīngfèn",
+          "translation": "excited"
+        },
+        {
+          "chinese": "害怕",
+          "pinyin": "hàipà",
+          "translation": "scared"
+        },
+        {
+          "chinese": "难过",
+          "pinyin": "nánguò",
+          "translation": "sad"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "兴奋 (xīngfèn) means 'excited' — when you hear great news, you feel 兴奋!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "等不及",
+      "questionPinyin": "děng bù jí",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "I'm bored"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "I can't wait"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "I'm sleepy"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "I'm ready"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "等不及 (děng bù jí) means 'can't wait' — 等 means wait, 不及 means can't do it in time!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'amusement park' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "动物园",
+          "pinyin": "dòngwùyuán",
+          "translation": "zoo"
+        },
+        {
+          "chinese": "公园",
+          "pinyin": "gōngyuán",
+          "translation": "park"
+        },
+        {
+          "chinese": "游乐园",
+          "pinyin": "yóulèyuán",
+          "translation": "amusement park"
+        },
+        {
+          "chinese": "学校",
+          "pinyin": "xuéxiào",
+          "translation": "school"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "游乐园 (yóulèyuán) means 'amusement park' — 游 means play/travel, 乐 means fun, 园 means garden/park!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "明天",
+      "questionPinyin": "míngtiān",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "yesterday"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "today"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "tomorrow"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "next week"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "明天 (míngtiān) means 'tomorrow' — 明 means bright (the next bright day!) and 天 means sky/day!"
+    }
+  ],
+  "category": "FEELINGS_AND_HEALTH"
+}

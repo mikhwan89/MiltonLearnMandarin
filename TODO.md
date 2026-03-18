@@ -48,12 +48,18 @@ Add as `scenario_26.json` and `scenario_27.json`.
 
 ---
 
-### #5 — Health & Feelings batch (1 new scenario)
-**Category:** `FEELINGS_AND_HEALTH`
+### ✅ #5 — Health & Feelings batch (7 new scenarios) *(done)*
+**Category:** `FEELINGS_AND_HEALTH` / `FOOD_AND_EATING`
 
-- **场景 — 看医生 (At the Doctor):** Describe symptoms, receive reassurance. Vocab: 发烧, 头疼, 肚子疼, 打针, 快好了
+- **场景 A — 看医生 (At the Doctor):** Describe symptoms, receive reassurance. Vocab: 发烧, 头疼, 肚子疼, 打针, 快好了
+- **场景 B — 我好开心！(Happiness):** Gold star day, sharing joy. Vocab: 开心, 高兴, 骄傲, 心情, 表扬, 快乐, 分享
+- **场景 C — 我好兴奋！(Excitement):** Amusement park trip announced. Vocab: 兴奋, 期待, 等不及, 游乐园, 过山车, 旋转木马
+- **场景 D — 我很难过 (Sadness):** Toy broke / argued with friend. Vocab: 难过, 伤心, 哭, 陪, 安慰, 永远爱你
+- **场景 E — 我好无聊 (Boredom):** Nothing to do, go to the park. Vocab: 无聊, 东西, 出去玩, 公园, 点子
+- **场景 F — 我饿了！(Hunger):** Hungry at lunchtime, choose food. Vocab: 饿, 肚子, 米饭, 面条, 洗手, 午饭
+- **场景 G — 我好害怕！(Scared):** Thunderstorm at night, learning bravery. Vocab: 害怕, 打雷, 声音, 勇敢, 深呼吸, 骄傲
 
-Add as `scenario_28.json`.
+Added as `scenario_30.json` through `scenario_36.json`.
 
 ---
 

@@ -1,0 +1,555 @@
+{
+  "id": "scene36_scared",
+  "title": "我好害怕！",
+  "description": "Expressing fear — a thunderstorm at night, Dad comforts you and teaches you how to be brave",
+  "characterName": "爸爸",
+  "characterEmoji": "👨",
+  "characterRole": "Dad",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "宝贝，怎么了？你跑过来了！",
+      "textPinyin": "Bǎobèi, zěnme le? Nǐ pǎo guòlái le!",
+      "textEnglish": "Sweetie, what's wrong? You came running over!",
+      "textIndonesian": "Sayang, ada apa? Kamu berlari ke sini!",
+      "pinyinWords": [
+        {
+          "pinyin": "Bǎobèi",
+          "chinese": "宝贝",
+          "english": "Sweetie / baby",
+          "indonesian": "Sayang"
+        },
+        {
+          "pinyin": "zěnme le",
+          "chinese": "怎么了",
+          "english": "what's wrong",
+          "indonesian": "ada apa",
+          "note": "怎么了 means 'What's wrong?' — very useful whenever someone looks upset or runs to you!"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "pǎo guòlái",
+          "chinese": "跑过来",
+          "english": "ran over here / came running",
+          "indonesian": "berlari ke sini"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(just happened)",
+          "indonesian": "(baru saja terjadi)",
+          "note": "了 shows it just happened — 'You came running just now!'"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "爸爸，我好害怕！外面的声音太大了！",
+          "pinyin": "Bàba, wǒ hǎo hàipà! Wàimiàn de shēngyīn tài dà le!",
+          "english": "Dad, I'm so scared! The sound outside is so loud!",
+          "indonesian": "Ayah, aku sangat takut! Suara di luar terlalu keras!",
+          "pinyinWords": [
+            {
+              "pinyin": "Bàba",
+              "chinese": "爸爸",
+              "english": "Dad",
+              "indonesian": "Ayah"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "hǎo hàipà",
+              "chinese": "好害怕",
+              "english": "so scared",
+              "indonesian": "sangat takut"
+            },
+            {
+              "pinyin": "Wàimiàn",
+              "chinese": "外面",
+              "english": "outside",
+              "indonesian": "di luar"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "'s (belonging)",
+              "indonesian": "(kepemilikan)",
+              "note": "的 connects a describing word to a noun. 外面的声音 = 'the sound OF outside'."
+            },
+            {
+              "pinyin": "shēngyīn",
+              "chinese": "声音",
+              "english": "sound / noise",
+              "indonesian": "suara"
+            },
+            {
+              "pinyin": "tài dà le",
+              "chinese": "太大了",
+              "english": "too loud / too big",
+              "indonesian": "terlalu keras",
+              "note": "太...了 means 'too...' — 太大了 = 'too loud!' A great pattern to know!"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "爸爸，我很怕！打雷了！",
+          "pinyin": "Bàba, wǒ hěn pà! Dǎ léi le!",
+          "english": "Dad, I'm really scared! There's thunder!",
+          "indonesian": "Ayah, aku sangat takut! Ada petir!",
+          "pinyinWords": [
+            {
+              "pinyin": "Bàba",
+              "chinese": "爸爸",
+              "english": "Dad",
+              "indonesian": "Ayah"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "hěn pà",
+              "chinese": "很怕",
+              "english": "very scared",
+              "indonesian": "sangat takut"
+            },
+            {
+              "pinyin": "Dǎ léi",
+              "chinese": "打雷",
+              "english": "thunder",
+              "indonesian": "petir / guntur"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(just happened)",
+              "indonesian": "(baru saja terjadi)",
+              "note": "打雷了 = 'thunder happened / it is thundering' — 了 shows the thunder just started!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "没有关系！打雷是正常的，是天气的声音。爸爸在这里，不用怕！",
+      "textPinyin": "Méiyǒu guānxi! Dǎ léi shì zhèngcháng de, shì tiānqì de shēngyīn. Bàba zài zhèlǐ, búyòng pà!",
+      "textEnglish": "It's OK! Thunder is normal, it's just the sound of the weather. Dad is here, no need to be scared!",
+      "textIndonesian": "Tidak apa-apa! Petir itu normal, itu suara cuaca. Ayah ada di sini, tidak perlu takut!",
+      "pinyinWords": [
+        {
+          "pinyin": "Méiyǒu guānxi",
+          "chinese": "没有关系",
+          "english": "It's OK / no problem",
+          "indonesian": "Tidak apa-apa"
+        },
+        {
+          "pinyin": "Dǎ léi",
+          "chinese": "打雷",
+          "english": "Thunder",
+          "indonesian": "Petir / Guntur"
+        },
+        {
+          "pinyin": "shì",
+          "chinese": "是",
+          "english": "is",
+          "indonesian": "adalah"
+        },
+        {
+          "pinyin": "zhèngcháng de",
+          "chinese": "正常的",
+          "english": "normal",
+          "indonesian": "normal / wajar"
+        },
+        {
+          "pinyin": "tiānqì",
+          "chinese": "天气",
+          "english": "weather",
+          "indonesian": "cuaca"
+        },
+        {
+          "pinyin": "de shēngyīn",
+          "chinese": "的声音",
+          "english": "sound of",
+          "indonesian": "suara dari"
+        },
+        {
+          "pinyin": "Bàba",
+          "chinese": "爸爸",
+          "english": "Dad",
+          "indonesian": "Ayah"
+        },
+        {
+          "pinyin": "zài zhèlǐ",
+          "chinese": "在这里",
+          "english": "is here",
+          "indonesian": "ada di sini"
+        },
+        {
+          "pinyin": "búyòng pà",
+          "chinese": "不用怕",
+          "english": "no need to be scared",
+          "indonesian": "tidak perlu takut",
+          "note": "不用 means 'no need to' — 不用担心 (no need to worry), 不用谢 (no need to thank). Very useful!"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "害怕的时候可以怎么办？",
+      "textPinyin": "Hàipà de shíhou kěyǐ zěnme bàn?",
+      "textEnglish": "What can you do when you're scared?",
+      "textIndonesian": "Apa yang bisa kamu lakukan ketika takut?",
+      "pinyinWords": [
+        {
+          "pinyin": "Hàipà de shíhou",
+          "chinese": "害怕的时候",
+          "english": "when (you are) scared",
+          "indonesian": "ketika (kamu) takut"
+        },
+        {
+          "pinyin": "kěyǐ",
+          "chinese": "可以",
+          "english": "can / may",
+          "indonesian": "bisa / boleh"
+        },
+        {
+          "pinyin": "zěnme bàn",
+          "chinese": "怎么办",
+          "english": "what to do",
+          "indonesian": "harus bagaimana",
+          "note": "怎么办 means 'what to do / what can be done' — super useful phrase for any problem!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我可以抱着爸爸！这样我不害怕了！",
+          "pinyin": "Wǒ kěyǐ bàozhe bàba! Zhèyàng wǒ bú hàipà le!",
+          "english": "I can hug Dad! Then I won't be scared anymore!",
+          "indonesian": "Aku bisa peluk Ayah! Dengan begitu aku tidak takut lagi!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "kěyǐ",
+              "chinese": "可以",
+              "english": "can",
+              "indonesian": "bisa"
+            },
+            {
+              "pinyin": "bàozhe",
+              "chinese": "抱着",
+              "english": "hug / hold",
+              "indonesian": "memeluk"
+            },
+            {
+              "pinyin": "bàba",
+              "chinese": "爸爸",
+              "english": "Dad",
+              "indonesian": "Ayah"
+            },
+            {
+              "pinyin": "Zhèyàng",
+              "chinese": "这样",
+              "english": "this way / then",
+              "indonesian": "dengan begitu"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "bú hàipà le",
+              "chinese": "不害怕了",
+              "english": "not scared anymore",
+              "indonesian": "tidak takut lagi"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我可以深呼吸。吸气，呼气，我会好的。",
+          "pinyin": "Wǒ kěyǐ shēn hūxī. Xīqì, hūqì, wǒ huì hǎo de.",
+          "english": "I can take deep breaths. Breathe in, breathe out, I'll be OK.",
+          "indonesian": "Aku bisa tarik napas dalam-dalam. Hirup, hembuskan, aku akan baik-baik saja.",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "kěyǐ",
+              "chinese": "可以",
+              "english": "can",
+              "indonesian": "bisa"
+            },
+            {
+              "pinyin": "shēn hūxī",
+              "chinese": "深呼吸",
+              "english": "deep breath",
+              "indonesian": "napas dalam-dalam"
+            },
+            {
+              "pinyin": "Xīqì",
+              "chinese": "吸气",
+              "english": "Breathe in / inhale",
+              "indonesian": "Hirup / tarik napas"
+            },
+            {
+              "pinyin": "hūqì",
+              "chinese": "呼气",
+              "english": "Breathe out / exhale",
+              "indonesian": "Hembuskan / buang napas"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "huì hǎo de",
+              "chinese": "会好的",
+              "english": "will be OK",
+              "indonesian": "akan baik-baik saja"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "说得对！勇敢不是不害怕，而是害怕了，还是做！爸爸为你骄傲！",
+      "textPinyin": "Shuō de duì! Yǒnggǎn bú shì bú hàipà, érshì hàipà le, háishì zuò! Bàba wèi nǐ jiāoào!",
+      "textEnglish": "That's right! Being brave doesn't mean not being scared — it means still doing it even when you're scared! Dad is proud of you!",
+      "textIndonesian": "Benar! Berani bukan berarti tidak takut — tapi tetap melakukannya meskipun takut! Ayah bangga padamu!",
+      "pinyinWords": [
+        {
+          "pinyin": "Shuō de duì",
+          "chinese": "说得对",
+          "english": "That's right! / Said correctly",
+          "indonesian": "Benar! / Tepat sekali"
+        },
+        {
+          "pinyin": "Yǒnggǎn",
+          "chinese": "勇敢",
+          "english": "Brave / courageous",
+          "indonesian": "Berani"
+        },
+        {
+          "pinyin": "bú shì",
+          "chinese": "不是",
+          "english": "is not",
+          "indonesian": "bukan"
+        },
+        {
+          "pinyin": "bú hàipà",
+          "chinese": "不害怕",
+          "english": "not scared",
+          "indonesian": "tidak takut"
+        },
+        {
+          "pinyin": "érshì",
+          "chinese": "而是",
+          "english": "but rather / instead",
+          "indonesian": "melainkan / tapi",
+          "note": "不是...而是... means 'not...but rather...' — 不是A，而是B = 'Not A, but B'. A very useful contrast!"
+        },
+        {
+          "pinyin": "hàipà le",
+          "chinese": "害怕了",
+          "english": "even when scared",
+          "indonesian": "meskipun takut"
+        },
+        {
+          "pinyin": "háishì",
+          "chinese": "还是",
+          "english": "still / anyway",
+          "indonesian": "tetap saja"
+        },
+        {
+          "pinyin": "zuò",
+          "chinese": "做",
+          "english": "do (it)",
+          "indonesian": "melakukannya"
+        },
+        {
+          "pinyin": "Bàba",
+          "chinese": "爸爸",
+          "english": "Dad",
+          "indonesian": "Ayah"
+        },
+        {
+          "pinyin": "wèi nǐ",
+          "chinese": "为你",
+          "english": "for you / because of you",
+          "indonesian": "karenamu"
+        },
+        {
+          "pinyin": "jiāoào",
+          "chinese": "骄傲",
+          "english": "proud",
+          "indonesian": "bangga"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'scared' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "开心",
+          "pinyin": "kāixīn",
+          "translation": "happy"
+        },
+        {
+          "chinese": "难过",
+          "pinyin": "nánguò",
+          "translation": "sad"
+        },
+        {
+          "chinese": "害怕",
+          "pinyin": "hàipà",
+          "translation": "scared"
+        },
+        {
+          "chinese": "无聊",
+          "pinyin": "wúliáo",
+          "translation": "bored"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "害怕 (hàipà) means 'scared' — 害 means harm and 怕 means fear. You fear something harmful = scared!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "打雷",
+      "questionPinyin": "dǎ léi",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "rain"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "lightning"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "thunder"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "wind"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "打雷 (dǎ léi) means 'thunder' — 打 means 'hit/strike' and 雷 means 'thunder'. The sky is striking!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'brave' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "聪明",
+          "pinyin": "cōngmíng",
+          "translation": "clever"
+        },
+        {
+          "chinese": "勇敢",
+          "pinyin": "yǒnggǎn",
+          "translation": "brave"
+        },
+        {
+          "chinese": "可爱",
+          "pinyin": "kě'ài",
+          "translation": "cute"
+        },
+        {
+          "chinese": "开心",
+          "pinyin": "kāixīn",
+          "translation": "happy"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "勇敢 (yǒnggǎn) means 'brave' — being brave doesn't mean not being scared, it means doing it anyway!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "深呼吸",
+      "questionPinyin": "shēn hūxī",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "deep sleep"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "deep breath"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "loud cry"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "big hug"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "深呼吸 (shēn hūxī) means 'deep breath' — 深 means deep, 呼吸 means breathe. When scared, take a 深呼吸!"
+    }
+  ],
+  "category": "FEELINGS_AND_HEALTH"
+}

@@ -1,0 +1,561 @@
+{
+  "id": "scene34_boredom",
+  "title": "我好无聊",
+  "description": "Expressing boredom — telling Mum you have nothing to do and figuring out something fun",
+  "characterName": "妈妈",
+  "characterEmoji": "👩",
+  "characterRole": "Mum",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "宝贝，你怎么了？",
+      "textPinyin": "Bǎobèi, nǐ zěnme le?",
+      "textEnglish": "Sweetie, what's the matter?",
+      "textIndonesian": "Sayang, ada apa?",
+      "pinyinWords": [
+        {
+          "pinyin": "Bǎobèi",
+          "chinese": "宝贝",
+          "english": "Sweetie / baby",
+          "indonesian": "Sayang"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "zěnme le",
+          "chinese": "怎么了",
+          "english": "what's wrong / what's the matter",
+          "indonesian": "ada apa / kenapa",
+          "note": "怎么了 is a great phrase meaning 'What's wrong?' Use it when someone looks sad or different!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "妈妈，我好无聊。没有东西玩。",
+          "pinyin": "Māma, wǒ hǎo wúliáo. Méiyǒu dōngxi wán.",
+          "english": "Mum, I'm so bored. There's nothing to play with.",
+          "indonesian": "Mama, aku sangat bosan. Tidak ada yang bisa dimainkan.",
+          "pinyinWords": [
+            {
+              "pinyin": "Māma",
+              "chinese": "妈妈",
+              "english": "Mum",
+              "indonesian": "Mama"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "hǎo",
+              "chinese": "好",
+              "english": "so / very (intensifier)",
+              "indonesian": "sangat",
+              "note": "好 before a feeling word means 'SO' — 好无聊 = 'SO bored!'"
+            },
+            {
+              "pinyin": "wúliáo",
+              "chinese": "无聊",
+              "english": "bored / boring",
+              "indonesian": "bosan"
+            },
+            {
+              "pinyin": "Méiyǒu",
+              "chinese": "没有",
+              "english": "there isn't / don't have",
+              "indonesian": "tidak ada"
+            },
+            {
+              "pinyin": "dōngxi",
+              "chinese": "东西",
+              "english": "thing / stuff",
+              "indonesian": "sesuatu / benda"
+            },
+            {
+              "pinyin": "wán",
+              "chinese": "玩",
+              "english": "play (with)",
+              "indonesian": "dimainkan"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "妈妈，我不知道做什么。我无聊了。",
+          "pinyin": "Māma, wǒ bù zhīdào zuò shénme. Wǒ wúliáo le.",
+          "english": "Mum, I don't know what to do. I'm bored.",
+          "indonesian": "Mama, aku tidak tahu harus melakukan apa. Aku bosan.",
+          "pinyinWords": [
+            {
+              "pinyin": "Māma",
+              "chinese": "妈妈",
+              "english": "Mum",
+              "indonesian": "Mama"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "bù zhīdào",
+              "chinese": "不知道",
+              "english": "don't know",
+              "indonesian": "tidak tahu"
+            },
+            {
+              "pinyin": "zuò",
+              "chinese": "做",
+              "english": "do",
+              "indonesian": "melakukan"
+            },
+            {
+              "pinyin": "shénme",
+              "chinese": "什么",
+              "english": "what",
+              "indonesian": "apa"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "wúliáo le",
+              "chinese": "无聊了",
+              "english": "bored now",
+              "indonesian": "bosan sekarang",
+              "note": "了 here shows a change — you weren't bored before, but now you are bored!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "要不要画画？还是你想出去玩？",
+      "textPinyin": "Yào bù yào huà huà? Háishì nǐ xiǎng chūqù wán?",
+      "textEnglish": "Do you want to draw? Or do you want to go out and play?",
+      "textIndonesian": "Mau menggambar? Atau kamu ingin keluar bermain?",
+      "pinyinWords": [
+        {
+          "pinyin": "Yào bù yào",
+          "chinese": "要不要",
+          "english": "do you want to / want or not",
+          "indonesian": "mau atau tidak",
+          "note": "要不要 is an easy way to make a choice question — 'want or not?' Try it: 要不要吃饭？(Do you want to eat?)"
+        },
+        {
+          "pinyin": "huà huà",
+          "chinese": "画画",
+          "english": "draw / paint",
+          "indonesian": "menggambar"
+        },
+        {
+          "pinyin": "Háishì",
+          "chinese": "还是",
+          "english": "or (giving a choice)",
+          "indonesian": "atau (pilihan)",
+          "note": "还是 means 'or' when giving someone a choice — '这个还是那个?' (This one or that one?)"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "xiǎng",
+          "chinese": "想",
+          "english": "want to",
+          "indonesian": "ingin"
+        },
+        {
+          "pinyin": "chūqù",
+          "chinese": "出去",
+          "english": "go out",
+          "indonesian": "keluar"
+        },
+        {
+          "pinyin": "wán",
+          "chinese": "玩",
+          "english": "play",
+          "indonesian": "bermain"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "妈妈，我想出去玩！去公园吧！",
+          "pinyin": "Māma, wǒ xiǎng chūqù wán! Qù gōngyuán ba!",
+          "english": "Mum, I want to go out and play! Let's go to the park!",
+          "indonesian": "Mama, aku ingin keluar bermain! Ke taman yuk!",
+          "pinyinWords": [
+            {
+              "pinyin": "Māma",
+              "chinese": "妈妈",
+              "english": "Mum",
+              "indonesian": "Mama"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "ingin"
+            },
+            {
+              "pinyin": "chūqù",
+              "chinese": "出去",
+              "english": "go out",
+              "indonesian": "keluar"
+            },
+            {
+              "pinyin": "wán",
+              "chinese": "玩",
+              "english": "play",
+              "indonesian": "bermain"
+            },
+            {
+              "pinyin": "Qù",
+              "chinese": "去",
+              "english": "Go to",
+              "indonesian": "Pergi ke"
+            },
+            {
+              "pinyin": "gōngyuán",
+              "chinese": "公园",
+              "english": "park",
+              "indonesian": "taman"
+            },
+            {
+              "pinyin": "ba",
+              "chinese": "吧",
+              "english": "(suggestion word)",
+              "indonesian": "(kata saran)",
+              "note": "吧 at the end is like saying 'Let's...!' or 'How about...?' It makes a gentle suggestion."
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好啊！我想画画！你帮我一起画吗？",
+          "pinyin": "Hǎo a! Wǒ xiǎng huà huà! Nǐ bāng wǒ yīqǐ huà ma?",
+          "english": "OK! I want to draw! Will you help me draw together?",
+          "indonesian": "Oke! Aku ingin menggambar! Mama mau bantu aku menggambar bersama?",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo a",
+              "chinese": "好啊",
+              "english": "OK! / Great!",
+              "indonesian": "Oke! / Bagus!"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "ingin"
+            },
+            {
+              "pinyin": "huà huà",
+              "chinese": "画画",
+              "english": "draw",
+              "indonesian": "menggambar"
+            },
+            {
+              "pinyin": "Nǐ",
+              "chinese": "你",
+              "english": "You",
+              "indonesian": "Kamu"
+            },
+            {
+              "pinyin": "bāng wǒ",
+              "chinese": "帮我",
+              "english": "help me",
+              "indonesian": "bantu aku"
+            },
+            {
+              "pinyin": "yīqǐ",
+              "chinese": "一起",
+              "english": "together",
+              "indonesian": "bersama"
+            },
+            {
+              "pinyin": "huà",
+              "chinese": "画",
+              "english": "draw",
+              "indonesian": "menggambar"
+            },
+            {
+              "pinyin": "ma",
+              "chinese": "吗",
+              "english": "(yes/no question word)",
+              "indonesian": "(kata tanya ya/tidak)",
+              "note": "吗 at the end turns the sentence into a yes/no question — quick and easy!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "好！我们一起去公园！换上鞋子，我们出发！",
+      "textPinyin": "Hǎo! Wǒmen yīqǐ qù gōngyuán! Huàn shàng xiézi, wǒmen chūfā!",
+      "textEnglish": "Great! Let's go to the park together! Put your shoes on, let's go!",
+      "textIndonesian": "Bagus! Kita pergi ke taman bersama! Pakai sepatu, kita berangkat!",
+      "pinyinWords": [
+        {
+          "pinyin": "Hǎo",
+          "chinese": "好",
+          "english": "Good / OK",
+          "indonesian": "Bagus / Baik"
+        },
+        {
+          "pinyin": "Wǒmen",
+          "chinese": "我们",
+          "english": "We / let's",
+          "indonesian": "Kita"
+        },
+        {
+          "pinyin": "yīqǐ",
+          "chinese": "一起",
+          "english": "together",
+          "indonesian": "bersama"
+        },
+        {
+          "pinyin": "qù",
+          "chinese": "去",
+          "english": "go",
+          "indonesian": "pergi"
+        },
+        {
+          "pinyin": "gōngyuán",
+          "chinese": "公园",
+          "english": "park",
+          "indonesian": "taman"
+        },
+        {
+          "pinyin": "Huàn shàng",
+          "chinese": "换上",
+          "english": "put on / change into",
+          "indonesian": "pakai / ganti dengan"
+        },
+        {
+          "pinyin": "xiézi",
+          "chinese": "鞋子",
+          "english": "shoes",
+          "indonesian": "sepatu"
+        },
+        {
+          "pinyin": "chūfā",
+          "chinese": "出发",
+          "english": "set off / go",
+          "indonesian": "berangkat"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "无聊的时候，可以动动脑子，想出新点子！",
+      "textPinyin": "Wúliáo de shíhou, kěyǐ dòng dòng nǎozi, xiǎng chū xīn diǎnzi!",
+      "textEnglish": "When you're bored, you can use your brain and think of new ideas!",
+      "textIndonesian": "Ketika bosan, kamu bisa gunakan otakmu dan pikirkan ide-ide baru!",
+      "pinyinWords": [
+        {
+          "pinyin": "Wúliáo de shíhou",
+          "chinese": "无聊的时候",
+          "english": "when (you are) bored",
+          "indonesian": "ketika (kamu) bosan"
+        },
+        {
+          "pinyin": "kěyǐ",
+          "chinese": "可以",
+          "english": "can / may",
+          "indonesian": "bisa / boleh"
+        },
+        {
+          "pinyin": "dòng dòng nǎozi",
+          "chinese": "动动脑子",
+          "english": "use your brain / exercise your brain",
+          "indonesian": "gunakan otakmu",
+          "note": "动动 (dòng dòng) means 'move a little' — 动动脑子 literally means 'move your brain a little' = think!"
+        },
+        {
+          "pinyin": "xiǎng chū",
+          "chinese": "想出",
+          "english": "think of / come up with",
+          "indonesian": "memikirkan / menemukan"
+        },
+        {
+          "pinyin": "xīn",
+          "chinese": "新",
+          "english": "new",
+          "indonesian": "baru"
+        },
+        {
+          "pinyin": "diǎnzi",
+          "chinese": "点子",
+          "english": "ideas",
+          "indonesian": "ide-ide"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'bored' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "难过",
+          "pinyin": "nánguò",
+          "translation": "sad"
+        },
+        {
+          "chinese": "开心",
+          "pinyin": "kāixīn",
+          "translation": "happy"
+        },
+        {
+          "chinese": "无聊",
+          "pinyin": "wúliáo",
+          "translation": "bored"
+        },
+        {
+          "chinese": "害怕",
+          "pinyin": "hàipà",
+          "translation": "scared"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "无聊 (wúliáo) means 'bored' — 无 means 'without' and 聊 means 'chat/fun'. No fun = bored!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "公园",
+      "questionPinyin": "gōngyuán",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "supermarket"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "school"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "park"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "hospital"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "公园 (gōngyuán) means 'park' — 公 means public and 园 means garden. A public garden = park!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'there is nothing / don't have'?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "不要",
+          "pinyin": "bù yào",
+          "translation": "don't want"
+        },
+        {
+          "chinese": "没有",
+          "pinyin": "méiyǒu",
+          "translation": "there isn't / don't have"
+        },
+        {
+          "chinese": "不是",
+          "pinyin": "bú shì",
+          "translation": "is not"
+        },
+        {
+          "chinese": "不会",
+          "pinyin": "bú huì",
+          "translation": "can't do"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "没有 (méiyǒu) means 'there isn't / don't have' — 没有东西玩 means 'there's nothing to play with'!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "出去玩",
+      "questionPinyin": "chūqù wán",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "go to sleep"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "go out and play"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "go eat"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "go to school"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "出去玩 (chūqù wán) means 'go out and play' — 出去 means 'go out' and 玩 means 'play'!"
+    }
+  ],
+  "category": "FEELINGS_AND_HEALTH"
+}

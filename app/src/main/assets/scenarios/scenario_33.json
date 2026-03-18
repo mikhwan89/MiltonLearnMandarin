@@ -1,0 +1,528 @@
+{
+  "id": "scene33_sadness",
+  "title": "我很难过",
+  "description": "Expressing sadness — Mum notices something is wrong and helps Milton talk about his feelings",
+  "characterName": "妈妈",
+  "characterEmoji": "👩",
+  "characterRole": "Mum",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "宝贝，你怎么了？你的眼睛红红的。",
+      "textPinyin": "Bǎobèi, nǐ zěnme le? Nǐ de yǎnjīng hóng hóng de.",
+      "textEnglish": "Sweetie, what's wrong? Your eyes are all red.",
+      "textIndonesian": "Sayang, ada apa? Matamu merah semua.",
+      "pinyinWords": [
+        {
+          "pinyin": "Bǎobèi",
+          "chinese": "宝贝",
+          "english": "Sweetie / baby",
+          "indonesian": "Sayang"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "zěnme le",
+          "chinese": "怎么了",
+          "english": "what's wrong / what happened",
+          "indonesian": "ada apa / kenapa",
+          "note": "怎么了 is super useful! It means 'What's wrong?' — use it whenever someone looks upset."
+        },
+        {
+          "pinyin": "nǐ de",
+          "chinese": "你的",
+          "english": "your",
+          "indonesian": "milikmu"
+        },
+        {
+          "pinyin": "yǎnjīng",
+          "chinese": "眼睛",
+          "english": "eyes",
+          "indonesian": "mata"
+        },
+        {
+          "pinyin": "hóng hóng de",
+          "chinese": "红红的",
+          "english": "red (all red)",
+          "indonesian": "merah (sangat merah)",
+          "note": "Repeating a colour (红红的) makes it more descriptive — 'red red' = 'all red / very red'!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "妈妈，我很难过。",
+          "pinyin": "Māma, wǒ hěn nánguò.",
+          "english": "Mum, I'm very sad.",
+          "indonesian": "Mama, aku sangat sedih.",
+          "pinyinWords": [
+            {
+              "pinyin": "Māma",
+              "chinese": "妈妈",
+              "english": "Mum",
+              "indonesian": "Mama"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "nánguò",
+              "chinese": "难过",
+              "english": "sad",
+              "indonesian": "sedih"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "妈妈，我想哭。",
+          "pinyin": "Māma, wǒ xiǎng kū.",
+          "english": "Mum, I want to cry.",
+          "indonesian": "Mama, aku ingin menangis.",
+          "pinyinWords": [
+            {
+              "pinyin": "Māma",
+              "chinese": "妈妈",
+              "english": "Mum",
+              "indonesian": "Mama"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "ingin"
+            },
+            {
+              "pinyin": "kū",
+              "chinese": "哭",
+              "english": "cry",
+              "indonesian": "menangis"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "发生什么事了？告诉妈妈，好吗？",
+      "textPinyin": "Fāshēng shénme shì le? Gàosù māma, hǎo ma?",
+      "textEnglish": "What happened? Tell Mum, OK?",
+      "textIndonesian": "Apa yang terjadi? Ceritakan ke Mama, ya?",
+      "pinyinWords": [
+        {
+          "pinyin": "Fāshēng",
+          "chinese": "发生",
+          "english": "happen",
+          "indonesian": "terjadi"
+        },
+        {
+          "pinyin": "shénme shì",
+          "chinese": "什么事",
+          "english": "what (thing/matter)",
+          "indonesian": "apa (hal)"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(completion / new situation)",
+          "indonesian": "(selesai / situasi baru)",
+          "note": "了 here signals something has changed or happened — 'What happened?' = 发生什么事了？"
+        },
+        {
+          "pinyin": "Gàosù",
+          "chinese": "告诉",
+          "english": "Tell",
+          "indonesian": "Ceritakan / beritahu"
+        },
+        {
+          "pinyin": "māma",
+          "chinese": "妈妈",
+          "english": "Mum",
+          "indonesian": "Mama"
+        },
+        {
+          "pinyin": "hǎo ma",
+          "chinese": "好吗",
+          "english": "OK? / alright?",
+          "indonesian": "ya? / boleh?",
+          "note": "好吗 at the end is a gentle way to ask someone's agreement — 'OK?' It's softer than a direct question."
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我的玩具坏了。我很伤心。",
+          "pinyin": "Wǒ de wánjù huài le. Wǒ hěn shāngxīn.",
+          "english": "My toy broke. I'm very sad.",
+          "indonesian": "Mainanku rusak. Aku sangat sedih.",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ de",
+              "chinese": "我的",
+              "english": "My",
+              "indonesian": "Mainanku / milikku"
+            },
+            {
+              "pinyin": "wánjù",
+              "chinese": "玩具",
+              "english": "toy",
+              "indonesian": "mainan"
+            },
+            {
+              "pinyin": "huài le",
+              "chinese": "坏了",
+              "english": "broke / broken",
+              "indonesian": "rusak",
+              "note": "坏了 means 'broken' — 坏 means bad/broken and 了 shows it just happened!"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "shāngxīn",
+              "chinese": "伤心",
+              "english": "sad / heartbroken",
+              "indonesian": "sedih / sakit hati"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我和朋友吵架了，我心里不舒服。",
+          "pinyin": "Wǒ hé péngyǒu chǎojià le, wǒ xīnlǐ bù shūfu.",
+          "english": "I argued with my friend, I feel bad inside.",
+          "indonesian": "Aku bertengkar dengan teman, hatiku tidak enak.",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "hé",
+              "chinese": "和",
+              "english": "with",
+              "indonesian": "dengan"
+            },
+            {
+              "pinyin": "péngyǒu",
+              "chinese": "朋友",
+              "english": "friend",
+              "indonesian": "teman"
+            },
+            {
+              "pinyin": "chǎojià le",
+              "chinese": "吵架了",
+              "english": "argued / had a fight",
+              "indonesian": "bertengkar"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "xīnlǐ",
+              "chinese": "心里",
+              "english": "inside my heart / inside",
+              "indonesian": "di dalam hati"
+            },
+            {
+              "pinyin": "bù shūfu",
+              "chinese": "不舒服",
+              "english": "uncomfortable / feel bad",
+              "indonesian": "tidak enak / tidak nyaman"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "没关系，妈妈陪着你。哭出来没关系的，你的感觉很重要。",
+      "textPinyin": "Méi guānxi, māma péi zhe nǐ. Kū chūlai méi guānxi de, nǐ de gǎnjué hěn zhòngyào.",
+      "textEnglish": "It's OK, Mum is with you. It's OK to cry, your feelings are very important.",
+      "textIndonesian": "Tidak apa-apa, Mama menemanimu. Tidak apa-apa menangis, perasaanmu sangat penting.",
+      "pinyinWords": [
+        {
+          "pinyin": "Méi guānxi",
+          "chinese": "没关系",
+          "english": "It's OK / no problem",
+          "indonesian": "Tidak apa-apa"
+        },
+        {
+          "pinyin": "māma",
+          "chinese": "妈妈",
+          "english": "Mum",
+          "indonesian": "Mama"
+        },
+        {
+          "pinyin": "péi zhe nǐ",
+          "chinese": "陪着你",
+          "english": "accompanying you / with you",
+          "indonesian": "menemanimu"
+        },
+        {
+          "pinyin": "Kū chūlai",
+          "chinese": "哭出来",
+          "english": "cry it out / let it out",
+          "indonesian": "keluarkan tangisnya"
+        },
+        {
+          "pinyin": "méi guānxi de",
+          "chinese": "没关系的",
+          "english": "it's OK / it's fine",
+          "indonesian": "tidak apa-apa"
+        },
+        {
+          "pinyin": "nǐ de",
+          "chinese": "你的",
+          "english": "your",
+          "indonesian": "milikmu"
+        },
+        {
+          "pinyin": "gǎnjué",
+          "chinese": "感觉",
+          "english": "feelings",
+          "indonesian": "perasaan"
+        },
+        {
+          "pinyin": "hěn",
+          "chinese": "很",
+          "english": "very",
+          "indonesian": "sangat"
+        },
+        {
+          "pinyin": "zhòngyào",
+          "chinese": "重要",
+          "english": "important",
+          "indonesian": "penting"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "难过的时候，要告诉爸爸妈妈。我们永远爱你！",
+      "textPinyin": "Nánguò de shíhou, yào gàosù bàba māma. Wǒmen yǒngyuǎn ài nǐ!",
+      "textEnglish": "When you're sad, tell Mum and Dad. We will always love you!",
+      "textIndonesian": "Ketika kamu sedih, ceritakan ke Ayah dan Mama. Kami selalu menyayangimu!",
+      "pinyinWords": [
+        {
+          "pinyin": "Nánguò de shíhou",
+          "chinese": "难过的时候",
+          "english": "when (you are) sad",
+          "indonesian": "ketika (kamu) sedih"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "should / need to",
+          "indonesian": "harus / perlu"
+        },
+        {
+          "pinyin": "gàosù",
+          "chinese": "告诉",
+          "english": "tell",
+          "indonesian": "ceritakan / beritahu"
+        },
+        {
+          "pinyin": "bàba māma",
+          "chinese": "爸爸妈妈",
+          "english": "Mum and Dad",
+          "indonesian": "Ayah dan Mama"
+        },
+        {
+          "pinyin": "Wǒmen",
+          "chinese": "我们",
+          "english": "We",
+          "indonesian": "Kami"
+        },
+        {
+          "pinyin": "yǒngyuǎn",
+          "chinese": "永远",
+          "english": "always / forever",
+          "indonesian": "selalu / selamanya"
+        },
+        {
+          "pinyin": "ài",
+          "chinese": "爱",
+          "english": "love",
+          "indonesian": "menyayangi / mencintai"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'sad' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "开心",
+          "pinyin": "kāixīn",
+          "translation": "happy"
+        },
+        {
+          "chinese": "兴奋",
+          "pinyin": "xīngfèn",
+          "translation": "excited"
+        },
+        {
+          "chinese": "难过",
+          "pinyin": "nánguò",
+          "translation": "sad"
+        },
+        {
+          "chinese": "骄傲",
+          "pinyin": "jiāoào",
+          "translation": "proud"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "难过 (nánguò) means 'sad' — 难 means difficult and 过 means pass. Sadness is a difficult feeling to get through!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "哭",
+      "questionPinyin": "kū",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "laugh"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "cry"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "shout"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "smile"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "哭 (kū) means 'cry' — it's OK to cry when you're sad! 哭出来没关系的 (It's OK to cry)!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'always / forever'?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "已经",
+          "pinyin": "yǐjīng",
+          "translation": "already"
+        },
+        {
+          "chinese": "现在",
+          "pinyin": "xiànzài",
+          "translation": "now"
+        },
+        {
+          "chinese": "以前",
+          "pinyin": "yǐqián",
+          "translation": "before"
+        },
+        {
+          "chinese": "永远",
+          "pinyin": "yǒngyuǎn",
+          "translation": "always / forever"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "永远 (yǒngyuǎn) means 'always / forever' — Mum and Dad will 永远爱你 (always love you)!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "没关系",
+      "questionPinyin": "méi guānxi",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "thank you"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "it's OK / no problem"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "I don't know"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "be careful"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "没关系 (méi guānxi) means 'It's OK / no problem' — use this to reassure someone. 没 means 'no' and 关系 means 'connection/matter'!"
+    }
+  ],
+  "category": "FEELINGS_AND_HEALTH"
+}
