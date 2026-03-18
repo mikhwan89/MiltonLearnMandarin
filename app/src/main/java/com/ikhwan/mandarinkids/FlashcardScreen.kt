@@ -8,6 +8,8 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -114,13 +116,18 @@ fun FlashcardScreen(
             )
         } else if (currentWord != null) {
             val word = currentWord
-            Column(
+            Box(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(padding)
-                    .padding(16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState())
+                        .padding(16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
                 LinearProgressIndicator(
                     progress = { vm.masteredCount.toFloat() / vm.allWords.size },
                     modifier = Modifier
@@ -344,7 +351,8 @@ fun FlashcardScreen(
                 TextButton(onClick = onComplete) {
                     Text("Skip flashcards → go to conversation", fontSize = 13.sp)
                 }
-            }
+                }
+            } // Box
         }
     }
 
