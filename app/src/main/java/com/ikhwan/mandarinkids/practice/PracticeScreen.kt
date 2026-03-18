@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ikhwan.mandarinkids.ToneUtils
+import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.tts.TtsManager
 import com.ikhwan.mandarinkids.tts.rememberTtsManager
@@ -53,7 +54,9 @@ private fun masteryEmoji(level: Int): String = when (level) {
 fun PracticeScreen(onBack: () -> Unit) {
     val context = LocalContext.current
     val repo = remember { ProgressRepository.getInstance(context) }
-    val vm: PracticeSessionViewModel = viewModel(factory = PracticeSessionViewModel.factory(repo))
+    val vm: PracticeSessionViewModel = viewModel(
+        factory = PracticeSessionViewModel.factory(repo, JsonScenarioRepository)
+    )
     val tts: TtsManager = rememberTtsManager()
 
     // Auto-play TTS on every new card

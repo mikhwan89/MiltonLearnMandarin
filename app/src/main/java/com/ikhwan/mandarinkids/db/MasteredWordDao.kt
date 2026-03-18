@@ -1,6 +1,8 @@
 package com.ikhwan.mandarinkids.db
 
 import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Upsert
 import kotlinx.coroutines.flow.Flow
@@ -10,6 +12,10 @@ interface MasteredWordDao {
 
     @Upsert
     suspend fun upsert(entity: MasteredWordEntity)
+
+    /** Insert only — silently skips rows that already exist (preserves earned boxLevel). */
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertIgnore(entity: MasteredWordEntity)
 
     @Query("SELECT * FROM mastered_words ORDER BY masteredAt DESC")
     fun getAll(): Flow<List<MasteredWordEntity>>

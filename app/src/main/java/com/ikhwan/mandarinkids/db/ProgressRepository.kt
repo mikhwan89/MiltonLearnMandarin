@@ -66,6 +66,14 @@ class ProgressRepository private constructor(
 
     // ── Mastered word persistence ─────────────────────────────────────────
 
+    /**
+     * Seeds all [words] for [scenarioId] into the DB with boxLevel=1.
+     * Uses INSERT OR IGNORE so any word already tracked keeps its existing mastery level.
+     */
+    suspend fun seedWordsForScenario(scenarioId: String, words: List<MasteredWordEntity>) {
+        words.forEach { masteredWordDao.insertIgnore(it) }
+    }
+
     suspend fun markWordMastered(entity: MasteredWordEntity) {
         masteredWordDao.upsert(entity)
         val count = masteredWordDao.getTotalCount().first()

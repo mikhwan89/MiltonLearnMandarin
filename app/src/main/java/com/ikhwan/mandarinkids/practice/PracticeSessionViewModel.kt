@@ -6,12 +6,17 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.ikhwan.mandarinkids.data.scenarios.ScenarioRepository
 import com.ikhwan.mandarinkids.db.MasteredWordEntity
 import com.ikhwan.mandarinkids.db.ProgressRepository
+import com.ikhwan.mandarinkids.getFlashcardWords
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-class PracticeSessionViewModel(private val repository: ProgressRepository) : ViewModel() {
+class PracticeSessionViewModel(
+    private val repository: ProgressRepository,
+    private val scenarioRepository: ScenarioRepository
+) : ViewModel() {
 
     var isLoading by mutableStateOf(true)
         private set
@@ -47,6 +52,28 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
 
     init {
         viewModelScope.launch {
+            // Seed words for every scenario the student has played (stars >= 1),
+            // even if they skipped the per-scenario flashcard screen.
+            val completedIds = repository.getAllProgress().first()
+                .filter { it.stars >= 1 }
+                .map { it.scenarioId }
+            for (scenarioId in completedIds) {
+                val scenario = scenarioRepository.getById(scenarioId) ?: continue
+                val seedWords = scenario.getFlashcardWords().map { pw ->
+                    MasteredWordEntity(
+                        scenarioId = scenarioId,
+                        chinese = pw.chinese,
+                        pinyin = pw.pinyin,
+                        english = pw.english,
+                        indonesian = pw.indonesian,
+                        note = pw.note,
+                        boxLevel = 1,
+                        nextReviewDate = 0L
+                    )
+                }
+                repository.seedWordsForScenario(scenarioId, seedWords)
+            }
+
             val words = repository.getAllMasteredWords().first()
                 .distinctBy { it.chinese }
             allWords = words
@@ -118,10 +145,13 @@ class PracticeSessionViewModel(private val repository: ProgressRepository) : Vie
     fun finishEarly() { showSummary = true }
 
     companion object {
-        fun factory(repository: ProgressRepository) = object : ViewModelProvider.Factory {
+        fun factory(
+            repository: ProgressRepository,
+            scenarioRepository: ScenarioRepository
+        ) = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T =
-                PracticeSessionViewModel(repository) as T
+                PracticeSessionViewModel(repository, scenarioRepository) as T
         }
     }
 }
