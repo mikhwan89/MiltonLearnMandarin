@@ -9,7 +9,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
     entities = [ScenarioProgressEntity::class, MasteredWordEntity::class, MilestoneReward::class],
-    version = 5,
+    version = 6,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -70,6 +70,16 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        // Purge mastered_words rows whose Chinese text has 5+ characters — these are
+        // stale pre-split entries from before the 4-character-max flashcard refactor.
+        // SQLite has no Unicode-aware length for CJK, so we delete rows where the byte
+        // length (each CJK char = 3 UTF-8 bytes) is ≥ 15, i.e. 5 × 3 = 15 bytes.
+        private val MIGRATION_5_6 = object : Migration(5, 6) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("DELETE FROM mastered_words WHERE length(chinese) >= 15")
+            }
+        }
+
         fun getInstance(context: Context): AppDatabase =
             INSTANCE ?: synchronized(this) {
                 INSTANCE ?: Room.databaseBuilder(
@@ -77,7 +87,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "milton_progress.db"
                 )
-                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
+                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6)
                     .build()
                     .also { INSTANCE = it }
             }
