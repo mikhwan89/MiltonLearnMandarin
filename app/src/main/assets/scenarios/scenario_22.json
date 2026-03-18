@@ -1,0 +1,568 @@
+{
+  "id": "scene22_cooking",
+  "title": "我会做饭",
+  "description": "Helping dad cook a simple meal together in the kitchen",
+  "characterName": "爸爸",
+  "characterEmoji": "👨‍🍳",
+  "characterRole": "dad",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "今天我们一起做饭！你要帮忙吗？",
+      "textPinyin": "Jīntiān wǒmen yīqǐ zuò fàn! Nǐ yào bāngmáng ma?",
+      "textEnglish": "Today we are cooking together! Do you want to help?",
+      "textIndonesian": "Hari ini kita masak bersama! Kamu mau bantu?",
+      "pinyinWords": [
+        {
+          "pinyin": "Jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we / us",
+          "indonesian": "kita"
+        },
+        {
+          "pinyin": "yīqǐ",
+          "chinese": "一起",
+          "english": "together",
+          "indonesian": "bersama"
+        },
+        {
+          "pinyin": "zuò fàn",
+          "chinese": "做饭",
+          "english": "cook / make food",
+          "indonesian": "memasak",
+          "note": "做 means 'do / make' and 饭 means 'cooked rice / food'. 做饭 = cook a meal!"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "want / would like to",
+          "indonesian": "mau"
+        },
+        {
+          "pinyin": "bāngmáng",
+          "chinese": "帮忙",
+          "english": "help / give a hand",
+          "indonesian": "membantu",
+          "note": "帮忙 means to help or give a hand. You can also say 帮你 (bāng nǐ) = help you!"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(question word)",
+          "indonesian": "(kata tanya)"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "要！我帮你！我喜欢做饭！",
+          "pinyin": "Yào! Wǒ bāng nǐ! Wǒ xǐhuān zuò fàn!",
+          "english": "Yes! I'll help you! I like cooking!",
+          "indonesian": "Mau! Saya bantu kamu! Saya suka memasak!",
+          "pinyinWords": [
+            {
+              "pinyin": "Yào",
+              "chinese": "要",
+              "english": "Yes / I want to",
+              "indonesian": "Mau"
+            },
+            {
+              "pinyin": "Wǒ bāng nǐ",
+              "chinese": "我帮你",
+              "english": "I'll help you",
+              "indonesian": "Saya bantu kamu"
+            },
+            {
+              "pinyin": "Wǒ xǐhuān",
+              "chinese": "我喜欢",
+              "english": "I like",
+              "indonesian": "Saya suka"
+            },
+            {
+              "pinyin": "zuò fàn",
+              "chinese": "做饭",
+              "english": "cooking / making food",
+              "indonesian": "memasak"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "太好了！先帮我切菜！用刀小心地切。",
+      "textPinyin": "Tài hǎo le! Xiān bāng wǒ qiē cài! Yòng dāo xiǎoxīn de qiē.",
+      "textEnglish": "Wonderful! First help me chop the vegetables! Use the knife carefully.",
+      "textIndonesian": "Luar biasa! Pertama bantu saya potong sayuran! Pakai pisau dengan hati-hati.",
+      "pinyinWords": [
+        {
+          "pinyin": "Tài hǎo le",
+          "chinese": "太好了",
+          "english": "wonderful / great",
+          "indonesian": "luar biasa / sangat bagus"
+        },
+        {
+          "pinyin": "Xiān",
+          "chinese": "先",
+          "english": "first",
+          "indonesian": "pertama"
+        },
+        {
+          "pinyin": "bāng wǒ",
+          "chinese": "帮我",
+          "english": "help me",
+          "indonesian": "bantu saya"
+        },
+        {
+          "pinyin": "qiē",
+          "chinese": "切",
+          "english": "cut / chop",
+          "indonesian": "memotong",
+          "note": "切 (qiē) means to cut or chop food. It's a 4th tone — say it with a short, falling sound!"
+        },
+        {
+          "pinyin": "cài",
+          "chinese": "菜",
+          "english": "vegetables / dish",
+          "indonesian": "sayuran / masakan"
+        },
+        {
+          "pinyin": "yòng dāo",
+          "chinese": "用刀",
+          "english": "use a knife",
+          "indonesian": "pakai pisau"
+        },
+        {
+          "pinyin": "xiǎoxīn",
+          "chinese": "小心",
+          "english": "careful / be careful",
+          "indonesian": "hati-hati"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "好的！我来切菜！我会小心的！",
+          "pinyin": "Hǎo de! Wǒ lái qiē cài! Wǒ huì xiǎoxīn de!",
+          "english": "Okay! I'll chop the vegetables! I'll be careful!",
+          "indonesian": "Baik! Saya akan potong sayurannya! Saya akan hati-hati!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "okay / alright",
+              "indonesian": "baik / oke"
+            },
+            {
+              "pinyin": "Wǒ lái",
+              "chinese": "我来",
+              "english": "I'll do it / let me",
+              "indonesian": "Saya yang",
+              "note": "我来 means 'let me do it' or 'I'll take care of it'. It sounds enthusiastic and helpful!"
+            },
+            {
+              "pinyin": "qiē cài",
+              "chinese": "切菜",
+              "english": "chop vegetables",
+              "indonesian": "potong sayuran"
+            },
+            {
+              "pinyin": "Wǒ huì xiǎoxīn de",
+              "chinese": "我会小心的",
+              "english": "I will be careful",
+              "indonesian": "Saya akan hati-hati"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "切得很好！现在我们用锅来炒菜！",
+      "textPinyin": "Qiē de hěn hǎo! Xiànzài wǒmen yòng guō lái chǎo cài!",
+      "textEnglish": "You chopped it well! Now we use the wok to stir-fry the vegetables!",
+      "textIndonesian": "Potongannya bagus! Sekarang kita pakai wajan untuk menumis sayurannya!",
+      "pinyinWords": [
+        {
+          "pinyin": "Qiē de hěn hǎo",
+          "chinese": "切得很好",
+          "english": "chopped it very well",
+          "indonesian": "potongannya sangat bagus"
+        },
+        {
+          "pinyin": "Xiànzài",
+          "chinese": "现在",
+          "english": "now",
+          "indonesian": "sekarang"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we",
+          "indonesian": "kita"
+        },
+        {
+          "pinyin": "yòng",
+          "chinese": "用",
+          "english": "use",
+          "indonesian": "pakai / gunakan"
+        },
+        {
+          "pinyin": "guō",
+          "chinese": "锅",
+          "english": "wok / pot / pan",
+          "indonesian": "wajan / panci",
+          "note": "锅 (guō) is the wok — the big round pan used in Chinese cooking. Almost every Chinese dish is cooked in a 锅!"
+        },
+        {
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "to (do something)",
+          "indonesian": "untuk"
+        },
+        {
+          "pinyin": "chǎo cài",
+          "chinese": "炒菜",
+          "english": "stir-fry vegetables",
+          "indonesian": "menumis sayuran",
+          "note": "炒 (chǎo) means to stir-fry — cooking in a hot wok with a little oil. It's the most common Chinese cooking method!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "哇！锅里好香！我也想炒！",
+          "pinyin": "Wā! Guō lǐ hǎo xiāng! Wǒ yě xiǎng chǎo!",
+          "english": "Wow! It smells so good in the wok! I want to stir-fry too!",
+          "indonesian": "Wah! Di wajan baunya enak sekali! Saya juga mau menumis!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wā",
+              "chinese": "哇",
+              "english": "Wow!",
+              "indonesian": "Wah!"
+            },
+            {
+              "pinyin": "Guō lǐ",
+              "chinese": "锅里",
+              "english": "in the wok",
+              "indonesian": "di dalam wajan"
+            },
+            {
+              "pinyin": "hǎo xiāng",
+              "chinese": "好香",
+              "english": "smells so good",
+              "indonesian": "baunya enak sekali"
+            },
+            {
+              "pinyin": "Wǒ yě xiǎng chǎo",
+              "chinese": "我也想炒",
+              "english": "I also want to stir-fry",
+              "indonesian": "Saya juga mau menumis"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "炒菜好厉害！爸爸你真棒！",
+          "pinyin": "Chǎo cài hǎo lìhai! Bàba nǐ zhēn bàng!",
+          "english": "Stir-frying is so impressive! Dad, you are amazing!",
+          "indonesian": "Memasak tumis keren sekali! Ayah kamu hebat!",
+          "pinyinWords": [
+            {
+              "pinyin": "Chǎo cài",
+              "chinese": "炒菜",
+              "english": "stir-frying",
+              "indonesian": "menumis sayuran"
+            },
+            {
+              "pinyin": "hǎo lìhai",
+              "chinese": "好厉害",
+              "english": "so impressive / so cool",
+              "indonesian": "keren sekali"
+            },
+            {
+              "pinyin": "Bàba",
+              "chinese": "爸爸",
+              "english": "Dad",
+              "indonesian": "Ayah"
+            },
+            {
+              "pinyin": "nǐ zhēn bàng",
+              "chinese": "你真棒",
+              "english": "you are amazing",
+              "indonesian": "kamu hebat sekali"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "好了！来尝一口。好不好吃？",
+      "textPinyin": "Hǎo le! Lái cháng yī kǒu. Hǎo bù hǎo chī?",
+      "textEnglish": "Done! Come and have a taste. Is it delicious or not?",
+      "textIndonesian": "Selesai! Ayo coba satu suap. Enak atau tidak?",
+      "pinyinWords": [
+        {
+          "pinyin": "Hǎo le",
+          "chinese": "好了",
+          "english": "done! / ready!",
+          "indonesian": "selesai! / sudah jadi!"
+        },
+        {
+          "pinyin": "Lái cháng",
+          "chinese": "来尝",
+          "english": "come and taste",
+          "indonesian": "ayo coba"
+        },
+        {
+          "pinyin": "yī kǒu",
+          "chinese": "一口",
+          "english": "one bite / one mouthful",
+          "indonesian": "satu suap",
+          "note": "口 (kǒu) means mouth. 一口 = one mouthful — just a little taste!"
+        },
+        {
+          "pinyin": "Hǎo bù hǎo chī",
+          "chinese": "好不好吃",
+          "english": "Is it delicious or not?",
+          "indonesian": "Enak atau tidak?",
+          "note": "好不好 is a common way to ask a yes/no question: 好 (good) + 不 (not) + 好 (good) = 'good or not?'"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "好吃！非常好吃！谢谢爸爸！",
+          "pinyin": "Hǎo chī! Fēicháng hǎo chī! Xièxie bàba!",
+          "english": "Delicious! Extremely delicious! Thank you dad!",
+          "indonesian": "Enak! Enak sekali! Terima kasih ayah!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo chī",
+              "chinese": "好吃",
+              "english": "delicious",
+              "indonesian": "enak",
+              "note": "好吃 literally means 'good to eat'. It's the number one food compliment in Chinese!"
+            },
+            {
+              "pinyin": "Fēicháng",
+              "chinese": "非常",
+              "english": "extremely / very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "hǎo chī",
+              "chinese": "好吃",
+              "english": "delicious",
+              "indonesian": "enak"
+            },
+            {
+              "pinyin": "Xièxie bàba",
+              "chinese": "谢谢爸爸",
+              "english": "thank you dad",
+              "indonesian": "terima kasih ayah"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 5,
+      "speaker": "CHARACTER",
+      "textChinese": "哈哈，你真棒！以后你也能自己做饭！",
+      "textPinyin": "Hāhā, nǐ zhēn bàng! Yǐhòu nǐ yě néng zìjǐ zuò fàn!",
+      "textEnglish": "Haha, you are amazing! In the future you will be able to cook by yourself!",
+      "textIndonesian": "Haha, kamu hebat! Nanti kamu juga bisa memasak sendiri!",
+      "pinyinWords": [
+        {
+          "pinyin": "Hāhā",
+          "chinese": "哈哈",
+          "english": "haha (laugh)",
+          "indonesian": "haha (tertawa)"
+        },
+        {
+          "pinyin": "nǐ zhēn bàng",
+          "chinese": "你真棒",
+          "english": "you are really amazing",
+          "indonesian": "kamu benar-benar hebat"
+        },
+        {
+          "pinyin": "Yǐhòu",
+          "chinese": "以后",
+          "english": "in the future / later",
+          "indonesian": "di masa depan / nanti"
+        },
+        {
+          "pinyin": "nǐ yě néng",
+          "chinese": "你也能",
+          "english": "you will also be able to",
+          "indonesian": "kamu juga bisa"
+        },
+        {
+          "pinyin": "zìjǐ",
+          "chinese": "自己",
+          "english": "by yourself / on your own",
+          "indonesian": "sendiri"
+        },
+        {
+          "pinyin": "zuò fàn",
+          "chinese": "做饭",
+          "english": "cook / make food",
+          "indonesian": "memasak"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does 好吃 mean?",
+      "questionChinese": "好吃",
+      "questionPinyin": "hǎo chī",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "I am hungry"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "delicious"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "let's eat"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "cook together"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "好吃 (hǎo chī) means delicious! 好 = good, 吃 = eat. Say this after every yummy meal!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'wok / cooking pot' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "刀",
+          "pinyin": "dāo",
+          "translation": "knife"
+        },
+        {
+          "chinese": "锅",
+          "pinyin": "guō",
+          "translation": "wok / pot"
+        },
+        {
+          "chinese": "菜",
+          "pinyin": "cài",
+          "translation": "vegetables"
+        },
+        {
+          "chinese": "饭",
+          "pinyin": "fàn",
+          "translation": "cooked rice / food"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "锅 (guō) is the wok! It's the most important tool in Chinese cooking. Every kitchen has one!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'stir-fry' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "切",
+          "pinyin": "qiē",
+          "translation": "chop / cut"
+        },
+        {
+          "chinese": "洗",
+          "pinyin": "xǐ",
+          "translation": "wash"
+        },
+        {
+          "chinese": "炒",
+          "pinyin": "chǎo",
+          "translation": "stir-fry"
+        },
+        {
+          "chinese": "煮",
+          "pinyin": "zhǔ",
+          "translation": "boil"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "炒 (chǎo) means to stir-fry! It's the most popular cooking method in China — fast and delicious!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "我帮你",
+      "questionPinyin": "wǒ bāng nǐ",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "I want to eat"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "I'll help you"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "I can cook"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "thank you"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "我帮你 (wǒ bāng nǐ) means 'I'll help you'! Say this whenever you want to be helpful!"
+    }
+  ],
+  "category": "FOOD_AND_EATING"
+}

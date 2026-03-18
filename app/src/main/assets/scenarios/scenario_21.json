@@ -1,0 +1,461 @@
+{
+  "id": "scene21_fruit_stand",
+  "title": "水果摊",
+  "description": "Buying fruit from a vendor at the fruit stand",
+  "characterName": "水果阿姨",
+  "characterEmoji": "🍉",
+  "characterRole": "fruit vendor",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "小朋友，你好！你想买什么水果？",
+      "textPinyin": "Xiǎo péngyou, nǐ hǎo! Nǐ xiǎng mǎi shénme shuǐguǒ?",
+      "textEnglish": "Hello little friend! What fruit would you like to buy?",
+      "textIndonesian": "Halo anak kecil! Kamu mau beli buah apa?",
+      "pinyinWords": [
+        {
+          "pinyin": "Xiǎo péngyou",
+          "chinese": "小朋友",
+          "english": "little friend / child",
+          "indonesian": "anak kecil"
+        },
+        {
+          "pinyin": "nǐ hǎo",
+          "chinese": "你好",
+          "english": "hello",
+          "indonesian": "halo"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "xiǎng mǎi",
+          "chinese": "想买",
+          "english": "want to buy",
+          "indonesian": "mau beli"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        },
+        {
+          "pinyin": "shuǐguǒ",
+          "chinese": "水果",
+          "english": "fruit",
+          "indonesian": "buah",
+          "note": "水 means water and 果 means result/fruit. So 水果 literally means 'water fruit' — fruits are juicy!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我想买苹果！",
+          "pinyin": "Wǒ xiǎng mǎi píngguǒ!",
+          "english": "I would like to buy apples!",
+          "indonesian": "Saya mau beli apel!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ xiǎng mǎi",
+              "chinese": "我想买",
+              "english": "I want to buy",
+              "indonesian": "Saya mau beli"
+            },
+            {
+              "pinyin": "píngguǒ",
+              "chinese": "苹果",
+              "english": "apple",
+              "indonesian": "apel"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我想买香蕉！",
+          "pinyin": "Wǒ xiǎng mǎi xiāngjiāo!",
+          "english": "I would like to buy bananas!",
+          "indonesian": "Saya mau beli pisang!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ xiǎng mǎi",
+              "chinese": "我想买",
+              "english": "I want to buy",
+              "indonesian": "Saya mau beli"
+            },
+            {
+              "pinyin": "xiāngjiāo",
+              "chinese": "香蕉",
+              "english": "banana",
+              "indonesian": "pisang",
+              "note": "香 means fragrant and 蕉 refers to the banana plant. 香蕉 — a fragrant fruit!"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我想买西瓜！",
+          "pinyin": "Wǒ xiǎng mǎi xīguā!",
+          "english": "I would like to buy watermelon!",
+          "indonesian": "Saya mau beli semangka!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ xiǎng mǎi",
+              "chinese": "我想买",
+              "english": "I want to buy",
+              "indonesian": "Saya mau beli"
+            },
+            {
+              "pinyin": "xīguā",
+              "chinese": "西瓜",
+              "english": "watermelon",
+              "indonesian": "semangka",
+              "note": "西 means west and 瓜 means melon. Watermelons originally came from the west — that's why!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "好的！你要几个？",
+      "textPinyin": "Hǎo de! Nǐ yào jǐ gè?",
+      "textEnglish": "Great! How many would you like?",
+      "textIndonesian": "Baik! Kamu mau berapa?",
+      "pinyinWords": [
+        {
+          "pinyin": "Hǎo de",
+          "chinese": "好的",
+          "english": "okay / alright",
+          "indonesian": "baik / oke"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "want / need",
+          "indonesian": "mau / perlu"
+        },
+        {
+          "pinyin": "jǐ gè",
+          "chinese": "几个",
+          "english": "how many",
+          "indonesian": "berapa buah",
+          "note": "几 asks 'how many' for small numbers. 个 is a general counter word for things."
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "请给我两个，谢谢！",
+          "pinyin": "Qǐng gěi wǒ liǎng gè, xièxie!",
+          "english": "Please give me two, thank you!",
+          "indonesian": "Tolong beri saya dua, terima kasih!",
+          "pinyinWords": [
+            {
+              "pinyin": "Qǐng gěi wǒ",
+              "chinese": "请给我",
+              "english": "please give me",
+              "indonesian": "tolong beri saya",
+              "note": "请 makes a request polite — like saying 'please'. 请给我... = 'please give me...'"
+            },
+            {
+              "pinyin": "liǎng gè",
+              "chinese": "两个",
+              "english": "two (items)",
+              "indonesian": "dua buah",
+              "note": "When counting objects, use 两 (liǎng) for 'two', not 二 (èr). 两个 = two things!"
+            },
+            {
+              "pinyin": "xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "请给我三个，谢谢！",
+          "pinyin": "Qǐng gěi wǒ sān gè, xièxie!",
+          "english": "Please give me three, thank you!",
+          "indonesian": "Tolong beri saya tiga, terima kasih!",
+          "pinyinWords": [
+            {
+              "pinyin": "Qǐng gěi wǒ",
+              "chinese": "请给我",
+              "english": "please give me",
+              "indonesian": "tolong beri saya"
+            },
+            {
+              "pinyin": "sān gè",
+              "chinese": "三个",
+              "english": "three (items)",
+              "indonesian": "tiga buah"
+            },
+            {
+              "pinyin": "xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "好新鲜！一共五块钱。多少钱？五块钱！",
+      "textPinyin": "Hǎo xīnxiān! Yīgòng wǔ kuài qián. Duōshao qián? Wǔ kuài qián!",
+      "textEnglish": "So fresh! Five yuan in total. How much? Five yuan!",
+      "textIndonesian": "Sangat segar! Total lima yuan. Berapa harganya? Lima yuan!",
+      "pinyinWords": [
+        {
+          "pinyin": "Hǎo xīnxiān",
+          "chinese": "好新鲜",
+          "english": "so fresh",
+          "indonesian": "sangat segar"
+        },
+        {
+          "pinyin": "Yīgòng",
+          "chinese": "一共",
+          "english": "in total / altogether",
+          "indonesian": "total / semuanya"
+        },
+        {
+          "pinyin": "wǔ kuài qián",
+          "chinese": "五块钱",
+          "english": "five yuan",
+          "indonesian": "lima yuan",
+          "note": "块 (kuài) is the everyday word for yuan — like saying 'bucks' instead of 'dollars'. 五块钱 = five yuan!"
+        },
+        {
+          "pinyin": "Duōshao qián",
+          "chinese": "多少钱",
+          "english": "how much money?",
+          "indonesian": "berapa harganya?",
+          "note": "多少钱 is the key shopping phrase — it means 'how much does it cost?' Use it everywhere!"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "给你钱！谢谢阿姨！",
+          "pinyin": "Gěi nǐ qián! Xièxie āyí!",
+          "english": "Here is the money! Thank you auntie!",
+          "indonesian": "Ini uangnya! Terima kasih tante!",
+          "pinyinWords": [
+            {
+              "pinyin": "Gěi nǐ",
+              "chinese": "给你",
+              "english": "here you go / for you",
+              "indonesian": "ini untukmu",
+              "note": "给你 literally means 'give you' — it's what you say when handing something over."
+            },
+            {
+              "pinyin": "qián",
+              "chinese": "钱",
+              "english": "money",
+              "indonesian": "uang"
+            },
+            {
+              "pinyin": "Xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            },
+            {
+              "pinyin": "āyí",
+              "chinese": "阿姨",
+              "english": "auntie (polite address for adult woman)",
+              "indonesian": "tante (panggilan sopan untuk wanita dewasa)"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "谢谢你！拿好了，欢迎下次再来！",
+      "textPinyin": "Xièxie nǐ! Ná hǎo le, huānyíng xià cì zài lái!",
+      "textEnglish": "Thank you! Take care, welcome to come again next time!",
+      "textIndonesian": "Terima kasih! Pegang baik-baik, selamat datang lagi lain waktu!",
+      "pinyinWords": [
+        {
+          "pinyin": "Xièxie nǐ",
+          "chinese": "谢谢你",
+          "english": "thank you",
+          "indonesian": "terima kasih"
+        },
+        {
+          "pinyin": "Ná hǎo le",
+          "chinese": "拿好了",
+          "english": "hold it carefully / take care",
+          "indonesian": "pegang baik-baik"
+        },
+        {
+          "pinyin": "huānyíng",
+          "chinese": "欢迎",
+          "english": "welcome",
+          "indonesian": "selamat datang"
+        },
+        {
+          "pinyin": "xià cì",
+          "chinese": "下次",
+          "english": "next time",
+          "indonesian": "lain waktu"
+        },
+        {
+          "pinyin": "zài lái",
+          "chinese": "再来",
+          "english": "come again",
+          "indonesian": "datang lagi"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'apple' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "西瓜",
+          "pinyin": "xīguā",
+          "translation": "watermelon"
+        },
+        {
+          "chinese": "香蕉",
+          "pinyin": "xiāngjiāo",
+          "translation": "banana"
+        },
+        {
+          "chinese": "苹果",
+          "pinyin": "píngguǒ",
+          "translation": "apple"
+        },
+        {
+          "chinese": "水果",
+          "pinyin": "shuǐguǒ",
+          "translation": "fruit"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "苹果 (píngguǒ) means apple! Now you can order apples anywhere in China."
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "多少钱",
+      "questionPinyin": "duōshao qián",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "thank you"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "how much does it cost?"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "please give me"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "I want to buy"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "多少钱 (duōshao qián) means 'how much does it cost?' — the most important shopping phrase!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'please give me' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "我想买",
+          "pinyin": "wǒ xiǎng mǎi",
+          "translation": "I want to buy"
+        },
+        {
+          "chinese": "给你",
+          "pinyin": "gěi nǐ",
+          "translation": "here you go"
+        },
+        {
+          "chinese": "请给我",
+          "pinyin": "qǐng gěi wǒ",
+          "translation": "please give me"
+        },
+        {
+          "chinese": "谢谢你",
+          "pinyin": "xièxie nǐ",
+          "translation": "thank you"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "请给我 (qǐng gěi wǒ) means 'please give me'. 请 makes it polite — always use it when asking for something!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "西瓜",
+      "questionPinyin": "xīguā",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "apple"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "banana"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "watermelon"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "orange"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "西瓜 (xīguā) means watermelon! 西 means west and 瓜 means melon. Watermelons came from the west!"
+    }
+  ],
+  "category": "FOOD_AND_EATING"
+}

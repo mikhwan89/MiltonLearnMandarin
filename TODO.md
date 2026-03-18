@@ -8,7 +8,7 @@ Ordered roughly by impact. Items #1–5 are highest-leverage.
 
 We have 19 scenarios. Target: 30+. Add in priority order below.
 
-### #1 — Food & Eating batch (2 new scenarios)
+### ✅ #1 — Food & Eating batch (2 new scenarios) *(done)*
 **Category:** `FOOD_AND_EATING`
 
 - **场景 A — 水果摊 (At the Fruit Stand):** Buy fruit from a vendor. Vocab: 苹果, 香蕉, 西瓜, 多少钱, 请给我…
