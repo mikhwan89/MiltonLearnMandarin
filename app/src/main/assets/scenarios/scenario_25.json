@@ -1,0 +1,727 @@
+{
+  "id": "scene25_zoo_trip",
+  "title": "动物园参观",
+  "description": "School field trip to the zoo — spotting animals and sharing what you see with your teacher",
+  "characterName": "Wang 老师",
+  "characterEmoji": "👩‍🏫",
+  "characterRole": "teacher",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "同学们！今天学校带我们去动物园参观！你最想看什么动物？",
+      "textPinyin": "Tóngxuémen! Jīntiān xuéxiào dài wǒmen qù dòngwùyuán cānguān! Nǐ zuì xiǎng kàn shénme dòngwù?",
+      "textEnglish": "Classmates! Today school is taking us to visit the zoo! What animal do you most want to see?",
+      "textIndonesian": "Teman-teman! Hari ini sekolah membawa kita mengunjungi kebun binatang! Hewan apa yang paling ingin kamu lihat?",
+      "pinyinWords": [
+        {
+          "pinyin": "Tóngxuémen",
+          "chinese": "同学们",
+          "english": "classmates / everyone",
+          "indonesian": "teman-teman kelas",
+          "note": "同学 means classmate. Adding 们 makes it plural — like saying 'everyone' or 'guys'. 同学们！= Hey everyone!"
+        },
+        {
+          "pinyin": "xuéxiào",
+          "chinese": "学校",
+          "english": "school",
+          "indonesian": "sekolah"
+        },
+        {
+          "pinyin": "dài wǒmen",
+          "chinese": "带我们",
+          "english": "bring us / take us",
+          "indonesian": "membawa kita"
+        },
+        {
+          "pinyin": "dòngwùyuán",
+          "chinese": "动物园",
+          "english": "zoo",
+          "indonesian": "kebun binatang",
+          "note": "动物 means animal, 园 means garden or park. 动物园 = animal park = zoo!"
+        },
+        {
+          "pinyin": "cānguān",
+          "chinese": "参观",
+          "english": "visit / go on a tour",
+          "indonesian": "mengunjungi / berwisata",
+          "note": "参观 means to visit a place on a tour — like a museum or zoo. Not just 'visit a friend' — that's 拜访 (bàifǎng)."
+        },
+        {
+          "pinyin": "zuì xiǎng kàn",
+          "chinese": "最想看",
+          "english": "most want to see",
+          "indonesian": "paling ingin lihat"
+        },
+        {
+          "pinyin": "dòngwù",
+          "chinese": "动物",
+          "english": "animal",
+          "indonesian": "hewan / binatang"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我最想看老虎！老虎好威风！",
+          "pinyin": "Wǒ zuì xiǎng kàn lǎohǔ! Lǎohǔ hǎo wēifēng!",
+          "english": "I most want to see the tiger! Tigers are so impressive!",
+          "indonesian": "Saya paling ingin lihat harimau! Harimau kelihatan gagah!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ zuì xiǎng kàn",
+              "chinese": "我最想看",
+              "english": "I most want to see",
+              "indonesian": "Saya paling ingin lihat"
+            },
+            {
+              "pinyin": "lǎohǔ",
+              "chinese": "老虎",
+              "english": "tiger",
+              "indonesian": "harimau",
+              "note": "老虎 (lǎohǔ) means tiger! Tigers are called the King of the Jungle in Chinese culture too!"
+            },
+            {
+              "pinyin": "hǎo wēifēng",
+              "chinese": "好威风",
+              "english": "so impressive / so majestic",
+              "indonesian": "kelihatan gagah sekali"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我最想看大象！大象好大！",
+          "pinyin": "Wǒ zuì xiǎng kàn dàxiàng! Dàxiàng hǎo dà!",
+          "english": "I most want to see the elephant! Elephants are so big!",
+          "indonesian": "Saya paling ingin lihat gajah! Gajah sangat besar!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ zuì xiǎng kàn",
+              "chinese": "我最想看",
+              "english": "I most want to see",
+              "indonesian": "Saya paling ingin lihat"
+            },
+            {
+              "pinyin": "dàxiàng",
+              "chinese": "大象",
+              "english": "elephant",
+              "indonesian": "gajah",
+              "note": "大 means big and 象 means elephant. 大象 = big elephant! An easy one to remember."
+            },
+            {
+              "pinyin": "hǎo dà",
+              "chinese": "好大",
+              "english": "so big",
+              "indonesian": "sangat besar"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我最想看猴子！猴子好好玩！",
+          "pinyin": "Wǒ zuì xiǎng kàn hóuzi! Hóuzi hǎo hào wán!",
+          "english": "I most want to see the monkeys! Monkeys are so fun!",
+          "indonesian": "Saya paling ingin lihat monyet! Monyet sangat lucu!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ zuì xiǎng kàn",
+              "chinese": "我最想看",
+              "english": "I most want to see",
+              "indonesian": "Saya paling ingin lihat"
+            },
+            {
+              "pinyin": "hóuzi",
+              "chinese": "猴子",
+              "english": "monkey",
+              "indonesian": "monyet"
+            },
+            {
+              "pinyin": "hǎo hào wán",
+              "chinese": "好好玩",
+              "english": "so fun / so entertaining",
+              "indonesian": "sangat lucu / sangat menyenangkan"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "快看那边！猴子在爬树！好可爱！",
+      "textPinyin": "Kuài kàn nà biān! Hóuzi zài pá shù! Hǎo kě'ài!",
+      "textEnglish": "Quick, look over there! The monkeys are climbing trees! So cute!",
+      "textIndonesian": "Cepat lihat ke sana! Monyet sedang panjat pohon! Lucu sekali!",
+      "pinyinWords": [
+        {
+          "pinyin": "Kuài kàn",
+          "chinese": "快看",
+          "english": "look quickly / look!",
+          "indonesian": "cepat lihat"
+        },
+        {
+          "pinyin": "nà biān",
+          "chinese": "那边",
+          "english": "over there",
+          "indonesian": "di sana"
+        },
+        {
+          "pinyin": "Hóuzi",
+          "chinese": "猴子",
+          "english": "monkeys",
+          "indonesian": "monyet"
+        },
+        {
+          "pinyin": "zài pá shù",
+          "chinese": "在爬树",
+          "english": "are climbing trees",
+          "indonesian": "sedang memanjat pohon",
+          "note": "在 before a verb means the action is happening right now — like adding '-ing' in English. 在爬 = climbing!"
+        },
+        {
+          "pinyin": "Hǎo kě'ài",
+          "chinese": "好可爱",
+          "english": "so cute",
+          "indonesian": "lucu sekali / imut sekali",
+          "note": "可爱 (kě'ài) means cute or adorable. 好可爱！is something you will say a LOT at the zoo!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "哇！猴子真的好可爱！它在做什么？",
+          "pinyin": "Wā! Hóuzi zhēn de hǎo kě'ài! Tā zài zuò shénme?",
+          "english": "Wow! The monkeys are really so cute! What is it doing?",
+          "indonesian": "Wah! Monyetnya benar-benar lucu! Sedang apa dia?",
+          "pinyinWords": [
+            {
+              "pinyin": "Wā",
+              "chinese": "哇",
+              "english": "Wow!",
+              "indonesian": "Wah!"
+            },
+            {
+              "pinyin": "Hóuzi zhēn de hǎo kě'ài",
+              "chinese": "猴子真的好可爱",
+              "english": "the monkeys are really so cute",
+              "indonesian": "monyetnya benar-benar lucu"
+            },
+            {
+              "pinyin": "Tā zài zuò shénme",
+              "chinese": "它在做什么",
+              "english": "what is it doing?",
+              "indonesian": "Sedang apa dia?"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "猴子好好玩！我也想爬树！",
+          "pinyin": "Hóuzi hǎo hào wán! Wǒ yě xiǎng pá shù!",
+          "english": "Monkeys are so fun! I also want to climb trees!",
+          "indonesian": "Monyet seru sekali! Saya juga mau panjat pohon!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hóuzi hǎo hào wán",
+              "chinese": "猴子好好玩",
+              "english": "monkeys are so fun",
+              "indonesian": "monyet seru sekali"
+            },
+            {
+              "pinyin": "Wǒ yě xiǎng pá shù",
+              "chinese": "我也想爬树",
+              "english": "I also want to climb trees",
+              "indonesian": "saya juga mau panjat pohon"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "继续走！大家看，那是长颈鹿！它的脖子为什么那么长？",
+      "textPinyin": "Jìxù zǒu! Dàjiā kàn, nà shì chángjǐnglù! Tā de bózi wèishénme nàme cháng?",
+      "textEnglish": "Keep walking! Everyone look, that is a giraffe! Why is its neck so long?",
+      "textIndonesian": "Terus jalan! Semua lihat, itu jerapah! Kenapa lehernya sepanjang itu?",
+      "pinyinWords": [
+        {
+          "pinyin": "Jìxù zǒu",
+          "chinese": "继续走",
+          "english": "keep walking",
+          "indonesian": "terus jalan"
+        },
+        {
+          "pinyin": "Dàjiā kàn",
+          "chinese": "大家看",
+          "english": "everyone look",
+          "indonesian": "semua lihat",
+          "note": "大家 means everybody or everyone. 大家看！= Everyone look! 大家好！= Hello everyone!"
+        },
+        {
+          "pinyin": "chángjǐnglù",
+          "chinese": "长颈鹿",
+          "english": "giraffe",
+          "indonesian": "jerapah",
+          "note": "长 = long, 颈 = neck, 鹿 = deer. 长颈鹿 = long-neck deer = giraffe! The name describes it perfectly!"
+        },
+        {
+          "pinyin": "Tā de bózi",
+          "chinese": "它的脖子",
+          "english": "its neck",
+          "indonesian": "lehernya"
+        },
+        {
+          "pinyin": "wèishénme",
+          "chinese": "为什么",
+          "english": "why",
+          "indonesian": "kenapa / mengapa"
+        },
+        {
+          "pinyin": "nàme cháng",
+          "chinese": "那么长",
+          "english": "so long / that long",
+          "indonesian": "sepanjang itu"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "因为它要吃很高的树叶！长颈鹿好高！",
+          "pinyin": "Yīnwèi tā yào chī hěn gāo de shùyè! Chángjǐnglù hǎo gāo!",
+          "english": "Because it needs to eat very tall tree leaves! Giraffes are so tall!",
+          "indonesian": "Karena dia perlu makan daun pohon yang tinggi! Jerapah sangat tinggi!",
+          "pinyinWords": [
+            {
+              "pinyin": "Yīnwèi",
+              "chinese": "因为",
+              "english": "because",
+              "indonesian": "karena",
+              "note": "为什么 means 'why' and 因为 means 'because'. They go together: 为什么？因为... = Why? Because..."
+            },
+            {
+              "pinyin": "tā yào chī",
+              "chinese": "它要吃",
+              "english": "it needs to eat",
+              "indonesian": "dia perlu makan"
+            },
+            {
+              "pinyin": "hěn gāo de shùyè",
+              "chinese": "很高的树叶",
+              "english": "very tall tree leaves",
+              "indonesian": "daun pohon yang sangat tinggi"
+            },
+            {
+              "pinyin": "Chángjǐnglù hǎo gāo",
+              "chinese": "长颈鹿好高",
+              "english": "giraffes are so tall",
+              "indonesian": "jerapah sangat tinggi"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我不知道！但是长颈鹿真的好厉害！",
+          "pinyin": "Wǒ bù zhīdào! Dànshì chángjǐnglù zhēn de hǎo lìhai!",
+          "english": "I don't know! But giraffes are really so amazing!",
+          "indonesian": "Saya tidak tahu! Tapi jerapah benar-benar luar biasa!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ bù zhīdào",
+              "chinese": "我不知道",
+              "english": "I don't know",
+              "indonesian": "Saya tidak tahu"
+            },
+            {
+              "pinyin": "Dànshì",
+              "chinese": "但是",
+              "english": "but",
+              "indonesian": "tapi / tetapi"
+            },
+            {
+              "pinyin": "chángjǐnglù zhēn de hǎo lìhai",
+              "chinese": "长颈鹿真的好厉害",
+              "english": "giraffes are really so amazing",
+              "indonesian": "jerapah benar-benar luar biasa"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "那边就是老虎！大家要站好，不能太靠近！",
+      "textPinyin": "Nà biān jiù shì lǎohǔ! Dàjiā yào zhàn hǎo, bù néng tài kào jìn!",
+      "textEnglish": "Over there is the tiger! Everyone stand properly, do not get too close!",
+      "textIndonesian": "Di sana ada harimau! Semua harus berdiri dengan baik, tidak boleh terlalu dekat!",
+      "pinyinWords": [
+        {
+          "pinyin": "Nà biān jiù shì",
+          "chinese": "那边就是",
+          "english": "over there is / that is exactly",
+          "indonesian": "di sana itulah"
+        },
+        {
+          "pinyin": "lǎohǔ",
+          "chinese": "老虎",
+          "english": "tiger",
+          "indonesian": "harimau"
+        },
+        {
+          "pinyin": "Dàjiā yào zhàn hǎo",
+          "chinese": "大家要站好",
+          "english": "everyone stand properly",
+          "indonesian": "semua harus berdiri dengan baik"
+        },
+        {
+          "pinyin": "bù néng",
+          "chinese": "不能",
+          "english": "cannot / must not",
+          "indonesian": "tidak boleh"
+        },
+        {
+          "pinyin": "tài kào jìn",
+          "chinese": "太靠近",
+          "english": "too close",
+          "indonesian": "terlalu dekat",
+          "note": "太 means 'too' — like too much. 太靠近 = too close, 太大 = too big, 太好吃 = too delicious!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "哇！老虎好大！它的条纹好漂亮！",
+          "pinyin": "Wā! Lǎohǔ hǎo dà! Tā de tiáowén hǎo piàoliang!",
+          "english": "Wow! The tiger is so big! Its stripes are so beautiful!",
+          "indonesian": "Wah! Harimau sangat besar! Belang-belangnya sangat cantik!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wā",
+              "chinese": "哇",
+              "english": "Wow!",
+              "indonesian": "Wah!"
+            },
+            {
+              "pinyin": "Lǎohǔ hǎo dà",
+              "chinese": "老虎好大",
+              "english": "the tiger is so big",
+              "indonesian": "harimau sangat besar"
+            },
+            {
+              "pinyin": "tiáowén",
+              "chinese": "条纹",
+              "english": "stripes",
+              "indonesian": "belang-belang"
+            },
+            {
+              "pinyin": "hǎo piàoliang",
+              "chinese": "好漂亮",
+              "english": "so beautiful",
+              "indonesian": "sangat cantik"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "老虎好威风！我有一点害怕！",
+          "pinyin": "Lǎohǔ hǎo wēifēng! Wǒ yǒu yīdiǎn hàipà!",
+          "english": "The tiger is so majestic! I am a little scared!",
+          "indonesian": "Harimau terlihat gagah! Saya sedikit takut!",
+          "pinyinWords": [
+            {
+              "pinyin": "Lǎohǔ hǎo wēifēng",
+              "chinese": "老虎好威风",
+              "english": "the tiger is so majestic",
+              "indonesian": "harimau terlihat gagah"
+            },
+            {
+              "pinyin": "Wǒ yǒu yīdiǎn",
+              "chinese": "我有一点",
+              "english": "I am a little / I am a bit",
+              "indonesian": "saya sedikit"
+            },
+            {
+              "pinyin": "hàipà",
+              "chinese": "害怕",
+              "english": "scared / afraid",
+              "indonesian": "takut",
+              "note": "害怕 means scared or afraid. 有一点害怕 = a little scared. It's okay to be a little scared of tigers!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 5,
+      "speaker": "CHARACTER",
+      "textChinese": "今天的动物园参观结束了！你今天最喜欢哪个动物？",
+      "textPinyin": "Jīntiān de dòngwùyuán cānguān jiéshù le! Nǐ jīntiān zuì xǐhuān nǎ gè dòngwù?",
+      "textEnglish": "Today's zoo visit has ended! Which animal did you like the most today?",
+      "textIndonesian": "Kunjungan kebun binatang hari ini telah selesai! Hewan mana yang paling kamu sukai hari ini?",
+      "pinyinWords": [
+        {
+          "pinyin": "jīntiān de",
+          "chinese": "今天的",
+          "english": "today's",
+          "indonesian": "milik hari ini"
+        },
+        {
+          "pinyin": "dòngwùyuán cānguān",
+          "chinese": "动物园参观",
+          "english": "zoo visit",
+          "indonesian": "kunjungan kebun binatang"
+        },
+        {
+          "pinyin": "jiéshù le",
+          "chinese": "结束了",
+          "english": "has ended / is over",
+          "indonesian": "sudah selesai"
+        },
+        {
+          "pinyin": "zuì xǐhuān nǎ gè dòngwù",
+          "chinese": "最喜欢哪个动物",
+          "english": "which animal do you like the most",
+          "indonesian": "hewan mana yang paling kamu sukai"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我最喜欢老虎！它好威风！",
+          "pinyin": "Wǒ zuì xǐhuān lǎohǔ! Tā hǎo wēifēng!",
+          "english": "I liked the tiger the most! It is so majestic!",
+          "indonesian": "Saya paling suka harimau! Dia terlihat gagah!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ zuì xǐhuān lǎohǔ",
+              "chinese": "我最喜欢老虎",
+              "english": "I liked the tiger the most",
+              "indonesian": "Saya paling suka harimau"
+            },
+            {
+              "pinyin": "Tā hǎo wēifēng",
+              "chinese": "它好威风",
+              "english": "it is so majestic",
+              "indonesian": "dia terlihat gagah"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我最喜欢长颈鹿！它的脖子好长！",
+          "pinyin": "Wǒ zuì xǐhuān chángjǐnglù! Tā de bózi hǎo cháng!",
+          "english": "I liked the giraffe the most! Its neck is so long!",
+          "indonesian": "Saya paling suka jerapah! Lehernya sangat panjang!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ zuì xǐhuān chángjǐnglù",
+              "chinese": "我最喜欢长颈鹿",
+              "english": "I liked the giraffe the most",
+              "indonesian": "Saya paling suka jerapah"
+            },
+            {
+              "pinyin": "Tā de bózi hǎo cháng",
+              "chinese": "它的脖子好长",
+              "english": "its neck is so long",
+              "indonesian": "lehernya sangat panjang"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我最喜欢猴子！它们太好玩了！",
+          "pinyin": "Wǒ zuì xǐhuān hóuzi! Tāmen tài hào wán le!",
+          "english": "I liked the monkeys the most! They were so fun!",
+          "indonesian": "Saya paling suka monyet! Mereka sangat seru!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ zuì xǐhuān hóuzi",
+              "chinese": "我最喜欢猴子",
+              "english": "I liked the monkeys the most",
+              "indonesian": "Saya paling suka monyet"
+            },
+            {
+              "pinyin": "Tāmen tài hào wán le",
+              "chinese": "它们太好玩了",
+              "english": "they were so fun",
+              "indonesian": "mereka sangat seru"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 6,
+      "speaker": "CHARACTER",
+      "textChinese": "很好！大家今天学了很多！我们回学校吧！",
+      "textPinyin": "Hěn hǎo! Dàjiā jīntiān xué le hěn duō! Wǒmen huí xuéxiào ba!",
+      "textEnglish": "Very good! Everyone learned so much today! Let us go back to school!",
+      "textIndonesian": "Bagus sekali! Semua belajar banyak hari ini! Ayo kita kembali ke sekolah!",
+      "pinyinWords": [
+        {
+          "pinyin": "Hěn hǎo",
+          "chinese": "很好",
+          "english": "very good",
+          "indonesian": "sangat bagus"
+        },
+        {
+          "pinyin": "Dàjiā",
+          "chinese": "大家",
+          "english": "everyone",
+          "indonesian": "semua orang"
+        },
+        {
+          "pinyin": "jīntiān xué le hěn duō",
+          "chinese": "今天学了很多",
+          "english": "learned so much today",
+          "indonesian": "belajar banyak hari ini"
+        },
+        {
+          "pinyin": "Wǒmen huí xuéxiào ba",
+          "chinese": "我们回学校吧",
+          "english": "let us go back to school",
+          "indonesian": "ayo kita kembali ke sekolah",
+          "note": "回 means to return or go back. 回家 = go home, 回学校 = go back to school. 吧 makes it a friendly suggestion!"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'giraffe' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "老虎",
+          "pinyin": "lǎohǔ",
+          "translation": "tiger"
+        },
+        {
+          "chinese": "大象",
+          "pinyin": "dàxiàng",
+          "translation": "elephant"
+        },
+        {
+          "chinese": "猴子",
+          "pinyin": "hóuzi",
+          "translation": "monkey"
+        },
+        {
+          "chinese": "长颈鹿",
+          "pinyin": "chángjǐnglù",
+          "translation": "giraffe"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "长颈鹿 (chángjǐnglù) means giraffe! 长 = long, 颈 = neck, 鹿 = deer. Long-neck deer — perfect description!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does 大象 mean?",
+      "questionChinese": "大象",
+      "questionPinyin": "dàxiàng",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "tiger"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "monkey"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "elephant"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "giraffe"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "大象 (dàxiàng) means elephant! 大 = big, 象 = elephant. A big elephant — the name says it all!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'zoo' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "学校",
+          "pinyin": "xuéxiào",
+          "translation": "school"
+        },
+        {
+          "chinese": "公园",
+          "pinyin": "gōngyuán",
+          "translation": "park"
+        },
+        {
+          "chinese": "动物园",
+          "pinyin": "dòngwùyuán",
+          "translation": "zoo"
+        },
+        {
+          "chinese": "操场",
+          "pinyin": "cāochǎng",
+          "translation": "playground"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "动物园 (dòngwùyuán) means zoo! 动物 = animal, 园 = garden/park. An animal park!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "好可爱",
+      "questionPinyin": "hǎo kě'ài",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "so scary"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "so big"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "so cute"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "so tall"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "好可爱 (hǎo kě'ài) means so cute! 可爱 = cute/adorable, 好 = very/so. Say this at the zoo!"
+    }
+  ],
+  "category": "PLAY_AND_HOBBIES"
+}

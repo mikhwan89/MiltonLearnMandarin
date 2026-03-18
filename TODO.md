@@ -28,7 +28,7 @@ Add as `scenario_22.json` and `scenario_23.json`.
 
 ---
 
-### #3 — Animals & Nature batch (2 new scenarios)
+### ✅ #3 — Animals & Nature batch (1 new scenario) *(done)*
 **Category:** `ANIMALS` *(new category)*
 
 - **场景 A — 动物园 (At the Zoo):** Visit animals, ask what they are. Vocab: 老虎, 大象, 长颈鹿, 猴子, 我想看
