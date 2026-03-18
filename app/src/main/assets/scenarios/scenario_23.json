@@ -1,0 +1,493 @@
+{
+  "id": "scene23_morning_routine",
+  "title": "起床啦",
+  "description": "Morning routine — waking up, brushing teeth, getting dressed, and having breakfast",
+  "characterName": "妈妈",
+  "characterEmoji": "👩",
+  "characterRole": "mom",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "起床啦！起床啦！已经七点了！",
+      "textPinyin": "Qǐchuáng la! Qǐchuáng la! Yǐjīng qī diǎn le!",
+      "textEnglish": "Wake up! Wake up! It is already seven o'clock!",
+      "textIndonesian": "Bangun! Bangun! Sudah jam tujuh!",
+      "pinyinWords": [
+        {
+          "pinyin": "Qǐchuáng",
+          "chinese": "起床",
+          "english": "wake up / get out of bed",
+          "indonesian": "bangun tidur",
+          "note": "起 means 'rise' and 床 means 'bed'. 起床 = get out of bed. Probably the hardest thing to do every morning!"
+        },
+        {
+          "pinyin": "la",
+          "chinese": "啦",
+          "english": "(exclamation — adds urgency or enthusiasm)",
+          "indonesian": "(kata seru — menambah semangat)",
+          "note": "啦 is like an enthusiastic exclamation mark at the end of a sentence. It makes things sound livelier!"
+        },
+        {
+          "pinyin": "Yǐjīng",
+          "chinese": "已经",
+          "english": "already",
+          "indonesian": "sudah"
+        },
+        {
+          "pinyin": "qī diǎn",
+          "chinese": "七点",
+          "english": "seven o'clock",
+          "indonesian": "jam tujuh",
+          "note": "点 (diǎn) means 'o'clock' in Chinese. 七点 = 7 o'clock. 几点？(jǐ diǎn?) means 'What time is it?'"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(shows a change of state)",
+          "indonesian": "(menunjukkan perubahan situasi)",
+          "note": "了 at the end of a sentence shows something has happened or changed. '七点了' means 'it IS seven already'!"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "好的妈妈！我起床了！",
+          "pinyin": "Hǎo de māma! Wǒ qǐchuáng le!",
+          "english": "Okay mom! I am getting up!",
+          "indonesian": "Baik mama! Saya bangun sekarang!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de māma",
+              "chinese": "好的妈妈",
+              "english": "okay mom",
+              "indonesian": "baik mama"
+            },
+            {
+              "pinyin": "Wǒ qǐchuáng le",
+              "chinese": "我起床了",
+              "english": "I am getting up",
+              "indonesian": "Saya sudah bangun"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "快去刷牙！记得用牙刷！",
+      "textPinyin": "Kuài qù shuā yá! Jìde yòng yáshuā!",
+      "textEnglish": "Quickly go brush your teeth! Remember to use your toothbrush!",
+      "textIndonesian": "Cepat pergi sikat gigi! Ingat pakai sikat gigi!",
+      "pinyinWords": [
+        {
+          "pinyin": "Kuài",
+          "chinese": "快",
+          "english": "quickly / fast",
+          "indonesian": "cepat",
+          "note": "快 means fast or quickly. 快点！(kuài diǎn!) means 'hurry up!' — very useful on busy mornings!"
+        },
+        {
+          "pinyin": "qù",
+          "chinese": "去",
+          "english": "go",
+          "indonesian": "pergi"
+        },
+        {
+          "pinyin": "shuā yá",
+          "chinese": "刷牙",
+          "english": "brush teeth",
+          "indonesian": "sikat gigi",
+          "note": "刷 means to scrub/brush and 牙 means teeth. 刷牙 = brush your teeth. Do it twice a day!"
+        },
+        {
+          "pinyin": "Jìde",
+          "chinese": "记得",
+          "english": "remember to",
+          "indonesian": "ingat untuk"
+        },
+        {
+          "pinyin": "yòng",
+          "chinese": "用",
+          "english": "use",
+          "indonesian": "pakai / gunakan"
+        },
+        {
+          "pinyin": "yáshuā",
+          "chinese": "牙刷",
+          "english": "toothbrush",
+          "indonesian": "sikat gigi"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "好！我去刷牙！刷刷刷！",
+          "pinyin": "Hǎo! Wǒ qù shuā yá! Shuā shuā shuā!",
+          "english": "Okay! I will go brush my teeth! Brush brush brush!",
+          "indonesian": "Baik! Saya pergi sikat gigi! Gosok gosok gosok!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "okay / good",
+              "indonesian": "baik / oke"
+            },
+            {
+              "pinyin": "Wǒ qù shuā yá",
+              "chinese": "我去刷牙",
+              "english": "I will go brush my teeth",
+              "indonesian": "Saya pergi sikat gigi"
+            },
+            {
+              "pinyin": "Shuā shuā shuā",
+              "chinese": "刷刷刷",
+              "english": "brush brush brush",
+              "indonesian": "gosok gosok gosok"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "刷好了吗？快点穿衣服，我们要迟到了！",
+      "textPinyin": "Shuā hǎo le ma? Kuài diǎn chuān yīfu, wǒmen yào chídào le!",
+      "textEnglish": "Done brushing? Hurry up and get dressed, we are going to be late!",
+      "textIndonesian": "Sudah selesai sikat gigi? Cepat pakai baju, kita akan terlambat!",
+      "pinyinWords": [
+        {
+          "pinyin": "Shuā hǎo le ma",
+          "chinese": "刷好了吗",
+          "english": "done brushing?",
+          "indonesian": "sudah selesai sikat gigi?"
+        },
+        {
+          "pinyin": "Kuài diǎn",
+          "chinese": "快点",
+          "english": "hurry up",
+          "indonesian": "cepat"
+        },
+        {
+          "pinyin": "chuān yīfu",
+          "chinese": "穿衣服",
+          "english": "get dressed / put on clothes",
+          "indonesian": "pakai baju",
+          "note": "穿 means to wear or put on. 衣服 means clothes. 穿衣服 = get dressed. 脱衣服 (tuō yīfu) = take off clothes!"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we",
+          "indonesian": "kita"
+        },
+        {
+          "pinyin": "yào chídào le",
+          "chinese": "要迟到了",
+          "english": "going to be late",
+          "indonesian": "akan terlambat",
+          "note": "迟到 means 'late' or 'arrive late'. 要...了 means something is about to happen. 要迟到了！= We're going to be late!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "好的！我在穿衣服了！很快！",
+          "pinyin": "Hǎo de! Wǒ zài chuān yīfu le! Hěn kuài!",
+          "english": "Okay! I am getting dressed! Very fast!",
+          "indonesian": "Baik! Saya sedang pakai baju! Cepat sekali!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "okay",
+              "indonesian": "baik"
+            },
+            {
+              "pinyin": "Wǒ zài chuān yīfu le",
+              "chinese": "我在穿衣服了",
+              "english": "I am getting dressed",
+              "indonesian": "Saya sedang pakai baju"
+            },
+            {
+              "pinyin": "Hěn kuài",
+              "chinese": "很快",
+              "english": "very fast",
+              "indonesian": "sangat cepat"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "妈妈，帮我穿！我不会！",
+          "pinyin": "Māma, bāng wǒ chuān! Wǒ bù huì!",
+          "english": "Mom, help me get dressed! I can't do it!",
+          "indonesian": "Mama, tolong pakein baju! Saya tidak bisa!",
+          "pinyinWords": [
+            {
+              "pinyin": "Māma",
+              "chinese": "妈妈",
+              "english": "Mom",
+              "indonesian": "Mama"
+            },
+            {
+              "pinyin": "bāng wǒ chuān",
+              "chinese": "帮我穿",
+              "english": "help me get dressed",
+              "indonesian": "bantu saya pakai baju"
+            },
+            {
+              "pinyin": "Wǒ bù huì",
+              "chinese": "我不会",
+              "english": "I don't know how / I can't",
+              "indonesian": "Saya tidak bisa"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "穿好了！来，吃早饭了！",
+      "textPinyin": "Chuān hǎo le! Lái, chī zǎofàn le!",
+      "textEnglish": "All dressed! Come, time to eat breakfast!",
+      "textIndonesian": "Sudah pakai baju! Ayo, sarapan!",
+      "pinyinWords": [
+        {
+          "pinyin": "Chuān hǎo le",
+          "chinese": "穿好了",
+          "english": "all dressed / finished getting dressed",
+          "indonesian": "sudah pakai baju"
+        },
+        {
+          "pinyin": "Lái",
+          "chinese": "来",
+          "english": "come",
+          "indonesian": "ayo / kesini"
+        },
+        {
+          "pinyin": "chī",
+          "chinese": "吃",
+          "english": "eat",
+          "indonesian": "makan"
+        },
+        {
+          "pinyin": "zǎofàn",
+          "chinese": "早饭",
+          "english": "breakfast",
+          "indonesian": "sarapan",
+          "note": "早 means morning/early, 饭 means meal. 早饭 = morning meal = breakfast! 午饭 (wǔfàn) = lunch, 晚饭 (wǎnfàn) = dinner."
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(indicates it's time / ready now)",
+          "indonesian": "(menunjukkan sudah waktunya)"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "太好了！我肚子饿了！我要吃早饭！",
+          "pinyin": "Tài hǎo le! Wǒ dùzi è le! Wǒ yào chī zǎofàn!",
+          "english": "Great! I am hungry! I want to eat breakfast!",
+          "indonesian": "Luar biasa! Saya lapar! Saya mau sarapan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Tài hǎo le",
+              "chinese": "太好了",
+              "english": "great / wonderful",
+              "indonesian": "luar biasa"
+            },
+            {
+              "pinyin": "Wǒ dùzi è le",
+              "chinese": "我肚子饿了",
+              "english": "I am hungry",
+              "indonesian": "Saya lapar",
+              "note": "肚子 means stomach/tummy and 饿 means hungry. 我肚子饿了 = my tummy is hungry!"
+            },
+            {
+              "pinyin": "Wǒ yào chī zǎofàn",
+              "chinese": "我要吃早饭",
+              "english": "I want to eat breakfast",
+              "indonesian": "Saya mau sarapan"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 5,
+      "speaker": "CHARACTER",
+      "textChinese": "吃好了！背上书包，我们出发吧！",
+      "textPinyin": "Chī hǎo le! Bèi shàng shūbāo, wǒmen chūfā ba!",
+      "textEnglish": "Finished eating! Put on your school bag, let us go!",
+      "textIndonesian": "Sudah makan! Pakai tasnya, kita berangkat!",
+      "pinyinWords": [
+        {
+          "pinyin": "Chī hǎo le",
+          "chinese": "吃好了",
+          "english": "finished eating",
+          "indonesian": "sudah selesai makan"
+        },
+        {
+          "pinyin": "Bèi shàng",
+          "chinese": "背上",
+          "english": "put on your back / carry on back",
+          "indonesian": "gendong / pakai di punggung"
+        },
+        {
+          "pinyin": "shūbāo",
+          "chinese": "书包",
+          "english": "school bag",
+          "indonesian": "tas sekolah",
+          "note": "书 means book and 包 means bag. 书包 = book bag = school bag!"
+        },
+        {
+          "pinyin": "wǒmen chūfā ba",
+          "chinese": "我们出发吧",
+          "english": "let us go / let us set off",
+          "indonesian": "kita berangkat",
+          "note": "出发 means to set off or depart. 吧 at the end softens a suggestion — like saying 'shall we?'"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'wake up / get out of bed' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "睡觉",
+          "pinyin": "shuìjiào",
+          "translation": "sleep"
+        },
+        {
+          "chinese": "起床",
+          "pinyin": "qǐchuáng",
+          "translation": "wake up / get out of bed"
+        },
+        {
+          "chinese": "刷牙",
+          "pinyin": "shuā yá",
+          "translation": "brush teeth"
+        },
+        {
+          "chinese": "穿衣服",
+          "pinyin": "chuān yīfu",
+          "translation": "get dressed"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "起床 (qǐchuáng) means to wake up and get out of bed! 起 = rise, 床 = bed."
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does 刷牙 mean?",
+      "questionChinese": "刷牙",
+      "questionPinyin": "shuā yá",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "wash face"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "brush teeth"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "comb hair"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "take a bath"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "刷牙 (shuā yá) means brush teeth! 刷 = scrub/brush, 牙 = teeth. Do it every morning!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'breakfast' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "晚饭",
+          "pinyin": "wǎnfàn",
+          "translation": "dinner"
+        },
+        {
+          "chinese": "午饭",
+          "pinyin": "wǔfàn",
+          "translation": "lunch"
+        },
+        {
+          "chinese": "早饭",
+          "pinyin": "zǎofàn",
+          "translation": "breakfast"
+        },
+        {
+          "chinese": "零食",
+          "pinyin": "língshí",
+          "translation": "snack"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "早饭 (zǎofàn) means breakfast! 早 = morning/early, 饭 = meal. The morning meal!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "穿衣服",
+      "questionPinyin": "chuān yīfu",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "take off clothes"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "wash clothes"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "get dressed / put on clothes"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "hurry up"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "穿衣服 (chuān yīfu) means to get dressed! 穿 = wear/put on, 衣服 = clothes."
+    }
+  ],
+  "category": "HOME"
+}

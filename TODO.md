@@ -18,7 +18,7 @@ Add as `scenario_20.json` and `scenario_21.json`.
 
 ---
 
-### #2 — Around the House batch (2 new scenarios)
+### ✅ #2 — Around the House batch (2 new scenarios) *(done)*
 **Category:** `HOME` *(new category)*
 
 - **场景 A — 起床啦 (Morning Routine):** Wake up, brush teeth, get dressed. Vocab: 起床, 刷牙, 穿衣服, 快点, 早饭
