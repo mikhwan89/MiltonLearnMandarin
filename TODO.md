@@ -63,12 +63,12 @@ Added as `scenario_30.json` through `scenario_36.json`.
 
 ---
 
-### #6 — Shopping & Errands (1 new scenario)
+### ✅ #6 — Shopping & Errands (1 new scenario) *(done)*
 **Category:** `ESSENTIALS`
 
-- **场景 — 去超市 (At the Supermarket):** Help parent pick items, handle the cashier. Vocab: 多少钱, 找零, 谢谢, 不客气, 我要买
+- **场景 — 去超市 (At the Supermarket):** Help Dad pick items, ask the cashier, receive change. Vocab: 超市, 多少钱, 一共, 找零, 礼貌, 谢谢, 我要买
 
-Add as `scenario_29.json`.
+Added as `scenario_37.json`.
 
 ---
 

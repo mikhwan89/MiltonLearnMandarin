@@ -1,0 +1,744 @@
+{
+  "id": "scene37_supermarket",
+  "title": "去超市",
+  "description": "Shopping trip — help Dad find items at the supermarket and pay at the cashier",
+  "characterName": "爸爸",
+  "characterEmoji": "🛒",
+  "characterRole": "Dad",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "我们到超市了！今天要买很多东西。你能帮我吗？",
+      "textPinyin": "Wǒmen dào chāoshì le! Jīntiān yào mǎi hěn duō dōngxi. Nǐ néng bāng wǒ ma?",
+      "textEnglish": "We're at the supermarket! We need to buy a lot of things today. Can you help me?",
+      "textIndonesian": "Kita sudah di supermarket! Hari ini perlu beli banyak hal. Kamu bisa bantu Ayah?",
+      "pinyinWords": [
+        {
+          "pinyin": "Wǒmen",
+          "chinese": "我们",
+          "english": "We",
+          "indonesian": "Kita"
+        },
+        {
+          "pinyin": "dào",
+          "chinese": "到",
+          "english": "arrived at",
+          "indonesian": "tiba di"
+        },
+        {
+          "pinyin": "chāoshì",
+          "chinese": "超市",
+          "english": "supermarket",
+          "indonesian": "supermarket"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(arrived — new situation)",
+          "indonesian": "(sudah tiba)",
+          "note": "到...了 means 'arrived at...' — 到超市了 = 'We've arrived at the supermarket!'"
+        },
+        {
+          "pinyin": "Jīntiān",
+          "chinese": "今天",
+          "english": "Today",
+          "indonesian": "Hari ini"
+        },
+        {
+          "pinyin": "yào mǎi",
+          "chinese": "要买",
+          "english": "need to buy",
+          "indonesian": "perlu beli"
+        },
+        {
+          "pinyin": "hěn duō",
+          "chinese": "很多",
+          "english": "a lot / many",
+          "indonesian": "banyak"
+        },
+        {
+          "pinyin": "dōngxi",
+          "chinese": "东西",
+          "english": "things / items",
+          "indonesian": "barang / hal"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "néng",
+          "chinese": "能",
+          "english": "can / able to",
+          "indonesian": "bisa"
+        },
+        {
+          "pinyin": "bāng wǒ",
+          "chinese": "帮我",
+          "english": "help me",
+          "indonesian": "bantu aku"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(yes/no question word)",
+          "indonesian": "(kata tanya ya/tidak)",
+          "note": "吗 at the end of any sentence makes it a yes/no question. Simple and easy!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "能！我来帮你，爸爸！",
+          "pinyin": "Néng! Wǒ lái bāng nǐ, bàba!",
+          "english": "Yes I can! I'll help you, Dad!",
+          "indonesian": "Bisa! Aku akan bantu Ayah!",
+          "pinyinWords": [
+            {
+              "pinyin": "Néng",
+              "chinese": "能",
+              "english": "Can / Yes I can",
+              "indonesian": "Bisa"
+            },
+            {
+              "pinyin": "Wǒ lái",
+              "chinese": "我来",
+              "english": "I will / Let me",
+              "indonesian": "Aku akan"
+            },
+            {
+              "pinyin": "bāng nǐ",
+              "chinese": "帮你",
+              "english": "help you",
+              "indonesian": "bantu kamu"
+            },
+            {
+              "pinyin": "bàba",
+              "chinese": "爸爸",
+              "english": "Dad",
+              "indonesian": "Ayah"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "当然可以！我要帮爸爸买东西！",
+          "pinyin": "Dāngrán kěyǐ! Wǒ yào bāng bàba mǎi dōngxi!",
+          "english": "Of course! I want to help Dad buy things!",
+          "indonesian": "Tentu saja! Aku mau bantu Ayah belanja!",
+          "pinyinWords": [
+            {
+              "pinyin": "Dāngrán",
+              "chinese": "当然",
+              "english": "Of course",
+              "indonesian": "Tentu saja"
+            },
+            {
+              "pinyin": "kěyǐ",
+              "chinese": "可以",
+              "english": "can / possible",
+              "indonesian": "bisa / boleh"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "yào",
+              "chinese": "要",
+              "english": "want to",
+              "indonesian": "mau"
+            },
+            {
+              "pinyin": "bāng",
+              "chinese": "帮",
+              "english": "help",
+              "indonesian": "bantu"
+            },
+            {
+              "pinyin": "bàba",
+              "chinese": "爸爸",
+              "english": "Dad",
+              "indonesian": "Ayah"
+            },
+            {
+              "pinyin": "mǎi dōngxi",
+              "chinese": "买东西",
+              "english": "buy things / shop",
+              "indonesian": "belanja / membeli barang"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "太好了！我们要买苹果、面包和水。你先去拿苹果，好不好？",
+      "textPinyin": "Tài hǎo le! Wǒmen yào mǎi píngguǒ, miànbāo hé shuǐ. Nǐ xiān qù ná píngguǒ, hǎo bù hǎo?",
+      "textEnglish": "Wonderful! We need to buy apples, bread and water. Can you go and get the apples first?",
+      "textIndonesian": "Luar biasa! Kita perlu beli apel, roti, dan air. Kamu ambil apel dulu, ya?",
+      "pinyinWords": [
+        {
+          "pinyin": "Tài hǎo le",
+          "chinese": "太好了",
+          "english": "Wonderful / Great",
+          "indonesian": "Luar biasa"
+        },
+        {
+          "pinyin": "Wǒmen",
+          "chinese": "我们",
+          "english": "We",
+          "indonesian": "Kita"
+        },
+        {
+          "pinyin": "yào mǎi",
+          "chinese": "要买",
+          "english": "need to buy",
+          "indonesian": "perlu beli"
+        },
+        {
+          "pinyin": "píngguǒ",
+          "chinese": "苹果",
+          "english": "apple(s)",
+          "indonesian": "apel"
+        },
+        {
+          "pinyin": "miànbāo",
+          "chinese": "面包",
+          "english": "bread",
+          "indonesian": "roti"
+        },
+        {
+          "pinyin": "hé",
+          "chinese": "和",
+          "english": "and",
+          "indonesian": "dan"
+        },
+        {
+          "pinyin": "shuǐ",
+          "chinese": "水",
+          "english": "water",
+          "indonesian": "air"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "xiān",
+          "chinese": "先",
+          "english": "first",
+          "indonesian": "dulu / pertama"
+        },
+        {
+          "pinyin": "qù ná",
+          "chinese": "去拿",
+          "english": "go and get / go and take",
+          "indonesian": "pergi ambil"
+        },
+        {
+          "pinyin": "píngguǒ",
+          "chinese": "苹果",
+          "english": "apples",
+          "indonesian": "apel"
+        },
+        {
+          "pinyin": "hǎo bù hǎo",
+          "chinese": "好不好",
+          "english": "OK? / good?",
+          "indonesian": "ya? / boleh?",
+          "note": "好不好 is a friendly way to ask 'OK?' — literally 'good or not good?' Great for asking agreement!"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "好的！我去拿苹果！",
+          "pinyin": "Hǎo de! Wǒ qù ná píngguǒ!",
+          "english": "OK! I'll go get the apples!",
+          "indonesian": "Baik! Aku pergi ambil apel!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "OK / alright",
+              "indonesian": "Baik / oke"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "qù ná",
+              "chinese": "去拿",
+              "english": "go get",
+              "indonesian": "pergi ambil"
+            },
+            {
+              "pinyin": "píngguǒ",
+              "chinese": "苹果",
+              "english": "apples",
+              "indonesian": "apel"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "找到了！我们拿好了，现在去付钱。你来问阿姨多少钱，好吗？",
+      "textPinyin": "Zhǎodào le! Wǒmen ná hǎo le, xiànzài qù fùqián. Nǐ lái wèn āyí duōshǎo qián, hǎo ma?",
+      "textEnglish": "Found them! We've got everything, now let's go pay. Can you ask the lady how much it costs?",
+      "textIndonesian": "Ketemu! Kita sudah ambil semua, sekarang bayar dulu. Kamu tanya ibu kasirnya berapa harganya, ya?",
+      "pinyinWords": [
+        {
+          "pinyin": "Zhǎodào le",
+          "chinese": "找到了",
+          "english": "Found it! / Found them!",
+          "indonesian": "Ketemu! / Sudah ditemukan!"
+        },
+        {
+          "pinyin": "Wǒmen",
+          "chinese": "我们",
+          "english": "We",
+          "indonesian": "Kita"
+        },
+        {
+          "pinyin": "ná hǎo le",
+          "chinese": "拿好了",
+          "english": "got everything / all picked up",
+          "indonesian": "sudah diambil semua"
+        },
+        {
+          "pinyin": "xiànzài",
+          "chinese": "现在",
+          "english": "now",
+          "indonesian": "sekarang"
+        },
+        {
+          "pinyin": "qù fùqián",
+          "chinese": "去付钱",
+          "english": "go pay / go to pay",
+          "indonesian": "pergi bayar"
+        },
+        {
+          "pinyin": "Nǐ lái",
+          "chinese": "你来",
+          "english": "You go ahead and / Let you",
+          "indonesian": "Kamu yang"
+        },
+        {
+          "pinyin": "wèn",
+          "chinese": "问",
+          "english": "ask",
+          "indonesian": "tanya"
+        },
+        {
+          "pinyin": "āyí",
+          "chinese": "阿姨",
+          "english": "lady / auntie (polite address)",
+          "indonesian": "ibu / tante (sapaan sopan)",
+          "note": "阿姨 is a polite way to address an adult woman — like saying 'miss' or 'auntie'!"
+        },
+        {
+          "pinyin": "duōshǎo qián",
+          "chinese": "多少钱",
+          "english": "how much (money)",
+          "indonesian": "berapa harganya",
+          "note": "多少钱 is THE key shopping phrase — 'how much does it cost?' You'll use this everywhere!"
+        },
+        {
+          "pinyin": "hǎo ma",
+          "chinese": "好吗",
+          "english": "OK? / alright?",
+          "indonesian": "ya? / boleh?"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "阿姨，这些多少钱？",
+          "pinyin": "Āyí, zhèxiē duōshǎo qián?",
+          "english": "Miss, how much is all this?",
+          "indonesian": "Bu, ini semua berapa harganya?",
+          "pinyinWords": [
+            {
+              "pinyin": "Āyí",
+              "chinese": "阿姨",
+              "english": "Miss / Auntie",
+              "indonesian": "Bu / Ibu"
+            },
+            {
+              "pinyin": "zhèxiē",
+              "chinese": "这些",
+              "english": "these / all of these",
+              "indonesian": "ini semua"
+            },
+            {
+              "pinyin": "duōshǎo qián",
+              "chinese": "多少钱",
+              "english": "how much money / how much does it cost",
+              "indonesian": "berapa harganya"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "阿姨，请问一共多少钱？",
+          "pinyin": "Āyí, qǐngwèn yīgòng duōshǎo qián?",
+          "english": "Excuse me Miss, how much is it altogether?",
+          "indonesian": "Permisi Bu, totalnya berapa?",
+          "pinyinWords": [
+            {
+              "pinyin": "Āyí",
+              "chinese": "阿姨",
+              "english": "Miss / Auntie",
+              "indonesian": "Bu / Ibu"
+            },
+            {
+              "pinyin": "qǐngwèn",
+              "chinese": "请问",
+              "english": "Excuse me / May I ask",
+              "indonesian": "Permisi / Boleh saya tanya"
+            },
+            {
+              "pinyin": "yīgòng",
+              "chinese": "一共",
+              "english": "altogether / in total",
+              "indonesian": "total / seluruhnya"
+            },
+            {
+              "pinyin": "duōshǎo qián",
+              "chinese": "多少钱",
+              "english": "how much money",
+              "indonesian": "berapa harganya"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "阿姨找给我们零钱了。记得谢谢阿姨！",
+      "textPinyin": "Āyí zhǎo gěi wǒmen língqián le. Jìde xièxiè āyí!",
+      "textEnglish": "The lady gave us our change. Remember to thank her!",
+      "textIndonesian": "Ibu kasirnya sudah kasih kembalian. Ingat ucapkan terima kasih!",
+      "pinyinWords": [
+        {
+          "pinyin": "Āyí",
+          "chinese": "阿姨",
+          "english": "The lady",
+          "indonesian": "Ibu"
+        },
+        {
+          "pinyin": "zhǎo gěi wǒmen",
+          "chinese": "找给我们",
+          "english": "gave us change",
+          "indonesian": "memberikan kembalian kepada kita",
+          "note": "找 can mean 'look for' but in a shop it means 'give change' — 找零 = change money!"
+        },
+        {
+          "pinyin": "língqián",
+          "chinese": "零钱",
+          "english": "change (coins) / small change",
+          "indonesian": "uang kembalian / uang receh"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(just happened)",
+          "indonesian": "(baru saja terjadi)",
+          "note": "了 shows it just happened — the lady just gave us the change!"
+        },
+        {
+          "pinyin": "Jìde",
+          "chinese": "记得",
+          "english": "Remember to",
+          "indonesian": "Ingat untuk"
+        },
+        {
+          "pinyin": "xièxiè",
+          "chinese": "谢谢",
+          "english": "thank you",
+          "indonesian": "terima kasih"
+        },
+        {
+          "pinyin": "āyí",
+          "chinese": "阿姨",
+          "english": "the lady",
+          "indonesian": "ibu"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "谢谢阿姨！",
+          "pinyin": "Xièxiè āyí!",
+          "english": "Thank you, Miss!",
+          "indonesian": "Terima kasih, Bu!",
+          "pinyinWords": [
+            {
+              "pinyin": "Xièxiè",
+              "chinese": "谢谢",
+              "english": "Thank you",
+              "indonesian": "Terima kasih"
+            },
+            {
+              "pinyin": "āyí",
+              "chinese": "阿姨",
+              "english": "Miss / Auntie",
+              "indonesian": "Bu / Ibu"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 5,
+      "speaker": "CHARACTER",
+      "textChinese": "做得很好！你帮了很多忙！买东西的时候，要礼貌，记得说谢谢！",
+      "textPinyin": "Zuò de hěn hǎo! Nǐ bāng le hěn duō máng! Mǎi dōngxi de shíhou, yào lǐmào, jìde shuō xièxiè!",
+      "textEnglish": "Very well done! You helped so much! When shopping, be polite and remember to say thank you!",
+      "textIndonesian": "Bagus sekali! Kamu sudah banyak membantu! Saat belanja, harus sopan, ingat ucapkan terima kasih!",
+      "pinyinWords": [
+        {
+          "pinyin": "Zuò de hěn hǎo",
+          "chinese": "做得很好",
+          "english": "Very well done",
+          "indonesian": "Bagus sekali"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "bāng le",
+          "chinese": "帮了",
+          "english": "helped (already did)",
+          "indonesian": "sudah membantu"
+        },
+        {
+          "pinyin": "hěn duō máng",
+          "chinese": "很多忙",
+          "english": "a lot / so much",
+          "indonesian": "banyak",
+          "note": "帮忙 means 'to help' and 帮了很多忙 means 'helped a lot' — 忙 here means 'busy matters/tasks'!"
+        },
+        {
+          "pinyin": "Mǎi dōngxi de shíhou",
+          "chinese": "买东西的时候",
+          "english": "when shopping",
+          "indonesian": "saat belanja"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "need to / should",
+          "indonesian": "harus"
+        },
+        {
+          "pinyin": "lǐmào",
+          "chinese": "礼貌",
+          "english": "polite / courteous",
+          "indonesian": "sopan"
+        },
+        {
+          "pinyin": "jìde",
+          "chinese": "记得",
+          "english": "remember to",
+          "indonesian": "ingat untuk"
+        },
+        {
+          "pinyin": "shuō",
+          "chinese": "说",
+          "english": "say",
+          "indonesian": "ucapkan"
+        },
+        {
+          "pinyin": "xièxiè",
+          "chinese": "谢谢",
+          "english": "thank you",
+          "indonesian": "terima kasih"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you ask 'How much does it cost?' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "你好吗？",
+          "pinyin": "nǐ hǎo ma?",
+          "translation": "How are you?"
+        },
+        {
+          "chinese": "多少钱？",
+          "pinyin": "duōshǎo qián?",
+          "translation": "How much does it cost?"
+        },
+        {
+          "chinese": "在哪里？",
+          "pinyin": "zài nǎlǐ?",
+          "translation": "Where is it?"
+        },
+        {
+          "chinese": "什么时候？",
+          "pinyin": "shénme shíhou?",
+          "translation": "When is it?"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "多少钱 (duōshǎo qián) means 'How much does it cost?' — 多少 means 'how many/much' and 钱 means 'money'. Use it at every shop!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "零钱",
+      "questionPinyin": "língqián",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "price tag"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "shopping bag"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "change (coins)"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "receipt"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "零钱 (língqián) means 'change (coins)' — when you pay too much, the shop gives you 零钱 back!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'supermarket' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "学校",
+          "pinyin": "xuéxiào",
+          "translation": "school"
+        },
+        {
+          "chinese": "医院",
+          "pinyin": "yīyuàn",
+          "translation": "hospital"
+        },
+        {
+          "chinese": "超市",
+          "pinyin": "chāoshì",
+          "translation": "supermarket"
+        },
+        {
+          "chinese": "公园",
+          "pinyin": "gōngyuán",
+          "translation": "park"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "超市 (chāoshì) means 'supermarket' — 超 means 'super / exceed' and 市 means 'market'. A super market!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "一共",
+      "questionPinyin": "yīgòng",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "first one"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "altogether / in total"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "one by one"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "each one"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "一共 (yīgòng) means 'altogether / in total' — 请问一共多少钱？means 'How much is it in total?' Very useful at the shops!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'polite' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "勇敢",
+          "pinyin": "yǒnggǎn",
+          "translation": "brave"
+        },
+        {
+          "chinese": "聪明",
+          "pinyin": "cōngmíng",
+          "translation": "clever"
+        },
+        {
+          "chinese": "礼貌",
+          "pinyin": "lǐmào",
+          "translation": "polite"
+        },
+        {
+          "chinese": "快乐",
+          "pinyin": "kuàilè",
+          "translation": "happy"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "礼貌 (lǐmào) means 'polite' — always be 礼貌 when shopping, and remember to say 谢谢!"
+    }
+  ],
+  "category": "ESSENTIALS"
+}
