@@ -1,0 +1,489 @@
+{
+  "id": "scene26_art_class",
+  "title": "美术课",
+  "description": "Art class — choosing colours, drawing a picture, and showing it to the teacher",
+  "characterName": "李老师",
+  "characterEmoji": "🎨",
+  "characterRole": "art teacher",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "同学们，今天美术课我们来画画！你想画什么？",
+      "textPinyin": "Tóngxuémen, jīntiān měishùkè wǒmen lái huàhuà! Nǐ xiǎng huà shénme?",
+      "textEnglish": "Classmates, today in art class we are going to draw! What do you want to draw?",
+      "textIndonesian": "Teman-teman, hari ini pelajaran seni kita akan menggambar! Kamu mau menggambar apa?",
+      "pinyinWords": [
+        {
+          "pinyin": "Tóngxuémen",
+          "chinese": "同学们",
+          "english": "classmates / everyone",
+          "indonesian": "teman-teman kelas"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "měishùkè",
+          "chinese": "美术课",
+          "english": "art class",
+          "indonesian": "pelajaran seni",
+          "note": "美 means beautiful, 术 means skill/art, 课 means class/lesson. 美术课 = beautiful-skill class = art class!"
+        },
+        {
+          "pinyin": "lái huàhuà",
+          "chinese": "来画画",
+          "english": "let's draw / come and draw",
+          "indonesian": "ayo menggambar"
+        },
+        {
+          "pinyin": "Nǐ xiǎng huà shénme",
+          "chinese": "你想画什么",
+          "english": "what do you want to draw?",
+          "indonesian": "kamu mau menggambar apa?"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我想画动物！我要画老虎！",
+          "pinyin": "Wǒ xiǎng huà dòngwù! Wǒ yào huà lǎohǔ!",
+          "english": "I want to draw animals! I want to draw a tiger!",
+          "indonesian": "Saya mau menggambar hewan! Saya mau menggambar harimau!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ xiǎng huà",
+              "chinese": "我想画",
+              "english": "I want to draw",
+              "indonesian": "Saya mau menggambar"
+            },
+            {
+              "pinyin": "dòngwù",
+              "chinese": "动物",
+              "english": "animals",
+              "indonesian": "hewan"
+            },
+            {
+              "pinyin": "Wǒ yào huà lǎohǔ",
+              "chinese": "我要画老虎",
+              "english": "I want to draw a tiger",
+              "indonesian": "Saya mau menggambar harimau"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我想画花！红色的花！",
+          "pinyin": "Wǒ xiǎng huà huā! Hóngsè de huā!",
+          "english": "I want to draw flowers! Red flowers!",
+          "indonesian": "Saya mau menggambar bunga! Bunga merah!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ xiǎng huà",
+              "chinese": "我想画",
+              "english": "I want to draw",
+              "indonesian": "Saya mau menggambar"
+            },
+            {
+              "pinyin": "huā",
+              "chinese": "花",
+              "english": "flower",
+              "indonesian": "bunga"
+            },
+            {
+              "pinyin": "Hóngsè de",
+              "chinese": "红色的",
+              "english": "red",
+              "indonesian": "yang merah"
+            },
+            {
+              "pinyin": "huā",
+              "chinese": "花",
+              "english": "flower",
+              "indonesian": "bunga"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我想画我的家人！爸爸、妈妈和我！",
+          "pinyin": "Wǒ xiǎng huà wǒ de jiārén! Bàba, māma hé wǒ!",
+          "english": "I want to draw my family! Dad, mom and me!",
+          "indonesian": "Saya mau menggambar keluargaku! Ayah, ibu dan saya!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ xiǎng huà",
+              "chinese": "我想画",
+              "english": "I want to draw",
+              "indonesian": "Saya mau menggambar"
+            },
+            {
+              "pinyin": "wǒ de jiārén",
+              "chinese": "我的家人",
+              "english": "my family",
+              "indonesian": "keluargaku"
+            },
+            {
+              "pinyin": "Bàba māma hé wǒ",
+              "chinese": "爸爸妈妈和我",
+              "english": "dad, mom and me",
+              "indonesian": "ayah, ibu, dan saya"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "好主意！先选颜色。你喜欢什么颜色？",
+      "textPinyin": "Hǎo zhǔyì! Xiān xuǎn yánsè. Nǐ xǐhuān shénme yánsè?",
+      "textEnglish": "Good idea! First choose your colours. What colour do you like?",
+      "textIndonesian": "Ide bagus! Pilih warna dulu. Kamu suka warna apa?",
+      "pinyinWords": [
+        {
+          "pinyin": "Hǎo zhǔyì",
+          "chinese": "好主意",
+          "english": "good idea",
+          "indonesian": "ide bagus"
+        },
+        {
+          "pinyin": "Xiān xuǎn",
+          "chinese": "先选",
+          "english": "first choose",
+          "indonesian": "pilih dulu"
+        },
+        {
+          "pinyin": "yánsè",
+          "chinese": "颜色",
+          "english": "colour",
+          "indonesian": "warna"
+        },
+        {
+          "pinyin": "Nǐ xǐhuān shénme yánsè",
+          "chinese": "你喜欢什么颜色",
+          "english": "what colour do you like?",
+          "indonesian": "kamu suka warna apa?"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我喜欢红色！红色很漂亮！",
+          "pinyin": "Wǒ xǐhuān hóngsè! Hóngsè hěn piàoliang!",
+          "english": "I like red! Red is very beautiful!",
+          "indonesian": "Saya suka merah! Merah sangat cantik!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ xǐhuān",
+              "chinese": "我喜欢",
+              "english": "I like",
+              "indonesian": "Saya suka"
+            },
+            {
+              "pinyin": "hóngsè",
+              "chinese": "红色",
+              "english": "red",
+              "indonesian": "merah",
+              "note": "In Chinese, colour names end with 色 (sè). 红色 = red, 蓝色 = blue, 黄色 = yellow, 绿色 = green!"
+            },
+            {
+              "pinyin": "hěn piàoliang",
+              "chinese": "很漂亮",
+              "english": "very beautiful",
+              "indonesian": "sangat cantik"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我喜欢蓝色！蓝色像天空！",
+          "pinyin": "Wǒ xǐhuān lánsè! Lánsè xiàng tiānkōng!",
+          "english": "I like blue! Blue is like the sky!",
+          "indonesian": "Saya suka biru! Biru seperti langit!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ xǐhuān",
+              "chinese": "我喜欢",
+              "english": "I like",
+              "indonesian": "Saya suka"
+            },
+            {
+              "pinyin": "lánsè",
+              "chinese": "蓝色",
+              "english": "blue",
+              "indonesian": "biru"
+            },
+            {
+              "pinyin": "xiàng tiānkōng",
+              "chinese": "像天空",
+              "english": "like the sky",
+              "indonesian": "seperti langit"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我喜欢黄色！黄色像太阳！",
+          "pinyin": "Wǒ xǐhuān huángsè! Huángsè xiàng tàiyáng!",
+          "english": "I like yellow! Yellow is like the sun!",
+          "indonesian": "Saya suka kuning! Kuning seperti matahari!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ xǐhuān",
+              "chinese": "我喜欢",
+              "english": "I like",
+              "indonesian": "Saya suka"
+            },
+            {
+              "pinyin": "huángsè",
+              "chinese": "黄色",
+              "english": "yellow",
+              "indonesian": "kuning"
+            },
+            {
+              "pinyin": "xiàng tàiyáng",
+              "chinese": "像太阳",
+              "english": "like the sun",
+              "indonesian": "seperti matahari"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "好！开始画吧！画好了就举手给我看。",
+      "textPinyin": "Hǎo! Kāishǐ huà ba! Huà hǎo le jiù jǔshǒu gěi wǒ kàn.",
+      "textEnglish": "Great! Start drawing! When you are done raise your hand to show me.",
+      "textIndonesian": "Bagus! Mulai menggambar! Kalau sudah selesai angkat tangan untuk tunjukkan ke saya.",
+      "pinyinWords": [
+        {
+          "pinyin": "Kāishǐ huà ba",
+          "chinese": "开始画吧",
+          "english": "start drawing",
+          "indonesian": "mulai menggambar"
+        },
+        {
+          "pinyin": "Huà hǎo le jiù",
+          "chinese": "画好了就",
+          "english": "when done drawing",
+          "indonesian": "kalau sudah selesai menggambar"
+        },
+        {
+          "pinyin": "jǔshǒu",
+          "chinese": "举手",
+          "english": "raise your hand",
+          "indonesian": "angkat tangan"
+        },
+        {
+          "pinyin": "gěi wǒ kàn",
+          "chinese": "给我看",
+          "english": "show me",
+          "indonesian": "tunjukkan ke saya"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "画好了！老师，请看！漂亮吗？",
+          "pinyin": "Huà hǎo le! Lǎoshī, qǐng kàn! Piàoliang ma?",
+          "english": "Done drawing! Teacher, please look! Is it beautiful?",
+          "indonesian": "Sudah selesai menggambar! Ibu guru, tolong lihat! Cantik tidak?",
+          "pinyinWords": [
+            {
+              "pinyin": "Huà hǎo le",
+              "chinese": "画好了",
+              "english": "finished drawing / done",
+              "indonesian": "sudah selesai menggambar"
+            },
+            {
+              "pinyin": "Lǎoshī qǐng kàn",
+              "chinese": "老师请看",
+              "english": "teacher please look",
+              "indonesian": "ibu guru tolong lihat"
+            },
+            {
+              "pinyin": "Piàoliang ma",
+              "chinese": "漂亮吗",
+              "english": "is it beautiful?",
+              "indonesian": "cantik tidak?"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "哇，画得很漂亮！你真有天分！继续努力！",
+      "textPinyin": "Wā, huà de hěn piàoliang! Nǐ zhēn yǒu tiānfèn! Jìxù nǔlì!",
+      "textEnglish": "Wow, you drew it beautifully! You really have talent! Keep working hard!",
+      "textIndonesian": "Wah, gambaran yang sangat cantik! Kamu benar-benar berbakat! Terus semangat!",
+      "pinyinWords": [
+        {
+          "pinyin": "Wā",
+          "chinese": "哇",
+          "english": "Wow!",
+          "indonesian": "Wah!"
+        },
+        {
+          "pinyin": "huà de hěn piàoliang",
+          "chinese": "画得很漂亮",
+          "english": "drew it very beautifully",
+          "indonesian": "menggambarnya sangat cantik",
+          "note": "得 (de) connects a verb to a description of how well it was done. 画得很漂亮 = drew it beautifully. 跑得很快 = ran very fast!"
+        },
+        {
+          "pinyin": "Nǐ zhēn yǒu tiānfèn",
+          "chinese": "你真有天分",
+          "english": "you really have talent",
+          "indonesian": "kamu benar-benar berbakat"
+        },
+        {
+          "pinyin": "Jìxù nǔlì",
+          "chinese": "继续努力",
+          "english": "keep working hard",
+          "indonesian": "terus semangat",
+          "note": "努力 (nǔlì) means to work hard or make effort. 继续努力 = keep it up! You'll hear this a lot from teachers!"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'red' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "蓝色",
+          "pinyin": "lánsè",
+          "translation": "blue"
+        },
+        {
+          "chinese": "黄色",
+          "pinyin": "huángsè",
+          "translation": "yellow"
+        },
+        {
+          "chinese": "红色",
+          "pinyin": "hóngsè",
+          "translation": "red"
+        },
+        {
+          "chinese": "绿色",
+          "pinyin": "lǜsè",
+          "translation": "green"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "红色 (hóngsè) means red! In China, red is a lucky colour used at celebrations and festivals!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does 画画 mean?",
+      "questionChinese": "画画",
+      "questionPinyin": "huàhuà",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "read a book"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "draw / paint"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "write"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "colour"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "画画 (huàhuà) means to draw or paint! The first 画 is the verb 'draw', the second 画 is the noun 'picture'!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'beautiful' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "可爱",
+          "pinyin": "kě'ài",
+          "translation": "cute"
+        },
+        {
+          "chinese": "漂亮",
+          "pinyin": "piàoliang",
+          "translation": "beautiful"
+        },
+        {
+          "chinese": "好看",
+          "pinyin": "hǎokàn",
+          "translation": "good-looking"
+        },
+        {
+          "chinese": "厉害",
+          "pinyin": "lìhai",
+          "translation": "impressive"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "漂亮 (piàoliang) means beautiful! Use it for people, drawings, clothes — anything that looks great!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "颜色",
+      "questionPinyin": "yánsè",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "pencil"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "picture"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "colour"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "paint"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "颜色 (yánsè) means colour! Ask 什么颜色？(shénme yánsè?) to ask 'what colour is it?'"
+    }
+  ],
+  "category": "SCHOOL_SUBJECTS"
+}

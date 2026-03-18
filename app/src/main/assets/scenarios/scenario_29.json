@@ -1,0 +1,451 @@
+{
+  "id": "scene29_character_education",
+  "title": "品德课",
+  "description": "Character education (Pendidikan Budi Pekerti) — learning kindness, sharing, and how to treat others well",
+  "characterName": "Wang 老师",
+  "characterEmoji": "👩‍🏫",
+  "characterRole": "teacher",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "同学们，今天品德课！我们来学习对人友善。如果你看到同学摔倒了，你会怎么做？",
+      "textPinyin": "Tóngxuémen, jīntiān pǐndékè! Wǒmen lái xuéxí duì rén yǒushàn. Rúguǒ nǐ kàn dào tóngxué shuāidǎo le, nǐ huì zěnme zuò?",
+      "textEnglish": "Classmates, today is character class! We are learning to be kind to others. If you see a classmate fall down, what would you do?",
+      "textIndonesian": "Teman-teman, hari ini pelajaran budi pekerti! Kita belajar bersikap baik kepada orang lain. Kalau kamu melihat teman jatuh, apa yang akan kamu lakukan?",
+      "pinyinWords": [
+        {
+          "pinyin": "pǐndékè",
+          "chinese": "品德课",
+          "english": "character education class",
+          "indonesian": "pelajaran budi pekerti",
+          "note": "品德 means moral character — 品 means quality/character, 德 means virtue. 品德课 = the class for growing a good character!"
+        },
+        {
+          "pinyin": "xuéxí",
+          "chinese": "学习",
+          "english": "learn / study",
+          "indonesian": "belajar"
+        },
+        {
+          "pinyin": "duì rén yǒushàn",
+          "chinese": "对人友善",
+          "english": "be kind to others",
+          "indonesian": "bersikap baik kepada orang lain",
+          "note": "友善 means kind or friendly. 对人友善 = kind towards people. 友 means friend, 善 means good — being a good friend!"
+        },
+        {
+          "pinyin": "Rúguǒ",
+          "chinese": "如果",
+          "english": "if",
+          "indonesian": "kalau / jika"
+        },
+        {
+          "pinyin": "tóngxué shuāidǎo le",
+          "chinese": "同学摔倒了",
+          "english": "a classmate fell down",
+          "indonesian": "teman kelas jatuh"
+        },
+        {
+          "pinyin": "nǐ huì zěnme zuò",
+          "chinese": "你会怎么做",
+          "english": "what would you do?",
+          "indonesian": "apa yang akan kamu lakukan?"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我会跑过去帮他站起来！",
+          "pinyin": "Wǒ huì pǎo guòqù bāng tā zhàn qǐlái!",
+          "english": "I would run over to help him stand up!",
+          "indonesian": "Saya akan berlari ke sana untuk membantunya berdiri!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ huì pǎo guòqù",
+              "chinese": "我会跑过去",
+              "english": "I would run over there",
+              "indonesian": "Saya akan berlari ke sana"
+            },
+            {
+              "pinyin": "bāng tā",
+              "chinese": "帮他",
+              "english": "help him",
+              "indonesian": "membantunya"
+            },
+            {
+              "pinyin": "zhàn qǐlái",
+              "chinese": "站起来",
+              "english": "stand up",
+              "indonesian": "berdiri",
+              "note": "起来 after a verb means to do the action upwards or to completion. 站起来 = stand up, 拿起来 = pick up!"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我会问他：你还好吗？然后去叫老师！",
+          "pinyin": "Wǒ huì wèn tā: nǐ hái hǎo ma? Rán hòu qù jiào lǎoshī!",
+          "english": "I would ask him: are you okay? Then go and call the teacher!",
+          "indonesian": "Saya akan bertanya: kamu baik-baik saja? Lalu pergi panggil guru!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ huì wèn tā",
+              "chinese": "我会问他",
+              "english": "I would ask him",
+              "indonesian": "Saya akan bertanya kepadanya"
+            },
+            {
+              "pinyin": "nǐ hái hǎo ma",
+              "chinese": "你还好吗",
+              "english": "are you okay?",
+              "indonesian": "kamu baik-baik saja?"
+            },
+            {
+              "pinyin": "Rán hòu",
+              "chinese": "然后",
+              "english": "then / after that",
+              "indonesian": "lalu / kemudian"
+            },
+            {
+              "pinyin": "qù jiào lǎoshī",
+              "chinese": "去叫老师",
+              "english": "go and call the teacher",
+              "indonesian": "pergi panggil guru"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "说得很好！帮助别人很重要。如果同学没有铅笔，你会怎么做？",
+      "textPinyin": "Shuō de hěn hǎo! Bāngzhù biéren hěn zhòngyào. Rúguǒ tóngxué méiyǒu qiānbǐ, nǐ huì zěnme zuò?",
+      "textEnglish": "Well said! Helping others is very important. If a classmate does not have a pencil, what would you do?",
+      "textIndonesian": "Jawaban bagus! Membantu orang lain sangat penting. Kalau teman tidak punya pensil, apa yang akan kamu lakukan?",
+      "pinyinWords": [
+        {
+          "pinyin": "Shuō de hěn hǎo",
+          "chinese": "说得很好",
+          "english": "well said",
+          "indonesian": "jawaban bagus"
+        },
+        {
+          "pinyin": "Bāngzhù biéren",
+          "chinese": "帮助别人",
+          "english": "help others",
+          "indonesian": "membantu orang lain"
+        },
+        {
+          "pinyin": "hěn zhòngyào",
+          "chinese": "很重要",
+          "english": "very important",
+          "indonesian": "sangat penting",
+          "note": "重要 (zhòngyào) means important. 很重要！ = very important! You will hear this a lot from teachers and parents!"
+        },
+        {
+          "pinyin": "méiyǒu qiānbǐ",
+          "chinese": "没有铅笔",
+          "english": "does not have a pencil",
+          "indonesian": "tidak punya pensil"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我可以把我的铅笔借给他！",
+          "pinyin": "Wǒ kěyǐ bǎ wǒ de qiānbǐ jiè gěi tā!",
+          "english": "I can lend him my pencil!",
+          "indonesian": "Saya bisa meminjamkan pensilku kepadanya!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ kěyǐ",
+              "chinese": "我可以",
+              "english": "I can / I am able to",
+              "indonesian": "Saya bisa"
+            },
+            {
+              "pinyin": "bǎ wǒ de qiānbǐ",
+              "chinese": "把我的铅笔",
+              "english": "take my pencil",
+              "indonesian": "ambil pensilku"
+            },
+            {
+              "pinyin": "jiè gěi tā",
+              "chinese": "借给他",
+              "english": "lend to him",
+              "indonesian": "pinjamkan kepadanya",
+              "note": "借 means to borrow OR to lend, depending on context. 借给 = lend to someone. 向他借 = borrow from him!"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我们可以一起分享用！我用完了给你！",
+          "pinyin": "Wǒmen kěyǐ yīqǐ fēnxiǎng yòng! Wǒ yòng wán le gěi nǐ!",
+          "english": "We can share and use it together! I will give it to you when I am done!",
+          "indonesian": "Kita bisa berbagi pakai! Saya kasih ke kamu kalau sudah selesai!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒmen kěyǐ yīqǐ",
+              "chinese": "我们可以一起",
+              "english": "we can together",
+              "indonesian": "kita bisa bersama"
+            },
+            {
+              "pinyin": "fēnxiǎng",
+              "chinese": "分享",
+              "english": "share",
+              "indonesian": "berbagi",
+              "note": "分享 means to share. 分 means divide, 享 means enjoy. Sharing = dividing so everyone can enjoy!"
+            },
+            {
+              "pinyin": "yòng wán le gěi nǐ",
+              "chinese": "用完了给你",
+              "english": "give to you when done",
+              "indonesian": "kasih ke kamu kalau sudah selesai"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "太棒了！分享很美好。如果有人帮助了你，你应该说什么？",
+      "textPinyin": "Tài bàng le! Fēnxiǎng hěn měihǎo. Rúguǒ yǒu rén bāngzhù le nǐ, nǐ yīnggāi shuō shénme?",
+      "textEnglish": "Wonderful! Sharing is beautiful. If someone helped you, what should you say?",
+      "textIndonesian": "Luar biasa! Berbagi itu indah. Kalau ada orang yang membantumu, apa yang harus kamu ucapkan?",
+      "pinyinWords": [
+        {
+          "pinyin": "Tài bàng le",
+          "chinese": "太棒了",
+          "english": "wonderful",
+          "indonesian": "luar biasa"
+        },
+        {
+          "pinyin": "Fēnxiǎng hěn měihǎo",
+          "chinese": "分享很美好",
+          "english": "sharing is wonderful",
+          "indonesian": "berbagi itu indah"
+        },
+        {
+          "pinyin": "Rúguǒ yǒu rén bāngzhù le nǐ",
+          "chinese": "如果有人帮助了你",
+          "english": "if someone helped you",
+          "indonesian": "kalau ada orang yang membantumu"
+        },
+        {
+          "pinyin": "nǐ yīnggāi shuō shénme",
+          "chinese": "你应该说什么",
+          "english": "what should you say?",
+          "indonesian": "apa yang harus kamu ucapkan?",
+          "note": "应该 (yīnggāi) means should or ought to. 你应该... = you should... A useful word for talking about the right thing to do!"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "谢谢你！你真好！我也会帮助你的！",
+          "pinyin": "Xièxie nǐ! Nǐ zhēn hǎo! Wǒ yě huì bāngzhù nǐ de!",
+          "english": "Thank you! You are so kind! I will help you too!",
+          "indonesian": "Terima kasih! Kamu baik sekali! Saya juga akan membantumu!",
+          "pinyinWords": [
+            {
+              "pinyin": "Xièxie nǐ",
+              "chinese": "谢谢你",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            },
+            {
+              "pinyin": "Nǐ zhēn hǎo",
+              "chinese": "你真好",
+              "english": "you are so kind / you are so good",
+              "indonesian": "kamu baik sekali"
+            },
+            {
+              "pinyin": "Wǒ yě huì bāngzhù nǐ de",
+              "chinese": "我也会帮助你的",
+              "english": "I will help you too",
+              "indonesian": "Saya juga akan membantumu"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "说得太好了！记住：对人好，人也会对你好。这是品德课最重要的道理！",
+      "textPinyin": "Shuō de tài hǎo le! Jìzhù: duì rén hǎo, rén yě huì duì nǐ hǎo. Zhè shì pǐndékè zuì zhòngyào de dàolǐ!",
+      "textEnglish": "Wonderfully said! Remember: be good to others, and others will be good to you. This is the most important lesson in character class!",
+      "textIndonesian": "Luar biasa jawabannya! Ingat: bersikap baik kepada orang lain, orang lain juga akan bersikap baik kepadamu. Ini adalah pelajaran terpenting dalam budi pekerti!",
+      "pinyinWords": [
+        {
+          "pinyin": "Shuō de tài hǎo le",
+          "chinese": "说得太好了",
+          "english": "wonderfully said",
+          "indonesian": "luar biasa jawabannya"
+        },
+        {
+          "pinyin": "Jìzhù",
+          "chinese": "记住",
+          "english": "remember / keep in mind",
+          "indonesian": "ingat / hafalkan"
+        },
+        {
+          "pinyin": "duì rén hǎo",
+          "chinese": "对人好",
+          "english": "be good to others",
+          "indonesian": "bersikap baik kepada orang lain"
+        },
+        {
+          "pinyin": "rén yě huì duì nǐ hǎo",
+          "chinese": "人也会对你好",
+          "english": "others will also be good to you",
+          "indonesian": "orang lain juga akan bersikap baik kepadamu"
+        },
+        {
+          "pinyin": "zuì zhòngyào de dàolǐ",
+          "chinese": "最重要的道理",
+          "english": "the most important lesson / principle",
+          "indonesian": "pelajaran terpenting",
+          "note": "道理 (dàolǐ) means a principle, lesson, or reason. 这个道理 = this lesson/truth. A very important word in Chinese moral education!"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does 帮助 mean?",
+      "questionChinese": "帮助",
+      "questionPinyin": "bāngzhù",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "share"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "help"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "thank"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "lend"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "帮助 (bāngzhù) means help! 帮助别人 = help others. Be a helper every day!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'share' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "借",
+          "pinyin": "jiè",
+          "translation": "lend / borrow"
+        },
+        {
+          "chinese": "友善",
+          "pinyin": "yǒushàn",
+          "translation": "kind / friendly"
+        },
+        {
+          "chinese": "分享",
+          "pinyin": "fēnxiǎng",
+          "translation": "share"
+        },
+        {
+          "chinese": "重要",
+          "pinyin": "zhòngyào",
+          "translation": "important"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "分享 (fēnxiǎng) means share! 分 = divide, 享 = enjoy. Divide so everyone can enjoy — that's sharing!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does 友善 mean?",
+      "questionChinese": "友善",
+      "questionPinyin": "yǒushàn",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "brave"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "clever"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "kind / friendly"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "hardworking"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "友善 (yǒushàn) means kind or friendly! 友 = friend, 善 = good. Being a good friend to everyone!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "重要",
+      "questionPinyin": "zhòngyào",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "interesting"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "difficult"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "happy"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "important"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "重要 (zhòngyào) means important! 帮助别人很重要 = Helping others is very important!"
+    }
+  ],
+  "category": "SCHOOL_SUBJECTS"
+}

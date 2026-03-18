@@ -1,0 +1,414 @@
+{
+  "id": "scene27_music_class",
+  "title": "音乐课",
+  "description": "Music class — learning instrument names, singing together, and enjoying music",
+  "characterName": "音乐老师",
+  "characterEmoji": "🎵",
+  "characterRole": "music teacher",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "同学们，欢迎来到音乐课！今天我们认识乐器。这是什么？",
+      "textPinyin": "Tóngxuémen, huānyíng lái dào yīnyuèkè! Jīntiān wǒmen rènshi yuèqì. Zhè shì shénme?",
+      "textEnglish": "Classmates, welcome to music class! Today we are learning about instruments. What is this?",
+      "textIndonesian": "Teman-teman, selamat datang di pelajaran musik! Hari ini kita belajar tentang alat musik. Ini apa?",
+      "pinyinWords": [
+        {
+          "pinyin": "huānyíng lái dào",
+          "chinese": "欢迎来到",
+          "english": "welcome to",
+          "indonesian": "selamat datang di"
+        },
+        {
+          "pinyin": "yīnyuèkè",
+          "chinese": "音乐课",
+          "english": "music class",
+          "indonesian": "pelajaran musik",
+          "note": "音 means sound, 乐 means music/happy, 课 means class. 音乐 = music, 音乐课 = music class!"
+        },
+        {
+          "pinyin": "rènshi",
+          "chinese": "认识",
+          "english": "get to know / learn about",
+          "indonesian": "mengenal / belajar tentang"
+        },
+        {
+          "pinyin": "yuèqì",
+          "chinese": "乐器",
+          "english": "musical instrument",
+          "indonesian": "alat musik"
+        },
+        {
+          "pinyin": "Zhè shì shénme",
+          "chinese": "这是什么",
+          "english": "what is this?",
+          "indonesian": "ini apa?"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "这是钢琴！黑色和白色的键！",
+          "pinyin": "Zhè shì gāngqín! Hēisè hé báisè de jiàn!",
+          "english": "This is a piano! Black and white keys!",
+          "indonesian": "Ini piano! Tuts hitam dan putih!",
+          "pinyinWords": [
+            {
+              "pinyin": "Zhè shì",
+              "chinese": "这是",
+              "english": "this is",
+              "indonesian": "ini adalah"
+            },
+            {
+              "pinyin": "gāngqín",
+              "chinese": "钢琴",
+              "english": "piano",
+              "indonesian": "piano",
+              "note": "钢 means steel, 琴 means stringed instrument. A piano has steel strings inside — so 钢琴 = steel instrument!"
+            },
+            {
+              "pinyin": "Hēisè hé báisè de jiàn",
+              "chinese": "黑色和白色的键",
+              "english": "black and white keys",
+              "indonesian": "tuts hitam dan putih"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "对！这是钢琴。那边是鼓。你会敲鼓吗？",
+      "textPinyin": "Duì! Zhè shì gāngqín. Nà biān shì gǔ. Nǐ huì qiāo gǔ ma?",
+      "textEnglish": "Correct! This is a piano. Over there is a drum. Can you play the drums?",
+      "textIndonesian": "Benar! Ini piano. Di sana ada drum. Kamu bisa main drum?",
+      "pinyinWords": [
+        {
+          "pinyin": "Duì",
+          "chinese": "对",
+          "english": "correct / right",
+          "indonesian": "benar"
+        },
+        {
+          "pinyin": "Nà biān shì gǔ",
+          "chinese": "那边是鼓",
+          "english": "over there is a drum",
+          "indonesian": "di sana ada drum"
+        },
+        {
+          "pinyin": "gǔ",
+          "chinese": "鼓",
+          "english": "drum",
+          "indonesian": "drum / gendang"
+        },
+        {
+          "pinyin": "Nǐ huì qiāo gǔ ma",
+          "chinese": "你会敲鼓吗",
+          "english": "can you play the drums?",
+          "indonesian": "kamu bisa main drum?",
+          "note": "敲 (qiāo) means to knock or tap. 敲鼓 = hit the drum = play drums. 敲门 (qiāo mén) = knock on the door!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我会一点！我在家练习过！",
+          "pinyin": "Wǒ huì yīdiǎn! Wǒ zài jiā liànxí guò!",
+          "english": "I know a little! I have practised at home!",
+          "indonesian": "Saya bisa sedikit! Saya sudah pernah latihan di rumah!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ huì yīdiǎn",
+              "chinese": "我会一点",
+              "english": "I know a little",
+              "indonesian": "Saya bisa sedikit"
+            },
+            {
+              "pinyin": "Wǒ zài jiā liànxí guò",
+              "chinese": "我在家练习过",
+              "english": "I have practised at home",
+              "indonesian": "Saya sudah pernah latihan di rumah"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我不会，但是我想学！",
+          "pinyin": "Wǒ bù huì, dànshì wǒ xiǎng xué!",
+          "english": "I cannot, but I want to learn!",
+          "indonesian": "Saya tidak bisa, tapi saya mau belajar!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ bù huì",
+              "chinese": "我不会",
+              "english": "I cannot / I don't know how",
+              "indonesian": "Saya tidak bisa"
+            },
+            {
+              "pinyin": "dànshì wǒ xiǎng xué",
+              "chinese": "但是我想学",
+              "english": "but I want to learn",
+              "indonesian": "tapi saya mau belajar"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "很好！现在我们一起唱歌吧！大声唱，不要害羞！",
+      "textPinyin": "Hěn hǎo! Xiànzài wǒmen yīqǐ chànggē ba! Dà shēng chàng, bùyào hàixiū!",
+      "textEnglish": "Very good! Now let us sing together! Sing loudly, don't be shy!",
+      "textIndonesian": "Bagus! Sekarang kita nyanyi bersama! Nyanyi dengan suara keras, jangan malu!",
+      "pinyinWords": [
+        {
+          "pinyin": "Xiànzài wǒmen yīqǐ",
+          "chinese": "现在我们一起",
+          "english": "now let us together",
+          "indonesian": "sekarang kita bersama"
+        },
+        {
+          "pinyin": "chànggē",
+          "chinese": "唱歌",
+          "english": "sing / singing",
+          "indonesian": "bernyanyi",
+          "note": "唱 means to sing and 歌 means song. 唱歌 = sing a song. 一首歌 (yī shǒu gē) = one song!"
+        },
+        {
+          "pinyin": "Dà shēng chàng",
+          "chinese": "大声唱",
+          "english": "sing loudly",
+          "indonesian": "nyanyi dengan suara keras",
+          "note": "大声 means loud voice. 大声说 = speak loudly, 大声唱 = sing loudly. The opposite is 小声 (xiǎo shēng) = softly!"
+        },
+        {
+          "pinyin": "bùyào hàixiū",
+          "chinese": "不要害羞",
+          "english": "don't be shy",
+          "indonesian": "jangan malu"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "好的！我喜欢唱歌！我要大声唱！",
+          "pinyin": "Hǎo de! Wǒ xǐhuān chànggē! Wǒ yào dà shēng chàng!",
+          "english": "Okay! I love singing! I am going to sing loudly!",
+          "indonesian": "Baik! Saya suka bernyanyi! Saya mau nyanyi dengan suara keras!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "okay",
+              "indonesian": "baik"
+            },
+            {
+              "pinyin": "Wǒ xǐhuān chànggē",
+              "chinese": "我喜欢唱歌",
+              "english": "I love singing",
+              "indonesian": "Saya suka bernyanyi"
+            },
+            {
+              "pinyin": "Wǒ yào dà shēng chàng",
+              "chinese": "我要大声唱",
+              "english": "I am going to sing loudly",
+              "indonesian": "Saya mau nyanyi dengan suara keras"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我有一点害羞，但我会试试！",
+          "pinyin": "Wǒ yǒu yīdiǎn hàixiū, dàn wǒ huì shì shì!",
+          "english": "I am a little shy, but I will try!",
+          "indonesian": "Saya sedikit malu, tapi saya akan mencoba!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ yǒu yīdiǎn hàixiū",
+              "chinese": "我有一点害羞",
+              "english": "I am a little shy",
+              "indonesian": "Saya sedikit malu"
+            },
+            {
+              "pinyin": "dàn wǒ huì shì shì",
+              "chinese": "但我会试试",
+              "english": "but I will try",
+              "indonesian": "tapi saya akan mencoba",
+              "note": "试试 (shì shì) means give it a try. Saying a verb twice in Chinese means doing it a little or casually — 看看 = take a look, 想想 = think about it!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "唱得好极了！音乐让人快乐！下次我们学更多歌！",
+      "textPinyin": "Chàng de hǎo jí le! Yīnyuè ràng rén kuàilè! Xià cì wǒmen xué gèng duō gē!",
+      "textEnglish": "You sang wonderfully! Music makes people happy! Next time we will learn more songs!",
+      "textIndonesian": "Nyanyiannya luar biasa! Musik membuat orang bahagia! Lain kali kita belajar lebih banyak lagu!",
+      "pinyinWords": [
+        {
+          "pinyin": "Chàng de hǎo jí le",
+          "chinese": "唱得好极了",
+          "english": "sang wonderfully / sang extremely well",
+          "indonesian": "nyanyiannya luar biasa"
+        },
+        {
+          "pinyin": "Yīnyuè ràng rén kuàilè",
+          "chinese": "音乐让人快乐",
+          "english": "music makes people happy",
+          "indonesian": "musik membuat orang bahagia",
+          "note": "让 (ràng) means 'to let' or 'to make'. 让人快乐 = makes people happy. 让我试试 = let me try!"
+        },
+        {
+          "pinyin": "Xià cì",
+          "chinese": "下次",
+          "english": "next time",
+          "indonesian": "lain kali"
+        },
+        {
+          "pinyin": "xué gèng duō gē",
+          "chinese": "学更多歌",
+          "english": "learn more songs",
+          "indonesian": "belajar lebih banyak lagu"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'piano' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "鼓",
+          "pinyin": "gǔ",
+          "translation": "drum"
+        },
+        {
+          "chinese": "钢琴",
+          "pinyin": "gāngqín",
+          "translation": "piano"
+        },
+        {
+          "chinese": "吉他",
+          "pinyin": "jítā",
+          "translation": "guitar"
+        },
+        {
+          "chinese": "小提琴",
+          "pinyin": "xiǎotíqín",
+          "translation": "violin"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "钢琴 (gāngqín) means piano! 钢 = steel (for the strings inside), 琴 = instrument. Steel instrument!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does 唱歌 mean?",
+      "questionChinese": "唱歌",
+      "questionPinyin": "chànggē",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "play an instrument"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "listen to music"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "sing a song"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "dance"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "唱歌 (chànggē) means sing a song! 唱 = sing, 歌 = song. Simple and fun!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'music' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "画画",
+          "pinyin": "huàhuà",
+          "translation": "drawing"
+        },
+        {
+          "chinese": "体育",
+          "pinyin": "tǐyù",
+          "translation": "PE / sports"
+        },
+        {
+          "chinese": "音乐",
+          "pinyin": "yīnyuè",
+          "translation": "music"
+        },
+        {
+          "chinese": "数学",
+          "pinyin": "shùxué",
+          "translation": "maths"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "音乐 (yīnyuè) means music! 音 = sound, 乐 = happy/music. Sounds that make you happy!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "好听",
+      "questionPinyin": "hǎotīng",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "very loud"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "sounds good / pleasant to hear"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "I can sing"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "let's listen"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "好听 (hǎotīng) means sounds good or pleasant to hear! 好 = good, 听 = listen. Like 好吃 for food but for music!"
+    }
+  ],
+  "category": "SCHOOL_SUBJECTS"
+}

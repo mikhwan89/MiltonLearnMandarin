@@ -1,0 +1,431 @@
+{
+  "id": "scene28_science_class",
+  "title": "科学课",
+  "description": "Science class — doing a simple experiment, observing plants, and asking why things happen",
+  "characterName": "科学老师",
+  "characterEmoji": "🔬",
+  "characterRole": "science teacher",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "同学们！今天科学课，我们来做实验！你喜欢科学吗？",
+      "textPinyin": "Tóngxuémen! Jīntiān kēxuékè, wǒmen lái zuò shíyàn! Nǐ xǐhuān kēxué ma?",
+      "textEnglish": "Classmates! Today in science class we are going to do an experiment! Do you like science?",
+      "textIndonesian": "Teman-teman! Hari ini pelajaran sains, kita akan melakukan percobaan! Kamu suka sains?",
+      "pinyinWords": [
+        {
+          "pinyin": "kēxuékè",
+          "chinese": "科学课",
+          "english": "science class",
+          "indonesian": "pelajaran sains",
+          "note": "科学 means science — 科 means branch of study, 学 means study/learning. 科学 = systematic study = science!"
+        },
+        {
+          "pinyin": "lái zuò shíyàn",
+          "chinese": "来做实验",
+          "english": "let's do an experiment",
+          "indonesian": "ayo melakukan percobaan"
+        },
+        {
+          "pinyin": "shíyàn",
+          "chinese": "实验",
+          "english": "experiment",
+          "indonesian": "percobaan / eksperimen"
+        },
+        {
+          "pinyin": "Nǐ xǐhuān kēxué ma",
+          "chinese": "你喜欢科学吗",
+          "english": "do you like science?",
+          "indonesian": "kamu suka sains?"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "喜欢！科学很有趣！我想知道为什么！",
+          "pinyin": "Xǐhuān! Kēxué hěn yǒuqù! Wǒ xiǎng zhīdào wèishénme!",
+          "english": "Yes! Science is so interesting! I want to know why!",
+          "indonesian": "Suka! Sains sangat menarik! Saya ingin tahu kenapa!",
+          "pinyinWords": [
+            {
+              "pinyin": "Xǐhuān",
+              "chinese": "喜欢",
+              "english": "yes / I like it",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "Kēxué hěn yǒuqù",
+              "chinese": "科学很有趣",
+              "english": "science is very interesting",
+              "indonesian": "sains sangat menarik",
+              "note": "有趣 (yǒuqù) means interesting or fun. 很有趣！= very interesting! You can use this for anything you find fascinating."
+            },
+            {
+              "pinyin": "Wǒ xiǎng zhīdào wèishénme",
+              "chinese": "我想知道为什么",
+              "english": "I want to know why",
+              "indonesian": "saya ingin tahu kenapa"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "有时候很难，但是很好玩！",
+          "pinyin": "Yǒushíhou hěn nán, dànshì hěn hǎowán!",
+          "english": "Sometimes it is hard, but it is very fun!",
+          "indonesian": "Kadang-kadang susah, tapi sangat menyenangkan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Yǒushíhou",
+              "chinese": "有时候",
+              "english": "sometimes",
+              "indonesian": "kadang-kadang"
+            },
+            {
+              "pinyin": "hěn nán",
+              "chinese": "很难",
+              "english": "very hard / difficult",
+              "indonesian": "sangat sulit"
+            },
+            {
+              "pinyin": "dànshì hěn hǎowán",
+              "chinese": "但是很好玩",
+              "english": "but very fun",
+              "indonesian": "tapi sangat menyenangkan"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "很好！今天我们来观察植物。这是一颗种子。种到土里，会长出什么？",
+      "textPinyin": "Hěn hǎo! Jīntiān wǒmen lái guānchá zhíwù. Zhè shì yī kē zhǒngzi. Zhòng dào tǔ lǐ, huì zhǎng chū shénme?",
+      "textEnglish": "Very good! Today we will observe plants. This is a seed. If we plant it in soil, what will grow?",
+      "textIndonesian": "Bagus! Hari ini kita akan mengamati tanaman. Ini adalah sebutir biji. Kalau ditanam ke tanah, apa yang akan tumbuh?",
+      "pinyinWords": [
+        {
+          "pinyin": "guānchá",
+          "chinese": "观察",
+          "english": "observe / look carefully",
+          "indonesian": "mengamati",
+          "note": "观察 means to observe carefully — like a scientist watching what happens. 观 = watch, 察 = inspect."
+        },
+        {
+          "pinyin": "zhíwù",
+          "chinese": "植物",
+          "english": "plant",
+          "indonesian": "tanaman / tumbuhan"
+        },
+        {
+          "pinyin": "yī kē zhǒngzi",
+          "chinese": "一颗种子",
+          "english": "one seed",
+          "indonesian": "sebutir biji",
+          "note": "颗 (kē) is the counter word for small round things like seeds, pearls, or teeth. 一颗种子 = one seed!"
+        },
+        {
+          "pinyin": "Zhòng dào tǔ lǐ",
+          "chinese": "种到土里",
+          "english": "plant in the soil",
+          "indonesian": "tanam ke dalam tanah"
+        },
+        {
+          "pinyin": "huì zhǎng chū shénme",
+          "chinese": "会长出什么",
+          "english": "what will grow out?",
+          "indonesian": "apa yang akan tumbuh?"
+        }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "会长出植物！种子需要水和阳光！",
+          "pinyin": "Huì zhǎng chū zhíwù! Zhǒngzi xūyào shuǐ hé yángguāng!",
+          "english": "A plant will grow! Seeds need water and sunlight!",
+          "indonesian": "Akan tumbuh tanaman! Biji perlu air dan sinar matahari!",
+          "pinyinWords": [
+            {
+              "pinyin": "Huì zhǎng chū zhíwù",
+              "chinese": "会长出植物",
+              "english": "a plant will grow",
+              "indonesian": "akan tumbuh tanaman"
+            },
+            {
+              "pinyin": "Zhǒngzi xūyào",
+              "chinese": "种子需要",
+              "english": "seeds need",
+              "indonesian": "biji perlu"
+            },
+            {
+              "pinyin": "shuǐ hé yángguāng",
+              "chinese": "水和阳光",
+              "english": "water and sunlight",
+              "indonesian": "air dan sinar matahari"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "太棒了！你说得对！植物需要水、阳光和土。科学是不是很有趣？",
+      "textPinyin": "Tài bàng le! Nǐ shuō de duì! Zhíwù xūyào shuǐ, yángguāng hé tǔ. Kēxué shì bu shì hěn yǒuqù?",
+      "textEnglish": "Wonderful! You are correct! Plants need water, sunlight and soil. Is science not very interesting?",
+      "textIndonesian": "Luar biasa! Kamu benar! Tanaman perlu air, sinar matahari dan tanah. Sains menarik kan?",
+      "pinyinWords": [
+        {
+          "pinyin": "Tài bàng le",
+          "chinese": "太棒了",
+          "english": "wonderful / amazing",
+          "indonesian": "luar biasa"
+        },
+        {
+          "pinyin": "Nǐ shuō de duì",
+          "chinese": "你说得对",
+          "english": "you said it correctly / you are right",
+          "indonesian": "kamu benar"
+        },
+        {
+          "pinyin": "Zhíwù xūyào",
+          "chinese": "植物需要",
+          "english": "plants need",
+          "indonesian": "tanaman perlu"
+        },
+        {
+          "pinyin": "shuǐ yángguāng hé tǔ",
+          "chinese": "水阳光和土",
+          "english": "water, sunlight and soil",
+          "indonesian": "air, sinar matahari, dan tanah"
+        },
+        {
+          "pinyin": "shì bu shì hěn yǒuqù",
+          "chinese": "是不是很有趣",
+          "english": "is it not very interesting?",
+          "indonesian": "menarik kan?"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "是！我长大想当科学家！",
+          "pinyin": "Shì! Wǒ zhǎng dà xiǎng dāng kēxuéjiā!",
+          "english": "Yes! When I grow up I want to be a scientist!",
+          "indonesian": "Iya! Saya besar mau jadi ilmuwan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Shì",
+              "chinese": "是",
+              "english": "yes / it is",
+              "indonesian": "iya / benar"
+            },
+            {
+              "pinyin": "Wǒ zhǎng dà",
+              "chinese": "我长大",
+              "english": "when I grow up",
+              "indonesian": "saya besar nanti"
+            },
+            {
+              "pinyin": "xiǎng dāng kēxuéjiā",
+              "chinese": "想当科学家",
+              "english": "want to be a scientist",
+              "indonesian": "mau jadi ilmuwan",
+              "note": "家 at the end of a profession word means a person who is an expert in that field. 科学家 = scientist, 音乐家 = musician, 画家 = painter!"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "很有趣！我还有很多问题！",
+          "pinyin": "Hěn yǒuqù! Wǒ hái yǒu hěn duō wèntí!",
+          "english": "Very interesting! I still have so many questions!",
+          "indonesian": "Sangat menarik! Saya masih punya banyak pertanyaan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hěn yǒuqù",
+              "chinese": "很有趣",
+              "english": "very interesting",
+              "indonesian": "sangat menarik"
+            },
+            {
+              "pinyin": "Wǒ hái yǒu hěn duō wèntí",
+              "chinese": "我还有很多问题",
+              "english": "I still have many questions",
+              "indonesian": "Saya masih punya banyak pertanyaan"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "好！问题越多越好！科学家就是要多问为什么！做得好，同学们！",
+      "textPinyin": "Hǎo! Wèntí yuè duō yuè hǎo! Kēxuéjiā jiù shì yào duō wèn wèishénme! Zuò de hǎo, tóngxuémen!",
+      "textEnglish": "Good! The more questions the better! Scientists need to ask why a lot! Well done, classmates!",
+      "textIndonesian": "Bagus! Semakin banyak pertanyaan semakin baik! Ilmuwan memang harus banyak bertanya kenapa! Kerja bagus, teman-teman!",
+      "pinyinWords": [
+        {
+          "pinyin": "Wèntí yuè duō yuè hǎo",
+          "chinese": "问题越多越好",
+          "english": "the more questions the better",
+          "indonesian": "semakin banyak pertanyaan semakin baik",
+          "note": "越...越... is a great pattern! It means 'the more... the more...'. 越多越好 = the more the better!"
+        },
+        {
+          "pinyin": "Kēxuéjiā jiù shì yào",
+          "chinese": "科学家就是要",
+          "english": "scientists need to",
+          "indonesian": "ilmuwan memang harus"
+        },
+        {
+          "pinyin": "duō wèn wèishénme",
+          "chinese": "多问为什么",
+          "english": "ask why a lot",
+          "indonesian": "banyak bertanya kenapa"
+        },
+        {
+          "pinyin": "Zuò de hǎo",
+          "chinese": "做得好",
+          "english": "well done",
+          "indonesian": "kerja bagus"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does 科学 mean?",
+      "questionChinese": "科学",
+      "questionPinyin": "kēxué",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "maths"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "science"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "art"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "music"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "科学 (kēxué) means science! Scientists ask 为什么 (why) about everything. Be curious!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'experiment' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "观察",
+          "pinyin": "guānchá",
+          "translation": "observe"
+        },
+        {
+          "chinese": "植物",
+          "pinyin": "zhíwù",
+          "translation": "plant"
+        },
+        {
+          "chinese": "实验",
+          "pinyin": "shíyàn",
+          "translation": "experiment"
+        },
+        {
+          "chinese": "种子",
+          "pinyin": "zhǒngzi",
+          "translation": "seed"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "实验 (shíyàn) means experiment! Scientists do 实验 to test their ideas and find answers."
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does 植物 mean?",
+      "questionChinese": "植物",
+      "questionPinyin": "zhíwù",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "animal"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "water"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "sunlight"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "plant"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "植物 (zhíwù) means plant! Plants need 水 (water), 阳光 (sunlight) and 土 (soil) to grow."
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "有趣",
+      "questionPinyin": "yǒuqù",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "difficult"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "interesting / fun"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "important"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "easy"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "有趣 (yǒuqù) means interesting or fun! 科学很有趣！= Science is very interesting!"
+    }
+  ],
+  "category": "SCHOOL_SUBJECTS"
+}

@@ -38,7 +38,7 @@ Add as `scenario_24.json` and `scenario_25.json`.
 
 ---
 
-### #4 — School Subjects batch (2 new scenarios)
+### ✅ #4 — School Subjects batch (4 new scenarios) *(done)*
 **Category:** `SCHOOL_SUBJECTS`
 
 - **场景 A — 美术课 (Art Class):** Draw and describe a picture. Vocab: 画画, 颜色, 红色, 蓝色, 漂亮
