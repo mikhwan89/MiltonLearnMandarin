@@ -171,7 +171,7 @@ fun PracticeScreen(onBack: () -> Unit) {
 
                     // ── Mastery level filter chips ─────────────────────────
                     LazyRow(
-                        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                        modifier = Modifier.fillMaxWidth().padding(top = 2.dp, bottom = 4.dp),
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         items(vm.availableLevels) { level ->
@@ -205,13 +205,13 @@ fun PracticeScreen(onBack: () -> Unit) {
                     // ── Session progress bar ───────────────────────────────
                     LinearProgressIndicator(
                         progress = { vm.correctCount.toFloat() / vm.totalStartCount },
-                        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp)
                     )
                     Text(
                         "${vm.deck.size} card${if (vm.deck.size != 1) "s" else ""} remaining",
                         fontSize = 13.sp,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(bottom = 10.dp, top = 2.dp)
+                        modifier = Modifier.padding(bottom = 6.dp, top = 2.dp)
                     )
 
                     // ── Word card ──────────────────────────────────────────
@@ -291,12 +291,12 @@ fun PracticeScreen(onBack: () -> Unit) {
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(10.dp))
+                    Spacer(modifier = Modifier.height(6.dp))
 
                     // ── 2×2 answer grid ────────────────────────────────────
                     options.chunked(2).forEach { rowOptions ->
                         Row(
-                            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                            modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
                             rowOptions.forEach { option ->
@@ -334,7 +334,7 @@ fun PracticeScreen(onBack: () -> Unit) {
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(4.dp))
+                    Spacer(modifier = Modifier.height(2.dp))
                     TextButton(onClick = { vm.finishEarly() }) {
                         Text("Finish session early", fontSize = 13.sp)
                     }
