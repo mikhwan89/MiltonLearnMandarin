@@ -67,11 +67,15 @@ class ProgressRepository private constructor(
     // ── Mastered word persistence ─────────────────────────────────────────
 
     /**
-     * Seeds all [words] for [scenarioId] into the DB with boxLevel=1.
+     * Seeds all [words] for [scenarioId] into the DB for every [PracticeType].
      * Uses INSERT OR IGNORE so any word already tracked keeps its existing mastery level.
      */
     suspend fun seedWordsForScenario(scenarioId: String, words: List<MasteredWordEntity>) {
-        words.forEach { masteredWordDao.insertIgnore(it) }
+        PracticeType.values().forEach { type ->
+            words.forEach { word ->
+                masteredWordDao.insertIgnore(word.copy(practiceType = type.name))
+            }
+        }
     }
 
     suspend fun markWordMastered(entity: MasteredWordEntity) {
@@ -80,7 +84,27 @@ class ProgressRepository private constructor(
         if (count >= 10) awardBadge(Badge.WORD_COLLECTOR.id)
     }
 
+    /** All words for a specific practice modality. */
+    fun getAllMasteredWords(type: PracticeType): Flow<List<MasteredWordEntity>> =
+        masteredWordDao.getAllByType(type.name)
+
+    /** All words across all practice types (used for stats/badges). */
     fun getAllMasteredWords(): Flow<List<MasteredWordEntity>> = masteredWordDao.getAll()
+
+    /**
+     * Ensures every word in DEFAULT mode also exists in LISTENING and READING.
+     * Uses INSERT OR IGNORE so existing mastery levels are never overwritten.
+     * Call this after scenario seeding to catch any words added via other paths
+     * (e.g. DB migration, per-scenario flashcard screen).
+     */
+    suspend fun syncPracticeTypesFromDefault() {
+        val defaultWords = masteredWordDao.getAllByType(PracticeType.DEFAULT.name).first()
+        PracticeType.values().filter { it != PracticeType.DEFAULT }.forEach { type ->
+            defaultWords.forEach { word ->
+                masteredWordDao.insertIgnore(word.copy(practiceType = type.name, boxLevel = 1))
+            }
+        }
+    }
 
     fun getMasteredWordCount(): Flow<Int> = masteredWordDao.getTotalCount()
 

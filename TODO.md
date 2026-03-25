@@ -95,6 +95,48 @@ Given a reference English sentence and a shuffled set of Chinese word tiles, the
 
 ---
 
+## 🃏 Flashcard Practice Improvements
+
+### #19 — Flashcard correct answer earns +1 XP
+**Files:** `practice/PracticeSessionViewModel.kt`, `db/ProgressRepository.kt`
+
+Each correct answer in any flashcard practice mode (Default, Listening, Reading) awards +1 XP to the student's total. Call `repository.saveProgress` or a lightweight XP-only increment so it doesn't overwrite scenario stars. Show a small "+1 XP" toast or badge animation on correct answer.
+
+---
+
+### #20 — Weak Word / Maintain mode shows only relevant star chips
+**Files:** `practice/PracticeScreen.kt`
+
+When "Weak Words" mode is active, the star-rating distribution row should only display the star levels actually in the current pool (the 3 lowest). When "Maintain" is active, only show ★4+ levels in the pool. In "All Words" mode show all levels as today. Avoids confusion about stars that aren't being practised right now.
+
+---
+
+### #21 — Progress tab: word mastery counts per practice mode
+**Files:** `home/HomeScreen.kt` or `home/ProgressScreen.kt`, `db/ProgressRepository.kt`
+
+In the Progress tab, alongside total mastered word count, show a breakdown:
+- 🔊字 Default: X words at ★7+
+- 🔊 Listening: X words at ★7+
+- 字 Reading: X words at ★7+
+
+Query using `getAllMasteredWords(type).filter { boxLevel >= 7 }` per `PracticeType`. Gives the parent and child a clear picture of multi-modal mastery.
+
+---
+
+### #22 — Scrollable multiple-choice answers in scenario conversation
+**Files:** `RolePlayScreen.kt`
+
+When a dialogue step has many response options (4+), the options panel can overflow the screen. Wrap the options list in a `verticalScroll` so all choices are reachable. Also ensure a minimum touch-target height per button so small fingers can tap accurately.
+
+---
+
+### #23 — Scenario option wording audit: avoid negative/sad framing
+**Files:** `app/src/main/assets/scenarios/*.json`
+
+Review all `responseOption` text for unintentionally negative framing. Examples: "only have Papa" / "only have Mama" implies loneliness — rephrase to "just Papa and me" / "just Mama and me" or give the family a warm tone. Run a systematic pass over family/feelings scenarios. Goal: every option should feel positive or at least neutral for a 4–8 year old.
+
+---
+
 ## 🏅 Engagement & Gamification
 
 ### #10 — Level-up full-screen celebration
@@ -108,6 +150,64 @@ When total XP crosses a `ProgressManager` level threshold, show a full-screen an
 **Files:** `home/ProgressScreen.kt`, `data/models/ScenarioModels.kt`
 
 When a scenario is 3-starred, its character emoji is "unlocked" and shown in a special Collected Characters grid on the Progress screen. Locked characters appear as ❓. Creates a clear visual collection goal for a 5-year-old.
+
+---
+
+### #24 — Milestone reward: mastery targets per practice mode
+**Files:** `parent/ParentDashboardScreen.kt`, `db/MilestoneReward.kt`, `db/ProgressRepository.kt`
+
+Extend the Milestone Reward system so parents can set targets based on high-mastery (★10) word counts separately per mode:
+- X words at ★10 in Default mode
+- X words at ★10 in Listening mode
+- X words at ★10 in Reading mode
+
+Add new `MilestoneType` values: `MASTERY_DEFAULT`, `MASTERY_LISTENING`, `MASTERY_READING`.
+
+---
+
+### #25 — More badge / medal ideas
+**Files:** `db/Badge.kt`
+
+New badge concepts to implement:
+- **Perfect Session** — score 100/100 correct in a single flashcard practice session
+- **Listening Master** — reach ★7 in Listening mode for 10+ words
+- **Reading Master** — reach ★7 in Reading mode for 10+ words
+- **Triple Crown** — same word reaches ★7 in all 3 practice modes
+- **Speed Learner** — complete 3 scenarios in a single day
+- **Comeback Kid** — demoted a word then later promoted it back to its previous level
+- **Consistency** — practice flashcards 5 days in a row
+
+---
+
+### #26 — Milestone rewards based on badges earned
+**Files:** `parent/ParentDashboardScreen.kt`, `db/MilestoneReward.kt`
+
+Add `MilestoneType.BADGE_COUNT` so parents can set a reward for earning N total badges (e.g. "Earn 5 badges → ice cream"). Display current badge count vs target in the reward card.
+
+---
+
+### #27 — Milestone rewards based on total XP
+**Files:** `parent/ParentDashboardScreen.kt`, `db/MilestoneReward.kt`
+
+Add `MilestoneType.TOTAL_XP` so parents can set XP thresholds as reward triggers (e.g. "Reach 500 XP → get a toy"). XP is already tracked — just add the new milestone type and check it after any XP gain.
+
+---
+
+### #28 — Milestone reward AND / OR condition logic
+**Files:** `db/MilestoneReward.kt`, `parent/ParentDashboardScreen.kt`
+
+Allow a reward to require multiple conditions to be met simultaneously (AND) or at least one condition from a set (OR). Examples:
+- AND: "Earn 300 XP **and** complete 10 scenarios"
+- OR: "Reach ★7 in Listening **or** Reading mode for 20 words"
+
+Schema change: replace single `targetValue` + `milestoneType` with a `conditions: List<MilestoneCondition>` and a `logic: AND | OR` field. Requires DB migration.
+
+---
+
+### #29 — Navigate to scenario from Progress tab star list
+**Files:** `home/HomeScreen.kt` (or `home/ProgressScreen.kt`), `navigation/AppNavigation.kt`
+
+In the Progress tab where scenario stars are listed, make each scenario row tappable. Tapping navigates directly to that scenario's RolePlay screen (same as tapping it from the Learn tab). Useful for replaying a specific scenario to improve its star rating without hunting through categories.
 
 ---
 

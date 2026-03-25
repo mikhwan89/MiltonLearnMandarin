@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.ikhwan.mandarinkids.data.scenarios.ScenarioRepository
 import com.ikhwan.mandarinkids.db.MasteredWordEntity
+import com.ikhwan.mandarinkids.db.PracticeType
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.getFlashcardWords
 import kotlinx.coroutines.flow.first
@@ -15,45 +16,43 @@ import kotlinx.coroutines.launch
 
 class PracticeSessionViewModel(
     private val repository: ProgressRepository,
-    private val scenarioRepository: ScenarioRepository
+    private val scenarioRepository: ScenarioRepository,
+    val practiceType: PracticeType
 ) : ViewModel() {
 
     var isLoading by mutableStateOf(true)
         private set
-    var deck by mutableStateOf<List<MasteredWordEntity>>(emptyList())
-        private set
-    var currentIndex by mutableStateOf(0)
-        private set
-    /** Words answered correctly in this session. */
-    var correctCount by mutableStateOf(0)
-        private set
-    var totalStartCount by mutableStateOf(0)
-        private set
-    var showSummary by mutableStateOf(false)
-        private set
-    /** Increments every time we advance to a new card — use as a `remember` key in the UI. */
+    /** Increments every time a new card is shown — use as `remember` key in the UI. */
     var cardToken by mutableStateOf(0)
         private set
 
-    /** Full deduplicated library of mastered words. */
+    /** Full deduplicated word library for this practice type with real-time boxLevel values. */
     var allWords by mutableStateOf<List<MasteredWordEntity>>(emptyList())
         private set
 
-    /** Distinct mastery levels (1-10) that exist in the library, sorted ascending. */
-    var availableLevels by mutableStateOf<List<Int>>(emptyList())
+    /** The card currently on screen. Null when the active mode has no eligible words. */
+    var currentWord by mutableStateOf<MasteredWordEntity?>(null)
         private set
 
-    /** Currently selected mastery levels — words at these levels form the session deck. */
-    var selectedLevels by mutableStateOf<Set<Int>>(emptySet())
+    var practiceMode by mutableStateOf(PracticeMode.ALL)
         private set
 
-    val currentWord: MasteredWordEntity?
-        get() = if (deck.isNotEmpty() && currentIndex < deck.size) deck[currentIndex] else null
+    var correctCount by mutableStateOf(0)
+        private set
+    var totalAnswered by mutableStateOf(0)
+        private set
+    var promotedCount by mutableStateOf(0)
+        private set
+    var demotedCount by mutableStateOf(0)
+        private set
+
+    var showSummary by mutableStateOf(false)
+        private set
 
     init {
         viewModelScope.launch {
-            // Seed words for every scenario the student has played (stars >= 1),
-            // even if they skipped the per-scenario flashcard screen.
+            // Seed words for every scenario the student has played (stars >= 1).
+            // Seeds all 3 practice types via insertIgnore, so existing progress is preserved.
             val completedIds = repository.getAllProgress().first()
                 .filter { it.stars >= 1 }
                 .map { it.scenarioId }
@@ -74,72 +73,106 @@ class PracticeSessionViewModel(
                 repository.seedWordsForScenario(scenarioId, seedWords)
             }
 
-            val words = repository.getAllMasteredWords().first()
+            // Ensure LISTENING and READING always have every word that DEFAULT has
+            // (catches words added via migration or the per-scenario flashcard screen)
+            repository.syncPracticeTypesFromDefault()
+
+            // Load only words for this practice type
+            val words = repository.getAllMasteredWords(practiceType).first()
                 .distinctBy { it.chinese }
             allWords = words
-
-            val levels = words.map { it.boxLevel }.distinct().sorted()
-            availableLevels = levels
-
-            // Default: 3 lowest mastery levels
-            val defaultLevels = levels.take(3).toSet()
-            selectedLevels = defaultLevels
-            buildDeck(defaultLevels, words)
+            currentWord = pickNextWord()
             isLoading = false
         }
     }
 
-    private fun buildDeck(levels: Set<Int>, source: List<MasteredWordEntity> = allWords) {
-        val filtered = source.filter { it.boxLevel in levels }
-        deck = filtered.shuffled()
-        totalStartCount = filtered.size
-        correctCount = 0
-        currentIndex = 0
+    /** Words eligible for the current practice mode. */
+    private fun poolForMode(words: List<MasteredWordEntity> = allWords): List<MasteredWordEntity> {
+        val levels = words.map { it.boxLevel }.distinct().sorted()
+        return when (practiceMode) {
+            PracticeMode.ALL -> words
+            PracticeMode.WEAK -> {
+                val weakLevels = levels.take(3).toSet()
+                words.filter { it.boxLevel in weakLevels }
+            }
+            PracticeMode.MASTERY -> {
+                val masteryLevels = levels.takeLast(3).filter { it >= 4 }.toSet()
+                words.filter { it.boxLevel in masteryLevels }
+            }
+        }
+    }
+
+    /** The 3 lowest mastery levels currently present in the library. */
+    val weakLevels: Set<Int>
+        get() {
+            val levels = allWords.map { it.boxLevel }.distinct().sorted()
+            return levels.take(3).toSet()
+        }
+
+    /** The 3 highest mastery levels that are >= 4, or empty if none qualify. */
+    val masteryLevels: Set<Int>
+        get() {
+            val levels = allWords.map { it.boxLevel }.distinct().sorted()
+            return levels.takeLast(3).filter { it >= 4 }.toSet()
+        }
+
+    /**
+     * Weight for weighted-random selection.
+     * Level 1 → 16, level 2 → 8, level 3 → 4, level 4 → 2, level 5-10 → 1.
+     */
+    private fun weightForLevel(level: Int): Int = maxOf(1, 16 shr (level - 1))
+
+    private fun pickNextWord(exclude: MasteredWordEntity? = null): MasteredWordEntity? {
+        val pool = poolForMode().let { p ->
+            if (exclude != null && p.size > 1) p.filter { it.chinese != exclude.chinese } else p
+        }
+        if (pool.isEmpty()) return null
+
+        val weights = pool.map { weightForLevel(it.boxLevel) }
+        val total = weights.sum()
+        var pick = (0 until total).random()
+        for (i in pool.indices) {
+            pick -= weights[i]
+            if (pick < 0) return pool[i]
+        }
+        return pool.last()
+    }
+
+    fun setMode(mode: PracticeMode) {
+        practiceMode = mode
+        currentWord = pickNextWord()
         cardToken++
-        showSummary = false
     }
 
-    /** Toggle a mastery level on/off. Always keeps at least one level selected. */
-    fun toggleLevel(level: Int) {
-        val newLevels = if (level in selectedLevels) selectedLevels - level else selectedLevels + level
-        if (newLevels.isEmpty()) return
-        selectedLevels = newLevels
-        buildDeck(newLevels)
-    }
-
-    /** Card answered correctly — +1 mastery (max 10), retire from this session's deck. */
     fun markRemembered() {
-        val word = deck[currentIndex]
-        val newDeck = deck.toMutableList().also { it.removeAt(currentIndex) }
-        correctCount++
-        deck = newDeck
-        cardToken++
-        if (newDeck.isEmpty()) showSummary = true
-        else currentIndex = if (currentIndex >= newDeck.size) 0 else currentIndex
+        val word = currentWord ?: return
+        val newLevel = (word.boxLevel + 1).coerceAtMost(10)
+        val updatedWord = word.copy(boxLevel = newLevel)
 
-        viewModelScope.launch {
-            repository.markWordMastered(
-                word.copy(boxLevel = (word.boxLevel + 1).coerceAtMost(10))
-            )
-        }
+        allWords = allWords.map { if (it.chinese == word.chinese) updatedWord else it }
+        correctCount++
+        totalAnswered++
+        if (newLevel > word.boxLevel) promotedCount++
+
+        currentWord = pickNextWord(exclude = updatedWord)
+        cardToken++
+
+        viewModelScope.launch { repository.markWordMastered(updatedWord) }
     }
 
-    /** Card answered wrong — -1 mastery (min 1), move to back of queue. */
     fun markForgotten() {
-        val word = deck[currentIndex]
-        val newDeck = deck.toMutableList().also {
-            it.removeAt(currentIndex)
-            it.add(word)
-        }
-        deck = newDeck
-        currentIndex = if (currentIndex >= newDeck.size) 0 else currentIndex
+        val word = currentWord ?: return
+        val newLevel = (word.boxLevel - 1).coerceAtLeast(1)
+        val updatedWord = word.copy(boxLevel = newLevel)
+
+        allWords = allWords.map { if (it.chinese == word.chinese) updatedWord else it }
+        totalAnswered++
+        if (newLevel < word.boxLevel) demotedCount++
+
+        currentWord = pickNextWord(exclude = updatedWord)
         cardToken++
 
-        viewModelScope.launch {
-            repository.markWordMastered(
-                word.copy(boxLevel = (word.boxLevel - 1).coerceAtLeast(1))
-            )
-        }
+        viewModelScope.launch { repository.markWordMastered(updatedWord) }
     }
 
     fun finishEarly() { showSummary = true }
@@ -147,11 +180,12 @@ class PracticeSessionViewModel(
     companion object {
         fun factory(
             repository: ProgressRepository,
-            scenarioRepository: ScenarioRepository
+            scenarioRepository: ScenarioRepository,
+            practiceType: PracticeType
         ) = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T =
-                PracticeSessionViewModel(repository, scenarioRepository) as T
+                PracticeSessionViewModel(repository, scenarioRepository, practiceType) as T
         }
     }
 }

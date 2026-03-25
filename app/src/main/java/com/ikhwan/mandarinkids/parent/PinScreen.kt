@@ -96,12 +96,12 @@ fun PinScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .padding(32.dp),
+                .padding(horizontal = 32.dp, vertical = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             Text(subtitle, fontSize = 18.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
             // PIN dots
             Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -119,11 +119,11 @@ fun PinScreen(
             }
 
             if (error.isNotEmpty()) {
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(10.dp))
                 Text(error, color = MaterialTheme.colorScheme.error, fontSize = 14.sp)
             }
 
-            Spacer(modifier = Modifier.height(48.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
             // Numpad
             val rows = listOf(
@@ -133,15 +133,15 @@ fun PinScreen(
                 listOf("", "0", "⌫")
             )
             rows.forEach { row ->
-                Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     row.forEach { label ->
                         if (label.isEmpty()) {
-                            Spacer(modifier = Modifier.size(80.dp))
+                            Spacer(modifier = Modifier.size(68.dp))
                         } else if (label == "⌫") {
                             OutlinedButton(
                                 onClick = { if (entered.isNotEmpty()) entered = entered.dropLast(1) },
-                                modifier = Modifier.size(80.dp),
-                                shape = RoundedCornerShape(16.dp),
+                                modifier = Modifier.size(68.dp),
+                                shape = RoundedCornerShape(14.dp),
                                 contentPadding = PaddingValues(0.dp)
                             ) {
                                 Icon(Icons.Default.Backspace, contentDescription = "Delete")
@@ -149,16 +149,16 @@ fun PinScreen(
                         } else {
                             Button(
                                 onClick = { handleDigit(label) },
-                                modifier = Modifier.size(80.dp),
-                                shape = RoundedCornerShape(16.dp),
+                                modifier = Modifier.size(68.dp),
+                                shape = RoundedCornerShape(14.dp),
                                 contentPadding = PaddingValues(0.dp)
                             ) {
-                                Text(label, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+                                Text(label, fontSize = 22.sp, fontWeight = FontWeight.Bold)
                             }
                         }
                     }
                 }
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(8.dp))
             }
         }
     }

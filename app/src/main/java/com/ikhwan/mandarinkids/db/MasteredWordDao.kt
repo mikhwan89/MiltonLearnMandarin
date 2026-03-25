@@ -20,7 +20,12 @@ interface MasteredWordDao {
     @Query("SELECT * FROM mastered_words ORDER BY masteredAt DESC")
     fun getAll(): Flow<List<MasteredWordEntity>>
 
-    @Query("SELECT COUNT(*) FROM mastered_words")
+    /** All words for a specific practice type. */
+    @Query("SELECT * FROM mastered_words WHERE practiceType = :practiceType ORDER BY masteredAt DESC")
+    fun getAllByType(practiceType: String): Flow<List<MasteredWordEntity>>
+
+    /** Count of distinct Chinese words (across all practice types). */
+    @Query("SELECT COUNT(DISTINCT chinese) FROM mastered_words")
     fun getTotalCount(): Flow<Int>
 
     /** Words whose nextReviewDate is at or before [now] (due for review). */

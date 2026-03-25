@@ -9,7 +9,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
     entities = [ScenarioProgressEntity::class, MasteredWordEntity::class, MilestoneReward::class],
-    version = 6,
+    version = 7,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -80,6 +80,41 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        // Add practiceType to the primary key so each word has separate progress
+        // per practice modality (Default / Listening / Reading).
+        // Existing rows are preserved as practiceType = 'DEFAULT'.
+        private val MIGRATION_6_7 = object : Migration(6, 7) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    """
+                    CREATE TABLE IF NOT EXISTS mastered_words_new (
+                        scenarioId    TEXT NOT NULL,
+                        chinese       TEXT NOT NULL,
+                        practiceType  TEXT NOT NULL,
+                        pinyin        TEXT NOT NULL,
+                        english       TEXT NOT NULL,
+                        indonesian    TEXT NOT NULL,
+                        note          TEXT,
+                        masteredAt    INTEGER NOT NULL,
+                        boxLevel      INTEGER NOT NULL DEFAULT 1,
+                        nextReviewDate INTEGER NOT NULL DEFAULT 0,
+                        PRIMARY KEY (scenarioId, chinese, practiceType)
+                    )
+                    """.trimIndent()
+                )
+                db.execSQL(
+                    """
+                    INSERT INTO mastered_words_new
+                    SELECT scenarioId, chinese, 'DEFAULT', pinyin, english, indonesian,
+                           note, masteredAt, boxLevel, nextReviewDate
+                    FROM mastered_words
+                    """.trimIndent()
+                )
+                db.execSQL("DROP TABLE mastered_words")
+                db.execSQL("ALTER TABLE mastered_words_new RENAME TO mastered_words")
+            }
+        }
+
         fun getInstance(context: Context): AppDatabase =
             INSTANCE ?: synchronized(this) {
                 INSTANCE ?: Room.databaseBuilder(
@@ -87,7 +122,10 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "milton_progress.db"
                 )
-                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6)
+                    .addMigrations(
+                        MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4,
+                        MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7
+                    )
                     .build()
                     .also { INSTANCE = it }
             }
