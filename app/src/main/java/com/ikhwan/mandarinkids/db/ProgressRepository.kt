@@ -62,6 +62,7 @@ class ProgressRepository private constructor(
         if (allProgress.isNotEmpty() && allProgress.all { it.stars >= 3 }) {
             awardBadge(Badge.ALL_STARS.id)
         }
+        checkGrandMasterBadge(allProgress)
 
         // XP milestone badges
         val totalXp = dao.getTotalXp().first()
@@ -139,6 +140,8 @@ class ProgressRepository private constructor(
         // Triple Crown: ★10 in all 3 modes for at least 1 word
         val tripleCrown = masteredWordDao.getTripleCrownCount().first()
         if (tripleCrown >= 1) awardBadge(Badge.TRIPLE_CROWN.id)
+
+        checkGrandMasterBadge(dao.getAll().first())
     }
 
     /** All words for a specific practice modality. */
@@ -216,6 +219,26 @@ class ProgressRepository private constructor(
             .putString(KEY_WORD_OF_DAY_CHINESE, picked.chinese)
             .apply()
         return picked
+    }
+
+    // ── Grand Master check ───────────────────────────────────────────────────
+
+    /**
+     * Awards GRAND_MASTER if:
+     *  • every visited scenario has 3 stars, AND
+     *  • every word in DEFAULT, LISTENING, and READING modes is at ★10.
+     */
+    private suspend fun checkGrandMasterBadge(allProgress: List<ScenarioProgressEntity>) {
+        val scenarioEntries = allProgress.filter { it.scenarioId != FLASHCARD_XP_ID }
+        if (scenarioEntries.isEmpty() || !scenarioEntries.all { it.stars >= 3 }) return
+
+        for (type in PracticeType.values()) {
+            val total = masteredWordDao.getTotalCountByType(type.name).first()
+            val high  = masteredWordDao.getHighMasteryCountByType(type.name).first()
+            if (total == 0 || high < total) return
+        }
+
+        awardBadge(Badge.GRAND_MASTER.id)
     }
 
     // ── Badges ────────────────────────────────────────────────────────────

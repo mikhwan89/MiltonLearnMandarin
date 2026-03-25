@@ -104,6 +104,12 @@ enum class Badge(
         "Practice flashcards 30 days in a row"
     ),
 
+    // ── Grand Master ─────────────────────────────────────────────────────────
+    GRAND_MASTER(
+        "grand_master", "🌈", "Grand Master",
+        "Get 3★ on every scenario AND reach ★10 on every word in all 3 flashcard modes"
+    ),
+
     // ── XP milestones ────────────────────────────────────────────────────────
     XP_SEEKER(
         "xp_seeker", "✨", "XP Seeker",
