@@ -12,11 +12,16 @@ enum class MilestoneType(val label: String, val unit: String, val emoji: String)
     MASTERY_DEFAULT("Words at ★10 — Default mode", "words", "🔊字"),
     MASTERY_LISTENING("Words at ★10 — Listening mode", "words", "🔊"),
     MASTERY_READING("Words at ★10 — Reading mode", "words", "字"),
-    TOTAL_XP("Total XP earned", "XP", "✨")
+    TOTAL_XP("Total XP earned", "XP", "✨"),
+    SPECIFIC_BADGE("Specific badge earned", "badge", "🏅")
 }
 
 @Serializable
-data class MilestoneCondition(val type: String, val targetValue: Int)
+data class MilestoneCondition(
+    val type: String,
+    val targetValue: Int,
+    val badgeId: String? = null
+)
 
 @Entity(tableName = "milestone_rewards")
 data class MilestoneReward(

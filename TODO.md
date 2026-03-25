@@ -179,7 +179,7 @@ New badge concepts to implement:
 
 ---
 
-### #26 — Milestone rewards based on badges earned
+### ✅ #26 — Milestone rewards based on badges earned *(done)*
 **Files:** `parent/ParentDashboardScreen.kt`, `db/MilestoneReward.kt`
 
 Add `MilestoneType.BADGE_COUNT` so parents can set a reward for earning N total badges (e.g. "Earn 5 badges → ice cream"). Display current badge count vs target in the reward card.

@@ -68,24 +68,24 @@ fun ProgressScreen() {
         progressMap.values.count { it.stars == 3 }
     }
     val highMasteryCount by repo.getHighMasteryWordCount().collectAsState(initial = 0)
-    val progressForType: (String) -> Int = remember(
+    val earnedBadgeIds = remember(masteredCount, streak) { repo.getEarnedBadges() }
+    val progressForCondition: (MilestoneCondition) -> Int = remember(
         perfectScenarioCount, highMasteryCount, highMasteryDefault,
-        highMasteryListening, highMasteryReading, xp
+        highMasteryListening, highMasteryReading, xp, earnedBadgeIds
     ) {
-        { typeName ->
-            when (MilestoneType.entries.find { it.name == typeName }) {
+        { cond ->
+            when (MilestoneType.entries.find { it.name == cond.type }) {
                 MilestoneType.PERFECT_SCENARIOS  -> perfectScenarioCount
                 MilestoneType.HIGH_MASTERY_WORDS -> highMasteryCount
                 MilestoneType.MASTERY_DEFAULT    -> highMasteryDefault
                 MilestoneType.MASTERY_LISTENING  -> highMasteryListening
                 MilestoneType.MASTERY_READING    -> highMasteryReading
                 MilestoneType.TOTAL_XP           -> xp
+                MilestoneType.SPECIFIC_BADGE     -> if (cond.badgeId != null && cond.badgeId in earnedBadgeIds) 1 else 0
                 null                             -> 0
             }
         }
     }
-
-    val earnedBadgeIds = remember(masteredCount, streak) { repo.getEarnedBadges() }
 
     // ── Parent mode state for Milestone Rewards ───────────────────────────
     var rewardsUnlocked by remember { mutableStateOf(false) }
@@ -262,7 +262,7 @@ fun ProgressScreen() {
                 items(allRewards, key = { it.id }) { reward ->
                     MilestoneRewardCard(
                         reward = reward,
-                        progressForType = progressForType,
+                        progressForCondition = progressForCondition,
                         parentUnlocked = rewardsUnlocked,
                         onDelete = { scope.launch { repo.deleteReward(reward.id) } },
                         onClaim = { scope.launch { repo.claimReward(reward.id) } }
@@ -369,7 +369,7 @@ private fun BadgeCard(badge: Badge, earned: Boolean, modifier: Modifier = Modifi
 @Composable
 private fun MilestoneRewardCard(
     reward: MilestoneReward,
-    progressForType: (String) -> Int,
+    progressForCondition: (MilestoneCondition) -> Int,
     parentUnlocked: Boolean,
     onDelete: () -> Unit,
     onClaim: () -> Unit
@@ -377,7 +377,7 @@ private fun MilestoneRewardCard(
     val conditions = reward.decodeConditions()
     // (condition, currentValue, isMet)
     val results = conditions.map { cond ->
-        val cur = progressForType(cond.type)
+        val cur = progressForCondition(cond)
         Triple(cond, cur, cur >= cond.targetValue)
     }
     val isComplete = when (reward.logic) {
@@ -415,8 +415,14 @@ private fun MilestoneRewardCard(
                     results.forEach { (cond, current, met) ->
                         val t = MilestoneType.entries.find { it.name == cond.type }
                         val bullet = if (results.size > 1) (if (met) "✅ " else "◻ ") else ""
+                        val lineText = if (t == MilestoneType.SPECIFIC_BADGE) {
+                            val b = Badge.entries.find { it.id == cond.badgeId }
+                            "$bullet${b?.emoji ?: "🏅"} ${b?.label ?: "Badge"}"
+                        } else {
+                            "$bullet${t?.label ?: cond.type}: $current / ${cond.targetValue} ${t?.unit ?: ""}"
+                        }
                         Text(
-                            "$bullet${t?.label ?: cond.type}: $current / ${cond.targetValue} ${t?.unit ?: ""}",
+                            lineText,
                             fontSize = 12.sp,
                             color = if (met) Color(0xFF4CAF50) else MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -527,7 +533,13 @@ private fun AddRewardDialog(
         },
         confirmButton = {
             TextButton(onClick = {
-                if (rewardText.isBlank() || conditions.any { it.targetValue <= 0 }) return@TextButton
+                if (rewardText.isBlank()) return@TextButton
+                val invalid = conditions.any { cond ->
+                    if (MilestoneType.entries.find { it.name == cond.type } == MilestoneType.SPECIFIC_BADGE)
+                        cond.badgeId == null
+                    else cond.targetValue <= 0
+                }
+                if (invalid) return@TextButton
                 onAdd(conditions, logic, rewardText)
             }) { Text("Add") }
         },
@@ -544,6 +556,7 @@ private fun ConditionRow(
     val selectedType = MilestoneType.entries.find { it.name == condition.type }
         ?: MilestoneType.PERFECT_SCENARIOS
     var typeExpanded by remember { mutableStateOf(false) }
+    var badgeExpanded by remember { mutableStateOf(false) }
 
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -572,7 +585,12 @@ private fun ConditionRow(
                     DropdownMenuItem(
                         text = { Text("${t.emoji} ${t.label}", fontSize = 12.sp) },
                         onClick = {
-                            onUpdate(condition.copy(type = t.name))
+                            onUpdate(
+                                if (t == MilestoneType.SPECIFIC_BADGE)
+                                    condition.copy(type = t.name, targetValue = 1, badgeId = null)
+                                else
+                                    condition.copy(type = t.name, badgeId = null)
+                            )
                             typeExpanded = false
                         }
                     )
@@ -580,17 +598,48 @@ private fun ConditionRow(
             }
         }
 
-        // Target value input
-        OutlinedTextField(
-            value = if (condition.targetValue == 0) "" else condition.targetValue.toString(),
-            onValueChange = { v ->
-                onUpdate(condition.copy(targetValue = v.filter { it.isDigit() }.toIntOrNull() ?: 0))
-            },
-            label = { Text(selectedType.unit, fontSize = 9.sp) },
-            modifier = Modifier.width(88.dp),
-            singleLine = true,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
+        if (selectedType == MilestoneType.SPECIFIC_BADGE) {
+            // Badge picker
+            val selectedBadge = Badge.entries.find { it.id == condition.badgeId }
+            Box(modifier = Modifier.width(88.dp)) {
+                OutlinedButton(
+                    onClick = { badgeExpanded = true },
+                    modifier = Modifier.fillMaxWidth(),
+                    contentPadding = PaddingValues(horizontal = 4.dp, vertical = 6.dp)
+                ) {
+                    Text(
+                        selectedBadge?.let { "${it.emoji} ${it.label}" } ?: "Pick badge",
+                        fontSize = 10.sp, maxLines = 1, overflow = TextOverflow.Ellipsis
+                    )
+                }
+                DropdownMenu(
+                    expanded = badgeExpanded,
+                    onDismissRequest = { badgeExpanded = false }
+                ) {
+                    Badge.entries.forEach { b ->
+                        DropdownMenuItem(
+                            text = { Text("${b.emoji} ${b.label}", fontSize = 12.sp) },
+                            onClick = {
+                                onUpdate(condition.copy(badgeId = b.id, targetValue = 1))
+                                badgeExpanded = false
+                            }
+                        )
+                    }
+                }
+            }
+        } else {
+            // Numeric target input
+            OutlinedTextField(
+                value = if (condition.targetValue == 0) "" else condition.targetValue.toString(),
+                onValueChange = { v ->
+                    onUpdate(condition.copy(targetValue = v.filter { it.isDigit() }.toIntOrNull() ?: 0))
+                },
+                label = { Text(selectedType.unit, fontSize = 9.sp) },
+                modifier = Modifier.width(88.dp),
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            )
+        }
 
         // Remove button
         if (onRemove != null) {
