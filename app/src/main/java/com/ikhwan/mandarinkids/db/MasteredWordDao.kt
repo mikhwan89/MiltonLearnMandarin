@@ -38,6 +38,9 @@ interface MasteredWordDao {
     @Query("SELECT COUNT(DISTINCT chinese) FROM mastered_words WHERE boxLevel >= 10")
     fun getHighMasteryWordCount(): Flow<Int>
 
+    @Query("SELECT COUNT(DISTINCT chinese) FROM mastered_words WHERE practiceType = :practiceType AND boxLevel >= 10")
+    fun getHighMasteryCountByType(practiceType: String): Flow<Int>
+
     @Query("DELETE FROM mastered_words")
     suspend fun deleteAll()
 }

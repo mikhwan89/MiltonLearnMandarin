@@ -9,7 +9,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
     entities = [ScenarioProgressEntity::class, MasteredWordEntity::class, MilestoneReward::class],
-    version = 7,
+    version = 8,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -115,6 +115,39 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        // Migrate milestone_rewards: replace milestoneType+targetValue with
+        // conditionsJson (JSON array) + logic (AND/OR) to support multi-condition rewards.
+        private val MIGRATION_7_8 = object : Migration(7, 8) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    """
+                    CREATE TABLE IF NOT EXISTS milestone_rewards_new (
+                        id             INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                        conditionsJson TEXT NOT NULL,
+                        logic          TEXT NOT NULL DEFAULT 'AND',
+                        rewardText     TEXT NOT NULL,
+                        isClaimed      INTEGER NOT NULL DEFAULT 0,
+                        createdAt      INTEGER NOT NULL
+                    )
+                    """.trimIndent()
+                )
+                // Wrap each existing single condition in a JSON array
+                db.execSQL(
+                    """
+                    INSERT INTO milestone_rewards_new
+                        (id, conditionsJson, logic, rewardText, isClaimed, createdAt)
+                    SELECT id,
+                           '[{"type":"' || milestoneType || '","targetValue":' || targetValue || '}]',
+                           'AND',
+                           rewardText, isClaimed, createdAt
+                    FROM milestone_rewards
+                    """.trimIndent()
+                )
+                db.execSQL("DROP TABLE milestone_rewards")
+                db.execSQL("ALTER TABLE milestone_rewards_new RENAME TO milestone_rewards")
+            }
+        }
+
         fun getInstance(context: Context): AppDatabase =
             INSTANCE ?: synchronized(this) {
                 INSTANCE ?: Room.databaseBuilder(
@@ -124,7 +157,7 @@ abstract class AppDatabase : RoomDatabase() {
                 )
                     .addMigrations(
                         MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4,
-                        MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7
+                        MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8
                     )
                     .build()
                     .also { INSTANCE = it }

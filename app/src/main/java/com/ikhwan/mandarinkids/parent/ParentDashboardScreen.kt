@@ -19,10 +19,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextOverflow
 import com.ikhwan.mandarinkids.db.Badge
+import com.ikhwan.mandarinkids.db.MilestoneCondition
 import com.ikhwan.mandarinkids.db.MilestoneReward
 import com.ikhwan.mandarinkids.db.MilestoneType
+import com.ikhwan.mandarinkids.db.PracticeType
 import com.ikhwan.mandarinkids.db.ProgressRepository
+import com.ikhwan.mandarinkids.db.decodeConditions
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -39,7 +48,27 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
     val allProgress by repo.getAllProgress().collectAsState(initial = emptyList())
     val allRewards by repo.getAllRewards().collectAsState(initial = emptyList())
     val highMasteryCount by repo.getHighMasteryWordCount().collectAsState(initial = 0)
+    val highMasteryDefault by repo.getHighMasteryCountByType(PracticeType.DEFAULT).collectAsState(initial = 0)
+    val highMasteryListening by repo.getHighMasteryCountByType(PracticeType.LISTENING).collectAsState(initial = 0)
+    val highMasteryReading by repo.getHighMasteryCountByType(PracticeType.READING).collectAsState(initial = 0)
     val earnedBadges = remember(masteredCount, allProgress) { repo.getEarnedBadges() }
+    val perfectCount = allProgress.count { it.stars >= 3 }
+    val progressForType: (String) -> Int = remember(
+        perfectCount, highMasteryCount, highMasteryDefault,
+        highMasteryListening, highMasteryReading, xp
+    ) {
+        { typeName ->
+            when (MilestoneType.entries.find { it.name == typeName }) {
+                MilestoneType.PERFECT_SCENARIOS  -> perfectCount
+                MilestoneType.HIGH_MASTERY_WORDS -> highMasteryCount
+                MilestoneType.MASTERY_DEFAULT    -> highMasteryDefault
+                MilestoneType.MASTERY_LISTENING  -> highMasteryListening
+                MilestoneType.MASTERY_READING    -> highMasteryReading
+                MilestoneType.TOTAL_XP           -> xp
+                null                             -> 0
+            }
+        }
+    }
     var showIndonesian by remember { mutableStateOf(repo.getShowIndonesian()) }
     var showResetConfirm by remember { mutableStateOf(false) }
 
@@ -47,8 +76,6 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
     var rewardsUnlocked by remember { mutableStateOf(false) }
     var showPinForRewards by remember { mutableStateOf(false) }
     var showAddReward by remember { mutableStateOf(false) }
-
-    val perfectCount = allProgress.count { it.stars >= 3 }
 
     // PIN overlay for rewards section
     if (showPinForRewards) {
@@ -236,8 +263,7 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
                 items(allRewards, key = { it.id }) { reward ->
                     RewardItem(
                         reward = reward,
-                        perfectCount = perfectCount,
-                        highMasteryCount = highMasteryCount,
+                        progressForType = progressForType,
                         unlocked = rewardsUnlocked,
                         onClaim = { scope.launch { repo.claimReward(reward.id) } },
                         onDelete = { scope.launch { repo.deleteReward(reward.id) } }
@@ -312,10 +338,9 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
 
     if (showAddReward && rewardsUnlocked) {
         AddRewardDialog(
-            totalScenarios = JsonScenarioRepository.getAll().size,
             onDismiss = { showAddReward = false },
-            onAdd = { type, target, text ->
-                scope.launch { repo.addReward(type, target, text) }
+            onAdd = { conditions, logic, text ->
+                scope.launch { repo.addReward(conditions, logic, text) }
                 showAddReward = false
             }
         )
@@ -325,20 +350,24 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
 @Composable
 private fun RewardItem(
     reward: MilestoneReward,
-    perfectCount: Int,
-    highMasteryCount: Int,
+    progressForType: (String) -> Int,
     unlocked: Boolean,
     onClaim: () -> Unit,
     onDelete: () -> Unit
 ) {
-    val milestoneType = MilestoneType.entries.find { it.name == reward.milestoneType }
-    val currentProgress = when (milestoneType) {
-        MilestoneType.PERFECT_SCENARIOS -> perfectCount
-        MilestoneType.HIGH_MASTERY_WORDS -> highMasteryCount
-        null -> 0
+    val conditions = reward.decodeConditions()
+    val results = conditions.map { cond ->
+        val cur = progressForType(cond.type)
+        Triple(cond, cur, cur >= cond.targetValue)
     }
-    val progress = (currentProgress.toFloat() / reward.targetValue.toFloat()).coerceIn(0f, 1f)
-    val reached = currentProgress >= reward.targetValue
+    val reached = when (reward.logic) {
+        "OR"  -> results.any { it.third }
+        else  -> results.all { it.third }
+    }
+    val overallProgress = if (results.isEmpty()) 0f else when (reward.logic) {
+        "OR"  -> results.maxOf { (it.second.toFloat() / it.first.targetValue).coerceIn(0f, 1f) }
+        else  -> results.minOf { (it.second.toFloat() / it.first.targetValue).coerceIn(0f, 1f) }
+    }
 
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -352,11 +381,21 @@ private fun RewardItem(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Column(modifier = Modifier.weight(1f)) {
                     Text(reward.rewardText, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
-                    Text(
-                        "${milestoneType?.label ?: reward.milestoneType}: $currentProgress / ${reward.targetValue}",
-                        fontSize = 11.sp,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
+                    if (results.size > 1) {
+                        Text(
+                            if (reward.logic == "OR") "Any of:" else "All of:",
+                            fontSize = 10.sp, color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                    results.forEach { (cond, current, met) ->
+                        val t = MilestoneType.entries.find { it.name == cond.type }
+                        val bullet = if (results.size > 1) (if (met) "✅ " else "◻ ") else ""
+                        Text(
+                            "$bullet${t?.label ?: cond.type}: $current / ${cond.targetValue} ${t?.unit ?: ""}",
+                            fontSize = 11.sp,
+                            color = if (met) Color(0xFF4CAF50) else MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                 }
                 if (reward.isClaimed) {
                     Text("✅ Claimed", fontSize = 12.sp, color = Color(0xFF4CAF50))
@@ -376,14 +415,8 @@ private fun RewardItem(
             if (!reward.isClaimed) {
                 Spacer(modifier = Modifier.height(6.dp))
                 LinearProgressIndicator(
-                    progress = { progress },
+                    progress = { overallProgress },
                     modifier = Modifier.fillMaxWidth()
-                )
-                Text(
-                    "$currentProgress / ${reward.targetValue} ${milestoneType?.unit ?: ""}",
-                    fontSize = 11.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.align(Alignment.End)
                 )
             }
         }
@@ -392,69 +425,149 @@ private fun RewardItem(
 
 @Composable
 private fun AddRewardDialog(
-    totalScenarios: Int,
     onDismiss: () -> Unit,
-    onAdd: (MilestoneType, Int, String) -> Unit
+    onAdd: (List<MilestoneCondition>, String, String) -> Unit
 ) {
-    var selectedType by remember { mutableStateOf(MilestoneType.PERFECT_SCENARIOS) }
-    var targetText by remember { mutableStateOf("") }
+    var conditions by remember {
+        mutableStateOf(listOf(MilestoneCondition(MilestoneType.PERFECT_SCENARIOS.name, 1)))
+    }
+    var logic by remember { mutableStateOf("AND") }
     var rewardText by remember { mutableStateOf("") }
 
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text("Add Milestone Reward") },
         text = {
-            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Column(
+                modifier = Modifier.verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
                 Text(
-                    "Choose what Milton needs to achieve:",
-                    fontSize = 13.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    "When Milton achieves:",
+                    fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
-                MilestoneType.entries.forEach { type ->
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        RadioButton(
-                            selected = selectedType == type,
-                            onClick = { selectedType = type; targetText = "" }
-                        )
-                        Text("${type.emoji} ${type.label}", fontSize = 13.sp)
+
+                conditions.forEachIndexed { idx, cond ->
+                    ConditionRow(
+                        condition = cond,
+                        onUpdate = { updated ->
+                            conditions = conditions.toMutableList().also { it[idx] = updated }
+                        },
+                        onRemove = if (conditions.size > 1) {
+                            { conditions = conditions.toMutableList().also { it.removeAt(idx) } }
+                        } else null
+                    )
+                    if (conditions.size > 1 && idx < conditions.size - 1) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            FilterChip(
+                                selected = logic == "AND",
+                                onClick = { logic = "AND" },
+                                label = { Text("AND", fontSize = 11.sp) }
+                            )
+                            Spacer(Modifier.width(8.dp))
+                            FilterChip(
+                                selected = logic == "OR",
+                                onClick = { logic = "OR" },
+                                label = { Text("OR", fontSize = 11.sp) }
+                            )
+                        }
                     }
                 }
-                OutlinedTextField(
-                    value = targetText,
-                    onValueChange = { targetText = it.filter { c -> c.isDigit() } },
-                    label = {
-                        Text(when (selectedType) {
-                            MilestoneType.PERFECT_SCENARIOS -> "Number of 3-star scenarios (max $totalScenarios)"
-                            MilestoneType.HIGH_MASTERY_WORDS -> "Number of words at full mastery (10/10)"
-                        })
-                    },
-                    modifier = Modifier.fillMaxWidth()
-                )
+
+                if (conditions.size < 3) {
+                    TextButton(onClick = {
+                        conditions = conditions + MilestoneCondition(
+                            MilestoneType.PERFECT_SCENARIOS.name, 1
+                        )
+                    }) { Text("+ Add another condition", fontSize = 12.sp) }
+                }
+
+                HorizontalDivider()
+
                 OutlinedTextField(
                     value = rewardText,
                     onValueChange = { rewardText = it },
-                    label = { Text("Reward (e.g. Ice cream trip!)") },
-                    modifier = Modifier.fillMaxWidth()
+                    label = { Text("Reward description") },
+                    placeholder = { Text("e.g. Ice cream trip! 🍦") },
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true
                 )
             }
         },
         confirmButton = {
-            TextButton(
-                onClick = {
-                    val maxTarget = if (selectedType == MilestoneType.PERFECT_SCENARIOS) totalScenarios else 999
-                    val target = targetText.toIntOrNull()?.coerceIn(1, maxTarget) ?: return@TextButton
-                    if (rewardText.isBlank()) return@TextButton
-                    onAdd(selectedType, target, rewardText)
-                }
-            ) { Text("Add") }
+            TextButton(onClick = {
+                if (rewardText.isBlank() || conditions.any { it.targetValue <= 0 }) return@TextButton
+                onAdd(conditions, logic, rewardText)
+            }) { Text("Add") }
         },
-        dismissButton = {
-            TextButton(onClick = onDismiss) { Text("Cancel") }
-        }
+        dismissButton = { TextButton(onClick = onDismiss) { Text("Cancel") } }
     )
+}
+
+@Composable
+private fun ConditionRow(
+    condition: MilestoneCondition,
+    onUpdate: (MilestoneCondition) -> Unit,
+    onRemove: (() -> Unit)?
+) {
+    val selectedType = MilestoneType.entries.find { it.name == condition.type }
+        ?: MilestoneType.PERFECT_SCENARIOS
+    var typeExpanded by remember { mutableStateOf(false) }
+
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(6.dp)
+    ) {
+        Box(modifier = Modifier.weight(1f)) {
+            OutlinedButton(
+                onClick = { typeExpanded = true },
+                modifier = Modifier.fillMaxWidth(),
+                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 6.dp)
+            ) {
+                Text(
+                    "${selectedType.emoji} ${selectedType.label}",
+                    fontSize = 11.sp, maxLines = 1, overflow = TextOverflow.Ellipsis
+                )
+            }
+            DropdownMenu(
+                expanded = typeExpanded,
+                onDismissRequest = { typeExpanded = false }
+            ) {
+                MilestoneType.entries.forEach { t ->
+                    DropdownMenuItem(
+                        text = { Text("${t.emoji} ${t.label}", fontSize = 12.sp) },
+                        onClick = { onUpdate(condition.copy(type = t.name)); typeExpanded = false }
+                    )
+                }
+            }
+        }
+        OutlinedTextField(
+            value = if (condition.targetValue == 0) "" else condition.targetValue.toString(),
+            onValueChange = { v ->
+                onUpdate(condition.copy(targetValue = v.filter { it.isDigit() }.toIntOrNull() ?: 0))
+            },
+            label = { Text(selectedType.unit, fontSize = 9.sp) },
+            modifier = Modifier.width(68.dp),
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
+        if (onRemove != null) {
+            IconButton(onClick = onRemove, modifier = Modifier.size(36.dp)) {
+                Icon(
+                    Icons.Default.Close, "Remove condition",
+                    modifier = Modifier.size(18.dp),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        } else {
+            Spacer(modifier = Modifier.size(36.dp))
+        }
+    }
 }
 
 @Composable

@@ -132,16 +132,22 @@ class ProgressRepository private constructor(
 
     fun getHighMasteryWordCount(): Flow<Int> = masteredWordDao.getHighMasteryWordCount()
 
+    fun getHighMasteryCountByType(type: PracticeType): Flow<Int> =
+        masteredWordDao.getHighMasteryCountByType(type.name)
+
     // ── Milestone Rewards ─────────────────────────────────────────────────
 
-    suspend fun addReward(type: MilestoneType, targetValue: Int, rewardText: String) =
-        rewardDao.insert(
-            MilestoneReward(
-                milestoneType = type.name,
-                targetValue = targetValue,
-                rewardText = rewardText
-            )
+    suspend fun addReward(
+        conditions: List<MilestoneCondition>,
+        logic: String,
+        rewardText: String
+    ) = rewardDao.insert(
+        MilestoneReward(
+            conditionsJson = encodeConditions(conditions),
+            logic = logic,
+            rewardText = rewardText
         )
+    )
 
     fun getAllRewards(): Flow<List<MilestoneReward>> = rewardDao.getAll()
 

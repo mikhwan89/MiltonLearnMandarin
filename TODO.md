@@ -153,7 +153,7 @@ When a scenario is 3-starred, its character emoji is "unlocked" and shown in a s
 
 ---
 
-### #24 — Milestone reward: mastery targets per practice mode
+### ✅ #24 — Milestone reward: mastery targets per practice mode *(done)*
 **Files:** `parent/ParentDashboardScreen.kt`, `db/MilestoneReward.kt`, `db/ProgressRepository.kt`
 
 Extend the Milestone Reward system so parents can set targets based on high-mastery (★10) word counts separately per mode:
@@ -186,14 +186,14 @@ Add `MilestoneType.BADGE_COUNT` so parents can set a reward for earning N total 
 
 ---
 
-### #27 — Milestone rewards based on total XP
+### ✅ #27 — Milestone rewards based on total XP *(done)*
 **Files:** `parent/ParentDashboardScreen.kt`, `db/MilestoneReward.kt`
 
 Add `MilestoneType.TOTAL_XP` so parents can set XP thresholds as reward triggers (e.g. "Reach 500 XP → get a toy"). XP is already tracked — just add the new milestone type and check it after any XP gain.
 
 ---
 
-### #28 — Milestone reward AND / OR condition logic
+### ✅ #28 — Milestone reward AND / OR condition logic *(done)*
 **Files:** `db/MilestoneReward.kt`, `parent/ParentDashboardScreen.kt`
 
 Allow a reward to require multiple conditions to be met simultaneously (AND) or at least one condition from a set (OR). Examples:
