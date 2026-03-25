@@ -196,10 +196,10 @@
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
-          "chinese": "我有爸爸和妈妈。我是独生子。",
-          "pinyin": "Wǒ yǒu bàba hé māma. Wǒ shì dúshēngzǐ.",
-          "english": "I have dad and mom. I am an only child.",
-          "indonesian": "Saya punya ayah dan ibu. Saya anak tunggal.",
+          "chinese": "我有爸爸和妈妈，我们家有三个人。我是独生子。",
+          "pinyin": "Wǒ yǒu bàba hé māma, wǒmen jiā yǒu sān gè rén. Wǒ shì dúshēngzǐ.",
+          "english": "I have dad and mom — our family has 3 people. I am an only child.",
+          "indonesian": "Saya punya ayah dan ibu — keluarga kami ada 3 orang. Saya anak tunggal.",
           "pinyinWords": [
             {
               "pinyin": "Wǒ",
@@ -232,6 +232,18 @@
               "indonesian": "ibu"
             },
             {
+              "pinyin": "wǒmen jiā",
+              "chinese": "我们家",
+              "english": "our family",
+              "indonesian": "keluarga kami"
+            },
+            {
+              "pinyin": "sān gè rén",
+              "chinese": "三个人",
+              "english": "3 people",
+              "indonesian": "3 orang"
+            },
+            {
               "pinyin": "dúshēngzǐ",
               "chinese": "独生子",
               "english": "only child (boy)",
@@ -242,10 +254,10 @@
           "isCorrect": true
         },
         {
-          "chinese": "我有爸爸、妈妈和一个弟弟。",
-          "pinyin": "Wǒ yǒu bàba, māma hé yī gè dìdi.",
-          "english": "I have dad, mom, and a younger brother.",
-          "indonesian": "Saya punya ayah, ibu, dan seorang adik laki-laki.",
+          "chinese": "我有爸爸、妈妈和一个弟弟，我们家有四个人。",
+          "pinyin": "Wǒ yǒu bàba, māma hé yī gè dìdi, wǒmen jiā yǒu sì gè rén.",
+          "english": "I have dad, mom, and a younger brother — our family has 4 people.",
+          "indonesian": "Saya punya ayah, ibu, dan seorang adik laki-laki — keluarga kami ada 4 orang.",
           "pinyinWords": [
             {
               "pinyin": "Wǒ",
@@ -288,15 +300,27 @@
               "chinese": "弟弟",
               "english": "younger brother",
               "indonesian": "adik laki-laki"
+            },
+            {
+              "pinyin": "wǒmen jiā",
+              "chinese": "我们家",
+              "english": "our family",
+              "indonesian": "keluarga kami"
+            },
+            {
+              "pinyin": "sì gè rén",
+              "chinese": "四个人",
+              "english": "4 people",
+              "indonesian": "4 orang"
             }
           ],
           "isCorrect": true
         },
         {
-          "chinese": "我有爸爸、妈妈和一个妹妹。",
-          "pinyin": "Wǒ yǒu bàba, māma hé yī gè mèimei.",
-          "english": "I have dad, mom, and a younger sister.",
-          "indonesian": "Saya punya ayah, ibu, dan seorang adik perempuan.",
+          "chinese": "我有爸爸、妈妈和一个妹妹，我们家有四个人。",
+          "pinyin": "Wǒ yǒu bàba, māma hé yī gè mèimei, wǒmen jiā yǒu sì gè rén.",
+          "english": "I have dad, mom, and a younger sister — our family has 4 people.",
+          "indonesian": "Saya punya ayah, ibu, dan seorang adik perempuan — keluarga kami ada 4 orang.",
           "pinyinWords": [
             {
               "pinyin": "Wǒ",
@@ -339,6 +363,18 @@
               "chinese": "妹妹",
               "english": "younger sister",
               "indonesian": "adik perempuan"
+            },
+            {
+              "pinyin": "wǒmen jiā",
+              "chinese": "我们家",
+              "english": "our family",
+              "indonesian": "keluarga kami"
+            },
+            {
+              "pinyin": "sì gè rén",
+              "chinese": "四个人",
+              "english": "4 people",
+              "indonesian": "4 orang"
             }
           ],
           "isCorrect": true
