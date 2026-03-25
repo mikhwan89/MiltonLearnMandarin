@@ -51,10 +51,10 @@ class PracticeSessionViewModel(
 
     init {
         viewModelScope.launch {
-            // Seed words for every scenario the student has played (stars >= 1).
-            // Seeds all 3 practice types via insertIgnore, so existing progress is preserved.
+            // Seed words for every scenario the student has visited, regardless of score.
+            // Excludes the flashcard XP sentinel. Uses insertIgnore so existing progress is kept.
             val completedIds = repository.getAllProgress().first()
-                .filter { it.stars >= 1 }
+                .filter { it.scenarioId != ProgressRepository.FLASHCARD_XP_ID }
                 .map { it.scenarioId }
             for (scenarioId in completedIds) {
                 val scenario = scenarioRepository.getById(scenarioId) ?: continue

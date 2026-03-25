@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ikhwan.mandarinkids.data.models.Scenario
+import com.ikhwan.mandarinkids.db.MasteredWordEntity
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.ui.ConfettiEffect
 
@@ -43,7 +44,23 @@ fun QuizResultsScreen(
     val stars = remember { ProgressManager.calculateStars(quizScore, totalQuestions) }
     var xpGained by remember { mutableStateOf(0) }
     LaunchedEffect(Unit) {
-        xpGained = ProgressRepository.getInstance(context).saveProgress(scenario.id, stars)
+        val repo = ProgressRepository.getInstance(context)
+        xpGained = repo.saveProgress(scenario.id, stars)
+        // Seed every word from this scenario into the flashcard DB regardless of score.
+        // Uses INSERT OR IGNORE so existing mastery progress is never overwritten.
+        val seedWords = scenario.getFlashcardWords().map { pw ->
+            MasteredWordEntity(
+                scenarioId = scenario.id,
+                chinese = pw.chinese,
+                pinyin = pw.pinyin,
+                english = pw.english,
+                indonesian = pw.indonesian,
+                note = pw.note,
+                boxLevel = 1,
+                nextReviewDate = 0L
+            )
+        }
+        repo.seedWordsForScenario(scenario.id, seedWords)
     }
 
     var showConfetti by remember { mutableStateOf(isPerfect) }

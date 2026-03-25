@@ -33,6 +33,25 @@ class FlashcardViewModel(
 
     val currentWord get() = if (deck.isNotEmpty() && currentIndex < deck.size) deck[currentIndex] else null
 
+    init {
+        // Seed all scenario words on open so they appear in practice even if every card is skipped.
+        viewModelScope.launch {
+            val seedWords = allWords.map { pw ->
+                MasteredWordEntity(
+                    scenarioId = scenarioId,
+                    chinese = pw.chinese,
+                    pinyin = pw.pinyin,
+                    english = pw.english,
+                    indonesian = pw.indonesian,
+                    note = pw.note,
+                    boxLevel = 1,
+                    nextReviewDate = 0L
+                )
+            }
+            repository.seedWordsForScenario(scenarioId, seedWords)
+        }
+    }
+
     fun flip() {
         isFlipped = !isFlipped
     }
