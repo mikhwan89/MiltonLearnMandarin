@@ -1,0 +1,661 @@
+{
+  "id": "scene44_bicycle_ride_with_dad",
+  "title": "早上和爸爸骑自行车",
+  "description": "A refreshing morning bicycle ride with Dad",
+  "characterName": "爸爸",
+  "characterEmoji": "🚴",
+  "characterRole": "dad",
+  "category": "PLAY_AND_HOBBIES",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "早上好！今天天气很好，我们一起去骑自行车，好不好？",
+      "textPinyin": "Zǎoshang hǎo! Jīntiān tiānqì hěn hǎo, wǒmen yīqǐ qù qí zìxíngchē, hǎo bù hǎo?",
+      "textEnglish": "Good morning! The weather is great today, shall we go ride our bicycles together?",
+      "textIndonesian": "Selamat pagi! Cuaca hari ini bagus sekali, kita pergi naik sepeda bersama, ya?",
+      "pinyinWords": [
+        {
+          "pinyin": "Zǎoshang hǎo",
+          "chinese": "早上好",
+          "english": "Good morning",
+          "indonesian": "Selamat pagi"
+        },
+        {
+          "pinyin": "Jīntiān",
+          "chinese": "今天",
+          "english": "Today",
+          "indonesian": "Hari ini"
+        },
+        {
+          "pinyin": "tiānqì",
+          "chinese": "天气",
+          "english": "weather",
+          "indonesian": "cuaca"
+        },
+        {
+          "pinyin": "hěn hǎo",
+          "chinese": "很好",
+          "english": "very good / great",
+          "indonesian": "sangat bagus"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we / us",
+          "indonesian": "kita"
+        },
+        {
+          "pinyin": "yīqǐ",
+          "chinese": "一起",
+          "english": "together",
+          "indonesian": "bersama"
+        },
+        {
+          "pinyin": "qù",
+          "chinese": "去",
+          "english": "go",
+          "indonesian": "pergi"
+        },
+        {
+          "pinyin": "qí",
+          "chinese": "骑",
+          "english": "ride",
+          "indonesian": "naik / mengendarai"
+        },
+        {
+          "pinyin": "zìxíngchē",
+          "chinese": "自行车",
+          "english": "bicycle",
+          "indonesian": "sepeda"
+        },
+        {
+          "pinyin": "hǎo bù hǎo",
+          "chinese": "好不好",
+          "english": "OK? / sound good?",
+          "indonesian": "ya? / setuju?",
+          "note": "好不好 is a friendly way to ask 'is that OK?' — literally 'good or not good?' Dad uses it to ask Milton's opinion!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "好！我喜欢骑自行车！",
+          "pinyin": "Hǎo! Wǒ xǐhuān qí zìxíngchē!",
+          "english": "Yes! I love riding bicycles!",
+          "indonesian": "Mau! Aku suka naik sepeda!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "Yes / Good",
+              "indonesian": "Mau / Bagus"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like / love",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "qí",
+              "chinese": "骑",
+              "english": "ride",
+              "indonesian": "naik"
+            },
+            {
+              "pinyin": "zìxíngchē",
+              "chinese": "自行车",
+              "english": "bicycle",
+              "indonesian": "sepeda"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "太好了！我们快走吧！",
+          "pinyin": "Tài hǎo le! Wǒmen kuài zǒu ba!",
+          "english": "Wonderful! Let's go quickly!",
+          "indonesian": "Asyik! Kita cepat pergi, yuk!",
+          "pinyinWords": [
+            {
+              "pinyin": "Tài hǎo le",
+              "chinese": "太好了",
+              "english": "Wonderful / So great",
+              "indonesian": "Asyik / Luar biasa"
+            },
+            {
+              "pinyin": "Wǒmen",
+              "chinese": "我们",
+              "english": "We / Let's",
+              "indonesian": "Kita"
+            },
+            {
+              "pinyin": "kuài",
+              "chinese": "快",
+              "english": "quickly / fast",
+              "indonesian": "cepat"
+            },
+            {
+              "pinyin": "zǒu",
+              "chinese": "走",
+              "english": "go / walk",
+              "indonesian": "pergi / jalan"
+            },
+            {
+              "pinyin": "ba",
+              "chinese": "吧",
+              "english": "(let's do it!)",
+              "indonesian": "(ayo!)",
+              "note": "吧 at the end of a sentence means 'let's!' or 'how about it?' — 走吧 means 'let's go!'"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好的，爸爸！我准备好了！",
+          "pinyin": "Hǎo de, bàba! Wǒ zhǔnbèi hǎo le!",
+          "english": "OK, Dad! I'm ready!",
+          "indonesian": "Oke, Ayah! Aku sudah siap!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "OK / alright",
+              "indonesian": "Baik / oke"
+            },
+            {
+              "pinyin": "bàba",
+              "chinese": "爸爸",
+              "english": "Dad",
+              "indonesian": "Ayah"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "zhǔnbèi hǎo le",
+              "chinese": "准备好了",
+              "english": "am ready / all prepared",
+              "indonesian": "sudah siap"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "感觉到风了吗？早上的新鲜空气真好闻！",
+      "textPinyin": "Gǎnjué dào fēng le ma? Zǎoshang de xīnxiān kōngqì zhēn hǎo wén!",
+      "textEnglish": "Can you feel the wind? The fresh morning air smells so good!",
+      "textIndonesian": "Bisa merasakan anginnya? Udara segar pagi hari benar-benar enak sekali!",
+      "pinyinWords": [
+        {
+          "pinyin": "Gǎnjué dào",
+          "chinese": "感觉到",
+          "english": "Can feel / feel it",
+          "indonesian": "Bisa merasakan"
+        },
+        {
+          "pinyin": "fēng",
+          "chinese": "风",
+          "english": "wind",
+          "indonesian": "angin"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(change — wind is now felt)",
+          "indonesian": "(perubahan keadaan)",
+          "note": "了 here shows something has changed — we are now outside and can feel the wind!"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(yes/no question word)",
+          "indonesian": "(kata tanya ya/tidak)",
+          "note": "吗 turns any sentence into a yes/no question — 感觉到风了吗？means 'Can you feel the wind?'"
+        },
+        {
+          "pinyin": "Zǎoshang",
+          "chinese": "早上",
+          "english": "morning",
+          "indonesian": "pagi"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(connects description to noun)",
+          "indonesian": "(kata penghubung)",
+          "note": "的 links describing words to nouns — 早上的空气 means 'morning's air' or 'the morning air'!"
+        },
+        {
+          "pinyin": "xīnxiān",
+          "chinese": "新鲜",
+          "english": "fresh",
+          "indonesian": "segar"
+        },
+        {
+          "pinyin": "kōngqì",
+          "chinese": "空气",
+          "english": "air",
+          "indonesian": "udara"
+        },
+        {
+          "pinyin": "zhēn",
+          "chinese": "真",
+          "english": "really / truly",
+          "indonesian": "sungguh / benar-benar"
+        },
+        {
+          "pinyin": "hǎo wén",
+          "chinese": "好闻",
+          "english": "smells good / nice smell",
+          "indonesian": "harum / enak baunya"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "感觉到了！风很凉！",
+          "pinyin": "Gǎnjué dào le! Fēng hěn liáng!",
+          "english": "I can feel it! The wind is so cool!",
+          "indonesian": "Bisa merasakan! Anginnya sejuk sekali!",
+          "pinyinWords": [
+            {
+              "pinyin": "Gǎnjué dào le",
+              "chinese": "感觉到了",
+              "english": "I can feel it now",
+              "indonesian": "Bisa merasakan"
+            },
+            {
+              "pinyin": "Fēng",
+              "chinese": "风",
+              "english": "wind",
+              "indonesian": "angin"
+            },
+            {
+              "pinyin": "hěn liáng",
+              "chinese": "很凉",
+              "english": "very cool / very refreshing",
+              "indonesian": "sangat sejuk"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我喜欢！新鲜空气真好！",
+          "pinyin": "Wǒ xǐhuān! Xīnxiān kōngqì zhēn hǎo!",
+          "english": "I love it! The fresh air is so nice!",
+          "indonesian": "Aku suka! Udara segarnya enak sekali!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ xǐhuān",
+              "chinese": "我喜欢",
+              "english": "I like / I love it",
+              "indonesian": "Aku suka"
+            },
+            {
+              "pinyin": "Xīnxiān",
+              "chinese": "新鲜",
+              "english": "fresh",
+              "indonesian": "segar"
+            },
+            {
+              "pinyin": "kōngqì",
+              "chinese": "空气",
+              "english": "air",
+              "indonesian": "udara"
+            },
+            {
+              "pinyin": "zhēn hǎo",
+              "chinese": "真好",
+              "english": "really nice / so good",
+              "indonesian": "sungguh enak"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "我们到公园了！慢一点，这里好看极了！",
+      "textPinyin": "Wǒmen dào gōngyuán le! Màn yīdiǎn, zhèlǐ hǎokàn jíle!",
+      "textEnglish": "We've arrived at the park! Slow down a bit — it looks so beautiful here!",
+      "textIndonesian": "Kita sudah sampai di taman! Pelan-pelan, di sini indah sekali!",
+      "pinyinWords": [
+        {
+          "pinyin": "Wǒmen",
+          "chinese": "我们",
+          "english": "We",
+          "indonesian": "Kita"
+        },
+        {
+          "pinyin": "dào",
+          "chinese": "到",
+          "english": "arrived at / reached",
+          "indonesian": "tiba di / sampai di"
+        },
+        {
+          "pinyin": "gōngyuán",
+          "chinese": "公园",
+          "english": "park",
+          "indonesian": "taman"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(we've just arrived!)",
+          "indonesian": "(baru saja tiba!)",
+          "note": "到...了 means 'arrived at...' — 到公园了 means 'we've arrived at the park!'"
+        },
+        {
+          "pinyin": "Màn yīdiǎn",
+          "chinese": "慢一点",
+          "english": "a bit slower / slow down",
+          "indonesian": "pelan sedikit / pelan-pelan"
+        },
+        {
+          "pinyin": "zhèlǐ",
+          "chinese": "这里",
+          "english": "here / this place",
+          "indonesian": "di sini"
+        },
+        {
+          "pinyin": "hǎokàn",
+          "chinese": "好看",
+          "english": "beautiful / looks great",
+          "indonesian": "indah / bagus"
+        },
+        {
+          "pinyin": "jíle",
+          "chinese": "极了",
+          "english": "extremely / so very",
+          "indonesian": "sekali / sangat",
+          "note": "极了 after a describing word makes it SUPER strong — 好看极了 means 'incredibly beautiful!'"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "哇，公园真好看！",
+          "pinyin": "Wā, gōngyuán zhēn hǎokàn!",
+          "english": "Wow, the park is so beautiful!",
+          "indonesian": "Wah, tamannya indah sekali!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wā",
+              "chinese": "哇",
+              "english": "Wow",
+              "indonesian": "Wah"
+            },
+            {
+              "pinyin": "gōngyuán",
+              "chinese": "公园",
+              "english": "park",
+              "indonesian": "taman"
+            },
+            {
+              "pinyin": "zhēn hǎokàn",
+              "chinese": "真好看",
+              "english": "really beautiful",
+              "indonesian": "sungguh indah"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好的，我慢一点。这里很漂亮！",
+          "pinyin": "Hǎo de, wǒ màn yīdiǎn. Zhèlǐ hěn piàoliang!",
+          "english": "OK, I'll slow down. This place is very pretty!",
+          "indonesian": "Baik, aku pelan-pelan. Di sini sangat cantik!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "OK / alright",
+              "indonesian": "Baik"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "màn yīdiǎn",
+              "chinese": "慢一点",
+              "english": "slow down a bit",
+              "indonesian": "pelan sedikit"
+            },
+            {
+              "pinyin": "Zhèlǐ",
+              "chinese": "这里",
+              "english": "Here / This place",
+              "indonesian": "Di sini"
+            },
+            {
+              "pinyin": "hěn piàoliang",
+              "chinese": "很漂亮",
+              "english": "very pretty",
+              "indonesian": "sangat cantik"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "每天早上和你一起骑自行车，是爸爸最开心的时候。我爱你！",
+      "textPinyin": "Měitiān zǎoshang hé nǐ yīqǐ qí zìxíngchē, shì bàba zuì kāixīn de shíhou. Wǒ ài nǐ!",
+      "textEnglish": "Riding bicycles with you every morning is the happiest time for Dad. I love you!",
+      "textIndonesian": "Naik sepeda bersamamu setiap pagi adalah waktu paling bahagia bagi Ayah. Ayah sayang kamu!",
+      "pinyinWords": [
+        {
+          "pinyin": "Měitiān",
+          "chinese": "每天",
+          "english": "Every day",
+          "indonesian": "Setiap hari"
+        },
+        {
+          "pinyin": "zǎoshang",
+          "chinese": "早上",
+          "english": "morning",
+          "indonesian": "pagi"
+        },
+        {
+          "pinyin": "hé nǐ",
+          "chinese": "和你",
+          "english": "with you",
+          "indonesian": "bersamamu"
+        },
+        {
+          "pinyin": "yīqǐ",
+          "chinese": "一起",
+          "english": "together",
+          "indonesian": "bersama"
+        },
+        {
+          "pinyin": "qí zìxíngchē",
+          "chinese": "骑自行车",
+          "english": "ride a bicycle",
+          "indonesian": "naik sepeda"
+        },
+        {
+          "pinyin": "shì",
+          "chinese": "是",
+          "english": "is",
+          "indonesian": "adalah"
+        },
+        {
+          "pinyin": "bàba",
+          "chinese": "爸爸",
+          "english": "Dad",
+          "indonesian": "Ayah"
+        },
+        {
+          "pinyin": "zuì kāixīn",
+          "chinese": "最开心",
+          "english": "happiest / most happy",
+          "indonesian": "paling bahagia"
+        },
+        {
+          "pinyin": "de shíhou",
+          "chinese": "的时候",
+          "english": "the time when / the moment",
+          "indonesian": "saat / ketika",
+          "note": "...的时候 means 'the time when...' — 最开心的时候 means 'the happiest moment'!"
+        },
+        {
+          "pinyin": "Wǒ ài nǐ",
+          "chinese": "我爱你",
+          "english": "I love you",
+          "indonesian": "Aku sayang kamu"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'bicycle' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "摩托车",
+          "pinyin": "mótuōchē",
+          "translation": "motorbike"
+        },
+        {
+          "chinese": "自行车",
+          "pinyin": "zìxíngchē",
+          "translation": "bicycle"
+        },
+        {
+          "chinese": "火车",
+          "pinyin": "huǒchē",
+          "translation": "train"
+        },
+        {
+          "chinese": "飞机",
+          "pinyin": "fēijī",
+          "translation": "aeroplane"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "自行车 (zìxíngchē) means 'bicycle' — 自行 means 'self-propelled' and 车 means 'vehicle'. A vehicle you move yourself!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "新鲜空气",
+      "questionPinyin": "xīnxiān kōngqì",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "cold water"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "morning sunshine"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "fresh air"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "cool breeze"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "新鲜空气 (xīnxiān kōngqì) means 'fresh air' — 新鲜 means 'fresh' and 空气 means 'air'. Breathe it in!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "一起",
+      "questionPinyin": "yīqǐ",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "alone"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "together"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "slowly"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "quickly"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "一起 (yīqǐ) means 'together' — 一 means 'one' and 起 means 'rise up'. Together as one!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'park' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "学校",
+          "pinyin": "xuéxiào",
+          "translation": "school"
+        },
+        {
+          "chinese": "超市",
+          "pinyin": "chāoshì",
+          "translation": "supermarket"
+        },
+        {
+          "chinese": "医院",
+          "pinyin": "yīyuàn",
+          "translation": "hospital"
+        },
+        {
+          "chinese": "公园",
+          "pinyin": "gōngyuán",
+          "translation": "park"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "公园 (gōngyuán) means 'park' — 公 means 'public' and 园 means 'garden'. A public garden for everyone!"
+    }
+  ]
+}

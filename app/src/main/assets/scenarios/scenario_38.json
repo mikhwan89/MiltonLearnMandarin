@@ -1,0 +1,727 @@
+{
+  "id": "scene38_playing_tag",
+  "title": "和Caleb玩追人游戏",
+  "description": "Playing tag with best friend Caleb",
+  "characterName": "Caleb",
+  "characterEmoji": "👦",
+  "characterRole": "friend",
+  "category": "PLAY_AND_HOBBIES",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "我们一起玩游戏吧！你想玩什么游戏？",
+      "textPinyin": "Wǒmen yīqǐ wán yóuxì ba! Nǐ xiǎng wán shénme yóuxì?",
+      "textEnglish": "Let's play a game together! What game do you want to play?",
+      "textIndonesian": "Ayo kita main permainan bersama! Kamu mau main apa?",
+      "pinyinWords": [
+        {
+          "pinyin": "Wǒmen",
+          "chinese": "我们",
+          "english": "We / us",
+          "indonesian": "Kita"
+        },
+        {
+          "pinyin": "yīqǐ",
+          "chinese": "一起",
+          "english": "together",
+          "indonesian": "bersama"
+        },
+        {
+          "pinyin": "wán",
+          "chinese": "玩",
+          "english": "play",
+          "indonesian": "main"
+        },
+        {
+          "pinyin": "yóuxì",
+          "chinese": "游戏",
+          "english": "game",
+          "indonesian": "permainan"
+        },
+        {
+          "pinyin": "ba",
+          "chinese": "吧",
+          "english": "(suggestion word)",
+          "indonesian": "(kata ajakan)",
+          "note": "吧 at the end of a sentence makes it a friendly suggestion — like saying 'Let's...!' or 'Shall we...?'"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "xiǎng",
+          "chinese": "想",
+          "english": "want to / feel like",
+          "indonesian": "mau / ingin"
+        },
+        {
+          "pinyin": "wán",
+          "chinese": "玩",
+          "english": "play",
+          "indonesian": "main"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        },
+        {
+          "pinyin": "yóuxì",
+          "chinese": "游戏",
+          "english": "game",
+          "indonesian": "permainan"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我们玩追人游戏吧！",
+          "pinyin": "Wǒmen wán zhuīrén yóuxì ba!",
+          "english": "Let's play tag!",
+          "indonesian": "Ayo kita main kejar-kejaran!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒmen",
+              "chinese": "我们",
+              "english": "Let's / We",
+              "indonesian": "Kita"
+            },
+            {
+              "pinyin": "wán",
+              "chinese": "玩",
+              "english": "play",
+              "indonesian": "main"
+            },
+            {
+              "pinyin": "zhuīrén",
+              "chinese": "追人",
+              "english": "tag / chase people",
+              "indonesian": "kejar-kejaran"
+            },
+            {
+              "pinyin": "yóuxì",
+              "chinese": "游戏",
+              "english": "game",
+              "indonesian": "permainan"
+            },
+            {
+              "pinyin": "ba",
+              "chinese": "吧",
+              "english": "(let's!)",
+              "indonesian": "(ayo!)",
+              "note": "吧 here is an enthusiastic suggestion — 'Let's do it!'"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我想玩追人！好玩的！",
+          "pinyin": "Wǒ xiǎng wán zhuīrén! Hǎowán de!",
+          "english": "I want to play tag! It's so fun!",
+          "indonesian": "Aku mau main kejar-kejaran! Seru banget!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "mau"
+            },
+            {
+              "pinyin": "wán",
+              "chinese": "玩",
+              "english": "play",
+              "indonesian": "main"
+            },
+            {
+              "pinyin": "zhuīrén",
+              "chinese": "追人",
+              "english": "tag / chase people",
+              "indonesian": "kejar-kejaran"
+            },
+            {
+              "pinyin": "Hǎowán",
+              "chinese": "好玩",
+              "english": "fun / enjoyable",
+              "indonesian": "seru / menyenangkan"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(emphasis word)",
+              "indonesian": "(kata penegas)",
+              "note": "的 at the end of a sentence adds emphasis — like saying 'It really is fun!'"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "追人游戏！我们一起跑！",
+          "pinyin": "Zhuīrén yóuxì! Wǒmen yīqǐ pǎo!",
+          "english": "Tag! Let's run together!",
+          "indonesian": "Kejar-kejaran! Ayo kita lari bersama!",
+          "pinyinWords": [
+            {
+              "pinyin": "Zhuīrén",
+              "chinese": "追人",
+              "english": "Tag / chasing",
+              "indonesian": "Kejar-kejaran"
+            },
+            {
+              "pinyin": "yóuxì",
+              "chinese": "游戏",
+              "english": "game",
+              "indonesian": "permainan"
+            },
+            {
+              "pinyin": "Wǒmen",
+              "chinese": "我们",
+              "english": "Let's / We",
+              "indonesian": "Kita"
+            },
+            {
+              "pinyin": "yīqǐ",
+              "chinese": "一起",
+              "english": "together",
+              "indonesian": "bersama"
+            },
+            {
+              "pinyin": "pǎo",
+              "chinese": "跑",
+              "english": "run",
+              "indonesian": "lari"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "好！追人游戏！谁先追人？",
+      "textPinyin": "Hǎo! Zhuīrén yóuxì! Shéi xiān zhuī rén?",
+      "textEnglish": "Great! Tag! Who chases first?",
+      "textIndonesian": "Oke! Kejar-kejaran! Siapa yang duluan ngejar?",
+      "pinyinWords": [
+        {
+          "pinyin": "Hǎo",
+          "chinese": "好",
+          "english": "Great / OK",
+          "indonesian": "Oke / Bagus"
+        },
+        {
+          "pinyin": "Zhuīrén",
+          "chinese": "追人",
+          "english": "tag / chasing people",
+          "indonesian": "kejar-kejaran"
+        },
+        {
+          "pinyin": "yóuxì",
+          "chinese": "游戏",
+          "english": "game",
+          "indonesian": "permainan"
+        },
+        {
+          "pinyin": "Shéi",
+          "chinese": "谁",
+          "english": "Who",
+          "indonesian": "Siapa"
+        },
+        {
+          "pinyin": "xiān",
+          "chinese": "先",
+          "english": "first",
+          "indonesian": "duluan / pertama"
+        },
+        {
+          "pinyin": "zhuī",
+          "chinese": "追",
+          "english": "chase",
+          "indonesian": "kejar"
+        },
+        {
+          "pinyin": "rén",
+          "chinese": "人",
+          "english": "people / person",
+          "indonesian": "orang"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我先追！我先跑！",
+          "pinyin": "Wǒ xiān zhuī! Wǒ xiān pǎo!",
+          "english": "I'll chase first! I'll run first!",
+          "indonesian": "Aku yang duluan ngejar! Aku yang duluan lari!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiān",
+              "chinese": "先",
+              "english": "first",
+              "indonesian": "duluan"
+            },
+            {
+              "pinyin": "zhuī",
+              "chinese": "追",
+              "english": "chase",
+              "indonesian": "kejar"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiān",
+              "chinese": "先",
+              "english": "first",
+              "indonesian": "duluan"
+            },
+            {
+              "pinyin": "pǎo",
+              "chinese": "跑",
+              "english": "run",
+              "indonesian": "lari"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "你先追吧，我先跑！",
+          "pinyin": "Nǐ xiān zhuī ba, wǒ xiān pǎo!",
+          "english": "You chase first, I'll run first!",
+          "indonesian": "Kamu duluan yang ngejar, aku duluan yang lari!",
+          "pinyinWords": [
+            {
+              "pinyin": "Nǐ",
+              "chinese": "你",
+              "english": "You",
+              "indonesian": "Kamu"
+            },
+            {
+              "pinyin": "xiān",
+              "chinese": "先",
+              "english": "first",
+              "indonesian": "duluan"
+            },
+            {
+              "pinyin": "zhuī",
+              "chinese": "追",
+              "english": "chase",
+              "indonesian": "kejar"
+            },
+            {
+              "pinyin": "ba",
+              "chinese": "吧",
+              "english": "(suggestion)",
+              "indonesian": "(saran)",
+              "note": "吧 here is a friendly suggestion — 'How about you go first?'"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "xiān",
+              "chinese": "先",
+              "english": "first",
+              "indonesian": "duluan"
+            },
+            {
+              "pinyin": "pǎo",
+              "chinese": "跑",
+              "english": "run",
+              "indonesian": "lari"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "哇！你跑得很快！你抓住我了！好厉害！",
+      "textPinyin": "Wā! Nǐ pǎo de hěn kuài! Nǐ zhuāzhù wǒ le! Hǎo lìhai!",
+      "textEnglish": "Wow! You run so fast! You caught me! Amazing!",
+      "textIndonesian": "Wah! Kamu larinya cepat banget! Kamu berhasil tangkap aku! Keren sekali!",
+      "pinyinWords": [
+        {
+          "pinyin": "Wā",
+          "chinese": "哇",
+          "english": "Wow",
+          "indonesian": "Wah"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "pǎo de hěn kuài",
+          "chinese": "跑得很快",
+          "english": "run very fast",
+          "indonesian": "larinya sangat cepat",
+          "note": "得 (de) is used after a verb to describe how well something is done — 跑得很快 means 'runs really fast'!"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "zhuāzhù",
+          "chinese": "抓住",
+          "english": "caught / grabbed",
+          "indonesian": "berhasil tangkap"
+        },
+        {
+          "pinyin": "wǒ",
+          "chinese": "我",
+          "english": "me",
+          "indonesian": "aku"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(action completed!)",
+          "indonesian": "(sudah terjadi!)",
+          "note": "了 after 抓住 shows it just happened — 'You just caught me!'"
+        },
+        {
+          "pinyin": "Hǎo lìhai",
+          "chinese": "好厉害",
+          "english": "So amazing / So impressive",
+          "indonesian": "Keren sekali / Hebat banget"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "哈哈！我抓住你了！我跑得很快！",
+          "pinyin": "Hāhā! Wǒ zhuāzhù nǐ le! Wǒ pǎo de hěn kuài!",
+          "english": "Haha! I caught you! I run very fast!",
+          "indonesian": "Haha! Aku berhasil tangkap kamu! Aku larinya cepat banget!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hāhā",
+              "chinese": "哈哈",
+              "english": "Haha / laugh",
+              "indonesian": "Haha / tertawa"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "zhuāzhù",
+              "chinese": "抓住",
+              "english": "caught",
+              "indonesian": "berhasil tangkap"
+            },
+            {
+              "pinyin": "nǐ",
+              "chinese": "你",
+              "english": "you",
+              "indonesian": "kamu"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(done!)",
+              "indonesian": "(sudah!)",
+              "note": "了 shows the action is complete — 'I caught you!'"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "pǎo de hěn kuài",
+              "chinese": "跑得很快",
+              "english": "run very fast",
+              "indonesian": "larinya sangat cepat"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "太好玩了！我们是好朋友！",
+          "pinyin": "Tài hǎowán le! Wǒmen shì hǎo péngyǒu!",
+          "english": "This is so much fun! We are best friends!",
+          "indonesian": "Seru banget! Kita adalah teman baik!",
+          "pinyinWords": [
+            {
+              "pinyin": "Tài",
+              "chinese": "太",
+              "english": "So / Too (in a good way!)",
+              "indonesian": "Sangat / Terlalu (positif)"
+            },
+            {
+              "pinyin": "hǎowán",
+              "chinese": "好玩",
+              "english": "fun / enjoyable",
+              "indonesian": "seru / menyenangkan"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(exclamation!)",
+              "indonesian": "(seru!)",
+              "note": "太...了 together means 'So...!' — 太好玩了 = 'This is SO fun!'"
+            },
+            {
+              "pinyin": "Wǒmen",
+              "chinese": "我们",
+              "english": "We",
+              "indonesian": "Kita"
+            },
+            {
+              "pinyin": "shì",
+              "chinese": "是",
+              "english": "are",
+              "indonesian": "adalah"
+            },
+            {
+              "pinyin": "hǎo",
+              "chinese": "好",
+              "english": "good / best",
+              "indonesian": "baik / terbaik"
+            },
+            {
+              "pinyin": "péngyǒu",
+              "chinese": "朋友",
+              "english": "friends",
+              "indonesian": "teman"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "这个游戏太好玩了！我们是最好的朋友，永远一起玩！",
+      "textPinyin": "Zhège yóuxì tài hǎowán le! Wǒmen shì zuì hǎo de péngyǒu, yǒngyuǎn yīqǐ wán!",
+      "textEnglish": "This game is so much fun! We are the best friends, playing together forever!",
+      "textIndonesian": "Permainan ini seru banget! Kita adalah teman terbaik, main bersama selamanya!",
+      "pinyinWords": [
+        {
+          "pinyin": "Zhège",
+          "chinese": "这个",
+          "english": "This",
+          "indonesian": "Ini"
+        },
+        {
+          "pinyin": "yóuxì",
+          "chinese": "游戏",
+          "english": "game",
+          "indonesian": "permainan"
+        },
+        {
+          "pinyin": "tài hǎowán le",
+          "chinese": "太好玩了",
+          "english": "so much fun",
+          "indonesian": "seru banget"
+        },
+        {
+          "pinyin": "Wǒmen",
+          "chinese": "我们",
+          "english": "We",
+          "indonesian": "Kita"
+        },
+        {
+          "pinyin": "shì",
+          "chinese": "是",
+          "english": "are",
+          "indonesian": "adalah"
+        },
+        {
+          "pinyin": "zuì hǎo de",
+          "chinese": "最好的",
+          "english": "the best",
+          "indonesian": "yang terbaik"
+        },
+        {
+          "pinyin": "péngyǒu",
+          "chinese": "朋友",
+          "english": "friends",
+          "indonesian": "teman"
+        },
+        {
+          "pinyin": "yǒngyuǎn",
+          "chinese": "永远",
+          "english": "forever / always",
+          "indonesian": "selamanya / selalu"
+        },
+        {
+          "pinyin": "yīqǐ",
+          "chinese": "一起",
+          "english": "together",
+          "indonesian": "bersama"
+        },
+        {
+          "pinyin": "wán",
+          "chinese": "玩",
+          "english": "play",
+          "indonesian": "main"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'run' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "跳",
+          "pinyin": "tiào",
+          "translation": "jump"
+        },
+        {
+          "chinese": "跑",
+          "pinyin": "pǎo",
+          "translation": "run"
+        },
+        {
+          "chinese": "走",
+          "pinyin": "zǒu",
+          "translation": "walk"
+        },
+        {
+          "chinese": "游",
+          "pinyin": "yóu",
+          "translation": "swim"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "跑 (pǎo) means 'run' — when you play tag you have to 跑 as fast as you can!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "朋友",
+      "questionPinyin": "péngyǒu",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "teacher"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "family"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "friend"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "game"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "朋友 (péngyǒu) means 'friend' — Caleb is Milton's 好朋友 (best friend)!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "抓住",
+      "questionPinyin": "zhuāzhù",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "run away"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "hide"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "jump up"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "catch / got you!"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "抓住 (zhuāzhù) means 'catch / got you!' — when you tag someone in the game, you 抓住 them!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'fun / enjoyable' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "好看",
+          "pinyin": "hǎokàn",
+          "translation": "nice-looking"
+        },
+        {
+          "chinese": "好吃",
+          "pinyin": "hǎochī",
+          "translation": "delicious"
+        },
+        {
+          "chinese": "好玩",
+          "pinyin": "hǎowán",
+          "translation": "fun / enjoyable"
+        },
+        {
+          "chinese": "好听",
+          "pinyin": "hǎotīng",
+          "translation": "nice-sounding"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "好玩 (hǎowán) means 'fun / enjoyable' — playing tag with Caleb is 太好玩了 (so much fun)!"
+    }
+  ]
+}

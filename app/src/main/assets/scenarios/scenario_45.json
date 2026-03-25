@@ -1,0 +1,809 @@
+{
+  "id": "scene45_reading_books",
+  "title": "我喜欢看书",
+  "description": "Talking about favourite books at the library",
+  "characterName": "图书馆阿姨",
+  "characterEmoji": "📚",
+  "characterRole": "librarian",
+  "category": "PLAY_AND_HOBBIES",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你好！欢迎来图书馆！你最喜欢看什么书？",
+      "textPinyin": "Nǐ hǎo! Huānyíng lái túshūguǎn! Nǐ zuì xǐhuān kàn shénme shū?",
+      "textEnglish": "Hello! Welcome to the library! What kind of books do you like reading most?",
+      "textIndonesian": "Halo! Selamat datang di perpustakaan! Kamu paling suka baca buku apa?",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ hǎo",
+          "chinese": "你好",
+          "english": "Hello",
+          "indonesian": "Halo"
+        },
+        {
+          "pinyin": "Huānyíng",
+          "chinese": "欢迎",
+          "english": "Welcome",
+          "indonesian": "Selamat datang"
+        },
+        {
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "come / coming to",
+          "indonesian": "datang ke"
+        },
+        {
+          "pinyin": "túshūguǎn",
+          "chinese": "图书馆",
+          "english": "library",
+          "indonesian": "perpustakaan"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "zuì xǐhuān",
+          "chinese": "最喜欢",
+          "english": "like the most / favourite",
+          "indonesian": "paling suka"
+        },
+        {
+          "pinyin": "kàn",
+          "chinese": "看",
+          "english": "read / look at",
+          "indonesian": "baca / lihat"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        },
+        {
+          "pinyin": "shū",
+          "chinese": "书",
+          "english": "book(s)",
+          "indonesian": "buku"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我最喜欢看动物的故事书！",
+          "pinyin": "Wǒ zuì xǐhuān kàn dòngwù de gùshiū!",
+          "english": "I love reading animal storybooks the most!",
+          "indonesian": "Aku paling suka baca buku cerita hewan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "zuì xǐhuān",
+              "chinese": "最喜欢",
+              "english": "like the most",
+              "indonesian": "paling suka"
+            },
+            {
+              "pinyin": "kàn",
+              "chinese": "看",
+              "english": "read",
+              "indonesian": "baca"
+            },
+            {
+              "pinyin": "dòngwù",
+              "chinese": "动物",
+              "english": "animals",
+              "indonesian": "hewan"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(links 'animal' to 'storybook')",
+              "indonesian": "(kata penghubung)",
+              "note": "的 connects a describing word to a noun — 动物的故事书 means 'animal storybooks'!"
+            },
+            {
+              "pinyin": "gùshiū",
+              "chinese": "故事书",
+              "english": "storybook",
+              "indonesian": "buku cerita"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我喜欢看有趣的故事书！",
+          "pinyin": "Wǒ xǐhuān kàn yǒuqù de gùshiū!",
+          "english": "I like reading funny and interesting storybooks!",
+          "indonesian": "Aku suka baca buku cerita yang seru dan lucu!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "kàn",
+              "chinese": "看",
+              "english": "read",
+              "indonesian": "baca"
+            },
+            {
+              "pinyin": "yǒuqù",
+              "chinese": "有趣",
+              "english": "interesting / fun",
+              "indonesian": "menarik / seru"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(connects 'interesting' to 'storybook')",
+              "indonesian": "(kata penghubung)",
+              "note": "的 connects describing words to nouns — 有趣的故事书 means 'interesting storybooks'!"
+            },
+            {
+              "pinyin": "gùshiū",
+              "chinese": "故事书",
+              "english": "storybook",
+              "indonesian": "buku cerita"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我喜欢冒险故事书！里面有很多惊喜！",
+          "pinyin": "Wǒ xǐhuān màoxiǎn gùshiū! Lǐmiàn yǒu hěn duō jīngxǐ!",
+          "english": "I like adventure storybooks! They have so many surprises inside!",
+          "indonesian": "Aku suka buku cerita petualangan! Di dalamnya banyak kejutan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "màoxiǎn",
+              "chinese": "冒险",
+              "english": "adventure",
+              "indonesian": "petualangan"
+            },
+            {
+              "pinyin": "gùshiū",
+              "chinese": "故事书",
+              "english": "storybook",
+              "indonesian": "buku cerita"
+            },
+            {
+              "pinyin": "Lǐmiàn",
+              "chinese": "里面",
+              "english": "inside / in it",
+              "indonesian": "di dalamnya"
+            },
+            {
+              "pinyin": "yǒu",
+              "chinese": "有",
+              "english": "have / there are",
+              "indonesian": "ada"
+            },
+            {
+              "pinyin": "hěn duō",
+              "chinese": "很多",
+              "english": "a lot / many",
+              "indonesian": "banyak"
+            },
+            {
+              "pinyin": "jīngxǐ",
+              "chinese": "惊喜",
+              "english": "surprises",
+              "indonesian": "kejutan"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "我这里有一本新的故事书，里面有很多有趣的故事！你要不要看？",
+      "textPinyin": "Wǒ zhèlǐ yǒu yī běn xīn de gùshiū, lǐmiàn yǒu hěn duō yǒuqù de gùshi! Nǐ yào bu yào kàn?",
+      "textEnglish": "I have a new storybook here, it has so many fun stories inside! Would you like to read it?",
+      "textIndonesian": "Di sini aku punya satu buku cerita baru, di dalamnya banyak cerita yang seru! Kamu mau baca?",
+      "pinyinWords": [
+        {
+          "pinyin": "Wǒ zhèlǐ",
+          "chinese": "我这里",
+          "english": "I have here / Here I have",
+          "indonesian": "Di sini aku punya"
+        },
+        {
+          "pinyin": "yǒu",
+          "chinese": "有",
+          "english": "have / there is",
+          "indonesian": "ada / punya"
+        },
+        {
+          "pinyin": "yī běn",
+          "chinese": "一本",
+          "english": "one (book)",
+          "indonesian": "satu (buku)",
+          "note": "本 is the measure word for books — always say 一本书 (one book), 两本书 (two books)!"
+        },
+        {
+          "pinyin": "xīn",
+          "chinese": "新",
+          "english": "new",
+          "indonesian": "baru"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(connects 'new' to 'storybook')",
+          "indonesian": "(kata penghubung)",
+          "note": "的 links describing words to nouns — 新的故事书 means 'a new storybook'!"
+        },
+        {
+          "pinyin": "gùshiū",
+          "chinese": "故事书",
+          "english": "storybook",
+          "indonesian": "buku cerita"
+        },
+        {
+          "pinyin": "lǐmiàn",
+          "chinese": "里面",
+          "english": "inside / in it",
+          "indonesian": "di dalamnya"
+        },
+        {
+          "pinyin": "yǒu hěn duō",
+          "chinese": "有很多",
+          "english": "there are many / has a lot of",
+          "indonesian": "banyak"
+        },
+        {
+          "pinyin": "yǒuqù",
+          "chinese": "有趣",
+          "english": "interesting / fun",
+          "indonesian": "menarik / seru"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(connects description to 'stories')",
+          "indonesian": "(kata penghubung)",
+          "note": "的 appears again — 有趣的故事 means 'interesting stories'!"
+        },
+        {
+          "pinyin": "gùshi",
+          "chinese": "故事",
+          "english": "stories / story",
+          "indonesian": "cerita"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "yào bu yào",
+          "chinese": "要不要",
+          "english": "do you want to or not? / would you like to?",
+          "indonesian": "mau atau tidak? / mau?",
+          "note": "要不要 is a friendly way to offer something — literally 'want or not want?' Try it when offering something to friends!"
+        },
+        {
+          "pinyin": "kàn",
+          "chinese": "看",
+          "english": "read / look",
+          "indonesian": "baca / lihat"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "要！我很想看！",
+          "pinyin": "Yào! Wǒ hěn xiǎng kàn!",
+          "english": "Yes! I really want to read it!",
+          "indonesian": "Mau! Aku sangat ingin baca!",
+          "pinyinWords": [
+            {
+              "pinyin": "Yào",
+              "chinese": "要",
+              "english": "Want / Yes please",
+              "indonesian": "Mau"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "hěn xiǎng",
+              "chinese": "很想",
+              "english": "really want to / really feel like",
+              "indonesian": "sangat ingin"
+            },
+            {
+              "pinyin": "kàn",
+              "chinese": "看",
+              "english": "read / look",
+              "indonesian": "baca"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好的！可以借这本书吗？",
+          "pinyin": "Hǎo de! Kěyǐ jiè zhè běn shū ma?",
+          "english": "Great! Can I borrow this book?",
+          "indonesian": "Oke! Boleh pinjam buku ini?",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "Great / OK",
+              "indonesian": "Oke / Baik"
+            },
+            {
+              "pinyin": "Kěyǐ",
+              "chinese": "可以",
+              "english": "Can / May I",
+              "indonesian": "Boleh / Bisa"
+            },
+            {
+              "pinyin": "jiè",
+              "chinese": "借",
+              "english": "borrow",
+              "indonesian": "pinjam"
+            },
+            {
+              "pinyin": "zhè běn",
+              "chinese": "这本",
+              "english": "this (book)",
+              "indonesian": "buku ini"
+            },
+            {
+              "pinyin": "shū",
+              "chinese": "书",
+              "english": "book",
+              "indonesian": "buku"
+            },
+            {
+              "pinyin": "ma",
+              "chinese": "吗",
+              "english": "(question word)",
+              "indonesian": "(kata tanya)",
+              "note": "吗 turns the sentence into a polite question — 可以借这本书吗？ = 'May I borrow this book?'"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "你最喜欢这本书的哪个部分？里面有什么好看的故事？",
+      "textPinyin": "Nǐ zuì xǐhuān zhè běn shū de nǎ gè bùfen? Lǐmiàn yǒu shénme hǎokàn de gùshi?",
+      "textEnglish": "Which part of this book did you like the most? What great stories are inside?",
+      "textIndonesian": "Bagian mana yang paling kamu suka dari buku ini? Ada cerita apa yang bagus di dalamnya?",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "zuì xǐhuān",
+          "chinese": "最喜欢",
+          "english": "like the most / favourite",
+          "indonesian": "paling suka"
+        },
+        {
+          "pinyin": "zhè běn shū",
+          "chinese": "这本书",
+          "english": "this book",
+          "indonesian": "buku ini"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(links 'this book' to 'part')",
+          "indonesian": "(kata penghubung)",
+          "note": "的 connects things — 这本书的哪个部分 means 'which part of this book'!"
+        },
+        {
+          "pinyin": "nǎ gè",
+          "chinese": "哪个",
+          "english": "which one",
+          "indonesian": "yang mana"
+        },
+        {
+          "pinyin": "bùfen",
+          "chinese": "部分",
+          "english": "part / section",
+          "indonesian": "bagian"
+        },
+        {
+          "pinyin": "Lǐmiàn",
+          "chinese": "里面",
+          "english": "Inside / In it",
+          "indonesian": "Di dalamnya"
+        },
+        {
+          "pinyin": "yǒu",
+          "chinese": "有",
+          "english": "there is / has",
+          "indonesian": "ada"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        },
+        {
+          "pinyin": "hǎokàn",
+          "chinese": "好看",
+          "english": "good / interesting to read",
+          "indonesian": "bagus / menarik"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(connects 'good' to 'story')",
+          "indonesian": "(kata penghubung)",
+          "note": "的 again — 好看的故事 means 'great stories / interesting stories'!"
+        },
+        {
+          "pinyin": "gùshi",
+          "chinese": "故事",
+          "english": "story / stories",
+          "indonesian": "cerita"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我最喜欢动物的部分！很有趣！",
+          "pinyin": "Wǒ zuì xǐhuān dòngwù de bùfen! Hěn yǒuqù!",
+          "english": "I liked the animal part the most! It was so interesting!",
+          "indonesian": "Aku paling suka bagian hewannya! Sangat seru!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "zuì xǐhuān",
+              "chinese": "最喜欢",
+              "english": "liked the most",
+              "indonesian": "paling suka"
+            },
+            {
+              "pinyin": "dòngwù",
+              "chinese": "动物",
+              "english": "animals",
+              "indonesian": "hewan"
+            },
+            {
+              "pinyin": "de bùfen",
+              "chinese": "的部分",
+              "english": "the part about",
+              "indonesian": "bagian tentang"
+            },
+            {
+              "pinyin": "Hěn yǒuqù",
+              "chinese": "很有趣",
+              "english": "Very interesting / So fun",
+              "indonesian": "Sangat seru"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "里面的故事很好看！我翻了很多页！",
+          "pinyin": "Lǐmiàn de gùshi hěn hǎokàn! Wǒ fān le hěn duō yè!",
+          "english": "The stories inside were so good! I turned so many pages!",
+          "indonesian": "Cerita di dalamnya sangat bagus! Aku balik banyak halaman!",
+          "pinyinWords": [
+            {
+              "pinyin": "Lǐmiàn",
+              "chinese": "里面",
+              "english": "Inside",
+              "indonesian": "Di dalamnya"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(connects 'inside' to 'stories')",
+              "indonesian": "(kata penghubung)",
+              "note": "里面的故事 means 'the stories inside' — 的 links the location to what's there!"
+            },
+            {
+              "pinyin": "gùshi",
+              "chinese": "故事",
+              "english": "stories",
+              "indonesian": "cerita"
+            },
+            {
+              "pinyin": "hěn hǎokàn",
+              "chinese": "很好看",
+              "english": "very good / great to read",
+              "indonesian": "sangat bagus"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "fān le",
+              "chinese": "翻了",
+              "english": "turned (pages already)",
+              "indonesian": "sudah membalik"
+            },
+            {
+              "pinyin": "hěn duō",
+              "chinese": "很多",
+              "english": "many / a lot",
+              "indonesian": "banyak"
+            },
+            {
+              "pinyin": "yè",
+              "chinese": "页",
+              "english": "pages",
+              "indonesian": "halaman"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "你随时可以来图书馆看书，这里的书都很有趣！欢迎再来！",
+      "textPinyin": "Nǐ suíshí kěyǐ lái túshūguǎn kàn shū, zhèlǐ de shū dōu hěn yǒuqù! Huānyíng zài lái!",
+      "textEnglish": "You can come to the library to read anytime — all the books here are so interesting! Welcome back anytime!",
+      "textIndonesian": "Kamu bisa datang ke perpustakaan kapan saja untuk baca buku, semua buku di sini sangat seru! Selamat datang lagi!",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "suíshí",
+          "chinese": "随时",
+          "english": "anytime / at any time",
+          "indonesian": "kapan saja"
+        },
+        {
+          "pinyin": "kěyǐ",
+          "chinese": "可以",
+          "english": "can / may",
+          "indonesian": "bisa / boleh"
+        },
+        {
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "come",
+          "indonesian": "datang"
+        },
+        {
+          "pinyin": "túshūguǎn",
+          "chinese": "图书馆",
+          "english": "library",
+          "indonesian": "perpustakaan"
+        },
+        {
+          "pinyin": "kàn shū",
+          "chinese": "看书",
+          "english": "read books",
+          "indonesian": "baca buku"
+        },
+        {
+          "pinyin": "zhèlǐ",
+          "chinese": "这里",
+          "english": "here",
+          "indonesian": "di sini"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(connects 'here' to 'books')",
+          "indonesian": "(kata penghubung)",
+          "note": "这里的书 means 'the books here / books in this place' — 的 links locations to things in them!"
+        },
+        {
+          "pinyin": "shū",
+          "chinese": "书",
+          "english": "books",
+          "indonesian": "buku"
+        },
+        {
+          "pinyin": "dōu",
+          "chinese": "都",
+          "english": "all / every one of them",
+          "indonesian": "semua",
+          "note": "都 means 'all' or 'every one' — 都很有趣 means 'all of them are interesting'!"
+        },
+        {
+          "pinyin": "hěn yǒuqù",
+          "chinese": "很有趣",
+          "english": "very interesting / so fun",
+          "indonesian": "sangat seru / menarik"
+        },
+        {
+          "pinyin": "Huānyíng",
+          "chinese": "欢迎",
+          "english": "Welcome",
+          "indonesian": "Selamat datang"
+        },
+        {
+          "pinyin": "zài lái",
+          "chinese": "再来",
+          "english": "come again / come back",
+          "indonesian": "datang lagi"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'library' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "图书馆",
+          "pinyin": "túshūguǎn",
+          "translation": "library"
+        },
+        {
+          "chinese": "书包",
+          "pinyin": "shūbāo",
+          "translation": "school bag"
+        },
+        {
+          "chinese": "教室",
+          "pinyin": "jiàoshì",
+          "translation": "classroom"
+        },
+        {
+          "chinese": "书架",
+          "pinyin": "shūjià",
+          "translation": "bookshelf"
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "图书馆 (túshūguǎn) means 'library' — 图 means 'picture/drawing', 书 means 'book', and 馆 means 'building/hall'. A hall of books and pictures!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "故事书",
+      "questionPinyin": "gùshiū",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "textbook"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "storybook"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "notebook"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "comic book"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "故事书 (gùshiū) means 'storybook' — 故事 means 'story' and 书 means 'book'. A book full of stories!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "借",
+      "questionPinyin": "jiè",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "buy"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "read"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "borrow"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "keep"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "借 (jiè) means 'borrow' — 可以借这本书吗？means 'Can I borrow this book?' Always say please when you borrow things!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'interesting / fun' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "难",
+          "pinyin": "nán",
+          "translation": "difficult"
+        },
+        {
+          "chinese": "无聊",
+          "pinyin": "wúliáo",
+          "translation": "boring"
+        },
+        {
+          "chinese": "有趣",
+          "pinyin": "yǒuqù",
+          "translation": "interesting / fun"
+        },
+        {
+          "chinese": "安静",
+          "pinyin": "ānjìng",
+          "translation": "quiet"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "有趣 (yǒuqù) means 'interesting / fun' — 有 means 'have' and 趣 means 'fun / interest'. Having fun!"
+    }
+  ]
+}

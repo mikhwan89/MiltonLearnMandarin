@@ -1,0 +1,734 @@
+{
+  "id": "scene41_at_the_beach",
+  "title": "我们去海边！",
+  "description": "A fun day at the beach with Dad",
+  "characterName": "爸爸",
+  "characterEmoji": "👨",
+  "characterRole": "dad",
+  "category": "PLAY_AND_HOBBIES",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "我们到海边了！你想做什么？游泳、捡贝壳，还是在沙滩上玩？",
+      "textPinyin": "Wǒmen dào hǎibiān le! Nǐ xiǎng zuò shénme? Yóuyǒng, jiǎn bèiké, háishì zài shātān shàng wán?",
+      "textEnglish": "We're at the beach! What do you want to do? Swim, collect shells, or play on the sand?",
+      "textIndonesian": "Kita sudah di pantai! Kamu mau ngapain? Berenang, pungut kerang, atau bermain di pasir?",
+      "pinyinWords": [
+        {
+          "pinyin": "Wǒmen",
+          "chinese": "我们",
+          "english": "We",
+          "indonesian": "Kita"
+        },
+        {
+          "pinyin": "dào",
+          "chinese": "到",
+          "english": "arrived at",
+          "indonesian": "tiba di"
+        },
+        {
+          "pinyin": "hǎibiān",
+          "chinese": "海边",
+          "english": "beach / seaside",
+          "indonesian": "tepi laut / pantai"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(arrived — new situation)",
+          "indonesian": "(sudah tiba)",
+          "note": "到...了 means 'we have arrived at...' — 到海边了 = 'We've reached the beach!'"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "xiǎng",
+          "chinese": "想",
+          "english": "want to / would like to",
+          "indonesian": "mau / ingin"
+        },
+        {
+          "pinyin": "zuò",
+          "chinese": "做",
+          "english": "do",
+          "indonesian": "lakukan"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        },
+        {
+          "pinyin": "Yóuyǒng",
+          "chinese": "游泳",
+          "english": "swim",
+          "indonesian": "berenang"
+        },
+        {
+          "pinyin": "jiǎn",
+          "chinese": "捡",
+          "english": "pick up / collect",
+          "indonesian": "pungut / kumpulkan"
+        },
+        {
+          "pinyin": "bèiké",
+          "chinese": "贝壳",
+          "english": "shells / seashells",
+          "indonesian": "kerang / cangkang"
+        },
+        {
+          "pinyin": "háishì",
+          "chinese": "还是",
+          "english": "or (choosing between options)",
+          "indonesian": "atau (pilihan)",
+          "note": "还是 means 'or' when you are picking between two or more things!"
+        },
+        {
+          "pinyin": "zài",
+          "chinese": "在",
+          "english": "at / on",
+          "indonesian": "di"
+        },
+        {
+          "pinyin": "shātān",
+          "chinese": "沙滩",
+          "english": "sandy beach",
+          "indonesian": "pantai berpasir"
+        },
+        {
+          "pinyin": "shàng",
+          "chinese": "上",
+          "english": "on / above",
+          "indonesian": "di atas"
+        },
+        {
+          "pinyin": "wán",
+          "chinese": "玩",
+          "english": "play",
+          "indonesian": "bermain"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我想游泳！",
+          "pinyin": "Wǒ xiǎng yóuyǒng!",
+          "english": "I want to swim!",
+          "indonesian": "Aku mau berenang!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "mau"
+            },
+            {
+              "pinyin": "yóuyǒng",
+              "chinese": "游泳",
+              "english": "swim",
+              "indonesian": "berenang"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我想捡贝壳！",
+          "pinyin": "Wǒ xiǎng jiǎn bèiké!",
+          "english": "I want to collect shells!",
+          "indonesian": "Aku mau pungut kerang!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "mau"
+            },
+            {
+              "pinyin": "jiǎn",
+              "chinese": "捡",
+              "english": "collect / pick up",
+              "indonesian": "pungut"
+            },
+            {
+              "pinyin": "bèiké",
+              "chinese": "贝壳",
+              "english": "shells",
+              "indonesian": "kerang"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我想在沙滩上玩！",
+          "pinyin": "Wǒ xiǎng zài shātān shàng wán!",
+          "english": "I want to play on the sand!",
+          "indonesian": "Aku mau bermain di pasir!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "mau"
+            },
+            {
+              "pinyin": "zài",
+              "chinese": "在",
+              "english": "at / on",
+              "indonesian": "di"
+            },
+            {
+              "pinyin": "shātān",
+              "chinese": "沙滩",
+              "english": "sandy beach",
+              "indonesian": "pantai berpasir"
+            },
+            {
+              "pinyin": "shàng",
+              "chinese": "上",
+              "english": "on top of",
+              "indonesian": "di atas"
+            },
+            {
+              "pinyin": "wán",
+              "chinese": "玩",
+              "english": "play",
+              "indonesian": "bermain"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "你看！那个海浪好大！你害怕吗？",
+      "textPinyin": "Nǐ kàn! Nàge hǎilàng hǎo dà! Nǐ hàipà ma?",
+      "textEnglish": "Look! Those waves are so big! Are you scared?",
+      "textIndonesian": "Lihat! Ombaknya besar sekali! Kamu takut?",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ kàn",
+          "chinese": "你看",
+          "english": "Look! / Look at that!",
+          "indonesian": "Lihat!"
+        },
+        {
+          "pinyin": "Nàge",
+          "chinese": "那个",
+          "english": "That / That one",
+          "indonesian": "Itu"
+        },
+        {
+          "pinyin": "hǎilàng",
+          "chinese": "海浪",
+          "english": "waves / ocean waves",
+          "indonesian": "ombak / gelombang laut"
+        },
+        {
+          "pinyin": "hǎo",
+          "chinese": "好",
+          "english": "so / very (for emphasis)",
+          "indonesian": "sangat / sekali",
+          "note": "好 before an adjective means 'so...' or 'very...' — 好大 means 'so big!'"
+        },
+        {
+          "pinyin": "dà",
+          "chinese": "大",
+          "english": "big / large",
+          "indonesian": "besar"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "hàipà",
+          "chinese": "害怕",
+          "english": "scared / afraid",
+          "indonesian": "takut"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(yes/no question word)",
+          "indonesian": "(kata tanya ya/tidak)",
+          "note": "吗 at the end of a sentence turns it into a yes/no question!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "不害怕！我很勇敢！",
+          "pinyin": "Bù hàipà! Wǒ hěn yǒnggǎn!",
+          "english": "I'm not scared! I'm very brave!",
+          "indonesian": "Tidak takut! Aku sangat berani!",
+          "pinyinWords": [
+            {
+              "pinyin": "Bù",
+              "chinese": "不",
+              "english": "Not / No",
+              "indonesian": "Tidak"
+            },
+            {
+              "pinyin": "hàipà",
+              "chinese": "害怕",
+              "english": "scared",
+              "indonesian": "takut"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "yǒnggǎn",
+              "chinese": "勇敢",
+              "english": "brave",
+              "indonesian": "berani"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "哇！海浪好大！太好玩了！",
+          "pinyin": "Wā! Hǎilàng hǎo dà! Tài hǎowán le!",
+          "english": "Wow! The waves are so big! So fun!",
+          "indonesian": "Wah! Ombaknya besar sekali! Seru banget!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wā",
+              "chinese": "哇",
+              "english": "Wow!",
+              "indonesian": "Wah!"
+            },
+            {
+              "pinyin": "Hǎilàng",
+              "chinese": "海浪",
+              "english": "waves",
+              "indonesian": "ombak"
+            },
+            {
+              "pinyin": "hǎo dà",
+              "chinese": "好大",
+              "english": "so big",
+              "indonesian": "besar sekali"
+            },
+            {
+              "pinyin": "Tài",
+              "chinese": "太",
+              "english": "too / so (very strong emphasis)",
+              "indonesian": "terlalu / sangat"
+            },
+            {
+              "pinyin": "hǎowán",
+              "chinese": "好玩",
+              "english": "fun",
+              "indonesian": "menyenangkan / seru"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(exclamation — it's so fun!)",
+              "indonesian": "(penegasan seru)",
+              "note": "太...了 means 'so...!' — 太好玩了 = 'It's so fun!'"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "太阳好大，今天玩得开心吗？",
+      "textPinyin": "Tàiyáng hǎo dà, jīntiān wán de kāixīn ma?",
+      "textEnglish": "The sun is so bright! Are you having fun today?",
+      "textIndonesian": "Mataharinya terik sekali! Kamu senang bermain hari ini?",
+      "pinyinWords": [
+        {
+          "pinyin": "Tàiyáng",
+          "chinese": "太阳",
+          "english": "sun",
+          "indonesian": "matahari"
+        },
+        {
+          "pinyin": "hǎo dà",
+          "chinese": "好大",
+          "english": "so big / so bright",
+          "indonesian": "besar sekali / terik sekali"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "wán",
+          "chinese": "玩",
+          "english": "play",
+          "indonesian": "bermain"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "得",
+          "english": "(result particle — how well you did something)",
+          "indonesian": "(partikel hasil)",
+          "note": "玩得 links the action (playing) to how it went — 玩得开心 = 'had a happy time playing'!"
+        },
+        {
+          "pinyin": "kāixīn",
+          "chinese": "开心",
+          "english": "happy / joyful",
+          "indonesian": "senang / gembira"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(yes/no question word)",
+          "indonesian": "(kata tanya ya/tidak)",
+          "note": "吗 at the end makes it a question — 开心吗？ means 'Are you happy?'"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "很开心！我喜欢来海边！",
+          "pinyin": "Hěn kāixīn! Wǒ xǐhuān lái hǎibiān!",
+          "english": "Very happy! I love coming to the beach!",
+          "indonesian": "Sangat senang! Aku suka ke pantai!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "kāixīn",
+              "chinese": "开心",
+              "english": "happy",
+              "indonesian": "senang"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like / love",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "lái",
+              "chinese": "来",
+              "english": "come / coming to",
+              "indonesian": "datang ke"
+            },
+            {
+              "pinyin": "hǎibiān",
+              "chinese": "海边",
+              "english": "beach / seaside",
+              "indonesian": "pantai"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "非常开心！今天太好玩了！",
+          "pinyin": "Fēicháng kāixīn! Jīntiān tài hǎowán le!",
+          "english": "Extremely happy! Today is so fun!",
+          "indonesian": "Senang banget! Hari ini seru sekali!",
+          "pinyinWords": [
+            {
+              "pinyin": "Fēicháng",
+              "chinese": "非常",
+              "english": "extremely / very very",
+              "indonesian": "sangat sekali"
+            },
+            {
+              "pinyin": "kāixīn",
+              "chinese": "开心",
+              "english": "happy",
+              "indonesian": "senang"
+            },
+            {
+              "pinyin": "Jīntiān",
+              "chinese": "今天",
+              "english": "Today",
+              "indonesian": "Hari ini"
+            },
+            {
+              "pinyin": "tài",
+              "chinese": "太",
+              "english": "so / extremely",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "hǎowán",
+              "chinese": "好玩",
+              "english": "fun",
+              "indonesian": "seru"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(exclamation)",
+              "indonesian": "(penegasan)",
+              "note": "太...了 = 'so...!' — 太好玩了 = 'It's SO fun!'"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "今天是最棒的一天！谢谢你陪爸爸来海边！",
+      "textPinyin": "Jīntiān shì zuì bàng de yītiān! Xièxiè nǐ péi bàba lái hǎibiān!",
+      "textEnglish": "Today is the best day! Thank you for coming to the beach with Dad!",
+      "textIndonesian": "Hari ini adalah hari yang paling keren! Terima kasih sudah menemani Ayah ke pantai!",
+      "pinyinWords": [
+        {
+          "pinyin": "Jīntiān",
+          "chinese": "今天",
+          "english": "Today",
+          "indonesian": "Hari ini"
+        },
+        {
+          "pinyin": "shì",
+          "chinese": "是",
+          "english": "is",
+          "indonesian": "adalah"
+        },
+        {
+          "pinyin": "zuì",
+          "chinese": "最",
+          "english": "the most / best (superlative)",
+          "indonesian": "paling"
+        },
+        {
+          "pinyin": "bàng",
+          "chinese": "棒",
+          "english": "awesome / wonderful",
+          "indonesian": "keren / luar biasa"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(linking particle — 'the most awesome' day)",
+          "indonesian": "(partikel penghubung)",
+          "note": "的 connects a description to a noun — 最棒的一天 = 'the most awesome day'!"
+        },
+        {
+          "pinyin": "yītiān",
+          "chinese": "一天",
+          "english": "one day / a day",
+          "indonesian": "satu hari"
+        },
+        {
+          "pinyin": "Xièxiè",
+          "chinese": "谢谢",
+          "english": "Thank you",
+          "indonesian": "Terima kasih"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "péi",
+          "chinese": "陪",
+          "english": "accompany / keep company with",
+          "indonesian": "menemani"
+        },
+        {
+          "pinyin": "bàba",
+          "chinese": "爸爸",
+          "english": "Dad",
+          "indonesian": "Ayah"
+        },
+        {
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "come / came to",
+          "indonesian": "datang ke"
+        },
+        {
+          "pinyin": "hǎibiān",
+          "chinese": "海边",
+          "english": "beach / seaside",
+          "indonesian": "pantai"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'beach / seaside' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "海边",
+          "pinyin": "hǎibiān",
+          "translation": "beach / seaside"
+        },
+        {
+          "chinese": "公园",
+          "pinyin": "gōngyuán",
+          "translation": "park"
+        },
+        {
+          "chinese": "游泳池",
+          "pinyin": "yóuyǒngchí",
+          "translation": "swimming pool"
+        },
+        {
+          "chinese": "山",
+          "pinyin": "shān",
+          "translation": "mountain"
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "海边 (hǎibiān) means 'beach / seaside' — 海 means 'sea' and 边 means 'side / edge'. The edge of the sea!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "贝壳",
+      "questionPinyin": "bèiké",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "waves"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "sand"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "seashells"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "sun"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "贝壳 (bèiké) means 'seashells' — 贝 means 'shellfish' and 壳 means 'shell'. Go collect some 贝壳 at the beach!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'happy / joyful' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "害怕",
+          "pinyin": "hàipà",
+          "translation": "scared"
+        },
+        {
+          "chinese": "开心",
+          "pinyin": "kāixīn",
+          "translation": "happy / joyful"
+        },
+        {
+          "chinese": "安静",
+          "pinyin": "ānjìng",
+          "translation": "quiet"
+        },
+        {
+          "chinese": "勇敢",
+          "pinyin": "yǒnggǎn",
+          "translation": "brave"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "开心 (kāixīn) means 'happy / joyful' — 开 means 'open' and 心 means 'heart'. When you're happy your heart is open!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "海浪",
+      "questionPinyin": "hǎilàng",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "seashells"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "sandy beach"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "ocean waves"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "sunlight"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "海浪 (hǎilàng) means 'ocean waves' — 海 means 'sea' and 浪 means 'wave'. Big 海浪 are so exciting!"
+    }
+  ]
+}

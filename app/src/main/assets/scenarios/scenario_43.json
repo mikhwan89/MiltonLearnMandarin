@@ -1,0 +1,642 @@
+{
+  "id": "scene43_basketball_practice",
+  "title": "我练篮球！",
+  "description": "Milton's daily basketball practice with Coach",
+  "characterName": "Chen 教练",
+  "characterEmoji": "🏀",
+  "characterRole": "basketball coach",
+  "category": "PLAY_AND_HOBBIES",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你好，Milton！你练篮球多久了？每天都来练习吗？",
+      "textPinyin": "Nǐ hǎo, Milton! Nǐ liàn lánqiú duō jiǔ le? Měitiān dōu lái liànxí ma?",
+      "textEnglish": "Hello, Milton! How long have you been practising basketball? Do you come to practise every day?",
+      "textIndonesian": "Halo, Milton! Sudah berapa lama kamu berlatih basket? Kamu latihan setiap hari?",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ hǎo",
+          "chinese": "你好",
+          "english": "Hello",
+          "indonesian": "Halo"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "liàn",
+          "chinese": "练",
+          "english": "practise / train",
+          "indonesian": "berlatih"
+        },
+        {
+          "pinyin": "lánqiú",
+          "chinese": "篮球",
+          "english": "basketball",
+          "indonesian": "basket / bola basket"
+        },
+        {
+          "pinyin": "duō jiǔ",
+          "chinese": "多久",
+          "english": "how long (time)",
+          "indonesian": "berapa lama"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(how long up until now)",
+          "indonesian": "(sudah berapa lama)",
+          "note": "多久了 asks 'how long have you been doing something up until now?'"
+        },
+        {
+          "pinyin": "Měitiān",
+          "chinese": "每天",
+          "english": "every day",
+          "indonesian": "setiap hari"
+        },
+        {
+          "pinyin": "dōu",
+          "chinese": "都",
+          "english": "all / always / every time",
+          "indonesian": "selalu / semua",
+          "note": "都 means 'every (one) / always' — 每天都 means 'every single day'!"
+        },
+        {
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "come",
+          "indonesian": "datang"
+        },
+        {
+          "pinyin": "liànxí",
+          "chinese": "练习",
+          "english": "practise / practice",
+          "indonesian": "berlatih / latihan"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(yes/no question word)",
+          "indonesian": "(kata tanya ya/tidak)",
+          "note": "吗 at the end makes it a yes/no question!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我每天都来练习！",
+          "pinyin": "Wǒ měitiān dōu lái liànxí!",
+          "english": "I come to practise every day!",
+          "indonesian": "Aku latihan setiap hari!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "měitiān",
+              "chinese": "每天",
+              "english": "every day",
+              "indonesian": "setiap hari"
+            },
+            {
+              "pinyin": "dōu",
+              "chinese": "都",
+              "english": "always / every time",
+              "indonesian": "selalu"
+            },
+            {
+              "pinyin": "lái",
+              "chinese": "来",
+              "english": "come",
+              "indonesian": "datang"
+            },
+            {
+              "pinyin": "liànxí",
+              "chinese": "练习",
+              "english": "practise",
+              "indonesian": "berlatih"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我练了几个月了！",
+          "pinyin": "Wǒ liàn le jǐ gè yuè le!",
+          "english": "I've been practising for a few months!",
+          "indonesian": "Aku sudah latihan beberapa bulan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "liàn le",
+              "chinese": "练了",
+              "english": "have been practising",
+              "indonesian": "sudah berlatih"
+            },
+            {
+              "pinyin": "jǐ",
+              "chinese": "几",
+              "english": "a few / several",
+              "indonesian": "beberapa"
+            },
+            {
+              "pinyin": "gè",
+              "chinese": "个",
+              "english": "(measure word for months)",
+              "indonesian": "(kata bilangan untuk bulan)",
+              "note": "个 is a measure word — 几个月 = 'a few months'. In Chinese every noun has a special counting word!"
+            },
+            {
+              "pinyin": "yuè",
+              "chinese": "月",
+              "english": "month(s)",
+              "indonesian": "bulan"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(up until now)",
+              "indonesian": "(sampai sekarang)",
+              "note": "了 at the end shows 'and it's still happening' — I've been practising for months and still am!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "很好！现在给我看你的运球！加油！",
+      "textPinyin": "Hěn hǎo! Xiànzài gěi wǒ kàn nǐ de yùnqiú! Jiāyóu!",
+      "textEnglish": "Great! Now show me your dribbling! You can do it!",
+      "textIndonesian": "Bagus! Sekarang tunjukkan dribbling-mu padaku! Ayo semangat!",
+      "pinyinWords": [
+        {
+          "pinyin": "Hěn hǎo",
+          "chinese": "很好",
+          "english": "Very good / Great",
+          "indonesian": "Bagus / Baik sekali"
+        },
+        {
+          "pinyin": "Xiànzài",
+          "chinese": "现在",
+          "english": "Now",
+          "indonesian": "Sekarang"
+        },
+        {
+          "pinyin": "gěi wǒ",
+          "chinese": "给我",
+          "english": "show me / for me",
+          "indonesian": "tunjukkan padaku / untukku"
+        },
+        {
+          "pinyin": "kàn",
+          "chinese": "看",
+          "english": "look / see / show",
+          "indonesian": "lihat / tunjukkan"
+        },
+        {
+          "pinyin": "nǐ de",
+          "chinese": "你的",
+          "english": "your",
+          "indonesian": "punyamu / milikmu"
+        },
+        {
+          "pinyin": "yùnqiú",
+          "chinese": "运球",
+          "english": "dribble / dribbling",
+          "indonesian": "dribbling / menggiring bola"
+        },
+        {
+          "pinyin": "Jiāyóu",
+          "chinese": "加油",
+          "english": "Go for it! / You can do it! / Keep going!",
+          "indonesian": "Ayo semangat! / Kamu bisa!",
+          "note": "加油 literally means 'add fuel' — like giving your car more gas! In Mandarin it means 'Cheer up! Go go go!'"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "好的！我会运球！你看！",
+          "pinyin": "Hǎo de! Wǒ huì yùnqiú! Nǐ kàn!",
+          "english": "OK! I can dribble! Watch this!",
+          "indonesian": "Baik! Aku bisa dribbling! Lihat ya!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "OK / Alright",
+              "indonesian": "Baik / Oke"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "huì",
+              "chinese": "会",
+              "english": "can / know how to",
+              "indonesian": "bisa / tahu caranya"
+            },
+            {
+              "pinyin": "yùnqiú",
+              "chinese": "运球",
+              "english": "dribble",
+              "indonesian": "dribbling"
+            },
+            {
+              "pinyin": "Nǐ kàn",
+              "chinese": "你看",
+              "english": "Watch! / Look!",
+              "indonesian": "Lihat!"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我来了！我的运球很厉害！",
+          "pinyin": "Wǒ lái le! Wǒ de yùnqiú hěn lìhai!",
+          "english": "Here I come! My dribbling is awesome!",
+          "indonesian": "Aku siap! Dribbling-ku keren!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ lái le",
+              "chinese": "我来了",
+              "english": "Here I come! / I'm ready!",
+              "indonesian": "Aku datang! / Aku siap!"
+            },
+            {
+              "pinyin": "Wǒ de",
+              "chinese": "我的",
+              "english": "My",
+              "indonesian": "Milikku / Punyaku"
+            },
+            {
+              "pinyin": "yùnqiú",
+              "chinese": "运球",
+              "english": "dribbling",
+              "indonesian": "dribbling"
+            },
+            {
+              "pinyin": "hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "lìhai",
+              "chinese": "厉害",
+              "english": "awesome / impressive",
+              "indonesian": "keren / hebat"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "太厉害了！现在投篮！加油！",
+      "textPinyin": "Tài lìhai le! Xiànzài tóulán! Jiāyóu!",
+      "textEnglish": "So impressive! Now shoot for the basket! Go for it!",
+      "textIndonesian": "Luar biasa sekali! Sekarang tembak ke ring! Ayo semangat!",
+      "pinyinWords": [
+        {
+          "pinyin": "Tài",
+          "chinese": "太",
+          "english": "so / extremely",
+          "indonesian": "sangat / terlalu"
+        },
+        {
+          "pinyin": "lìhai",
+          "chinese": "厉害",
+          "english": "awesome / impressive",
+          "indonesian": "keren / hebat"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(exclamation — so impressive!)",
+          "indonesian": "(penegasan seru)",
+          "note": "太...了 = 'so...!' — 太厉害了 = 'So awesome!'"
+        },
+        {
+          "pinyin": "Xiànzài",
+          "chinese": "现在",
+          "english": "Now",
+          "indonesian": "Sekarang"
+        },
+        {
+          "pinyin": "tóulán",
+          "chinese": "投篮",
+          "english": "shoot / score a basket",
+          "indonesian": "tembak bola ke ring / shoot"
+        },
+        {
+          "pinyin": "Jiāyóu",
+          "chinese": "加油",
+          "english": "Go for it! / You can do it!",
+          "indonesian": "Ayo semangat! / Kamu bisa!",
+          "note": "加油 is the ultimate cheer in Mandarin — coaches, friends, and fans all shout 加油 to cheer you on!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "投进去了！我投篮成功！",
+          "pinyin": "Tóu jìn qù le! Wǒ tóulán chénggōng!",
+          "english": "It went in! I scored! I did it!",
+          "indonesian": "Masuk! Aku berhasil memasukkan bola!",
+          "pinyinWords": [
+            {
+              "pinyin": "Tóu jìn qù le",
+              "chinese": "投进去了",
+              "english": "Scored! / It went in!",
+              "indonesian": "Masuk! / Berhasil!"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "tóulán",
+              "chinese": "投篮",
+              "english": "shoot / score a basket",
+              "indonesian": "tembak ke ring"
+            },
+            {
+              "pinyin": "chénggōng",
+              "chinese": "成功",
+              "english": "success / succeeded",
+              "indonesian": "berhasil / sukses"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "哇！进了！太开心了！",
+          "pinyin": "Wā! Jìn le! Tài kāixīn le!",
+          "english": "Wow! It went in! I'm so happy!",
+          "indonesian": "Wah! Masuk! Senang banget!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wā",
+              "chinese": "哇",
+              "english": "Wow!",
+              "indonesian": "Wah!"
+            },
+            {
+              "pinyin": "Jìn le",
+              "chinese": "进了",
+              "english": "It went in! / Scored!",
+              "indonesian": "Masuk!"
+            },
+            {
+              "pinyin": "Tài",
+              "chinese": "太",
+              "english": "so / extremely",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "kāixīn",
+              "chinese": "开心",
+              "english": "happy",
+              "indonesian": "senang"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(exclamation — so happy!)",
+              "indonesian": "(penegasan seru)",
+              "note": "太开心了 = 'I'm SO happy!' — 太...了 is your go-to for big excited feelings!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "真的很厉害，Milton！每天练习，你会越来越好！加油，继续练！",
+      "textPinyin": "Zhēnde hěn lìhai, Milton! Měitiān liànxí, nǐ huì yuèláiyuè hǎo! Jiāyóu, jìxù liàn!",
+      "textEnglish": "You're truly impressive, Milton! Practise every day and you'll get better and better! Keep going, keep practising!",
+      "textIndonesian": "Kamu benar-benar hebat, Milton! Latihan setiap hari, kamu akan semakin baik! Semangat, terus berlatih!",
+      "pinyinWords": [
+        {
+          "pinyin": "Zhēnde",
+          "chinese": "真的",
+          "english": "truly / really",
+          "indonesian": "sungguh / benar-benar"
+        },
+        {
+          "pinyin": "hěn",
+          "chinese": "很",
+          "english": "very",
+          "indonesian": "sangat"
+        },
+        {
+          "pinyin": "lìhai",
+          "chinese": "厉害",
+          "english": "awesome / impressive",
+          "indonesian": "keren / hebat"
+        },
+        {
+          "pinyin": "Měitiān",
+          "chinese": "每天",
+          "english": "Every day",
+          "indonesian": "Setiap hari"
+        },
+        {
+          "pinyin": "liànxí",
+          "chinese": "练习",
+          "english": "practise",
+          "indonesian": "berlatih"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "huì",
+          "chinese": "会",
+          "english": "will",
+          "indonesian": "akan"
+        },
+        {
+          "pinyin": "yuèláiyuè hǎo",
+          "chinese": "越来越好",
+          "english": "better and better / more and more good",
+          "indonesian": "semakin baik",
+          "note": "越来越 means 'more and more' — 越来越好 = 'getting better and better every time'!"
+        },
+        {
+          "pinyin": "Jiāyóu",
+          "chinese": "加油",
+          "english": "Go for it! / Keep at it!",
+          "indonesian": "Semangat! / Ayo terus!"
+        },
+        {
+          "pinyin": "jìxù",
+          "chinese": "继续",
+          "english": "continue / keep doing",
+          "indonesian": "terus / lanjutkan"
+        },
+        {
+          "pinyin": "liàn",
+          "chinese": "练",
+          "english": "practise / train",
+          "indonesian": "berlatih"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'basketball' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "足球",
+          "pinyin": "zúqiú",
+          "translation": "football / soccer"
+        },
+        {
+          "chinese": "棒球",
+          "pinyin": "bàngqiú",
+          "translation": "baseball"
+        },
+        {
+          "chinese": "篮球",
+          "pinyin": "lánqiú",
+          "translation": "basketball"
+        },
+        {
+          "chinese": "网球",
+          "pinyin": "wǎngqiú",
+          "translation": "tennis"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "篮球 (lánqiú) means 'basketball' — 篮 means 'basket' and 球 means 'ball'. A basket ball — 篮球!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "加油",
+      "questionPinyin": "jiāyóu",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "slow down"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "go for it! / you can do it!"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "stop now"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "well done"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "加油 (jiāyóu) means 'Go for it! / You can do it!' — It literally means 'add fuel', like filling up a car to go faster. Cheer loudly!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "投篮",
+      "questionPinyin": "tóulán",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "dribble the ball"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "pass the ball"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "shoot / score a basket"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "bounce the ball"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "投篮 (tóulán) means 'shoot / score a basket' — 投 means 'throw / shoot' and 篮 means 'basket'. Throw it in the 篮!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'every day' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "今天",
+          "pinyin": "jīntiān",
+          "translation": "today"
+        },
+        {
+          "chinese": "明天",
+          "pinyin": "míngtiān",
+          "translation": "tomorrow"
+        },
+        {
+          "chinese": "昨天",
+          "pinyin": "zuótiān",
+          "translation": "yesterday"
+        },
+        {
+          "chinese": "每天",
+          "pinyin": "měitiān",
+          "translation": "every day"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "每天 (měitiān) means 'every day' — 每 means 'every / each' and 天 means 'day'. Practice 每天 and you'll become amazing!"
+    }
+  ]
+}

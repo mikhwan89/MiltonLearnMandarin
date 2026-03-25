@@ -1,0 +1,703 @@
+{
+  "id": "scene40_my_cat",
+  "title": "我喜欢猫咪",
+  "description": "Talking about Milton's favourite cat",
+  "characterName": "妈妈",
+  "characterEmoji": "👩",
+  "characterRole": "mom",
+  "category": "HOME",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "宝贝，你最喜欢什么动物？",
+      "textPinyin": "Bǎobèi, nǐ zuì xǐhuān shénme dòngwù?",
+      "textEnglish": "Sweetheart, what animal do you like most?",
+      "textIndonesian": "Sayang, hewan apa yang paling kamu suka?",
+      "pinyinWords": [
+        {
+          "pinyin": "Bǎobèi",
+          "chinese": "宝贝",
+          "english": "Sweetheart / Baby (affectionate)",
+          "indonesian": "Sayang / Anakku (panggilan sayang)"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "zuì",
+          "chinese": "最",
+          "english": "most",
+          "indonesian": "paling"
+        },
+        {
+          "pinyin": "xǐhuān",
+          "chinese": "喜欢",
+          "english": "like / love",
+          "indonesian": "suka"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        },
+        {
+          "pinyin": "dòngwù",
+          "chinese": "动物",
+          "english": "animal",
+          "indonesian": "hewan / binatang"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我最喜欢猫咪！猫咪最可爱了！",
+          "pinyin": "Wǒ zuì xǐhuān māomī! Māomī zuì kě'ài le!",
+          "english": "I like cats most! Cats are the cutest!",
+          "indonesian": "Aku paling suka kucing! Kucing paling lucu!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "zuì",
+              "chinese": "最",
+              "english": "most",
+              "indonesian": "paling"
+            },
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "māomī",
+              "chinese": "猫咪",
+              "english": "kitty / cat (affectionate)",
+              "indonesian": "kucing / kucing kecil (sayang)"
+            },
+            {
+              "pinyin": "Māomī",
+              "chinese": "猫咪",
+              "english": "Kitty",
+              "indonesian": "Kucing"
+            },
+            {
+              "pinyin": "zuì",
+              "chinese": "最",
+              "english": "most / the",
+              "indonesian": "paling"
+            },
+            {
+              "pinyin": "kě'ài",
+              "chinese": "可爱",
+              "english": "cute / adorable",
+              "indonesian": "lucu / menggemaskan"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(exclamation!)",
+              "indonesian": "(penegas seru!)",
+              "note": "最...了 = 'The most...!' — 最可爱了 means 'The cutest ever!'"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "猫咪！我喜欢猫咪，猫咪好可爱！",
+          "pinyin": "Māomī! Wǒ xǐhuān māomī, māomī hǎo kě'ài!",
+          "english": "Kitty! I love cats, cats are so cute!",
+          "indonesian": "Kucing! Aku suka kucing, kucing lucu banget!",
+          "pinyinWords": [
+            {
+              "pinyin": "Māomī",
+              "chinese": "猫咪",
+              "english": "Kitty / Cat",
+              "indonesian": "Kucing"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like / love",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "māomī",
+              "chinese": "猫咪",
+              "english": "cats / kitties",
+              "indonesian": "kucing"
+            },
+            {
+              "pinyin": "māomī",
+              "chinese": "猫咪",
+              "english": "cats",
+              "indonesian": "kucing"
+            },
+            {
+              "pinyin": "hǎo",
+              "chinese": "好",
+              "english": "so / really",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "kě'ài",
+              "chinese": "可爱",
+              "english": "cute",
+              "indonesian": "lucu / menggemaskan"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "哇，猫咪！猫咪是什么样的？",
+      "textPinyin": "Wā, māomī! Māomī shì shénme yàng de?",
+      "textEnglish": "Wow, kitties! What are cats like?",
+      "textIndonesian": "Wah, kucing! Kucing itu seperti apa?",
+      "pinyinWords": [
+        {
+          "pinyin": "Wā",
+          "chinese": "哇",
+          "english": "Wow",
+          "indonesian": "Wah"
+        },
+        {
+          "pinyin": "māomī",
+          "chinese": "猫咪",
+          "english": "kitties / cats",
+          "indonesian": "kucing"
+        },
+        {
+          "pinyin": "Māomī",
+          "chinese": "猫咪",
+          "english": "Cats",
+          "indonesian": "Kucing"
+        },
+        {
+          "pinyin": "shì",
+          "chinese": "是",
+          "english": "are",
+          "indonesian": "adalah"
+        },
+        {
+          "pinyin": "shénme yàng de",
+          "chinese": "什么样的",
+          "english": "what kind / what are they like",
+          "indonesian": "seperti apa",
+          "note": "什么样的 means 'what kind of / what is it like?' — a great question to describe things!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "猫咪软绵绵的，很可爱！",
+          "pinyin": "Māomī ruǎnmiānmiān de, hěn kě'ài!",
+          "english": "Cats are soft and fluffy, so cute!",
+          "indonesian": "Kucing itu lembut dan fluffy, sangat lucu!",
+          "pinyinWords": [
+            {
+              "pinyin": "Māomī",
+              "chinese": "猫咪",
+              "english": "Cats / Kitties",
+              "indonesian": "Kucing"
+            },
+            {
+              "pinyin": "ruǎnmiānmiān",
+              "chinese": "软绵绵",
+              "english": "soft and fluffy",
+              "indonesian": "lembut dan fluffy"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(describing word ending)",
+              "indonesian": "(kata sifat penjelas)",
+              "note": "的 after a describing word shows it describes something — 软绵绵的 = 'the soft fluffy one'"
+            },
+            {
+              "pinyin": "hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "kě'ài",
+              "chinese": "可爱",
+              "english": "cute / adorable",
+              "indonesian": "lucu / menggemaskan"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "猫咪很可爱，而且很软绵绵！",
+          "pinyin": "Māomī hěn kě'ài, érqiě hěn ruǎnmiānmiān!",
+          "english": "Cats are very cute and also very soft and fluffy!",
+          "indonesian": "Kucing sangat lucu dan juga sangat lembut!",
+          "pinyinWords": [
+            {
+              "pinyin": "Māomī",
+              "chinese": "猫咪",
+              "english": "Cats",
+              "indonesian": "Kucing"
+            },
+            {
+              "pinyin": "hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "kě'ài",
+              "chinese": "可爱",
+              "english": "cute",
+              "indonesian": "lucu"
+            },
+            {
+              "pinyin": "érqiě",
+              "chinese": "而且",
+              "english": "and also / moreover",
+              "indonesian": "dan juga / selain itu"
+            },
+            {
+              "pinyin": "hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "ruǎnmiānmiān",
+              "chinese": "软绵绵",
+              "english": "soft and fluffy",
+              "indonesian": "lembut dan fluffy"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "对呀！那你最喜欢跟猫咪做什么？",
+      "textPinyin": "Duì ya! Nà nǐ zuì xǐhuān gēn māomī zuò shénme?",
+      "textEnglish": "That's right! So what do you most like to do with cats?",
+      "textIndonesian": "Betul! Jadi apa yang paling kamu suka lakukan bersama kucing?",
+      "pinyinWords": [
+        {
+          "pinyin": "Duì ya",
+          "chinese": "对呀",
+          "english": "That's right! / Exactly!",
+          "indonesian": "Betul! / Tepat sekali!"
+        },
+        {
+          "pinyin": "Nà",
+          "chinese": "那",
+          "english": "Then / So",
+          "indonesian": "Jadi / Lalu"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "zuì",
+          "chinese": "最",
+          "english": "most",
+          "indonesian": "paling"
+        },
+        {
+          "pinyin": "xǐhuān",
+          "chinese": "喜欢",
+          "english": "like",
+          "indonesian": "suka"
+        },
+        {
+          "pinyin": "gēn",
+          "chinese": "跟",
+          "english": "with",
+          "indonesian": "bersama / dengan"
+        },
+        {
+          "pinyin": "māomī",
+          "chinese": "猫咪",
+          "english": "cats / kitties",
+          "indonesian": "kucing"
+        },
+        {
+          "pinyin": "zuò",
+          "chinese": "做",
+          "english": "do",
+          "indonesian": "lakukan"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我喜欢摸猫咪！猫咪软绵绵的！",
+          "pinyin": "Wǒ xǐhuān mō māomī! Māomī ruǎnmiānmiān de!",
+          "english": "I like to stroke the cat! Cats are so soft and fluffy!",
+          "indonesian": "Aku suka membelai kucing! Kucing lembut banget!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "mō",
+              "chinese": "摸",
+              "english": "pet / stroke / touch",
+              "indonesian": "belai / usap"
+            },
+            {
+              "pinyin": "māomī",
+              "chinese": "猫咪",
+              "english": "the cat",
+              "indonesian": "kucing"
+            },
+            {
+              "pinyin": "Māomī",
+              "chinese": "猫咪",
+              "english": "Cats",
+              "indonesian": "Kucing"
+            },
+            {
+              "pinyin": "ruǎnmiānmiān",
+              "chinese": "软绵绵",
+              "english": "soft and fluffy",
+              "indonesian": "lembut dan fluffy"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(describing word ending)",
+              "indonesian": "(penjelas sifat)",
+              "note": "的 after a describing word makes it an adjective — 软绵绵的 = 'the soft fluffy one'!"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我喜欢喂猫咪，也喜欢摸它！",
+          "pinyin": "Wǒ xǐhuān wèi māomī, yě xǐhuān mō tā!",
+          "english": "I like to feed the cat and also pet it!",
+          "indonesian": "Aku suka memberi makan kucing dan juga membelaikannya!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "wèi",
+              "chinese": "喂",
+              "english": "feed",
+              "indonesian": "memberi makan"
+            },
+            {
+              "pinyin": "māomī",
+              "chinese": "猫咪",
+              "english": "the cat",
+              "indonesian": "kucing"
+            },
+            {
+              "pinyin": "yě",
+              "chinese": "也",
+              "english": "also / too",
+              "indonesian": "juga"
+            },
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "mō",
+              "chinese": "摸",
+              "english": "pet / stroke",
+              "indonesian": "belai"
+            },
+            {
+              "pinyin": "tā",
+              "chinese": "它",
+              "english": "it (animal/object)",
+              "indonesian": "dia (hewan/benda)",
+              "note": "它 is 'it' for animals and objects — different from 他 (he) and 她 (she) for people!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "猫咪真的很可爱！喜欢猫咪是很美好的事情。妈妈也很喜欢猫咪！喵！",
+      "textPinyin": "Māomī zhēnde hěn kě'ài! Xǐhuān māomī shì hěn měihǎo de shìqing. Māma yě hěn xǐhuān māomī! Miāo!",
+      "textEnglish": "Cats are really so cute! Loving cats is a wonderful thing. Mum also loves cats! Meow!",
+      "textIndonesian": "Kucing memang sangat lucu! Menyukai kucing adalah hal yang indah. Mama juga sangat suka kucing! Meow!",
+      "pinyinWords": [
+        {
+          "pinyin": "Māomī",
+          "chinese": "猫咪",
+          "english": "Cats / Kitties",
+          "indonesian": "Kucing"
+        },
+        {
+          "pinyin": "zhēnde",
+          "chinese": "真的",
+          "english": "really / truly",
+          "indonesian": "sungguh / memang"
+        },
+        {
+          "pinyin": "hěn",
+          "chinese": "很",
+          "english": "very",
+          "indonesian": "sangat"
+        },
+        {
+          "pinyin": "kě'ài",
+          "chinese": "可爱",
+          "english": "cute / adorable",
+          "indonesian": "lucu / menggemaskan"
+        },
+        {
+          "pinyin": "Xǐhuān",
+          "chinese": "喜欢",
+          "english": "Loving",
+          "indonesian": "Menyukai"
+        },
+        {
+          "pinyin": "māomī",
+          "chinese": "猫咪",
+          "english": "cats",
+          "indonesian": "kucing"
+        },
+        {
+          "pinyin": "shì",
+          "chinese": "是",
+          "english": "is",
+          "indonesian": "adalah"
+        },
+        {
+          "pinyin": "hěn měihǎo de",
+          "chinese": "很美好的",
+          "english": "a wonderful / a beautiful",
+          "indonesian": "yang indah / yang luar biasa"
+        },
+        {
+          "pinyin": "shìqing",
+          "chinese": "事情",
+          "english": "thing / matter",
+          "indonesian": "hal / perkara"
+        },
+        {
+          "pinyin": "Māma",
+          "chinese": "妈妈",
+          "english": "Mum / Mummy",
+          "indonesian": "Mama / Ibu"
+        },
+        {
+          "pinyin": "yě",
+          "chinese": "也",
+          "english": "also / too",
+          "indonesian": "juga"
+        },
+        {
+          "pinyin": "hěn",
+          "chinese": "很",
+          "english": "very",
+          "indonesian": "sangat"
+        },
+        {
+          "pinyin": "xǐhuān",
+          "chinese": "喜欢",
+          "english": "love / like",
+          "indonesian": "suka"
+        },
+        {
+          "pinyin": "māomī",
+          "chinese": "猫咪",
+          "english": "cats",
+          "indonesian": "kucing"
+        },
+        {
+          "pinyin": "Miāo",
+          "chinese": "喵",
+          "english": "Meow!",
+          "indonesian": "Meow!"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'cute / adorable' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "可爱",
+          "pinyin": "kě'ài",
+          "translation": "cute / adorable"
+        },
+        {
+          "chinese": "好吃",
+          "pinyin": "hǎochī",
+          "translation": "delicious"
+        },
+        {
+          "chinese": "好看",
+          "pinyin": "hǎokàn",
+          "translation": "nice-looking"
+        },
+        {
+          "chinese": "好玩",
+          "pinyin": "hǎowán",
+          "translation": "fun"
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "可爱 (kě'ài) means 'cute / adorable' — cats are so 可爱! You can use it to describe anything cute!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "软绵绵",
+      "questionPinyin": "ruǎnmiānmiān",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "very noisy"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "very fast"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "soft and fluffy"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "cold and wet"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "软绵绵 (ruǎnmiānmiān) means 'soft and fluffy' — when you hug a cat, it feels 软绵绵 in your arms!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "喂",
+      "questionPinyin": "wèi",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "pet / stroke"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "feed"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "play with"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "hug"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "喂 (wèi) means 'feed' — 喂猫咪 means 'feed the cat'. Taking care of your pet is very important!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'pet / stroke' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "抱",
+          "pinyin": "bào",
+          "translation": "hug"
+        },
+        {
+          "chinese": "喂",
+          "pinyin": "wèi",
+          "translation": "feed"
+        },
+        {
+          "chinese": "亲",
+          "pinyin": "qīn",
+          "translation": "kiss"
+        },
+        {
+          "chinese": "摸",
+          "pinyin": "mō",
+          "translation": "pet / stroke"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "摸 (mō) means 'pet / stroke' — gently stroking a cat is called 摸猫咪. It makes the cat feel happy and cozy!"
+    }
+  ]
+}

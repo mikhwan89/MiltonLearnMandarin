@@ -1,0 +1,726 @@
+{
+  "id": "scene42_fishing_with_dad",
+  "title": "和爸爸钓鱼",
+  "description": "A peaceful fishing trip with Dad",
+  "characterName": "爸爸",
+  "characterEmoji": "🎣",
+  "characterRole": "dad",
+  "category": "PLAY_AND_HOBBIES",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "我们到河边了！钓鱼的时候，要安静，不然鱼不会来。你能安静吗？",
+      "textPinyin": "Wǒmen dào hébiān le! Diàoyú de shíhou, yào ānjìng, bùrán yú bù huì lái. Nǐ néng ānjìng ma?",
+      "textEnglish": "We're at the riverside! When fishing, you must be quiet or the fish won't come. Can you be quiet?",
+      "textIndonesian": "Kita sudah di tepi sungai! Saat memancing, harus tenang, kalau tidak ikan tidak akan datang. Kamu bisa tenang?",
+      "pinyinWords": [
+        {
+          "pinyin": "Wǒmen",
+          "chinese": "我们",
+          "english": "We",
+          "indonesian": "Kita"
+        },
+        {
+          "pinyin": "dào",
+          "chinese": "到",
+          "english": "arrived at",
+          "indonesian": "tiba di"
+        },
+        {
+          "pinyin": "hébiān",
+          "chinese": "河边",
+          "english": "riverside / by the river",
+          "indonesian": "tepi sungai"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(arrived — new situation)",
+          "indonesian": "(sudah tiba)",
+          "note": "到...了 means 'we have arrived at...' — 到河边了 = 'We've made it to the riverside!'"
+        },
+        {
+          "pinyin": "Diàoyú",
+          "chinese": "钓鱼",
+          "english": "fishing",
+          "indonesian": "memancing"
+        },
+        {
+          "pinyin": "de shíhou",
+          "chinese": "的时候",
+          "english": "when doing / at the time of",
+          "indonesian": "saat / ketika",
+          "note": "的时候 means 'when' — 钓鱼的时候 = 'when fishing'!"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "must / need to",
+          "indonesian": "harus"
+        },
+        {
+          "pinyin": "ānjìng",
+          "chinese": "安静",
+          "english": "quiet / still / calm",
+          "indonesian": "tenang / diam"
+        },
+        {
+          "pinyin": "bùrán",
+          "chinese": "不然",
+          "english": "otherwise / or else",
+          "indonesian": "kalau tidak / jika tidak"
+        },
+        {
+          "pinyin": "yú",
+          "chinese": "鱼",
+          "english": "fish",
+          "indonesian": "ikan"
+        },
+        {
+          "pinyin": "bù huì",
+          "chinese": "不会",
+          "english": "won't / will not",
+          "indonesian": "tidak akan"
+        },
+        {
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "come",
+          "indonesian": "datang"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "néng",
+          "chinese": "能",
+          "english": "can / able to",
+          "indonesian": "bisa"
+        },
+        {
+          "pinyin": "ānjìng",
+          "chinese": "安静",
+          "english": "quiet",
+          "indonesian": "tenang"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(yes/no question word)",
+          "indonesian": "(kata tanya ya/tidak)",
+          "note": "吗 at the end of a sentence makes it a yes/no question!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "能！我会很安静的！",
+          "pinyin": "Néng! Wǒ huì hěn ānjìng de!",
+          "english": "Yes I can! I'll be very quiet!",
+          "indonesian": "Bisa! Aku akan sangat tenang!",
+          "pinyinWords": [
+            {
+              "pinyin": "Néng",
+              "chinese": "能",
+              "english": "Can / Yes I can",
+              "indonesian": "Bisa"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "huì",
+              "chinese": "会",
+              "english": "will",
+              "indonesian": "akan"
+            },
+            {
+              "pinyin": "hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "ānjìng",
+              "chinese": "安静",
+              "english": "quiet",
+              "indonesian": "tenang"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(emphatic ending — I promise!)",
+              "indonesian": "(penegas janji)",
+              "note": "的 at the very end of a sentence adds emphasis — like saying 'I really will be quiet!'"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好的，我等鱼来！",
+          "pinyin": "Hǎo de, wǒ děng yú lái!",
+          "english": "OK, I'll wait for the fish to come!",
+          "indonesian": "Baik, aku tunggu ikannya datang!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "OK / Alright",
+              "indonesian": "Baik / Oke"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "děng",
+              "chinese": "等",
+              "english": "wait for",
+              "indonesian": "menunggu"
+            },
+            {
+              "pinyin": "yú",
+              "chinese": "鱼",
+              "english": "fish",
+              "indonesian": "ikan"
+            },
+            {
+              "pinyin": "lái",
+              "chinese": "来",
+              "english": "come",
+              "indonesian": "datang"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "等一等！有鱼在咬鱼竿了！快拉起来！",
+      "textPinyin": "Děng yī děng! Yǒu yú zài yǎo yúgān le! Kuài lā qǐlai!",
+      "textEnglish": "Wait! A fish is biting the rod! Quick, pull it up!",
+      "textIndonesian": "Tunggu sebentar! Ada ikan yang gigit kailnya! Cepat tarik ke atas!",
+      "pinyinWords": [
+        {
+          "pinyin": "Děng yī děng",
+          "chinese": "等一等",
+          "english": "Wait a moment / Hold on",
+          "indonesian": "Tunggu sebentar"
+        },
+        {
+          "pinyin": "Yǒu",
+          "chinese": "有",
+          "english": "There is / There are",
+          "indonesian": "Ada"
+        },
+        {
+          "pinyin": "yú",
+          "chinese": "鱼",
+          "english": "fish",
+          "indonesian": "ikan"
+        },
+        {
+          "pinyin": "zài",
+          "chinese": "在",
+          "english": "(action happening right now)",
+          "indonesian": "(sedang terjadi)",
+          "note": "在 before a verb means 'is doing it right now' — 在咬 = 'is biting'!"
+        },
+        {
+          "pinyin": "yǎo",
+          "chinese": "咬",
+          "english": "bite",
+          "indonesian": "menggigit"
+        },
+        {
+          "pinyin": "yúgān",
+          "chinese": "鱼竿",
+          "english": "fishing rod",
+          "indonesian": "joran pancing"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(something just happened!)",
+          "indonesian": "(sesuatu baru terjadi!)",
+          "note": "了 shows something just started happening — a fish just started biting!"
+        },
+        {
+          "pinyin": "Kuài",
+          "chinese": "快",
+          "english": "Quick! / Fast!",
+          "indonesian": "Cepat!"
+        },
+        {
+          "pinyin": "lā",
+          "chinese": "拉",
+          "english": "pull",
+          "indonesian": "tarik"
+        },
+        {
+          "pinyin": "qǐlai",
+          "chinese": "起来",
+          "english": "up / upward",
+          "indonesian": "ke atas"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "哇！有鱼！我来拉！",
+          "pinyin": "Wā! Yǒu yú! Wǒ lái lā!",
+          "english": "Wow! There's a fish! I'll pull it!",
+          "indonesian": "Wah! Ada ikan! Aku yang tarik!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wā",
+              "chinese": "哇",
+              "english": "Wow!",
+              "indonesian": "Wah!"
+            },
+            {
+              "pinyin": "Yǒu",
+              "chinese": "有",
+              "english": "There is",
+              "indonesian": "Ada"
+            },
+            {
+              "pinyin": "yú",
+              "chinese": "鱼",
+              "english": "fish",
+              "indonesian": "ikan"
+            },
+            {
+              "pinyin": "Wǒ lái",
+              "chinese": "我来",
+              "english": "Let me / I will",
+              "indonesian": "Aku yang akan"
+            },
+            {
+              "pinyin": "lā",
+              "chinese": "拉",
+              "english": "pull",
+              "indonesian": "tarik"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "太棒了！我快快拉！",
+          "pinyin": "Tài bàng le! Wǒ kuàikuài lā!",
+          "english": "Amazing! I'll pull it up fast!",
+          "indonesian": "Luar biasa! Aku tarik cepat!",
+          "pinyinWords": [
+            {
+              "pinyin": "Tài bàng le",
+              "chinese": "太棒了",
+              "english": "Amazing! / So awesome!",
+              "indonesian": "Luar biasa!"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "kuàikuài",
+              "chinese": "快快",
+              "english": "very quickly / fast fast",
+              "indonesian": "dengan cepat"
+            },
+            {
+              "pinyin": "lā",
+              "chinese": "拉",
+              "english": "pull",
+              "indonesian": "tarik"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "钓到了！好大的鱼！我们放回去，还是带回家？",
+      "textPinyin": "Diào dào le! Hǎo dà de yú! Wǒmen fàng huí qù, háishì dài huí jiā?",
+      "textEnglish": "We caught one! Such a big fish! Should we release it back, or take it home?",
+      "textIndonesian": "Dapat ikan! Ikannya besar sekali! Kita lepaskan kembali, atau bawa pulang?",
+      "pinyinWords": [
+        {
+          "pinyin": "Diào dào le",
+          "chinese": "钓到了",
+          "english": "Caught a fish! / Got one!",
+          "indonesian": "Dapat ikan! / Berhasil!"
+        },
+        {
+          "pinyin": "Hǎo dà",
+          "chinese": "好大",
+          "english": "So big",
+          "indonesian": "Besar sekali"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(linking description to noun)",
+          "indonesian": "(penghubung deskripsi)",
+          "note": "的 connects a description to a noun — 好大的鱼 = 'such a big fish'!"
+        },
+        {
+          "pinyin": "yú",
+          "chinese": "鱼",
+          "english": "fish",
+          "indonesian": "ikan"
+        },
+        {
+          "pinyin": "Wǒmen",
+          "chinese": "我们",
+          "english": "We / Shall we",
+          "indonesian": "Kita"
+        },
+        {
+          "pinyin": "fàng",
+          "chinese": "放",
+          "english": "release / let go",
+          "indonesian": "lepaskan"
+        },
+        {
+          "pinyin": "huí qù",
+          "chinese": "回去",
+          "english": "back / return",
+          "indonesian": "kembali"
+        },
+        {
+          "pinyin": "háishì",
+          "chinese": "还是",
+          "english": "or (choosing between options)",
+          "indonesian": "atau (pilihan)",
+          "note": "还是 means 'or' when you are choosing between options!"
+        },
+        {
+          "pinyin": "dài",
+          "chinese": "带",
+          "english": "bring / take",
+          "indonesian": "bawa"
+        },
+        {
+          "pinyin": "huí jiā",
+          "chinese": "回家",
+          "english": "go home / return home",
+          "indonesian": "pulang / kembali ke rumah"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "放回去吧！让鱼回家！",
+          "pinyin": "Fàng huí qù ba! Ràng yú huí jiā!",
+          "english": "Release it back! Let the fish go home!",
+          "indonesian": "Lepaskan saja! Biar ikannya pulang!",
+          "pinyinWords": [
+            {
+              "pinyin": "Fàng huí qù",
+              "chinese": "放回去",
+              "english": "release / put back",
+              "indonesian": "lepaskan / kembalikan"
+            },
+            {
+              "pinyin": "ba",
+              "chinese": "吧",
+              "english": "(suggestion — let's do it!)",
+              "indonesian": "(saran — ayo lakukan!)",
+              "note": "吧 at the end of a sentence softens it into a suggestion — 放回去吧 = 'How about we release it?'"
+            },
+            {
+              "pinyin": "Ràng",
+              "chinese": "让",
+              "english": "Let / Allow",
+              "indonesian": "Biarkan / Beri"
+            },
+            {
+              "pinyin": "yú",
+              "chinese": "鱼",
+              "english": "fish",
+              "indonesian": "ikan"
+            },
+            {
+              "pinyin": "huí jiā",
+              "chinese": "回家",
+              "english": "go home",
+              "indonesian": "pulang"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "带回家！我们今晚吃鱼！",
+          "pinyin": "Dài huí jiā! Wǒmen jīnwǎn chī yú!",
+          "english": "Take it home! We'll eat fish tonight!",
+          "indonesian": "Bawa pulang! Kita makan ikan malam ini!",
+          "pinyinWords": [
+            {
+              "pinyin": "Dài huí jiā",
+              "chinese": "带回家",
+              "english": "take it home",
+              "indonesian": "bawa pulang"
+            },
+            {
+              "pinyin": "Wǒmen",
+              "chinese": "我们",
+              "english": "We",
+              "indonesian": "Kita"
+            },
+            {
+              "pinyin": "jīnwǎn",
+              "chinese": "今晚",
+              "english": "tonight / this evening",
+              "indonesian": "malam ini"
+            },
+            {
+              "pinyin": "chī",
+              "chinese": "吃",
+              "english": "eat",
+              "indonesian": "makan"
+            },
+            {
+              "pinyin": "yú",
+              "chinese": "鱼",
+              "english": "fish",
+              "indonesian": "ikan"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "做得好，Milton！你今天很厉害！和爸爸一起钓鱼，真的太快乐了！",
+      "textPinyin": "Zuò de hǎo, Milton! Nǐ jīntiān hěn lìhai! Hé bàba yīqǐ diàoyú, zhēnde tài kuàilè le!",
+      "textEnglish": "Well done, Milton! You were amazing today! Fishing together with Dad was truly so wonderful!",
+      "textIndonesian": "Bagus sekali, Milton! Kamu sangat hebat hari ini! Memancing bersama Ayah sungguh sangat menyenangkan!",
+      "pinyinWords": [
+        {
+          "pinyin": "Zuò de hǎo",
+          "chinese": "做得好",
+          "english": "Well done / Good job",
+          "indonesian": "Bagus sekali / Kerja bagus"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "hěn",
+          "chinese": "很",
+          "english": "very",
+          "indonesian": "sangat"
+        },
+        {
+          "pinyin": "lìhai",
+          "chinese": "厉害",
+          "english": "awesome / impressive / skilled",
+          "indonesian": "hebat / keren / luar biasa"
+        },
+        {
+          "pinyin": "Hé",
+          "chinese": "和",
+          "english": "with / together with",
+          "indonesian": "dengan / bersama"
+        },
+        {
+          "pinyin": "bàba",
+          "chinese": "爸爸",
+          "english": "Dad",
+          "indonesian": "Ayah"
+        },
+        {
+          "pinyin": "yīqǐ",
+          "chinese": "一起",
+          "english": "together",
+          "indonesian": "bersama"
+        },
+        {
+          "pinyin": "diàoyú",
+          "chinese": "钓鱼",
+          "english": "fishing",
+          "indonesian": "memancing"
+        },
+        {
+          "pinyin": "zhēnde",
+          "chinese": "真的",
+          "english": "truly / really",
+          "indonesian": "sungguh / benar-benar"
+        },
+        {
+          "pinyin": "tài",
+          "chinese": "太",
+          "english": "so / extremely",
+          "indonesian": "sangat"
+        },
+        {
+          "pinyin": "kuàilè",
+          "chinese": "快乐",
+          "english": "happy / wonderful / joyful",
+          "indonesian": "bahagia / menyenangkan"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(exclamation — it was so wonderful!)",
+          "indonesian": "(penegasan seru)",
+          "note": "太...了 = 'so...!' — 太快乐了 = 'It was SO joyful!'"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'fishing' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "游泳",
+          "pinyin": "yóuyǒng",
+          "translation": "swimming"
+        },
+        {
+          "chinese": "钓鱼",
+          "pinyin": "diàoyú",
+          "translation": "fishing"
+        },
+        {
+          "chinese": "跑步",
+          "pinyin": "pǎobù",
+          "translation": "running"
+        },
+        {
+          "chinese": "画画",
+          "pinyin": "huàhuà",
+          "translation": "drawing"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "钓鱼 (diàoyú) means 'fishing' — 钓 means 'to fish with a hook' and 鱼 means 'fish'. You're hooking a 鱼!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "安静",
+      "questionPinyin": "ānjìng",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "excited"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "loud"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "quiet / still"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "fast"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "安静 (ānjìng) means 'quiet / still' — 安 means 'peaceful' and 静 means 'still/calm'. Be 安静 so the fish will come!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "钓到了",
+      "questionPinyin": "diào dào le",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "the fish swam away"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "caught a fish!"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "the rod is broken"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "throw the fish back"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "钓到了 (diào dào le) means 'caught a fish!' — 钓 is fishing, 到 means 'successfully got it', and 了 shows it just happened. Yay!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'awesome / impressive' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "厉害",
+          "pinyin": "lìhai",
+          "translation": "awesome / impressive"
+        },
+        {
+          "chinese": "开心",
+          "pinyin": "kāixīn",
+          "translation": "happy"
+        },
+        {
+          "chinese": "安静",
+          "pinyin": "ānjìng",
+          "translation": "quiet"
+        },
+        {
+          "chinese": "害怕",
+          "pinyin": "hàipà",
+          "translation": "scared"
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "厉害 (lìhai) means 'awesome / impressive'! When you catch a fish or do something great, people say 你很厉害 — 'You're awesome!'"
+    }
+  ]
+}

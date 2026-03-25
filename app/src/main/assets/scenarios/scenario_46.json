@@ -1,0 +1,738 @@
+{
+  "id": "scene46_bedtime_story",
+  "title": "睡前故事时间",
+  "description": "Bedtime story time with Dad",
+  "characterName": "爸爸",
+  "characterEmoji": "🌙",
+  "characterRole": "dad",
+  "category": "HOME",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "睡觉时间到了！今晚你想听什么睡前故事？",
+      "textPinyin": "Shuìjiào shíjiān dào le! Jīnwǎn nǐ xiǎng tīng shénme shuìqián gùshi?",
+      "textEnglish": "It's bedtime! What bedtime story do you want to hear tonight?",
+      "textIndonesian": "Waktunya tidur! Malam ini kamu mau dengar cerita apa sebelum tidur?",
+      "pinyinWords": [
+        {
+          "pinyin": "Shuìjiào",
+          "chinese": "睡觉",
+          "english": "sleep / go to sleep",
+          "indonesian": "tidur"
+        },
+        {
+          "pinyin": "shíjiān",
+          "chinese": "时间",
+          "english": "time",
+          "indonesian": "waktu"
+        },
+        {
+          "pinyin": "dào le",
+          "chinese": "到了",
+          "english": "is here / has arrived",
+          "indonesian": "sudah tiba",
+          "note": "到了 means 'it has arrived / it's here now' — 睡觉时间到了 means 'Bedtime has arrived!'"
+        },
+        {
+          "pinyin": "Jīnwǎn",
+          "chinese": "今晚",
+          "english": "tonight / this evening",
+          "indonesian": "malam ini"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "xiǎng",
+          "chinese": "想",
+          "english": "want to / feel like",
+          "indonesian": "ingin"
+        },
+        {
+          "pinyin": "tīng",
+          "chinese": "听",
+          "english": "listen to / hear",
+          "indonesian": "dengar / mendengarkan"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        },
+        {
+          "pinyin": "shuìqián",
+          "chinese": "睡前",
+          "english": "before bed / bedtime",
+          "indonesian": "sebelum tidur",
+          "note": "睡前 means 'before sleeping' — 睡 means 'sleep' and 前 means 'before'. 睡前故事 = bedtime story!"
+        },
+        {
+          "pinyin": "gùshi",
+          "chinese": "故事",
+          "english": "story",
+          "indonesian": "cerita"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我想听动物的故事！",
+          "pinyin": "Wǒ xiǎng tīng dòngwù de gùshi!",
+          "english": "I want to hear an animal story!",
+          "indonesian": "Aku mau dengar cerita hewan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "ingin"
+            },
+            {
+              "pinyin": "tīng",
+              "chinese": "听",
+              "english": "hear / listen to",
+              "indonesian": "dengar"
+            },
+            {
+              "pinyin": "dòngwù",
+              "chinese": "动物",
+              "english": "animal(s)",
+              "indonesian": "hewan"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(connects 'animal' to 'story')",
+              "indonesian": "(kata penghubung)",
+              "note": "的 connects describing words to nouns — 动物的故事 means 'an animal story'!"
+            },
+            {
+              "pinyin": "gùshi",
+              "chinese": "故事",
+              "english": "story",
+              "indonesian": "cerita"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我想听冒险故事！",
+          "pinyin": "Wǒ xiǎng tīng màoxiǎn gùshi!",
+          "english": "I want to hear an adventure story!",
+          "indonesian": "Aku mau dengar cerita petualangan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "ingin"
+            },
+            {
+              "pinyin": "tīng",
+              "chinese": "听",
+              "english": "hear",
+              "indonesian": "dengar"
+            },
+            {
+              "pinyin": "màoxiǎn",
+              "chinese": "冒险",
+              "english": "adventure",
+              "indonesian": "petualangan"
+            },
+            {
+              "pinyin": "gùshi",
+              "chinese": "故事",
+              "english": "story",
+              "indonesian": "cerita"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我想听有趣的故事！爸爸，你讲给我听！",
+          "pinyin": "Wǒ xiǎng tīng yǒuqù de gùshi! Bàba, nǐ jiǎng gěi wǒ tīng!",
+          "english": "I want to hear a fun story! Dad, you tell it to me!",
+          "indonesian": "Aku mau dengar cerita seru! Ayah, ceritakan untukku!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "ingin"
+            },
+            {
+              "pinyin": "tīng",
+              "chinese": "听",
+              "english": "hear",
+              "indonesian": "dengar"
+            },
+            {
+              "pinyin": "yǒuqù",
+              "chinese": "有趣",
+              "english": "interesting / fun",
+              "indonesian": "seru / menarik"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(connects 'fun' to 'story')",
+              "indonesian": "(kata penghubung)",
+              "note": "的 links describing words to nouns — 有趣的故事 means 'a fun story'!"
+            },
+            {
+              "pinyin": "gùshi",
+              "chinese": "故事",
+              "english": "story",
+              "indonesian": "cerita"
+            },
+            {
+              "pinyin": "Bàba",
+              "chinese": "爸爸",
+              "english": "Dad",
+              "indonesian": "Ayah"
+            },
+            {
+              "pinyin": "nǐ",
+              "chinese": "你",
+              "english": "you",
+              "indonesian": "kamu"
+            },
+            {
+              "pinyin": "jiǎng gěi wǒ tīng",
+              "chinese": "讲给我听",
+              "english": "tell it to me / tell me",
+              "indonesian": "ceritakan untukku",
+              "note": "讲给我听 means 'tell it for me to hear' — 讲 means 'tell/narrate', 给 means 'for', 听 means 'listen'!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "故事讲完了！很好听吧？现在要睡觉了。",
+      "textPinyin": "Gùshi jiǎng wán le! Hěn hǎo tīng ba? Xiànzài yào shuìjiào le.",
+      "textEnglish": "The story is finished! It was a great listen, right? Now it's time to sleep.",
+      "textIndonesian": "Ceritanya sudah selesai! Bagus kan? Sekarang waktunya tidur.",
+      "pinyinWords": [
+        {
+          "pinyin": "Gùshi",
+          "chinese": "故事",
+          "english": "Story",
+          "indonesian": "Cerita"
+        },
+        {
+          "pinyin": "jiǎng wán le",
+          "chinese": "讲完了",
+          "english": "finished telling / story is done",
+          "indonesian": "sudah selesai diceritakan",
+          "note": "讲完了 means 'finished telling' — 讲 is 'tell', 完 is 'finish', 了 shows it just happened!"
+        },
+        {
+          "pinyin": "Hěn hǎo tīng",
+          "chinese": "很好听",
+          "english": "sounds great / great to listen to",
+          "indonesian": "enak didengar / bagus"
+        },
+        {
+          "pinyin": "ba",
+          "chinese": "吧",
+          "english": "(right? / wouldn't you say?)",
+          "indonesian": "(kan? / bukan?)",
+          "note": "吧 at the end asks for agreement — 好听吧？means 'It was good to listen to, right?'"
+        },
+        {
+          "pinyin": "Xiànzài",
+          "chinese": "现在",
+          "english": "Now",
+          "indonesian": "Sekarang"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "need to / it's time to",
+          "indonesian": "harus / saatnya"
+        },
+        {
+          "pinyin": "shuìjiào",
+          "chinese": "睡觉",
+          "english": "sleep / go to sleep",
+          "indonesian": "tidur"
+        },
+        {
+          "pinyin": "le",
+          "chinese": "了",
+          "english": "(it's time now!)",
+          "indonesian": "(sudah waktunya!)",
+          "note": "要...了 means 'it's time to...' — 要睡觉了 means 'it's time to sleep now'!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "故事很好听！爸爸，再讲一个好不好？",
+          "pinyin": "Gùshi hěn hǎo tīng! Bàba, zài jiǎng yī gè hǎo bù hǎo?",
+          "english": "The story was so good! Dad, can you tell one more?",
+          "indonesian": "Ceritanya bagus sekali! Ayah, cerita satu lagi ya?",
+          "pinyinWords": [
+            {
+              "pinyin": "Gùshi",
+              "chinese": "故事",
+              "english": "Story",
+              "indonesian": "Cerita"
+            },
+            {
+              "pinyin": "hěn hǎo tīng",
+              "chinese": "很好听",
+              "english": "sounds very great",
+              "indonesian": "sangat bagus"
+            },
+            {
+              "pinyin": "Bàba",
+              "chinese": "爸爸",
+              "english": "Dad",
+              "indonesian": "Ayah"
+            },
+            {
+              "pinyin": "zài jiǎng",
+              "chinese": "再讲",
+              "english": "tell again / tell one more",
+              "indonesian": "ceritakan lagi"
+            },
+            {
+              "pinyin": "yī gè",
+              "chinese": "一个",
+              "english": "one (story)",
+              "indonesian": "satu (cerita)",
+              "note": "个 is a general measure word for things — 一个故事 means 'one story'!"
+            },
+            {
+              "pinyin": "hǎo bù hǎo",
+              "chinese": "好不好",
+              "english": "OK? / please?",
+              "indonesian": "boleh? / ya?",
+              "note": "好不好 is a sweet way to ask — like saying 'pretty please?' Milton asking for one more story!"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好的，爸爸。故事很棒！我喜欢！",
+          "pinyin": "Hǎo de, bàba. Gùshi hěn bàng! Wǒ xǐhuān!",
+          "english": "OK, Dad. The story was amazing! I loved it!",
+          "indonesian": "Baik, Ayah. Ceritanya keren banget! Aku suka!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "OK / alright",
+              "indonesian": "Baik / oke"
+            },
+            {
+              "pinyin": "bàba",
+              "chinese": "爸爸",
+              "english": "Dad",
+              "indonesian": "Ayah"
+            },
+            {
+              "pinyin": "Gùshi",
+              "chinese": "故事",
+              "english": "Story",
+              "indonesian": "Cerita"
+            },
+            {
+              "pinyin": "hěn bàng",
+              "chinese": "很棒",
+              "english": "amazing / wonderful",
+              "indonesian": "keren / luar biasa"
+            },
+            {
+              "pinyin": "Wǒ xǐhuān",
+              "chinese": "我喜欢",
+              "english": "I loved it / I liked it",
+              "indonesian": "Aku suka"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "来，爸爸抱抱你，然后我们关灯睡觉，好吗？",
+      "textPinyin": "Lái, bàba bào bào nǐ, ránhòu wǒmen guāndēng shuìjiào, hǎo ma?",
+      "textEnglish": "Come here, let Dad give you a hug, then we'll turn off the light and sleep, OK?",
+      "textIndonesian": "Ayo, Ayah peluk kamu dulu, lalu kita matikan lampu dan tidur, ya?",
+      "pinyinWords": [
+        {
+          "pinyin": "Lái",
+          "chinese": "来",
+          "english": "Come (here)",
+          "indonesian": "Ayo / Ke sini"
+        },
+        {
+          "pinyin": "bàba",
+          "chinese": "爸爸",
+          "english": "Dad",
+          "indonesian": "Ayah"
+        },
+        {
+          "pinyin": "bào bào",
+          "chinese": "抱抱",
+          "english": "hug / give a hug",
+          "indonesian": "peluk",
+          "note": "抱抱 means 'hug'! Saying 抱抱 to someone means 'give me a hug' — so warm and cosy!"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "ránhòu",
+          "chinese": "然后",
+          "english": "then / after that",
+          "indonesian": "lalu / kemudian"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we",
+          "indonesian": "kita"
+        },
+        {
+          "pinyin": "guāndēng",
+          "chinese": "关灯",
+          "english": "turn off the light",
+          "indonesian": "matikan lampu",
+          "note": "关灯 means 'turn off the light' — 关 means 'close/turn off' and 灯 means 'light/lamp'. 开灯 is 'turn on the light'!"
+        },
+        {
+          "pinyin": "shuìjiào",
+          "chinese": "睡觉",
+          "english": "sleep / go to sleep",
+          "indonesian": "tidur"
+        },
+        {
+          "pinyin": "hǎo ma",
+          "chinese": "好吗",
+          "english": "OK? / alright?",
+          "indonesian": "ya? / boleh?",
+          "note": "好吗 is a gentle way to ask 'is that OK?' — Dad uses it kindly at bedtime!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "好！爸爸，抱抱！",
+          "pinyin": "Hǎo! Bàba, bào bào!",
+          "english": "OK! Dad, hug!",
+          "indonesian": "Mau! Ayah, peluk!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "OK / Yes",
+              "indonesian": "Mau / Oke"
+            },
+            {
+              "pinyin": "Bàba",
+              "chinese": "爸爸",
+              "english": "Dad",
+              "indonesian": "Ayah"
+            },
+            {
+              "pinyin": "bào bào",
+              "chinese": "抱抱",
+              "english": "hug",
+              "indonesian": "peluk"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好的，爸爸。我爱你，爸爸！",
+          "pinyin": "Hǎo de, bàba. Wǒ ài nǐ, bàba!",
+          "english": "OK, Dad. I love you, Dad!",
+          "indonesian": "Baik, Ayah. Aku sayang Ayah!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "OK / alright",
+              "indonesian": "Baik"
+            },
+            {
+              "pinyin": "bàba",
+              "chinese": "爸爸",
+              "english": "Dad",
+              "indonesian": "Ayah"
+            },
+            {
+              "pinyin": "Wǒ ài nǐ",
+              "chinese": "我爱你",
+              "english": "I love you",
+              "indonesian": "Aku sayang kamu"
+            },
+            {
+              "pinyin": "bàba",
+              "chinese": "爸爸",
+              "english": "Dad",
+              "indonesian": "Ayah"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好！我们一起关灯！然后我要睡觉了！",
+          "pinyin": "Hǎo! Wǒmen yīqǐ guāndēng! Ránhòu wǒ yào shuìjiào le!",
+          "english": "OK! Let's turn off the light together! Then I'll go to sleep!",
+          "indonesian": "Oke! Kita matikan lampu bersama! Lalu aku tidur!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "OK",
+              "indonesian": "Oke"
+            },
+            {
+              "pinyin": "Wǒmen",
+              "chinese": "我们",
+              "english": "We / Let's",
+              "indonesian": "Kita"
+            },
+            {
+              "pinyin": "yīqǐ",
+              "chinese": "一起",
+              "english": "together",
+              "indonesian": "bersama"
+            },
+            {
+              "pinyin": "guāndēng",
+              "chinese": "关灯",
+              "english": "turn off the light",
+              "indonesian": "matikan lampu"
+            },
+            {
+              "pinyin": "Ránhòu",
+              "chinese": "然后",
+              "english": "Then",
+              "indonesian": "Lalu"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "yào shuìjiào le",
+              "chinese": "要睡觉了",
+              "english": "am going to sleep now",
+              "indonesian": "mau tidur sekarang",
+              "note": "要...了 means 'it's time to...' or 'about to...' — 要睡觉了 means 'time to sleep now'!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "晚安，宝贝。好梦！爸爸爱你！",
+      "textPinyin": "Wǎn'ān, bǎobèi. Hǎo mèng! Bàba ài nǐ!",
+      "textEnglish": "Goodnight, my darling. Sweet dreams! Dad loves you!",
+      "textIndonesian": "Selamat malam, sayang. Mimpi indah! Ayah sayang kamu!",
+      "pinyinWords": [
+        {
+          "pinyin": "Wǎn'ān",
+          "chinese": "晚安",
+          "english": "Goodnight",
+          "indonesian": "Selamat malam"
+        },
+        {
+          "pinyin": "bǎobèi",
+          "chinese": "宝贝",
+          "english": "darling / treasure / sweetheart",
+          "indonesian": "sayang / kesayangan",
+          "note": "宝贝 means 'treasure' but parents use it to call their child 'darling' or 'my precious'!"
+        },
+        {
+          "pinyin": "Hǎo mèng",
+          "chinese": "好梦",
+          "english": "Sweet dreams",
+          "indonesian": "Mimpi indah",
+          "note": "好梦 literally means 'good dream' — it's how you wish someone sweet dreams in Mandarin!"
+        },
+        {
+          "pinyin": "Bàba",
+          "chinese": "爸爸",
+          "english": "Dad",
+          "indonesian": "Ayah"
+        },
+        {
+          "pinyin": "ài nǐ",
+          "chinese": "爱你",
+          "english": "loves you",
+          "indonesian": "sayang kamu"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'goodnight' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "早上好",
+          "pinyin": "zǎoshang hǎo",
+          "translation": "good morning"
+        },
+        {
+          "chinese": "晚安",
+          "pinyin": "wǎn'ān",
+          "translation": "goodnight"
+        },
+        {
+          "chinese": "再见",
+          "pinyin": "zàijiàn",
+          "translation": "goodbye"
+        },
+        {
+          "chinese": "你好",
+          "pinyin": "nǐ hǎo",
+          "translation": "hello"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "晚安 (wǎn'ān) means 'goodnight' — 晚 means 'evening/night' and 安 means 'peaceful'. A peaceful night!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "好梦",
+      "questionPinyin": "hǎo mèng",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "good morning"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "sweet dreams"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "I love you"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "goodnight"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "好梦 (hǎo mèng) means 'sweet dreams' — 好 means 'good' and 梦 means 'dream'. Wishing someone good dreams!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "抱抱",
+      "questionPinyin": "bào bào",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "kiss"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "hug"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "smile"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "wave"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "抱抱 (bào bào) means 'hug' — 抱 means 'hold in your arms'. Saying 抱抱 means 'hug me!' So cosy!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'turn off the light' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "开灯",
+          "pinyin": "kāi dēng",
+          "translation": "turn on the light"
+        },
+        {
+          "chinese": "关门",
+          "pinyin": "guān mén",
+          "translation": "close the door"
+        },
+        {
+          "chinese": "关灯",
+          "pinyin": "guāndēng",
+          "translation": "turn off the light"
+        },
+        {
+          "chinese": "睡觉",
+          "pinyin": "shuìjiào",
+          "translation": "go to sleep"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "关灯 (guāndēng) means 'turn off the light' — 关 means 'close/turn off' and 灯 means 'light'. 开灯 (kāi dēng) is the opposite — 'turn on the light'!"
+    }
+  ]
+}

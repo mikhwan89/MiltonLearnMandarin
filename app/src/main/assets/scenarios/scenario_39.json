@@ -1,0 +1,667 @@
+{
+  "id": "scene39_swimming",
+  "title": "我喜欢游泳",
+  "description": "At the swimming pool with Coach Li",
+  "characterName": "Li 教练",
+  "characterEmoji": "🏊",
+  "characterRole": "coach",
+  "category": "PLAY_AND_HOBBIES",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你好！欢迎来泳池！你喜欢游泳吗？",
+      "textPinyin": "Nǐ hǎo! Huānyíng lái yǒngchí! Nǐ xǐhuān yóuyǒng ma?",
+      "textEnglish": "Hello! Welcome to the pool! Do you like swimming?",
+      "textIndonesian": "Halo! Selamat datang di kolam renang! Kamu suka renang?",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ hǎo",
+          "chinese": "你好",
+          "english": "Hello",
+          "indonesian": "Halo"
+        },
+        {
+          "pinyin": "Huānyíng",
+          "chinese": "欢迎",
+          "english": "Welcome",
+          "indonesian": "Selamat datang"
+        },
+        {
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "come to",
+          "indonesian": "datang ke"
+        },
+        {
+          "pinyin": "yǒngchí",
+          "chinese": "泳池",
+          "english": "swimming pool",
+          "indonesian": "kolam renang"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "xǐhuān",
+          "chinese": "喜欢",
+          "english": "like / enjoy",
+          "indonesian": "suka / senang"
+        },
+        {
+          "pinyin": "yóuyǒng",
+          "chinese": "游泳",
+          "english": "swimming",
+          "indonesian": "renang"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(yes/no question word)",
+          "indonesian": "(kata tanya ya/tidak)",
+          "note": "吗 at the end turns any sentence into a yes/no question — 喜欢游泳吗？ = 'Do you like swimming?'"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "喜欢！我非常喜欢游泳！",
+          "pinyin": "Xǐhuān! Wǒ fēicháng xǐhuān yóuyǒng!",
+          "english": "Yes! I like swimming very much!",
+          "indonesian": "Suka! Aku sangat suka renang!",
+          "pinyinWords": [
+            {
+              "pinyin": "Xǐhuān",
+              "chinese": "喜欢",
+              "english": "Like",
+              "indonesian": "Suka"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "fēicháng",
+              "chinese": "非常",
+              "english": "very much / extremely",
+              "indonesian": "sangat / luar biasa"
+            },
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "yóuyǒng",
+              "chinese": "游泳",
+              "english": "swimming",
+              "indonesian": "renang"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "喜欢！游泳太好玩了！",
+          "pinyin": "Xǐhuān! Yóuyǒng tài hǎowán le!",
+          "english": "Yes! Swimming is so much fun!",
+          "indonesian": "Suka! Renang seru banget!",
+          "pinyinWords": [
+            {
+              "pinyin": "Xǐhuān",
+              "chinese": "喜欢",
+              "english": "Like",
+              "indonesian": "Suka"
+            },
+            {
+              "pinyin": "Yóuyǒng",
+              "chinese": "游泳",
+              "english": "Swimming",
+              "indonesian": "Renang"
+            },
+            {
+              "pinyin": "tài",
+              "chinese": "太",
+              "english": "so / really",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "hǎowán",
+              "chinese": "好玩",
+              "english": "fun",
+              "indonesian": "seru"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(exclamation!)",
+              "indonesian": "(seru!)",
+              "note": "太...了 = 'SO...!' — 太好玩了 means 'SO fun!' Great exclamation!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "很好！你会游什么泳？你会蛙泳吗？",
+      "textPinyin": "Hěn hǎo! Nǐ huì yóu shénme yǒng? Nǐ huì wāyǒng ma?",
+      "textEnglish": "Wonderful! What stroke can you swim? Can you do breaststroke?",
+      "textIndonesian": "Bagus! Kamu bisa gaya apa? Kamu bisa gaya katak?",
+      "pinyinWords": [
+        {
+          "pinyin": "Hěn hǎo",
+          "chinese": "很好",
+          "english": "Very good / Wonderful",
+          "indonesian": "Bagus sekali"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "huì",
+          "chinese": "会",
+          "english": "can / know how to",
+          "indonesian": "bisa / tahu caranya"
+        },
+        {
+          "pinyin": "yóu",
+          "chinese": "游",
+          "english": "swim",
+          "indonesian": "renang"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        },
+        {
+          "pinyin": "yǒng",
+          "chinese": "泳",
+          "english": "stroke / swimming style",
+          "indonesian": "gaya renang"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "huì",
+          "chinese": "会",
+          "english": "can / know how to",
+          "indonesian": "bisa"
+        },
+        {
+          "pinyin": "wāyǒng",
+          "chinese": "蛙泳",
+          "english": "breaststroke",
+          "indonesian": "gaya katak"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(yes/no question)",
+          "indonesian": "(kata tanya ya/tidak)",
+          "note": "吗 turns the sentence into a question — 会蛙泳吗？ = 'Can you do breaststroke?'"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我会蛙泳！我最喜欢蛙泳！",
+          "pinyin": "Wǒ huì wāyǒng! Wǒ zuì xǐhuān wāyǒng!",
+          "english": "I can do breaststroke! Breaststroke is my favourite!",
+          "indonesian": "Aku bisa gaya katak! Gaya katak favoritku!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "huì",
+              "chinese": "会",
+              "english": "can / know how to",
+              "indonesian": "bisa"
+            },
+            {
+              "pinyin": "wāyǒng",
+              "chinese": "蛙泳",
+              "english": "breaststroke",
+              "indonesian": "gaya katak"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "zuì",
+              "chinese": "最",
+              "english": "most / favourite",
+              "indonesian": "paling"
+            },
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "wāyǒng",
+              "chinese": "蛙泳",
+              "english": "breaststroke",
+              "indonesian": "gaya katak"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我会蛙泳！我在学游泳！",
+          "pinyin": "Wǒ huì wāyǒng! Wǒ zài xué yóuyǒng!",
+          "english": "I can do breaststroke! I am learning to swim!",
+          "indonesian": "Aku bisa gaya katak! Aku lagi belajar renang!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "huì",
+              "chinese": "会",
+              "english": "can",
+              "indonesian": "bisa"
+            },
+            {
+              "pinyin": "wāyǒng",
+              "chinese": "蛙泳",
+              "english": "breaststroke",
+              "indonesian": "gaya katak"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "zài",
+              "chinese": "在",
+              "english": "am (doing right now)",
+              "indonesian": "sedang"
+            },
+            {
+              "pinyin": "xué",
+              "chinese": "学",
+              "english": "learn / study",
+              "indonesian": "belajar"
+            },
+            {
+              "pinyin": "yóuyǒng",
+              "chinese": "游泳",
+              "english": "swimming",
+              "indonesian": "renang"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "加油！游得很好！记得换气！你太厉害了！",
+      "textPinyin": "Jiāyóu! Yóu de hěn hǎo! Jìde huànqì! Nǐ tài lìhai le!",
+      "textEnglish": "Go for it! You swam so well! Remember to breathe! You are so amazing!",
+      "textIndonesian": "Semangat! Renangnya bagus banget! Ingat ambil napas! Kamu luar biasa!",
+      "pinyinWords": [
+        {
+          "pinyin": "Jiāyóu",
+          "chinese": "加油",
+          "english": "Go for it! / Cheer on!",
+          "indonesian": "Semangat! / Ayo bisa!",
+          "note": "加油 is the Chinese cheer word! Literally 'add oil / fuel' — it means 'keep going, you can do it!'"
+        },
+        {
+          "pinyin": "Yóu de hěn hǎo",
+          "chinese": "游得很好",
+          "english": "swam very well",
+          "indonesian": "renangnya bagus banget"
+        },
+        {
+          "pinyin": "Jìde",
+          "chinese": "记得",
+          "english": "Remember to",
+          "indonesian": "Ingat untuk"
+        },
+        {
+          "pinyin": "huànqì",
+          "chinese": "换气",
+          "english": "breathe / take a breath",
+          "indonesian": "ambil napas / berganti napas"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "tài lìhai le",
+          "chinese": "太厉害了",
+          "english": "so amazing / so impressive",
+          "indonesian": "luar biasa sekali",
+          "note": "太厉害了 = 'So amazing!' — 厉害 means 'impressive/great' and 太...了 makes it extra strong!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "谢谢教练！我会记得换气！",
+          "pinyin": "Xièxiè jiàoliàn! Wǒ huì jìde huànqì!",
+          "english": "Thank you Coach! I will remember to breathe!",
+          "indonesian": "Terima kasih Pelatih! Aku akan ingat ambil napas!",
+          "pinyinWords": [
+            {
+              "pinyin": "Xièxiè",
+              "chinese": "谢谢",
+              "english": "Thank you",
+              "indonesian": "Terima kasih"
+            },
+            {
+              "pinyin": "jiàoliàn",
+              "chinese": "教练",
+              "english": "Coach",
+              "indonesian": "Pelatih"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "huì",
+              "chinese": "会",
+              "english": "will",
+              "indonesian": "akan"
+            },
+            {
+              "pinyin": "jìde",
+              "chinese": "记得",
+              "english": "remember to",
+              "indonesian": "ingat untuk"
+            },
+            {
+              "pinyin": "huànqì",
+              "chinese": "换气",
+              "english": "breathe",
+              "indonesian": "ambil napas"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我游得很快！我很厉害！",
+          "pinyin": "Wǒ yóu de hěn kuài! Wǒ hěn lìhai!",
+          "english": "I swim very fast! I am great!",
+          "indonesian": "Aku renangnya cepat banget! Aku hebat!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "yóu de hěn kuài",
+              "chinese": "游得很快",
+              "english": "swim very fast",
+              "indonesian": "renangnya sangat cepat"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "hěn",
+              "chinese": "很",
+              "english": "very",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "lìhai",
+              "chinese": "厉害",
+              "english": "amazing / great",
+              "indonesian": "hebat / luar biasa"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "你今天游得非常好！你是一个很厉害的小游泳家！继续加油！",
+      "textPinyin": "Nǐ jīntiān yóu de fēicháng hǎo! Nǐ shì yī gè hěn lìhai de xiǎo yóuyǒngjiā! Jìxù jiāyóu!",
+      "textEnglish": "You swam extremely well today! You are a very amazing little swimmer! Keep it up!",
+      "textIndonesian": "Kamu hari ini renangnya luar biasa! Kamu adalah perenang kecil yang hebat! Terus semangat!",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "yóu de fēicháng hǎo",
+          "chinese": "游得非常好",
+          "english": "swam extremely well",
+          "indonesian": "renangnya luar biasa"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "shì",
+          "chinese": "是",
+          "english": "are",
+          "indonesian": "adalah"
+        },
+        {
+          "pinyin": "yī gè",
+          "chinese": "一个",
+          "english": "one / a",
+          "indonesian": "satu / seorang"
+        },
+        {
+          "pinyin": "hěn lìhai de",
+          "chinese": "很厉害的",
+          "english": "very amazing",
+          "indonesian": "sangat hebat"
+        },
+        {
+          "pinyin": "xiǎo",
+          "chinese": "小",
+          "english": "little / small",
+          "indonesian": "kecil"
+        },
+        {
+          "pinyin": "yóuyǒngjiā",
+          "chinese": "游泳家",
+          "english": "swimmer",
+          "indonesian": "perenang"
+        },
+        {
+          "pinyin": "Jìxù",
+          "chinese": "继续",
+          "english": "keep going / continue",
+          "indonesian": "terus / lanjutkan"
+        },
+        {
+          "pinyin": "jiāyóu",
+          "chinese": "加油",
+          "english": "go for it / cheer on",
+          "indonesian": "semangat"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'swimming' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "跑步",
+          "pinyin": "pǎobù",
+          "translation": "running"
+        },
+        {
+          "chinese": "游泳",
+          "pinyin": "yóuyǒng",
+          "translation": "swimming"
+        },
+        {
+          "chinese": "跳舞",
+          "pinyin": "tiàowǔ",
+          "translation": "dancing"
+        },
+        {
+          "chinese": "踢球",
+          "pinyin": "tīqiú",
+          "translation": "kicking a ball"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "游泳 (yóuyǒng) means 'swimming' — 游 means 'swim' and 泳 also means 'swimming style'. Together they make 游泳!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "加油",
+      "questionPinyin": "jiāyóu",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "be careful"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "go for it! / cheer on!"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "slow down"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "well done"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "加油 (jiāyóu) means 'Go for it! / Cheer on!' — it's the most popular cheer in Chinese! Shout it to encourage your friends!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "厉害",
+      "questionPinyin": "lìhai",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "tired"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "scary"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "amazing / impressive"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "hungry"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "厉害 (lìhai) means 'amazing / impressive' — when Coach Li says 你太厉害了, it means 'You are SO amazing!' What a great compliment!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'breaststroke' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "自由泳",
+          "pinyin": "zìyóuyǒng",
+          "translation": "freestyle"
+        },
+        {
+          "chinese": "蛙泳",
+          "pinyin": "wāyǒng",
+          "translation": "breaststroke"
+        },
+        {
+          "chinese": "仰泳",
+          "pinyin": "yǎngyǒng",
+          "translation": "backstroke"
+        },
+        {
+          "chinese": "蝶泳",
+          "pinyin": "diéyǒng",
+          "translation": "butterfly stroke"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "蛙泳 (wāyǒng) means 'breaststroke' — 蛙 means 'frog' and 泳 means 'swimming style'. Breaststroke looks like a frog swimming!"
+    }
+  ]
+}
