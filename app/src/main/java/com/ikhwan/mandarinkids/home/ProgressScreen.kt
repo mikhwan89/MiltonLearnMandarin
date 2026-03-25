@@ -13,7 +13,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -83,10 +85,7 @@ fun ProgressScreen() {
         }
     }
 
-    val earnedBadgeList = remember(masteredCount, streak) {
-        val earned = repo.getEarnedBadges()
-        Badge.entries.filter { it.id in earned }
-    }
+    val earnedBadgeIds = remember(masteredCount, streak) { repo.getEarnedBadges() }
 
     // ── Parent mode state for Milestone Rewards ───────────────────────────
     var rewardsUnlocked by remember { mutableStateOf(false) }
@@ -182,27 +181,29 @@ fun ProgressScreen() {
 
             // ── Badges ────────────────────────────────────────────────────
             item {
-                Text("🏅 Badges", fontSize = 18.sp, fontWeight = FontWeight.SemiBold,
-                    modifier = Modifier.padding(top = 8.dp))
+                val earnedCount = earnedBadgeIds.size
+                val totalCount = Badge.entries.size
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text("🏅 Badges", fontSize = 18.sp, fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier.weight(1f))
+                    Text("$earnedCount / $totalCount", fontSize = 13.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
             }
 
-            if (earnedBadgeList.isNotEmpty()) {
-                items(earnedBadgeList.chunked(3)) { rowBadges ->
-                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        rowBadges.forEach { badge ->
-                            BadgeCard(badge = badge, modifier = Modifier.weight(1f))
-                        }
-                        repeat(3 - rowBadges.size) { Spacer(modifier = Modifier.weight(1f)) }
+            items(Badge.entries.chunked(3)) { rowBadges ->
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    rowBadges.forEach { badge ->
+                        BadgeCard(
+                            badge = badge,
+                            earned = badge.id in earnedBadgeIds,
+                            modifier = Modifier.weight(1f)
+                        )
                     }
-                }
-            } else {
-                item {
-                    Card(modifier = Modifier.fillMaxWidth(),
-                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)) {
-                        Text("Complete scenarios and keep your streak to earn badges! 🎯",
-                            fontSize = 14.sp, color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            modifier = Modifier.padding(16.dp))
-                    }
+                    repeat(3 - rowBadges.size) { Spacer(modifier = Modifier.weight(1f)) }
                 }
             }
 
@@ -306,20 +307,37 @@ private fun MasteryTypeChip(emoji: String, label: String, count: Int) {
 }
 
 @Composable
-private fun BadgeCard(badge: Badge, modifier: Modifier = Modifier) {
+private fun BadgeCard(badge: Badge, earned: Boolean, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier,
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer),
+        colors = CardDefaults.cardColors(
+            containerColor = if (earned) MaterialTheme.colorScheme.tertiaryContainer
+                             else MaterialTheme.colorScheme.surfaceVariant
+        ),
         shape = RoundedCornerShape(16.dp)
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth().padding(12.dp),
+            modifier = Modifier.fillMaxWidth().padding(vertical = 10.dp, horizontal = 6.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(badge.emoji, fontSize = 28.sp)
-            Spacer(Modifier.height(4.dp))
-            Text(badge.label, fontSize = 11.sp, fontWeight = FontWeight.Medium,
-                color = MaterialTheme.colorScheme.onTertiaryContainer)
+            Text(
+                badge.emoji, fontSize = 26.sp,
+                modifier = if (earned) Modifier else Modifier.alpha(0.25f)
+            )
+            Spacer(Modifier.height(3.dp))
+            Text(
+                badge.label,
+                fontSize = 10.sp,
+                fontWeight = FontWeight.Medium,
+                textAlign = TextAlign.Center,
+                maxLines = 2,
+                color = if (earned) MaterialTheme.colorScheme.onTertiaryContainer
+                        else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+            )
+            if (!earned) {
+                Spacer(Modifier.height(2.dp))
+                Text("🔒", fontSize = 11.sp)
+            }
         }
     }
 }

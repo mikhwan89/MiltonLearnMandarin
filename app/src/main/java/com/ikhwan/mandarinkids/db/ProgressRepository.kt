@@ -57,9 +57,17 @@ class ProgressRepository private constructor(
         if (newStars >= 1) awardBadge(Badge.FIRST_STEPS.id)
         if (newStars >= 3) awardBadge(Badge.PERFECT_SCORE.id)
         val allProgress = dao.getAll().first()
+        val perfectCount = allProgress.count { it.stars >= 3 }
+        if (perfectCount >= 5) awardBadge(Badge.SCENARIO_ACE.id)
         if (allProgress.isNotEmpty() && allProgress.all { it.stars >= 3 }) {
             awardBadge(Badge.ALL_STARS.id)
         }
+
+        // XP milestone badges
+        val totalXp = dao.getTotalXp().first()
+        if (totalXp >= 100) awardBadge(Badge.XP_SEEKER.id)
+        if (totalXp >= 500) awardBadge(Badge.XP_HUNTER.id)
+        if (totalXp >= 1000) awardBadge(Badge.XP_LEGEND.id)
 
         return xpGained
     }
@@ -78,6 +86,13 @@ class ProgressRepository private constructor(
                 lastPlayedAt = System.currentTimeMillis()
             )
         )
+        // XP milestone badges
+        val totalXp = dao.getTotalXp().first()
+        if (totalXp >= 100) awardBadge(Badge.XP_SEEKER.id)
+        if (totalXp >= 500) awardBadge(Badge.XP_HUNTER.id)
+        if (totalXp >= 1000) awardBadge(Badge.XP_LEGEND.id)
+        // Flashcard daily-practice streak
+        checkAndUpdateFlashcardStreak()
     }
 
     // ── Mastered word persistence ─────────────────────────────────────────
@@ -96,8 +111,34 @@ class ProgressRepository private constructor(
 
     suspend fun markWordMastered(entity: MasteredWordEntity) {
         masteredWordDao.upsert(entity)
+
+        // Total distinct word count (all modes)
         val count = masteredWordDao.getTotalCount().first()
         if (count >= 10) awardBadge(Badge.WORD_COLLECTOR.id)
+        if (count >= 50) awardBadge(Badge.WORD_SCHOLAR.id)
+        if (count >= 100) awardBadge(Badge.WORD_MASTER.id)
+
+        // Default mode ★10
+        val defaultHigh = masteredWordDao.getHighMasteryCountByType(PracticeType.DEFAULT.name).first()
+        if (defaultHigh >= 25) awardBadge(Badge.FLASHCARD_NOVICE.id)
+        if (defaultHigh >= 50) awardBadge(Badge.FLASHCARD_PRO.id)
+        if (defaultHigh >= 100) awardBadge(Badge.FLASHCARD_LEGEND.id)
+
+        // Listening mode ★10
+        val listeningHigh = masteredWordDao.getHighMasteryCountByType(PracticeType.LISTENING.name).first()
+        if (listeningHigh >= 25) awardBadge(Badge.SHARP_EAR.id)
+        if (listeningHigh >= 50) awardBadge(Badge.KEEN_EAR.id)
+        if (listeningHigh >= 100) awardBadge(Badge.LISTENING_MASTER.id)
+
+        // Reading mode ★10
+        val readingHigh = masteredWordDao.getHighMasteryCountByType(PracticeType.READING.name).first()
+        if (readingHigh >= 25) awardBadge(Badge.SYMBOL_SPOTTER.id)
+        if (readingHigh >= 50) awardBadge(Badge.CHARACTER_READER.id)
+        if (readingHigh >= 100) awardBadge(Badge.READING_MASTER.id)
+
+        // Triple Crown: ★10 in all 3 modes for at least 1 word
+        val tripleCrown = masteredWordDao.getTripleCrownCount().first()
+        if (tripleCrown >= 1) awardBadge(Badge.TRIPLE_CROWN.id)
     }
 
     /** All words for a specific practice modality. */
@@ -236,8 +277,30 @@ class ProgressRepository private constructor(
 
         if (newStreak >= 3) awardBadge(Badge.STREAK_STARTER.id)
         if (newStreak >= 7) awardBadge(Badge.STREAK_CHAMPION.id)
+        if (newStreak >= 30) awardBadge(Badge.STREAK_LEGEND.id)
 
         return newStreak
+    }
+
+    // ── Flashcard daily-practice streak ──────────────────────────────────────
+
+    fun getFlashcardStreak(): Int = prefs().getInt(KEY_FLASHCARD_STREAK, 0)
+
+    private fun checkAndUpdateFlashcardStreak() {
+        val p = prefs()
+        val today = todayString()
+        val lastDate = p.getString(KEY_FLASHCARD_LAST_DATE, "") ?: ""
+        val current = p.getInt(KEY_FLASHCARD_STREAK, 0)
+        val newStreak = when {
+            lastDate == today -> return  // already counted today
+            lastDate == yesterdayString() -> current + 1
+            else -> 1
+        }
+        p.edit()
+            .putString(KEY_FLASHCARD_LAST_DATE, today)
+            .putInt(KEY_FLASHCARD_STREAK, newStreak)
+            .apply()
+        if (newStreak >= 30) awardBadge(Badge.CONSISTENT_LEARNER.id)
     }
 
     // ── Reset all progress ────────────────────────────────────────────────
@@ -252,6 +315,8 @@ class ProgressRepository private constructor(
             .remove(KEY_EARNED_BADGES)
             .remove(KEY_WORD_OF_DAY_DATE)
             .remove(KEY_WORD_OF_DAY_CHINESE)
+            .remove(KEY_FLASHCARD_STREAK)
+            .remove(KEY_FLASHCARD_LAST_DATE)
             // PIN and Indonesian preference intentionally kept
             .apply()
     }
@@ -279,6 +344,8 @@ class ProgressRepository private constructor(
         private const val KEY_WORD_OF_DAY_CHINESE = "word_of_day_chinese"
         private const val KEY_PIN_HASH = "parent_pin_hash"
         private const val KEY_SHOW_INDONESIAN = "show_indonesian"
+        private const val KEY_FLASHCARD_STREAK = "flashcard_streak"
+        private const val KEY_FLASHCARD_LAST_DATE = "flashcard_last_date"
 
         @Volatile private var _instance: ProgressRepository? = null
 

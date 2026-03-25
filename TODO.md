@@ -165,7 +165,7 @@ Add new `MilestoneType` values: `MASTERY_DEFAULT`, `MASTERY_LISTENING`, `MASTERY
 
 ---
 
-### #25 — More badge / medal ideas
+### ✅ #25 — More badge / medal ideas *(done)*
 **Files:** `db/Badge.kt`
 
 New badge concepts to implement:
