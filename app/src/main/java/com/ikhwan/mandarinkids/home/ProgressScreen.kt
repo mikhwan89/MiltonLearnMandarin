@@ -308,7 +308,10 @@ private fun MasteryTypeChip(emoji: String, label: String, count: Int) {
 
 @Composable
 private fun BadgeCard(badge: Badge, earned: Boolean, modifier: Modifier = Modifier) {
+    var showInfo by remember { mutableStateOf(false) }
+
     Card(
+        onClick = { showInfo = true },
         modifier = modifier,
         colors = CardDefaults.cardColors(
             containerColor = if (earned) MaterialTheme.colorScheme.tertiaryContainer
@@ -334,11 +337,32 @@ private fun BadgeCard(badge: Badge, earned: Boolean, modifier: Modifier = Modifi
                 color = if (earned) MaterialTheme.colorScheme.onTertiaryContainer
                         else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
             )
-            if (!earned) {
-                Spacer(Modifier.height(2.dp))
-                Text("🔒", fontSize = 11.sp)
-            }
+            Spacer(Modifier.height(2.dp))
+            // Always rendered to keep card height uniform; visible only when locked
+            Text("🔒", fontSize = 11.sp, modifier = Modifier.alpha(if (earned) 0f else 1f))
         }
+    }
+
+    if (showInfo) {
+        AlertDialog(
+            onDismissRequest = { showInfo = false },
+            icon = { Text(badge.emoji, fontSize = 36.sp) },
+            title = { Text(badge.label, fontWeight = FontWeight.Bold) },
+            text = {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(badge.description, fontSize = 14.sp, textAlign = TextAlign.Center)
+                    if (earned) {
+                        Spacer(Modifier.height(8.dp))
+                        Text("✅ Earned!", fontSize = 13.sp,
+                            color = MaterialTheme.colorScheme.primary,
+                            fontWeight = FontWeight.SemiBold)
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showInfo = false }) { Text("OK") }
+            }
+        )
     }
 }
 
