@@ -1,0 +1,841 @@
+{
+  "id": "scene48_taekwondo",
+  "title": "学跆拳道",
+  "description": "Taekwondo training with Master Chen",
+  "characterName": "陈师父",
+  "characterEmoji": "🥋",
+  "characterRole": "master",
+  "category": "PLAY_AND_HOBBIES",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "欢迎来练习跆拳道！跆拳道需要力气和练习，你准备好了吗？",
+      "textPinyin": "Huānyíng lái liànxí táiquándào! Táiquándào xūyào lìqì hé liànxí, nǐ zhǔnbèi hǎo le ma?",
+      "textEnglish": "Welcome to taekwondo training! Taekwondo requires strength and practice — are you ready?",
+      "textIndonesian": "Selamat datang di latihan taekwondo! Taekwondo butuh kekuatan dan latihan, apakah kamu sudah siap?",
+      "pinyinWords": [
+        {
+          "pinyin": "Huānyíng",
+          "chinese": "欢迎",
+          "english": "Welcome",
+          "indonesian": "Selamat datang"
+        },
+        {
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "come to / here to",
+          "indonesian": "datang ke / untuk"
+        },
+        {
+          "pinyin": "liànxí",
+          "chinese": "练习",
+          "english": "practise / training",
+          "indonesian": "berlatih / latihan"
+        },
+        {
+          "pinyin": "táiquándào",
+          "chinese": "跆拳道",
+          "english": "taekwondo",
+          "indonesian": "taekwondo",
+          "note": "跆拳道 means 'taekwondo' — 跆 means 'stomp/kick', 拳 means 'fist/punch', 道 means 'the way'. The way of kicks and punches!"
+        },
+        {
+          "pinyin": "xūyào",
+          "chinese": "需要",
+          "english": "need / require",
+          "indonesian": "butuh / memerlukan"
+        },
+        {
+          "pinyin": "lìqì",
+          "chinese": "力气",
+          "english": "strength / power",
+          "indonesian": "kekuatan / tenaga"
+        },
+        {
+          "pinyin": "hé",
+          "chinese": "和",
+          "english": "and",
+          "indonesian": "dan"
+        },
+        {
+          "pinyin": "liànxí",
+          "chinese": "练习",
+          "english": "practice / practising",
+          "indonesian": "latihan"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "zhǔnbèi hǎo le",
+          "chinese": "准备好了",
+          "english": "are ready / have prepared",
+          "indonesian": "sudah siap",
+          "note": "准备好了 means 'all prepared and ready!' — 准备 is 'prepare', 好 shows it's done well, 了 shows it's complete!"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(question word — yes/no question)",
+          "indonesian": "(kata tanya — pertanyaan ya/tidak)",
+          "note": "吗 at the end turns the sentence into a question — 准备好了吗 means 'Are you ready?'"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "准备好了！师父，我要学跆拳道！",
+          "pinyin": "Zhǔnbèi hǎo le! Shīfu, wǒ yào xué táiquándào!",
+          "english": "I'm ready! Master, I want to learn taekwondo!",
+          "indonesian": "Sudah siap! Suhu, aku mau belajar taekwondo!",
+          "pinyinWords": [
+            {
+              "pinyin": "Zhǔnbèi hǎo le",
+              "chinese": "准备好了",
+              "english": "I'm ready / all prepared",
+              "indonesian": "Sudah siap"
+            },
+            {
+              "pinyin": "Shīfu",
+              "chinese": "师父",
+              "english": "Master / Sifu",
+              "indonesian": "Suhu / Guru",
+              "note": "师父 is a respectful title for a martial arts master — like saying 'Sifu' or 'Sensei'!"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "yào",
+              "chinese": "要",
+              "english": "want to",
+              "indonesian": "mau"
+            },
+            {
+              "pinyin": "xué",
+              "chinese": "学",
+              "english": "learn",
+              "indonesian": "belajar"
+            },
+            {
+              "pinyin": "táiquándào",
+              "chinese": "跆拳道",
+              "english": "taekwondo",
+              "indonesian": "taekwondo"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "准备好了！跆拳道需要力气吗？我很有力气！",
+          "pinyin": "Zhǔnbèi hǎo le! Táiquándào xūyào lìqì ma? Wǒ hěn yǒu lìqì!",
+          "english": "I'm ready! Does taekwondo need strength? I am very strong!",
+          "indonesian": "Sudah siap! Taekwondo butuh kekuatan ya? Aku sangat kuat!",
+          "pinyinWords": [
+            {
+              "pinyin": "Zhǔnbèi hǎo le",
+              "chinese": "准备好了",
+              "english": "I'm ready",
+              "indonesian": "Sudah siap"
+            },
+            {
+              "pinyin": "Táiquándào",
+              "chinese": "跆拳道",
+              "english": "Taekwondo",
+              "indonesian": "Taekwondo"
+            },
+            {
+              "pinyin": "xūyào",
+              "chinese": "需要",
+              "english": "need / require",
+              "indonesian": "butuh"
+            },
+            {
+              "pinyin": "lìqì",
+              "chinese": "力气",
+              "english": "strength",
+              "indonesian": "kekuatan"
+            },
+            {
+              "pinyin": "ma",
+              "chinese": "吗",
+              "english": "(question word)",
+              "indonesian": "(kata tanya)",
+              "note": "吗 at the end makes it a yes/no question — 需要力气吗 means 'Does it need strength?'"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "hěn yǒu lìqì",
+              "chinese": "很有力气",
+              "english": "am very strong / have a lot of strength",
+              "indonesian": "sangat kuat / punya banyak tenaga",
+              "note": "很有力气 means 'have a lot of strength' — 有 means 'have', so 有力气 is 'have strength'!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "很好！先看我踢腿！踢腿的时候要用力气，腿要踢高！现在你来试试！",
+      "textPinyin": "Hěn hǎo! Xiān kàn wǒ tī tuǐ! Tī tuǐ de shíhòu yào yòng lìqì, tuǐ yào tī gāo! Xiànzài nǐ lái shì shi!",
+      "textEnglish": "Great! First watch me kick! When kicking, you need to use strength, and kick the leg up high! Now you try!",
+      "textIndonesian": "Bagus! Pertama lihat aku menendang! Waktu menendang harus pakai kekuatan, kaki harus tendang tinggi! Sekarang kamu coba!",
+      "pinyinWords": [
+        {
+          "pinyin": "Hěn hǎo",
+          "chinese": "很好",
+          "english": "Very good",
+          "indonesian": "Bagus"
+        },
+        {
+          "pinyin": "Xiān",
+          "chinese": "先",
+          "english": "First / first of all",
+          "indonesian": "Pertama / dulu"
+        },
+        {
+          "pinyin": "kàn",
+          "chinese": "看",
+          "english": "watch / look at",
+          "indonesian": "lihat / perhatikan"
+        },
+        {
+          "pinyin": "wǒ",
+          "chinese": "我",
+          "english": "me / my",
+          "indonesian": "aku"
+        },
+        {
+          "pinyin": "tī tuǐ",
+          "chinese": "踢腿",
+          "english": "kick (a leg kick)",
+          "indonesian": "menendang / tendangan",
+          "note": "踢腿 means 'kick the leg' — 踢 means 'kick' and 腿 means 'leg'. The most important move in taekwondo!"
+        },
+        {
+          "pinyin": "de shíhòu",
+          "chinese": "的时候",
+          "english": "when / at the time of",
+          "indonesian": "waktu / saat",
+          "note": "的时候 means 'when (you are doing something)' — 踢腿的时候 means 'when kicking'!"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "need to / must",
+          "indonesian": "harus"
+        },
+        {
+          "pinyin": "yòng",
+          "chinese": "用",
+          "english": "use",
+          "indonesian": "gunakan"
+        },
+        {
+          "pinyin": "lìqì",
+          "chinese": "力气",
+          "english": "strength",
+          "indonesian": "kekuatan"
+        },
+        {
+          "pinyin": "tuǐ",
+          "chinese": "腿",
+          "english": "leg",
+          "indonesian": "kaki"
+        },
+        {
+          "pinyin": "yào tī gāo",
+          "chinese": "要踢高",
+          "english": "must kick high",
+          "indonesian": "harus tendang tinggi"
+        },
+        {
+          "pinyin": "Xiànzài",
+          "chinese": "现在",
+          "english": "Now",
+          "indonesian": "Sekarang"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "lái shì shi",
+          "chinese": "来试试",
+          "english": "come and try / give it a try",
+          "indonesian": "coba / cobalah",
+          "note": "试试 means 'give it a try' — repeating 试 makes it sound casual and encouraging, like 'have a go!'"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "好！我来踢腿！看我的！哈！",
+          "pinyin": "Hǎo! Wǒ lái tī tuǐ! Kàn wǒ de! Hā!",
+          "english": "OK! I'll do a kick! Watch me! Ha!",
+          "indonesian": "Oke! Aku mau tendang! Lihat aku! Hah!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "OK",
+              "indonesian": "Oke"
+            },
+            {
+              "pinyin": "Wǒ lái",
+              "chinese": "我来",
+              "english": "I'll do it / let me",
+              "indonesian": "Aku akan / biar aku",
+              "note": "我来 means 'I'll do it!' — 来 before an action shows eagerness, like saying 'let me go for it!'"
+            },
+            {
+              "pinyin": "tī tuǐ",
+              "chinese": "踢腿",
+              "english": "kick",
+              "indonesian": "menendang"
+            },
+            {
+              "pinyin": "Kàn wǒ de",
+              "chinese": "看我的",
+              "english": "Watch me / look at what I can do",
+              "indonesian": "Lihat aku",
+              "note": "看我的 means 'watch what I've got!' — like saying 'check this out!' with confidence!"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "师父，踢腿要踢多高呢？",
+          "pinyin": "Shīfu, tī tuǐ yào tī duō gāo ne?",
+          "english": "Master, how high does the kick need to go?",
+          "indonesian": "Suhu, tendangannya harus setinggi apa?",
+          "pinyinWords": [
+            {
+              "pinyin": "Shīfu",
+              "chinese": "师父",
+              "english": "Master",
+              "indonesian": "Suhu"
+            },
+            {
+              "pinyin": "tī tuǐ",
+              "chinese": "踢腿",
+              "english": "kick",
+              "indonesian": "tendangan"
+            },
+            {
+              "pinyin": "yào tī",
+              "chinese": "要踢",
+              "english": "need to kick",
+              "indonesian": "harus menendang"
+            },
+            {
+              "pinyin": "duō gāo",
+              "chinese": "多高",
+              "english": "how high",
+              "indonesian": "setinggi apa",
+              "note": "多高 means 'how high?' — 多 in a question means 'how (much/many/high/etc.)'. 多高 = how high, 多远 = how far!"
+            },
+            {
+              "pinyin": "ne",
+              "chinese": "呢",
+              "english": "(softens the question, makes it curious)",
+              "indonesian": "(melembutkan pertanyaan, terdengar penasaran)",
+              "note": "呢 at the end makes the question sound curious and gentle — like asking 'I wonder, how high...?'"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好的！我要用力气踢腿！师父，你看！",
+          "pinyin": "Hǎo de! Wǒ yào yòng lìqì tī tuǐ! Shīfu, nǐ kàn!",
+          "english": "OK! I'll use my strength to kick! Master, watch!",
+          "indonesian": "Baik! Aku mau pakai kekuatan untuk menendang! Suhu, lihat!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "OK / alright",
+              "indonesian": "Baik"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "yào",
+              "chinese": "要",
+              "english": "will / going to",
+              "indonesian": "akan"
+            },
+            {
+              "pinyin": "yòng",
+              "chinese": "用",
+              "english": "use",
+              "indonesian": "pakai / menggunakan"
+            },
+            {
+              "pinyin": "lìqì",
+              "chinese": "力气",
+              "english": "strength",
+              "indonesian": "kekuatan"
+            },
+            {
+              "pinyin": "tī tuǐ",
+              "chinese": "踢腿",
+              "english": "kick",
+              "indonesian": "menendang"
+            },
+            {
+              "pinyin": "Shīfu",
+              "chinese": "师父",
+              "english": "Master",
+              "indonesian": "Suhu"
+            },
+            {
+              "pinyin": "nǐ kàn",
+              "chinese": "你看",
+              "english": "you watch / look",
+              "indonesian": "kamu lihat"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "踢得很好！你看，你的腰带还是白色的。坚持练习，以后你会有更高级的腰带！",
+      "textPinyin": "Tī de hěn hǎo! Nǐ kàn, nǐ de yāodài hái shì báisè de. Jiānchí liànxí, yǐhòu nǐ huì yǒu gèng gāojí de yāodài!",
+      "textEnglish": "Kicked very well! Look, your belt is still white. Keep persevering with practice, and later you will have a higher-level belt!",
+      "textIndonesian": "Tendangannya bagus sekali! Lihat, ikat pinggangmu masih putih. Terus berlatih dengan tekun, nanti kamu akan punya sabuk yang lebih tinggi tingkatannya!",
+      "pinyinWords": [
+        {
+          "pinyin": "Tī de hěn hǎo",
+          "chinese": "踢得很好",
+          "english": "Kicked very well",
+          "indonesian": "Menendangnya sangat bagus",
+          "note": "踢得很好 means 'kicked very well' — 得 here connects the verb 踢 (kick) to how well it was done (很好)!"
+        },
+        {
+          "pinyin": "Nǐ kàn",
+          "chinese": "你看",
+          "english": "Look / you see",
+          "indonesian": "Lihat / kamu lihat"
+        },
+        {
+          "pinyin": "nǐ de",
+          "chinese": "你的",
+          "english": "your",
+          "indonesian": "milikmu / punyamu",
+          "note": "你的 means 'your' or 'yours' — 的 after a pronoun shows ownership, like 's in English!"
+        },
+        {
+          "pinyin": "yāodài",
+          "chinese": "腰带",
+          "english": "belt (martial arts belt)",
+          "indonesian": "ikat pinggang / sabuk",
+          "note": "腰带 means 'belt' — 腰 means 'waist' and 带 means 'band/strap'. In taekwondo, the belt colour shows your level!"
+        },
+        {
+          "pinyin": "hái shì",
+          "chinese": "还是",
+          "english": "still is",
+          "indonesian": "masih",
+          "note": "还是 here means 'still is' — 你的腰带还是白色 means 'your belt is still white (for now)'!"
+        },
+        {
+          "pinyin": "báisè de",
+          "chinese": "白色的",
+          "english": "white (in colour)",
+          "indonesian": "berwarna putih",
+          "note": "的 after a colour makes it a description — 白色的腰带 means 'a white-coloured belt'!"
+        },
+        {
+          "pinyin": "Jiānchí",
+          "chinese": "坚持",
+          "english": "persevere / keep going / stick with it",
+          "indonesian": "tekun / terus berusaha / pantang menyerah",
+          "note": "坚持 means 'keep going no matter what' — 坚 means 'firm/hard' and 持 means 'hold'. Hold firm and never give up!"
+        },
+        {
+          "pinyin": "liànxí",
+          "chinese": "练习",
+          "english": "practise",
+          "indonesian": "berlatih"
+        },
+        {
+          "pinyin": "yǐhòu",
+          "chinese": "以后",
+          "english": "later / in the future",
+          "indonesian": "nanti / di masa depan"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "huì yǒu",
+          "chinese": "会有",
+          "english": "will have",
+          "indonesian": "akan punya"
+        },
+        {
+          "pinyin": "gèng gāojí de",
+          "chinese": "更高级的",
+          "english": "higher-level / more advanced",
+          "indonesian": "lebih tinggi tingkatannya",
+          "note": "更 means 'even more' — 更高级 means 'even higher level'. 更 is a great word for comparing!"
+        },
+        {
+          "pinyin": "yāodài",
+          "chinese": "腰带",
+          "english": "belt",
+          "indonesian": "sabuk"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "师父，我会坚持练习的！我想要黑色腰带！",
+          "pinyin": "Shīfu, wǒ huì jiānchí liànxí de! Wǒ xiǎng yào hēisè yāodài!",
+          "english": "Master, I will keep practising! I want a black belt!",
+          "indonesian": "Suhu, aku akan terus berlatih! Aku mau sabuk hitam!",
+          "pinyinWords": [
+            {
+              "pinyin": "Shīfu",
+              "chinese": "师父",
+              "english": "Master",
+              "indonesian": "Suhu"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "huì",
+              "chinese": "会",
+              "english": "will",
+              "indonesian": "akan"
+            },
+            {
+              "pinyin": "jiānchí",
+              "chinese": "坚持",
+              "english": "keep going / persevere",
+              "indonesian": "terus berusaha"
+            },
+            {
+              "pinyin": "liànxí",
+              "chinese": "练习",
+              "english": "practise",
+              "indonesian": "berlatih"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(adds certainty to the promise)",
+              "indonesian": "(menambah keyakinan pada janji)",
+              "note": "的 at the end makes the promise sound definite — 我会坚持的 means 'I WILL definitely keep going!'"
+            },
+            {
+              "pinyin": "Wǒ xiǎng yào",
+              "chinese": "我想要",
+              "english": "I want",
+              "indonesian": "Aku ingin / Aku mau"
+            },
+            {
+              "pinyin": "hēisè",
+              "chinese": "黑色",
+              "english": "black",
+              "indonesian": "hitam"
+            },
+            {
+              "pinyin": "yāodài",
+              "chinese": "腰带",
+              "english": "belt",
+              "indonesian": "sabuk"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我会坚持的！师父，我要每天都练习踢腿！",
+          "pinyin": "Wǒ huì jiānchí de! Shīfu, wǒ yào měitiān dōu liànxí tī tuǐ!",
+          "english": "I will keep going! Master, I want to practise kicking every day!",
+          "indonesian": "Aku akan tekun! Suhu, aku mau latihan tendangan setiap hari!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ huì jiānchí de",
+              "chinese": "我会坚持的",
+              "english": "I will definitely keep going",
+              "indonesian": "Aku pasti akan tekun"
+            },
+            {
+              "pinyin": "Shīfu",
+              "chinese": "师父",
+              "english": "Master",
+              "indonesian": "Suhu"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "yào",
+              "chinese": "要",
+              "english": "want to",
+              "indonesian": "mau"
+            },
+            {
+              "pinyin": "měitiān",
+              "chinese": "每天",
+              "english": "every day",
+              "indonesian": "setiap hari"
+            },
+            {
+              "pinyin": "dōu",
+              "chinese": "都",
+              "english": "all / every (time)",
+              "indonesian": "semua / setiap",
+              "note": "都 means 'all' or 'every' — 每天都 means 'every single day without exception'!"
+            },
+            {
+              "pinyin": "liànxí",
+              "chinese": "练习",
+              "english": "practise",
+              "indonesian": "berlatih"
+            },
+            {
+              "pinyin": "tī tuǐ",
+              "chinese": "踢腿",
+              "english": "kick",
+              "indonesian": "tendangan"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "说得好！加油！坚持练习，你一定会越来越厉害的！",
+      "textPinyin": "Shuō de hǎo! Jiāyóu! Jiānchí liànxí, nǐ yīdìng huì yuè lái yuè lìhai de!",
+      "textEnglish": "Well said! Go for it! Keep practising, and you will definitely get more and more impressive!",
+      "textIndonesian": "Bagus kata-katanya! Semangat! Terus berlatih, kamu pasti akan semakin hebat!",
+      "pinyinWords": [
+        {
+          "pinyin": "Shuō de hǎo",
+          "chinese": "说得好",
+          "english": "Well said",
+          "indonesian": "Bagus kata-katanya",
+          "note": "说得好 means 'said well' — 说 is 'speak/say', 得 connects it to how well, 好 means 'good'. Like saying 'well said!'"
+        },
+        {
+          "pinyin": "Jiāyóu",
+          "chinese": "加油",
+          "english": "Go for it! / Keep it up! / You can do it!",
+          "indonesian": "Semangat! / Terus berjuang!",
+          "note": "加油 literally means 'add fuel' — like fuelling up a car! It means 'give it your all!' and is used to cheer people on!"
+        },
+        {
+          "pinyin": "Jiānchí",
+          "chinese": "坚持",
+          "english": "Keep going / Persevere",
+          "indonesian": "Terus berusaha / Tekun"
+        },
+        {
+          "pinyin": "liànxí",
+          "chinese": "练习",
+          "english": "practise",
+          "indonesian": "berlatih"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "yīdìng",
+          "chinese": "一定",
+          "english": "definitely / for sure",
+          "indonesian": "pasti / pasti sekali"
+        },
+        {
+          "pinyin": "huì",
+          "chinese": "会",
+          "english": "will",
+          "indonesian": "akan"
+        },
+        {
+          "pinyin": "yuè lái yuè lìhai",
+          "chinese": "越来越厉害",
+          "english": "more and more amazing / get better and better",
+          "indonesian": "semakin lama semakin hebat",
+          "note": "越来越 means 'more and more' — 越来越厉害 means 'getting more and more amazing every day!' A great phrase for encouragement!"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(adds certainty — this will definitely happen!)",
+          "indonesian": "(menambah kepastian — ini pasti terjadi!)",
+          "note": "的 at the end of a statement makes it sound very certain — 你一定会越来越厉害的 means 'You WILL definitely get more and more amazing!'"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'taekwondo' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "踢腿",
+          "pinyin": "tī tuǐ",
+          "translation": "kick"
+        },
+        {
+          "chinese": "腰带",
+          "pinyin": "yāodài",
+          "translation": "belt"
+        },
+        {
+          "chinese": "力气",
+          "pinyin": "lìqì",
+          "translation": "strength"
+        },
+        {
+          "chinese": "跆拳道",
+          "pinyin": "táiquándào",
+          "translation": "taekwondo"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "跆拳道 (táiquándào) means 'taekwondo' — 跆 is 'kick/stomp', 拳 is 'fist', 道 is 'the way'. The martial art of kicks and punches!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "坚持",
+      "questionPinyin": "jiānchí",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "kick high"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "be careful"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "persevere / keep going"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "practise"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "坚持 (jiānchí) means 'persevere' or 'keep going' — 坚 means 'firm' and 持 means 'hold'. Hold on firmly and never give up, just like Master Chen teaches!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "加油",
+      "questionPinyin": "jiāyóu",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "well done"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "go for it! / you can do it!"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "thank you"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "goodbye"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "加油 (jiāyóu) means 'go for it!' or 'you can do it!' — it literally means 'add fuel', like filling up with energy. Shout it to cheer someone on!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'belt' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "练习",
+          "pinyin": "liànxí",
+          "translation": "practise"
+        },
+        {
+          "chinese": "腰带",
+          "pinyin": "yāodài",
+          "translation": "belt"
+        },
+        {
+          "chinese": "力气",
+          "pinyin": "lìqì",
+          "translation": "strength"
+        },
+        {
+          "chinese": "踢腿",
+          "pinyin": "tī tuǐ",
+          "translation": "kick"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "腰带 (yāodài) means 'belt' — 腰 means 'waist' and 带 means 'band/strap'. In taekwondo, your belt colour shows how much you've practised and improved!"
+    }
+  ]
+}

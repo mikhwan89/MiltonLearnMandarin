@@ -1,0 +1,938 @@
+{
+  "id": "scene47_learning_abacus",
+  "title": "学习算盘",
+  "description": "Learning the abacus with Teacher Wang",
+  "characterName": "王老师",
+  "characterEmoji": "🧮",
+  "characterRole": "teacher",
+  "category": "AT_SCHOOL",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "同学们，今天我们来学习算盘！算盘上有很多珠子，你们看到了吗？",
+      "textPinyin": "Tóngxuémen, jīntiān wǒmen lái xuéxí suànpán! Suànpán shàng yǒu hěn duō zhūzi, nǐmen kàn dào le ma?",
+      "textEnglish": "Class, today we are going to learn the abacus! There are many beads on the abacus — can you see them?",
+      "textIndonesian": "Anak-anak, hari ini kita akan belajar sempoa! Di sempoa ada banyak manik-manik, apakah kalian bisa melihatnya?",
+      "pinyinWords": [
+        {
+          "pinyin": "Tóngxuémen",
+          "chinese": "同学们",
+          "english": "classmates / class (everyone)",
+          "indonesian": "teman-teman sekelas",
+          "note": "们 is added to a word to make it plural — 同学 means 'classmate' and 同学们 means 'everyone in class'!"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we / us",
+          "indonesian": "kita"
+        },
+        {
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "come / let's (do something)",
+          "indonesian": "ayo / mari",
+          "note": "来 before a verb means 'let's do it!' — 来学习 means 'let's learn'!"
+        },
+        {
+          "pinyin": "xuéxí",
+          "chinese": "学习",
+          "english": "learn / study",
+          "indonesian": "belajar"
+        },
+        {
+          "pinyin": "suànpán",
+          "chinese": "算盘",
+          "english": "abacus",
+          "indonesian": "sempoa"
+        },
+        {
+          "pinyin": "shàng",
+          "chinese": "上",
+          "english": "on / on top of",
+          "indonesian": "di atas / pada"
+        },
+        {
+          "pinyin": "yǒu",
+          "chinese": "有",
+          "english": "have / there are",
+          "indonesian": "ada / terdapat"
+        },
+        {
+          "pinyin": "hěn duō",
+          "chinese": "很多",
+          "english": "many / a lot of",
+          "indonesian": "banyak"
+        },
+        {
+          "pinyin": "zhūzi",
+          "chinese": "珠子",
+          "english": "beads",
+          "indonesian": "manik-manik / butiran"
+        },
+        {
+          "pinyin": "nǐmen",
+          "chinese": "你们",
+          "english": "you all / you (plural)",
+          "indonesian": "kalian"
+        },
+        {
+          "pinyin": "kàn dào le",
+          "chinese": "看到了",
+          "english": "can see / have seen",
+          "indonesian": "sudah melihat",
+          "note": "看到了 means 'can see it' — 看 is 'look', 到 shows the action reached its goal, 了 shows it happened!"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(question word — turns sentence into a yes/no question)",
+          "indonesian": "(kata tanya — mengubah kalimat menjadi pertanyaan ya/tidak)",
+          "note": "吗 at the end of a sentence makes it a question! 你看到了吗 means 'Did you see it?'"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "看到了！算盘上有好多珠子！",
+          "pinyin": "Kàn dào le! Suànpán shàng yǒu hǎo duō zhūzi!",
+          "english": "Yes, I can see! There are so many beads on the abacus!",
+          "indonesian": "Sudah lihat! Di sempoanya ada banyak sekali manik-manik!",
+          "pinyinWords": [
+            {
+              "pinyin": "Kàn dào le",
+              "chinese": "看到了",
+              "english": "I can see it / I saw it",
+              "indonesian": "Sudah lihat",
+              "note": "看到了 means 'I can see it!' — 看 is 'look', 到 means the looking reached its target, 了 shows it happened!"
+            },
+            {
+              "pinyin": "Suànpán",
+              "chinese": "算盘",
+              "english": "abacus",
+              "indonesian": "sempoa"
+            },
+            {
+              "pinyin": "shàng",
+              "chinese": "上",
+              "english": "on / on top of",
+              "indonesian": "di atas"
+            },
+            {
+              "pinyin": "yǒu",
+              "chinese": "有",
+              "english": "there are",
+              "indonesian": "ada"
+            },
+            {
+              "pinyin": "hǎo duō",
+              "chinese": "好多",
+              "english": "so many",
+              "indonesian": "banyak sekali",
+              "note": "好多 means 'so many!' — 好 here works like 'so' or 'really', making 多 (many) stronger!"
+            },
+            {
+              "pinyin": "zhūzi",
+              "chinese": "珠子",
+              "english": "beads",
+              "indonesian": "manik-manik"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "看到了！老师，算盘的珠子是什么颜色的？",
+          "pinyin": "Kàn dào le! Lǎoshī, suànpán de zhūzi shì shénme yánsè de?",
+          "english": "I can see! Teacher, what colour are the beads on the abacus?",
+          "indonesian": "Sudah lihat! Bu Guru, manik-manik sempoanya warna apa?",
+          "pinyinWords": [
+            {
+              "pinyin": "Kàn dào le",
+              "chinese": "看到了",
+              "english": "I can see it",
+              "indonesian": "Sudah lihat"
+            },
+            {
+              "pinyin": "Lǎoshī",
+              "chinese": "老师",
+              "english": "Teacher",
+              "indonesian": "Bu Guru / Pak Guru"
+            },
+            {
+              "pinyin": "suànpán",
+              "chinese": "算盘",
+              "english": "abacus",
+              "indonesian": "sempoa"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(connects 'abacus' to 'beads' — abacus's beads)",
+              "indonesian": "(kata penghubung — manik-manik milik sempoa)",
+              "note": "的 shows belonging — 算盘的珠子 means 'the beads OF the abacus', like 's in English!"
+            },
+            {
+              "pinyin": "zhūzi",
+              "chinese": "珠子",
+              "english": "beads",
+              "indonesian": "manik-manik"
+            },
+            {
+              "pinyin": "shì",
+              "chinese": "是",
+              "english": "are / is",
+              "indonesian": "adalah"
+            },
+            {
+              "pinyin": "shénme",
+              "chinese": "什么",
+              "english": "what",
+              "indonesian": "apa"
+            },
+            {
+              "pinyin": "yánsè",
+              "chinese": "颜色",
+              "english": "colour",
+              "indonesian": "warna"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(question ending for descriptions)",
+              "indonesian": "(akhiran pertanyaan untuk deskripsi)",
+              "note": "的 at the end of a question about a description — 什么颜色的 means 'what colour is it?'"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "很好！现在，我们来学拨珠子。用手指轻轻地拨，可以做加法！",
+      "textPinyin": "Hěn hǎo! Xiànzài, wǒmen lái xué bō zhūzi. Yòng shǒuzhǐ qīngqīng de bō, kěyǐ zuò jiāfǎ!",
+      "textEnglish": "Very good! Now, let's learn to move the beads. Flick them gently with your finger, and you can do addition!",
+      "textIndonesian": "Bagus sekali! Sekarang, kita belajar cara menggeser manik-maniknya. Geser pelan-pelan dengan jari, bisa melakukan penjumlahan!",
+      "pinyinWords": [
+        {
+          "pinyin": "Hěn hǎo",
+          "chinese": "很好",
+          "english": "Very good",
+          "indonesian": "Bagus sekali"
+        },
+        {
+          "pinyin": "Xiànzài",
+          "chinese": "现在",
+          "english": "Now",
+          "indonesian": "Sekarang"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we",
+          "indonesian": "kita"
+        },
+        {
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "let's (do something)",
+          "indonesian": "ayo / mari"
+        },
+        {
+          "pinyin": "xué",
+          "chinese": "学",
+          "english": "learn",
+          "indonesian": "belajar"
+        },
+        {
+          "pinyin": "bō",
+          "chinese": "拨",
+          "english": "flick / move (beads)",
+          "indonesian": "menggeser / menyentuh"
+        },
+        {
+          "pinyin": "zhūzi",
+          "chinese": "珠子",
+          "english": "beads",
+          "indonesian": "manik-manik"
+        },
+        {
+          "pinyin": "Yòng",
+          "chinese": "用",
+          "english": "use / using",
+          "indonesian": "gunakan / menggunakan"
+        },
+        {
+          "pinyin": "shǒuzhǐ",
+          "chinese": "手指",
+          "english": "finger",
+          "indonesian": "jari"
+        },
+        {
+          "pinyin": "qīngqīng de",
+          "chinese": "轻轻地",
+          "english": "gently / softly",
+          "indonesian": "pelan-pelan / perlahan",
+          "note": "轻轻地 means 'gently' — 轻 means 'light/gentle', and 地 turns it into an adverb (how you do something)!"
+        },
+        {
+          "pinyin": "bō",
+          "chinese": "拨",
+          "english": "flick / move",
+          "indonesian": "geser"
+        },
+        {
+          "pinyin": "kěyǐ",
+          "chinese": "可以",
+          "english": "can / be able to",
+          "indonesian": "bisa / dapat"
+        },
+        {
+          "pinyin": "zuò",
+          "chinese": "做",
+          "english": "do / make",
+          "indonesian": "melakukan / membuat"
+        },
+        {
+          "pinyin": "jiāfǎ",
+          "chinese": "加法",
+          "english": "addition",
+          "indonesian": "penjumlahan",
+          "note": "加法 means 'addition' — 加 means 'add/plus' and 法 means 'method'. So 加法 is the 'adding method'!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "好的，老师！我用手指拨珠子！一、二、三！",
+          "pinyin": "Hǎo de, lǎoshī! Wǒ yòng shǒuzhǐ bō zhūzi! Yī, èr, sān!",
+          "english": "OK, Teacher! I'll move the beads with my finger! One, two, three!",
+          "indonesian": "Baik, Bu Guru! Aku geser manik-maniknya dengan jari! Satu, dua, tiga!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "OK / alright",
+              "indonesian": "Baik / oke"
+            },
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "Teacher",
+              "indonesian": "Bu Guru"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "yòng",
+              "chinese": "用",
+              "english": "use / using",
+              "indonesian": "menggunakan"
+            },
+            {
+              "pinyin": "shǒuzhǐ",
+              "chinese": "手指",
+              "english": "finger",
+              "indonesian": "jari"
+            },
+            {
+              "pinyin": "bō",
+              "chinese": "拨",
+              "english": "flick / move",
+              "indonesian": "menggeser"
+            },
+            {
+              "pinyin": "zhūzi",
+              "chinese": "珠子",
+              "english": "beads",
+              "indonesian": "manik-manik"
+            },
+            {
+              "pinyin": "Yī, èr, sān",
+              "chinese": "一、二、三",
+              "english": "one, two, three",
+              "indonesian": "satu, dua, tiga"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "老师，拨珠子可以做加法吗？太有趣了！",
+          "pinyin": "Lǎoshī, bō zhūzi kěyǐ zuò jiāfǎ ma? Tài yǒuqù le!",
+          "english": "Teacher, can moving the beads do addition? That's so interesting!",
+          "indonesian": "Bu Guru, menggeser manik-manik bisa buat penjumlahan ya? Seru banget!",
+          "pinyinWords": [
+            {
+              "pinyin": "Lǎoshī",
+              "chinese": "老师",
+              "english": "Teacher",
+              "indonesian": "Bu Guru"
+            },
+            {
+              "pinyin": "bō zhūzi",
+              "chinese": "拨珠子",
+              "english": "move the beads / flick the beads",
+              "indonesian": "menggeser manik-manik"
+            },
+            {
+              "pinyin": "kěyǐ",
+              "chinese": "可以",
+              "english": "can",
+              "indonesian": "bisa"
+            },
+            {
+              "pinyin": "zuò",
+              "chinese": "做",
+              "english": "do",
+              "indonesian": "melakukan"
+            },
+            {
+              "pinyin": "jiāfǎ",
+              "chinese": "加法",
+              "english": "addition",
+              "indonesian": "penjumlahan"
+            },
+            {
+              "pinyin": "ma",
+              "chinese": "吗",
+              "english": "(question word)",
+              "indonesian": "(kata tanya)",
+              "note": "吗 turns the sentence into a yes/no question — bō zhūzi kěyǐ zuò jiāfǎ ma means 'Can moving beads do addition?'"
+            },
+            {
+              "pinyin": "Tài yǒuqù le",
+              "chinese": "太有趣了",
+              "english": "So interesting / So fun",
+              "indonesian": "Seru sekali",
+              "note": "太...了 means 'so...' or 'too...' — 太有趣了 means 'It's SO interesting!'"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我知道！三加二等于五！我用算盘拨珠子来数！",
+          "pinyin": "Wǒ zhīdào! Sān jiā èr děngyú wǔ! Wǒ yòng suànpán bō zhūzi lái shǔ!",
+          "english": "I know! Three plus two equals five! I'll use the abacus beads to count!",
+          "indonesian": "Aku tahu! Tiga tambah dua sama dengan lima! Aku pakai sempoa untuk menghitung!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ zhīdào",
+              "chinese": "我知道",
+              "english": "I know",
+              "indonesian": "Aku tahu"
+            },
+            {
+              "pinyin": "Sān",
+              "chinese": "三",
+              "english": "three",
+              "indonesian": "tiga"
+            },
+            {
+              "pinyin": "jiā",
+              "chinese": "加",
+              "english": "plus / add",
+              "indonesian": "tambah"
+            },
+            {
+              "pinyin": "èr",
+              "chinese": "二",
+              "english": "two",
+              "indonesian": "dua"
+            },
+            {
+              "pinyin": "děngyú",
+              "chinese": "等于",
+              "english": "equals",
+              "indonesian": "sama dengan"
+            },
+            {
+              "pinyin": "wǔ",
+              "chinese": "五",
+              "english": "five",
+              "indonesian": "lima"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "yòng",
+              "chinese": "用",
+              "english": "use / using",
+              "indonesian": "memakai"
+            },
+            {
+              "pinyin": "suànpán",
+              "chinese": "算盘",
+              "english": "abacus",
+              "indonesian": "sempoa"
+            },
+            {
+              "pinyin": "bō zhūzi",
+              "chinese": "拨珠子",
+              "english": "move the beads",
+              "indonesian": "menggeser manik-manik"
+            },
+            {
+              "pinyin": "lái shǔ",
+              "chinese": "来数",
+              "english": "to count",
+              "indonesian": "untuk menghitung",
+              "note": "来 before a verb shows purpose — 来数 means 'in order to count'!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "做得非常好！你学会了数字和加法！学算盘要专心，你今天很专心！",
+      "textPinyin": "Zuò de fēicháng hǎo! Nǐ xuéhuì le shùzì hé jiāfǎ! Xué suànpán yào zhuānxīn, nǐ jīntiān hěn zhuānxīn!",
+      "textEnglish": "Done extremely well! You learned numbers and addition! Learning the abacus needs focus, and you were very focused today!",
+      "textIndonesian": "Sangat bagus! Kamu sudah belajar angka dan penjumlahan! Belajar sempoa harus fokus, dan hari ini kamu sangat fokus!",
+      "pinyinWords": [
+        {
+          "pinyin": "Zuò de fēicháng hǎo",
+          "chinese": "做得非常好",
+          "english": "Done extremely well",
+          "indonesian": "Dilakukan dengan sangat baik",
+          "note": "做得好 means 'done well' — 做 is 'do', 得 connects the verb to how well it was done, 好 means 'good'!"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "xuéhuì le",
+          "chinese": "学会了",
+          "english": "have learned / mastered",
+          "indonesian": "sudah berhasil belajar",
+          "note": "学会了 means 'have learned (successfully)' — 学 is 'learn', 会 shows you can now DO it, 了 shows it's done!"
+        },
+        {
+          "pinyin": "shùzì",
+          "chinese": "数字",
+          "english": "numbers / digits",
+          "indonesian": "angka"
+        },
+        {
+          "pinyin": "hé",
+          "chinese": "和",
+          "english": "and",
+          "indonesian": "dan"
+        },
+        {
+          "pinyin": "jiāfǎ",
+          "chinese": "加法",
+          "english": "addition",
+          "indonesian": "penjumlahan"
+        },
+        {
+          "pinyin": "Xué suànpán",
+          "chinese": "学算盘",
+          "english": "learning the abacus",
+          "indonesian": "belajar sempoa"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "need to / must",
+          "indonesian": "harus / perlu"
+        },
+        {
+          "pinyin": "zhuānxīn",
+          "chinese": "专心",
+          "english": "focus / concentrate / pay attention",
+          "indonesian": "fokus / konsentrasi",
+          "note": "专心 means 'focus with your whole heart' — 专 means 'dedicated' and 心 means 'heart/mind'. Focus completely!"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "hěn",
+          "chinese": "很",
+          "english": "very",
+          "indonesian": "sangat"
+        },
+        {
+          "pinyin": "zhuānxīn",
+          "chinese": "专心",
+          "english": "focused / concentrated",
+          "indonesian": "fokus"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "谢谢老师！我会专心学算盘的！",
+          "pinyin": "Xièxiè lǎoshī! Wǒ huì zhuānxīn xué suànpán de!",
+          "english": "Thank you, Teacher! I will focus on learning the abacus!",
+          "indonesian": "Terima kasih, Bu Guru! Aku akan fokus belajar sempoa!",
+          "pinyinWords": [
+            {
+              "pinyin": "Xièxiè",
+              "chinese": "谢谢",
+              "english": "Thank you",
+              "indonesian": "Terima kasih"
+            },
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "Teacher",
+              "indonesian": "Bu Guru"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "huì",
+              "chinese": "会",
+              "english": "will / can",
+              "indonesian": "akan / bisa"
+            },
+            {
+              "pinyin": "zhuānxīn",
+              "chinese": "专心",
+              "english": "focus / be focused",
+              "indonesian": "fokus"
+            },
+            {
+              "pinyin": "xué suànpán",
+              "chinese": "学算盘",
+              "english": "learn the abacus",
+              "indonesian": "belajar sempoa"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(adds confidence to the promise)",
+              "indonesian": "(menambah keyakinan pada janji)",
+              "note": "的 at the end of a sentence adds certainty — 我会专心的 sounds like 'I definitely will focus!'"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "老师，我喜欢算盘！数字很有趣，我要多练习！",
+          "pinyin": "Lǎoshī, wǒ xǐhuān suànpán! Shùzì hěn yǒuqù, wǒ yào duō liànxí!",
+          "english": "Teacher, I like the abacus! Numbers are very interesting, I want to practise more!",
+          "indonesian": "Bu Guru, aku suka sempoa! Angkanya sangat menarik, aku mau lebih banyak berlatih!",
+          "pinyinWords": [
+            {
+              "pinyin": "Lǎoshī",
+              "chinese": "老师",
+              "english": "Teacher",
+              "indonesian": "Bu Guru"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like / love",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "suànpán",
+              "chinese": "算盘",
+              "english": "abacus",
+              "indonesian": "sempoa"
+            },
+            {
+              "pinyin": "Shùzì",
+              "chinese": "数字",
+              "english": "Numbers",
+              "indonesian": "Angka"
+            },
+            {
+              "pinyin": "hěn yǒuqù",
+              "chinese": "很有趣",
+              "english": "very interesting",
+              "indonesian": "sangat menarik"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "yào",
+              "chinese": "要",
+              "english": "want to",
+              "indonesian": "mau"
+            },
+            {
+              "pinyin": "duō",
+              "chinese": "多",
+              "english": "more",
+              "indonesian": "lebih banyak"
+            },
+            {
+              "pinyin": "liànxí",
+              "chinese": "练习",
+              "english": "practise",
+              "indonesian": "berlatih"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "你真厉害！继续专心练习，你会成为算盘小高手的！好好加油！",
+      "textPinyin": "Nǐ zhēn lìhai! Jìxù zhuānxīn liànxí, nǐ huì chéngwéi suànpán xiǎo gāoshǒu de! Hǎohǎo jiāyóu!",
+      "textEnglish": "You are really amazing! Keep focusing and practising, and you will become a little abacus master! Keep up the great work!",
+      "textIndonesian": "Kamu hebat sekali! Terus fokus dan berlatih, kamu akan jadi jagoan sempoa kecil! Semangat terus!",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "zhēn",
+          "chinese": "真",
+          "english": "truly / really",
+          "indonesian": "sungguh / benar-benar"
+        },
+        {
+          "pinyin": "lìhai",
+          "chinese": "厉害",
+          "english": "amazing / impressive / awesome",
+          "indonesian": "hebat / luar biasa",
+          "note": "厉害 is a great compliment meaning 'amazing' or 'impressive' — it's like saying 'wow, you're incredible!'"
+        },
+        {
+          "pinyin": "Jìxù",
+          "chinese": "继续",
+          "english": "continue / keep",
+          "indonesian": "terus / lanjut"
+        },
+        {
+          "pinyin": "zhuānxīn",
+          "chinese": "专心",
+          "english": "focus / be focused",
+          "indonesian": "fokus"
+        },
+        {
+          "pinyin": "liànxí",
+          "chinese": "练习",
+          "english": "practise",
+          "indonesian": "berlatih"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "huì",
+          "chinese": "会",
+          "english": "will",
+          "indonesian": "akan"
+        },
+        {
+          "pinyin": "chéngwéi",
+          "chinese": "成为",
+          "english": "become",
+          "indonesian": "menjadi"
+        },
+        {
+          "pinyin": "suànpán",
+          "chinese": "算盘",
+          "english": "abacus",
+          "indonesian": "sempoa"
+        },
+        {
+          "pinyin": "xiǎo gāoshǒu",
+          "chinese": "小高手",
+          "english": "little master / little expert",
+          "indonesian": "jagoan kecil / ahli kecil",
+          "note": "小高手 means 'little expert' — 小 means 'small/little', 高 means 'high', 手 means 'hand'. A 高手 is a master, so 小高手 is a little champion!"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(adds certainty to the prediction)",
+          "indonesian": "(menambah keyakinan pada prediksi)",
+          "note": "的 here shows this will definitely happen — 你会成为高手的 means 'You WILL become a master, for sure!'"
+        },
+        {
+          "pinyin": "Hǎohǎo jiāyóu",
+          "chinese": "好好加油",
+          "english": "Work hard and keep going! / Keep up the great effort!",
+          "indonesian": "Semangat terus! / Teruslah berusaha!",
+          "note": "加油 literally means 'add fuel' — like 'give it your all!' or 'go for it!' A cheer of encouragement!"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'abacus' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "珠子",
+          "pinyin": "zhūzi",
+          "translation": "beads"
+        },
+        {
+          "chinese": "数字",
+          "pinyin": "shùzì",
+          "translation": "numbers"
+        },
+        {
+          "chinese": "算盘",
+          "pinyin": "suànpán",
+          "translation": "abacus"
+        },
+        {
+          "chinese": "加法",
+          "pinyin": "jiāfǎ",
+          "translation": "addition"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "算盘 (suànpán) means 'abacus' — it's the clever counting tool with beads that Teacher Wang taught us to use!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "专心",
+      "questionPinyin": "zhuānxīn",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "be careful"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "focus / concentrate"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "practise"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "amazing"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "专心 (zhuānxīn) means 'focus' or 'concentrate' — 专 means 'dedicated' and 心 means 'heart/mind'. When you 专心, you put your whole heart into what you're doing!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "厉害",
+      "questionPinyin": "lìhai",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "thank you"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "well done"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "amazing / impressive"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "try again"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "厉害 (lìhai) means 'amazing' or 'impressive' — Teacher Wang says 你真厉害 to tell you that you did something incredible!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'addition' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "加法",
+          "pinyin": "jiāfǎ",
+          "translation": "addition"
+        },
+        {
+          "chinese": "数字",
+          "pinyin": "shùzì",
+          "translation": "numbers"
+        },
+        {
+          "chinese": "拨",
+          "pinyin": "bō",
+          "translation": "flick / move beads"
+        },
+        {
+          "chinese": "练习",
+          "pinyin": "liànxí",
+          "translation": "practise"
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "加法 (jiāfǎ) means 'addition' — 加 means 'add/plus' and 法 means 'method'. You can do 加法 with an abacus by moving the beads!"
+    }
+  ]
+}

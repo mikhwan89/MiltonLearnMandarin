@@ -1,0 +1,997 @@
+{
+  "id": "scene50_gymnastics",
+  "title": "学体操",
+  "description": "Gymnastics training with Coach Zhang",
+  "characterName": "张教练",
+  "characterEmoji": "🤸",
+  "characterRole": "coach",
+  "category": "PLAY_AND_HOBBIES",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你好！我是张教练。今天我们学体操！体操需要平衡和柔软，准备好了吗？",
+      "textPinyin": "Nǐ hǎo! Wǒ shì Zhāng jiàoliàn. Jīntiān wǒmen xué tǐcāo! Tǐcāo xūyào pínghéng hé róuruǎn, zhǔnbèi hǎo le ma?",
+      "textEnglish": "Hello! I am Coach Zhang. Today we're learning gymnastics! Gymnastics needs balance and flexibility. Are you ready?",
+      "textIndonesian": "Halo! Saya Pelatih Zhang. Hari ini kita belajar senam! Senam membutuhkan keseimbangan dan kelenturan, sudah siap?",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ hǎo",
+          "chinese": "你好",
+          "english": "Hello",
+          "indonesian": "Halo"
+        },
+        {
+          "pinyin": "Wǒ",
+          "chinese": "我",
+          "english": "I",
+          "indonesian": "Saya"
+        },
+        {
+          "pinyin": "shì",
+          "chinese": "是",
+          "english": "am / is",
+          "indonesian": "adalah"
+        },
+        {
+          "pinyin": "Zhāng jiàoliàn",
+          "chinese": "张教练",
+          "english": "Coach Zhang",
+          "indonesian": "Pelatih Zhang"
+        },
+        {
+          "pinyin": "Jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we",
+          "indonesian": "kita"
+        },
+        {
+          "pinyin": "xué",
+          "chinese": "学",
+          "english": "learn",
+          "indonesian": "belajar"
+        },
+        {
+          "pinyin": "tǐcāo",
+          "chinese": "体操",
+          "english": "gymnastics",
+          "indonesian": "senam / gimnastik",
+          "note": "体操 means 'gymnastics' — 体 means 'body' and 操 means 'exercise/drill'. Body exercises!"
+        },
+        {
+          "pinyin": "Tǐcāo",
+          "chinese": "体操",
+          "english": "Gymnastics",
+          "indonesian": "Senam"
+        },
+        {
+          "pinyin": "xūyào",
+          "chinese": "需要",
+          "english": "need / require",
+          "indonesian": "membutuhkan / perlu"
+        },
+        {
+          "pinyin": "pínghéng",
+          "chinese": "平衡",
+          "english": "balance",
+          "indonesian": "keseimbangan / seimbang",
+          "note": "平衡 means 'balance' — 平 means 'flat/level' and 衡 means 'weigh/balance'. Keeping things level!"
+        },
+        {
+          "pinyin": "hé",
+          "chinese": "和",
+          "english": "and",
+          "indonesian": "dan",
+          "note": "和 means 'and' when connecting two things — 平衡和柔软 means 'balance AND flexibility'!"
+        },
+        {
+          "pinyin": "róuruǎn",
+          "chinese": "柔软",
+          "english": "flexible / soft / supple",
+          "indonesian": "lentur / fleksibel",
+          "note": "柔软 means 'flexible/soft' — 柔 means 'gentle/soft' and 软 means 'soft'. Being bendy and stretchy!"
+        },
+        {
+          "pinyin": "zhǔnbèi hǎo le",
+          "chinese": "准备好了",
+          "english": "ready / prepared",
+          "indonesian": "sudah siap"
+        },
+        {
+          "pinyin": "ma",
+          "chinese": "吗",
+          "english": "(question word — turns it into a yes/no question)",
+          "indonesian": "(kata tanya)",
+          "note": "吗 at the end of a sentence turns it into a yes/no question — 准备好了吗 means 'Are you ready?'"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "准备好了！张教练，体操真好看！",
+          "pinyin": "Zhǔnbèi hǎo le! Zhāng jiàoliàn, tǐcāo zhēn hǎo kàn!",
+          "english": "Ready! Coach Zhang, gymnastics is so beautiful to watch!",
+          "indonesian": "Sudah siap! Pelatih Zhang, senam kelihatannya keren sekali!",
+          "pinyinWords": [
+            {
+              "pinyin": "Zhǔnbèi hǎo le",
+              "chinese": "准备好了",
+              "english": "Ready!",
+              "indonesian": "Sudah siap!"
+            },
+            {
+              "pinyin": "Zhāng jiàoliàn",
+              "chinese": "张教练",
+              "english": "Coach Zhang",
+              "indonesian": "Pelatih Zhang"
+            },
+            {
+              "pinyin": "tǐcāo",
+              "chinese": "体操",
+              "english": "gymnastics",
+              "indonesian": "senam"
+            },
+            {
+              "pinyin": "zhēn hǎo kàn",
+              "chinese": "真好看",
+              "english": "really beautiful to watch / so good-looking",
+              "indonesian": "kelihatannya keren sekali / sangat indah"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我准备好了！体操需要平衡，我知道！",
+          "pinyin": "Wǒ zhǔnbèi hǎo le! Tǐcāo xūyào pínghéng, wǒ zhīdào!",
+          "english": "I'm ready! Gymnastics needs balance, I know!",
+          "indonesian": "Aku sudah siap! Senam butuh keseimbangan, aku tahu!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "zhǔnbèi hǎo le",
+              "chinese": "准备好了",
+              "english": "am ready",
+              "indonesian": "sudah siap"
+            },
+            {
+              "pinyin": "Tǐcāo",
+              "chinese": "体操",
+              "english": "Gymnastics",
+              "indonesian": "Senam"
+            },
+            {
+              "pinyin": "xūyào",
+              "chinese": "需要",
+              "english": "needs",
+              "indonesian": "membutuhkan"
+            },
+            {
+              "pinyin": "pínghéng",
+              "chinese": "平衡",
+              "english": "balance",
+              "indonesian": "keseimbangan"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "zhīdào",
+              "chinese": "知道",
+              "english": "know",
+              "indonesian": "tahu"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好！教练，我也很柔软！你看！",
+          "pinyin": "Hǎo! Jiàoliàn, wǒ yě hěn róuruǎn! Nǐ kàn!",
+          "english": "OK! Coach, I'm also very flexible! Watch!",
+          "indonesian": "Oke! Pelatih, aku juga sangat lentur! Lihat!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "OK / Great",
+              "indonesian": "Oke / Bagus"
+            },
+            {
+              "pinyin": "Jiàoliàn",
+              "chinese": "教练",
+              "english": "Coach",
+              "indonesian": "Pelatih"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "yě",
+              "chinese": "也",
+              "english": "also / too",
+              "indonesian": "juga",
+              "note": "也 means 'also' or 'too' — 我也 means 'I also / me too'!"
+            },
+            {
+              "pinyin": "hěn róuruǎn",
+              "chinese": "很柔软",
+              "english": "very flexible",
+              "indonesian": "sangat lentur"
+            },
+            {
+              "pinyin": "Nǐ kàn",
+              "chinese": "你看",
+              "english": "Look! / Watch!",
+              "indonesian": "Lihat! / Perhatikan!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "很好！现在我们来练跳跃！跳起来，然后落地要稳！看我先跳一个！",
+      "textPinyin": "Hěn hǎo! Xiànzài wǒmen lái liàn tiàoyuè! Tiào qǐlái, ránhòu luòdì yào wěn! Kàn wǒ xiān tiào yī gè!",
+      "textEnglish": "Very good! Now let's practise jumping! Jump up, then land steadily! Watch me jump one first!",
+      "textIndonesian": "Bagus sekali! Sekarang kita latihan melompat! Lompat ke atas, lalu mendarat harus stabil! Lihat aku lompat dulu satu kali!",
+      "pinyinWords": [
+        {
+          "pinyin": "Hěn hǎo",
+          "chinese": "很好",
+          "english": "very good",
+          "indonesian": "bagus sekali"
+        },
+        {
+          "pinyin": "Xiànzài",
+          "chinese": "现在",
+          "english": "now",
+          "indonesian": "sekarang"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we / let's",
+          "indonesian": "kita"
+        },
+        {
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "let's / come",
+          "indonesian": "ayo / mari"
+        },
+        {
+          "pinyin": "liàn",
+          "chinese": "练",
+          "english": "practise / train",
+          "indonesian": "latihan / berlatih"
+        },
+        {
+          "pinyin": "tiàoyuè",
+          "chinese": "跳跃",
+          "english": "jump / leap",
+          "indonesian": "lompat / melompat",
+          "note": "跳跃 means 'jump/leap' — 跳 means 'jump' and 跃 also means 'leap'. Together they mean a big, exciting jump!"
+        },
+        {
+          "pinyin": "Tiào qǐlái",
+          "chinese": "跳起来",
+          "english": "jump up",
+          "indonesian": "lompat ke atas",
+          "note": "跳起来 means 'jump up!' — 跳 is 'jump', 起来 means 'up / rising'. Together: jump and go up!"
+        },
+        {
+          "pinyin": "ránhòu",
+          "chinese": "然后",
+          "english": "then / after that",
+          "indonesian": "lalu / kemudian"
+        },
+        {
+          "pinyin": "luòdì",
+          "chinese": "落地",
+          "english": "land / touch the ground",
+          "indonesian": "mendarat",
+          "note": "落地 means 'land' — 落 means 'fall/come down' and 地 means 'ground/floor'. Coming back down to the ground!"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "must / needs to",
+          "indonesian": "harus"
+        },
+        {
+          "pinyin": "wěn",
+          "chinese": "稳",
+          "english": "stable / steady / firm",
+          "indonesian": "stabil / mantap"
+        },
+        {
+          "pinyin": "Kàn",
+          "chinese": "看",
+          "english": "Watch / Look",
+          "indonesian": "Lihat / Perhatikan"
+        },
+        {
+          "pinyin": "wǒ",
+          "chinese": "我",
+          "english": "me / I",
+          "indonesian": "aku"
+        },
+        {
+          "pinyin": "xiān",
+          "chinese": "先",
+          "english": "first / to start",
+          "indonesian": "dulu / pertama"
+        },
+        {
+          "pinyin": "tiào",
+          "chinese": "跳",
+          "english": "jump",
+          "indonesian": "lompat"
+        },
+        {
+          "pinyin": "yī gè",
+          "chinese": "一个",
+          "english": "one (jump)",
+          "indonesian": "satu (kali)",
+          "note": "个 is a general measure word — 一个 means 'one of something'. 跳一个 means 'do one jump'!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "好的！教练跳得真高！我也要跳跃！",
+          "pinyin": "Hǎo de! Jiàoliàn tiào de zhēn gāo! Wǒ yě yào tiàoyuè!",
+          "english": "OK! Coach jumps so high! I also want to jump!",
+          "indonesian": "Baik! Pelatih lompatnya tinggi sekali! Aku juga mau melompat!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "OK",
+              "indonesian": "Baik"
+            },
+            {
+              "pinyin": "Jiàoliàn",
+              "chinese": "教练",
+              "english": "Coach",
+              "indonesian": "Pelatih"
+            },
+            {
+              "pinyin": "tiào",
+              "chinese": "跳",
+              "english": "jumps",
+              "indonesian": "lompat"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "得",
+              "english": "(shows how well the jumping is done)",
+              "indonesian": "(menunjukkan seberapa baik lompatannya)",
+              "note": "得 connects a verb to how well it is done — 跳得真高 means 'jumps really high'!"
+            },
+            {
+              "pinyin": "zhēn gāo",
+              "chinese": "真高",
+              "english": "really high",
+              "indonesian": "tinggi sekali"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "yě",
+              "chinese": "也",
+              "english": "also / too",
+              "indonesian": "juga"
+            },
+            {
+              "pinyin": "yào",
+              "chinese": "要",
+              "english": "want to",
+              "indonesian": "mau"
+            },
+            {
+              "pinyin": "tiàoyuè",
+              "chinese": "跳跃",
+              "english": "jump / leap",
+              "indonesian": "melompat"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我知道！跳起来，然后落地要稳！对吗？",
+          "pinyin": "Wǒ zhīdào! Tiào qǐlái, ránhòu luòdì yào wěn! Duì ma?",
+          "english": "I know! Jump up, then land steadily! Right?",
+          "indonesian": "Aku tahu! Lompat ke atas, lalu mendarat harus stabil! Benar?",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ zhīdào",
+              "chinese": "我知道",
+              "english": "I know",
+              "indonesian": "Aku tahu"
+            },
+            {
+              "pinyin": "Tiào qǐlái",
+              "chinese": "跳起来",
+              "english": "jump up",
+              "indonesian": "lompat ke atas"
+            },
+            {
+              "pinyin": "ránhòu",
+              "chinese": "然后",
+              "english": "then",
+              "indonesian": "lalu"
+            },
+            {
+              "pinyin": "luòdì",
+              "chinese": "落地",
+              "english": "land",
+              "indonesian": "mendarat"
+            },
+            {
+              "pinyin": "yào",
+              "chinese": "要",
+              "english": "must",
+              "indonesian": "harus"
+            },
+            {
+              "pinyin": "wěn",
+              "chinese": "稳",
+              "english": "steady",
+              "indonesian": "stabil"
+            },
+            {
+              "pinyin": "Duì ma",
+              "chinese": "对吗",
+              "english": "Right? / Is that correct?",
+              "indonesian": "Benar? / Betul?",
+              "note": "对吗 is asking 'am I right?' — 对 means 'correct' and 吗 makes it a question!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "非常好！现在来学翻跟头！翻跟头要身体柔软才能做到。加油！你能做到的！",
+      "textPinyin": "Fēicháng hǎo! Xiànzài lái xué fān gēntou! Fān gēntou yào shēntǐ róuruǎn cái néng zuò dào. Jiāyóu! Nǐ néng zuò dào de!",
+      "textEnglish": "Excellent! Now let's learn a somersault! A somersault needs a flexible body to do it. Go for it! You can do it!",
+      "textIndonesian": "Luar biasa! Sekarang belajar berguling / salto! Salto membutuhkan tubuh yang lentur untuk melakukannya. Semangat! Kamu pasti bisa!",
+      "pinyinWords": [
+        {
+          "pinyin": "Fēicháng hǎo",
+          "chinese": "非常好",
+          "english": "Excellent / extremely good",
+          "indonesian": "Luar biasa / sangat bagus"
+        },
+        {
+          "pinyin": "Xiànzài",
+          "chinese": "现在",
+          "english": "now",
+          "indonesian": "sekarang"
+        },
+        {
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "let's / come",
+          "indonesian": "ayo / mari"
+        },
+        {
+          "pinyin": "xué",
+          "chinese": "学",
+          "english": "learn",
+          "indonesian": "belajar"
+        },
+        {
+          "pinyin": "fān gēntou",
+          "chinese": "翻跟头",
+          "english": "somersault / cartwheel",
+          "indonesian": "salto / guling",
+          "note": "翻跟头 means 'somersault' — 翻 means 'flip/turn over', 跟头 means 'tumble'. Flipping your whole body!"
+        },
+        {
+          "pinyin": "Fān gēntou",
+          "chinese": "翻跟头",
+          "english": "A somersault",
+          "indonesian": "Salto"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "needs / requires",
+          "indonesian": "membutuhkan / harus"
+        },
+        {
+          "pinyin": "shēntǐ",
+          "chinese": "身体",
+          "english": "body",
+          "indonesian": "tubuh"
+        },
+        {
+          "pinyin": "róuruǎn",
+          "chinese": "柔软",
+          "english": "flexible / supple",
+          "indonesian": "lentur / fleksibel"
+        },
+        {
+          "pinyin": "cái",
+          "chinese": "才",
+          "english": "then / only then",
+          "indonesian": "baru bisa / barulah",
+          "note": "才 means 'only then' — 柔软才能做到 means 'only if you're flexible can you do it'. A fun condition word!"
+        },
+        {
+          "pinyin": "néng",
+          "chinese": "能",
+          "english": "can / be able to",
+          "indonesian": "bisa / mampu"
+        },
+        {
+          "pinyin": "zuò dào",
+          "chinese": "做到",
+          "english": "achieve / manage to do",
+          "indonesian": "berhasil melakukan",
+          "note": "做到 means 'manage to do it!' — 做 is 'do' and 到 shows you reached the goal. You DID it!"
+        },
+        {
+          "pinyin": "Jiāyóu",
+          "chinese": "加油",
+          "english": "Go for it!",
+          "indonesian": "Semangat!"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "néng zuò dào",
+          "chinese": "能做到",
+          "english": "can do it",
+          "indonesian": "pasti bisa"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(adds certainty — you definitely can!)",
+          "indonesian": "(menunjukkan kepastian)",
+          "note": "的 at the end makes the sentence sound certain — 你能做到的 means 'You CAN definitely do it!'"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我要翻跟头！教练，你看！我能做到的！",
+          "pinyin": "Wǒ yào fān gēntou! Jiàoliàn, nǐ kàn! Wǒ néng zuò dào de!",
+          "english": "I want to do a somersault! Coach, watch! I can definitely do it!",
+          "indonesian": "Aku mau salto! Pelatih, lihat! Aku pasti bisa!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ yào",
+              "chinese": "我要",
+              "english": "I want to",
+              "indonesian": "Aku mau"
+            },
+            {
+              "pinyin": "fān gēntou",
+              "chinese": "翻跟头",
+              "english": "do a somersault",
+              "indonesian": "salto"
+            },
+            {
+              "pinyin": "Jiàoliàn",
+              "chinese": "教练",
+              "english": "Coach",
+              "indonesian": "Pelatih"
+            },
+            {
+              "pinyin": "nǐ kàn",
+              "chinese": "你看",
+              "english": "watch me / look",
+              "indonesian": "lihat aku"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "néng zuò dào de",
+              "chinese": "能做到的",
+              "english": "can definitely do it",
+              "indonesian": "pasti bisa"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "翻跟头好难啊！但是我会努力！加油！",
+          "pinyin": "Fān gēntou hǎo nán a! Dànshì wǒ huì nǔlì! Jiāyóu!",
+          "english": "A somersault is so hard! But I will try hard! Go for it!",
+          "indonesian": "Salto susah sekali! Tapi aku akan berusaha keras! Semangat!",
+          "pinyinWords": [
+            {
+              "pinyin": "Fān gēntou",
+              "chinese": "翻跟头",
+              "english": "A somersault",
+              "indonesian": "Salto"
+            },
+            {
+              "pinyin": "hǎo nán",
+              "chinese": "好难",
+              "english": "so hard / very difficult",
+              "indonesian": "susah sekali"
+            },
+            {
+              "pinyin": "a",
+              "chinese": "啊",
+              "english": "(adds feeling / wow!)",
+              "indonesian": "(menambah perasaan / wow!)",
+              "note": "啊 adds emotion to a sentence — 好难啊 sounds like 'it's SO hard!' with feeling!"
+            },
+            {
+              "pinyin": "Dànshì",
+              "chinese": "但是",
+              "english": "but / however",
+              "indonesian": "tapi / tetapi"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "huì",
+              "chinese": "会",
+              "english": "will",
+              "indonesian": "akan"
+            },
+            {
+              "pinyin": "nǔlì",
+              "chinese": "努力",
+              "english": "try hard / work hard",
+              "indonesian": "berusaha keras"
+            },
+            {
+              "pinyin": "Jiāyóu",
+              "chinese": "加油",
+              "english": "Go for it!",
+              "indonesian": "Semangat!"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好！翻跟头需要身体柔软！我会练习的！",
+          "pinyin": "Hǎo! Fān gēntou xūyào shēntǐ róuruǎn! Wǒ huì liànxí de!",
+          "english": "OK! A somersault needs a flexible body! I will practise!",
+          "indonesian": "Oke! Salto butuh tubuh yang lentur! Aku akan berlatih!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "OK / good",
+              "indonesian": "Oke / bagus"
+            },
+            {
+              "pinyin": "Fān gēntou",
+              "chinese": "翻跟头",
+              "english": "a somersault",
+              "indonesian": "salto"
+            },
+            {
+              "pinyin": "xūyào",
+              "chinese": "需要",
+              "english": "needs",
+              "indonesian": "membutuhkan"
+            },
+            {
+              "pinyin": "shēntǐ",
+              "chinese": "身体",
+              "english": "body",
+              "indonesian": "tubuh"
+            },
+            {
+              "pinyin": "róuruǎn",
+              "chinese": "柔软",
+              "english": "flexible",
+              "indonesian": "lentur"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "huì liànxí",
+              "chinese": "会练习",
+              "english": "will practise",
+              "indonesian": "akan berlatih"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(I definitely will!)",
+              "indonesian": "(pasti akan!)",
+              "note": "的 at the end makes a promise or prediction sound certain — 我会练习的 means 'I WILL practise, for sure!'"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "你今天表现得非常棒！平衡、跳跃、翻跟头都学了！继续加油，你会成为体操冠军的！",
+      "textPinyin": "Nǐ jīntiān biǎoxiàn de fēicháng bàng! Pínghéng, tiàoyuè, fān gēntou dōu xué le! Jìxù jiāyóu, nǐ huì chéngwéi tǐcāo guànjūn de!",
+      "textEnglish": "You performed extremely well today! You've learnt balance, jumping, and somersaults! Keep going, you'll become a gymnastics champion!",
+      "textIndonesian": "Penampilanmu hari ini luar biasa! Keseimbangan, lompatan, dan salto semuanya sudah dipelajari! Terus semangat, kamu akan jadi juara senam!",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "biǎoxiàn",
+          "chinese": "表现",
+          "english": "performed / showed",
+          "indonesian": "tampil / performa"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "得",
+          "english": "(shows how well the performing was done)",
+          "indonesian": "(menunjukkan seberapa baik penampilannya)",
+          "note": "得 connects a verb to how well it was done — 表现得非常棒 means 'performed extremely brilliantly'!"
+        },
+        {
+          "pinyin": "fēicháng bàng",
+          "chinese": "非常棒",
+          "english": "extremely brilliant / fantastic",
+          "indonesian": "luar biasa / fantastis"
+        },
+        {
+          "pinyin": "Pínghéng",
+          "chinese": "平衡",
+          "english": "Balance",
+          "indonesian": "Keseimbangan"
+        },
+        {
+          "pinyin": "tiàoyuè",
+          "chinese": "跳跃",
+          "english": "jumping",
+          "indonesian": "lompatan"
+        },
+        {
+          "pinyin": "fān gēntou",
+          "chinese": "翻跟头",
+          "english": "somersaults",
+          "indonesian": "salto"
+        },
+        {
+          "pinyin": "dōu",
+          "chinese": "都",
+          "english": "all / both",
+          "indonesian": "semua / semuanya",
+          "note": "都 means 'all' — 都学了 means 'all have been learnt'. It covers everything in the list!"
+        },
+        {
+          "pinyin": "xué le",
+          "chinese": "学了",
+          "english": "have learnt",
+          "indonesian": "sudah belajar",
+          "note": "了 after a verb shows the action is done — 学了 means 'have learnt / already learnt'!"
+        },
+        {
+          "pinyin": "Jìxù",
+          "chinese": "继续",
+          "english": "continue / keep going",
+          "indonesian": "terus / lanjutkan"
+        },
+        {
+          "pinyin": "jiāyóu",
+          "chinese": "加油",
+          "english": "go for it / keep it up",
+          "indonesian": "semangat"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "huì",
+          "chinese": "会",
+          "english": "will",
+          "indonesian": "akan"
+        },
+        {
+          "pinyin": "chéngwéi",
+          "chinese": "成为",
+          "english": "become",
+          "indonesian": "menjadi"
+        },
+        {
+          "pinyin": "tǐcāo guànjūn",
+          "chinese": "体操冠军",
+          "english": "gymnastics champion",
+          "indonesian": "juara senam",
+          "note": "冠军 means 'champion' — 冠 means 'crown' and 军 means 'army/team'. The one wearing the crown!"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(you definitely will!)",
+          "indonesian": "(pasti akan!)",
+          "note": "的 at the end makes this a certain prediction — the coach is sure you'll be a champion!"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'gymnastics' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "游泳",
+          "pinyin": "yóuyǒng",
+          "translation": "swimming"
+        },
+        {
+          "chinese": "体操",
+          "pinyin": "tǐcāo",
+          "translation": "gymnastics"
+        },
+        {
+          "chinese": "跑步",
+          "pinyin": "pǎobù",
+          "translation": "running"
+        },
+        {
+          "chinese": "跳舞",
+          "pinyin": "tiàowǔ",
+          "translation": "dancing"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "体操 (tǐcāo) means 'gymnastics' — 体 means 'body' and 操 means 'exercise'. Body exercises — flips, jumps, and balance moves!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "翻跟头",
+      "questionPinyin": "fān gēntou",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "jump up high"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "somersault / cartwheel"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "land steadily"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "stand still"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "翻跟头 (fān gēntou) means 'somersault' — 翻 means 'flip/turn over' and 跟头 means 'tumble'. It's when you flip your whole body!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "落地",
+      "questionPinyin": "luòdì",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "jump up"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "spin around"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "land / touch the ground"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "balance"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "落地 (luòdì) means 'land' — 落 means 'fall/come down' and 地 means 'ground'. Coming back down to the ground after a jump!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'balance' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "柔软",
+          "pinyin": "róuruǎn",
+          "translation": "flexible"
+        },
+        {
+          "chinese": "跳跃",
+          "pinyin": "tiàoyuè",
+          "translation": "jump"
+        },
+        {
+          "chinese": "平衡",
+          "pinyin": "pínghéng",
+          "translation": "balance"
+        },
+        {
+          "chinese": "加油",
+          "pinyin": "jiāyóu",
+          "translation": "go for it!"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "平衡 (pínghéng) means 'balance' — 平 means 'level/flat' and 衡 means 'weigh'. Keeping yourself level and steady!"
+    }
+  ]
+}

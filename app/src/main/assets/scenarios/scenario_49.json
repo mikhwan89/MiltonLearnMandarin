@@ -1,0 +1,926 @@
+{
+  "id": "scene49_tennis",
+  "title": "学网球",
+  "description": "Tennis practice with Coach Liu",
+  "characterName": "刘教练",
+  "characterEmoji": "🎾",
+  "characterRole": "coach",
+  "category": "PLAY_AND_HOBBIES",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你好！我是刘教练。今天我们来学网球，好吗？先拿好你的球拍！",
+      "textPinyin": "Nǐ hǎo! Wǒ shì Liú jiàoliàn. Jīntiān wǒmen lái xué wǎngqiú, hǎo ma? Xiān ná hǎo nǐ de qiúpāi!",
+      "textEnglish": "Hello! I am Coach Liu. Today we're going to learn tennis, OK? First hold your racket properly!",
+      "textIndonesian": "Halo! Saya Pelatih Liu. Hari ini kita belajar tenis, ya? Pertama-tama pegang raketmu dengan benar!",
+      "pinyinWords": [
+        {
+          "pinyin": "Nǐ hǎo",
+          "chinese": "你好",
+          "english": "Hello",
+          "indonesian": "Halo"
+        },
+        {
+          "pinyin": "Wǒ",
+          "chinese": "我",
+          "english": "I",
+          "indonesian": "Saya"
+        },
+        {
+          "pinyin": "shì",
+          "chinese": "是",
+          "english": "am / is",
+          "indonesian": "adalah"
+        },
+        {
+          "pinyin": "Liú jiàoliàn",
+          "chinese": "刘教练",
+          "english": "Coach Liu",
+          "indonesian": "Pelatih Liu"
+        },
+        {
+          "pinyin": "Jīntiān",
+          "chinese": "今天",
+          "english": "today",
+          "indonesian": "hari ini"
+        },
+        {
+          "pinyin": "wǒmen",
+          "chinese": "我们",
+          "english": "we",
+          "indonesian": "kita"
+        },
+        {
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "come / let's",
+          "indonesian": "ayo / mari"
+        },
+        {
+          "pinyin": "xué",
+          "chinese": "学",
+          "english": "learn / study",
+          "indonesian": "belajar"
+        },
+        {
+          "pinyin": "wǎngqiú",
+          "chinese": "网球",
+          "english": "tennis",
+          "indonesian": "tenis",
+          "note": "网球 means 'tennis' — 网 means 'net' and 球 means 'ball'. A net ball game!"
+        },
+        {
+          "pinyin": "hǎo ma",
+          "chinese": "好吗",
+          "english": "OK? / alright?",
+          "indonesian": "ya? / boleh?",
+          "note": "好吗 is a gentle way to ask 'is that OK?' — the coach is being friendly and kind!"
+        },
+        {
+          "pinyin": "Xiān",
+          "chinese": "先",
+          "english": "first / to start with",
+          "indonesian": "pertama / dulu"
+        },
+        {
+          "pinyin": "ná hǎo",
+          "chinese": "拿好",
+          "english": "hold properly / hold firmly",
+          "indonesian": "pegang dengan benar",
+          "note": "拿好 means 'hold properly' — 拿 means 'hold/grab' and 好 here means 'well/properly'!"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "your",
+          "indonesian": "kamu / milikmu"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(shows ownership — your racket)",
+          "indonesian": "(menunjukkan kepemilikan)",
+          "note": "的 shows something belongs to someone — 你的 means 'your', 我的 means 'my'!"
+        },
+        {
+          "pinyin": "qiúpāi",
+          "chinese": "球拍",
+          "english": "racket",
+          "indonesian": "raket",
+          "note": "球拍 means 'racket' — 球 means 'ball' and 拍 means 'bat/paddle'. A ball-hitting tool!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "好的，刘教练！我喜欢网球！",
+          "pinyin": "Hǎo de, Liú jiàoliàn! Wǒ xǐhuān wǎngqiú!",
+          "english": "OK, Coach Liu! I love tennis!",
+          "indonesian": "Baik, Pelatih Liu! Aku suka tenis!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "OK / alright",
+              "indonesian": "Baik / oke"
+            },
+            {
+              "pinyin": "Liú jiàoliàn",
+              "chinese": "刘教练",
+              "english": "Coach Liu",
+              "indonesian": "Pelatih Liu"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like / love",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "wǎngqiú",
+              "chinese": "网球",
+              "english": "tennis",
+              "indonesian": "tenis"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好！我的球拍在这里！我准备好了！",
+          "pinyin": "Hǎo! Wǒ de qiúpāi zài zhèlǐ! Wǒ zhǔnbèi hǎo le!",
+          "english": "OK! My racket is here! I'm ready!",
+          "indonesian": "Oke! Raketku ada di sini! Aku sudah siap!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "OK / great",
+              "indonesian": "Oke / bagus"
+            },
+            {
+              "pinyin": "Wǒ de",
+              "chinese": "我的",
+              "english": "my",
+              "indonesian": "milikku"
+            },
+            {
+              "pinyin": "qiúpāi",
+              "chinese": "球拍",
+              "english": "racket",
+              "indonesian": "raket"
+            },
+            {
+              "pinyin": "zài",
+              "chinese": "在",
+              "english": "is at / is here",
+              "indonesian": "ada di",
+              "note": "在 tells you where something is — 在这里 means 'is here / is at this place'!"
+            },
+            {
+              "pinyin": "zhèlǐ",
+              "chinese": "这里",
+              "english": "here",
+              "indonesian": "di sini"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "zhǔnbèi hǎo le",
+              "chinese": "准备好了",
+              "english": "am ready",
+              "indonesian": "sudah siap",
+              "note": "准备好了 means 'ready now!' — 准备 is 'prepare', 好 means 'well/done', 了 shows it just finished!"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "教练，网球怎么打？请教我！",
+          "pinyin": "Jiàoliàn, wǎngqiú zěnme dǎ? Qǐng jiāo wǒ!",
+          "english": "Coach, how do you play tennis? Please teach me!",
+          "indonesian": "Pelatih, bagaimana cara bermain tenis? Tolong ajari aku!",
+          "pinyinWords": [
+            {
+              "pinyin": "Jiàoliàn",
+              "chinese": "教练",
+              "english": "Coach",
+              "indonesian": "Pelatih"
+            },
+            {
+              "pinyin": "wǎngqiú",
+              "chinese": "网球",
+              "english": "tennis",
+              "indonesian": "tenis"
+            },
+            {
+              "pinyin": "zěnme",
+              "chinese": "怎么",
+              "english": "how / in what way",
+              "indonesian": "bagaimana / gimana"
+            },
+            {
+              "pinyin": "dǎ",
+              "chinese": "打",
+              "english": "play / hit",
+              "indonesian": "bermain / memukul"
+            },
+            {
+              "pinyin": "Qǐng",
+              "chinese": "请",
+              "english": "please",
+              "indonesian": "tolong / mohon"
+            },
+            {
+              "pinyin": "jiāo wǒ",
+              "chinese": "教我",
+              "english": "teach me",
+              "indonesian": "ajari aku"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "很好！现在看我打球。先学发球，然后学接球。看好了！",
+      "textPinyin": "Hěn hǎo! Xiànzài kàn wǒ dǎ qiú. Xiān xué fāqiú, ránhòu xué jiē qiú. Kàn hǎo le!",
+      "textEnglish": "Very good! Now watch me hit the ball. First learn to serve, then learn to return. Watch carefully!",
+      "textIndonesian": "Bagus sekali! Sekarang lihat aku memukul bola. Pertama belajar servis, lalu belajar mengembalikan bola. Perhatikan baik-baik!",
+      "pinyinWords": [
+        {
+          "pinyin": "Hěn hǎo",
+          "chinese": "很好",
+          "english": "very good / great",
+          "indonesian": "bagus sekali"
+        },
+        {
+          "pinyin": "Xiànzài",
+          "chinese": "现在",
+          "english": "now",
+          "indonesian": "sekarang"
+        },
+        {
+          "pinyin": "kàn",
+          "chinese": "看",
+          "english": "watch / look",
+          "indonesian": "lihat / perhatikan"
+        },
+        {
+          "pinyin": "wǒ",
+          "chinese": "我",
+          "english": "me / I",
+          "indonesian": "aku / saya"
+        },
+        {
+          "pinyin": "dǎ qiú",
+          "chinese": "打球",
+          "english": "hit the ball / play ball",
+          "indonesian": "memukul bola / bermain bola",
+          "note": "打球 means 'hit the ball' — 打 means 'hit/play' and 球 means 'ball'. You use 打 for ball sports!"
+        },
+        {
+          "pinyin": "Xiān",
+          "chinese": "先",
+          "english": "first",
+          "indonesian": "pertama / dulu"
+        },
+        {
+          "pinyin": "xué",
+          "chinese": "学",
+          "english": "learn",
+          "indonesian": "belajar"
+        },
+        {
+          "pinyin": "fāqiú",
+          "chinese": "发球",
+          "english": "serve (the ball)",
+          "indonesian": "servis (bola)",
+          "note": "发球 means 'serve' in tennis — 发 means 'send out / launch' and 球 means 'ball'. Launching the ball to start!"
+        },
+        {
+          "pinyin": "ránhòu",
+          "chinese": "然后",
+          "english": "then / after that",
+          "indonesian": "lalu / kemudian"
+        },
+        {
+          "pinyin": "xué",
+          "chinese": "学",
+          "english": "learn",
+          "indonesian": "belajar"
+        },
+        {
+          "pinyin": "jiē qiú",
+          "chinese": "接球",
+          "english": "return the ball / catch the ball",
+          "indonesian": "mengembalikan bola",
+          "note": "接球 means 'return/receive the ball' — 接 means 'receive/catch' and 球 means 'ball'. Catching what comes to you!"
+        },
+        {
+          "pinyin": "Kàn hǎo le",
+          "chinese": "看好了",
+          "english": "Watch carefully now!",
+          "indonesian": "Perhatikan baik-baik!",
+          "note": "看好了 is a sporty way to say 'watch closely!' — the coach says it before showing a skill!"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "好的！我看到了！教练的发球真厉害！",
+          "pinyin": "Hǎo de! Wǒ kàn dào le! Jiàoliàn de fāqiú zhēn lìhài!",
+          "english": "OK! I saw it! Coach's serve is really awesome!",
+          "indonesian": "Baik! Aku lihat! Servis Pelatih keren banget!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "OK",
+              "indonesian": "Baik"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "kàn dào le",
+              "chinese": "看到了",
+              "english": "saw it / I saw",
+              "indonesian": "sudah melihat",
+              "note": "看到了 means 'I saw it!' — 看 is 'look', 到 shows you succeeded, 了 says it happened!"
+            },
+            {
+              "pinyin": "Jiàoliàn",
+              "chinese": "教练",
+              "english": "Coach",
+              "indonesian": "Pelatih"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(belongs to Coach)",
+              "indonesian": "(milik Pelatih)",
+              "note": "的 shows belonging — 教练的发球 means 'the coach's serve'!"
+            },
+            {
+              "pinyin": "fāqiú",
+              "chinese": "发球",
+              "english": "serve",
+              "indonesian": "servis"
+            },
+            {
+              "pinyin": "zhēn lìhài",
+              "chinese": "真厉害",
+              "english": "really awesome / super impressive",
+              "indonesian": "keren banget / hebat sekali"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我看到了！先发球，然后接球，对吗？",
+          "pinyin": "Wǒ kàn dào le! Xiān fāqiú, ránhòu jiē qiú, duì ma?",
+          "english": "I saw it! First serve, then return, right?",
+          "indonesian": "Aku sudah lihat! Pertama servis, lalu kembalikan bola, benar?",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "kàn dào le",
+              "chinese": "看到了",
+              "english": "saw it",
+              "indonesian": "sudah melihat"
+            },
+            {
+              "pinyin": "Xiān",
+              "chinese": "先",
+              "english": "first",
+              "indonesian": "pertama"
+            },
+            {
+              "pinyin": "fāqiú",
+              "chinese": "发球",
+              "english": "serve",
+              "indonesian": "servis"
+            },
+            {
+              "pinyin": "ránhòu",
+              "chinese": "然后",
+              "english": "then",
+              "indonesian": "lalu"
+            },
+            {
+              "pinyin": "jiē qiú",
+              "chinese": "接球",
+              "english": "return the ball",
+              "indonesian": "kembalikan bola"
+            },
+            {
+              "pinyin": "duì ma",
+              "chinese": "对吗",
+              "english": "right? / correct?",
+              "indonesian": "benar? / betul?",
+              "note": "对吗 is asking 'is that right?' — 对 means 'correct' and 吗 turns it into a question!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "好！现在你来打球！注意网的位置，球要过网！加油！",
+      "textPinyin": "Hǎo! Xiànzài nǐ lái dǎ qiú! Zhùyì wǎng de wèizhi, qiú yào guò wǎng! Jiāyóu!",
+      "textEnglish": "Good! Now you hit the ball! Pay attention to the net's position, the ball must go over the net! Go for it!",
+      "textIndonesian": "Bagus! Sekarang kamu giliran memukul bola! Perhatikan posisi netnya, bola harus melewati net! Semangat!",
+      "pinyinWords": [
+        {
+          "pinyin": "Hǎo",
+          "chinese": "好",
+          "english": "Good / OK",
+          "indonesian": "Bagus / Oke"
+        },
+        {
+          "pinyin": "Xiànzài",
+          "chinese": "现在",
+          "english": "now",
+          "indonesian": "sekarang"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "come / your turn",
+          "indonesian": "giliran / ayo"
+        },
+        {
+          "pinyin": "dǎ qiú",
+          "chinese": "打球",
+          "english": "hit the ball",
+          "indonesian": "memukul bola"
+        },
+        {
+          "pinyin": "Zhùyì",
+          "chinese": "注意",
+          "english": "pay attention / watch out",
+          "indonesian": "perhatikan / hati-hati"
+        },
+        {
+          "pinyin": "wǎng",
+          "chinese": "网",
+          "english": "net",
+          "indonesian": "net / jaring",
+          "note": "网 means 'net' — it is also the same character in 网球 (tennis) and 网络 (internet)! All things connected like a net!"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(connects 'net' to 'position')",
+          "indonesian": "(kata penghubung)",
+          "note": "的 links describing words to nouns — 网的位置 means 'the net's position'!"
+        },
+        {
+          "pinyin": "wèizhi",
+          "chinese": "位置",
+          "english": "position / location",
+          "indonesian": "posisi / lokasi"
+        },
+        {
+          "pinyin": "qiú",
+          "chinese": "球",
+          "english": "ball",
+          "indonesian": "bola"
+        },
+        {
+          "pinyin": "yào",
+          "chinese": "要",
+          "english": "must / needs to",
+          "indonesian": "harus"
+        },
+        {
+          "pinyin": "guò wǎng",
+          "chinese": "过网",
+          "english": "go over the net",
+          "indonesian": "melewati net",
+          "note": "过网 means 'go over the net' — 过 means 'pass/go over' and 网 means 'net'!"
+        },
+        {
+          "pinyin": "Jiāyóu",
+          "chinese": "加油",
+          "english": "Go for it! / You can do it! / Cheers!",
+          "indonesian": "Semangat! / Ayo bisa!",
+          "note": "加油 literally means 'add oil / add fuel' but everyone uses it to cheer someone on — like saying 'You've got this!'"
+        }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "好的！我来打球！球，过网！加油！",
+          "pinyin": "Hǎo de! Wǒ lái dǎ qiú! Qiú, guò wǎng! Jiāyóu!",
+          "english": "OK! I'll hit the ball! Ball, go over the net! Go for it!",
+          "indonesian": "Baik! Aku yang pukul bolanya! Bola, lewati net! Semangat!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo de",
+              "chinese": "好的",
+              "english": "OK",
+              "indonesian": "Baik"
+            },
+            {
+              "pinyin": "Wǒ lái",
+              "chinese": "我来",
+              "english": "I'll do it / it's my turn",
+              "indonesian": "Giliranku"
+            },
+            {
+              "pinyin": "dǎ qiú",
+              "chinese": "打球",
+              "english": "hit the ball",
+              "indonesian": "memukul bola"
+            },
+            {
+              "pinyin": "Qiú",
+              "chinese": "球",
+              "english": "Ball",
+              "indonesian": "Bola"
+            },
+            {
+              "pinyin": "guò wǎng",
+              "chinese": "过网",
+              "english": "go over the net",
+              "indonesian": "lewati net"
+            },
+            {
+              "pinyin": "Jiāyóu",
+              "chinese": "加油",
+              "english": "Go for it!",
+              "indonesian": "Semangat!"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我知道！球要过网！我要用球拍打球！",
+          "pinyin": "Wǒ zhīdào! Qiú yào guò wǎng! Wǒ yào yòng qiúpāi dǎ qiú!",
+          "english": "I know! The ball must go over the net! I'll hit the ball with the racket!",
+          "indonesian": "Aku tahu! Bola harus lewat net! Aku mau pukul bola pakai raket!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ zhīdào",
+              "chinese": "我知道",
+              "english": "I know",
+              "indonesian": "Aku tahu"
+            },
+            {
+              "pinyin": "Qiú",
+              "chinese": "球",
+              "english": "ball",
+              "indonesian": "bola"
+            },
+            {
+              "pinyin": "yào",
+              "chinese": "要",
+              "english": "must",
+              "indonesian": "harus"
+            },
+            {
+              "pinyin": "guò wǎng",
+              "chinese": "过网",
+              "english": "go over the net",
+              "indonesian": "lewati net"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "yào",
+              "chinese": "要",
+              "english": "want to / will",
+              "indonesian": "mau"
+            },
+            {
+              "pinyin": "yòng",
+              "chinese": "用",
+              "english": "use / with",
+              "indonesian": "pakai / menggunakan"
+            },
+            {
+              "pinyin": "qiúpāi",
+              "chinese": "球拍",
+              "english": "racket",
+              "indonesian": "raket"
+            },
+            {
+              "pinyin": "dǎ qiú",
+              "chinese": "打球",
+              "english": "hit the ball",
+              "indonesian": "memukul bola"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "教练，我可以发球吗？我想试试！",
+          "pinyin": "Jiàoliàn, wǒ kěyǐ fāqiú ma? Wǒ xiǎng shì shi!",
+          "english": "Coach, can I serve? I want to try!",
+          "indonesian": "Pelatih, boleh aku servis? Aku mau coba!",
+          "pinyinWords": [
+            {
+              "pinyin": "Jiàoliàn",
+              "chinese": "教练",
+              "english": "Coach",
+              "indonesian": "Pelatih"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "kěyǐ",
+              "chinese": "可以",
+              "english": "can / may",
+              "indonesian": "boleh / bisa"
+            },
+            {
+              "pinyin": "fāqiú",
+              "chinese": "发球",
+              "english": "serve",
+              "indonesian": "servis"
+            },
+            {
+              "pinyin": "ma",
+              "chinese": "吗",
+              "english": "(question word)",
+              "indonesian": "(kata tanya)",
+              "note": "吗 at the end of a sentence turns it into a yes/no question — 可以吗 means 'Can I? / Is it OK?'"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Aku"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "ingin / mau"
+            },
+            {
+              "pinyin": "shì shi",
+              "chinese": "试试",
+              "english": "try / give it a go",
+              "indonesian": "coba",
+              "note": "试试 means 'try it out!' — repeating a verb makes it sound lighter and more casual, like 'have a little go'!"
+            }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 4,
+      "speaker": "CHARACTER",
+      "textChinese": "太棒了！你打得很好！继续练习，你会越来越厉害的！加油！",
+      "textPinyin": "Tài bàng le! Nǐ dǎ de hěn hǎo! Jìxù liànxí, nǐ huì yuèlái yuè lìhài de! Jiāyóu!",
+      "textEnglish": "Amazing! You hit really well! Keep practising, you'll get better and better! Go for it!",
+      "textIndonesian": "Luar biasa! Kamu memukul dengan sangat baik! Terus berlatih, kamu akan semakin hebat! Semangat!",
+      "pinyinWords": [
+        {
+          "pinyin": "Tài bàng le",
+          "chinese": "太棒了",
+          "english": "Amazing! / Fantastic!",
+          "indonesian": "Luar biasa! / Keren sekali!",
+          "note": "太棒了 means 'so amazing!' — 太 means 'too/so', 棒 means 'awesome', 了 adds excitement!"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "dǎ",
+          "chinese": "打",
+          "english": "hit / play",
+          "indonesian": "memukul / bermain"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "得",
+          "english": "(shows how well the action was done)",
+          "indonesian": "(menunjukkan seberapa baik tindakannya)",
+          "note": "得 connects a verb to how well it was done — 打得很好 means 'hits really well'!"
+        },
+        {
+          "pinyin": "hěn hǎo",
+          "chinese": "很好",
+          "english": "very well / very good",
+          "indonesian": "sangat baik"
+        },
+        {
+          "pinyin": "Jìxù",
+          "chinese": "继续",
+          "english": "continue / keep going",
+          "indonesian": "terus / lanjutkan"
+        },
+        {
+          "pinyin": "liànxí",
+          "chinese": "练习",
+          "english": "practise / practice",
+          "indonesian": "berlatih / latihan"
+        },
+        {
+          "pinyin": "nǐ",
+          "chinese": "你",
+          "english": "you",
+          "indonesian": "kamu"
+        },
+        {
+          "pinyin": "huì",
+          "chinese": "会",
+          "english": "will / able to",
+          "indonesian": "akan / bisa"
+        },
+        {
+          "pinyin": "yuèlái yuè lìhài",
+          "chinese": "越来越厉害",
+          "english": "get better and better / more and more awesome",
+          "indonesian": "semakin hebat / makin jago",
+          "note": "越来越 means 'more and more' — 越来越厉害 means 'getting more and more awesome every time'!"
+        },
+        {
+          "pinyin": "de",
+          "chinese": "的",
+          "english": "(adds certainty — you definitely will!)",
+          "indonesian": "(menunjukkan kepastian)",
+          "note": "的 at the end of a prediction makes it sound certain — like saying 'you WILL get better, for sure!'"
+        },
+        {
+          "pinyin": "Jiāyóu",
+          "chinese": "加油",
+          "english": "Go for it! / Keep it up!",
+          "indonesian": "Semangat! / Terus berjuang!"
+        }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": [],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'tennis' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "篮球",
+          "pinyin": "lánqiú",
+          "translation": "basketball"
+        },
+        {
+          "chinese": "足球",
+          "pinyin": "zúqiú",
+          "translation": "football / soccer"
+        },
+        {
+          "chinese": "网球",
+          "pinyin": "wǎngqiú",
+          "translation": "tennis"
+        },
+        {
+          "chinese": "排球",
+          "pinyin": "páiqiú",
+          "translation": "volleyball"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "网球 (wǎngqiú) means 'tennis' — 网 means 'net' and 球 means 'ball'. A net-and-ball game!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "加油",
+      "questionPinyin": "jiāyóu",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "slow down"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "go for it! / you can do it!"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "good morning"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "thank you"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "加油 (jiāyóu) means 'go for it!' — it literally means 'add oil/fuel' but everyone uses it to cheer someone on, like 'you've got this!'"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "球拍",
+      "questionPinyin": "qiúpāi",
+      "options": [
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "ball"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "net"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "racket"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "court"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "球拍 (qiúpāi) means 'racket' — 球 means 'ball' and 拍 means 'paddle/bat'. The tool you use to hit the ball!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'serve the ball' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        {
+          "chinese": "接球",
+          "pinyin": "jiē qiú",
+          "translation": "return / catch the ball"
+        },
+        {
+          "chinese": "打球",
+          "pinyin": "dǎ qiú",
+          "translation": "hit the ball"
+        },
+        {
+          "chinese": "过网",
+          "pinyin": "guò wǎng",
+          "translation": "go over the net"
+        },
+        {
+          "chinese": "发球",
+          "pinyin": "fāqiú",
+          "translation": "serve the ball"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "发球 (fāqiú) means 'serve the ball' — 发 means 'launch/send out' and 球 means 'ball'. You launch the ball to start a point!"
+    }
+  ]
+}
