@@ -545,7 +545,7 @@ private fun ConditionRow(
                 onUpdate(condition.copy(targetValue = v.filter { it.isDigit() }.toIntOrNull() ?: 0))
             },
             label = { Text(selectedType.unit, fontSize = 9.sp) },
-            modifier = Modifier.width(68.dp),
+            modifier = Modifier.width(88.dp),
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
