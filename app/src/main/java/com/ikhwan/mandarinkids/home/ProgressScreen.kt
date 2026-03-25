@@ -23,6 +23,7 @@ import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.db.Badge
 import com.ikhwan.mandarinkids.db.MilestoneReward
 import com.ikhwan.mandarinkids.db.MilestoneType
+import com.ikhwan.mandarinkids.db.PracticeType
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.parent.PinMode
 import com.ikhwan.mandarinkids.parent.PinScreen
@@ -39,6 +40,12 @@ fun ProgressScreen() {
     val xp by repo.getTotalXp().collectAsState(initial = 0)
     val streak = remember { repo.getStreak() }
     val masteredCount by repo.getMasteredWordCount().collectAsState(initial = 0)
+    val masteredDefault by repo.getAllMasteredWords(PracticeType.DEFAULT).collectAsState(initial = emptyList())
+    val masteredListening by repo.getAllMasteredWords(PracticeType.LISTENING).collectAsState(initial = emptyList())
+    val masteredReading by repo.getAllMasteredWords(PracticeType.READING).collectAsState(initial = emptyList())
+    val masteredCountDefault = remember(masteredDefault) { masteredDefault.count { it.boxLevel >= 7 } }
+    val masteredCountListening = remember(masteredListening) { masteredListening.count { it.boxLevel >= 7 } }
+    val masteredCountReading = remember(masteredReading) { masteredReading.count { it.boxLevel >= 7 } }
     val allProgress by repo.getAllProgress().collectAsState(initial = emptyList())
     val progressMap = remember(allProgress) { allProgress.associateBy { it.scenarioId } }
     val allRewards by repo.getAllRewards().collectAsState(initial = emptyList())
@@ -96,31 +103,50 @@ fun ProgressScreen() {
                         containerColor = MaterialTheme.colorScheme.primaryContainer
                     )
                 ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        horizontalArrangement = Arrangement.SpaceEvenly
-                    ) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text("🔥", fontSize = 32.sp)
-                            Text("$streak", fontSize = 26.sp, fontWeight = FontWeight.Bold)
-                            Text("day streak", fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceEvenly
+                        ) {
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text("🔥", fontSize = 32.sp)
+                                Text("$streak", fontSize = 26.sp, fontWeight = FontWeight.Bold)
+                                Text("day streak", fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            }
+                            HorizontalDivider(modifier = Modifier.height(72.dp).width(1.dp))
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text(
+                                    text = when { xp >= 180 -> "🌟"; xp >= 60 -> "⭐"; else -> "📚" },
+                                    fontSize = 32.sp
+                                )
+                                Text("$xp XP", fontSize = 26.sp, fontWeight = FontWeight.Bold)
+                                Text(ProgressManager.getLevel(xp), fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            }
+                            HorizontalDivider(modifier = Modifier.height(72.dp).width(1.dp))
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text("🧠", fontSize = 32.sp)
+                                Text("$masteredCount", fontSize = 26.sp, fontWeight = FontWeight.Bold)
+                                Text("words", fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            }
                         }
-                        HorizontalDivider(modifier = Modifier.height(72.dp).width(1.dp))
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+
+                        if (masteredCountDefault + masteredCountListening + masteredCountReading > 0) {
+                            HorizontalDivider(modifier = Modifier.padding(vertical = 10.dp))
                             Text(
-                                text = when { xp >= 180 -> "🌟"; xp >= 60 -> "⭐"; else -> "📚" },
-                                fontSize = 32.sp
+                                "★7+ mastered words",
+                                fontSize = 11.sp,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.align(Alignment.CenterHorizontally)
+                                    .padding(bottom = 6.dp)
                             )
-                            Text("$xp XP", fontSize = 26.sp, fontWeight = FontWeight.Bold)
-                            Text(ProgressManager.getLevel(xp), fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        }
-                        HorizontalDivider(modifier = Modifier.height(72.dp).width(1.dp))
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text("🧠", fontSize = 32.sp)
-                            Text("$masteredCount", fontSize = 26.sp, fontWeight = FontWeight.Bold)
-                            Text("words", fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceEvenly
+                            ) {
+                                MasteryTypeChip(emoji = "🔊字", label = "Default", count = masteredCountDefault)
+                                MasteryTypeChip(emoji = "🔊", label = "Listening", count = masteredCountListening)
+                                MasteryTypeChip(emoji = "字", label = "Reading", count = masteredCountReading)
+                            }
                         }
                     }
                 }
@@ -244,6 +270,15 @@ fun ProgressScreen() {
                 showAddReward = false
             }
         )
+    }
+}
+
+@Composable
+private fun MasteryTypeChip(emoji: String, label: String, count: Int) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(emoji, fontSize = 16.sp)
+        Text("$count", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+        Text(label, fontSize = 10.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }
 
