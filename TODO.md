@@ -123,7 +123,7 @@ Query using `getAllMasteredWords(type).filter { boxLevel >= 7 }` per `PracticeTy
 
 ---
 
-### #22 — Scrollable multiple-choice answers in scenario conversation
+### ✅ #22 — Scrollable multiple-choice answers in scenario conversation *(done)*
 **Files:** `RolePlayScreen.kt`
 
 When a dialogue step has many response options (4+), the options panel can overflow the screen. Wrap the options list in a `verticalScroll` so all choices are reachable. Also ensure a minimum touch-target height per button so small fingers can tap accurately.

@@ -9,6 +9,8 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -224,28 +226,34 @@ fun RolePlayScreen(
                                 modifier = Modifier.padding(bottom = 8.dp)
                             )
 
-                            vm.currentStep!!.options.forEachIndexed { index, option ->
-                                ResponseOptionButton(
-                                    option = option,
-                                    index = index,
-                                    onClick = {
-                                        vm.selectOption(option)
-                                        tts.speak(option.chinese, vm.speechSpeed)
-                                        coroutineScope.launch {
-                                            delay(300)
-                                            listState.animateScrollToItem(vm.conversationHistory.size - 1)
-                                            delay(2000)
-                                            if (vm.currentStepIndex + 1 >= scenario.dialogues.size) {
-                                                onComplete(vm.correctAnswersCount)
-                                            } else {
-                                                vm.advanceStep()
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .verticalScroll(rememberScrollState())
+                            ) {
+                                vm.currentStep!!.options.forEachIndexed { index, option ->
+                                    ResponseOptionButton(
+                                        option = option,
+                                        index = index,
+                                        onClick = {
+                                            vm.selectOption(option)
+                                            tts.speak(option.chinese, vm.speechSpeed)
+                                            coroutineScope.launch {
+                                                delay(300)
+                                                listState.animateScrollToItem(vm.conversationHistory.size - 1)
+                                                delay(2000)
+                                                if (vm.currentStepIndex + 1 >= scenario.dialogues.size) {
+                                                    onComplete(vm.correctAnswersCount)
+                                                } else {
+                                                    vm.advanceStep()
+                                                }
                                             }
-                                        }
-                                    },
-                                    tts = tts,
-                                    speechSpeed = vm.speechSpeed
-                                )
-                                Spacer(modifier = Modifier.height(8.dp))
+                                        },
+                                        tts = tts,
+                                        speechSpeed = vm.speechSpeed
+                                    )
+                                    Spacer(modifier = Modifier.height(8.dp))
+                                }
                             }
                         }
                     }
@@ -270,7 +278,9 @@ private fun OptionsSlidePanel(
         exit = slideOutVertically { it } + fadeOut()
     ) {
         Surface(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(max = 340.dp),
             shadowElevation = 8.dp,
             color = MaterialTheme.colorScheme.surface
         ) {
