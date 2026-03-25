@@ -130,7 +130,7 @@ When a dialogue step has many response options (4+), the options panel can overf
 
 ---
 
-### #23 — Scenario option wording audit: avoid negative/sad framing
+### ✅ #23 — Scenario option wording audit: avoid negative/sad framing *(done)*
 **Files:** `app/src/main/assets/scenarios/*.json`
 
 Review all `responseOption` text for unintentionally negative framing. Examples: "only have Papa" / "only have Mama" implies loneliness — rephrase to "just Papa and me" / "just Mama and me" or give the family a warm tone. Run a systematic pass over family/feelings scenarios. Goal: every option should feel positive or at least neutral for a 4–8 year old.

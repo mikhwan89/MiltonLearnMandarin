@@ -196,10 +196,10 @@
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
-          "chinese": "我只有爸爸和妈妈。我是独生子。",
-          "pinyin": "Wǒ zhǐ yǒu bàba hé māma. Wǒ shì dúshēngzǐ.",
-          "english": "I only have dad and mom. I am an only child.",
-          "indonesian": "Saya hanya punya ayah dan ibu. Saya anak tunggal.",
+          "chinese": "我有爸爸和妈妈。我是独生子。",
+          "pinyin": "Wǒ yǒu bàba hé māma. Wǒ shì dúshēngzǐ.",
+          "english": "I have dad and mom. I am an only child.",
+          "indonesian": "Saya punya ayah dan ibu. Saya anak tunggal.",
           "pinyinWords": [
             {
               "pinyin": "Wǒ",
@@ -208,10 +208,10 @@
               "indonesian": "Saya"
             },
             {
-              "pinyin": "zhǐ yǒu",
-              "chinese": "只有",
-              "english": "only have",
-              "indonesian": "hanya punya"
+              "pinyin": "yǒu",
+              "chinese": "有",
+              "english": "have",
+              "indonesian": "punya"
             },
             {
               "pinyin": "bàba",
