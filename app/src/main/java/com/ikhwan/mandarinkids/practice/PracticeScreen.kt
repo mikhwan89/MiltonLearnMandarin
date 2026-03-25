@@ -196,11 +196,16 @@ fun PracticeScreen(onBack: () -> Unit) {
                             ) { Text("Maintain", fontSize = 11.sp, textAlign = TextAlign.Center) }
                         }
 
-                        // ── Star rating distribution (read-only) ───────────
+                        // ── Star rating distribution (read-only, filtered by mode) ──
                         val weakLevels = vm.weakLevels
                         val masteryLevels = vm.masteryLevels
-                        val levelCounts = remember(vm.allWords) {
-                            vm.allWords.groupBy { it.boxLevel }.entries.sortedBy { it.key }
+                        val levelCounts = remember(vm.allWords, vm.practiceMode) {
+                            val all = vm.allWords.groupBy { it.boxLevel }.entries.sortedBy { it.key }
+                            when (vm.practiceMode) {
+                                PracticeMode.WEAK    -> all.filter { (level, _) -> level in weakLevels }
+                                PracticeMode.MASTERY -> all.filter { (level, _) -> level in masteryLevels }
+                                PracticeMode.ALL     -> all
+                            }
                         }
                         LazyRow(
                             modifier = Modifier.fillMaxWidth().padding(bottom = 6.dp),
@@ -353,6 +358,17 @@ fun PracticeScreen(onBack: () -> Unit) {
                                         }
                                     }
                                 }
+                            }
+
+                            // ── +1 XP indicator ────────────────────────────
+                            if (isAnswered && answeredCorrectly) {
+                                Text(
+                                    "+1 XP ✨",
+                                    fontSize = 13.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    color = Color(0xFF4CAF50),
+                                    modifier = Modifier.padding(top = 4.dp)
+                                )
                             }
 
                             // ── Note bubble ────────────────────────────────

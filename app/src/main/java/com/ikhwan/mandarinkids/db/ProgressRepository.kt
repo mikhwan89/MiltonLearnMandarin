@@ -64,6 +64,22 @@ class ProgressRepository private constructor(
         return xpGained
     }
 
+    // ── Flashcard XP ─────────────────────────────────────────────────────
+
+    /** Awards +[amount] XP for a correct flashcard answer (stored under a sentinel scenario). */
+    suspend fun addFlashcardXp(amount: Int = 1) {
+        val current = dao.getById(FLASHCARD_XP_ID).first()
+        val oldXp = current?.xp ?: 0
+        dao.upsert(
+            ScenarioProgressEntity(
+                scenarioId = FLASHCARD_XP_ID,
+                stars = current?.stars ?: 0,
+                xp = oldXp + amount,
+                lastPlayedAt = System.currentTimeMillis()
+            )
+        )
+    }
+
     // ── Mastered word persistence ─────────────────────────────────────────
 
     /**
@@ -248,6 +264,7 @@ class ProgressRepository private constructor(
     }
 
     companion object {
+        const val FLASHCARD_XP_ID = "__flashcard__"
         private const val PREFS_NAME = "milton_progress"
         private const val KEY_STREAK = "streak"
         private const val KEY_LAST_OPEN_DATE = "last_open_date"

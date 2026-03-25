@@ -22,6 +22,7 @@ import com.ikhwan.mandarinkids.data.models.Scenario
 import com.ikhwan.mandarinkids.data.models.ScenarioCategory
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.db.MasteredWordEntity
+import com.ikhwan.mandarinkids.db.PracticeType
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.tts.rememberTtsManager
 
@@ -40,6 +41,12 @@ fun HomeScreen(
     val xp by repo.getTotalXp().collectAsState(initial = 0)
     val streak = remember { repo.getStreak() }
     val allMasteredWords by repo.getAllMasteredWords().collectAsState(initial = emptyList())
+    val masteredDefault by repo.getAllMasteredWords(PracticeType.DEFAULT).collectAsState(initial = emptyList())
+    val masteredListening by repo.getAllMasteredWords(PracticeType.LISTENING).collectAsState(initial = emptyList())
+    val masteredReading by repo.getAllMasteredWords(PracticeType.READING).collectAsState(initial = emptyList())
+    val masteredCountDefault = remember(masteredDefault) { masteredDefault.count { it.boxLevel >= 7 } }
+    val masteredCountListening = remember(masteredListening) { masteredListening.count { it.boxLevel >= 7 } }
+    val masteredCountReading = remember(masteredReading) { masteredReading.count { it.boxLevel >= 7 } }
 
     val wordOfDay: MasteredWordEntity? = remember(allMasteredWords) {
         if (allMasteredWords.isEmpty()) null
@@ -92,37 +99,56 @@ fun HomeScreen(
                         containerColor = MaterialTheme.colorScheme.primaryContainer
                     )
                 ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        horizontalArrangement = Arrangement.SpaceEvenly
-                    ) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text("🔥", fontSize = 28.sp)
-                            Text("$streak", fontSize = 22.sp, fontWeight = FontWeight.Bold)
-                            Text(
-                                "day streak",
-                                fontSize = 11.sp,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
+                    Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceEvenly
+                        ) {
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text("🔥", fontSize = 28.sp)
+                                Text("$streak", fontSize = 22.sp, fontWeight = FontWeight.Bold)
+                                Text(
+                                    "day streak",
+                                    fontSize = 11.sp,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                            HorizontalDivider(modifier = Modifier.height(64.dp).width(1.dp))
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text(
+                                    text = when {
+                                        xp >= 180 -> "🌟"
+                                        xp >= 60 -> "⭐"
+                                        else -> "📚"
+                                    },
+                                    fontSize = 28.sp
+                                )
+                                Text("$xp XP", fontSize = 22.sp, fontWeight = FontWeight.Bold)
+                                Text(
+                                    ProgressManager.getLevel(xp),
+                                    fontSize = 11.sp,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
                         }
-                        HorizontalDivider(modifier = Modifier.height(64.dp).width(1.dp))
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+
+                        if (masteredCountDefault + masteredCountListening + masteredCountReading > 0) {
+                            HorizontalDivider(modifier = Modifier.padding(vertical = 10.dp))
                             Text(
-                                text = when {
-                                    xp >= 180 -> "🌟"
-                                    xp >= 60 -> "⭐"
-                                    else -> "📚"
-                                },
-                                fontSize = 28.sp
-                            )
-                            Text("$xp XP", fontSize = 22.sp, fontWeight = FontWeight.Bold)
-                            Text(
-                                ProgressManager.getLevel(xp),
+                                "★7+ mastered words",
                                 fontSize = 11.sp,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.align(Alignment.CenterHorizontally)
+                                    .padding(bottom = 6.dp)
                             )
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceEvenly
+                            ) {
+                                MasteryTypeChip(emoji = "🔊字", label = "Default", count = masteredCountDefault)
+                                MasteryTypeChip(emoji = "🔊", label = "Listening", count = masteredCountListening)
+                                MasteryTypeChip(emoji = "字", label = "Reading", count = masteredCountReading)
+                            }
                         }
                     }
                 }
@@ -224,6 +250,15 @@ private fun WordOfDayDialog(
             TextButton(onClick = onDismiss) { Text("Close") }
         }
     )
+}
+
+@Composable
+private fun MasteryTypeChip(emoji: String, label: String, count: Int) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(emoji, fontSize = 16.sp)
+        Text("$count", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+        Text(label, fontSize = 10.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+    }
 }
 
 @Composable

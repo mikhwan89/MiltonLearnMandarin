@@ -157,7 +157,10 @@ class PracticeSessionViewModel(
         currentWord = pickNextWord(exclude = updatedWord)
         cardToken++
 
-        viewModelScope.launch { repository.markWordMastered(updatedWord) }
+        viewModelScope.launch {
+            repository.markWordMastered(updatedWord)
+            repository.addFlashcardXp(1)
+        }
     }
 
     fun markForgotten() {

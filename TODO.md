@@ -97,21 +97,21 @@ Given a reference English sentence and a shuffled set of Chinese word tiles, the
 
 ## 🃏 Flashcard Practice Improvements
 
-### #19 — Flashcard correct answer earns +1 XP
+### ✅ #19 — Flashcard correct answer earns +1 XP *(done)*
 **Files:** `practice/PracticeSessionViewModel.kt`, `db/ProgressRepository.kt`
 
 Each correct answer in any flashcard practice mode (Default, Listening, Reading) awards +1 XP to the student's total. Call `repository.saveProgress` or a lightweight XP-only increment so it doesn't overwrite scenario stars. Show a small "+1 XP" toast or badge animation on correct answer.
 
 ---
 
-### #20 — Weak Word / Maintain mode shows only relevant star chips
+### ✅ #20 — Weak Word / Maintain mode shows only relevant star chips *(done)*
 **Files:** `practice/PracticeScreen.kt`
 
 When "Weak Words" mode is active, the star-rating distribution row should only display the star levels actually in the current pool (the 3 lowest). When "Maintain" is active, only show ★4+ levels in the pool. In "All Words" mode show all levels as today. Avoids confusion about stars that aren't being practised right now.
 
 ---
 
-### #21 — Progress tab: word mastery counts per practice mode
+### ✅ #21 — Progress tab: word mastery counts per practice mode *(done)*
 **Files:** `home/HomeScreen.kt` or `home/ProgressScreen.kt`, `db/ProgressRepository.kt`
 
 In the Progress tab, alongside total mastered word count, show a breakdown:
