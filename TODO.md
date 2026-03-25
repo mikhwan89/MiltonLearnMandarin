@@ -139,20 +139,6 @@ Review all `responseOption` text for unintentionally negative framing. Examples:
 
 ## 🏅 Engagement & Gamification
 
-### #10 — Level-up full-screen celebration
-**Files:** `home/ProgressScreen.kt`, `navigation/AppNavigation.kt`
-
-When total XP crosses a `ProgressManager` level threshold, show a full-screen animated celebration (confetti + big level badge) before returning to the home tab. Currently level-up is silent. One `LaunchedEffect` comparing old vs new level after any XP change.
-
----
-
-### #11 — Unlock scenario characters as collectibles
-**Files:** `home/ProgressScreen.kt`, `data/models/ScenarioModels.kt`
-
-When a scenario is 3-starred, its character emoji is "unlocked" and shown in a special Collected Characters grid on the Progress screen. Locked characters appear as ❓. Creates a clear visual collection goal for a 5-year-old.
-
----
-
 ### ✅ #24 — Milestone reward: mastery targets per practice mode *(done)*
 **Files:** `parent/ParentDashboardScreen.kt`, `db/MilestoneReward.kt`, `db/ProgressRepository.kt`
 
@@ -204,7 +190,7 @@ Schema change: replace single `targetValue` + `milestoneType` with a `conditions
 
 ---
 
-### #29 — Navigate to scenario from Progress tab star list
+### ✅ #29 — Navigate to scenario from Progress tab star list *(done)*
 **Files:** `home/HomeScreen.kt` (or `home/ProgressScreen.kt`), `navigation/AppNavigation.kt`
 
 In the Progress tab where scenario stars are listed, make each scenario row tappable. Tapping navigates directly to that scenario's RolePlay screen (same as tapping it from the Learn tab). Useful for replaying a specific scenario to improve its star rating without hunting through categories.

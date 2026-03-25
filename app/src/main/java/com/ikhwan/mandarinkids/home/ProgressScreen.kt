@@ -25,9 +25,11 @@ import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.navigation.NavController
 import com.ikhwan.mandarinkids.db.Badge
 import com.ikhwan.mandarinkids.db.MilestoneCondition
 import com.ikhwan.mandarinkids.db.MilestoneReward
@@ -36,13 +38,14 @@ import com.ikhwan.mandarinkids.db.PracticeType
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.db.decodeConditions
 import com.ikhwan.mandarinkids.db.encodeConditions
+import com.ikhwan.mandarinkids.navigation.Routes
 import com.ikhwan.mandarinkids.parent.PinMode
 import com.ikhwan.mandarinkids.parent.PinScreen
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProgressScreen() {
+fun ProgressScreen(navController: NavController) {
     val context = LocalContext.current
     val repo = remember { ProgressRepository.getInstance(context) }
     val scenarios = remember { JsonScenarioRepository.getAll() }
@@ -278,7 +281,12 @@ fun ProgressScreen() {
 
             items(scenarios, key = { it.id }) { scenario ->
                 val stars = progressMap[scenario.id]?.stars ?: 0
-                ScenarioStarRow(emoji = scenario.characterEmoji, title = scenario.title, stars = stars)
+                ScenarioStarRow(
+                    emoji = scenario.characterEmoji,
+                    title = scenario.title,
+                    stars = stars,
+                    onClick = { navController.navigate(Routes.roleplay(scenario.id)) }
+                )
             }
 
             item { Spacer(Modifier.height(8.dp)) }
@@ -657,8 +665,9 @@ private fun ConditionRow(
 }
 
 @Composable
-private fun ScenarioStarRow(emoji: String, title: String, stars: Int) {
+private fun ScenarioStarRow(emoji: String, title: String, stars: Int, onClick: () -> Unit) {
     Card(
+        onClick = onClick,
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
             containerColor = if (stars > 0) MaterialTheme.colorScheme.surface
@@ -671,7 +680,7 @@ private fun ScenarioStarRow(emoji: String, title: String, stars: Int) {
         ) {
             Text(emoji, fontSize = 26.sp, modifier = Modifier.padding(end = 12.dp))
             Text(title, fontSize = 14.sp, modifier = Modifier.weight(1f))
-            Row {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 repeat(3) { i ->
                     Text(
                         text = if (i < stars) "★" else "☆",
@@ -679,6 +688,12 @@ private fun ScenarioStarRow(emoji: String, title: String, stars: Int) {
                         color = if (i < stars) Color(0xFFFFC107) else Color(0xFFBDBDBD)
                     )
                 }
+                Icon(
+                    Icons.Default.ChevronRight,
+                    contentDescription = "Play scenario",
+                    modifier = Modifier.size(18.dp).padding(start = 4.dp),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
         }
     }

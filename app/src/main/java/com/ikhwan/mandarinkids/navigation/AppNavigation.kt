@@ -106,7 +106,7 @@ fun MandarinKidsApp() {
             }
 
             composable(Routes.PROGRESS) {
-                ProgressScreen()
+                ProgressScreen(navController = navController)
             }
 
             composable(Routes.PARENT_DASHBOARD) {
