@@ -81,14 +81,14 @@ A reverse of the flashcard: play TTS audio only (no Chinese text shown), then pi
 
 ---
 
-### #8 — Tone Trainer mode
+### ✅ #8 — Tone Trainer mode *(done)*
 **Files:** new `practice/ToneTrainerScreen.kt`
 
 Show a syllable in pinyin WITHOUT the tone mark (e.g. "ma"), play audio, and ask the child to pick the correct tone: 1st 2nd 3rd 4th Neutral. Color-coded buttons matching `ToneUtils` colours. Great for ear training. Add as a third mode option in the Flashcard tab.
 
 ---
 
-### #9 — Sentence Builder mini-game
+### ✅ #9 — Sentence Builder mini-game *(done)*
 **Files:** new `practice/SentenceBuilderScreen.kt`
 
 Given a reference English sentence and a shuffled set of Chinese word tiles, the child drags/taps tiles into the correct order. Draw sentences from existing scenario dialogues so no new content is needed. Add as optional activity at the end of each scenario (alongside the existing quiz).
