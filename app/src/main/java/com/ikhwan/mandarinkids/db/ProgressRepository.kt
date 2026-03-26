@@ -96,6 +96,36 @@ class ProgressRepository private constructor(
         checkAndUpdateFlashcardStreak()
     }
 
+    // ── Tone Trainer XP ──────────────────────────────────────────────────
+
+    /** Awards +[amount] XP for each correctly-identified tone. Checks Tone Trainer badges. */
+    suspend fun addToneTrainerXp(amount: Int = 2) {
+        val current = dao.getById(TONE_TRAINER_XP_ID).first()
+        val oldXp = current?.xp ?: 0
+        dao.upsert(
+            ScenarioProgressEntity(
+                scenarioId = TONE_TRAINER_XP_ID,
+                stars = current?.stars ?: 0,
+                xp = oldXp + amount,
+                lastPlayedAt = System.currentTimeMillis()
+            )
+        )
+        // XP milestone badges
+        val totalXp = dao.getTotalXp().first()
+        if (totalXp >= 100)  awardBadge(Badge.XP_SEEKER.id)
+        if (totalXp >= 500)  awardBadge(Badge.XP_HUNTER.id)
+        if (totalXp >= 1000) awardBadge(Badge.XP_LEGEND.id)
+
+        // Tone Trainer cumulative-correct badges
+        val p = prefs()
+        val newTotal = p.getInt(KEY_TONE_TRAINER_CORRECT_TOTAL, 0) + 1
+        p.edit().putInt(KEY_TONE_TRAINER_CORRECT_TOTAL, newTotal).apply()
+        if (newTotal >= 1)   awardBadge(Badge.TONE_CURIOUS.id)
+        if (newTotal >= 20)  awardBadge(Badge.TONE_LEARNER.id)
+        if (newTotal >= 100) awardBadge(Badge.TONE_ADEPT.id)
+        if (newTotal >= 200) awardBadge(Badge.TONE_MASTER.id)
+    }
+
     // ── Sentence Builder XP ──────────────────────────────────────────────
 
     /** Awards +[amount] XP for each correctly-built sentence. Checks SB badges. */
@@ -259,7 +289,7 @@ class ProgressRepository private constructor(
      *  • every word in DEFAULT, LISTENING, and READING modes is at ★10.
      */
     private suspend fun checkGrandMasterBadge(allProgress: List<ScenarioProgressEntity>) {
-        val sentinelIds = setOf(FLASHCARD_XP_ID, SENTENCE_BUILDER_XP_ID)
+        val sentinelIds = setOf(FLASHCARD_XP_ID, SENTENCE_BUILDER_XP_ID, TONE_TRAINER_XP_ID)
         val scenarioEntries = allProgress.filter { it.scenarioId !in sentinelIds }
         if (scenarioEntries.isEmpty() || !scenarioEntries.all { it.stars >= 3 }) return
 
@@ -372,6 +402,7 @@ class ProgressRepository private constructor(
             .remove(KEY_FLASHCARD_STREAK)
             .remove(KEY_FLASHCARD_LAST_DATE)
             .remove(KEY_SB_CORRECT_TOTAL)
+            .remove(KEY_TONE_TRAINER_CORRECT_TOTAL)
             // PIN and Indonesian preference intentionally kept
             .apply()
     }
@@ -392,6 +423,7 @@ class ProgressRepository private constructor(
     companion object {
         const val FLASHCARD_XP_ID          = "__flashcard__"
         const val SENTENCE_BUILDER_XP_ID   = "__sentence_builder__"
+        const val TONE_TRAINER_XP_ID       = "__tone_trainer__"
         private const val PREFS_NAME = "milton_progress"
         private const val KEY_STREAK = "streak"
         private const val KEY_LAST_OPEN_DATE = "last_open_date"
@@ -402,7 +434,8 @@ class ProgressRepository private constructor(
         private const val KEY_SHOW_INDONESIAN = "show_indonesian"
         private const val KEY_FLASHCARD_STREAK    = "flashcard_streak"
         private const val KEY_FLASHCARD_LAST_DATE  = "flashcard_last_date"
-        private const val KEY_SB_CORRECT_TOTAL     = "sentence_builder_correct_total"
+        private const val KEY_SB_CORRECT_TOTAL           = "sentence_builder_correct_total"
+        private const val KEY_TONE_TRAINER_CORRECT_TOTAL = "tone_trainer_correct_total"
 
         @Volatile private var _instance: ProgressRepository? = null
 

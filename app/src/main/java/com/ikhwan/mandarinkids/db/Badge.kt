@@ -94,6 +94,28 @@ enum class Badge(
         "Reach ★10 on 100 words in Reading mode"
     ),
 
+    // ── Tone Trainer ─────────────────────────────────────────────────────────
+    TONE_CURIOUS(
+        "tone_curious", "🎵", "Tone Curious",
+        "Answer your first tone question correctly"
+    ),
+    TONE_LEARNER(
+        "tone_learner", "🎶", "Tone Learner",
+        "Answer 20 tone questions correctly"
+    ),
+    TONE_ADEPT(
+        "tone_adept", "🎼", "Tone Adept",
+        "Answer 100 tone questions correctly"
+    ),
+    TONE_MASTER(
+        "tone_master", "🎹", "Tone Master",
+        "Answer 200 tone questions correctly"
+    ),
+    PERFECT_PITCH(
+        "perfect_pitch", "🎯", "Perfect Pitch",
+        "Complete a Tone Trainer session with every answer correct on the first try"
+    ),
+
     // ── Sentence Builder ─────────────────────────────────────────────────────
     SENTENCE_STARTER(
         "sentence_starter", "🧩", "Sentence Starter",

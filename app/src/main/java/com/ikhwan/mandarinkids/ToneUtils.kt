@@ -122,6 +122,25 @@ object ToneUtils {
     }
 
     /**
+     * Strip all tone diacritics from a pinyin string, leaving bare vowels.
+     * ü retains its umlaut (it is a distinct vowel, not a tone mark).
+     * Example: "māo" → "mao", "nǐ" → "ni", "lǖ" → "lü"
+     */
+    fun stripTones(pinyin: String): String = buildString {
+        for (c in pinyin) {
+            append(when (c) {
+                'ā', 'á', 'ǎ', 'à' -> 'a'
+                'ē', 'é', 'ě', 'è' -> 'e'
+                'ī', 'í', 'ǐ', 'ì' -> 'i'
+                'ō', 'ó', 'ǒ', 'ò' -> 'o'
+                'ū', 'ú', 'ǔ', 'ù' -> 'u'
+                'ǖ', 'ǘ', 'ǚ', 'ǜ' -> 'ü'
+                else -> c
+            })
+        }
+    }
+
+    /**
      * Build an [AnnotatedString] where each syllable is coloured by its own tone.
      * Single-syllable words produce the same result as [pinyinColor]; multi-syllable
      * words get per-syllable colours (e.g. "pángbiān" → orange "páng" + red "biān").

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.Extension
+import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Style
 import androidx.compose.material3.*
@@ -28,6 +29,7 @@ import com.ikhwan.mandarinkids.home.ScenarioListScreen
 import com.ikhwan.mandarinkids.parent.ParentDashboardScreen
 import com.ikhwan.mandarinkids.practice.PracticeScreen
 import com.ikhwan.mandarinkids.practice.SentenceBuilderScreen
+import com.ikhwan.mandarinkids.practice.ToneTrainerScreen
 
 @Composable
 fun MandarinKidsApp() {
@@ -44,7 +46,7 @@ fun MandarinKidsApp() {
     // Determine current route to decide whether to show the bottom nav
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-    val topLevelRoutes = setOf(Routes.HOME, Routes.PRACTICE, Routes.SENTENCE_BUILDER, Routes.PROGRESS)
+    val topLevelRoutes = setOf(Routes.HOME, Routes.PRACTICE, Routes.TONE_TRAINER, Routes.SENTENCE_BUILDER, Routes.PROGRESS)
 
     Scaffold(
         bottomBar = {
@@ -67,6 +69,17 @@ fun MandarinKidsApp() {
                         selected = currentRoute == Routes.PRACTICE,
                         onClick = {
                             navController.navigate(Routes.PRACTICE) {
+                                popUpTo(Routes.HOME)
+                                launchSingleTop = true
+                            }
+                        }
+                    )
+                    NavigationBarItem(
+                        icon = { Icon(Icons.Default.MusicNote, contentDescription = "Tones") },
+                        label = { Text("Tones") },
+                        selected = currentRoute == Routes.TONE_TRAINER,
+                        onClick = {
+                            navController.navigate(Routes.TONE_TRAINER) {
                                 popUpTo(Routes.HOME)
                                 launchSingleTop = true
                             }
@@ -116,6 +129,10 @@ fun MandarinKidsApp() {
 
             composable(Routes.PRACTICE) {
                 PracticeScreen(onBack = { navController.popBackStack() })
+            }
+
+            composable(Routes.TONE_TRAINER) {
+                ToneTrainerScreen()
             }
 
             composable(Routes.SENTENCE_BUILDER) {
