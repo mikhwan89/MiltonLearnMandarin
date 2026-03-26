@@ -2,9 +2,6 @@ package com.ikhwan.mandarinkids.db
 
 import android.content.Context
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import java.security.MessageDigest
@@ -16,62 +13,6 @@ class ProgressRepository private constructor(
     private val rewardDao: MilestoneRewardDao,
     private val context: Context
 ) {
-
-    // ── Weekly XP (reactive, SharedPreferences-backed) ───────────────────
-
-    private val _weeklyXp: MutableStateFlow<Int> by lazy { MutableStateFlow(getWeeklyXp()) }
-    val weeklyXp: StateFlow<Int> by lazy { _weeklyXp.asStateFlow() }
-
-    private fun getWeeklyXp(): Int {
-        val p = prefs()
-        return if (p.getString(KEY_WEEKLY_XP_DATE, "") == thisWeekString())
-            p.getInt(KEY_WEEKLY_XP, 0) else 0
-    }
-
-    private fun incrementWeeklyXp(amount: Int) {
-        val p = prefs()
-        val thisWeek = thisWeekString()
-        val oldXp = if (p.getString(KEY_WEEKLY_XP_DATE, "") == thisWeek)
-            p.getInt(KEY_WEEKLY_XP, 0) else 0
-        val newXp = oldXp + amount
-        p.edit()
-            .putString(KEY_WEEKLY_XP_DATE, thisWeek)
-            .putInt(KEY_WEEKLY_XP, newXp)
-            .apply()
-        _weeklyXp.value = newXp
-    }
-
-    private fun thisWeekString(): String {
-        val c = Calendar.getInstance()
-        return "${c.get(Calendar.YEAR)}-W${c.get(Calendar.WEEK_OF_YEAR)}"
-    }
-
-    // ── Daily practice count (reactive, SharedPreferences-backed) ────────
-
-    private val _dailyPracticeCount: MutableStateFlow<Int> by lazy {
-        MutableStateFlow(getDailyPracticeCount())
-    }
-    val dailyPracticeCount: StateFlow<Int> by lazy { _dailyPracticeCount.asStateFlow() }
-
-    fun getDailyPracticeCount(): Int {
-        val p = prefs()
-        return if (p.getString(KEY_DAILY_COUNT_DATE, "") == todayString())
-            p.getInt(KEY_DAILY_COUNT, 0)
-        else 0
-    }
-
-    fun incrementDailyPracticeCount() {
-        val p = prefs()
-        val today = todayString()
-        val oldCount = if (p.getString(KEY_DAILY_COUNT_DATE, "") == today)
-            p.getInt(KEY_DAILY_COUNT, 0) else 0
-        val newCount = oldCount + 1
-        p.edit()
-            .putString(KEY_DAILY_COUNT_DATE, today)
-            .putInt(KEY_DAILY_COUNT, newCount)
-            .apply()
-        _dailyPracticeCount.value = newCount
-    }
 
     // ── Room-backed reads (reactive) ─────────────────────────────────────
 
@@ -129,7 +70,6 @@ class ProgressRepository private constructor(
         if (totalXp >= 500) awardBadge(Badge.XP_HUNTER.id)
         if (totalXp >= 1000) awardBadge(Badge.XP_LEGEND.id)
 
-        if (xpGained > 0) incrementWeeklyXp(xpGained)
         return xpGained
     }
 
@@ -154,8 +94,6 @@ class ProgressRepository private constructor(
         if (totalXp >= 1000) awardBadge(Badge.XP_LEGEND.id)
         // Flashcard daily-practice streak
         checkAndUpdateFlashcardStreak()
-        incrementDailyPracticeCount()
-        incrementWeeklyXp(amount)
     }
 
     // ── Tone Trainer XP ──────────────────────────────────────────────────
@@ -186,8 +124,6 @@ class ProgressRepository private constructor(
         if (newTotal >= 20)  awardBadge(Badge.TONE_LEARNER.id)
         if (newTotal >= 100) awardBadge(Badge.TONE_ADEPT.id)
         if (newTotal >= 200) awardBadge(Badge.TONE_MASTER.id)
-        incrementDailyPracticeCount()
-        incrementWeeklyXp(amount)
     }
 
     // ── Sentence Builder XP ──────────────────────────────────────────────
@@ -218,8 +154,6 @@ class ProgressRepository private constructor(
         if (newTotal >= 10)  awardBadge(Badge.SENTENCE_BUILDER.id)
         if (newTotal >= 50)  awardBadge(Badge.SENTENCE_SMITH.id)
         if (newTotal >= 100) awardBadge(Badge.SENTENCE_MASTER.id)
-        incrementDailyPracticeCount()
-        incrementWeeklyXp(amount)
     }
 
     // ── Mastered word persistence ─────────────────────────────────────────
@@ -469,10 +403,6 @@ class ProgressRepository private constructor(
             .remove(KEY_FLASHCARD_LAST_DATE)
             .remove(KEY_SB_CORRECT_TOTAL)
             .remove(KEY_TONE_TRAINER_CORRECT_TOTAL)
-            .remove(KEY_DAILY_COUNT)
-            .remove(KEY_DAILY_COUNT_DATE)
-            .remove(KEY_WEEKLY_XP)
-            .remove(KEY_WEEKLY_XP_DATE)
             // PIN and Indonesian preference intentionally kept
             .apply()
     }
@@ -506,11 +436,6 @@ class ProgressRepository private constructor(
         private const val KEY_FLASHCARD_LAST_DATE  = "flashcard_last_date"
         private const val KEY_SB_CORRECT_TOTAL           = "sentence_builder_correct_total"
         private const val KEY_TONE_TRAINER_CORRECT_TOTAL = "tone_trainer_correct_total"
-        private const val KEY_DAILY_COUNT                = "daily_practice_count"
-        private const val KEY_DAILY_COUNT_DATE           = "daily_practice_count_date"
-        const val DAILY_GOAL                             = 5
-        private const val KEY_WEEKLY_XP                  = "weekly_xp"
-        private const val KEY_WEEKLY_XP_DATE             = "weekly_xp_date"
 
         @Volatile private var _instance: ProgressRepository? = null
 

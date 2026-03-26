@@ -39,7 +39,6 @@ fun HomeScreen(
 
     val xp by repo.getTotalXp().collectAsState(initial = 0)
     val streak = remember { repo.getStreak() }
-    val dailyCount by repo.dailyPracticeCount.collectAsState()
     val allMasteredWords by repo.getAllMasteredWords().collectAsState(initial = emptyList())
 
     val wordOfDay: MasteredWordEntity? = remember(allMasteredWords) {
@@ -127,14 +126,6 @@ fun HomeScreen(
                         }
                     }
                 }
-            }
-
-            // ── Daily goal card ───────────────────────────────────────────
-            item {
-                DailyGoalCard(
-                    count = dailyCount,
-                    goal  = ProgressRepository.DAILY_GOAL
-                )
             }
 
             // ── Section header ────────────────────────────────────────────
@@ -282,74 +273,6 @@ fun CategoryCard(category: ScenarioCategory, scenarioCount: Int, onClick: () -> 
                 )
             }
             Text("▶", fontSize = 24.sp, color = MaterialTheme.colorScheme.primary)
-        }
-    }
-}
-
-@Composable
-private fun DailyGoalCard(count: Int, goal: Int) {
-    val done    = count >= goal
-    val clamped = count.coerceAtMost(goal)
-    val cardColor = if (done)
-        MaterialTheme.colorScheme.tertiaryContainer
-    else
-        MaterialTheme.colorScheme.secondaryContainer
-
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        colors   = CardDefaults.cardColors(containerColor = cardColor)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 12.dp)
-        ) {
-            Row(
-                modifier             = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment    = Alignment.CenterVertically
-            ) {
-                Text(
-                    text       = if (done) "🎉 Daily Goal Reached!" else "🎯 Today's Goal",
-                    fontSize   = 14.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color      = MaterialTheme.colorScheme.onSecondaryContainer
-                )
-                Text(
-                    text       = "$clamped / $goal",
-                    fontSize   = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                    color      = MaterialTheme.colorScheme.onSecondaryContainer
-                )
-            }
-            Spacer(modifier = Modifier.height(8.dp))
-            // Star dots — one per goal unit
-            Row(
-                modifier              = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(6.dp)
-            ) {
-                repeat(goal) { i ->
-                    Text(
-                        text     = if (i < clamped) "⭐" else "☆",
-                        fontSize = 22.sp
-                    )
-                }
-            }
-            Spacer(modifier = Modifier.height(8.dp))
-            LinearProgressIndicator(
-                progress = { clamped.toFloat() / goal },
-                modifier = Modifier.fillMaxWidth(),
-                color    = if (done) MaterialTheme.colorScheme.tertiary
-                           else MaterialTheme.colorScheme.secondary
-            )
-            if (!done) {
-                Spacer(modifier = Modifier.height(6.dp))
-                Text(
-                    text  = "${goal - clamped} more ${if (goal - clamped == 1) "answer" else "answers"} to reach your goal!",
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.75f)
-                )
-            }
         }
     }
 }
