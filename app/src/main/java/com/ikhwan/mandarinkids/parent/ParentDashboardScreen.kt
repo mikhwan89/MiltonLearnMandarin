@@ -51,6 +51,7 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
     val highMasteryDefault by repo.getHighMasteryCountByType(PracticeType.DEFAULT).collectAsState(initial = 0)
     val highMasteryListening by repo.getHighMasteryCountByType(PracticeType.LISTENING).collectAsState(initial = 0)
     val highMasteryReading by repo.getHighMasteryCountByType(PracticeType.READING).collectAsState(initial = 0)
+    val weeklyXp by repo.weeklyXp.collectAsState()
     val earnedBadges = remember(masteredCount, allProgress) { repo.getEarnedBadges() }
     val perfectCount = allProgress.count { it.stars >= 3 }
     val progressForCondition: (MilestoneCondition) -> Int = remember(
@@ -138,6 +139,44 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
                             "$perfectCount/${scenarios.size}",
                             "3-star"
                         )
+                    }
+                }
+            }
+
+            // ── This Week ─────────────────────────────────────────────────
+            item {
+                val sevenDaysAgo = System.currentTimeMillis() - 7 * 24 * 60 * 60 * 1000L
+                val sentinelIds = setOf(
+                    ProgressRepository.FLASHCARD_XP_ID,
+                    ProgressRepository.SENTENCE_BUILDER_XP_ID,
+                    ProgressRepository.TONE_TRAINER_XP_ID
+                )
+                val scenariosThisWeek = allProgress.count {
+                    it.scenarioId !in sentinelIds && it.lastPlayedAt >= sevenDaysAgo
+                }
+                val newStarsThisWeek = allProgress.count {
+                    it.scenarioId !in sentinelIds &&
+                    it.stars >= 3 && it.lastPlayedAt >= sevenDaysAgo
+                }
+
+                SectionHeader("📅 This Week")
+                Spacer(modifier = Modifier.height(4.dp))
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer
+                    )
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        StatColumn("🎮", "$scenariosThisWeek", "Scenarios")
+                        StatColumn("⭐", "$newStarsThisWeek", "3-Stars")
+                        StatColumn("✨", "$weeklyXp XP", "XP Earned")
+                        StatColumn("🔥", "$streak", "Streak")
                     }
                 }
             }
