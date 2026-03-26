@@ -94,6 +94,28 @@ enum class Badge(
         "Reach ★10 on 100 words in Reading mode"
     ),
 
+    // ── Sentence Builder ─────────────────────────────────────────────────────
+    SENTENCE_STARTER(
+        "sentence_starter", "🧩", "Sentence Starter",
+        "Build your first correct sentence"
+    ),
+    SENTENCE_BUILDER(
+        "sentence_builder", "🔨", "Sentence Builder",
+        "Build 10 sentences correctly"
+    ),
+    SENTENCE_SMITH(
+        "sentence_smith", "⚒️", "Sentence Smith",
+        "Build 50 sentences correctly"
+    ),
+    SENTENCE_MASTER(
+        "sentence_master", "🏗️", "Sentence Master",
+        "Build 100 sentences correctly"
+    ),
+    PERFECT_BUILDER(
+        "perfect_builder", "💯", "Perfect Builder",
+        "Complete a session with every sentence correct on the first try"
+    ),
+
     // ── Special ──────────────────────────────────────────────────────────────
     TRIPLE_CROWN(
         "triple_crown", "👑", "Triple Crown",

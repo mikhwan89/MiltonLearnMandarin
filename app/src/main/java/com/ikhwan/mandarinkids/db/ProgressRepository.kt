@@ -96,6 +96,36 @@ class ProgressRepository private constructor(
         checkAndUpdateFlashcardStreak()
     }
 
+    // ── Sentence Builder XP ──────────────────────────────────────────────
+
+    /** Awards +[amount] XP for each correctly-built sentence. Checks SB badges. */
+    suspend fun addSentenceBuilderXp(amount: Int = 10) {
+        val current = dao.getById(SENTENCE_BUILDER_XP_ID).first()
+        val oldXp = current?.xp ?: 0
+        dao.upsert(
+            ScenarioProgressEntity(
+                scenarioId = SENTENCE_BUILDER_XP_ID,
+                stars = current?.stars ?: 0,
+                xp = oldXp + amount,
+                lastPlayedAt = System.currentTimeMillis()
+            )
+        )
+        // XP milestone badges
+        val totalXp = dao.getTotalXp().first()
+        if (totalXp >= 100)  awardBadge(Badge.XP_SEEKER.id)
+        if (totalXp >= 500)  awardBadge(Badge.XP_HUNTER.id)
+        if (totalXp >= 1000) awardBadge(Badge.XP_LEGEND.id)
+
+        // Sentence builder cumulative-correct badges
+        val p = prefs()
+        val newTotal = p.getInt(KEY_SB_CORRECT_TOTAL, 0) + 1
+        p.edit().putInt(KEY_SB_CORRECT_TOTAL, newTotal).apply()
+        if (newTotal >= 1)   awardBadge(Badge.SENTENCE_STARTER.id)
+        if (newTotal >= 10)  awardBadge(Badge.SENTENCE_BUILDER.id)
+        if (newTotal >= 50)  awardBadge(Badge.SENTENCE_SMITH.id)
+        if (newTotal >= 100) awardBadge(Badge.SENTENCE_MASTER.id)
+    }
+
     // ── Mastered word persistence ─────────────────────────────────────────
 
     /**
@@ -229,7 +259,8 @@ class ProgressRepository private constructor(
      *  • every word in DEFAULT, LISTENING, and READING modes is at ★10.
      */
     private suspend fun checkGrandMasterBadge(allProgress: List<ScenarioProgressEntity>) {
-        val scenarioEntries = allProgress.filter { it.scenarioId != FLASHCARD_XP_ID }
+        val sentinelIds = setOf(FLASHCARD_XP_ID, SENTENCE_BUILDER_XP_ID)
+        val scenarioEntries = allProgress.filter { it.scenarioId !in sentinelIds }
         if (scenarioEntries.isEmpty() || !scenarioEntries.all { it.stars >= 3 }) return
 
         for (type in PracticeType.values()) {
@@ -340,6 +371,7 @@ class ProgressRepository private constructor(
             .remove(KEY_WORD_OF_DAY_CHINESE)
             .remove(KEY_FLASHCARD_STREAK)
             .remove(KEY_FLASHCARD_LAST_DATE)
+            .remove(KEY_SB_CORRECT_TOTAL)
             // PIN and Indonesian preference intentionally kept
             .apply()
     }
@@ -358,7 +390,8 @@ class ProgressRepository private constructor(
     }
 
     companion object {
-        const val FLASHCARD_XP_ID = "__flashcard__"
+        const val FLASHCARD_XP_ID          = "__flashcard__"
+        const val SENTENCE_BUILDER_XP_ID   = "__sentence_builder__"
         private const val PREFS_NAME = "milton_progress"
         private const val KEY_STREAK = "streak"
         private const val KEY_LAST_OPEN_DATE = "last_open_date"
@@ -367,8 +400,9 @@ class ProgressRepository private constructor(
         private const val KEY_WORD_OF_DAY_CHINESE = "word_of_day_chinese"
         private const val KEY_PIN_HASH = "parent_pin_hash"
         private const val KEY_SHOW_INDONESIAN = "show_indonesian"
-        private const val KEY_FLASHCARD_STREAK = "flashcard_streak"
-        private const val KEY_FLASHCARD_LAST_DATE = "flashcard_last_date"
+        private const val KEY_FLASHCARD_STREAK    = "flashcard_streak"
+        private const val KEY_FLASHCARD_LAST_DATE  = "flashcard_last_date"
+        private const val KEY_SB_CORRECT_TOTAL     = "sentence_builder_correct_total"
 
         @Volatile private var _instance: ProgressRepository? = null
 

@@ -3,6 +3,7 @@ package com.ikhwan.mandarinkids.navigation
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BarChart
+import androidx.compose.material.icons.filled.Extension
 import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Style
 import androidx.compose.material3.*
@@ -26,6 +27,7 @@ import com.ikhwan.mandarinkids.home.ProgressScreen
 import com.ikhwan.mandarinkids.home.ScenarioListScreen
 import com.ikhwan.mandarinkids.parent.ParentDashboardScreen
 import com.ikhwan.mandarinkids.practice.PracticeScreen
+import com.ikhwan.mandarinkids.practice.SentenceBuilderScreen
 
 @Composable
 fun MandarinKidsApp() {
@@ -42,7 +44,7 @@ fun MandarinKidsApp() {
     // Determine current route to decide whether to show the bottom nav
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-    val topLevelRoutes = setOf(Routes.HOME, Routes.PRACTICE, Routes.PROGRESS)
+    val topLevelRoutes = setOf(Routes.HOME, Routes.PRACTICE, Routes.SENTENCE_BUILDER, Routes.PROGRESS)
 
     Scaffold(
         bottomBar = {
@@ -65,6 +67,17 @@ fun MandarinKidsApp() {
                         selected = currentRoute == Routes.PRACTICE,
                         onClick = {
                             navController.navigate(Routes.PRACTICE) {
+                                popUpTo(Routes.HOME)
+                                launchSingleTop = true
+                            }
+                        }
+                    )
+                    NavigationBarItem(
+                        icon = { Icon(Icons.Default.Extension, contentDescription = "Build") },
+                        label = { Text("Build") },
+                        selected = currentRoute == Routes.SENTENCE_BUILDER,
+                        onClick = {
+                            navController.navigate(Routes.SENTENCE_BUILDER) {
                                 popUpTo(Routes.HOME)
                                 launchSingleTop = true
                             }
@@ -103,6 +116,10 @@ fun MandarinKidsApp() {
 
             composable(Routes.PRACTICE) {
                 PracticeScreen(onBack = { navController.popBackStack() })
+            }
+
+            composable(Routes.SENTENCE_BUILDER) {
+                SentenceBuilderScreen()
             }
 
             composable(Routes.PROGRESS) {

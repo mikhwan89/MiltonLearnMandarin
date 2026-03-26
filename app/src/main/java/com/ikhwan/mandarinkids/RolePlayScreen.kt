@@ -205,11 +205,11 @@ fun RolePlayScreen(
                                 option = vm.currentStep!!.options.first(),
                                 onNameEntered = { name ->
                                     val fullChinese = vm.submitName(name)
-                                    tts.speak(fullChinese, vm.speechSpeed)
                                     coroutineScope.launch {
                                         delay(300)
                                         listState.animateScrollToItem(vm.conversationHistory.size - 1)
-                                        delay(2000)
+                                        tts.speakAndAwait(fullChinese, "student_name_${vm.currentStepIndex}", vm.speechSpeed)
+                                        delay(800)
                                         vm.advanceStep()
                                     }
                                 },
@@ -237,11 +237,11 @@ fun RolePlayScreen(
                                         index = index,
                                         onClick = {
                                             vm.selectOption(option)
-                                            tts.speak(option.chinese, vm.speechSpeed)
                                             coroutineScope.launch {
                                                 delay(300)
                                                 listState.animateScrollToItem(vm.conversationHistory.size - 1)
-                                                delay(2000)
+                                                tts.speakAndAwait(option.chinese, "student_option_${vm.currentStepIndex}", vm.speechSpeed)
+                                                delay(800)
                                                 if (vm.currentStepIndex + 1 >= scenario.dialogues.size) {
                                                     onComplete(vm.correctAnswersCount)
                                                 } else {
