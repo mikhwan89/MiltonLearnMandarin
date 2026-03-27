@@ -9,10 +9,9 @@ An Android app that teaches Mandarin Chinese to young children (age 4–8) throu
 Mandarinku puts a child in real-world situations and guides them through Mandarin at their own pace. Learning is split across four modes:
 
 1. **Flashcards** — learn vocabulary before a conversation. Each card shows the Chinese character, pinyin (colour-coded by tone), English, and Indonesian translation. Tap to flip, mark as "Got it" or "Still learning".
-2. **Role-play** — have a back-and-forth conversation with a character (teacher, classmate, etc.). Tap any pinyin word to see its tone colour, translation, and a child-friendly grammar note. Grammar particles like 了, 的, and 吗 include a plain-language tip so a 5-year-old understands what they do.
-3. **Quiz** — answer multiple-choice questions about what was just practised. Results show stars earned and XP gained.
-4. **Tone Trainer** — hear a spoken word and identify which of the four Mandarin tones it uses.
-5. **Sentence Builder** — arrange pinyin tiles in the correct order to form a sentence.
+2. **Role-play** — have a back-and-forth conversation with a character (teacher, classmate, etc.). Tap any pinyin word to see its tone colour, translation, and a child-friendly grammar note. Grammar particles like 了, 的, and 吗 include a plain-language tip so a 5-year-old understands what they do. Each role-play ends with a quiz — multiple-choice questions about what was just practised, with stars and XP awarded based on performance.
+3. **Tone Trainer** — hear a spoken word and identify which of the four Mandarin tones it uses.
+4. **Sentence Builder** — arrange pinyin tiles in the correct order to form a sentence.
 
 Progress (stars, XP, streak, mastered words) is saved locally. Parents can unlock a dashboard with a PIN to view detailed progress, set reward milestones, and control which content is available.
 
