@@ -421,15 +421,14 @@ private fun ToneChoiceButton(
             isCorrect -> Color(0xFF4CAF50)
             isWrong   -> Color(0xFFF44336)
             isIdle    -> MaterialTheme.colorScheme.surfaceVariant
-            else      -> baseColor.copy(alpha = 0.14f)
+            else      -> baseColor
         },
         animationSpec = tween(250),
         label = "toneBtn_$tone"
     )
     val contentColor = when {
-        isCorrect || isWrong -> Color.White
-        isIdle               -> MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
-        else                 -> baseColor
+        isIdle -> MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
+        else   -> Color.White
     }
 
     Surface(
@@ -437,7 +436,7 @@ private fun ToneChoiceButton(
         enabled   = enabled,
         shape     = RoundedCornerShape(16.dp),
         color     = containerColor,
-        shadowElevation = if (!isIdle && !isCorrect && !isWrong) 2.dp else 0.dp,
+        shadowElevation = 2.dp,
         modifier  = modifier.height(64.dp)
     ) {
         Row(
