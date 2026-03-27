@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-MiltonLearnMandarin is an Android app that teaches Mandarin to young children (age 4–8) through interactive role-play scenarios and quizzes. Built for the developer's son Milton.
+**Mandarinku** is an Android app that teaches Mandarin to young children (age 4–8) through interactive role-play scenarios, flashcard drills, tone training, and sentence-building games. Built for the developer's son Milton.
 
 **GitHub:** https://github.com/mikhwan89/MiltonLearnMandarin
 **Package:** `com.ikhwan.mandarinkids`
@@ -36,21 +36,30 @@ MiltonLearnMandarin is an Android app that teaches Mandarin to young children (a
 **UI:** 100% Jetpack Compose with Material Design 3
 **State management:** ViewModels (`RolePlayViewModel`, `QuizViewModel`, `FlashcardViewModel`, `PracticeSessionViewModel`) + Compose `collectAsState()`
 **Navigation:** Jetpack Navigation Compose (`NavHostController`), string routes defined in `navigation/Routes.kt`
-**Data storage:** Room database v5 + DataStore preferences
-**Content:** JSON files in `app/src/main/assets/scenarios/` (19 scenarios), loaded at runtime via `JsonScenarioLoader`
+**Data storage:** Room database v8 + DataStore preferences
+**Content:** JSON files in `app/src/main/assets/scenarios/` (50 scenarios), loaded at runtime via `JsonScenarioLoader`
 
 ### Screen Flow
 
 ```
-HomeScreen (tab: Learn)
+HomeScreen (tab: Roleplay)
   └── ScenarioListScreen (by category)
         └── RolePlayScreen → QuizScreen → QuizResultsScreen
                                                └── retry → QuizScreen
+
 HomeScreen (tab: Practice)
-  └── PracticeScreen (flashcard drill)
+  └── PracticeScreen (cross-scenario flashcard drill)
         └── FlashcardScreen (per-scenario flashcards)
-HomeScreen (parent icon)
-  └── PinScreen → ParentDashboardScreen
+
+HomeScreen (tab: Tone Trainer)
+  └── ToneTrainerScreen
+
+HomeScreen (tab: Sentence Builder)
+  └── SentenceBuilderScreen
+
+HomeScreen (tab: Progress)
+  └── ProgressScreen
+        └── PinScreen → ParentDashboardScreen
 ```
 
 ### Navigation Routes (`navigation/Routes.kt`)
@@ -58,14 +67,18 @@ HomeScreen (parent icon)
 ```kotlin
 Routes.HOME              // "home"
 Routes.PRACTICE          // "practice"
+Routes.TONE_TRAINER      // "tone_trainer"
+Routes.SENTENCE_BUILDER  // "sentence_builder"
+Routes.PROGRESS          // "progress"
 Routes.PARENT_DASHBOARD  // "parent_dashboard"
+Routes.PIN               // "pin"
 Routes.CATEGORY          // "category/{categoryName}"
 Routes.FLASHCARD         // "flashcard/{scenarioId}"
 Routes.ROLEPLAY          // "roleplay/{scenarioId}"
 Routes.QUIZ              // "quiz/{scenarioId}/{rolePlayScore}"
 ```
 
-Navigation is wired in `navigation/AppNavigation.kt`.
+Navigation is wired in `navigation/AppNavigation.kt`. The bottom nav shows 5 tabs (HOME, PRACTICE, TONE_TRAINER, SENTENCE_BUILDER, PROGRESS) and hides on child routes (PIN, PARENT_DASHBOARD, CATEGORY, FLASHCARD, ROLEPLAY, QUIZ). Individual tabs can be disabled via parental controls.
 
 ### Key Source Files
 
@@ -75,8 +88,9 @@ All under `app/src/main/java/com/ikhwan/mandarinkids/`:
 | File | Contents |
 |------|----------|
 | `MainActivity.kt` | `ComponentActivity`, entry point, `MandarinKidsApp` host composable |
-| `home/HomeScreen.kt` | Home screen — progress card, word-of-day, badges, practice banner, category list |
+| `home/HomeScreen.kt` | Roleplay home — word-of-day popup, category list, XP/streak display |
 | `home/ScenarioListScreen.kt` | Scenario cards filtered by category |
+| `home/ProgressScreen.kt` | Progress tab — XP, badges, mastered words, parent dashboard entry |
 | `RolePlayScreen.kt` | Dialogue flow, `ResponseOptionButton`, `NameInputSection` |
 | `RolePlayViewModel.kt` | Step progression, option selection, TTS coordination, score tracking |
 | `ConversationBubble.kt` | Chat bubble composable with pinyin pills, bounce animation, word detail dialog |
@@ -88,6 +102,9 @@ All under `app/src/main/java/com/ikhwan/mandarinkids/`:
 | `FlashcardViewModel.kt` | Flashcard state — flip, got-it/skip |
 | `practice/PracticeScreen.kt` | Cross-scenario flashcard drill mode |
 | `practice/PracticeSessionViewModel.kt` | Practice session state |
+| `practice/ToneTrainerScreen.kt` | Tone recognition game — hear a word, identify its tone |
+| `practice/SentenceBuilderScreen.kt` | Sentence assembly game — arrange pinyin tiles in correct order |
+| `practice/PracticeMode.kt` | Enum/data class for practice modalities |
 | `PhrasesScreen.kt` | Standalone phrase browser with TTS |
 | `parent/ParentDashboardScreen.kt` | Parent progress view and milestone rewards manager |
 | `parent/PinScreen.kt` | PIN entry gate for parent dashboard |
@@ -99,16 +116,17 @@ All under `app/src/main/java/com/ikhwan/mandarinkids/`:
 | `data/scenarios/JsonScenarioLoader.kt` | Loads and deserialises scenario JSON from assets |
 | `data/scenarios/JsonScenarioRepository.kt` | In-memory cache of all loaded scenarios |
 | `data/scenarios/ScenarioRepository.kt` | Public facade — `getAllScenarios()`, `getById()` |
-| `db/AppDatabase.kt` | Room database v5, three entities, migrations 1→5 |
+| `db/AppDatabase.kt` | Room database v8, three entities, migrations 1→8 |
 | `db/ScenarioProgressEntity.kt` | Stars, XP, lastPlayedAt, speechRateOverride per scenario |
-| `db/MasteredWordEntity.kt` | Per-word "got it" status for flashcard spaced repetition |
-| `db/MilestoneReward.kt` | Parent-defined reward targets |
+| `db/MasteredWordEntity.kt` | Per-word progress with spaced-repetition fields (`boxLevel`, `nextReviewDate`) and `practiceType` |
+| `db/PracticeType.kt` | Enum: `DEFAULT`, `LISTENING`, `READING` — tracks mastery separately per modality |
+| `db/MilestoneReward.kt` | Parent-defined reward targets (multi-condition: `conditionsJson` + `logic` AND/OR) |
 | `db/ProgressDao.kt` | Room DAO for scenario progress |
 | `db/MasteredWordDao.kt` | Room DAO for mastered words |
 | `db/MilestoneRewardDao.kt` | Room DAO for milestone rewards |
 | `db/ProgressRepository.kt` | Wraps DAO — star/XP saves, speech rate override, streak |
 | `db/Badge.kt` | Badge definitions and unlock logic |
-| `preferences/UserPreferencesRepository.kt` | DataStore — global speech rate, streak, onboarding flag |
+| `preferences/UserPreferencesRepository.kt` | DataStore — global speech rate, streak, onboarding flag, showIndonesian, disabledTabs, disabledCategories, disabledScenarios |
 | `ProgressManager.kt` | Star calculation, XP award, badge unlock coordination |
 
 #### Utilities & UI
@@ -146,7 +164,7 @@ Scenario
 
 ### Learning Content
 
-19 scenarios across 6 categories. All content lives in `app/src/main/assets/scenarios/`.
+50 scenarios across 6 categories. All content lives in `app/src/main/assets/scenarios/`.
 Each scenario has: Chinese + pinyin + English + Indonesian, dialogue steps, TTS, and 3–5 quiz questions.
 The index of loaded files is `app/src/main/assets/scenarios/index.json`.
 
@@ -165,15 +183,20 @@ Use the `/scenario` command for guided creation with QA checks.
 
 ### Room Database
 
-`AppDatabase` (version 5) — three entities:
+`AppDatabase` (version 8) — three entities:
 
 | Entity | Table | Key columns |
 |--------|-------|-------------|
 | `ScenarioProgressEntity` | `scenario_progress` | `scenarioId`, `stars`, `xp`, `lastPlayedAt`, `speechRateOverride` |
-| `MasteredWordEntity` | `mastered_words` | `scenarioId`, `chinese`, `isMastered` |
-| `MilestoneReward` | `milestone_rewards` | `id`, `milestoneType`, `targetValue`, `rewardText`, `isClaimed` |
+| `MasteredWordEntity` | `mastered_words` | `scenarioId`, `chinese`, `isMastered`, `boxLevel`, `nextReviewDate`, `practiceType` |
+| `MilestoneReward` | `milestone_rewards` | `id`, `conditionsJson`, `logic` (AND/OR), `rewardText`, `isClaimed` |
 
-Migrations tracked: 1→2, 2→3, 3→4, 4→5.
+Migrations tracked: 1→2, 2→3, 3→4, 4→5, 5→6, 6→7, 7→8.
+
+**Migration notes:**
+- **5→6:** Deleted stale mastered_words entries (pre-split flashcards with 5+ CJK characters)
+- **6→7:** Added `practiceType` to mastered_words primary key — tracks mastery per modality (DEFAULT, LISTENING, READING)
+- **7→8:** Migrated `milestone_rewards` from single `milestoneType+targetValue` to `conditionsJson` + `logic` (AND/OR) for multi-condition reward support
 
 ## SDK & Dependencies
 
@@ -195,6 +218,8 @@ Migrations tracked: 1→2, 2→3, 3→4, 4→5.
 - **pinyinWords must be complete** — every word in every sentence, including particles (吗, 了, 的). Add a `note` for grammar particles.
 - **Do not use `private fun`** for sound utilities (`playSuccessSound`, `playWrongSound`) — they are called across files.
 - **Room migrations are required** whenever a database entity changes — bump the version and add a migration to `AppDatabase.kt`.
+- **Parental controls** (disabledTabs, disabledCategories, disabledScenarios) are stored in DataStore and enforced in navigation and the home screen. Do not bypass these when building new features.
+- **MasteredWordEntity primary key** is a composite of `(scenarioId, chinese, practiceType)` — queries must include all three fields.
 
 ## Claude Skills & Commands
 

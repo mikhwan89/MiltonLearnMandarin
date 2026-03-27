@@ -1,18 +1,20 @@
-# Milton Learn Mandarin 🇨🇳
+# Mandarinku 🇨🇳
 
-An Android app that teaches Mandarin Chinese to young children (age 5+) through interactive role-play conversations, flashcards, and quizzes. Built by a dad for his son Milton.
+An Android app that teaches Mandarin Chinese to young children (age 4–8) through interactive role-play conversations, flashcard drills, tone training, and sentence-building games. Built by a dad for his son Milton.
 
 ---
 
 ## What It Does
 
-Milton Learn Mandarin puts a child in real-world school situations and guides them through a Mandarin conversation step by step. Each scenario has three phases:
+Mandarinku puts a child in real-world situations and guides them through Mandarin at their own pace. Learning is split across four modes:
 
-1. **Flashcards** — learn the new vocabulary words before the conversation starts. Each word shows the Chinese character, pinyin (colour-coded by tone), English, and Indonesian translation. Tap a card to flip it. Mark words as "Got it" or "Still learning".
-2. **Role-play** — have a back-and-forth conversation with a character (teacher, classmate, etc.). Tap any pinyin word to see its tone colour, translation, and a child-friendly explanation. Grammar particles like 了, 的, and 吗 include a plain-English tip so a 5-year-old understands what they do.
-3. **Quiz** — answer multiple-choice questions about what was just practised. A results screen shows stars earned and XP gained.
+1. **Flashcards** — learn vocabulary before a conversation. Each card shows the Chinese character, pinyin (colour-coded by tone), English, and Indonesian translation. Tap to flip, mark as "Got it" or "Still learning".
+2. **Role-play** — have a back-and-forth conversation with a character (teacher, classmate, etc.). Tap any pinyin word to see its tone colour, translation, and a child-friendly grammar note. Grammar particles like 了, 的, and 吗 include a plain-language tip so a 5-year-old understands what they do.
+3. **Quiz** — answer multiple-choice questions about what was just practised. Results show stars earned and XP gained.
+4. **Tone Trainer** — hear a spoken word and identify which of the four Mandarin tones it uses.
+5. **Sentence Builder** — arrange pinyin tiles in the correct order to form a sentence.
 
-Progress (stars, XP, streak) is saved locally and shown on the home screen.
+Progress (stars, XP, streak, mastered words) is saved locally. Parents can unlock a dashboard with a PIN to view detailed progress, set reward milestones, and control which content is available.
 
 ---
 
@@ -24,22 +26,16 @@ Progress (stars, XP, streak) is saved locally and shown on the home screen.
 
 ## Scenarios
 
-The app currently includes **12 scenarios** covering everyday school life:
+The app includes **50 scenarios** across 6 categories:
 
-| # | Title | Situation |
-|---|-------|-----------|
-| 1 | 第一天：问候老师 | First day at school — greeting your teacher |
-| 2 | 认识新朋友 | Meeting Liu Ming, your new classmate |
-| 3 | 零食时间 | Sharing snacks with a friend |
-| 4 | 请求帮助 | Asking the teacher for permission politely |
-| 5 | 操场游戏 | Joining classmates on the playground |
-| 6 | 放学了 | End of the school day — saying goodbye |
-| 7 | 借东西 | Borrowing a pencil, eraser, or ruler |
-| 8 | 我不舒服 | Telling the teacher you feel unwell |
-| 9 | 迷路了 | Getting lost and asking for directions |
-| 10 | 解决争吵 | Saying sorry and making up with a friend |
-| 11 | 回家了 | Telling your parents about your school day |
-| 12 | 举手提问 | Raising your hand to ask and answer questions |
+| Category | Topics covered |
+|----------|---------------|
+| **Essentials** | Greetings, numbers, colours, basic phrases |
+| **At School** | Meeting the teacher, asking for help, raising your hand, borrowing items, feeling unwell, resolving conflicts |
+| **School Subjects** | Maths, science, art, music, PE — talking about what you study |
+| **Food & Eating** | Snack time, lunch, ordering food, favourite foods |
+| **Feelings & Health** | Expressing emotions, describing how you feel, visiting the nurse |
+| **Play & Hobbies** | Playground games, sports, hobbies, weekend activities |
 
 All scenarios include Chinese, pinyin, English, and Indonesian text. Adding a new scenario requires only a single JSON file — no Kotlin changes needed.
 
@@ -66,9 +62,9 @@ Pinyin is colour-coded by tone throughout the app — in flashcards, conversatio
 | Language | Kotlin 2.0.0 |
 | UI | Jetpack Compose (BOM 2024.12.01), Material Design 3 |
 | Navigation | Jetpack Navigation Compose 2.9.7 |
-| State | `ViewModel` + `mutableStateOf` |
-| Local DB | Room 2.8.4 (progress persistence) |
-| Preferences | DataStore Preferences 1.1.1 (speech rate, language toggle) |
+| State | `ViewModel` + `collectAsState()` |
+| Local DB | Room 2.8.4 v8 (progress, mastered words, milestone rewards) |
+| Preferences | DataStore Preferences 1.1.1 (speech rate, parental controls, feature flags) |
 | Serialisation | kotlinx.serialization 1.7.3 (JSON scenario loading) |
 | TTS | Android `TextToSpeech` with `Locale.CHINESE` |
 | Build | AGP 9.0.1, KSP 2.2.10-2.0.2, Java 11 |
@@ -82,43 +78,56 @@ Pinyin is colour-coded by tone throughout the app — in flashcards, conversatio
 ```
 app/src/main/
 ├── assets/
-│   └── scenarios/          # One JSON file per scenario (scenario_01.json … scenario_12.json)
+│   └── scenarios/              # 50 JSON scenario files + index.json
 └── java/com/ikhwan/mandarinkids/
-    ├── MainActivity.kt             # Entry point, sets up NavHost
-    ├── FlashcardScreen.kt          # Flashcard phase UI
-    ├── FlashcardViewModel.kt       # Flashcard state (deck, mastered words)
-    ├── RolePlayScreen.kt           # Role-play phase UI + ConversationBubble
-    ├── RolePlayViewModel.kt        # Role-play state (step index, score, TTS speed)
-    ├── QuizScreen.kt               # Quiz phase UI + results screen
-    ├── QuizViewModel.kt            # Quiz state (question index, score, feedback)
-    ├── PhrasesScreen.kt            # Standalone phrase browser
-    ├── ProgressManager.kt          # Pure functions: calculateStars(), getLevel()
-    ├── ToneUtils.kt                # Tone detection, colour mapping, syllable splitter,
-    │                               #   AnnotatedString builder for mixed-tone pinyin
+    ├── MainActivity.kt
+    ├── RolePlayScreen.kt / RolePlayViewModel.kt
+    ├── QuizScreen.kt / QuizViewModel.kt / QuizResultsScreen.kt
+    ├── FlashcardScreen.kt / FlashcardViewModel.kt
+    ├── ConversationBubble.kt   # pinyin pills, word detail popup
+    ├── FeedbackCard.kt
+    ├── PhrasesScreen.kt        # standalone phrase browser
+    ├── ProgressManager.kt      # star calc, XP, badge unlock
+    ├── ToneUtils.kt            # tone detection, colour mapping
     ├── data/
-    │   ├── models/
-    │   │   └── ScenarioModels.kt   # All @Serializable data classes (see Data Model below)
+    │   ├── models/ScenarioModels.kt    # all @Serializable data classes
     │   └── scenarios/
-    │       ├── ScenarioRepository.kt      # interface ScenarioRepository
-    │       └── JsonScenarioRepository.kt  # Loads + deserialises JSON assets
+    │       ├── ScenarioRepository.kt
+    │       ├── JsonScenarioRepository.kt
+    │       └── JsonScenarioLoader.kt
     ├── db/
-    │   ├── AppDatabase.kt              # Room database singleton
-    │   ├── ProgressDao.kt             # @Dao: upsert, getById, getTotalXp
-    │   ├── ProgressRepository.kt      # saveProgress(), getTotalXp(), getStars(), streak
-    │   └── ScenarioProgressEntity.kt  # @Entity: scenarioId, stars, xp, lastPlayedAt
+    │   ├── AppDatabase.kt              # Room v8, 3 entities
+    │   ├── ScenarioProgressEntity.kt
+    │   ├── MasteredWordEntity.kt       # spaced repetition + practice type
+    │   ├── PracticeType.kt             # DEFAULT | LISTENING | READING
+    │   ├── MilestoneReward.kt          # multi-condition reward targets
+    │   ├── ProgressDao.kt / MasteredWordDao.kt / MilestoneRewardDao.kt
+    │   ├── ProgressRepository.kt
+    │   └── Badge.kt
     ├── home/
-    │   └── HomeScreen.kt           # Home screen with scenario list, XP, level, streak
+    │   ├── HomeScreen.kt               # Roleplay tab — category list, word-of-day
+    │   ├── ScenarioListScreen.kt
+    │   └── ProgressScreen.kt           # Progress tab — XP, badges, parent entry
+    ├── practice/
+    │   ├── PracticeScreen.kt           # cross-scenario flashcard drill
+    │   ├── PracticeSessionViewModel.kt
+    │   ├── ToneTrainerScreen.kt        # tone recognition game
+    │   ├── SentenceBuilderScreen.kt    # tile-arrangement game
+    │   └── PracticeMode.kt
+    ├── parent/
+    │   ├── ParentDashboardScreen.kt    # PIN-gated progress + controls
+    │   └── PinScreen.kt
     ├── navigation/
-    │   ├── AppNavigation.kt        # NavHost with all composable destinations
-    │   └── Routes.kt               # Route constants and URL builders
+    │   ├── AppNavigation.kt            # NavHost, 5-tab bottom nav
+    │   └── Routes.kt                   # route constants + URL builders
     ├── preferences/
-    │   └── UserPreferencesRepository.kt  # DataStore: speechRate, showIndonesian
+    │   └── UserPreferencesRepository.kt  # DataStore: speech rate, parental controls
     ├── tts/
-    │   └── TtsManager.kt           # Shared TTS wrapper, rememberTtsManager()
-    └── ui/theme/
-        ├── Color.kt
-        ├── Theme.kt
-        └── Type.kt
+    │   └── TtsManager.kt
+    └── ui/
+        ├── ConfettiEffect.kt
+        ├── StrokeOrderSheet.kt
+        └── theme/ (Color.kt, Theme.kt, Type.kt)
 ```
 
 ---
@@ -128,8 +137,9 @@ app/src/main/
 ```
 Scenario
 ├── id, title, description, characterName, characterEmoji, characterRole
+├── category: ScenarioCategory
 ├── dialogues: List<DialogueStep>
-│   ├── id, speaker (CHARACTER | STUDENT)
+│   ├── speaker: Speaker (CHARACTER | STUDENT)
 │   ├── textChinese, textPinyin, textEnglish, textIndonesian
 │   ├── responseType (LISTEN_ONLY | SINGLE_CHOICE | MULTIPLE_OPTIONS | TEXT_INPUT)
 │   ├── options: List<ResponseOption>
@@ -137,9 +147,9 @@ Scenario
 │   │   └── pinyinWords: List<PinyinWord>
 │   └── pinyinWords: List<PinyinWord>
 │       ├── chinese, pinyin, english, indonesian
-│       └── note: String?   ← child-friendly grammar tip (particles, measure words, etc.)
+│       └── note: String?   ← child-friendly grammar tip
 └── quizQuestions: List<QuizQuestion>
-    ├── direction (CHINESE_TO_TRANSLATION | TRANSLATION_TO_CHINESE)
+    ├── direction (CHINESE_TO_TRANSLATION | TRANSLATION_TO_CHINESE | AUDIO_TO_TRANSLATION)
     ├── questionText, questionChinese, questionPinyin
     ├── options: List<QuizOption>  (chinese, pinyin, translation)
     ├── correctAnswerIndex
@@ -151,29 +161,39 @@ Scenario
 ## Screen Flow
 
 ```
-Home Screen
-    │
-    ├──▶ Flashcard Screen  ──▶  Role-Play Screen  ──▶  Quiz Screen  ──▶  Results
-    │                                                                        │
-    │                               ◀──────────── retry (back to Flashcard) ┘
-    │
-    └──▶ Phrases Screen  (standalone vocabulary browser)
+Bottom nav (5 tabs — individual tabs can be disabled by parents)
+│
+├── [Roleplay tab] HomeScreen
+│     └── ScenarioListScreen (by category)
+│           └── RolePlayScreen → QuizScreen → QuizResultsScreen
+│                                                  └── retry ──┘
+│
+├── [Practice tab] PracticeScreen
+│     └── FlashcardScreen (per scenario)
+│
+├── [Tone Trainer tab] ToneTrainerScreen
+│
+├── [Sentence Builder tab] SentenceBuilderScreen
+│
+└── [Progress tab] ProgressScreen
+      └── PinScreen → ParentDashboardScreen
 ```
 
 ---
 
 ## Adding a New Scenario
 
-No Kotlin needed. Create a JSON file in `app/src/main/assets/scenarios/` following this structure:
+No Kotlin needed. Create a JSON file in `app/src/main/assets/scenarios/` then **add its filename to `index.json`**:
 
 ```json
 {
-  "id": "scene13_your_id",
+  "id": "scene51_your_id",
   "title": "场景标题",
   "description": "One-line description in English",
   "characterName": "角色名",
   "characterEmoji": "👩‍🏫",
   "characterRole": "Teacher",
+  "category": "AT_SCHOOL",
   "dialogues": [
     {
       "id": 1,
@@ -204,13 +224,13 @@ No Kotlin needed. Create a JSON file in `app/src/main/assets/scenarios/` followi
 }
 ```
 
-Then register the file in `JsonScenarioRepository` so it is included when the app loads.
-
 **Tips:**
-- `speaker` must be `"CHARACTER"` or `"STUDENT"`
-- `responseType` options: `"LISTEN_ONLY"`, `"SINGLE_CHOICE"`, `"MULTIPLE_OPTIONS"`, `"TEXT_INPUT"`
-- Add a `"note"` field to any `pinyinWord` entry that needs a child-friendly grammar explanation (especially particles like 了, 的, 吗)
-- Both English and Indonesian translations are required on every text field
+- `category` must be one of: `ESSENTIALS`, `AT_SCHOOL`, `SCHOOL_SUBJECTS`, `FOOD_AND_EATING`, `FEELINGS_AND_HEALTH`, `PLAY_AND_HOBBIES`
+- `speaker`: `"CHARACTER"` or `"STUDENT"`
+- `responseType`: `"LISTEN_ONLY"`, `"SINGLE_CHOICE"`, `"MULTIPLE_OPTIONS"`, `"TEXT_INPUT"`
+- `direction`: `"CHINESE_TO_TRANSLATION"`, `"TRANSLATION_TO_CHINESE"`, or `"AUDIO_TO_TRANSLATION"`
+- Add a `"note"` to any `pinyinWord` that needs a grammar explanation (especially particles 了, 的, 吗)
+- Both English and Indonesian are required on every text field
 
 ---
 
@@ -222,15 +242,15 @@ git clone https://github.com/mikhwan89/MiltonLearnMandarin.git
 cd MiltonLearnMandarin
 
 # Run from Android Studio terminal (uses bundled JDK)
-./gradlew assembleDebug       # build debug APK
-./gradlew assembleRelease     # build release APK
-./gradlew test                # run unit tests (JVM, no device needed)
+./gradlew assembleDebug        # build debug APK
+./gradlew assembleRelease      # build release APK
+./gradlew test                 # run unit tests (JVM, no device needed)
 ./gradlew connectedAndroidTest # run instrumented tests (requires device/emulator)
-./gradlew lint                # lint check
-./gradlew clean               # clean build outputs
+./gradlew lint                 # lint check
+./gradlew clean                # clean build outputs
 ```
 
-Requires **Android Studio Hedgehog or newer**. The project uses AGP 9.0.1 with the bundled Kotlin plugin — no separate Kotlin plugin installation needed.
+Requires **Android Studio Hedgehog or newer**. Uses AGP 9.0.1 with KSP — no separate Kotlin plugin installation needed.
 
 ---
 
@@ -250,7 +270,7 @@ Pure JVM tests live in `app/src/test/` — no emulator or Robolectric required:
 
 ## Offline First
 
-The app works entirely offline. All scenario content is bundled as JSON assets. TTS uses the Android system TTS engine. No network calls are made.
+The app works entirely offline. All scenario content is bundled as JSON assets. TTS uses the Android system TTS engine (requires Chinese TTS pack installed on device). No network calls are made.
 
 ---
 
