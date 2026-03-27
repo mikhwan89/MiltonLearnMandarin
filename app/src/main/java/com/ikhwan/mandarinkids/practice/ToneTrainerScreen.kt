@@ -8,6 +8,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -31,6 +32,21 @@ import kotlinx.coroutines.launch
 
 private const val TONE_SESSION_LENGTH = 10
 
+private data class ToneExample(
+    val pinyin: String,
+    val chinese: String,
+    val meaning: String,
+    val tone: Int       // 0 = neutral
+)
+
+private val MA_EXAMPLES = listOf(
+    ToneExample("mā", "妈", "mother", 1),
+    ToneExample("má", "麻", "hemp / numb", 2),
+    ToneExample("mǎ", "马", "horse", 3),
+    ToneExample("mà", "骂", "to scold", 4),
+    ToneExample("ma", "吗", "question marker", 0)
+)
+
 private data class ToneQuestion(
     val chinese: String,
     val pinyinWithTone: String,
@@ -45,7 +61,9 @@ fun ToneTrainerScreen() {
     val context = LocalContext.current
     val tts = rememberTtsManager()
     val scope = rememberCoroutineScope()
-    val repo = remember { ProgressRepository.getInstance(context) }
+    val repo  = remember { ProgressRepository.getInstance(context) }
+    val prefs = remember { context.getSharedPreferences("tone_trainer", 0) }
+    var showIntro by remember { mutableStateOf(!prefs.getBoolean("tone_intro_seen", false)) }
 
     val questionPool: List<ToneQuestion> = remember {
         JsonScenarioRepository.getAll()
@@ -144,7 +162,7 @@ fun ToneTrainerScreen() {
                 ) {
                     // ── Session progress ──────────────────────────────────
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().padding(end = 36.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
@@ -271,18 +289,21 @@ fun ToneTrainerScreen() {
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    // ── Tone choice buttons ───────────────────────────────
-                    listOf(1, 2, 3, 4, 0).forEach { tone ->
-                        val isSelected = selectedTone == tone
+                    // ── Tone choice buttons: 2×2 grid + neutral centred ───
+                    @Composable
+                    fun toneBtn(tone: Int, mod: Modifier) {
+                        val isSelected    = selectedTone == tone
                         val isCorrectTone = isAnswered && tone == question.correctTone
                         val isWrongTone   = isAnswered && isSelected && !answeredCorrectly
                         ToneChoiceButton(
-                            tone          = tone,
-                            isCorrect     = isCorrectTone,
-                            isWrong       = isWrongTone,
-                            isIdle        = isAnswered && !isSelected && !isCorrectTone,
-                            enabled       = !isAnswered,
-                            onClick       = {
+                            tone      = tone,
+                            isCorrect = isCorrectTone,
+                            isWrong   = isWrongTone,
+                            isIdle    = isAnswered && !isSelected && !isCorrectTone,
+                            enabled   = !isAnswered,
+                            modifier  = mod,
+                            compact   = true,
+                            onClick   = {
                                 if (!isAnswered) {
                                     selectedTone = tone
                                     if (tone == question.correctTone) playSuccessSound()
@@ -290,7 +311,31 @@ fun ToneTrainerScreen() {
                                 }
                             }
                         )
-                        Spacer(modifier = Modifier.height(8.dp))
+                    }
+                    // Row 1 — tones 1 & 2
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        toneBtn(1, Modifier.weight(1f))
+                        toneBtn(2, Modifier.weight(1f))
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    // Row 2 — tones 3 & 4
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        toneBtn(3, Modifier.weight(1f))
+                        toneBtn(4, Modifier.weight(1f))
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    // Row 3 — neutral centred
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        toneBtn(0, Modifier.fillMaxWidth(0.5f))
                     }
 
                     // Next button for wrong answers
@@ -316,6 +361,33 @@ fun ToneTrainerScreen() {
             }
         }
 
+        // ── Info icon — always accessible ─────────────────────────────────
+        IconButton(
+            onClick  = { showIntro = true },
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(top = 6.dp, end = 2.dp)
+                .size(36.dp)
+        ) {
+            Icon(
+                Icons.Default.Info,
+                contentDescription = "Tone guide",
+                modifier = Modifier.size(18.dp),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.55f)
+            )
+        }
+
+        // ── Tone guide dialog ──────────────────────────────────────────────
+        if (showIntro) {
+            ToneGuideDialog(
+                onDismiss   = {
+                    prefs.edit().putBoolean("tone_intro_seen", true).apply()
+                    showIntro = false
+                },
+                onPlayAudio = { tts.speak(it) }
+            )
+        }
+
         if (showConfetti) ConfettiEffect()
     }
 }
@@ -337,7 +409,9 @@ private fun ToneChoiceButton(
     isWrong: Boolean,
     isIdle: Boolean,
     enabled: Boolean,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    compact: Boolean = false
 ) {
     val baseColor = ToneUtils.toneColor(tone)
     val (symbol, label, sublabel) = TONE_META[tone]!!
@@ -364,33 +438,31 @@ private fun ToneChoiceButton(
         shape     = RoundedCornerShape(16.dp),
         color     = containerColor,
         shadowElevation = if (!isIdle && !isCorrect && !isWrong) 2.dp else 0.dp,
-        modifier  = Modifier
-            .fillMaxWidth()
-            .height(64.dp)
+        modifier  = modifier.height(64.dp)
     ) {
         Row(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 20.dp),
+                .padding(horizontal = if (compact) 8.dp else 20.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
                 text       = symbol,
-                fontSize   = 28.sp,
+                fontSize   = if (compact) 20.sp else 28.sp,
                 fontWeight = FontWeight.Bold,
                 color      = contentColor
             )
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
                     text       = label,
-                    fontSize   = 17.sp,
+                    fontSize   = if (compact) 13.sp else 17.sp,
                     fontWeight = FontWeight.SemiBold,
                     color      = contentColor
                 )
                 Text(
                     text     = sublabel,
-                    fontSize = 12.sp,
+                    fontSize = if (compact) 10.sp else 12.sp,
                     color    = contentColor.copy(alpha = 0.75f)
                 )
             }
@@ -401,7 +473,7 @@ private fun ToneChoiceButton(
                     isWrong   -> "✗"
                     else      -> ""
                 },
-                fontSize   = 20.sp,
+                fontSize   = if (compact) 16.sp else 20.sp,
                 fontWeight = FontWeight.Bold,
                 color      = Color.White
             )
@@ -505,6 +577,96 @@ private fun ToneTrainerSummary(
         }
         if (showConfetti) ConfettiEffect()
     }
+}
+
+// ── Tone guide dialog ─────────────────────────────────────────────────────────
+
+@Composable
+private fun ToneGuideDialog(
+    onDismiss: () -> Unit,
+    onPlayAudio: (String) -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = {
+            Text("Tones in Mandarin 🎵", fontWeight = FontWeight.Bold)
+        },
+        text = {
+            Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                Text(
+                    "In Mandarin, the same syllable can mean completely different things depending on the tone. " +
+                    "There are 4 main tones plus a light neutral tone.",
+                    fontSize = 14.sp,
+                    lineHeight = 20.sp
+                )
+                Spacer(modifier = Modifier.height(14.dp))
+                Text(
+                    "For example — all of these are \"ma\":",
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+
+                MA_EXAMPLES.forEach { ex ->
+                    val toneColor = ToneUtils.toneColor(ex.tone)
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 4.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        // Tone-coloured pinyin pill
+                        Surface(
+                            color = toneColor.copy(alpha = 0.15f),
+                            shape = RoundedCornerShape(6.dp),
+                            modifier = Modifier.width(36.dp)
+                        ) {
+                            Text(
+                                text = ex.pinyin,
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = toneColor,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier.padding(vertical = 4.dp)
+                            )
+                        }
+                        // Tappable Chinese character — plays audio
+                        Surface(
+                            onClick = { onPlayAudio(ex.chinese) },
+                            color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.55f),
+                            shape = RoundedCornerShape(6.dp),
+                            modifier = Modifier.size(38.dp)
+                        ) {
+                            Box(contentAlignment = Alignment.Center) {
+                                Text(ex.chinese, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                            }
+                        }
+                        // Meaning
+                        Text(
+                            text = "→ ${ex.meaning}",
+                            fontSize = 13.sp,
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
+                Text(
+                    "💡 Tap any character above to hear how it sounds!",
+                    fontSize = 12.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    lineHeight = 18.sp
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Got it! Let's practise 🎵")
+            }
+        }
+    )
 }
 
 @Composable

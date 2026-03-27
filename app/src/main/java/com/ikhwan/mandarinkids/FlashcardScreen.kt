@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ikhwan.mandarinkids.data.models.PinyinWord
 import com.ikhwan.mandarinkids.data.models.Scenario
+import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 import com.ikhwan.mandarinkids.ui.StrokeOrderSheet
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -49,6 +50,8 @@ fun FlashcardScreen(
 ) {
     val context = LocalContext.current
     val repo = remember { com.ikhwan.mandarinkids.db.ProgressRepository.getInstance(context) }
+    val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
+    val showIndonesian by userPrefs.showIndonesian.collectAsState(initial = true)
     var tts by remember { mutableStateOf<TextToSpeech?>(null) }
     var ttsReady by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
@@ -270,12 +273,14 @@ fun FlashcardScreen(
                                     textAlign = TextAlign.Center
                                 )
                                 Spacer(modifier = Modifier.height(6.dp))
-                                Text(
-                                    text = "🇮🇩  ${word.indonesian}",
-                                    fontSize = 18.sp,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    textAlign = TextAlign.Center
-                                )
+                                if (showIndonesian) {
+                                    Text(
+                                        text = "🇮🇩  ${word.indonesian}",
+                                        fontSize = 18.sp,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        textAlign = TextAlign.Center
+                                    )
+                                }
                             }
                         }
                     }

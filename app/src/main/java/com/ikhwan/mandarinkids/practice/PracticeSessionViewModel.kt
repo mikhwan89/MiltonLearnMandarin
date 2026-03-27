@@ -6,6 +6,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.ikhwan.mandarinkids.data.models.ScenarioCategory
+import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.data.scenarios.ScenarioRepository
 import com.ikhwan.mandarinkids.db.MasteredWordEntity
 import com.ikhwan.mandarinkids.db.PracticeType
@@ -37,6 +39,13 @@ class PracticeSessionViewModel(
     var practiceMode by mutableStateOf(PracticeMode.ALL)
         private set
 
+    var categoryFilter by mutableStateOf<ScenarioCategory?>(null)
+        private set
+
+    /** scenarioId → category map, built once from the loaded scenario list. */
+    private val scenarioCategoryMap: Map<String, ScenarioCategory> =
+        JsonScenarioRepository.getAll().associate { it.id to it.category }
+
     var correctCount by mutableStateOf(0)
         private set
     var totalAnswered by mutableStateOf(0)
@@ -51,10 +60,24 @@ class PracticeSessionViewModel(
 
     init {
         viewModelScope.launch {
-            // Seed words for every scenario the student has visited, regardless of score.
-            // Excludes the flashcard XP sentinel. Uses insertIgnore so existing progress is kept.
+            // ── Phase 1: instant start ─────────────────────────────────────────
+            // Words are already seeded by QuizResultsScreen on scenario completion.
+            // Just read what's already there — no seeding needed to show the first card.
+            val initial = repository.getAllMasteredWords(practiceType).first()
+                .distinctBy { it.chinese }
+            allWords = initial
+            currentWord = pickNextWord()
+            isLoading = false                       // ← card visible NOW
+
+            // ── Phase 2: background seeding & refresh ─────────────────────────
+            // Adds any words not yet in DB (edge cases / fresh installs). Runs silently.
+            val sentinels = setOf(
+                ProgressRepository.FLASHCARD_XP_ID,
+                ProgressRepository.SENTENCE_BUILDER_XP_ID,
+                ProgressRepository.TONE_TRAINER_XP_ID
+            )
             val completedIds = repository.getAllProgress().first()
-                .filter { it.scenarioId != ProgressRepository.FLASHCARD_XP_ID }
+                .filter { it.scenarioId !in sentinels }
                 .map { it.scenarioId }
             for (scenarioId in completedIds) {
                 val scenario = scenarioRepository.getById(scenarioId) ?: continue
@@ -72,32 +95,34 @@ class PracticeSessionViewModel(
                 }
                 repository.seedWordsForScenario(scenarioId, seedWords)
             }
-
             // Ensure LISTENING and READING always have every word that DEFAULT has
-            // (catches words added via migration or the per-scenario flashcard screen)
             repository.syncPracticeTypesFromDefault()
 
-            // Load only words for this practice type
-            val words = repository.getAllMasteredWords(practiceType).first()
+            // Silently refresh the pool; does not interrupt the current card
+            val refreshed = repository.getAllMasteredWords(practiceType).first()
                 .distinctBy { it.chinese }
-            allWords = words
-            currentWord = pickNextWord()
-            isLoading = false
+            if (refreshed.size != allWords.size) {
+                allWords = refreshed
+                if (currentWord == null) currentWord = pickNextWord()
+            }
         }
     }
 
-    /** Words eligible for the current practice mode. */
+    /** Words eligible for the current practice mode, filtered by category if set. */
     private fun poolForMode(words: List<MasteredWordEntity> = allWords): List<MasteredWordEntity> {
-        val levels = words.map { it.boxLevel }.distinct().sorted()
+        val base = if (categoryFilter != null) {
+            words.filter { scenarioCategoryMap[it.scenarioId] == categoryFilter }
+        } else words
+        val levels = base.map { it.boxLevel }.distinct().sorted()
         return when (practiceMode) {
-            PracticeMode.ALL -> words
+            PracticeMode.ALL -> base
             PracticeMode.WEAK -> {
                 val weakLevels = levels.take(3).toSet()
-                words.filter { it.boxLevel in weakLevels }
+                base.filter { it.boxLevel in weakLevels }
             }
             PracticeMode.MASTERY -> {
                 val masteryLevels = levels.takeLast(3).filter { it >= 4 }.toSet()
-                words.filter { it.boxLevel in masteryLevels }
+                base.filter { it.boxLevel in masteryLevels }
             }
         }
     }
@@ -140,6 +165,12 @@ class PracticeSessionViewModel(
 
     fun setMode(mode: PracticeMode) {
         practiceMode = mode
+        currentWord = pickNextWord()
+        cardToken++
+    }
+
+    fun setCategory(cat: ScenarioCategory?) {
+        categoryFilter = cat
         currentWord = pickNextWord()
         cardToken++
     }

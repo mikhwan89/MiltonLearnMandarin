@@ -34,7 +34,8 @@ fun ConversationBubble(
     characterEmoji: String,
     tts: TtsManager,
     speechSpeed: Float,
-    isSpeaking: Boolean = false
+    isSpeaking: Boolean = false,
+    showIndonesian: Boolean = true
 ) {
     val isCharacter = message.speaker == Speaker.CHARACTER
     var showWordDialog by remember { mutableStateOf(false) }
@@ -153,11 +154,13 @@ fun ConversationBubble(
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
 
-                    Text(
-                        text = "🇮🇩 ${message.textIndonesian}",
-                        fontSize = 13.sp,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
+                    if (showIndonesian) {
+                        Text(
+                            text = "🇮🇩 ${message.textIndonesian}",
+                            fontSize = 13.sp,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                 }
             }
         }
@@ -176,6 +179,7 @@ fun ConversationBubble(
             word = selectedWord!!,
             tts = tts,
             speechSpeed = speechSpeed,
+            showIndonesian = showIndonesian,
             onDismiss = { showWordDialog = false }
         )
     }
@@ -186,6 +190,7 @@ private fun WordDetailDialog(
     word: PinyinWord,
     tts: TtsManager,
     speechSpeed: Float,
+    showIndonesian: Boolean,
     onDismiss: () -> Unit
 ) {
     val syllables = ToneUtils.splitSyllables(word.pinyin)
@@ -235,11 +240,13 @@ private fun WordDetailDialog(
                     fontSize = 18.sp,
                     modifier = Modifier.padding(bottom = 4.dp)
                 )
-                Text(
-                    text = "🇮🇩 ${word.indonesian}",
-                    fontSize = 18.sp,
-                    modifier = Modifier.padding(bottom = if (word.note != null) 12.dp else 16.dp)
-                )
+                if (showIndonesian) {
+                    Text(
+                        text = "🇮🇩 ${word.indonesian}",
+                        fontSize = 18.sp,
+                        modifier = Modifier.padding(bottom = if (word.note != null) 12.dp else 16.dp)
+                    )
+                }
                 if (word.note != null) {
                     Surface(
                         color = MaterialTheme.colorScheme.tertiaryContainer,

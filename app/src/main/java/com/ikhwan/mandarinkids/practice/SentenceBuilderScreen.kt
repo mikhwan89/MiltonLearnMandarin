@@ -1,24 +1,36 @@
 package com.ikhwan.mandarinkids.practice
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
+import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.platform.LocalContext
+import kotlin.math.roundToInt
 import com.ikhwan.mandarinkids.data.models.PinyinWord
+import com.ikhwan.mandarinkids.data.models.ScenarioCategory
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.db.Badge
 import com.ikhwan.mandarinkids.db.ProgressRepository
@@ -34,7 +46,14 @@ private const val SESSION_LENGTH = 10
 private data class SentenceQuestion(
     val words: List<PinyinWord>,
     val english: String,
-    val scenarioTitle: String
+    val category: ScenarioCategory
+)
+
+private data class FillInBlanksSetup(
+    val words: List<PinyinWord>,
+    val preFilledSet: Set<Int>,      // positions shown pre-filled (even indices)
+    val blankPosList: List<Int>,     // positions the user must fill (odd indices)
+    val blankTiles: List<PinyinWord> // shuffled tiles shown in the bank
 )
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -44,7 +63,9 @@ fun SentenceBuilderScreen() {
     val tts = rememberTtsManager()
     val scope = rememberCoroutineScope()
     val repo = remember { ProgressRepository.getInstance(context) }
+    val density = LocalDensity.current
 
+    // ── Question pool — built once from all scenarios ─────────────────────────
     val questionPool: List<SentenceQuestion> = remember {
         JsonScenarioRepository.getAll()
             .flatMap { scenario ->
@@ -52,39 +73,80 @@ fun SentenceBuilderScreen() {
                     .filter { step -> step.pinyinWords.size >= 2 }
                     .map { step ->
                         SentenceQuestion(
-                            words = step.pinyinWords,
-                            english = step.textEnglish,
-                            scenarioTitle = scenario.title
+                            words    = step.pinyinWords,
+                            english  = step.textEnglish,
+                            category = scenario.category
                         )
                     }
             }
             .shuffled()
     }
 
-    val totalQuestions = minOf(SESSION_LENGTH, questionPool.size)
+    // ── Category filter ───────────────────────────────────────────────────────
+    var selectedCategory by remember { mutableStateOf<ScenarioCategory?>(null) }
+    val availableCategories = remember(questionPool) {
+        questionPool.map { it.category }.distinct()
+    }
+    val activePool = remember(selectedCategory) {
+        if (selectedCategory == null) questionPool
+        else questionPool.filter { it.category == selectedCategory }
+    }
 
-    // Session-level state
-    var questionIndex by remember { mutableStateOf(0) }
-    var stateKey     by remember { mutableStateOf(0) }
-    var correctCount by remember { mutableStateOf(0) }
-    var totalAnswered by remember { mutableStateOf(0) }
-    var showSummary  by remember { mutableStateOf(false) }
+    // ── Speed toggle ──────────────────────────────────────────────────────────
+    var slowMode by remember { mutableStateOf(false) }
+    val ttsRate = if (slowMode) 0.7f else 1.0f
+
+    // ── Drawer ────────────────────────────────────────────────────────────────
+    val drawerWidthPx = with(density) { 220.dp.toPx() }
+    val closedPx = -drawerWidthPx
+    val offsetX = remember { Animatable(closedPx) }
+
+    // ── Session state — sessionKey resets everything when category changes ────
+    var sessionKey by remember { mutableStateOf(0) }
+    var questionIndex by remember(sessionKey) { mutableStateOf(0) }
+    var stateKey     by remember(sessionKey) { mutableStateOf(0) }
+    var correctCount by remember(sessionKey) { mutableStateOf(0) }
+    var totalAnswered by remember(sessionKey) { mutableStateOf(0) }
+    var showSummary  by remember(sessionKey) { mutableStateOf(false) }
     var showConfetti by remember { mutableStateOf(false) }
 
-    // Per-attempt state — all keyed on stateKey so they reset on advance or Try Again
-    val question     = if (questionPool.isNotEmpty()) questionPool[questionIndex] else null
-    val shuffledTiles = remember(stateKey) { question?.words?.shuffled() ?: emptyList() }
-    var placedIndices by remember(stateKey) { mutableStateOf<List<Int>>(emptyList()) }
-    var checkResult   by remember(stateKey) { mutableStateOf<Boolean?>(null) }
+    val totalQuestions = minOf(SESSION_LENGTH, activePool.size)
+    val question = if (activePool.isNotEmpty()) activePool[questionIndex] else null
 
-    val allPlaced = shuffledTiles.isNotEmpty() && placedIndices.size == shuffledTiles.size
+    // ── Fill-in-the-blanks setup ──────────────────────────────────────────────
+    // Keyed on both sessionKey and questionIndex so it always matches activePool.
+    val setup: FillInBlanksSetup = remember(sessionKey, questionIndex) {
+        val w = activePool.getOrNull(questionIndex)?.words ?: emptyList()
+        val preFilledPositions = (0 until w.size step 2).toSet()
+        val blankPositions = (0 until w.size).filter { it % 2 != 0 }
+        FillInBlanksSetup(
+            words        = w,
+            preFilledSet = preFilledPositions,
+            blankPosList = blankPositions,
+            blankTiles   = blankPositions.map { w[it] }.shuffled()
+        )
+    }
+    val words        = setup.words
+    val preFilledSet = setup.preFilledSet
+    val blankPosList = setup.blankPosList
+    val blankTiles   = setup.blankTiles
 
-    // Auto-check when every tile has been placed
-    LaunchedEffect(allPlaced, stateKey) {
-        if (!allPlaced || checkResult != null || question == null) return@LaunchedEffect
+    // Keyed on sessionKey too — avoids stale state when session resets to stateKey=0
+    var placedSlots by remember(sessionKey, stateKey) {
+        mutableStateOf(List<Int?>(setup.blankPosList.size) { null })
+    }
+    var checkResult by remember(sessionKey, stateKey) { mutableStateOf<Boolean?>(null) }
 
-        val isCorrect = placedIndices.map { shuffledTiles[it].chinese } ==
-            question.words.map { it.chinese }
+    val allBlanksFilled = blankPosList.isNotEmpty() && placedSlots.all { it != null }
+
+    // Auto-check when every blank is filled
+    LaunchedEffect(allBlanksFilled, stateKey, sessionKey) {
+        if (!allBlanksFilled || checkResult != null || question == null) return@LaunchedEffect
+
+        val isCorrect = blankPosList.indices.all { slotIdx ->
+            val tileIdx = placedSlots[slotIdx] ?: return@all false
+            blankTiles[tileIdx].chinese == words[blankPosList[slotIdx]].chinese
+        }
         checkResult = isCorrect
 
         if (isCorrect) {
@@ -94,8 +156,9 @@ fun SentenceBuilderScreen() {
             showConfetti = true
             playSuccessSound()
             tts.speakAndAwait(
-                question.words.joinToString("") { it.chinese },
-                "sb_correct_$stateKey"
+                words.joinToString("") { it.chinese },
+                "sb_correct_$stateKey",
+                ttsRate
             )
             delay(600)
             showConfetti = false
@@ -111,7 +174,6 @@ fun SentenceBuilderScreen() {
         }
     }
 
-    // Award Perfect Builder badge when a session ends with every sentence correct on first try
     LaunchedEffect(showSummary) {
         if (showSummary && totalAnswered > 0 && correctCount == totalAnswered) {
             repo.awardBadge(Badge.PERFECT_BUILDER.id)
@@ -120,18 +182,12 @@ fun SentenceBuilderScreen() {
 
     Box(modifier = Modifier.fillMaxSize()) {
         when {
-            questionPool.isEmpty() -> SbEmptyState()
+            activePool.isEmpty() -> SbEmptyState()
 
             showSummary -> SentenceBuilderSummary(
-                correct = correctCount,
-                total   = totalAnswered,
-                onRestart = {
-                    questionIndex = 0
-                    correctCount  = 0
-                    totalAnswered = 0
-                    showSummary   = false
-                    stateKey++
-                }
+                correct  = correctCount,
+                total    = totalAnswered,
+                onRestart = { sessionKey++ }
             )
 
             question != null -> {
@@ -142,23 +198,63 @@ fun SentenceBuilderScreen() {
                         .padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    // ── Session progress ──────────────────────────────────
+                    // ── Progress row ──────────────────────────────────────────
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(
-                            "Question ${questionIndex + 1} / $totalQuestions",
-                            fontSize = 13.sp,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                        Text(
-                            "✅ $correctCount correct",
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = MaterialTheme.colorScheme.primary
-                        )
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(2.dp)
+                        ) {
+                            if (availableCategories.size > 1) {
+                                IconButton(
+                                    onClick  = { scope.launch { offsetX.animateTo(0f, spring()) } },
+                                    modifier = Modifier.size(32.dp)
+                                ) {
+                                    Icon(
+                                        Icons.Default.FilterList,
+                                        contentDescription = "Filter by category",
+                                        modifier = Modifier.size(18.dp),
+                                        tint = if (selectedCategory != null)
+                                            MaterialTheme.colorScheme.primary
+                                        else
+                                            MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.55f)
+                                    )
+                                }
+                            }
+                            Text(
+                                "Question ${questionIndex + 1} / $totalQuestions",
+                                fontSize = 13.sp,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            // ── Speed toggle ──────────────────────────────────
+                            OutlinedButton(
+                                onClick = { slowMode = !slowMode },
+                                contentPadding = PaddingValues(horizontal = 10.dp, vertical = 0.dp),
+                                modifier = Modifier.height(30.dp),
+                                colors = ButtonDefaults.outlinedButtonColors(
+                                    contentColor = if (slowMode)
+                                        MaterialTheme.colorScheme.primary
+                                    else
+                                        MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            ) {
+                                Text(if (slowMode) "0.7x 🐢" else "1x", fontSize = 12.sp)
+                            }
+                            Text(
+                                "✅ $correctCount correct",
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                        }
                     }
                     Spacer(modifier = Modifier.height(6.dp))
                     LinearProgressIndicator(
@@ -167,7 +263,7 @@ fun SentenceBuilderScreen() {
                     )
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    // ── Prompt card ───────────────────────────────────────
+                    // ── Prompt card ───────────────────────────────────────────
                     Card(
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(20.dp),
@@ -182,7 +278,7 @@ fun SentenceBuilderScreen() {
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             Text(
-                                "🧩 Build this sentence:",
+                                "🧩 Fill in the blanks:",
                                 fontSize = 13.sp,
                                 color = MaterialTheme.colorScheme.onPrimaryContainer
                             )
@@ -195,18 +291,12 @@ fun SentenceBuilderScreen() {
                                 color = MaterialTheme.colorScheme.onPrimaryContainer,
                                 lineHeight = 28.sp
                             )
-                            Spacer(modifier = Modifier.height(4.dp))
-                            Text(
-                                "— ${question.scenarioTitle}",
-                                fontSize = 11.sp,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.55f)
-                            )
                         }
                     }
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    // ── Answer area ───────────────────────────────────────
+                    // ── Answer area ───────────────────────────────────────────
                     val answerBgColor by animateColorAsState(
                         targetValue = when (checkResult) {
                             true  -> Color(0xFF4CAF50).copy(alpha = 0.15f)
@@ -223,53 +313,54 @@ fun SentenceBuilderScreen() {
                         shape = RoundedCornerShape(16.dp),
                         color = answerBgColor
                     ) {
-                        if (placedIndices.isEmpty()) {
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(20.dp),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(
-                                    "Tap tiles below to build the sentence",
-                                    fontSize = 13.sp,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    textAlign = TextAlign.Center
-                                )
-                            }
-                        } else {
-                            FlowRow(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(12.dp),
-                                horizontalArrangement = Arrangement.spacedBy(
-                                    6.dp, Alignment.CenterHorizontally
-                                ),
-                                verticalArrangement = Arrangement.spacedBy(6.dp)
-                            ) {
-                                placedIndices.forEachIndexed { position, tileIdx ->
+                        FlowRow(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(12.dp),
+                            horizontalArrangement = Arrangement.spacedBy(
+                                6.dp, Alignment.CenterHorizontally
+                            ),
+                            verticalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            (0 until words.size).forEach { pos ->
+                                if (pos in preFilledSet) {
                                     SbWordTile(
-                                        word    = shuffledTiles[tileIdx],
-                                        enabled = checkResult == null,
-                                        tint    = when (checkResult) {
-                                            true  -> TileColor.Correct
-                                            false -> TileColor.Wrong
-                                            null  -> TileColor.Normal
-                                        },
-                                        onClick = {
-                                            if (checkResult == null) {
-                                                placedIndices = placedIndices
-                                                    .toMutableList()
-                                                    .also { it.removeAt(position) }
-                                            }
-                                        }
+                                        word    = words[pos],
+                                        enabled = false,
+                                        tint    = if (checkResult == false) TileColor.Correct
+                                                  else TileColor.Locked,
+                                        onClick = {}
                                     )
+                                } else {
+                                    val slotIdx = blankPosList.indexOf(pos)
+                                    val tileIdx = placedSlots[slotIdx]
+                                    if (tileIdx == null) {
+                                        SbBlankSlot()
+                                    } else {
+                                        val tileColor = when (checkResult) {
+                                            true  -> TileColor.Correct
+                                            false -> if (blankTiles[tileIdx].chinese == words[pos].chinese)
+                                                         TileColor.Correct else TileColor.Wrong
+                                            null  -> TileColor.Normal
+                                        }
+                                        SbWordTile(
+                                            word    = blankTiles[tileIdx],
+                                            enabled = checkResult == null,
+                                            tint    = tileColor,
+                                            onClick = {
+                                                if (checkResult == null) {
+                                                    placedSlots = placedSlots.toMutableList()
+                                                        .also { it[slotIdx] = null }
+                                                }
+                                            }
+                                        )
+                                    }
                                 }
                             }
                         }
                     }
 
-                    // ── Result feedback ───────────────────────────────────
+                    // ── Result feedback ───────────────────────────────────────
                     when (checkResult) {
                         true -> {
                             Spacer(modifier = Modifier.height(12.dp))
@@ -317,12 +408,16 @@ fun SentenceBuilderScreen() {
                                     scope.launch {
                                         tts.speakAndAwait(
                                             question.words.joinToString("") { it.chinese },
-                                            "sb_hear_$stateKey"
+                                            "sb_hear_$stateKey",
+                                            ttsRate
                                         )
                                     }
                                 }
                             ) {
-                                Icon(Icons.AutoMirrored.Filled.VolumeUp, contentDescription = "Hear sentence")
+                                Icon(
+                                    Icons.AutoMirrored.Filled.VolumeUp,
+                                    contentDescription = "Hear sentence"
+                                )
                                 Spacer(modifier = Modifier.width(6.dp))
                                 Text("Hear it")
                             }
@@ -334,9 +429,7 @@ fun SentenceBuilderScreen() {
                                 OutlinedButton(
                                     onClick = { stateKey++ },
                                     modifier = Modifier.weight(1f)
-                                ) {
-                                    Text("Try Again")
-                                }
+                                ) { Text("Try Again") }
                                 Button(
                                     onClick = {
                                         totalAnswered++
@@ -349,15 +442,13 @@ fun SentenceBuilderScreen() {
                                         }
                                     },
                                     modifier = Modifier.weight(1f)
-                                ) {
-                                    Text("Next →")
-                                }
+                                ) { Text("Next →") }
                             }
                         }
                         null -> {}
                     }
 
-                    // ── Tile bank (hidden once answered) ──────────────────
+                    // ── Tile bank ─────────────────────────────────────────────
                     if (checkResult == null) {
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(
@@ -374,14 +465,20 @@ fun SentenceBuilderScreen() {
                             ),
                             verticalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
-                            shuffledTiles.forEachIndexed { idx, tile ->
-                                val isPlaced = idx in placedIndices
+                            blankTiles.forEachIndexed { idx, tile ->
+                                val isPlaced = idx in placedSlots.filterNotNull()
                                 SbWordTile(
                                     word    = tile,
                                     enabled = !isPlaced,
                                     tint    = if (isPlaced) TileColor.Faded else TileColor.Normal,
                                     onClick = {
-                                        if (!isPlaced) placedIndices = placedIndices + idx
+                                        if (!isPlaced) {
+                                            val firstEmpty = placedSlots.indexOfFirst { it == null }
+                                            if (firstEmpty >= 0) {
+                                                placedSlots = placedSlots.toMutableList()
+                                                    .also { it[firstEmpty] = idx }
+                                            }
+                                        }
                                     }
                                 )
                             }
@@ -394,10 +491,116 @@ fun SentenceBuilderScreen() {
         }
 
         if (showConfetti) ConfettiEffect()
+
+        // ── Scrim ─────────────────────────────────────────────────────────────
+        val scrimAlpha = ((offsetX.value - closedPx) / (-closedPx) * 0.4f).coerceIn(0f, 0.4f)
+        if (scrimAlpha > 0f) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.Black.copy(alpha = scrimAlpha))
+                    .pointerInput(Unit) {
+                        detectTapGestures {
+                            scope.launch { offsetX.animateTo(closedPx, spring()) }
+                        }
+                    }
+            )
+        }
+
+        // ── Category drawer ───────────────────────────────────────────────────
+        Surface(
+            modifier = Modifier
+                .width(220.dp)
+                .fillMaxHeight()
+                .offset { IntOffset(offsetX.value.roundToInt(), 0) }
+                .pointerInput(Unit) {
+                    detectHorizontalDragGestures(
+                        onDragEnd = {
+                            scope.launch {
+                                val target = if (offsetX.value > closedPx / 2) 0f else closedPx
+                                offsetX.animateTo(target, spring())
+                            }
+                        }
+                    ) { _, dragAmount ->
+                        scope.launch {
+                            offsetX.snapTo((offsetX.value + dragAmount).coerceIn(closedPx, 0f))
+                        }
+                    }
+                },
+            shadowElevation = 8.dp,
+            color = MaterialTheme.colorScheme.surface,
+            shape = RoundedCornerShape(topEnd = 16.dp, bottomEnd = 16.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 16.dp, bottom = 8.dp)
+            ) {
+                Text(
+                    "Filter by Category",
+                    style = MaterialTheme.typography.titleSmall,
+                    modifier = Modifier.padding(start = 16.dp, bottom = 8.dp)
+                )
+                NavigationDrawerItem(
+                    label    = { Text("🌐 All Categories") },
+                    selected = selectedCategory == null,
+                    onClick  = {
+                        selectedCategory = null
+                        sessionKey++
+                        scope.launch { offsetX.animateTo(closedPx, spring()) }
+                    },
+                    modifier = Modifier.padding(horizontal = 8.dp)
+                )
+                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
+                availableCategories.forEach { cat ->
+                    NavigationDrawerItem(
+                        label    = { Text("${cat.emoji} ${cat.displayName}") },
+                        selected = selectedCategory == cat,
+                        onClick  = {
+                            selectedCategory = cat
+                            sessionKey++
+                            scope.launch { offsetX.animateTo(closedPx, spring()) }
+                        },
+                        modifier = Modifier.padding(horizontal = 8.dp)
+                    )
+                }
+            }
+        }
+
     }
 }
 
-private enum class TileColor { Normal, Correct, Wrong, Faded }
+// ── Blank slot placeholder ────────────────────────────────────────────────────
+
+@Composable
+private fun SbBlankSlot() {
+    Box(
+        modifier = Modifier
+            .height(52.dp)
+            .defaultMinSize(minWidth = 64.dp)
+            .background(
+                color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.25f),
+                shape = RoundedCornerShape(12.dp)
+            )
+            .border(
+                width = 1.5.dp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.22f),
+                shape = RoundedCornerShape(12.dp)
+            ),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text       = "?",
+            fontSize   = 20.sp,
+            fontWeight = FontWeight.Bold,
+            color      = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.30f)
+        )
+    }
+}
+
+// ── Word tile ─────────────────────────────────────────────────────────────────
+
+private enum class TileColor { Normal, Correct, Wrong, Faded, Locked }
 
 @Composable
 private fun SbWordTile(
@@ -411,20 +614,22 @@ private fun SbWordTile(
         TileColor.Correct -> Color(0xFF4CAF50).copy(alpha = 0.18f)
         TileColor.Wrong   -> Color(0xFFF44336).copy(alpha = 0.12f)
         TileColor.Faded   -> MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.35f)
+        TileColor.Locked  -> MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.75f)
     }
     val textColor = when (tint) {
         TileColor.Normal  -> MaterialTheme.colorScheme.onSecondaryContainer
         TileColor.Correct -> Color(0xFF2E7D32)
         TileColor.Wrong   -> Color(0xFFC62828)
         TileColor.Faded   -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.28f)
+        TileColor.Locked  -> MaterialTheme.colorScheme.onTertiaryContainer
     }
 
     Surface(
-        onClick  = onClick,
-        enabled  = enabled,
-        shape    = RoundedCornerShape(12.dp),
-        color    = containerColor,
-        shadowElevation = if (enabled && tint != TileColor.Faded) 3.dp else 0.dp
+        onClick         = onClick,
+        enabled         = enabled,
+        shape           = RoundedCornerShape(12.dp),
+        color           = containerColor,
+        shadowElevation = if (enabled && tint == TileColor.Normal) 3.dp else 0.dp
     ) {
         Column(
             modifier = Modifier.padding(horizontal = 14.dp, vertical = 10.dp),
@@ -444,6 +649,8 @@ private fun SbWordTile(
         }
     }
 }
+
+// ── Empty state ───────────────────────────────────────────────────────────────
 
 @Composable
 private fun SbEmptyState() {
@@ -471,6 +678,8 @@ private fun SbEmptyState() {
         }
     }
 }
+
+// ── Summary screen ────────────────────────────────────────────────────────────
 
 @Composable
 private fun SentenceBuilderSummary(
@@ -519,9 +728,9 @@ private fun SentenceBuilderSummary(
             Spacer(modifier = Modifier.height(28.dp))
             Text(
                 when {
-                    isPerfect        -> "Every sentence perfect — you're a Mandarin star! 🌟"
+                    isPerfect            -> "Every blank filled perfectly — you're a Mandarin star! 🌟"
                     correct >= total / 2 -> "Good work! Keep practising to master all the sentences."
-                    else             -> "Keep going — each attempt helps your brain remember!"
+                    else                 -> "Keep going — each attempt helps your brain remember!"
                 },
                 fontSize = 15.sp,
                 textAlign = TextAlign.Center,

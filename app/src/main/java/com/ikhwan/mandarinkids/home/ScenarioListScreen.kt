@@ -15,6 +15,7 @@ import com.ikhwan.mandarinkids.data.models.Scenario
 import com.ikhwan.mandarinkids.data.models.ScenarioCategory
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.db.ProgressRepository
+import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -25,8 +26,13 @@ fun ScenarioListScreen(
 ) {
     val context = LocalContext.current
     val repo = remember { ProgressRepository.getInstance(context) }
-    val scenarios = remember(category) {
+    val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
+    val disabledScenarios by userPrefs.disabledScenarios.collectAsState(initial = emptySet())
+    val allScenarios = remember(category) {
         JsonScenarioRepository.getAll().filter { it.category == category }
+    }
+    val scenarios = remember(allScenarios, disabledScenarios) {
+        allScenarios.filter { it.id !in disabledScenarios }
     }
 
     Scaffold(

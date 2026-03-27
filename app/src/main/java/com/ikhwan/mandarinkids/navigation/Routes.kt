@@ -7,6 +7,7 @@ object Routes {
     const val SENTENCE_BUILDER = "sentence_builder"
     const val PROGRESS         = "progress"
     const val PARENT_DASHBOARD = "parent_dashboard"
+    const val PIN              = "pin"
     const val CATEGORY = "category/{categoryName}"
     const val FLASHCARD = "flashcard/{scenarioId}"
     const val ROLEPLAY = "roleplay/{scenarioId}"

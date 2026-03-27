@@ -7,8 +7,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.LockOpen
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -18,7 +16,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ikhwan.mandarinkids.data.models.ScenarioCategory
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
+import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.text.KeyboardOptions
@@ -70,35 +70,19 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
             }
         }
     }
-    var showIndonesian by remember { mutableStateOf(repo.getShowIndonesian()) }
+    val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
+    val showIndonesian by userPrefs.showIndonesian.collectAsState(initial = true)
+    val disabledTabs by userPrefs.disabledTabs.collectAsState(initial = emptySet())
+    val disabledCategories by userPrefs.disabledCategories.collectAsState(initial = emptySet())
+    val disabledScenarios by userPrefs.disabledScenarios.collectAsState(initial = emptySet())
+    var expandedCategories by remember { mutableStateOf<Set<String>>(emptySet()) }
     var showResetConfirm by remember { mutableStateOf(false) }
-
-    // Rewards section PIN state
-    var rewardsUnlocked by remember { mutableStateOf(false) }
-    var showPinForRewards by remember { mutableStateOf(false) }
     var showAddReward by remember { mutableStateOf(false) }
-
-    // PIN overlay for rewards section
-    if (showPinForRewards) {
-        val pinMode = if (repo.isPinSet()) PinMode.VERIFY else PinMode.SET
-        PinScreen(
-            mode = pinMode,
-            onSuccess = {
-                showPinForRewards = false
-                rewardsUnlocked = true
-                if (showAddReward) { /* will open after unlock */ }
-            },
-            onBack = { showPinForRewards = false },
-            onVerify = { repo.verifyPin(it) },
-            onSetPin = { repo.setPin(it) }
-        )
-        return
-    }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Dashboard") },
+                title = { Text("Parental Control") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
@@ -114,7 +98,7 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // ── Progress Summary ──────────────────────────────────────────
+            // ── 1. Progress Summary ───────────────────────────────────────────
             item {
                 Spacer(modifier = Modifier.height(4.dp))
                 SectionHeader("📊 Progress Summary")
@@ -133,128 +117,28 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
                         StatColumn("🔥", "$streak", "Streak")
                         StatColumn("⭐", "$xp XP", "Total XP")
                         StatColumn("📚", "$masteredCount", "Words")
-                        StatColumn(
-                            "🌟",
-                            "$perfectCount/${scenarios.size}",
-                            "3-star"
-                        )
+                        StatColumn("🌟", "$perfectCount/${scenarios.size}", "3-star")
                     }
                 }
             }
 
-            // ── Per-scenario stars ────────────────────────────────────────
-            item { SectionHeader("🎯 Scenario Progress") }
-            items(scenarios) { scenario ->
-                val progress = allProgress.firstOrNull { it.scenarioId == scenario.id }
-                val stars = progress?.stars ?: 0
-                Card(modifier = Modifier.fillMaxWidth()) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(12.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(scenario.characterEmoji, fontSize = 28.sp)
-                        Spacer(modifier = Modifier.width(12.dp))
-                        Column(modifier = Modifier.weight(1f)) {
-                            Text(scenario.title, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
-                            Text(
-                                scenario.category.displayName,
-                                fontSize = 11.sp,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
-                        Row {
-                            repeat(3) { i ->
-                                Text(
-                                    text = if (i < stars) "★" else "☆",
-                                    fontSize = 18.sp,
-                                    color = if (i < stars) Color(0xFFFFC107)
-                                    else MaterialTheme.colorScheme.outlineVariant
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-
-            // ── Badges ────────────────────────────────────────────────────
-            item {
-                SectionHeader("🏅 Badges Earned (${earnedBadges.size}/${Badge.entries.size})")
-                Card(modifier = Modifier.fillMaxWidth()) {
-                    Column(modifier = Modifier.padding(12.dp)) {
-                        Badge.entries.forEach { badge ->
-                            val earned = badge.id in earnedBadges
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(vertical = 4.dp),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Text(badge.emoji, fontSize = 22.sp, modifier = Modifier.width(36.dp))
-                                Column(modifier = Modifier.weight(1f)) {
-                                    Text(
-                                        badge.label,
-                                        fontSize = 13.sp,
-                                        fontWeight = FontWeight.SemiBold,
-                                        color = if (earned) MaterialTheme.colorScheme.onSurface
-                                        else MaterialTheme.colorScheme.onSurfaceVariant
-                                    )
-                                    Text(
-                                        badge.description,
-                                        fontSize = 11.sp,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                                    )
-                                }
-                                Text(
-                                    if (earned) "✅" else "○",
-                                    fontSize = 16.sp,
-                                    color = if (earned) Color(0xFF4CAF50)
-                                    else MaterialTheme.colorScheme.outlineVariant
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-
-            // ── Milestone Rewards By Parent ───────────────────────────────
+            // ── 2. Milestone Rewards ──────────────────────────────────────────
             item {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    SectionHeader("🎁 Milestone Reward By Parent", modifier = Modifier.weight(1f))
-                    if (rewardsUnlocked) {
-                        IconButton(onClick = { showAddReward = true }) {
-                            Icon(Icons.Default.Add, contentDescription = "Add Reward")
-                        }
-                        IconButton(onClick = { rewardsUnlocked = false }) {
-                            Icon(Icons.Default.Lock, contentDescription = "Lock", tint = MaterialTheme.colorScheme.onSurfaceVariant)
-                        }
-                    } else {
-                        IconButton(onClick = { showPinForRewards = true }) {
-                            Icon(Icons.Default.LockOpen, contentDescription = "Unlock to manage")
-                        }
+                    SectionHeader("🎁 Milestone Rewards", modifier = Modifier.weight(1f))
+                    IconButton(onClick = { showAddReward = true }) {
+                        Icon(Icons.Default.Add, contentDescription = "Add Reward")
                     }
-                }
-            }
-
-            if (!rewardsUnlocked) {
-                item {
-                    Text(
-                        "🔐 Tap the unlock icon to manage rewards",
-                        fontSize = 12.sp,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(start = 4.dp, bottom = 4.dp)
-                    )
                 }
             }
 
             if (allRewards.isEmpty()) {
                 item {
                     Text(
-                        "No rewards set yet. Unlock and tap + to add one.",
+                        "No rewards set yet. Tap + to add one.",
                         fontSize = 13.sp,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.padding(start = 4.dp, bottom = 8.dp)
@@ -265,44 +149,147 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
                     RewardItem(
                         reward = reward,
                         progressForCondition = progressForCondition,
-                        unlocked = rewardsUnlocked,
+                        unlocked = true,
                         onClaim = { scope.launch { repo.claimReward(reward.id) } },
                         onDelete = { scope.launch { repo.deleteReward(reward.id) } }
                     )
                 }
             }
 
-            // ── Settings ──────────────────────────────────────────────────
+            // ── 3. Content Settings ───────────────────────────────────────────
             item {
-                SectionHeader("⚙️ Settings")
+                Spacer(modifier = Modifier.height(4.dp))
+                SectionHeader("⚙️ Content Settings")
                 Card(modifier = Modifier.fillMaxWidth()) {
-                    Column {
+                    Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+
+                        // ── Translation ───────────────────────────────────────
+                        Text("🌐 Translation", fontSize = 13.sp, fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(bottom = 4.dp))
                         Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp),
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Column(modifier = Modifier.weight(1f)) {
-                                Text("Show Indonesian", fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
-                                Text(
-                                    "Show Indonesian translations in quiz & flashcards",
-                                    fontSize = 12.sp,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            }
+                            Text("Show Bahasa Indonesia", fontSize = 14.sp)
                             Switch(
                                 checked = showIndonesian,
-                                onCheckedChange = {
-                                    showIndonesian = it
-                                    repo.setShowIndonesian(it)
-                                }
+                                onCheckedChange = { scope.launch { userPrefs.saveShowIndonesian(it) } }
                             )
                         }
-                        HorizontalDivider()
+
+                        HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+
+                        // ── Practice Tabs ─────────────────────────────────────
+                        Text("📱 Practice Tabs", fontSize = 13.sp, fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(bottom = 4.dp))
+                        val tabDefs = listOf(
+                            Triple("roleplay", "💬 Roleplay", "Conversation practice"),
+                            Triple("flashcard", "🃏 Flashcard", "Word review"),
+                            Triple("tone", "🎵 Tones", "Tone ear training"),
+                            Triple("build", "🧩 Build", "Sentence building")
+                        )
+                        tabDefs.forEach { (id, label, desc) ->
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(label, fontSize = 14.sp)
+                                    Text(desc, fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                }
+                                Switch(
+                                    checked = id !in disabledTabs,
+                                    onCheckedChange = { enabled ->
+                                        val updated = if (enabled) disabledTabs - id else disabledTabs + id
+                                        scope.launch { userPrefs.saveDisabledTabs(updated) }
+                                    }
+                                )
+                            }
+                        }
+
+                        HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+
+                        // ── Roleplay Content ──────────────────────────────────
+                        Text("📖 Roleplay Content", fontSize = 13.sp, fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(bottom = 4.dp))
+                        val categoriesWithScenarios = remember(scenarios) {
+                            ScenarioCategory.entries
+                                .filter { cat -> scenarios.any { it.category == cat } }
+                                .map { cat -> cat to scenarios.filter { it.category == cat } }
+                        }
+                        categoriesWithScenarios.forEach { (cat, catScenarios) ->
+                            val catEnabled = cat.name !in disabledCategories
+                            val isExpanded = cat.name in expandedCategories
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                TextButton(
+                                    onClick = {
+                                        expandedCategories = if (isExpanded)
+                                            expandedCategories - cat.name
+                                        else
+                                            expandedCategories + cat.name
+                                    },
+                                    contentPadding = PaddingValues(0.dp)
+                                ) {
+                                    Text(
+                                        "${cat.emoji} ${cat.displayName}  ${if (isExpanded) "▲" else "▼"}",
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.Medium,
+                                        color = MaterialTheme.colorScheme.onSurface
+                                    )
+                                }
+                                Switch(
+                                    checked = catEnabled,
+                                    onCheckedChange = { enabled ->
+                                        val updated = if (enabled) disabledCategories - cat.name
+                                                      else disabledCategories + cat.name
+                                        scope.launch { userPrefs.saveDisabledCategories(updated) }
+                                    }
+                                )
+                            }
+                            if (isExpanded) {
+                                catScenarios.forEachIndexed { idx, scenario ->
+                                    if (idx > 0) HorizontalDivider(modifier = Modifier.padding(start = 16.dp))
+                                    val scenarioEnabled = scenario.id !in disabledScenarios
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(start = 16.dp, top = 4.dp, bottom = 4.dp),
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+                                        Text(
+                                            "${scenario.characterEmoji} ${scenario.description}",
+                                            fontSize = 13.sp,
+                                            modifier = Modifier.weight(1f)
+                                        )
+                                        Switch(
+                                            checked = scenarioEnabled,
+                                            onCheckedChange = { enabled ->
+                                                val updated = if (enabled) disabledScenarios - scenario.id
+                                                              else disabledScenarios + scenario.id
+                                                scope.launch { userPrefs.saveDisabledScenarios(updated) }
+                                            }
+                                        )
+                                    }
+                                }
+                            }
+                        }
+
+                        HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+
+                        // ── Reset ─────────────────────────────────────────────
                         TextButton(
                             onClick = { showResetConfirm = true },
-                            modifier = Modifier.padding(horizontal = 8.dp),
+                            modifier = Modifier.padding(horizontal = 0.dp),
                             colors = ButtonDefaults.textButtonColors(
                                 contentColor = MaterialTheme.colorScheme.error
                             )
@@ -337,7 +324,7 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
         )
     }
 
-    if (showAddReward && rewardsUnlocked) {
+    if (showAddReward) {
         AddRewardDialog(
             onDismiss = { showAddReward = false },
             onAdd = { conditions, logic, text ->
@@ -450,7 +437,7 @@ private fun AddRewardDialog(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    "When Milton achieves:",
+                    "When your child achieves:",
                     fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
 

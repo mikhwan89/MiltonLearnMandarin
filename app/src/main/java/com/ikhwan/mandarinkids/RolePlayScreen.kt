@@ -51,6 +51,7 @@ fun RolePlayScreen(
 
     val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
     val globalSpeed by userPrefs.speechRate.collectAsState(initial = 1.0f)
+    val showIndonesian by userPrefs.showIndonesian.collectAsState(initial = true)
     val repo = remember { ProgressRepository.getInstance(context) }
     LaunchedEffect(scenario.id) {
         val override = repo.getSpeechRateForScenario(scenario.id)
@@ -130,6 +131,7 @@ fun RolePlayScreen(
                     }
                 },
                 actions = {
+                    // Speed toggle
                     IconButton(
                         onClick = {
                             vm.toggleSpeechSpeed()
@@ -185,7 +187,8 @@ fun RolePlayScreen(
                             characterEmoji = scenario.characterEmoji,
                             tts = tts,
                             speechSpeed = vm.speechSpeed,
-                            isSpeaking = vm.isProcessingStep && index == vm.conversationHistory.size - 1
+                            isSpeaking = vm.isProcessingStep && index == vm.conversationHistory.size - 1,
+                            showIndonesian = showIndonesian
                         )
                     }
                 }
@@ -250,7 +253,8 @@ fun RolePlayScreen(
                                             }
                                         },
                                         tts = tts,
-                                        speechSpeed = vm.speechSpeed
+                                        speechSpeed = vm.speechSpeed,
+                                        showIndonesian = showIndonesian
                                     )
                                     Spacer(modifier = Modifier.height(8.dp))
                                 }
@@ -372,7 +376,8 @@ fun ResponseOptionButton(
     index: Int,
     onClick: () -> Unit,
     tts: TtsManager,
-    speechSpeed: Float
+    speechSpeed: Float,
+    showIndonesian: Boolean = true
 ) {
     var isPressed by remember { mutableStateOf(false) }
     val containerColor by animateColorAsState(
@@ -436,7 +441,7 @@ fun ResponseOptionButton(
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
 
-                Text(
+                if (showIndonesian) Text(
                     text = "🇮🇩 ${option.indonesian}",
                     fontSize = 12.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant

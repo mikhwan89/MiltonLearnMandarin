@@ -45,7 +45,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProgressScreen(navController: NavController) {
+fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {}) {
     val context = LocalContext.current
     val repo = remember { ProgressRepository.getInstance(context) }
     val scenarios = remember { JsonScenarioRepository.getAll() }
@@ -113,7 +113,14 @@ fun ProgressScreen(navController: NavController) {
 
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("My Progress 📊", fontSize = 20.sp) })
+            TopAppBar(
+                title = { Text("My Progress 📊", fontSize = 20.sp) },
+                actions = {
+                    IconButton(onClick = onParentClick) {
+                        Icon(Icons.Default.Lock, contentDescription = "Parental Control")
+                    }
+                }
+            )
         }
     ) { padding ->
         LazyColumn(
@@ -483,7 +490,7 @@ private fun AddRewardDialog(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    "When Milton achieves:",
+                    "When your child achieves:",
                     fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
 

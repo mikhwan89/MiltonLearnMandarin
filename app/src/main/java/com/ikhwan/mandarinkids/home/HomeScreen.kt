@@ -23,6 +23,7 @@ import com.ikhwan.mandarinkids.data.models.ScenarioCategory
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.db.MasteredWordEntity
 import com.ikhwan.mandarinkids.db.ProgressRepository
+import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 import com.ikhwan.mandarinkids.tts.rememberTtsManager
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -35,7 +36,10 @@ fun HomeScreen(
     val context = LocalContext.current
     val scenarios = remember { JsonScenarioRepository.getAll() }
     val repo = remember { ProgressRepository.getInstance(context) }
+    val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
     val tts = rememberTtsManager()
+    val disabledCategories by userPrefs.disabledCategories.collectAsState(initial = emptySet())
+    val disabledScenarios by userPrefs.disabledScenarios.collectAsState(initial = emptySet())
 
     val xp by repo.getTotalXp().collectAsState(initial = 0)
     val streak = remember { repo.getStreak() }
@@ -56,8 +60,11 @@ fun HomeScreen(
         }
     }
 
-    val activeCategories = remember(scenarios) {
-        ScenarioCategory.entries.filter { cat -> scenarios.any { it.category == cat } }
+    val activeCategories = remember(scenarios, disabledCategories, disabledScenarios) {
+        ScenarioCategory.entries.filter { cat ->
+            cat.name !in disabledCategories &&
+            scenarios.any { it.category == cat && it.id !in disabledScenarios }
+        }
     }
 
     Scaffold(

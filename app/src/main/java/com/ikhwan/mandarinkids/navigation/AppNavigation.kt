@@ -4,8 +4,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.Extension
+import androidx.compose.material.icons.filled.Forum
 import androidx.compose.material.icons.filled.MusicNote
-import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Style
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -24,9 +24,12 @@ import com.ikhwan.mandarinkids.data.models.ScenarioCategory
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.home.HomeScreen
+import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 import com.ikhwan.mandarinkids.home.ProgressScreen
 import com.ikhwan.mandarinkids.home.ScenarioListScreen
 import com.ikhwan.mandarinkids.parent.ParentDashboardScreen
+import com.ikhwan.mandarinkids.parent.PinScreen
+import com.ikhwan.mandarinkids.parent.PinMode
 import com.ikhwan.mandarinkids.practice.PracticeScreen
 import com.ikhwan.mandarinkids.practice.SentenceBuilderScreen
 import com.ikhwan.mandarinkids.practice.ToneTrainerScreen
@@ -43,59 +46,78 @@ fun MandarinKidsApp() {
         ProgressRepository.getInstance(context).checkAndUpdateStreak()
     }
 
+    val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
+    val disabledTabs by userPrefs.disabledTabs.collectAsState(initial = emptySet())
+
     // Determine current route to decide whether to show the bottom nav
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-    val topLevelRoutes = setOf(Routes.HOME, Routes.PRACTICE, Routes.TONE_TRAINER, Routes.SENTENCE_BUILDER, Routes.PROGRESS)
+    val topLevelRoutes = remember(disabledTabs) {
+        buildSet {
+            if ("roleplay" !in disabledTabs) add(Routes.HOME)
+            if ("flashcard" !in disabledTabs) add(Routes.PRACTICE)
+            if ("tone" !in disabledTabs) add(Routes.TONE_TRAINER)
+            if ("build" !in disabledTabs) add(Routes.SENTENCE_BUILDER)
+            add(Routes.PROGRESS)
+        }
+    }
 
     Scaffold(
         bottomBar = {
             if (currentRoute in topLevelRoutes) {
                 NavigationBar {
-                    NavigationBarItem(
-                        icon = { Icon(Icons.Default.School, contentDescription = "Learn") },
-                        label = { Text("Learn") },
-                        selected = currentRoute == Routes.HOME,
-                        onClick = {
-                            navController.navigate(Routes.HOME) {
-                                popUpTo(Routes.HOME) { inclusive = true }
-                                launchSingleTop = true
+                    if ("roleplay" !in disabledTabs) {
+                        NavigationBarItem(
+                            icon = { Icon(Icons.Default.Forum, contentDescription = "Roleplay") },
+                            label = { Text("Roleplay") },
+                            selected = currentRoute == Routes.HOME,
+                            onClick = {
+                                navController.navigate(Routes.HOME) {
+                                    popUpTo(Routes.HOME) { inclusive = true }
+                                    launchSingleTop = true
+                                }
                             }
-                        }
-                    )
-                    NavigationBarItem(
-                        icon = { Icon(Icons.Default.Style, contentDescription = "Flashcard") },
-                        label = { Text("Flashcard") },
-                        selected = currentRoute == Routes.PRACTICE,
-                        onClick = {
-                            navController.navigate(Routes.PRACTICE) {
-                                popUpTo(Routes.HOME)
-                                launchSingleTop = true
+                        )
+                    }
+                    if ("flashcard" !in disabledTabs) {
+                        NavigationBarItem(
+                            icon = { Icon(Icons.Default.Style, contentDescription = "Flashcard") },
+                            label = { Text("Flashcard") },
+                            selected = currentRoute == Routes.PRACTICE,
+                            onClick = {
+                                navController.navigate(Routes.PRACTICE) {
+                                    popUpTo(Routes.HOME)
+                                    launchSingleTop = true
+                                }
                             }
-                        }
-                    )
-                    NavigationBarItem(
-                        icon = { Icon(Icons.Default.MusicNote, contentDescription = "Tones") },
-                        label = { Text("Tones") },
-                        selected = currentRoute == Routes.TONE_TRAINER,
-                        onClick = {
-                            navController.navigate(Routes.TONE_TRAINER) {
-                                popUpTo(Routes.HOME)
-                                launchSingleTop = true
+                        )
+                    }
+                    if ("tone" !in disabledTabs) {
+                        NavigationBarItem(
+                            icon = { Icon(Icons.Default.MusicNote, contentDescription = "Tones") },
+                            label = { Text("Tones") },
+                            selected = currentRoute == Routes.TONE_TRAINER,
+                            onClick = {
+                                navController.navigate(Routes.TONE_TRAINER) {
+                                    popUpTo(Routes.HOME)
+                                    launchSingleTop = true
+                                }
                             }
-                        }
-                    )
-                    NavigationBarItem(
-                        icon = { Icon(Icons.Default.Extension, contentDescription = "Build") },
-                        label = { Text("Build") },
-                        selected = currentRoute == Routes.SENTENCE_BUILDER,
-                        onClick = {
-                            navController.navigate(Routes.SENTENCE_BUILDER) {
-                                popUpTo(Routes.HOME)
-                                launchSingleTop = true
+                        )
+                    }
+                    if ("build" !in disabledTabs) {
+                        NavigationBarItem(
+                            icon = { Icon(Icons.Default.Extension, contentDescription = "Build") },
+                            label = { Text("Build") },
+                            selected = currentRoute == Routes.SENTENCE_BUILDER,
+                            onClick = {
+                                navController.navigate(Routes.SENTENCE_BUILDER) {
+                                    popUpTo(Routes.HOME)
+                                    launchSingleTop = true
+                                }
                             }
-                        }
-                    )
+                        )
+                    }
                     NavigationBarItem(
                         icon = { Icon(Icons.Default.BarChart, contentDescription = "Progress") },
                         label = { Text("Progress") },
@@ -140,7 +162,25 @@ fun MandarinKidsApp() {
             }
 
             composable(Routes.PROGRESS) {
-                ProgressScreen(navController = navController)
+                ProgressScreen(
+                    navController = navController,
+                    onParentClick = { navController.navigate(Routes.PIN) }
+                )
+            }
+
+            composable(Routes.PIN) {
+                val repo = remember { ProgressRepository.getInstance(context) }
+                PinScreen(
+                    mode = if (repo.isPinSet()) PinMode.VERIFY else PinMode.SET,
+                    onSuccess = {
+                        navController.navigate(Routes.PARENT_DASHBOARD) {
+                            popUpTo(Routes.PIN) { inclusive = true }
+                        }
+                    },
+                    onBack = { navController.popBackStack() },
+                    onVerify = { pin -> repo.verifyPin(pin) },
+                    onSetPin = { pin -> repo.setPin(pin) }
+                )
             }
 
             composable(Routes.PARENT_DASHBOARD) {

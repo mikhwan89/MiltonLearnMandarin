@@ -1,5 +1,10 @@
 package com.ikhwan.mandarinkids.practice
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.spring
+import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -7,27 +12,35 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlin.math.roundToInt
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ikhwan.mandarinkids.ToneUtils
+import com.ikhwan.mandarinkids.data.models.ScenarioCategory
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.db.PracticeType
 import com.ikhwan.mandarinkids.db.ProgressRepository
+import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 import com.ikhwan.mandarinkids.playSuccessSound
 import com.ikhwan.mandarinkids.playWrongSound
 import com.ikhwan.mandarinkids.tts.TtsManager
 import com.ikhwan.mandarinkids.tts.rememberTtsManager
 import com.ikhwan.mandarinkids.ui.ConfettiEffect
+import kotlinx.coroutines.launch
 
 private fun masteryColor(level: Int): Color = when {
     level <= 3 -> Color(0xFFEF5350)
@@ -52,9 +65,12 @@ private fun masteryEmoji(level: Int): String = when (level) {
 @Composable
 fun PracticeScreen(onBack: () -> Unit) {
     var selectedType by remember { mutableStateOf(PracticeType.DEFAULT) }
+    var selectedCategory by remember { mutableStateOf<ScenarioCategory?>(null) }
     val context = LocalContext.current
     val repo = remember { ProgressRepository.getInstance(context) }
     val tts: TtsManager = rememberTtsManager()
+    val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
+    val showIndonesian by userPrefs.showIndonesian.collectAsState(initial = true)
 
     // One ViewModel per practice type — each tracks its own progress independently
     val vmDefault: PracticeSessionViewModel = viewModel(
@@ -75,6 +91,21 @@ fun PracticeScreen(onBack: () -> Unit) {
         PracticeType.READING   -> vmReading
     }
 
+    val scenarioCategoryMap = remember {
+        JsonScenarioRepository.getAll().associate { it.id to it.category }
+    }
+
+    val scope = rememberCoroutineScope()
+    val density = LocalDensity.current
+    val drawerWidthPx = with(density) { 220.dp.toPx() }
+    val closedPx     = -drawerWidthPx
+    val offsetX      = remember { Animatable(closedPx) }
+
+    // Hoisted so the drawer can read it even when the card area hasn't rendered yet
+    val availableCategories = remember(vm.allWords) {
+        vm.allWords.mapNotNull { scenarioCategoryMap[it.scenarioId] }.distinct()
+    }
+
     // Auto-play TTS: DEFAULT and LISTENING auto-play; READING does not (test visual recognition)
     val currentWord = vm.currentWord
     LaunchedEffect(vm.cardToken, selectedType) {
@@ -82,6 +113,8 @@ fun PracticeScreen(onBack: () -> Unit) {
             tts.speak(currentWord.chinese)
         }
     }
+
+    Box(modifier = Modifier.fillMaxSize()) {
 
     Scaffold { padding ->
         Column(
@@ -196,11 +229,15 @@ fun PracticeScreen(onBack: () -> Unit) {
                             ) { Text("Maintain", fontSize = 11.sp, textAlign = TextAlign.Center) }
                         }
 
-                        // ── Star rating distribution (read-only, filtered by mode) ──
-                        val weakLevels = vm.weakLevels
-                        val masteryLevels = vm.masteryLevels
-                        val levelCounts = remember(vm.allWords, vm.practiceMode) {
-                            val all = vm.allWords.groupBy { it.boxLevel }.entries.sortedBy { it.key }
+                        // ── Star rating distribution (respects both category filter and mode) ──
+                        val levelCounts = remember(vm.allWords, vm.practiceMode, vm.categoryFilter) {
+                            val filtered = if (vm.categoryFilter != null)
+                                vm.allWords.filter { scenarioCategoryMap[it.scenarioId] == vm.categoryFilter }
+                            else vm.allWords
+                            val levels = filtered.map { it.boxLevel }.distinct().sorted()
+                            val weakLevels   = levels.take(3).toSet()
+                            val masteryLevels = levels.takeLast(3).filter { it >= 4 }.toSet()
+                            val all = filtered.groupBy { it.boxLevel }.entries.sortedBy { it.key }
                             when (vm.practiceMode) {
                                 PracticeMode.WEAK    -> all.filter { (level, _) -> level in weakLevels }
                                 PracticeMode.MASTERY -> all.filter { (level, _) -> level in masteryLevels }
@@ -297,7 +334,7 @@ fun PracticeScreen(onBack: () -> Unit) {
                                                     textAlign = TextAlign.Center
                                                 )
                                                 Spacer(modifier = Modifier.height(2.dp))
-                                                Text(
+                                                if (showIndonesian) Text(
                                                     "🇮🇩  ${word.indonesian}", fontSize = 12.sp,
                                                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                                                     textAlign = TextAlign.Center
@@ -445,6 +482,106 @@ fun PracticeScreen(onBack: () -> Unit) {
             }
         }
     }
+
+        // ── Scrim ──────────────────────────────────────────────────────────
+        val scrimAlpha = ((offsetX.value - closedPx) / (-closedPx) * 0.4f).coerceIn(0f, 0.4f)
+        if (scrimAlpha > 0f) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.Black.copy(alpha = scrimAlpha))
+                    .pointerInput(Unit) {
+                        detectTapGestures {
+                            scope.launch { offsetX.animateTo(closedPx, spring()) }
+                        }
+                    }
+            )
+        }
+
+        // ── Peeking drawer panel ────────────────────────────────────────────
+        // Right 18 dp strip is always visible, acting as a colour tab hint.
+        // Drag right anywhere on the panel to open; drag left or tap scrim to close.
+        Surface(
+            modifier = Modifier
+                .width(220.dp)
+                .fillMaxHeight()
+                .offset { IntOffset(offsetX.value.roundToInt(), 0) }
+                .pointerInput(Unit) {
+                    detectHorizontalDragGestures(
+                        onDragEnd = {
+                            scope.launch {
+                                val target = if (offsetX.value > closedPx / 2) 0f else closedPx
+                                offsetX.animateTo(target, spring())
+                            }
+                        }
+                    ) { _, dragAmount ->
+                        scope.launch {
+                            offsetX.snapTo((offsetX.value + dragAmount).coerceIn(closedPx, 0f))
+                        }
+                    }
+                },
+            shadowElevation = 8.dp,
+            color = MaterialTheme.colorScheme.surface,
+            shape = RoundedCornerShape(topEnd = 16.dp, bottomEnd = 16.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 16.dp, bottom = 8.dp)
+            ) {
+                Text(
+                    "Filter by Category",
+                    style = MaterialTheme.typography.titleSmall,
+                    modifier = Modifier.padding(start = 16.dp, bottom = 8.dp)
+                )
+                NavigationDrawerItem(
+                    label = { Text("🌐 All Categories") },
+                    selected = selectedCategory == null,
+                    onClick = {
+                        selectedCategory = null
+                        vm.setCategory(null)
+                        scope.launch { offsetX.animateTo(closedPx, spring()) }
+                    },
+                    modifier = Modifier.padding(horizontal = 8.dp)
+                )
+                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
+                availableCategories.forEach { cat ->
+                    NavigationDrawerItem(
+                        label = { Text("${cat.emoji} ${cat.displayName}") },
+                        selected = selectedCategory == cat,
+                        onClick = {
+                            selectedCategory = cat
+                            vm.setCategory(cat)
+                            scope.launch { offsetX.animateTo(closedPx, spring()) }
+                        },
+                        modifier = Modifier.padding(horizontal = 8.dp)
+                    )
+                }
+            }
+        }
+
+        // ── Filter icon — tapping opens the category drawer ───────────────
+        if (availableCategories.size > 1) {
+            IconButton(
+                onClick  = { scope.launch { offsetX.animateTo(0f, spring()) } },
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(top = 6.dp, start = 2.dp)
+                    .size(36.dp)
+            ) {
+                Icon(
+                    Icons.Default.FilterList,
+                    contentDescription = "Filter by category",
+                    modifier = Modifier.size(18.dp),
+                    tint = if (selectedCategory != null)
+                        MaterialTheme.colorScheme.primary
+                    else
+                        MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.55f)
+                )
+            }
+        }
+
+    } // end Box
 }
 
 @Composable
