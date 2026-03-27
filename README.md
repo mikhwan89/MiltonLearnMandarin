@@ -20,7 +20,20 @@ Progress (stars, XP, streak, mastered words) is saved locally. Parents can unloc
 
 ## Screenshots
 
-> _Coming soon_
+<p align="center">
+  <img src="screenshots/roleplay.jpeg" width="30%" alt="Roleplay — category picker"/>
+  &nbsp;
+  <img src="screenshots/flashcard.jpeg" width="30%" alt="Flashcard drill"/>
+  &nbsp;
+  <img src="screenshots/tone.jpeg" width="30%" alt="Tone Trainer"/>
+</p>
+<p align="center">
+  <img src="screenshots/build.jpeg" width="30%" alt="Sentence Builder"/>
+  &nbsp;
+  <img src="screenshots/progress.jpeg" width="30%" alt="Progress &amp; Badges"/>
+  &nbsp;
+  <img src="screenshots/parental_control.jpeg" width="30%" alt="Parental Control"/>
+</p>
 
 ---
 
