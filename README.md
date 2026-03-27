@@ -1,5 +1,7 @@
 # Mandarinku 🇨🇳
 
+[![Download APK](https://img.shields.io/badge/Download-APK%20v1.0.0-brightgreen?logo=android)](https://github.com/mikhwan89/MiltonLearnMandarin/releases/download/v1.0.0/mandarinku-v1.0.0.apk)
+
 An Android app that teaches Mandarin Chinese to young children (age 4–8) through interactive role-play conversations, flashcard drills, tone training, and sentence-building games. Built by a dad for his son Milton.
 
 ---
