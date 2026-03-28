@@ -261,11 +261,6 @@ fun SentenceBuilderScreen() {
                             )
                         }
                     }
-                    Spacer(modifier = Modifier.height(6.dp))
-                    LinearProgressIndicator(
-                        progress = { questionIndex.toFloat() / totalQuestions },
-                        modifier = Modifier.fillMaxWidth()
-                    )
                     Spacer(modifier = Modifier.height(16.dp))
 
                     // ── Prompt card ───────────────────────────────────────────

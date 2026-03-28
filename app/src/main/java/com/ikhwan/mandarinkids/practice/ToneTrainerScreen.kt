@@ -183,11 +183,6 @@ fun ToneTrainerScreen() {
                             color = MaterialTheme.colorScheme.primary
                         )
                     }
-                    Spacer(modifier = Modifier.height(6.dp))
-                    LinearProgressIndicator(
-                        progress = { questionIndex.toFloat() / totalQuestions },
-                        modifier = Modifier.fillMaxWidth()
-                    )
                     Spacer(modifier = Modifier.height(20.dp))
 
                     // ── Character card ────────────────────────────────────

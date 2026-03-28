@@ -81,7 +81,7 @@ fun MandarinKidsApp() {
             contentDescription = null,
             modifier     = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop,
-            alpha        = 0.85f
+            alpha        = 0.10f
         )
 
     Scaffold(
