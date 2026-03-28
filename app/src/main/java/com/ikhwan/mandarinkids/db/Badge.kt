@@ -144,7 +144,7 @@ enum class Badge(
         "Master 1 word to ★10 in all 3 practice modes"
     ),
     CONSISTENT_LEARNER(
-        "consistent_learner", "📅", "Consistent Learner",
+        "consistent_learner", "📅", "Consistent",
         "Practice flashcards 30 days in a row"
     ),
 

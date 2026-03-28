@@ -1,6 +1,7 @@
 package com.ikhwan.mandarinkids.navigation
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -74,14 +75,18 @@ fun MandarinKidsApp() {
         indicatorColor      = MaterialTheme.colorScheme.primaryContainer,
     )
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        // ── Tiled background pattern ──────────────────────────────────────────
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+    ) {
+        // ── Bamboo accent pattern layered over warm almond background ─────────
         Image(
-            painter      = painterResource(R.drawable.app_background),
+            painter      = painterResource(R.drawable.background_accent),
             contentDescription = null,
             modifier     = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop,
-            alpha        = 0.10f
+            alpha        = 0.50f
         )
 
     Scaffold(

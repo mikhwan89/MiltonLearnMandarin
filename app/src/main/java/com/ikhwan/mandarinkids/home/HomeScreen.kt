@@ -1,5 +1,6 @@
 package com.ikhwan.mandarinkids.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,11 +14,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ikhwan.mandarinkids.R
 import com.ikhwan.mandarinkids.ProgressManager
 import com.ikhwan.mandarinkids.ToneUtils
 import com.ikhwan.mandarinkids.data.models.Scenario
@@ -71,6 +75,7 @@ fun HomeScreen(
 
     Scaffold(
         containerColor = Color.Transparent,
+        contentWindowInsets = WindowInsets(0),
         topBar = {
             TopAppBar(
                 title = {
@@ -278,6 +283,7 @@ fun CategoryCard(category: ScenarioCategory, scenarioCount: Int, onClick: () -> 
         ScenarioCategory.FOOD_AND_EATING   -> listOf(Color(0xFFFFDDB5), Color(0xFFFFEDD4))  // warm amber tint
         ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFFF5E0E0), Color(0xFFFAEEEE)) // rose tint
         ScenarioCategory.PLAY_AND_HOBBIES  -> listOf(Color(0xFFD5EDD5), Color(0xFFE6F5E6))  // mint tint
+        ScenarioCategory.HOME              -> listOf(Color(0xFFB8E4F0), Color(0xFFD4EFF8))  // sky blue tint
         else -> listOf(Color(0xFFF5F4ED), Color.Transparent)
     }
     val shape = RoundedCornerShape(24.dp)
@@ -302,11 +308,32 @@ fun CategoryCard(category: ScenarioCategory, scenarioCount: Int, onClick: () -> 
                     .padding(20.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = category.emoji,
-                    fontSize = 48.sp,
-                    modifier = Modifier.padding(end = 16.dp)
-                )
+                val categoryIcon = when (category) {
+                    ScenarioCategory.ESSENTIALS          -> R.drawable.cat_essential
+                    ScenarioCategory.AT_SCHOOL           -> R.drawable.cat_at_school
+                    ScenarioCategory.SCHOOL_SUBJECTS     -> R.drawable.cat_school_subjects
+                    ScenarioCategory.FOOD_AND_EATING     -> R.drawable.cat_food_and_eating
+                    ScenarioCategory.FEELINGS_AND_HEALTH -> R.drawable.cat_feelings_and_health
+                    ScenarioCategory.PLAY_AND_HOBBIES    -> R.drawable.cat_play_and_hobbies
+                    ScenarioCategory.HOME                -> R.drawable.cat_at_home
+                    else                                 -> null
+                }
+                if (categoryIcon != null) {
+                    Image(
+                        painter = painterResource(categoryIcon),
+                        contentDescription = category.displayName,
+                        modifier = Modifier
+                            .size(72.dp)
+                            .padding(end = 16.dp),
+                        contentScale = ContentScale.Fit
+                    )
+                } else {
+                    Text(
+                        text = category.emoji,
+                        fontSize = 48.sp,
+                        modifier = Modifier.padding(end = 16.dp)
+                    )
+                }
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = category.displayName,

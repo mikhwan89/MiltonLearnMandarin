@@ -1,7 +1,7 @@
 {
   "id": "scene43_basketball_practice",
   "title": "我练篮球！",
-  "description": "Milton's daily basketball practice with Coach",
+  "description": "Daily basketball practice with Coach",
   "characterName": "Chen 教练",
   "characterEmoji": "🏀",
   "characterRole": "basketball coach",
@@ -10,10 +10,10 @@
     {
       "id": 1,
       "speaker": "CHARACTER",
-      "textChinese": "你好，Milton！你练篮球多久了？每天都来练习吗？",
-      "textPinyin": "Nǐ hǎo, Milton! Nǐ liàn lánqiú duō jiǔ le? Měitiān dōu lái liànxí ma?",
-      "textEnglish": "Hello, Milton! How long have you been practising basketball? Do you come to practise every day?",
-      "textIndonesian": "Halo, Milton! Sudah berapa lama kamu berlatih basket? Kamu latihan setiap hari?",
+      "textChinese": "你好，同学！你练篮球多久了？每天都来练习吗？",
+      "textPinyin": "Nǐ hǎo, tóngxué! Nǐ liàn lánqiú duō jiǔ le? Měitiān dōu lái liànxí ma?",
+      "textEnglish": "Hello, young player! How long have you been practising basketball? Do you come to practise every day?",
+      "textIndonesian": "Halo, pemain muda! Sudah berapa lama kamu berlatih basket? Kamu latihan setiap hari?",
       "pinyinWords": [
         {
           "pinyin": "Nǐ hǎo",
@@ -439,10 +439,10 @@
     {
       "id": 4,
       "speaker": "CHARACTER",
-      "textChinese": "真的很厉害，Milton！每天练习，你会越来越好！加油，继续练！",
-      "textPinyin": "Zhēnde hěn lìhai, Milton! Měitiān liànxí, nǐ huì yuèláiyuè hǎo! Jiāyóu, jìxù liàn!",
-      "textEnglish": "You're truly impressive, Milton! Practise every day and you'll get better and better! Keep going, keep practising!",
-      "textIndonesian": "Kamu benar-benar hebat, Milton! Latihan setiap hari, kamu akan semakin baik! Semangat, terus berlatih!",
+      "textChinese": "真的很厉害，同学！每天练习，你会越来越好！加油，继续练！",
+      "textPinyin": "Zhēnde hěn lìhai, tóngxué! Měitiān liànxí, nǐ huì yuèláiyuè hǎo! Jiāyóu, jìxù liàn!",
+      "textEnglish": "You're truly impressive, young player! Practise every day and you'll get better and better! Keep going, keep practising!",
+      "textIndonesian": "Kamu benar-benar hebat, pemain muda! Latihan setiap hari, kamu akan semakin baik! Semangat, terus berlatih!",
       "pinyinWords": [
         {
           "pinyin": "Zhēnde",

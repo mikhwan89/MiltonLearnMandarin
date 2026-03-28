@@ -1,5 +1,6 @@
 package com.ikhwan.mandarinkids.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -15,11 +16,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ikhwan.mandarinkids.R
 import com.ikhwan.mandarinkids.ProgressManager
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import androidx.compose.foundation.rememberScrollState
@@ -112,14 +115,27 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
     }
 
     Scaffold(
+        contentWindowInsets = WindowInsets(0),
+        containerColor = Color.Transparent,
         topBar = {
             TopAppBar(
-                title = { Text("My Progress 📊", fontSize = 20.sp) },
+                title = {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Image(
+                            painter = painterResource(R.drawable.nav_progress),
+                            contentDescription = null,
+                            modifier = Modifier.size(28.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text("My Progress", fontSize = 20.sp)
+                    }
+                },
                 actions = {
                     IconButton(onClick = onParentClick) {
                         Icon(Icons.Default.Lock, contentDescription = "Parental Control")
                     }
-                }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
             )
         }
     ) { padding ->

@@ -3,7 +3,7 @@ package com.ikhwan.mandarinkids.ui.theme
 import androidx.compose.ui.graphics.Color
 
 // ── Surfaces (Warm Almond) ────────────────────────────────────────────────────
-val AppBackground       = Color(0x00000000)   // transparent — background.png shows through
+val AppBackground       = Color(0xFFFBF9F4)   // warm almond — base background color
 val AppSurface          = Color(0xFFFBF9F4)   // warm almond for cards/surfaces
 val AppSurfaceContainerLow     = Color(0xFFF5F4ED)   // section layer
 val AppSurfaceContainerLowest  = Color(0xFFFFFFFF)   // card / interactive layer
