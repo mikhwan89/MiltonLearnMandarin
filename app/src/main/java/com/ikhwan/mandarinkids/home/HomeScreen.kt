@@ -70,7 +70,7 @@ fun HomeScreen(
     }
 
     Scaffold(
-        containerColor = Color(0xFFF8F7F0),
+        containerColor = Color(0xFFFBF9F4),
         topBar = {
             TopAppBar(
                 title = {
@@ -84,7 +84,7 @@ fun HomeScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFFF8F7F0)
+                    containerColor = Color(0xFFFBF9F4)
                 )
             )
         }
@@ -92,7 +92,7 @@ fun HomeScreen(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFF8F7F0))
+                .background(Color(0xFFFBF9F4))
                 .padding(padding)
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
@@ -270,14 +270,15 @@ fun SectionHeader(text: String) {
 
 @Composable
 fun CategoryCard(category: ScenarioCategory, scenarioCount: Int, onClick: () -> Unit) {
+    // Muted, tonal tints — saturated enough to differentiate, light enough for dark text
     val gradientColors = when (category) {
-        ScenarioCategory.ESSENTIALS -> listOf(Color(0xFF97DAFF), Color(0xFFCCEEFF))
-        ScenarioCategory.AT_SCHOOL -> listOf(Color(0xFFFECB00), Color(0xFFFFF0B0))
-        ScenarioCategory.SCHOOL_SUBJECTS -> listOf(Color(0xFFFECB00), Color(0xFFFFF0B0))
-        ScenarioCategory.FOOD_AND_EATING -> listOf(Color(0xFFFFCC80), Color(0xFFFFE0B2))
-        ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFFCE93D8), Color(0xFFE1BEE7))
-        ScenarioCategory.PLAY_AND_HOBBIES -> listOf(Color(0xFFB4FDB4), Color(0xFFD6FFCC))
-        else -> listOf(Color(0xFFF8F7F0), Color(0xFFEEEBD8))
+        ScenarioCategory.ESSENTIALS        -> listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))  // slate blue tint
+        ScenarioCategory.AT_SCHOOL         -> listOf(Color(0xFFD4EDD0), Color(0xFFE6F4E4))  // sage tint
+        ScenarioCategory.SCHOOL_SUBJECTS   -> listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))  // lavender tint
+        ScenarioCategory.FOOD_AND_EATING   -> listOf(Color(0xFFFFDDB5), Color(0xFFFFEDD4))  // warm amber tint
+        ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFFF5E0E0), Color(0xFFFAEEEE)) // rose tint
+        ScenarioCategory.PLAY_AND_HOBBIES  -> listOf(Color(0xFFD5EDD5), Color(0xFFE6F5E6))  // mint tint
+        else -> listOf(Color(0xFFF5F4ED), Color(0xFFFBF9F4))
     }
     val shape = RoundedCornerShape(24.dp)
     Card(
@@ -311,16 +312,16 @@ fun CategoryCard(category: ScenarioCategory, scenarioCount: Int, onClick: () -> 
                         text = category.displayName,
                         fontSize = 20.sp,
                         fontWeight = FontWeight.SemiBold,
-                        color = Color(0xFF1A1A1A)
+                        color = Color(0xFF31332E)
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = "$scenarioCount scenario${if (scenarioCount != 1) "s" else ""}",
                         fontSize = 14.sp,
-                        color = Color(0xFF4A4739)
+                        color = Color(0xFF4A4C47)
                     )
                 }
-                Text("▶", fontSize = 24.sp, color = Color(0xFF3D3000))
+                Text("▶", fontSize = 24.sp, color = Color(0xFF386A34))
             }
         }
     }

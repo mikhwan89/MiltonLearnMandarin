@@ -2,38 +2,47 @@ package com.ikhwan.mandarinkids.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Background & Surface
-val AppBackground = Color(0xFFF8F7F0)
-val AppSurface = Color(0xFFFFFFFF)
+// ── Surfaces (Warm Almond) ────────────────────────────────────────────────────
+val AppBackground       = Color(0xFFFBF9F4)   // base layer — warm almond
+val AppSurface          = Color(0xFFFBF9F4)
+val AppSurfaceContainerLow     = Color(0xFFF5F4ED)   // section layer
+val AppSurfaceContainerLowest  = Color(0xFFFFFFFF)   // card / interactive layer
 
-// Primary — Sunny Yellow
-val Purple80 = Color(0xFFFECB00)
-val PurpleGrey80 = Color(0xFF97DAFF)
-val Pink80 = Color(0xFFB4FDB4)
+// ── Primary — Sage Green ─────────────────────────────────────────────────────
+val ColorPrimary              = Color(0xFF386A34)
+val ColorOnPrimary            = Color(0xFFFFFFFF)
+val ColorPrimaryContainer     = Color(0xFFBAF2B0)
+val ColorOnPrimaryContainer   = Color(0xFF002204)
+val ColorPrimaryFixed         = Color(0xFFBAF2B0)
+val ColorPrimaryFixedDim      = Color(0xFF9ED496)   // thread indicator / subtle accent
 
-val Purple40 = Color(0xFFFECB00)
-val PurpleGrey40 = Color(0xFF97DAFF)
-val Pink40 = Color(0xFFB4FDB4)
+// ── Secondary — Slate Blue ───────────────────────────────────────────────────
+val ColorSecondary             = Color(0xFF4A6780)
+val ColorOnSecondary           = Color(0xFFFFFFFF)
+val ColorSecondaryContainer    = Color(0xFFD0E8F8)
+val ColorOnSecondaryContainer  = Color(0xFF021D2E)
 
-// Full palette tokens
-val ColorPrimary = Color(0xFFFECB00)
-val ColorOnPrimary = Color(0xFF3D3000)
-val ColorPrimaryContainer = Color(0xFFFFF0B0)
-val ColorOnPrimaryContainer = Color(0xFF241A00)
+// ── Tertiary — Warm Amber ────────────────────────────────────────────────────
+val ColorTertiary              = Color(0xFF7A5C30)
+val ColorOnTertiary            = Color(0xFFFFFFFF)
+val ColorTertiaryContainer     = Color(0xFFFFDDB5)
+val ColorOnTertiaryContainer   = Color(0xFF2A1600)
 
-val ColorSecondary = Color(0xFF97DAFF)
-val ColorOnSecondary = Color(0xFF003548)
-val ColorSecondaryContainer = Color(0xFFCCEEFF)
-val ColorOnSecondaryContainer = Color(0xFF001F2B)
-
-val ColorTertiary = Color(0xFFB4FDB4)
-val ColorOnTertiary = Color(0xFF003A00)
-val ColorTertiaryContainer = Color(0xFFD6FFCC)
-val ColorOnTertiaryContainer = Color(0xFF002200)
-
-val ColorError = Color(0xFFBA1A1A)
+// ── Error ─────────────────────────────────────────────────────────────────────
+val ColorError   = Color(0xFFBA1A1A)
 val ColorOnError = Color(0xFFFFFFFF)
 
-val ColorSurfaceVariant = Color(0xFFF0EDE0)
-val ColorOnSurfaceVariant = Color(0xFF4A4739)
-val ColorOutline = Color(0xFF7B7769)
+// ── Neutrals ──────────────────────────────────────────────────────────────────
+val ColorOnSurface        = Color(0xFF31332E)   // near-black, not pure black
+val ColorSurfaceVariant   = Color(0xFFE4E3DA)
+val ColorOnSurfaceVariant = Color(0xFF4A4C47)
+val ColorOutline          = Color(0xFF7A7D76)
+val ColorOutlineVariant   = Color(0xFFC9CBC5)
+
+// ── Legacy aliases (keep old names so existing Theme.kt compiles) ─────────────
+val Purple80      = ColorPrimary
+val PurpleGrey80  = ColorSecondary
+val Pink80        = ColorTertiary
+val Purple40      = ColorPrimary
+val PurpleGrey40  = ColorSecondary
+val Pink40        = ColorTertiary

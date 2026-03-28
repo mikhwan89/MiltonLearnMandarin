@@ -5,25 +5,28 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
 private val LightColorScheme = lightColorScheme(
-    primary = ColorPrimary,
-    onPrimary = ColorOnPrimary,
-    primaryContainer = ColorPrimaryContainer,
-    onPrimaryContainer = ColorOnPrimaryContainer,
-    secondary = ColorSecondary,
-    onSecondary = ColorOnSecondary,
-    secondaryContainer = ColorSecondaryContainer,
-    onSecondaryContainer = ColorOnSecondaryContainer,
-    tertiary = ColorTertiary,
-    onTertiary = ColorOnTertiary,
-    tertiaryContainer = ColorTertiaryContainer,
-    onTertiaryContainer = ColorOnTertiaryContainer,
-    error = ColorError,
-    onError = ColorOnError,
-    background = AppBackground,
-    surface = AppSurface,
-    surfaceVariant = ColorSurfaceVariant,
-    onSurfaceVariant = ColorOnSurfaceVariant,
-    outline = ColorOutline
+    primary                = ColorPrimary,
+    onPrimary              = ColorOnPrimary,
+    primaryContainer       = ColorPrimaryContainer,
+    onPrimaryContainer     = ColorOnPrimaryContainer,
+    secondary              = ColorSecondary,
+    onSecondary            = ColorOnSecondary,
+    secondaryContainer     = ColorSecondaryContainer,
+    onSecondaryContainer   = ColorOnSecondaryContainer,
+    tertiary               = ColorTertiary,
+    onTertiary             = ColorOnTertiary,
+    tertiaryContainer      = ColorTertiaryContainer,
+    onTertiaryContainer    = ColorOnTertiaryContainer,
+    error                  = ColorError,
+    onError                = ColorOnError,
+    background             = AppBackground,
+    onBackground           = ColorOnSurface,
+    surface                = AppSurface,
+    onSurface              = ColorOnSurface,
+    surfaceVariant         = ColorSurfaceVariant,
+    onSurfaceVariant       = ColorOnSurfaceVariant,
+    outline                = ColorOutline,
+    outlineVariant         = ColorOutlineVariant,
 )
 
 @Composable
@@ -34,7 +37,7 @@ fun MandarinKidsTheme(
 ) {
     MaterialTheme(
         colorScheme = LightColorScheme,
-        typography = Typography,
-        content = content
+        typography  = Typography,
+        content     = content
     )
 }

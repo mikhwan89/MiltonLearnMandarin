@@ -38,7 +38,7 @@ fun ScenarioListScreen(
     }
 
     Scaffold(
-        containerColor = Color(0xFFF8F7F0),
+        containerColor = Color(0xFFFBF9F4),
         topBar = {
             TopAppBar(
                 title = {
@@ -53,7 +53,7 @@ fun ScenarioListScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFFF8F7F0)
+                    containerColor = Color(0xFFFBF9F4)
                 )
             )
         }
@@ -61,7 +61,7 @@ fun ScenarioListScreen(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFF8F7F0))
+                .background(Color(0xFFFBF9F4))
                 .padding(padding)
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
