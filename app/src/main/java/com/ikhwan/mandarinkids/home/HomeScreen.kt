@@ -70,7 +70,7 @@ fun HomeScreen(
     }
 
     Scaffold(
-        containerColor = Color(0xFFFBF9F4),
+        containerColor = Color.Transparent,
         topBar = {
             TopAppBar(
                 title = {
@@ -84,7 +84,7 @@ fun HomeScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFFFBF9F4)
+                    containerColor = Color.Transparent
                 )
             )
         }
@@ -92,7 +92,7 @@ fun HomeScreen(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFFBF9F4))
+                .background(Color.Transparent)
                 .padding(padding)
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
@@ -278,7 +278,7 @@ fun CategoryCard(category: ScenarioCategory, scenarioCount: Int, onClick: () -> 
         ScenarioCategory.FOOD_AND_EATING   -> listOf(Color(0xFFFFDDB5), Color(0xFFFFEDD4))  // warm amber tint
         ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFFF5E0E0), Color(0xFFFAEEEE)) // rose tint
         ScenarioCategory.PLAY_AND_HOBBIES  -> listOf(Color(0xFFD5EDD5), Color(0xFFE6F5E6))  // mint tint
-        else -> listOf(Color(0xFFF5F4ED), Color(0xFFFBF9F4))
+        else -> listOf(Color(0xFFF5F4ED), Color.Transparent)
     }
     val shape = RoundedCornerShape(24.dp)
     Card(

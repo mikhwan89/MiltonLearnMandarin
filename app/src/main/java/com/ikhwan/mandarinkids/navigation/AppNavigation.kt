@@ -1,16 +1,19 @@
 package com.ikhwan.mandarinkids.navigation
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.BarChart
-import androidx.compose.material.icons.filled.Extension
-import androidx.compose.material.icons.filled.Forum
-import androidx.compose.material.icons.filled.MusicNote
-import androidx.compose.material.icons.filled.Style
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import com.ikhwan.mandarinkids.R
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -62,15 +65,43 @@ fun MandarinKidsApp() {
         }
     }
 
+    // Shared icon colors — preserve original PNG colors, just dim when unselected
+    val navItemColors = NavigationBarItemDefaults.colors(
+        selectedIconColor   = Color.Unspecified,
+        unselectedIconColor = Color.Unspecified,
+        selectedTextColor   = MaterialTheme.colorScheme.primary,
+        unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        indicatorColor      = MaterialTheme.colorScheme.primaryContainer,
+    )
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        // ── Tiled background pattern ──────────────────────────────────────────
+        Image(
+            painter      = painterResource(R.drawable.app_background),
+            contentDescription = null,
+            modifier     = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop,
+            alpha        = 0.85f
+        )
+
     Scaffold(
+        containerColor = Color.Transparent,
         bottomBar = {
             if (currentRoute in topLevelRoutes) {
-                NavigationBar {
+                NavigationBar(containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f)) {
                     if ("roleplay" !in disabledTabs) {
                         NavigationBarItem(
-                            icon = { Icon(Icons.Default.Forum, contentDescription = "Roleplay") },
+                            icon = {
+                                Icon(
+                                    painter = painterResource(R.drawable.nav_roleplay),
+                                    contentDescription = "Roleplay",
+                                    tint = Color.Unspecified,
+                                    modifier = Modifier.size(28.dp)
+                                )
+                            },
                             label = { Text("Roleplay") },
                             selected = currentRoute == Routes.HOME,
+                            colors = navItemColors,
                             onClick = {
                                 navController.navigate(Routes.HOME) {
                                     popUpTo(Routes.HOME) { inclusive = true }
@@ -81,9 +112,17 @@ fun MandarinKidsApp() {
                     }
                     if ("flashcard" !in disabledTabs) {
                         NavigationBarItem(
-                            icon = { Icon(Icons.Default.Style, contentDescription = "Flashcard") },
+                            icon = {
+                                Icon(
+                                    painter = painterResource(R.drawable.nav_flashcard),
+                                    contentDescription = "Flashcard",
+                                    tint = Color.Unspecified,
+                                    modifier = Modifier.size(28.dp)
+                                )
+                            },
                             label = { Text("Flashcard") },
                             selected = currentRoute == Routes.PRACTICE,
+                            colors = navItemColors,
                             onClick = {
                                 navController.navigate(Routes.PRACTICE) {
                                     popUpTo(Routes.HOME)
@@ -94,9 +133,17 @@ fun MandarinKidsApp() {
                     }
                     if ("tone" !in disabledTabs) {
                         NavigationBarItem(
-                            icon = { Icon(Icons.Default.MusicNote, contentDescription = "Tones") },
+                            icon = {
+                                Icon(
+                                    painter = painterResource(R.drawable.nav_tone),
+                                    contentDescription = "Tones",
+                                    tint = Color.Unspecified,
+                                    modifier = Modifier.size(28.dp)
+                                )
+                            },
                             label = { Text("Tones") },
                             selected = currentRoute == Routes.TONE_TRAINER,
+                            colors = navItemColors,
                             onClick = {
                                 navController.navigate(Routes.TONE_TRAINER) {
                                     popUpTo(Routes.HOME)
@@ -107,9 +154,17 @@ fun MandarinKidsApp() {
                     }
                     if ("build" !in disabledTabs) {
                         NavigationBarItem(
-                            icon = { Icon(Icons.Default.Extension, contentDescription = "Build") },
+                            icon = {
+                                Icon(
+                                    painter = painterResource(R.drawable.nav_build),
+                                    contentDescription = "Build",
+                                    tint = Color.Unspecified,
+                                    modifier = Modifier.size(28.dp)
+                                )
+                            },
                             label = { Text("Build") },
                             selected = currentRoute == Routes.SENTENCE_BUILDER,
+                            colors = navItemColors,
                             onClick = {
                                 navController.navigate(Routes.SENTENCE_BUILDER) {
                                     popUpTo(Routes.HOME)
@@ -119,9 +174,17 @@ fun MandarinKidsApp() {
                         )
                     }
                     NavigationBarItem(
-                        icon = { Icon(Icons.Default.BarChart, contentDescription = "Progress") },
+                        icon = {
+                            Icon(
+                                painter = painterResource(R.drawable.nav_progress),
+                                contentDescription = "Progress",
+                                tint = Color.Unspecified,
+                                modifier = Modifier.size(28.dp)
+                            )
+                        },
                         label = { Text("Progress") },
                         selected = currentRoute == Routes.PROGRESS,
+                        colors = navItemColors,
                         onClick = {
                             navController.navigate(Routes.PROGRESS) {
                                 popUpTo(Routes.HOME)
@@ -261,4 +324,5 @@ fun MandarinKidsApp() {
             }
         }
     }
+    } // end Box (background)
 }
