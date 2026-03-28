@@ -1,6 +1,6 @@
 # Mandarinku 🇨🇳
 
-[![Download APK](https://img.shields.io/badge/Download-APK%20v1.0.0-brightgreen?logo=android)](https://github.com/mikhwan89/MiltonLearnMandarin/releases/download/v1.0.0/mandarinku-v1.0.0.apk)
+[![Download APK](https://img.shields.io/badge/Download-APK%20v1.1.1-brightgreen?logo=android)](https://github.com/mikhwan89/MiltonLearnMandarin/releases/download/v1.1.1/Mandarinku-v1.1.1.apk)
 
 An Android app that teaches Mandarin Chinese to young children (age 4–8) through interactive role-play conversations, flashcard drills, tone training, and sentence-building games. Built by a dad for his son Milton.
 
@@ -22,18 +22,18 @@ Progress (stars, XP, streak, mastered words) is saved locally. Parents can unloc
 ## Screenshots
 
 <p align="center">
-  <img src="screenshots/roleplay.jpeg" width="30%" alt="Roleplay — category picker"/>
+  <img src="screenshots/roleplay3.jpeg" width="30%" alt="Roleplay — category picker"/>
   &nbsp;
-  <img src="screenshots/flashcard.jpeg" width="30%" alt="Flashcard drill"/>
+  <img src="screenshots/flashcard3.jpeg" width="30%" alt="Flashcard drill"/>
   &nbsp;
-  <img src="screenshots/tone.jpeg" width="30%" alt="Tone Trainer"/>
+  <img src="screenshots/tones3.jpeg" width="30%" alt="Tone Trainer"/>
 </p>
 <p align="center">
-  <img src="screenshots/build.jpeg" width="30%" alt="Sentence Builder"/>
+  <img src="screenshots/build3.jpeg" width="30%" alt="Sentence Builder"/>
   &nbsp;
-  <img src="screenshots/progress.jpeg" width="30%" alt="Progress &amp; Badges"/>
+  <img src="screenshots/progress3.jpeg" width="30%" alt="Progress &amp; Badges"/>
   &nbsp;
-  <img src="screenshots/parental_control.jpeg" width="30%" alt="Parental Control"/>
+  <img src="screenshots/pcontrol3.jpeg" width="30%" alt="Parental Control"/>
 </p>
 
 ---
