@@ -25,6 +25,7 @@ import com.ikhwan.mandarinkids.db.Badge
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.playSuccessSound
 import com.ikhwan.mandarinkids.playWrongSound
+import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 import com.ikhwan.mandarinkids.tts.rememberTtsManager
 import com.ikhwan.mandarinkids.ui.ConfettiEffect
 import kotlinx.coroutines.delay
@@ -53,6 +54,7 @@ private data class ToneQuestion(
     val pinyinBare: String,
     val correctTone: Int,
     val english: String,
+    val indonesian: String,
     val note: String? = null
 )
 
@@ -61,7 +63,9 @@ fun ToneTrainerScreen() {
     val context = LocalContext.current
     val tts = rememberTtsManager()
     val scope = rememberCoroutineScope()
-    val repo  = remember { ProgressRepository.getInstance(context) }
+    val repo      = remember { ProgressRepository.getInstance(context) }
+    val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
+    val showIndonesian by userPrefs.showIndonesian.collectAsState(initial = true)
     val prefs = remember { context.getSharedPreferences("tone_trainer", 0) }
     var showIntro by remember { mutableStateOf(!prefs.getBoolean("tone_intro_seen", false)) }
 
@@ -81,6 +85,7 @@ fun ToneTrainerScreen() {
                     pinyinBare     = ToneUtils.stripTones(word.pinyin),
                     correctTone    = ToneUtils.detectTone(word.pinyin),
                     english        = word.english,
+                    indonesian     = word.indonesian,
                     note           = word.note
                 )
             }
@@ -220,7 +225,7 @@ fun ToneTrainerScreen() {
                                     fontWeight = FontWeight.Bold,
                                     color      = MaterialTheme.colorScheme.onPrimaryContainer
                                 )
-                                // English — revealed after answering
+                                // Translations — revealed after answering
                                 if (isAnswered) {
                                     Spacer(modifier = Modifier.height(4.dp))
                                     Text(
@@ -230,6 +235,15 @@ fun ToneTrainerScreen() {
                                             .copy(alpha = 0.8f),
                                         textAlign = TextAlign.Center
                                     )
+                                    if (showIndonesian) {
+                                        Text(
+                                            text     = "🇮🇩 ${question.indonesian}",
+                                            fontSize = 14.sp,
+                                            color    = MaterialTheme.colorScheme.onPrimaryContainer
+                                                .copy(alpha = 0.8f),
+                                            textAlign = TextAlign.Center
+                                        )
+                                    }
                                 }
                             }
                             // Replay button

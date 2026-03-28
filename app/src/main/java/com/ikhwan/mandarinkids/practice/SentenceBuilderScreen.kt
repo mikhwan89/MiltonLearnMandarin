@@ -36,6 +36,7 @@ import com.ikhwan.mandarinkids.db.Badge
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.playSuccessSound
 import com.ikhwan.mandarinkids.playWrongSound
+import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 import com.ikhwan.mandarinkids.tts.rememberTtsManager
 import com.ikhwan.mandarinkids.ui.ConfettiEffect
 import kotlinx.coroutines.delay
@@ -46,6 +47,7 @@ private const val SESSION_LENGTH = 10
 private data class SentenceQuestion(
     val words: List<PinyinWord>,
     val english: String,
+    val indonesian: String,
     val category: ScenarioCategory
 )
 
@@ -62,7 +64,9 @@ fun SentenceBuilderScreen() {
     val context = LocalContext.current
     val tts = rememberTtsManager()
     val scope = rememberCoroutineScope()
-    val repo = remember { ProgressRepository.getInstance(context) }
+    val repo      = remember { ProgressRepository.getInstance(context) }
+    val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
+    val showIndonesian by userPrefs.showIndonesian.collectAsState(initial = true)
     val density = LocalDensity.current
 
     // ── Question pool — built once from all scenarios ─────────────────────────
@@ -73,9 +77,10 @@ fun SentenceBuilderScreen() {
                     .filter { step -> step.pinyinWords.size >= 2 }
                     .map { step ->
                         SentenceQuestion(
-                            words    = step.pinyinWords,
-                            english  = step.textEnglish,
-                            category = scenario.category
+                            words      = step.pinyinWords,
+                            english    = step.textEnglish,
+                            indonesian = step.textIndonesian,
+                            category   = scenario.category
                         )
                     }
             }
@@ -291,6 +296,17 @@ fun SentenceBuilderScreen() {
                                 color = MaterialTheme.colorScheme.onPrimaryContainer,
                                 lineHeight = 28.sp
                             )
+                            if (showIndonesian) {
+                                Spacer(modifier = Modifier.height(4.dp))
+                                Text(
+                                    "🇮🇩 ${question.indonesian}",
+                                    fontSize = 14.sp,
+                                    textAlign = TextAlign.Center,
+                                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                                        .copy(alpha = 0.8f),
+                                    lineHeight = 20.sp
+                                )
+                            }
                         }
                     }
 
