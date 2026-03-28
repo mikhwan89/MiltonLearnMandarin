@@ -329,7 +329,7 @@ private fun BadgeCard(badge: Badge, earned: Boolean, modifier: Modifier = Modifi
         onClick = { showInfo = true },
         modifier = modifier,
         colors = CardDefaults.cardColors(
-            containerColor = if (earned) MaterialTheme.colorScheme.tertiaryContainer
+            containerColor = if (earned) Color(0xFFD5EDD5)
                              else MaterialTheme.colorScheme.surfaceVariant
         ),
         shape = RoundedCornerShape(16.dp)
@@ -349,7 +349,7 @@ private fun BadgeCard(badge: Badge, earned: Boolean, modifier: Modifier = Modifi
                 fontWeight = FontWeight.Medium,
                 textAlign = TextAlign.Center,
                 maxLines = 2,
-                color = if (earned) MaterialTheme.colorScheme.onTertiaryContainer
+                color = if (earned) Color(0xFF1A3D1A)
                         else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
             )
             Spacer(Modifier.height(2.dp))

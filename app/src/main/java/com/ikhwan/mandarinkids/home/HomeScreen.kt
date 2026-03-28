@@ -1,5 +1,6 @@
 package com.ikhwan.mandarinkids.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -10,6 +11,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -68,6 +70,7 @@ fun HomeScreen(
     }
 
     Scaffold(
+        containerColor = Color(0xFFFBF9F4),
         topBar = {
             TopAppBar(
                 title = {
@@ -80,12 +83,16 @@ fun HomeScreen(
                         )
                     }
                 },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color(0xFFFBF9F4)
+                )
             )
         }
     ) { padding ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
+                .background(Color(0xFFFBF9F4))
                 .padding(padding)
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
@@ -95,9 +102,11 @@ fun HomeScreen(
                 Spacer(modifier = Modifier.height(4.dp))
                 Card(
                     modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(24.dp),
                     colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.primaryContainer
-                    )
+                    ),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
                 ) {
                     Row(
                         modifier = Modifier
@@ -105,7 +114,12 @@ fun HomeScreen(
                             .padding(16.dp),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier
+                                .weight(1f)
+                                .defaultMinSize(minHeight = 40.dp)
+                        ) {
                             Text("🔥", fontSize = 28.sp)
                             Text("$streak", fontSize = 22.sp, fontWeight = FontWeight.Bold)
                             Text(
@@ -114,8 +128,13 @@ fun HomeScreen(
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
-                        HorizontalDivider(modifier = Modifier.height(64.dp).width(1.dp))
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier
+                                .weight(1f)
+                                .defaultMinSize(minHeight = 40.dp)
+                        ) {
                             Text(
                                 text = when {
                                     xp >= 180 -> "🌟"
@@ -251,35 +270,59 @@ fun SectionHeader(text: String) {
 
 @Composable
 fun CategoryCard(category: ScenarioCategory, scenarioCount: Int, onClick: () -> Unit) {
+    // Muted, tonal tints — saturated enough to differentiate, light enough for dark text
+    val gradientColors = when (category) {
+        ScenarioCategory.ESSENTIALS        -> listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))  // slate blue tint
+        ScenarioCategory.AT_SCHOOL         -> listOf(Color(0xFFD4EDD0), Color(0xFFE6F4E4))  // sage tint
+        ScenarioCategory.SCHOOL_SUBJECTS   -> listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))  // lavender tint
+        ScenarioCategory.FOOD_AND_EATING   -> listOf(Color(0xFFFFDDB5), Color(0xFFFFEDD4))  // warm amber tint
+        ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFFF5E0E0), Color(0xFFFAEEEE)) // rose tint
+        ScenarioCategory.PLAY_AND_HOBBIES  -> listOf(Color(0xFFD5EDD5), Color(0xFFE6F5E6))  // mint tint
+        else -> listOf(Color(0xFFF5F4ED), Color(0xFFFBF9F4))
+    }
+    val shape = RoundedCornerShape(24.dp)
     Card(
         onClick = onClick,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .defaultMinSize(minHeight = 90.dp),
+        shape = shape,
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent)
     ) {
-        Row(
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(20.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .defaultMinSize(minHeight = 90.dp)
+                .background(Brush.horizontalGradient(gradientColors), shape = shape)
         ) {
-            Text(
-                text = category.emoji,
-                fontSize = 48.sp,
-                modifier = Modifier.padding(end = 16.dp)
-            )
-            Column(modifier = Modifier.weight(1f)) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(20.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Text(
-                    text = category.displayName,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.SemiBold
+                    text = category.emoji,
+                    fontSize = 48.sp,
+                    modifier = Modifier.padding(end = 16.dp)
                 )
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = "$scenarioCount scenario${if (scenarioCount != 1) "s" else ""}",
-                    fontSize = 14.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = category.displayName,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color(0xFF31332E)
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = "$scenarioCount scenario${if (scenarioCount != 1) "s" else ""}",
+                        fontSize = 14.sp,
+                        color = Color(0xFF4A4C47)
+                    )
+                }
+                Text("▶", fontSize = 24.sp, color = Color(0xFF386A34))
             }
-            Text("▶", fontSize = 24.sp, color = MaterialTheme.colorScheme.primary)
         }
     }
 }
@@ -288,7 +331,12 @@ fun CategoryCard(category: ScenarioCategory, scenarioCount: Int, onClick: () -> 
 fun ScenarioCard(scenario: Scenario, stars: Int, onClick: () -> Unit) {
     Card(
         onClick = onClick,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .defaultMinSize(minHeight = 72.dp),
+        shape = RoundedCornerShape(24.dp),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFFFFFFFF)),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Row(
             modifier = Modifier

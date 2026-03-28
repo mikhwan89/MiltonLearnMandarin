@@ -592,16 +592,16 @@ fun SentenceBuilderScreen() {
 private fun SbBlankSlot() {
     Box(
         modifier = Modifier
-            .height(52.dp)
+            .height(60.dp)
             .defaultMinSize(minWidth = 64.dp)
             .background(
                 color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.25f),
-                shape = RoundedCornerShape(12.dp)
+                shape = RoundedCornerShape(20.dp)
             )
             .border(
                 width = 1.5.dp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.22f),
-                shape = RoundedCornerShape(12.dp)
+                shape = RoundedCornerShape(20.dp)
             ),
         contentAlignment = Alignment.Center
     ) {
@@ -643,17 +643,17 @@ private fun SbWordTile(
     Surface(
         onClick         = onClick,
         enabled         = enabled,
-        shape           = RoundedCornerShape(12.dp),
+        shape           = RoundedCornerShape(20.dp),
         color           = containerColor,
-        shadowElevation = if (enabled && tint == TileColor.Normal) 3.dp else 0.dp
+        shadowElevation = if (enabled && tint == TileColor.Normal) 4.dp else 0.dp
     ) {
         Column(
-            modifier = Modifier.padding(horizontal = 14.dp, vertical = 10.dp),
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
                 text       = word.chinese,
-                fontSize   = 24.sp,
+                fontSize   = 26.sp,
                 fontWeight = FontWeight.Bold,
                 color      = textColor
             )

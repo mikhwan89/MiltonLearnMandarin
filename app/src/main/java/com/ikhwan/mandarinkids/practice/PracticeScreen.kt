@@ -251,12 +251,13 @@ fun PracticeScreen(onBack: () -> Unit) {
                             items(levelCounts) { (level, words) ->
                                 val color = masteryColor(level)
                                 Surface(
-                                    color = color.copy(alpha = 0.12f),
+                                    color = color,
                                     shape = RoundedCornerShape(50)
                                 ) {
                                     Text(
                                         "${masteryEmoji(level)} $level ✦ ${words.size}",
-                                        fontSize = 12.sp, color = color,
+                                        fontSize = 12.sp, color = Color.White,
+                                        fontWeight = FontWeight.SemiBold,
                                         modifier = Modifier.padding(horizontal = 9.dp, vertical = 4.dp)
                                     )
                                 }
@@ -346,13 +347,14 @@ fun PracticeScreen(onBack: () -> Unit) {
                                                 Text("🔊", fontSize = 52.sp)
                                                 Spacer(modifier = Modifier.height(4.dp))
                                                 Surface(
-                                                    color = masteryColor(word.boxLevel).copy(alpha = 0.15f),
+                                                    color = masteryColor(word.boxLevel),
                                                     shape = RoundedCornerShape(50)
                                                 ) {
                                                     Text(
                                                         "${masteryEmoji(word.boxLevel)} Mastery ${word.boxLevel}/10",
                                                         fontSize = 12.sp,
-                                                        color = masteryColor(word.boxLevel),
+                                                        fontWeight = FontWeight.SemiBold,
+                                                        color = Color.White,
                                                         modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
                                                     )
                                                 }
@@ -368,13 +370,14 @@ fun PracticeScreen(onBack: () -> Unit) {
                                                 )
                                                 Spacer(modifier = Modifier.height(6.dp))
                                                 Surface(
-                                                    color = masteryColor(word.boxLevel).copy(alpha = 0.15f),
+                                                    color = masteryColor(word.boxLevel),
                                                     shape = RoundedCornerShape(50)
                                                 ) {
                                                     Text(
                                                         "${masteryEmoji(word.boxLevel)} Mastery ${word.boxLevel}/10",
                                                         fontSize = 12.sp,
-                                                        color = masteryColor(word.boxLevel),
+                                                        fontWeight = FontWeight.SemiBold,
+                                                        color = Color.White,
                                                         modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
                                                     )
                                                 }

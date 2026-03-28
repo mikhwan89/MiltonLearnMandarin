@@ -448,10 +448,10 @@ private fun ToneChoiceButton(
     Surface(
         onClick   = onClick,
         enabled   = enabled,
-        shape     = RoundedCornerShape(16.dp),
+        shape     = RoundedCornerShape(20.dp),
         color     = containerColor,
         shadowElevation = 2.dp,
-        modifier  = modifier.height(64.dp)
+        modifier  = modifier.height(72.dp)
     ) {
         Row(
             modifier = Modifier
@@ -462,20 +462,20 @@ private fun ToneChoiceButton(
         ) {
             Text(
                 text       = symbol,
-                fontSize   = if (compact) 20.sp else 28.sp,
+                fontSize   = if (compact) 24.sp else 28.sp,
                 fontWeight = FontWeight.Bold,
                 color      = contentColor
             )
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
                     text       = label,
-                    fontSize   = if (compact) 13.sp else 17.sp,
+                    fontSize   = if (compact) 15.sp else 17.sp,
                     fontWeight = FontWeight.SemiBold,
                     color      = contentColor
                 )
                 Text(
                     text     = sublabel,
-                    fontSize = if (compact) 10.sp else 12.sp,
+                    fontSize = if (compact) 11.sp else 12.sp,
                     color    = contentColor.copy(alpha = 0.75f)
                 )
             }
