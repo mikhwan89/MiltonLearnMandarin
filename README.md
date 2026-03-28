@@ -50,6 +50,7 @@ The app includes **50 scenarios** across 6 categories:
 | **Food & Eating** | Snack time, lunch, ordering food, favourite foods |
 | **Feelings & Health** | Expressing emotions, describing how you feel, visiting the nurse |
 | **Play & Hobbies** | Playground games, sports, hobbies, weekend activities |
+| **At Home** | Daily routines, chores, family interactions, bedtime |
 
 All scenarios include Chinese, pinyin, English, and Indonesian text. Adding a new scenario requires only a single JSON file — no Kotlin changes needed.
 
