@@ -1,7 +1,7 @@
 {
   "id": "scene20_allergy",
   "title": "我对巧克力过敏",
-  "description": "Learning to politely decline food you're allergic to, and how to check if milk is fresh before accepting — Milton is allergic to chocolate, and can only drink fresh milk!",
+  "description": "Learning to politely decline food you are allergic to, and how to check if milk is fresh before accepting — some children are allergic to chocolate and can only drink fresh milk!",
   "characterName": "食堂阿姨",
   "characterEmoji": "👩‍🍳",
   "characterRole": "canteen_auntie",
@@ -473,7 +473,7 @@
         }
       ],
       "correctAnswerIndex": 2,
-      "explanation": "鲜奶 (xiān nǎi) means fresh milk! 鲜 means fresh — and Milton can drink this one without any problems!"
+      "explanation": "鲜奶 (xiān nǎi) means fresh milk! 鲜 means fresh — and this one is safe to drink!"
     },
     {
       "direction": "AUDIO_TO_TRANSLATION",

@@ -116,30 +116,58 @@ fun PracticeScreen(onBack: () -> Unit) {
 
     Box(modifier = Modifier.fillMaxSize()) {
 
-    Scaffold { padding ->
+    Scaffold(
+        contentWindowInsets = WindowInsets(0),
+        containerColor = Color.Transparent
+    ) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
         ) {
             // ── Practice type tab row ──────────────────────────────────────
-            TabRow(
-                selectedTabIndex = PracticeType.values().indexOf(selectedType),
-                containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                PracticeType.values().forEach { type ->
-                    Tab(
-                        selected = selectedType == type,
-                        onClick = { selectedType = type },
-                        text = {
-                            Text(
-                                "${type.emoji} ${type.displayName}",
-                                fontSize = 12.sp,
-                                maxLines = 1
-                            )
-                        }
-                    )
+                // Filter button sits to the left of the tabs — always reserves its space
+                // to keep the tabs stable, but only shows the icon when useful
+                IconButton(
+                    onClick = { scope.launch { offsetX.animateTo(0f, spring()) } },
+                    enabled = availableCategories.size > 1,
+                    modifier = Modifier.size(48.dp)
+                ) {
+                    if (availableCategories.size > 1) {
+                        Icon(
+                            Icons.Default.FilterList,
+                            contentDescription = "Filter by category",
+                            modifier = Modifier.size(20.dp),
+                            tint = if (selectedCategory != null)
+                                MaterialTheme.colorScheme.primary
+                            else
+                                MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.55f)
+                        )
+                    }
+                }
+                TabRow(
+                    modifier = Modifier.weight(1f),
+                    selectedTabIndex = PracticeType.values().indexOf(selectedType),
+                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                ) {
+                    PracticeType.values().forEach { type ->
+                        Tab(
+                            selected = selectedType == type,
+                            onClick = { selectedType = type },
+                            text = {
+                                Text(
+                                    "${type.emoji} ${type.displayName}",
+                                    fontSize = 12.sp,
+                                    maxLines = 1
+                                )
+                            }
+                        )
+                    }
                 }
             }
 
@@ -560,27 +588,6 @@ fun PracticeScreen(onBack: () -> Unit) {
                         modifier = Modifier.padding(horizontal = 8.dp)
                     )
                 }
-            }
-        }
-
-        // ── Filter icon — tapping opens the category drawer ───────────────
-        if (availableCategories.size > 1) {
-            IconButton(
-                onClick  = { scope.launch { offsetX.animateTo(0f, spring()) } },
-                modifier = Modifier
-                    .align(Alignment.TopStart)
-                    .padding(top = 6.dp, start = 2.dp)
-                    .size(36.dp)
-            ) {
-                Icon(
-                    Icons.Default.FilterList,
-                    contentDescription = "Filter by category",
-                    modifier = Modifier.size(18.dp),
-                    tint = if (selectedCategory != null)
-                        MaterialTheme.colorScheme.primary
-                    else
-                        MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.55f)
-                )
             }
         }
 

@@ -185,6 +185,7 @@ fun ConversationBubble(
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun WordDetailDialog(
     word: PinyinWord,
@@ -214,8 +215,9 @@ private fun WordDetailDialog(
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(bottom = 4.dp)
                 )
-                Row(
+                FlowRow(
                     horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
                     modifier = Modifier.padding(bottom = 12.dp)
                 ) {
                     syllables.forEach { syllable ->
