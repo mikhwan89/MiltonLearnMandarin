@@ -587,7 +587,6 @@ fun SentenceBuilderScreen() {
 private fun SbBlankSlot() {
     Box(
         modifier = Modifier
-            .height(60.dp)
             .defaultMinSize(minWidth = 64.dp)
             .background(
                 color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.25f),
@@ -600,12 +599,23 @@ private fun SbBlankSlot() {
             ),
         contentAlignment = Alignment.Center
     ) {
-        Text(
-            text       = "?",
-            fontSize   = 20.sp,
-            fontWeight = FontWeight.Bold,
-            color      = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.30f)
-        )
+        // Mirror SbWordTile's padding and font sizes so height matches exactly
+        Column(
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text       = "?",
+                fontSize   = 26.sp,
+                fontWeight = FontWeight.Bold,
+                color      = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.30f)
+            )
+            Text(
+                text  = " ",   // invisible spacer matching the pinyin row height
+                fontSize = 11.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0f)
+            )
+        }
     }
 }
 

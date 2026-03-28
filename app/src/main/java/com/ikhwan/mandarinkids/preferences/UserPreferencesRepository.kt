@@ -31,12 +31,20 @@ class UserPreferencesRepository private constructor(private val context: Context
     val showIndonesian: Flow<Boolean> =
         context.userPrefsDataStore.data.map { it[SHOW_INDONESIAN] ?: true }
 
+    /** Whether dark mode is enabled. */
+    val darkMode: Flow<Boolean> =
+        context.userPrefsDataStore.data.map { it[DARK_MODE] ?: false }
+
     suspend fun saveSpeechRate(rate: Float) {
         context.userPrefsDataStore.edit { it[SPEECH_RATE] = rate }
     }
 
     suspend fun saveShowIndonesian(show: Boolean) {
         context.userPrefsDataStore.edit { it[SHOW_INDONESIAN] = show }
+    }
+
+    suspend fun saveDarkMode(dark: Boolean) {
+        context.userPrefsDataStore.edit { it[DARK_MODE] = dark }
     }
 
     /** Tab IDs that are disabled. Empty = all enabled. Values: "roleplay","flashcard","tone","build" */
@@ -65,6 +73,7 @@ class UserPreferencesRepository private constructor(private val context: Context
         // Key name kept as "speech_speed" to preserve any existing saved value.
         private val SPEECH_RATE = floatPreferencesKey("speech_speed")
         private val SHOW_INDONESIAN = booleanPreferencesKey("show_indonesian")
+        private val DARK_MODE       = booleanPreferencesKey("dark_mode")
         private val DISABLED_TABS       = stringSetPreferencesKey("disabled_tabs")
         private val DISABLED_CATEGORIES = stringSetPreferencesKey("disabled_categories")
         private val DISABLED_SCENARIOS  = stringSetPreferencesKey("disabled_scenarios")

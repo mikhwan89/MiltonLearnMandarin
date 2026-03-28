@@ -8,6 +8,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.DarkMode
+import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.LockOpen
 import androidx.compose.material3.*
@@ -24,11 +26,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ikhwan.mandarinkids.R
 import com.ikhwan.mandarinkids.ProgressManager
+import com.ikhwan.mandarinkids.data.models.ScenarioCategory
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
@@ -41,6 +46,7 @@ import com.ikhwan.mandarinkids.db.PracticeType
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.db.decodeConditions
 import com.ikhwan.mandarinkids.db.encodeConditions
+import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 import com.ikhwan.mandarinkids.navigation.Routes
 import com.ikhwan.mandarinkids.parent.PinMode
 import com.ikhwan.mandarinkids.parent.PinScreen
@@ -51,8 +57,10 @@ import kotlinx.coroutines.launch
 fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {}) {
     val context = LocalContext.current
     val repo = remember { ProgressRepository.getInstance(context) }
+    val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
     val scenarios = remember { JsonScenarioRepository.getAll() }
     val scope = rememberCoroutineScope()
+    val isDarkMode by userPrefs.darkMode.collectAsState(initial = false)
 
     val xp by repo.getTotalXp().collectAsState(initial = 0)
     val streak = remember { repo.getStreak() }
@@ -93,6 +101,9 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
         }
     }
 
+    val scenariosByCategory = remember(scenarios) { scenarios.groupBy { it.category } }
+    val expandedCategories = remember { mutableStateMapOf<String, Boolean>() }
+
     // ── Parent mode state for Milestone Rewards ───────────────────────────
     var rewardsUnlocked by remember { mutableStateOf(false) }
     var showPinForRewards by remember { mutableStateOf(false) }
@@ -131,6 +142,12 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
                     }
                 },
                 actions = {
+                    IconButton(onClick = { scope.launch { userPrefs.saveDarkMode(!isDarkMode) } }) {
+                        Icon(
+                            if (isDarkMode) Icons.Default.LightMode else Icons.Default.DarkMode,
+                            contentDescription = if (isDarkMode) "Switch to light mode" else "Switch to dark mode"
+                        )
+                    }
                     IconButton(onClick = onParentClick) {
                         Icon(Icons.Default.Lock, contentDescription = "Parental Control")
                     }
@@ -214,6 +231,7 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text("🏅 Badges", fontSize = 18.sp, fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier.weight(1f))
                     Text("$earnedCount / $totalCount", fontSize = 13.sp,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -243,6 +261,7 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
                         "🎁 Milestone Rewards",
                         fontSize = 18.sp,
                         fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier.weight(1f)
                     )
                     if (rewardsUnlocked) {
@@ -298,18 +317,76 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
 
             // ── Scenario stars ────────────────────────────────────────────
             item {
-                Text("📚 Scenario Stars", fontSize = 18.sp, fontWeight = FontWeight.SemiBold,
-                    modifier = Modifier.padding(top = 8.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        "📚 Scenario Stars",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier.weight(1f)
+                    )
+                    Text(
+                        "$perfectScenarioCount / ${scenarios.size}",
+                        fontSize = 13.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             }
 
-            items(scenarios, key = { it.id }) { scenario ->
-                val stars = progressMap[scenario.id]?.stars ?: 0
-                ScenarioStarRow(
-                    emoji = scenario.characterEmoji,
-                    title = scenario.title,
-                    stars = stars,
-                    onClick = { navController.navigate(Routes.roleplay(scenario.id)) }
-                )
+            scenariosByCategory.forEach { (category, categoryScenarios) ->
+                val isExpanded = expandedCategories[category.name] ?: true
+                val completedInCat = categoryScenarios.count { (progressMap[it.id]?.stars ?: 0) == 3 }
+
+                item(key = "cat_${category.name}") {
+                    Surface(
+                        onClick = { expandedCategories[category.name] = !isExpanded },
+                        color = MaterialTheme.colorScheme.secondaryContainer,
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier.fillMaxWidth().padding(top = 4.dp)
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(category.emoji, fontSize = 16.sp)
+                            Spacer(Modifier.width(8.dp))
+                            Text(
+                                category.displayName,
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                                modifier = Modifier.weight(1f)
+                            )
+                            Text(
+                                "$completedInCat / ${categoryScenarios.size}",
+                                fontSize = 12.sp,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.75f)
+                            )
+                            Spacer(Modifier.width(4.dp))
+                            Icon(
+                                imageVector = if (isExpanded) Icons.Default.ExpandLess else Icons.Default.ExpandMore,
+                                contentDescription = if (isExpanded) "Collapse" else "Expand",
+                                modifier = Modifier.size(18.dp),
+                                tint = MaterialTheme.colorScheme.onSecondaryContainer
+                            )
+                        }
+                    }
+                }
+
+                if (isExpanded) {
+                    items(categoryScenarios, key = { it.id }) { scenario ->
+                        val stars = progressMap[scenario.id]?.stars ?: 0
+                        ScenarioStarRow(
+                            emoji = scenario.characterEmoji,
+                            title = scenario.title,
+                            stars = stars,
+                            onClick = { navController.navigate(Routes.roleplay(scenario.id)) }
+                        )
+                    }
+                }
             }
 
             item { Spacer(Modifier.height(8.dp)) }

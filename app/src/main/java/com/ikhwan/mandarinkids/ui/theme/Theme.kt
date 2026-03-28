@@ -1,6 +1,7 @@
 package com.ikhwan.mandarinkids.ui.theme
 
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
@@ -29,6 +30,31 @@ private val LightColorScheme = lightColorScheme(
     outlineVariant         = ColorOutlineVariant,
 )
 
+private val DarkColorScheme = darkColorScheme(
+    primary                = DarkColorPrimary,
+    onPrimary              = DarkColorOnPrimary,
+    primaryContainer       = DarkColorPrimaryContainer,
+    onPrimaryContainer     = DarkColorOnPrimaryContainer,
+    secondary              = DarkColorSecondary,
+    onSecondary            = DarkColorOnSecondary,
+    secondaryContainer     = DarkColorSecondaryContainer,
+    onSecondaryContainer   = DarkColorOnSecondaryContainer,
+    tertiary               = DarkColorTertiary,
+    onTertiary             = DarkColorOnTertiary,
+    tertiaryContainer      = DarkColorTertiaryContainer,
+    onTertiaryContainer    = DarkColorOnTertiaryContainer,
+    error                  = ColorError,
+    onError                = ColorOnError,
+    background             = DarkBackground,
+    onBackground           = DarkColorOnSurface,
+    surface                = DarkSurface,
+    onSurface              = DarkColorOnSurface,
+    surfaceVariant         = DarkColorSurfaceVariant,
+    onSurfaceVariant       = DarkColorOnSurfaceVariant,
+    outline                = DarkColorOutline,
+    outlineVariant         = DarkColorOutlineVariant,
+)
+
 @Composable
 fun MandarinKidsTheme(
     darkTheme: Boolean = false,
@@ -36,7 +62,7 @@ fun MandarinKidsTheme(
     content: @Composable () -> Unit
 ) {
     MaterialTheme(
-        colorScheme = LightColorScheme,
+        colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme,
         typography  = Typography,
         content     = content
     )

@@ -465,13 +465,13 @@ fun PracticeScreen(onBack: () -> Unit) {
                                 ) {
                                     rowOptions.forEach { option ->
                                         val containerColor = when {
-                                            !isAnswered -> MaterialTheme.colorScheme.surface
+                                            !isAnswered -> MaterialTheme.colorScheme.secondaryContainer
                                             option == word.english -> Color(0xFF4CAF50)
                                             option == selectedAnswer -> Color(0xFFF44336)
                                             else -> MaterialTheme.colorScheme.surfaceVariant
                                         }
                                         val contentColor = when {
-                                            !isAnswered -> MaterialTheme.colorScheme.onSurface
+                                            !isAnswered -> MaterialTheme.colorScheme.onSecondaryContainer
                                             option == word.english || option == selectedAnswer -> Color.White
                                             else -> MaterialTheme.colorScheme.onSurfaceVariant
                                         }
@@ -483,7 +483,7 @@ fun PracticeScreen(onBack: () -> Unit) {
                                                     else playWrongSound()
                                                 }
                                             },
-                                            modifier = Modifier.weight(1f).height(64.dp),
+                                            modifier = Modifier.weight(1f).height(74.dp),
                                             colors = ButtonDefaults.buttonColors(
                                                 containerColor = containerColor,
                                                 contentColor = contentColor,

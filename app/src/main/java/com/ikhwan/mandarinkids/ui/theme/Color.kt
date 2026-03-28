@@ -39,6 +39,35 @@ val ColorOnSurfaceVariant = Color(0xFF4A4C47)
 val ColorOutline          = Color(0xFF7A7D76)
 val ColorOutlineVariant   = Color(0xFFC9CBC5)
 
+// ── Dark mode surfaces ────────────────────────────────────────────────────────
+val DarkBackground    = Color(0xFF1A1C19)   // very dark warm-tinted black
+val DarkSurface       = Color(0xFF1F2118)   // dark surface
+
+// ── Dark mode — Primary (lighter sage) ───────────────────────────────────────
+val DarkColorPrimary            = Color(0xFF9FD696)
+val DarkColorOnPrimary          = Color(0xFF003910)
+val DarkColorPrimaryContainer   = Color(0xFF1C5022)
+val DarkColorOnPrimaryContainer = Color(0xFFBAF2B0)
+
+// ── Dark mode — Secondary (lighter slate blue) ────────────────────────────────
+val DarkColorSecondary            = Color(0xFFB4CAE0)
+val DarkColorOnSecondary          = Color(0xFF1E3347)
+val DarkColorSecondaryContainer   = Color(0xFF354A5E)
+val DarkColorOnSecondaryContainer = Color(0xFFD0E8F8)
+
+// ── Dark mode — Tertiary (lighter amber) ──────────────────────────────────────
+val DarkColorTertiary            = Color(0xFFE5C18A)
+val DarkColorOnTertiary          = Color(0xFF422C00)
+val DarkColorTertiaryContainer   = Color(0xFF5D4118)
+val DarkColorOnTertiaryContainer = Color(0xFFFFDDB5)
+
+// ── Dark mode — Neutrals ──────────────────────────────────────────────────────
+val DarkColorOnSurface        = Color(0xFFE2E4DC)
+val DarkColorSurfaceVariant   = Color(0xFF3D4438)
+val DarkColorOnSurfaceVariant = Color(0xFFC3C9BB)
+val DarkColorOutline          = Color(0xFF8D9387)
+val DarkColorOutlineVariant   = Color(0xFF43483D)
+
 // ── Legacy aliases (keep old names so existing Theme.kt compiles) ─────────────
 val Purple80      = ColorPrimary
 val PurpleGrey80  = ColorSecondary

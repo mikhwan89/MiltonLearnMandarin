@@ -164,14 +164,32 @@ fun HomeScreen(
                 SectionHeader(text = "📚 Choose a Category")
             }
 
-            // ── Category cards ────────────────────────────────────────────
-            items(activeCategories, key = { it.name }) { category ->
-                val scenariosInCat = scenarios.filter { it.category == category }
-                CategoryCard(
-                    category = category,
-                    scenarioCount = scenariosInCat.size,
-                    onClick = { onCategoryClick(category) }
+            // ── Category grid — 4 top row, 3 bottom row ───────────────────
+            item {
+                val rows = listOf(
+                    activeCategories.take(4),
+                    activeCategories.drop(4)
                 )
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    rows.forEach { rowCategories ->
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            rowCategories.forEach { category ->
+                                CategoryCard(
+                                    category = category,
+                                    onClick = { onCategoryClick(category) },
+                                    modifier = Modifier.weight(1f)
+                                )
+                            }
+                            // Pad remaining slots in last row so cells stay same width
+                            repeat(4 - rowCategories.size) {
+                                Spacer(modifier = Modifier.weight(1f))
+                            }
+                        }
+                    }
+                }
             }
 
             item { Spacer(modifier = Modifier.height(8.dp)) }
@@ -274,81 +292,66 @@ fun SectionHeader(text: String) {
 }
 
 @Composable
-fun CategoryCard(category: ScenarioCategory, scenarioCount: Int, onClick: () -> Unit) {
-    // Muted, tonal tints — saturated enough to differentiate, light enough for dark text
+fun CategoryCard(category: ScenarioCategory, onClick: () -> Unit, modifier: Modifier = Modifier) {
     val gradientColors = when (category) {
-        ScenarioCategory.ESSENTIALS        -> listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))  // slate blue tint
-        ScenarioCategory.AT_SCHOOL         -> listOf(Color(0xFFD4EDD0), Color(0xFFE6F4E4))  // sage tint
-        ScenarioCategory.SCHOOL_SUBJECTS   -> listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))  // lavender tint
-        ScenarioCategory.FOOD_AND_EATING   -> listOf(Color(0xFFFFDDB5), Color(0xFFFFEDD4))  // warm amber tint
-        ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFFF5E0E0), Color(0xFFFAEEEE)) // rose tint
-        ScenarioCategory.PLAY_AND_HOBBIES  -> listOf(Color(0xFFD5EDD5), Color(0xFFE6F5E6))  // mint tint
-        ScenarioCategory.HOME              -> listOf(Color(0xFFB8E4F0), Color(0xFFD4EFF8))  // sky blue tint
-        else -> listOf(Color(0xFFF5F4ED), Color.Transparent)
+        ScenarioCategory.ESSENTIALS          -> listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+        ScenarioCategory.AT_SCHOOL           -> listOf(Color(0xFFD4EDD0), Color(0xFFE6F4E4))
+        ScenarioCategory.SCHOOL_SUBJECTS     -> listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))
+        ScenarioCategory.FOOD_AND_EATING     -> listOf(Color(0xFFFFDDB5), Color(0xFFFFEDD4))
+        ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFFF5E0E0), Color(0xFFFAEEEE))
+        ScenarioCategory.PLAY_AND_HOBBIES    -> listOf(Color(0xFFD5EDD5), Color(0xFFE6F5E6))
+        ScenarioCategory.HOME                -> listOf(Color(0xFFB8E4F0), Color(0xFFD4EFF8))
+        else                                 -> listOf(Color(0xFFF5F4ED), Color(0xFFF5F4ED))
     }
-    val shape = RoundedCornerShape(24.dp)
+    val categoryIcon = when (category) {
+        ScenarioCategory.ESSENTIALS          -> R.drawable.cat_essential
+        ScenarioCategory.AT_SCHOOL           -> R.drawable.cat_at_school
+        ScenarioCategory.SCHOOL_SUBJECTS     -> R.drawable.cat_school_subjects
+        ScenarioCategory.FOOD_AND_EATING     -> R.drawable.cat_food_and_eating
+        ScenarioCategory.FEELINGS_AND_HEALTH -> R.drawable.cat_feelings_and_health
+        ScenarioCategory.PLAY_AND_HOBBIES    -> R.drawable.cat_play_and_hobbies
+        ScenarioCategory.HOME                -> R.drawable.cat_at_home
+        else                                 -> null
+    }
+    val shape = RoundedCornerShape(20.dp)
     Card(
         onClick = onClick,
-        modifier = Modifier
-            .fillMaxWidth()
-            .defaultMinSize(minHeight = 90.dp),
+        modifier = modifier.height(110.dp),
         shape = shape,
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
         colors = CardDefaults.cardColors(containerColor = Color.Transparent)
     ) {
         Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .defaultMinSize(minHeight = 90.dp)
-                .background(Brush.horizontalGradient(gradientColors), shape = shape)
+                .fillMaxSize()
+                .background(Brush.verticalGradient(gradientColors), shape = shape),
+            contentAlignment = Alignment.Center
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(20.dp),
-                verticalAlignment = Alignment.CenterVertically
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.padding(horizontal = 4.dp)
             ) {
-                val categoryIcon = when (category) {
-                    ScenarioCategory.ESSENTIALS          -> R.drawable.cat_essential
-                    ScenarioCategory.AT_SCHOOL           -> R.drawable.cat_at_school
-                    ScenarioCategory.SCHOOL_SUBJECTS     -> R.drawable.cat_school_subjects
-                    ScenarioCategory.FOOD_AND_EATING     -> R.drawable.cat_food_and_eating
-                    ScenarioCategory.FEELINGS_AND_HEALTH -> R.drawable.cat_feelings_and_health
-                    ScenarioCategory.PLAY_AND_HOBBIES    -> R.drawable.cat_play_and_hobbies
-                    ScenarioCategory.HOME                -> R.drawable.cat_at_home
-                    else                                 -> null
-                }
                 if (categoryIcon != null) {
                     Image(
                         painter = painterResource(categoryIcon),
-                        contentDescription = category.displayName,
-                        modifier = Modifier
-                            .size(72.dp)
-                            .padding(end = 16.dp),
+                        contentDescription = null,
+                        modifier = Modifier.size(52.dp),
                         contentScale = ContentScale.Fit
                     )
                 } else {
-                    Text(
-                        text = category.emoji,
-                        fontSize = 48.sp,
-                        modifier = Modifier.padding(end = 16.dp)
-                    )
+                    Text(category.emoji, fontSize = 32.sp)
                 }
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = category.displayName,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        color = Color(0xFF31332E)
-                    )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = "$scenarioCount scenario${if (scenarioCount != 1) "s" else ""}",
-                        fontSize = 14.sp,
-                        color = Color(0xFF4A4C47)
-                    )
-                }
-                Text("▶", fontSize = 24.sp, color = Color(0xFF386A34))
+                Spacer(modifier = Modifier.height(6.dp))
+                Text(
+                    text = category.displayName,
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    textAlign = TextAlign.Center,
+                    // Gradients are always light — use a fixed dark colour for both modes
+                    color = Color(0xFF2A2D27),
+                    lineHeight = 14.sp,
+                    maxLines = 2
+                )
             }
         }
     }
