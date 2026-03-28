@@ -40,7 +40,7 @@ Progress (stars, XP, streak, mastered words) is saved locally. Parents can unloc
 
 ## Scenarios
 
-The app includes **50 scenarios** across 6 categories:
+The app includes **50 scenarios** across 7 categories:
 
 | Category | Topics covered |
 |----------|---------------|
