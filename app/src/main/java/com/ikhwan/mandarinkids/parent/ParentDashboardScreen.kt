@@ -1,5 +1,6 @@
 package com.ikhwan.mandarinkids.parent
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -13,6 +14,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import com.ikhwan.mandarinkids.R
+import com.ikhwan.mandarinkids.home.categoryIconRes
+import com.ikhwan.mandarinkids.home.xpIconRes
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -101,7 +106,23 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
             // ── 1. Progress Summary ───────────────────────────────────────────
             item {
                 Spacer(modifier = Modifier.height(4.dp))
-                SectionHeader("📊 Progress Summary")
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(vertical = 4.dp)
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.nav_progress),
+                        contentDescription = "Progress Summary",
+                        tint = androidx.compose.ui.graphics.Color.Unspecified,
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Spacer(Modifier.width(6.dp))
+                    Text(
+                        text = "Progress Summary",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     colors = CardDefaults.cardColors(
@@ -114,9 +135,9 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
                             .padding(16.dp),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        StatColumn("🔥", "$streak", "Streak")
-                        StatColumn("⭐", "$xp XP", "Total XP")
-                        StatColumn("📚", "$masteredCount", "Words")
+                        StatColumn("", "$streak", "Streak", drawableRes = R.drawable.day_streak)
+                        StatColumn("", "$xp XP", "Total XP", drawableRes = xpIconRes(xp))
+                        StatColumn("", "$masteredCount", "Words", drawableRes = R.drawable.words)
                         StatColumn("🌟", "$perfectCount/${scenarios.size}", "3-star")
                     }
                 }
@@ -239,12 +260,25 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
                                     },
                                     contentPadding = PaddingValues(0.dp)
                                 ) {
-                                    Text(
-                                        "${cat.emoji} ${cat.displayName}  ${if (isExpanded) "▲" else "▼"}",
-                                        fontSize = 14.sp,
-                                        fontWeight = FontWeight.Medium,
-                                        color = MaterialTheme.colorScheme.onSurface
-                                    )
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                        val iconRes = categoryIconRes(cat)
+                                        if (iconRes != null) {
+                                            Image(
+                                                painter = painterResource(iconRes),
+                                                contentDescription = cat.displayName,
+                                                modifier = Modifier.size(20.dp)
+                                            )
+                                        } else {
+                                            Text(cat.emoji, fontSize = 14.sp)
+                                        }
+                                        Spacer(Modifier.width(6.dp))
+                                        Text(
+                                            "${cat.displayName}  ${if (isExpanded) "▲" else "▼"}",
+                                            fontSize = 14.sp,
+                                            fontWeight = FontWeight.Medium,
+                                            color = MaterialTheme.colorScheme.onSurface
+                                        )
+                                    }
                                 }
                                 Switch(
                                     checked = catEnabled,
@@ -622,9 +656,17 @@ private fun SectionHeader(text: String, modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun StatColumn(emoji: String, value: String, label: String) {
+private fun StatColumn(emoji: String, value: String, label: String, drawableRes: Int? = null) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(emoji, fontSize = 24.sp)
+        if (drawableRes != null) {
+            Image(
+                painter = painterResource(drawableRes),
+                contentDescription = label,
+                modifier = Modifier.size(56.dp)
+            )
+        } else {
+            Text(emoji, fontSize = 24.sp)
+        }
         Text(value, fontSize = 18.sp, fontWeight = FontWeight.Bold)
         Text(label, fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }

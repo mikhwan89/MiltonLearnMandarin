@@ -1,6 +1,7 @@
 package com.ikhwan.mandarinkids.db
 
 import android.content.Context
+import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -59,7 +60,10 @@ class ProgressRepository private constructor(
         val allProgress = dao.getAll().first()
         val perfectCount = allProgress.count { it.stars >= 3 }
         if (perfectCount >= 5) awardBadge(Badge.SCENARIO_ACE.id)
-        if (allProgress.isNotEmpty() && allProgress.all { it.stars >= 3 }) {
+        val sentinelIds = setOf(FLASHCARD_XP_ID, SENTENCE_BUILDER_XP_ID, TONE_TRAINER_XP_ID)
+        val scenarioEntries = allProgress.filter { it.scenarioId !in sentinelIds }
+        val totalScenarios = JsonScenarioRepository.getAll().size
+        if (totalScenarios > 0 && scenarioEntries.size >= totalScenarios && scenarioEntries.all { it.stars >= 3 }) {
             awardBadge(Badge.ALL_STARS.id)
         }
         checkGrandMasterBadge(allProgress)
@@ -67,8 +71,9 @@ class ProgressRepository private constructor(
         // XP milestone badges
         val totalXp = dao.getTotalXp().first()
         if (totalXp >= 100) awardBadge(Badge.XP_SEEKER.id)
-        if (totalXp >= 500) awardBadge(Badge.XP_HUNTER.id)
-        if (totalXp >= 1000) awardBadge(Badge.XP_LEGEND.id)
+        if (totalXp >= 1000) awardBadge(Badge.XP_HUNTER.id)
+        if (totalXp >= 10000) awardBadge(Badge.XP_LEGEND.id)
+        if (totalXp >= 50000) awardBadge(Badge.XP_MYTHICAL.id)
 
         return xpGained
     }
@@ -90,8 +95,9 @@ class ProgressRepository private constructor(
         // XP milestone badges
         val totalXp = dao.getTotalXp().first()
         if (totalXp >= 100) awardBadge(Badge.XP_SEEKER.id)
-        if (totalXp >= 500) awardBadge(Badge.XP_HUNTER.id)
-        if (totalXp >= 1000) awardBadge(Badge.XP_LEGEND.id)
+        if (totalXp >= 1000) awardBadge(Badge.XP_HUNTER.id)
+        if (totalXp >= 10000) awardBadge(Badge.XP_LEGEND.id)
+        if (totalXp >= 50000) awardBadge(Badge.XP_MYTHICAL.id)
         // Flashcard daily-practice streak
         checkAndUpdateFlashcardStreak()
     }
@@ -113,8 +119,9 @@ class ProgressRepository private constructor(
         // XP milestone badges
         val totalXp = dao.getTotalXp().first()
         if (totalXp >= 100)  awardBadge(Badge.XP_SEEKER.id)
-        if (totalXp >= 500)  awardBadge(Badge.XP_HUNTER.id)
-        if (totalXp >= 1000) awardBadge(Badge.XP_LEGEND.id)
+        if (totalXp >= 1000)  awardBadge(Badge.XP_HUNTER.id)
+        if (totalXp >= 10000) awardBadge(Badge.XP_LEGEND.id)
+        if (totalXp >= 50000) awardBadge(Badge.XP_MYTHICAL.id)
 
         // Tone Trainer cumulative-correct badges
         val p = prefs()
@@ -143,8 +150,9 @@ class ProgressRepository private constructor(
         // XP milestone badges
         val totalXp = dao.getTotalXp().first()
         if (totalXp >= 100)  awardBadge(Badge.XP_SEEKER.id)
-        if (totalXp >= 500)  awardBadge(Badge.XP_HUNTER.id)
-        if (totalXp >= 1000) awardBadge(Badge.XP_LEGEND.id)
+        if (totalXp >= 1000)  awardBadge(Badge.XP_HUNTER.id)
+        if (totalXp >= 10000) awardBadge(Badge.XP_LEGEND.id)
+        if (totalXp >= 50000) awardBadge(Badge.XP_MYTHICAL.id)
 
         // Sentence builder cumulative-correct badges
         val p = prefs()
@@ -176,8 +184,8 @@ class ProgressRepository private constructor(
         // Total distinct word count (all modes)
         val count = masteredWordDao.getTotalCount().first()
         if (count >= 10) awardBadge(Badge.WORD_COLLECTOR.id)
-        if (count >= 50) awardBadge(Badge.WORD_SCHOLAR.id)
-        if (count >= 100) awardBadge(Badge.WORD_MASTER.id)
+        if (count >= 100) awardBadge(Badge.WORD_SCHOLAR.id)
+        if (count >= 500) awardBadge(Badge.WORD_MASTER.id)
 
         // Default mode ★10
         val defaultHigh = masteredWordDao.getHighMasteryCountByType(PracticeType.DEFAULT.name).first()

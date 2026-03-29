@@ -5,7 +5,7 @@
   "characterName": "王老师",
   "characterEmoji": "🧮",
   "characterRole": "teacher",
-  "category": "AT_SCHOOL",
+  "category": "SCHOOL_SUBJECTS",
   "dialogues": [
     {
       "id": 1,

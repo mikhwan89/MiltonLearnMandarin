@@ -1,5 +1,6 @@
 package com.ikhwan.mandarinkids.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -8,11 +9,14 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ikhwan.mandarinkids.R
 import com.ikhwan.mandarinkids.data.models.Scenario
 import com.ikhwan.mandarinkids.data.models.ScenarioCategory
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
@@ -43,8 +47,17 @@ fun ScenarioListScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Row {
-                        Text(category.emoji, fontSize = 22.sp, modifier = Modifier.padding(end = 8.dp))
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        val iconRes = categoryIconRes(category)
+                        if (iconRes != null) {
+                            Image(
+                                painter = painterResource(iconRes),
+                                contentDescription = category.displayName,
+                                modifier = Modifier.size(28.dp).padding(end = 8.dp)
+                            )
+                        } else {
+                            Text(category.emoji, fontSize = 22.sp, modifier = Modifier.padding(end = 8.dp))
+                        }
                         Text(category.displayName, fontSize = 20.sp)
                     }
                 },
@@ -69,7 +82,7 @@ fun ScenarioListScreen(
         ) {
                 item {
                 SectionHeader(
-                    text = "${category.emoji} ${scenarios.size} scenario${if (scenarios.size != 1) "s" else ""}"
+                    text = "${scenarios.size} scenario${if (scenarios.size != 1) "s" else ""}"
                 )
             }
 

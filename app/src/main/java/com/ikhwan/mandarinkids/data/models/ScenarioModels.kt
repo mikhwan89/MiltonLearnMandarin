@@ -11,7 +11,8 @@ enum class ScenarioCategory(val displayName: String, val emoji: String) {
     FOOD_AND_EATING("Food & Eating", "🍎"),
     FEELINGS_AND_HEALTH("Feelings & Health", "💗"),
     PLAY_AND_HOBBIES("Play & Hobbies", "⚽"),
-    HOME("At Home", "🏠")
+    HOME("At Home", "🏠"),
+    OUT_AND_ABOUT("Out & About", "🚌")
 }
 
 // Core scenario data model
