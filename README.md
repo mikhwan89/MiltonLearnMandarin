@@ -22,18 +22,18 @@ Progress (stars, XP, streak, mastered words) is saved locally. Parents can unloc
 ## Screenshots
 
 <p align="center">
-  <img src="screenshots/roleplay3.jpeg" width="30%" alt="Roleplay — category picker"/>
+  <img src="screenshots/roleplay4.jpeg" width="30%" alt="Roleplay — category picker"/>
   &nbsp;
-  <img src="screenshots/flashcard3.jpeg" width="30%" alt="Flashcard drill"/>
+  <img src="screenshots/flashcard4.jpeg" width="30%" alt="Flashcard drill"/>
   &nbsp;
-  <img src="screenshots/tones3.jpeg" width="30%" alt="Tone Trainer"/>
+  <img src="screenshots/tones4.jpeg" width="30%" alt="Tone Trainer"/>
 </p>
 <p align="center">
-  <img src="screenshots/build3.jpeg" width="30%" alt="Sentence Builder"/>
+  <img src="screenshots/build4.jpeg" width="30%" alt="Sentence Builder"/>
   &nbsp;
-  <img src="screenshots/progress3.jpeg" width="30%" alt="Progress &amp; Badges"/>
+  <img src="screenshots/progress4.jpeg" width="30%" alt="Progress &amp; Badges"/>
   &nbsp;
-  <img src="screenshots/pcontrol3.jpeg" width="30%" alt="Parental Control"/>
+  <img src="screenshots/pcontrol4.jpeg" width="30%" alt="Parental Control"/>
 </p>
 
 ---
