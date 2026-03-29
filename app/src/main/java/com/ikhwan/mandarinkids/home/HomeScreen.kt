@@ -164,40 +164,29 @@ fun HomeScreen(
                 SectionHeader(text = "📚 Choose a Category")
             }
 
-            // ── Category grid — 4 top row, 3 bottom row (centered) ───────────
+            // ── Category grid — 4 top row, 3 bottom row ───────────────────
             item {
-                val firstRow = activeCategories.take(4)
-                val secondRow = activeCategories.drop(4)
+                val rows = listOf(
+                    activeCategories.take(4),
+                    activeCategories.drop(4)
+                )
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    // Row 1 — always 4 items filling the full width
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        firstRow.forEach { category ->
-                            CategoryCard(
-                                category = category,
-                                onClick = { onCategoryClick(category) },
-                                modifier = Modifier.weight(1f)
-                            )
-                        }
-                    }
-                    // Row 2 — centered with 0.5-weight padding on each side so each
-                    // tile sits between two tiles above (staggered / honeycomb look)
-                    if (secondRow.isNotEmpty()) {
+                    rows.forEach { rowCategories ->
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
-                            Spacer(modifier = Modifier.weight(0.5f))
-                            secondRow.forEach { category ->
+                            rowCategories.forEach { category ->
                                 CategoryCard(
                                     category = category,
                                     onClick = { onCategoryClick(category) },
                                     modifier = Modifier.weight(1f)
                                 )
                             }
-                            Spacer(modifier = Modifier.weight(0.5f))
+                            // Pad remaining slots in last row so cells stay same width
+                            repeat(4 - rowCategories.size) {
+                                Spacer(modifier = Modifier.weight(1f))
+                            }
                         }
                     }
                 }
