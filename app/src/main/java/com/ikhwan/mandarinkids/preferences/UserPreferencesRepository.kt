@@ -35,6 +35,10 @@ class UserPreferencesRepository private constructor(private val context: Context
     val darkMode: Flow<Boolean> =
         context.userPrefsDataStore.data.map { it[DARK_MODE] ?: false }
 
+    /** Whether the first-run onboarding tutorial has been completed. */
+    val onboardingCompleted: Flow<Boolean> =
+        context.userPrefsDataStore.data.map { it[ONBOARDING_COMPLETED] ?: false }
+
     suspend fun saveSpeechRate(rate: Float) {
         context.userPrefsDataStore.edit { it[SPEECH_RATE] = rate }
     }
@@ -45,6 +49,10 @@ class UserPreferencesRepository private constructor(private val context: Context
 
     suspend fun saveDarkMode(dark: Boolean) {
         context.userPrefsDataStore.edit { it[DARK_MODE] = dark }
+    }
+
+    suspend fun saveOnboardingCompleted(completed: Boolean) {
+        context.userPrefsDataStore.edit { it[ONBOARDING_COMPLETED] = completed }
     }
 
     /** Tab IDs that are disabled. Empty = all enabled. Values: "roleplay","flashcard","tone","build" */
@@ -71,9 +79,10 @@ class UserPreferencesRepository private constructor(private val context: Context
 
     companion object {
         // Key name kept as "speech_speed" to preserve any existing saved value.
-        private val SPEECH_RATE = floatPreferencesKey("speech_speed")
-        private val SHOW_INDONESIAN = booleanPreferencesKey("show_indonesian")
-        private val DARK_MODE       = booleanPreferencesKey("dark_mode")
+        private val SPEECH_RATE         = floatPreferencesKey("speech_speed")
+        private val SHOW_INDONESIAN     = booleanPreferencesKey("show_indonesian")
+        private val DARK_MODE           = booleanPreferencesKey("dark_mode")
+        private val ONBOARDING_COMPLETED = booleanPreferencesKey("onboarding_completed")
         private val DISABLED_TABS       = stringSetPreferencesKey("disabled_tabs")
         private val DISABLED_CATEGORIES = stringSetPreferencesKey("disabled_categories")
         private val DISABLED_SCENARIOS  = stringSetPreferencesKey("disabled_scenarios")

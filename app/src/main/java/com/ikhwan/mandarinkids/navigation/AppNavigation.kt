@@ -22,6 +22,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.ikhwan.mandarinkids.FlashcardScreen
+import com.ikhwan.mandarinkids.onboarding.OnboardingScreen
+import kotlinx.coroutines.launch
 import com.ikhwan.mandarinkids.QuizScreen
 import com.ikhwan.mandarinkids.RolePlayScreen
 import com.ikhwan.mandarinkids.data.models.ScenarioCategory
@@ -46,12 +48,14 @@ fun MandarinKidsApp() {
     // Track whether the word-of-day popup has been shown this session
     var wordOfDayShownThisSession by remember { mutableStateOf(false) }
 
+    val scope = rememberCoroutineScope()
+    val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
+    val onboardingCompleted by userPrefs.onboardingCompleted.collectAsState(initial = null)
+    val disabledTabs by userPrefs.disabledTabs.collectAsState(initial = emptySet())
+
     LaunchedEffect(Unit) {
         ProgressRepository.getInstance(context).checkAndUpdateStreak()
     }
-
-    val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
-    val disabledTabs by userPrefs.disabledTabs.collectAsState(initial = emptySet())
 
     // Determine current route to decide whether to show the bottom nav
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -212,7 +216,7 @@ fun MandarinKidsApp() {
                     onCategoryClick = { category ->
                         navController.navigate(Routes.category(category.name))
                     },
-                    showWordOfDayOnLaunch = !wordOfDayShownThisSession,
+                    showWordOfDayOnLaunch = !wordOfDayShownThisSession && onboardingCompleted == true,
                     onWordOfDayShown = { wordOfDayShownThisSession = true }
                 )
             }
@@ -329,5 +333,15 @@ fun MandarinKidsApp() {
             }
         }
     }
+        // ── First-run onboarding overlay ──────────────────────────────────────
+        // Shown on top of everything until the user completes or skips it.
+        // onboardingCompleted == null while DataStore is loading (show nothing).
+        if (onboardingCompleted == false) {
+            OnboardingScreen(
+                onComplete = {
+                    scope.launch { userPrefs.saveOnboardingCompleted(true) }
+                }
+            )
+        }
     } // end Box (background)
 }
