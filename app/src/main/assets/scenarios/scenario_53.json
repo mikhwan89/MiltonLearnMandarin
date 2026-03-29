@@ -1,0 +1,225 @@
+{
+  "id": "scene53_visiting_grandparents",
+  "title": "看望爷爷奶奶",
+  "description": "Visiting grandpa and grandma — greet them warmly, chat about school, and say a loving goodbye",
+  "characterName": "爷爷",
+  "characterEmoji": "👴",
+  "characterRole": "grandpa",
+  "category": "OUT_AND_ABOUT",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "哎呀，是我的宝贝！快进来！",
+      "textPinyin": "Āiyā, shì wǒ de bǎobèi! Kuài jìn lái!",
+      "textEnglish": "Oh my, it's my little treasure! Come in quickly!",
+      "textIndonesian": "Aduh, ini cucu kesayanganku! Ayo masuk!",
+      "pinyinWords": [
+        { "pinyin": "Āiyā", "chinese": "哎呀", "english": "Oh my! / Wow!", "indonesian": "Aduh! / Wah!", "note": "An exclamation of surprise and happiness, like 'oh my goodness!'" },
+        { "pinyin": "shì", "chinese": "是", "english": "it is", "indonesian": "ini adalah" },
+        { "pinyin": "wǒ", "chinese": "我", "english": "my", "indonesian": "saya / ku" },
+        { "pinyin": "de", "chinese": "的", "english": "(possessive particle)", "indonesian": "(partikel kepemilikan)", "note": "Like 's in English — 我的 means 'mine' or 'my'" },
+        { "pinyin": "bǎobèi", "chinese": "宝贝", "english": "treasure / darling", "indonesian": "harta / sayang" },
+        { "pinyin": "Kuài", "chinese": "快", "english": "Quickly / Come on", "indonesian": "Cepat / Ayo" },
+        { "pinyin": "jìn", "chinese": "进", "english": "enter / come in", "indonesian": "masuk" },
+        { "pinyin": "lái", "chinese": "来", "english": "come", "indonesian": "datang / kemari" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "爷爷好！我来看你们了！",
+          "pinyin": "Yéye hǎo! Wǒ lái kàn nǐmen le!",
+          "english": "Hello, grandpa! I came to visit you all!",
+          "indonesian": "Halo, Kakek! Aku datang mengunjungi kalian!",
+          "pinyinWords": [
+            { "pinyin": "Yéye", "chinese": "爷爷", "english": "Grandpa (father's father)", "indonesian": "Kakek (dari ayah)" },
+            { "pinyin": "hǎo", "chinese": "好", "english": "hello / good", "indonesian": "halo / baik" },
+            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Aku" },
+            { "pinyin": "lái", "chinese": "来", "english": "came", "indonesian": "datang" },
+            { "pinyin": "kàn", "chinese": "看", "english": "visit / see", "indonesian": "mengunjungi / melihat" },
+            { "pinyin": "nǐmen", "chinese": "你们", "english": "you all / you guys", "indonesian": "kalian" },
+            { "pinyin": "le", "chinese": "了", "english": "(completion particle)", "indonesian": "(partikel selesai)", "note": "Shows the action is done — like 'I have come!'" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "你好，叔叔！",
+          "pinyin": "Nǐ hǎo, shūshu!",
+          "english": "Hello, uncle!",
+          "indonesian": "Halo, Paman!",
+          "pinyinWords": [
+            { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
+            { "pinyin": "hǎo", "chinese": "好", "english": "hello", "indonesian": "halo" },
+            { "pinyin": "shūshu", "chinese": "叔叔", "english": "uncle", "indonesian": "paman" }
+          ],
+          "isCorrect": false
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "学校怎么样？你喜欢学校吗？",
+      "textPinyin": "Xuéxiào zěnme yàng? Nǐ xǐhuān xuéxiào ma?",
+      "textEnglish": "How is school? Do you like school?",
+      "textIndonesian": "Bagaimana sekolahnya? Kamu suka sekolah?",
+      "pinyinWords": [
+        { "pinyin": "Xuéxiào", "chinese": "学校", "english": "School", "indonesian": "Sekolah" },
+        { "pinyin": "zěnme", "chinese": "怎么", "english": "how", "indonesian": "bagaimana" },
+        { "pinyin": "yàng", "chinese": "样", "english": "like / such", "indonesian": "seperti / begitu", "note": "怎么样 together means 'how is it?' or 'what's it like?'" },
+        { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
+        { "pinyin": "xǐhuān", "chinese": "喜欢", "english": "like", "indonesian": "suka" },
+        { "pinyin": "xuéxiào", "chinese": "学校", "english": "school", "indonesian": "sekolah" },
+        { "pinyin": "ma", "chinese": "吗", "english": "(question particle)", "indonesian": "(partikel tanya)", "note": "Put at the end to turn a sentence into a yes/no question" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "学校很好玩！我喜欢学校。",
+          "pinyin": "Xuéxiào hěn hǎo wán! Wǒ xǐhuān xuéxiào.",
+          "english": "School is a lot of fun! I like school.",
+          "indonesian": "Sekolah sangat menyenangkan! Aku suka sekolah.",
+          "pinyinWords": [
+            { "pinyin": "Xuéxiào", "chinese": "学校", "english": "School", "indonesian": "Sekolah" },
+            { "pinyin": "hěn", "chinese": "很", "english": "very", "indonesian": "sangat" },
+            { "pinyin": "hǎo", "chinese": "好", "english": "good", "indonesian": "bagus" },
+            { "pinyin": "wán", "chinese": "玩", "english": "fun / play", "indonesian": "seru / bermain" },
+            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Aku" },
+            { "pinyin": "xǐhuān", "chinese": "喜欢", "english": "like", "indonesian": "suka" },
+            { "pinyin": "xuéxiào", "chinese": "学校", "english": "school", "indonesian": "sekolah" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我不去学校。",
+          "pinyin": "Wǒ bù qù xuéxiào.",
+          "english": "I don't go to school.",
+          "indonesian": "Aku tidak sekolah.",
+          "pinyinWords": [
+            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Aku" },
+            { "pinyin": "bù", "chinese": "不", "english": "not", "indonesian": "tidak" },
+            { "pinyin": "qù", "chinese": "去", "english": "go", "indonesian": "pergi" },
+            { "pinyin": "xuéxiào", "chinese": "学校", "english": "school", "indonesian": "sekolah" }
+          ],
+          "isCorrect": false
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "太棒了！来，吃点心！要走了吗？保重！",
+      "textPinyin": "Tài bàng le! Lái, chī diǎnxin! Yào zǒu le ma? Bǎozhòng!",
+      "textEnglish": "Wonderful! Come, have a snack! Are you leaving already? Take care!",
+      "textIndonesian": "Luar biasa! Ayo, makan camilan! Sudah mau pulang? Jaga diri!",
+      "pinyinWords": [
+        { "pinyin": "Tài", "chinese": "太", "english": "So / Extremely", "indonesian": "Sangat" },
+        { "pinyin": "bàng", "chinese": "棒", "english": "wonderful / great", "indonesian": "luar biasa / hebat" },
+        { "pinyin": "le", "chinese": "了", "english": "(exclamation particle)", "indonesian": "(partikel seru)", "note": "太棒了 is like saying 'That's awesome!'" },
+        { "pinyin": "Lái", "chinese": "来", "english": "Come", "indonesian": "Ayo / Kemari" },
+        { "pinyin": "chī", "chinese": "吃", "english": "eat", "indonesian": "makan" },
+        { "pinyin": "diǎnxin", "chinese": "点心", "english": "snack / dim sum", "indonesian": "camilan" },
+        { "pinyin": "Yào", "chinese": "要", "english": "About to / Going to", "indonesian": "Akan / Mau" },
+        { "pinyin": "zǒu", "chinese": "走", "english": "leave / go", "indonesian": "pergi / pulang" },
+        { "pinyin": "le", "chinese": "了", "english": "(change particle)", "indonesian": "(partikel perubahan)", "note": "Signals a change — here it means 'already leaving?'" },
+        { "pinyin": "ma", "chinese": "吗", "english": "(question particle)", "indonesian": "(partikel tanya)" },
+        { "pinyin": "Bǎozhòng", "chinese": "保重", "english": "Take care", "indonesian": "Jaga diri" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "谢谢爷爷！点心很好吃！再见，爷爷奶奶！",
+          "pinyin": "Xièxie yéye! Diǎnxin hěn hǎo chī! Zàijiàn, yéye nǎinai!",
+          "english": "Thank you, grandpa! The snack is delicious! Goodbye, grandpa and grandma!",
+          "indonesian": "Terima kasih, Kakek! Camilannya enak! Sampai jumpa, Kakek dan Nenek!",
+          "pinyinWords": [
+            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" },
+            { "pinyin": "yéye", "chinese": "爷爷", "english": "grandpa", "indonesian": "kakek" },
+            { "pinyin": "Diǎnxin", "chinese": "点心", "english": "Snack", "indonesian": "Camilan" },
+            { "pinyin": "hěn", "chinese": "很", "english": "very", "indonesian": "sangat" },
+            { "pinyin": "hǎo", "chinese": "好", "english": "good / delicious", "indonesian": "enak" },
+            { "pinyin": "chī", "chinese": "吃", "english": "eat / taste", "indonesian": "makan / rasanya" },
+            { "pinyin": "Zàijiàn", "chinese": "再见", "english": "Goodbye", "indonesian": "Sampai jumpa" },
+            { "pinyin": "yéye", "chinese": "爷爷", "english": "grandpa", "indonesian": "kakek" },
+            { "pinyin": "nǎinai", "chinese": "奶奶", "english": "grandma (father's mother)", "indonesian": "nenek (dari ayah)" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我不喜欢点心。",
+          "pinyin": "Wǒ bù xǐhuān diǎnxin.",
+          "english": "I don't like snacks.",
+          "indonesian": "Aku tidak suka camilan.",
+          "pinyinWords": [
+            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Aku" },
+            { "pinyin": "bù", "chinese": "不", "english": "not", "indonesian": "tidak" },
+            { "pinyin": "xǐhuān", "chinese": "喜欢", "english": "like", "indonesian": "suka" },
+            { "pinyin": "diǎnxin", "chinese": "点心", "english": "snack", "indonesian": "camilan" }
+          ],
+          "isCorrect": false
+        }
+      ],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "爷爷",
+      "questionPinyin": "yéye",
+      "options": [
+        { "chinese": "", "pinyin": "", "translation": "Uncle" },
+        { "chinese": "", "pinyin": "", "translation": "Father" },
+        { "chinese": "", "pinyin": "", "translation": "Grandpa (dad's dad)" },
+        { "chinese": "", "pinyin": "", "translation": "Grandma" }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "爷爷 (yéye) is your grandpa on your father's side. 奶奶 (nǎinai) is grandma on your father's side!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "奶奶",
+      "questionPinyin": "nǎinai",
+      "options": [
+        { "chinese": "", "pinyin": "", "translation": "Auntie" },
+        { "chinese": "", "pinyin": "", "translation": "Grandma (dad's mum)" },
+        { "chinese": "", "pinyin": "", "translation": "Grandpa" },
+        { "chinese": "", "pinyin": "", "translation": "Mother" }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "奶奶 (nǎinai) is your grandma on your father's side. In Chinese, family words tell you exactly which side of the family!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'school' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "图书馆", "pinyin": "túshūguǎn", "translation": "library" },
+        { "chinese": "学校", "pinyin": "xuéxiào", "translation": "school" },
+        { "chinese": "公园", "pinyin": "gōngyuán", "translation": "park" },
+        { "chinese": "家", "pinyin": "jiā", "translation": "home" }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "学校 (xuéxiào) means 'school' — 学 means 'study', 校 means 'campus' or 'school building'!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "保重",
+      "questionPinyin": "bǎozhòng",
+      "options": [
+        { "chinese": "See you later!", "pinyin": "", "translation": "See you later!" },
+        { "chinese": "Good morning!", "pinyin": "", "translation": "Good morning!" },
+        { "chinese": "Take care!", "pinyin": "", "translation": "Take care!" },
+        { "chinese": "Thank you!", "pinyin": "", "translation": "Thank you!" }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "保重 (bǎozhòng) means 'take care of yourself' — a warm and loving way to say goodbye!"
+    }
+  ]
+}

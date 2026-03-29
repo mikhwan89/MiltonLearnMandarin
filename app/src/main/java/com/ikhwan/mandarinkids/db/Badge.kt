@@ -30,7 +30,7 @@ enum class Badge(
         "Open the app 3 days in a row"
     ),
     STREAK_CHAMPION(
-        "streak_champion", "🏆", "Streak Champion",
+        "streak_champion", "🌈", "Streak Champion",
         "Open the app 7 days in a row"
     ),
     STREAK_LEGEND(
@@ -45,11 +45,11 @@ enum class Badge(
     ),
     WORD_SCHOLAR(
         "word_scholar", "📖", "Word Scholar",
-        "Unlock 50 distinct flashcard words"
+        "Unlock 100 distinct flashcard words"
     ),
     WORD_MASTER(
         "word_master", "🧠", "Word Master",
-        "Unlock 100 distinct flashcard words"
+        "Unlock 500 distinct flashcard words"
     ),
 
     // ── Default mode ★10 ────────────────────────────────────────────────────
@@ -150,7 +150,7 @@ enum class Badge(
 
     // ── Grand Master ─────────────────────────────────────────────────────────
     GRAND_MASTER(
-        "grand_master", "🌈", "Grand Master",
+        "grand_master", "🏆", "Grand Master",
         "Get 3★ on every scenario AND reach ★10 on every word in all 3 flashcard modes"
     ),
 
@@ -161,10 +161,14 @@ enum class Badge(
     ),
     XP_HUNTER(
         "xp_hunter", "💎", "XP Hunter",
-        "Earn 500 XP"
+        "Earn 1,000 XP"
     ),
     XP_LEGEND(
         "xp_legend", "🚀", "XP Legend",
-        "Earn 1,000 XP"
+        "Earn 10,000 XP"
+    ),
+    XP_MYTHICAL(
+        "xp_mythical", "🌠", "XP Mythical",
+        "Earn 50,000 XP"
     )
 }

@@ -179,22 +179,31 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
                             horizontalArrangement = Arrangement.SpaceEvenly
                         ) {
                             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Text("🔥", fontSize = 32.sp)
+                                Image(
+                                    painter = painterResource(R.drawable.day_streak),
+                                    contentDescription = "Day streak",
+                                    modifier = Modifier.size(64.dp)
+                                )
                                 Text("$streak", fontSize = 26.sp, fontWeight = FontWeight.Bold)
                                 Text("day streak", fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
                             }
                             HorizontalDivider(modifier = Modifier.height(72.dp).width(1.dp))
                             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Text(
-                                    text = when { xp >= 180 -> "🌟"; xp >= 60 -> "⭐"; else -> "📚" },
-                                    fontSize = 32.sp
+                                Image(
+                                    painter = painterResource(xpIconRes(xp)),
+                                    contentDescription = "XP",
+                                    modifier = Modifier.size(64.dp)
                                 )
                                 Text("$xp XP", fontSize = 26.sp, fontWeight = FontWeight.Bold)
                                 Text(ProgressManager.getLevel(xp), fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
                             }
                             HorizontalDivider(modifier = Modifier.height(72.dp).width(1.dp))
                             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Text("🧠", fontSize = 32.sp)
+                                Image(
+                                    painter = painterResource(R.drawable.words),
+                                    contentDescription = "Words encountered",
+                                    modifier = Modifier.size(64.dp)
+                                )
                                 Text("$masteredCount", fontSize = 26.sp, fontWeight = FontWeight.Bold)
                                 Text("words", fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
                             }
@@ -351,7 +360,16 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
                             modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(category.emoji, fontSize = 16.sp)
+                            val iconRes = categoryIconRes(category)
+                            if (iconRes != null) {
+                                Image(
+                                    painter = painterResource(iconRes),
+                                    contentDescription = category.displayName,
+                                    modifier = Modifier.size(22.dp)
+                                )
+                            } else {
+                                Text(category.emoji, fontSize = 16.sp)
+                            }
                             Spacer(Modifier.width(8.dp))
                             Text(
                                 category.displayName,
@@ -431,10 +449,24 @@ private fun BadgeCard(badge: Badge, earned: Boolean, modifier: Modifier = Modifi
             modifier = Modifier.fillMaxWidth().padding(vertical = 10.dp, horizontal = 6.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                badge.emoji, fontSize = 26.sp,
-                modifier = if (earned) Modifier else Modifier.alpha(0.25f)
-            )
+            val badgeRes = badgeIconRes(badge)
+            Box(
+                modifier = Modifier.size(48.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                if (badgeRes != null) {
+                    Image(
+                        painter = painterResource(badgeRes),
+                        contentDescription = badge.label,
+                        modifier = (if (earned) Modifier else Modifier.alpha(0.25f)).size(48.dp)
+                    )
+                } else {
+                    Text(
+                        badge.emoji, fontSize = 26.sp,
+                        modifier = if (earned) Modifier else Modifier.alpha(0.25f)
+                    )
+                }
+            }
             Spacer(Modifier.height(3.dp))
             Text(
                 badge.label,
@@ -454,7 +486,14 @@ private fun BadgeCard(badge: Badge, earned: Boolean, modifier: Modifier = Modifi
     if (showInfo) {
         AlertDialog(
             onDismissRequest = { showInfo = false },
-            icon = { Text(badge.emoji, fontSize = 36.sp) },
+            icon = {
+            val badgeRes = badgeIconRes(badge)
+            if (badgeRes != null) {
+                Image(painter = painterResource(badgeRes), contentDescription = badge.label, modifier = Modifier.size(48.dp))
+            } else {
+                Text(badge.emoji, fontSize = 36.sp)
+            }
+        },
             title = { Text(badge.label, fontWeight = FontWeight.Bold) },
             text = {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {

@@ -27,6 +27,7 @@ import com.ikhwan.mandarinkids.ToneUtils
 import com.ikhwan.mandarinkids.data.models.Scenario
 import com.ikhwan.mandarinkids.data.models.ScenarioCategory
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
+import com.ikhwan.mandarinkids.db.Badge
 import com.ikhwan.mandarinkids.db.MasteredWordEntity
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
@@ -125,7 +126,11 @@ fun HomeScreen(
                                 .weight(1f)
                                 .defaultMinSize(minHeight = 40.dp)
                         ) {
-                            Text("🔥", fontSize = 28.sp)
+                            Image(
+                                painter = painterResource(R.drawable.day_streak),
+                                contentDescription = "Day streak",
+                                modifier = Modifier.size(56.dp)
+                            )
                             Text("$streak", fontSize = 22.sp, fontWeight = FontWeight.Bold)
                             Text(
                                 "day streak",
@@ -140,13 +145,10 @@ fun HomeScreen(
                                 .weight(1f)
                                 .defaultMinSize(minHeight = 40.dp)
                         ) {
-                            Text(
-                                text = when {
-                                    xp >= 180 -> "🌟"
-                                    xp >= 60 -> "⭐"
-                                    else -> "📚"
-                                },
-                                fontSize = 28.sp
+                            Image(
+                                painter = painterResource(xpIconRes(xp)),
+                                contentDescription = "XP",
+                                modifier = Modifier.size(56.dp)
                             )
                             Text("$xp XP", fontSize = 22.sp, fontWeight = FontWeight.Bold)
                             Text(
@@ -291,6 +293,34 @@ fun SectionHeader(text: String) {
     }
 }
 
+fun xpIconRes(xp: Int): Int = when {
+    xp >= 50000 -> R.drawable.xp5
+    xp >= 10000 -> R.drawable.xp4
+    xp >= 1000  -> R.drawable.xp3
+    xp >= 100   -> R.drawable.xp2
+    else        -> R.drawable.xp1
+}
+
+fun badgeIconRes(badge: Badge): Int? = when (badge) {
+    Badge.XP_SEEKER   -> R.drawable.xp2
+    Badge.XP_HUNTER   -> R.drawable.xp3
+    Badge.XP_LEGEND   -> R.drawable.xp4
+    Badge.XP_MYTHICAL -> R.drawable.xp5
+    else              -> null
+}
+
+fun categoryIconRes(category: ScenarioCategory): Int? = when (category) {
+    ScenarioCategory.ESSENTIALS          -> R.drawable.cat_essential
+    ScenarioCategory.AT_SCHOOL           -> R.drawable.cat_at_school
+    ScenarioCategory.SCHOOL_SUBJECTS     -> R.drawable.cat_school_subjects
+    ScenarioCategory.FOOD_AND_EATING     -> R.drawable.cat_food_and_eating
+    ScenarioCategory.FEELINGS_AND_HEALTH -> R.drawable.cat_feelings_and_health
+    ScenarioCategory.PLAY_AND_HOBBIES    -> R.drawable.cat_play_and_hobbies
+    ScenarioCategory.HOME                -> R.drawable.cat_at_home
+    ScenarioCategory.OUT_AND_ABOUT       -> R.drawable.cat_out_and_about
+    else                                 -> null
+}
+
 @Composable
 fun CategoryCard(category: ScenarioCategory, onClick: () -> Unit, modifier: Modifier = Modifier) {
     val gradientColors = when (category) {
@@ -301,18 +331,10 @@ fun CategoryCard(category: ScenarioCategory, onClick: () -> Unit, modifier: Modi
         ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFFF5E0E0), Color(0xFFFAEEEE))
         ScenarioCategory.PLAY_AND_HOBBIES    -> listOf(Color(0xFFD5EDD5), Color(0xFFE6F5E6))
         ScenarioCategory.HOME                -> listOf(Color(0xFFB8E4F0), Color(0xFFD4EFF8))
+        ScenarioCategory.OUT_AND_ABOUT       -> listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
         else                                 -> listOf(Color(0xFFF5F4ED), Color(0xFFF5F4ED))
     }
-    val categoryIcon = when (category) {
-        ScenarioCategory.ESSENTIALS          -> R.drawable.cat_essential
-        ScenarioCategory.AT_SCHOOL           -> R.drawable.cat_at_school
-        ScenarioCategory.SCHOOL_SUBJECTS     -> R.drawable.cat_school_subjects
-        ScenarioCategory.FOOD_AND_EATING     -> R.drawable.cat_food_and_eating
-        ScenarioCategory.FEELINGS_AND_HEALTH -> R.drawable.cat_feelings_and_health
-        ScenarioCategory.PLAY_AND_HOBBIES    -> R.drawable.cat_play_and_hobbies
-        ScenarioCategory.HOME                -> R.drawable.cat_at_home
-        else                                 -> null
-    }
+    val categoryIcon = categoryIconRes(category)
     val shape = RoundedCornerShape(20.dp)
     Card(
         onClick = onClick,

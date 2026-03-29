@@ -40,7 +40,7 @@ Progress (stars, XP, streak, mastered words) is saved locally. Parents can unloc
 
 ## Scenarios
 
-The app includes **50 scenarios** across 7 categories:
+The app includes **53 scenarios** across 8 categories:
 
 | Category | Topics covered |
 |----------|---------------|
@@ -51,6 +51,7 @@ The app includes **50 scenarios** across 7 categories:
 | **Feelings & Health** | Expressing emotions, describing how you feel, visiting the nurse |
 | **Play & Hobbies** | Playground games, sports, hobbies, weekend activities |
 | **At Home** | Daily routines, chores, family interactions, bedtime |
+| **Out & About** 🚌 | Taking the bus, visiting the library, going to see grandparents |
 
 All scenarios include Chinese, pinyin, English, and Indonesian text. Adding a new scenario requires only a single JSON file — no Kotlin changes needed.
 
@@ -240,7 +241,7 @@ No Kotlin needed. Create a JSON file in `app/src/main/assets/scenarios/` then **
 ```
 
 **Tips:**
-- `category` must be one of: `ESSENTIALS`, `AT_SCHOOL`, `SCHOOL_SUBJECTS`, `FOOD_AND_EATING`, `FEELINGS_AND_HEALTH`, `PLAY_AND_HOBBIES`
+- `category` must be one of: `ESSENTIALS`, `AT_SCHOOL`, `SCHOOL_SUBJECTS`, `FOOD_AND_EATING`, `FEELINGS_AND_HEALTH`, `PLAY_AND_HOBBIES`, `HOME`, `OUT_AND_ABOUT`
 - `speaker`: `"CHARACTER"` or `"STUDENT"`
 - `responseType`: `"LISTEN_ONLY"`, `"SINGLE_CHOICE"`, `"MULTIPLE_OPTIONS"`, `"TEXT_INPUT"`
 - `direction`: `"CHINESE_TO_TRANSLATION"`, `"TRANSLATION_TO_CHINESE"`, or `"AUDIO_TO_TRANSLATION"`

@@ -1,0 +1,201 @@
+{
+  "id": "scene51_taking_bus",
+  "title": "坐公共汽车",
+  "description": "Taking the city bus — ask for the fare, find a seat, and get off at the right stop",
+  "characterName": "王司机",
+  "characterEmoji": "🚌",
+  "characterRole": "bus driver",
+  "category": "OUT_AND_ABOUT",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你好！你要去哪里？",
+      "textPinyin": "Nǐ hǎo! Nǐ yào qù nǎlǐ?",
+      "textEnglish": "Hello! Where are you going?",
+      "textIndonesian": "Halo! Kamu mau pergi ke mana?",
+      "pinyinWords": [
+        { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
+        { "pinyin": "hǎo", "chinese": "好", "english": "good / hello", "indonesian": "baik / halo" },
+        { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
+        { "pinyin": "yào", "chinese": "要", "english": "want to", "indonesian": "ingin" },
+        { "pinyin": "qù", "chinese": "去", "english": "go", "indonesian": "pergi" },
+        { "pinyin": "nǎlǐ", "chinese": "哪里", "english": "where", "indonesian": "ke mana" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "我要去公园。",
+          "pinyin": "Wǒ yào qù gōngyuán.",
+          "english": "I want to go to the park.",
+          "indonesian": "Saya mau ke taman.",
+          "pinyinWords": [
+            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
+            { "pinyin": "yào", "chinese": "要", "english": "want to", "indonesian": "ingin" },
+            { "pinyin": "qù", "chinese": "去", "english": "go", "indonesian": "pergi" },
+            { "pinyin": "gōngyuán", "chinese": "公园", "english": "park", "indonesian": "taman" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我不知道。",
+          "pinyin": "Wǒ bù zhīdào.",
+          "english": "I don't know.",
+          "indonesian": "Saya tidak tahu.",
+          "pinyinWords": [
+            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
+            { "pinyin": "bù", "chinese": "不", "english": "not", "indonesian": "tidak" },
+            { "pinyin": "zhīdào", "chinese": "知道", "english": "know", "indonesian": "tahu" }
+          ],
+          "isCorrect": false
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "好的！票价是两块钱。",
+      "textPinyin": "Hǎo de! Piàojià shì liǎng kuài qián.",
+      "textEnglish": "Great! The fare is two yuan.",
+      "textIndonesian": "Baik! Ongkosnya dua yuan.",
+      "pinyinWords": [
+        { "pinyin": "Hǎo", "chinese": "好", "english": "Good", "indonesian": "Baik" },
+        { "pinyin": "de", "chinese": "的", "english": "(particle)", "indonesian": "(partikel)", "note": "Softens the sentence — like saying 'okay then!'" },
+        { "pinyin": "Piàojià", "chinese": "票价", "english": "fare / ticket price", "indonesian": "ongkos / harga tiket" },
+        { "pinyin": "shì", "chinese": "是", "english": "is", "indonesian": "adalah" },
+        { "pinyin": "liǎng", "chinese": "两", "english": "two", "indonesian": "dua" },
+        { "pinyin": "kuài", "chinese": "块", "english": "yuan (money unit)", "indonesian": "yuan (satuan uang)" },
+        { "pinyin": "qián", "chinese": "钱", "english": "money", "indonesian": "uang" }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "好的，给你钱。谢谢！",
+          "pinyin": "Hǎo de, gěi nǐ qián. Xièxie!",
+          "english": "Okay, here is the money. Thank you!",
+          "indonesian": "Baik, ini uangnya. Terima kasih!",
+          "pinyinWords": [
+            { "pinyin": "Hǎo", "chinese": "好", "english": "Okay", "indonesian": "Baik" },
+            { "pinyin": "de", "chinese": "的", "english": "(particle)", "indonesian": "(partikel)", "note": "Softens the sentence" },
+            { "pinyin": "gěi", "chinese": "给", "english": "give", "indonesian": "berikan" },
+            { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
+            { "pinyin": "qián", "chinese": "钱", "english": "money", "indonesian": "uang" },
+            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" }
+          ],
+          "isCorrect": true
+        }
+      ],
+      "userNameInput": false
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "快到了！要下车吗？",
+      "textPinyin": "Kuài dào le! Yào xià chē ma?",
+      "textEnglish": "Almost there! Do you want to get off?",
+      "textIndonesian": "Hampir sampai! Mau turun?",
+      "pinyinWords": [
+        { "pinyin": "Kuài", "chinese": "快", "english": "Almost / soon", "indonesian": "Hampir / segera" },
+        { "pinyin": "dào", "chinese": "到", "english": "arrive", "indonesian": "tiba" },
+        { "pinyin": "le", "chinese": "了", "english": "(completion particle)", "indonesian": "(partikel selesai)", "note": "Shows something is about to happen or just happened" },
+        { "pinyin": "Yào", "chinese": "要", "english": "Want to", "indonesian": "Mau" },
+        { "pinyin": "xià", "chinese": "下", "english": "get off / down", "indonesian": "turun" },
+        { "pinyin": "chē", "chinese": "车", "english": "vehicle / bus", "indonesian": "kendaraan / bus" },
+        { "pinyin": "ma", "chinese": "吗", "english": "(question particle)", "indonesian": "(partikel tanya)", "note": "Put at the end to make a yes/no question" }
+      ],
+      "responseType": "MULTIPLE_OPTIONS",
+      "options": [
+        {
+          "chinese": "是的，我要下车。谢谢司机！",
+          "pinyin": "Shì de, wǒ yào xià chē. Xièxie sījī!",
+          "english": "Yes, I want to get off. Thank you, driver!",
+          "indonesian": "Iya, saya mau turun. Terima kasih, pak sopir!",
+          "pinyinWords": [
+            { "pinyin": "Shì", "chinese": "是", "english": "Yes", "indonesian": "Iya" },
+            { "pinyin": "de", "chinese": "的", "english": "(particle)", "indonesian": "(partikel)", "note": "Confirms the statement" },
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
+            { "pinyin": "yào", "chinese": "要", "english": "want to", "indonesian": "mau" },
+            { "pinyin": "xià", "chinese": "下", "english": "get off", "indonesian": "turun" },
+            { "pinyin": "chē", "chinese": "车", "english": "vehicle", "indonesian": "kendaraan" },
+            { "pinyin": "Xièxie", "chinese": "谢谢", "english": "Thank you", "indonesian": "Terima kasih" },
+            { "pinyin": "sījī", "chinese": "司机", "english": "driver", "indonesian": "sopir" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "不用了，谢谢。",
+          "pinyin": "Bú yòng le, xièxie.",
+          "english": "No need, thank you.",
+          "indonesian": "Tidak perlu, terima kasih.",
+          "pinyinWords": [
+            { "pinyin": "Bú", "chinese": "不", "english": "No", "indonesian": "Tidak" },
+            { "pinyin": "yòng", "chinese": "用", "english": "need", "indonesian": "perlu" },
+            { "pinyin": "le", "chinese": "了", "english": "(particle)", "indonesian": "(partikel)", "note": "Shows a change in situation" },
+            { "pinyin": "xièxie", "chinese": "谢谢", "english": "thank you", "indonesian": "terima kasih" }
+          ],
+          "isCorrect": false
+        }
+      ],
+      "userNameInput": false
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "公共汽车",
+      "questionPinyin": "gōnggòng qìchē",
+      "options": [
+        { "chinese": "", "pinyin": "", "translation": "Train" },
+        { "chinese": "", "pinyin": "", "translation": "Bus" },
+        { "chinese": "", "pinyin": "", "translation": "Taxi" },
+        { "chinese": "", "pinyin": "", "translation": "Bicycle" }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "公共汽车 (gōnggòng qìchē) means 'bus' — it literally means 'public motor vehicle'!"
+    },
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'ticket / fare' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "票价", "pinyin": "piàojià", "translation": "fare / ticket price" },
+        { "chinese": "钱", "pinyin": "qián", "translation": "money" },
+        { "chinese": "下车", "pinyin": "xià chē", "translation": "get off (the bus)" },
+        { "chinese": "公园", "pinyin": "gōngyuán", "translation": "park" }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "票价 (piàojià) means 'fare' or 'ticket price' — 票 means ticket, 价 means price!"
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "下车",
+      "questionPinyin": "xià chē",
+      "options": [
+        { "chinese": "Get on the bus", "pinyin": "", "translation": "Get on the bus" },
+        { "chinese": "Get off the bus", "pinyin": "", "translation": "Get off the bus" },
+        { "chinese": "Drive the bus", "pinyin": "", "translation": "Drive the bus" },
+        { "chinese": "Wait for the bus", "pinyin": "", "translation": "Wait for the bus" }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "下车 (xià chē) means 'get off the vehicle' — 下 means down/off, 车 means vehicle!"
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "多少钱",
+      "questionPinyin": "duōshao qián",
+      "options": [
+        { "chinese": "", "pinyin": "", "translation": "Where is it?" },
+        { "chinese": "", "pinyin": "", "translation": "How much money?" },
+        { "chinese": "", "pinyin": "", "translation": "What time is it?" },
+        { "chinese": "", "pinyin": "", "translation": "How far away?" }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "多少钱 (duōshao qián) means 'how much money?' — a very useful phrase when shopping or paying!"
+    }
+  ]
+}
