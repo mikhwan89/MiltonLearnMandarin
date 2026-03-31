@@ -7,6 +7,7 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -32,6 +33,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -52,15 +54,20 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ikhwan.mandarinkids.R
 
 // ── Tour step data ─────────────────────────────────────────────────────────
 
 private data class CoachStep(
-    val key: String?,       // null = no spotlight (Welcome / Outro)
-    val emoji: String,
+    val key: String?,               // null = no spotlight (Welcome / Outro)
+    val emoji: String,              // fallback when iconRes is null
+    val iconRes: Int? = null,       // drawable resource; shown instead of emoji when set
+    val navigateToRoute: String? = null,  // route to navigate to when this step becomes active
     val title: String,
     val message: String,
 )
@@ -85,34 +92,43 @@ private val STEPS = listOf(
         message = "Your daily streak and total XP live here. Come back every day to keep the streak alive and gain more experience points!"
     ),
     CoachStep(
-        key     = OnboardingKey.CATEGORY_GRID,
-        emoji   = "🗣️",
-        title   = "Practice Mandarin Conversations",
-        message = "Choose a real-life conversation scenario in Mandarin that you'd like to practice — from greetings and school life to food, home, and community. Tap any category to get started!"
+        key      = OnboardingKey.CATEGORY_GRID,
+        emoji    = "🗣️",
+        iconRes  = R.drawable.nav_roleplay,
+        title    = "Practice Mandarin Conversations",
+        message  = "Choose a real-life conversation scenario in Mandarin that you'd like to practice — from greetings and school life to food, home, and community. Tap any category to get started!"
     ),
     CoachStep(
-        key     = OnboardingKey.NAV_FLASHCARD,
-        emoji   = "🃏",
-        title   = "Flashcard Practice",
-        message = "Tap here to practice memorising words you've encountered in role-play scenarios. Filter by category, switch between Listening and Reading modes, and choose to drill weak words or maintain the ones you already know well."
+        key              = OnboardingKey.NAV_FLASHCARD,
+        emoji            = "🃏",
+        iconRes          = R.drawable.nav_flashcard,
+        navigateToRoute  = "practice",
+        title            = "Flashcard Practice",
+        message          = "Practice memorising words you've encountered in role-play scenarios. Filter by category, switch between Listening and Reading modes, and choose to drill weak words or maintain the ones you already know well."
     ),
     CoachStep(
-        key     = OnboardingKey.NAV_TONE,
-        emoji   = "🎵",
-        title   = "Tone Practice",
-        message = "In Mandarin, the same sound with a different tone is a completely different word! Tap here to train your ear on the four Mandarin tones and sharpen your listening skills."
+        key              = OnboardingKey.NAV_TONE,
+        emoji            = "🎵",
+        iconRes          = R.drawable.nav_tone,
+        navigateToRoute  = "tone_trainer",
+        title            = "Tone Practice",
+        message          = "In Mandarin, the same sound with a different tone is a completely different word! Train your ear on the four Mandarin tones and sharpen your listening skills."
     ),
     CoachStep(
-        key     = OnboardingKey.NAV_BUILD,
-        emoji   = "🧱",
-        title   = "Sentence Builder",
-        message = "Tap here to practice building sentences in Mandarin by arranging word tiles in the correct order. Great for understanding grammar and natural word structure."
+        key              = OnboardingKey.NAV_BUILD,
+        emoji            = "🧱",
+        iconRes          = R.drawable.nav_build,
+        navigateToRoute  = "sentence_builder",
+        title            = "Sentence Builder",
+        message          = "Practice building sentences in Mandarin by arranging word tiles in the correct order. Great for understanding grammar and natural word structure."
     ),
     CoachStep(
-        key     = OnboardingKey.NAV_PROGRESS,
-        emoji   = "📊",
-        title   = "Track Your Journey",
-        message = "Tap here to see all your badges, scenario star ratings, mastered words, and XP level. Watch your progress grow over time!"
+        key              = OnboardingKey.NAV_PROGRESS,
+        emoji            = "📊",
+        iconRes          = R.drawable.nav_progress,
+        navigateToRoute  = "progress",
+        title            = "Track Your Journey",
+        message          = "See all your badges, scenario star ratings, mastered words, and XP level. Watch your progress grow over time!"
     ),
     CoachStep(
         key     = null,
@@ -145,11 +161,17 @@ private val STEPS = listOf(
 @Composable
 fun InteractiveOnboardingOverlay(
     coords: Map<String, Rect>,
+    onNavigateToRoute: (String) -> Unit,
     onComplete: () -> Unit,
 ) {
     var stepIndex by remember { mutableIntStateOf(0) }
     val step = STEPS[stepIndex]
     val isLast = stepIndex == STEPS.lastIndex
+
+    // Navigate the background to the relevant tab when the step changes
+    LaunchedEffect(stepIndex) {
+        step.navigateToRoute?.let { onNavigateToRoute(it) }
+    }
 
     val spotlightRect: Rect? = step.key?.let { coords[it] }
 
@@ -405,7 +427,16 @@ private fun BubbleCard(
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
-            Text(step.emoji, fontSize = 34.sp)
+            if (step.iconRes != null) {
+                Image(
+                    painter = painterResource(step.iconRes),
+                    contentDescription = null,
+                    modifier = Modifier.size(44.dp),
+                    contentScale = ContentScale.Fit
+                )
+            } else {
+                Text(step.emoji, fontSize = 34.sp)
+            }
             Text(
                 text       = step.title,
                 style      = MaterialTheme.typography.titleMedium,

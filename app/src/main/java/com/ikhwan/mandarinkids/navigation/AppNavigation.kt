@@ -364,8 +364,18 @@ fun MandarinKidsApp() {
         // onboardingCompleted == null while DataStore is loading (show nothing).
         if (onboardingCompleted == false) {
             InteractiveOnboardingOverlay(
-                coords     = onboardingCoords,
+                coords            = onboardingCoords,
+                onNavigateToRoute = { route ->
+                    navController.navigate(route) {
+                        popUpTo(Routes.HOME)
+                        launchSingleTop = true
+                    }
+                },
                 onComplete = {
+                    navController.navigate(Routes.HOME) {
+                        popUpTo(Routes.HOME) { inclusive = true }
+                        launchSingleTop = true
+                    }
                     scope.launch { userPrefs.saveOnboardingCompleted(true) }
                 }
             )
