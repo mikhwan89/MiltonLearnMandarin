@@ -15,11 +15,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.luminance
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.ikhwan.mandarinkids.ui.theme.appColors
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -87,12 +87,10 @@ fun QuizResultsScreen(
         label = "bounceY"
     )
 
-    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
-    val resultsGradient = if (isDark) listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-                          else        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
-    val tipGradient = if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
-                      else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+    val colors = MaterialTheme.appColors
+    val labelColor = colors.onLightTile
+    val resultsGradient = colors.tileBlue.asList()
+    val tipGradient = colors.tileAmber.asList()
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -145,7 +143,7 @@ fun QuizResultsScreen(
                     Text(
                         text = if (i < stars) "★" else "☆",
                         fontSize = 48.sp,
-                        color = if (i < stars) Color(0xFFFFC107) else Color(0xFFBDBDBD)
+                        color = if (i < stars) colors.starFilled else colors.starEmpty
                     )
                 }
             }
@@ -155,7 +153,7 @@ fun QuizResultsScreen(
                     text = "+$xpGained XP",
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF4CAF50),
+                    color = colors.xpGainText,
                     modifier = Modifier.padding(bottom = 24.dp)
                 )
             } else {
@@ -271,7 +269,7 @@ fun QuizResultsScreen(
             ) {
                 Box(
                     modifier = Modifier.fillMaxSize()
-                        .background(Brush.verticalGradient(listOf(Color(0xFF388E3C), Color(0xFF66BB6A)))),
+                        .background(Brush.verticalGradient(colors.actionPositive.asList())),
                     contentAlignment = Alignment.Center
                 ) {
                     Text("Back to Home 回家", fontSize = 18.sp,
@@ -290,14 +288,11 @@ fun QuizResultsScreen(
                 ) {
                     Box(
                         modifier = Modifier.fillMaxSize()
-                            .background(Brush.verticalGradient(
-                                if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
-                                else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
-                            )),
+                            .background(Brush.verticalGradient(colors.tileAmber.asList())),
                         contentAlignment = Alignment.Center
                     ) {
                         Text("Try Again 再试一次", fontSize = 18.sp,
-                            color = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27),
+                            color = colors.onLightTile,
                             fontWeight = FontWeight.SemiBold)
                     }
                 }

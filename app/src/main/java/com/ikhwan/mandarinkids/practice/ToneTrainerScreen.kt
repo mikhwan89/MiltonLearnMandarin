@@ -15,8 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalContext
+import com.ikhwan.mandarinkids.ui.theme.appColors
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -71,12 +71,10 @@ fun ToneTrainerScreen() {
     val prefs = remember { context.getSharedPreferences("tone_trainer", 0) }
     var showIntro by remember { mutableStateOf(!prefs.getBoolean("tone_intro_seen", false)) }
 
-    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
-    val wordCardGradient = if (isDark)
-        listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-    else
-        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+    val colors = MaterialTheme.appColors
+
+    val labelColor = colors.onLightTile
+    val wordCardGradient = colors.tileBlue.asList()
 
     val questionPool: List<ToneQuestion> = remember {
         JsonScenarioRepository.getAll()
@@ -279,12 +277,12 @@ fun ToneTrainerScreen() {
                             "+2 XP ✨",
                             fontSize   = 15.sp,
                             fontWeight = FontWeight.SemiBold,
-                            color      = Color(0xFF4CAF50)
+                            color      = colors.xpGainText
                         )
                         else -> Text(
                             "Not quite — see the correct tone in green",
                             fontSize = 13.sp,
-                            color    = Color(0xFFC62828)
+                            color    = colors.answerWrongText
                         )
                     }
 
@@ -296,14 +294,11 @@ fun ToneTrainerScreen() {
                             shape    = RoundedCornerShape(16.dp),
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Box(modifier = Modifier.background(Brush.verticalGradient(
-                                if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
-                                else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
-                            ))) {
+                            Box(modifier = Modifier.background(Brush.verticalGradient(colors.tileAmber.asList()))) {
                                 Text(
                                     "💡 ${question.note}",
                                     fontSize  = 13.sp,
-                                    color     = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27),
+                                    color     = colors.onLightTile,
                                     textAlign = TextAlign.Center,
                                     lineHeight = 19.sp,
                                     modifier  = Modifier.padding(horizontal = 14.dp, vertical = 8.dp)
@@ -326,7 +321,7 @@ fun ToneTrainerScreen() {
                             isWrong   = isWrongTone,
                             isIdle    = isAnswered && !isSelected && !isCorrectTone,
                             enabled   = !isAnswered,
-                            isDark    = isDark,
+
                             modifier  = mod,
                             compact   = true,
                             onClick   = {
@@ -410,20 +405,7 @@ private val TONE_META = mapOf(
     0 to Triple("•", "Neutral",    "light")
 )
 
-private fun toneButtonGradient(tone: Int, isDark: Boolean): List<Color> =
-    if (isDark) when (tone) {
-        1    -> listOf(Color(0xFFB71C1C), Color(0xFFEF5350))
-        2    -> listOf(Color(0xFFE65100), Color(0xFFFF6D00))
-        3    -> listOf(Color(0xFF1B5E20), Color(0xFF2E7D32))
-        4    -> listOf(Color(0xFF0D47A1), Color(0xFF1565C0))
-        else -> listOf(Color(0xFF424242), Color(0xFF616161))
-    } else when (tone) {
-        1    -> listOf(Color(0xFFEF5350), Color(0xFFEF9A9A))
-        2    -> listOf(Color(0xFFFF6D00), Color(0xFFFFAB40))
-        3    -> listOf(Color(0xFF2E7D32), Color(0xFF66BB6A))
-        4    -> listOf(Color(0xFF1565C0), Color(0xFF42A5F5))
-        else -> listOf(Color(0xFF616161), Color(0xFF9E9E9E))
-    }
+// toneButtonGradient removed — replaced by colors.toneButtonGradient(tone)
 
 @Composable
 private fun ToneChoiceButton(
@@ -432,18 +414,18 @@ private fun ToneChoiceButton(
     isWrong: Boolean,
     isIdle: Boolean,
     enabled: Boolean,
-    isDark: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     compact: Boolean = false
 ) {
     val (symbol, label, sublabel) = TONE_META[tone]!!
+    val colors = MaterialTheme.appColors
 
     val gradientColors = when {
-        isCorrect -> listOf(Color(0xFF388E3C), Color(0xFF66BB6A))
-        isWrong   -> listOf(Color(0xFFC62828), Color(0xFFEF5350))
-        isIdle    -> listOf(Color(0xFF9E9E9E), Color(0xFFBDBDBD))
-        else      -> toneButtonGradient(tone, isDark)
+        isCorrect -> colors.toneTileCorrect.asList()
+        isWrong   -> colors.toneTileWrong.asList()
+        isIdle    -> colors.toneTileIdle.asList()
+        else      -> colors.toneButtonGradient(tone).asList()
     }
     val contentColor = if (isIdle) Color.White.copy(alpha = 0.5f) else Color.White
 
@@ -587,6 +569,7 @@ private fun ToneTrainerSummary(
                 lineHeight = 22.sp,
                 modifier  = Modifier.padding(bottom = 32.dp)
             )
+            val summaryColors = MaterialTheme.appColors
             Surface(
                 onClick = onRestart,
                 shape = RoundedCornerShape(50),
@@ -596,7 +579,7 @@ private fun ToneTrainerSummary(
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Brush.verticalGradient(listOf(Color(0xFF388E3C), Color(0xFF66BB6A)))),
+                        .background(Brush.verticalGradient(summaryColors.actionPositive.asList())),
                     contentAlignment = Alignment.Center
                 ) {
                     Text("Play Again", fontSize = 18.sp, color = Color.White, fontWeight = FontWeight.SemiBold)
@@ -636,8 +619,9 @@ private fun ToneGuideDialog(
                 )
                 Spacer(modifier = Modifier.height(10.dp))
 
+                val guideColors = MaterialTheme.appColors
                 MA_EXAMPLES.forEach { ex ->
-                    val toneColor = ToneUtils.toneColor(ex.tone)
+                    val toneColor = guideColors.toneColor(ex.tone)
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()

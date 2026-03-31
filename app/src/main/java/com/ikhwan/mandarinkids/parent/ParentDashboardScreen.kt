@@ -15,8 +15,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalContext
+import com.ikhwan.mandarinkids.ui.theme.appColors
 import androidx.compose.ui.res.painterResource
 import com.ikhwan.mandarinkids.ProgressManager
 import com.ikhwan.mandarinkids.R
@@ -81,8 +81,8 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
         }
     }
     val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
-    val isDarkMode = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-    val labelColor = if (isDarkMode) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+    val colors = MaterialTheme.appColors
+    val labelColor = colors.onLightTile
     val showIndonesian by userPrefs.showIndonesian.collectAsState(initial = true)
     val disabledTabs by userPrefs.disabledTabs.collectAsState(initial = emptySet())
     val disabledCategories by userPrefs.disabledCategories.collectAsState(initial = emptySet())
@@ -130,10 +130,7 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
                         fontWeight = FontWeight.Bold
                     )
                 }
-                val summaryGradient = if (isDarkMode)
-                    listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-                else
-                    listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+                val summaryGradient = colors.tileBlue.asList()
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     colors = CardDefaults.cardColors(containerColor = Color.Transparent),
@@ -197,10 +194,7 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
             item {
                 Spacer(modifier = Modifier.height(4.dp))
                 SectionHeader("⚙️ Content Settings")
-                val settingsGradient = if (isDarkMode)
-                    listOf(Color(0xFF342670), Color(0xFF261B55))
-                else
-                    listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))
+                val settingsGradient = colors.tilePurple.asList()
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     colors = CardDefaults.cardColors(containerColor = Color.Transparent),
@@ -407,6 +401,7 @@ private fun RewardItem(
     onClaim: () -> Unit,
     onDelete: () -> Unit
 ) {
+    val colors = MaterialTheme.appColors
     val conditions = reward.decodeConditions()
     val results = conditions.map { cond ->
         val cur = progressForCondition(cond)
@@ -451,12 +446,12 @@ private fun RewardItem(
                         Text(
                             lineText,
                             fontSize = 11.sp,
-                            color = if (met) Color(0xFF4CAF50) else MaterialTheme.colorScheme.onSurfaceVariant
+                            color = if (met) colors.xpGainText else MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
                 }
                 if (reward.isClaimed) {
-                    Text("✅ Claimed", fontSize = 12.sp, color = Color(0xFF4CAF50))
+                    Text("✅ Claimed", fontSize = 12.sp, color = colors.xpGainText)
                 } else if (reached && unlocked) {
                     TextButton(onClick = onClaim) { Text("Claim!") }
                 }

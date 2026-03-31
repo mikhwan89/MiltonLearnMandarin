@@ -29,6 +29,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ikhwan.mandarinkids.R
 import com.ikhwan.mandarinkids.ToneUtils
+import com.ikhwan.mandarinkids.ui.theme.AppColorScheme
+import com.ikhwan.mandarinkids.ui.theme.DefaultPalette
+import com.ikhwan.mandarinkids.ui.theme.appColors
 import kotlinx.coroutines.launch
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -52,7 +55,7 @@ private val PAGES = listOf(
             "💬" to "Have a step-by-step Mandarin conversation",
             "✅" to "Take a quiz to test what you learned and earn stars!"
         ),
-        gradientTop = Color(0xFFD0E8F8)
+        gradientTop = DefaultPalette.tileBlue.start
     ),
     OnboardingPage(
         iconRes = R.drawable.nav_flashcard,
@@ -64,7 +67,7 @@ private val PAGES = listOf(
             "⬆️" to "Correct answer → word star rating goes up",
             "⬇️" to "Wrong answer → star goes down — keep practising!"
         ),
-        gradientTop = Color(0xFFD4EDD0)
+        gradientTop = DefaultPalette.tileGreen.start
     ),
     OnboardingPage(
         iconRes = R.drawable.nav_tone,
@@ -76,7 +79,7 @@ private val PAGES = listOf(
             "🟢" to "mǎ (马) — Tone 3: dip then rise → HORSE",
             "🔵" to "mà (骂) — Tone 4: falling → TO SCOLD"
         ),
-        gradientTop = Color(0xFFE8E4F5)
+        gradientTop = DefaultPalette.tilePurple.start
     ),
     OnboardingPage(
         iconRes = R.drawable.nav_build,
@@ -88,7 +91,7 @@ private val PAGES = listOf(
             "💡" to "Practice Mandarin grammar and word order",
             "🚀" to "Each sentence you crack makes you stronger!"
         ),
-        gradientTop = Color(0xFFFFDDB5)
+        gradientTop = DefaultPalette.categoryFoodAndEating.start
     ),
     OnboardingPage(
         iconRes = R.drawable.nav_progress,
@@ -100,7 +103,7 @@ private val PAGES = listOf(
             "🌙" to "Switch between Light and Dark mode in Progress",
             "🔒" to "Parents: tap Parental Control to set real-life rewards & manage content"
         ),
-        gradientTop = Color(0xFFF5E0E0)
+        gradientTop = DefaultPalette.categoryFeelingsHealth.start
     )
 )
 
@@ -237,8 +240,9 @@ private fun PageContent(page: OnboardingPage) {
             modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
+            val scheme = MaterialTheme.appColors
             page.steps.forEachIndexed { index, (icon, text) ->
-                StepRow(icon = icon, text = text, isTonePage = page.iconRes == R.drawable.nav_tone, stepIndex = index)
+                StepRow(icon = icon, text = text, isTonePage = page.iconRes == R.drawable.nav_tone, stepIndex = index, scheme = scheme)
             }
         }
     }
@@ -247,7 +251,7 @@ private fun PageContent(page: OnboardingPage) {
 // ── Step row ──────────────────────────────────────────────────────────────────
 
 @Composable
-private fun StepRow(icon: String, text: String, isTonePage: Boolean, stepIndex: Int) {
+private fun StepRow(icon: String, text: String, isTonePage: Boolean, stepIndex: Int, scheme: AppColorScheme = DefaultPalette) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
@@ -267,7 +271,7 @@ private fun StepRow(icon: String, text: String, isTonePage: Boolean, stepIndex: 
         // Text — tone page gets colored pinyin annotations
         if (isTonePage) {
             Text(
-                text = toneAnnotated(text, stepIndex),
+                text = toneAnnotated(text, stepIndex, scheme),
                 fontSize = 14.sp,
                 lineHeight = 20.sp,
                 modifier = Modifier.weight(1f)
@@ -291,10 +295,10 @@ private fun StepRow(icon: String, text: String, isTonePage: Boolean, stepIndex: 
  * Each step text is in the form: "mā (妈) — Tone 1: …"
  * We detect the tone from the pinyin and colour just the leading "mX (妈)" part.
  */
-private fun toneAnnotated(text: String, stepIndex: Int): AnnotatedString {
+private fun toneAnnotated(text: String, stepIndex: Int, scheme: AppColorScheme = DefaultPalette): AnnotatedString {
     // tones in order: 1=mā, 2=má, 3=mǎ, 4=mà
     val toneNumber = stepIndex + 1  // steps 0–3 → tones 1–4
-    val color = ToneUtils.toneColor(toneNumber)
+    val color = scheme.toneColor(toneNumber)
 
     // Split at " — " to colour only the left side (pinyin + character)
     val splitIdx = text.indexOf(" — ")

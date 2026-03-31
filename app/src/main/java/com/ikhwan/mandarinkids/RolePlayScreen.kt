@@ -22,8 +22,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalContext
+import com.ikhwan.mandarinkids.ui.theme.appColors
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -305,6 +305,7 @@ fun NameInputSection(
     speechSpeed: Float
 ) {
     var name by remember { mutableStateOf("") }
+    val colors = MaterialTheme.appColors
 
     Column {
         Text(
@@ -314,10 +315,8 @@ fun NameInputSection(
             modifier = Modifier.padding(bottom = 8.dp)
         )
 
-        val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-        val inputGradient = if (isDark) listOf(Color(0xFF342670), Color(0xFF261B55))
-                            else        listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))
-        val inputLabelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+        val inputGradient = colors.tilePurple.asList()
+        val inputLabelColor = colors.contentColorFor(colors.tilePurple)
 
         Surface(
             color = Color.Transparent,
@@ -378,8 +377,8 @@ fun NameInputSection(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(Brush.verticalGradient(
-                        if (sayItEnabled) listOf(Color(0xFF388E3C), Color(0xFF66BB6A))
-                        else              listOf(Color(0xFF9E9E9E), Color(0xFFBDBDBD))
+                        if (sayItEnabled) colors.actionPositive.asList()
+                        else              colors.actionNeutral.asList()
                     )),
                 contentAlignment = Alignment.Center
             ) {
@@ -400,12 +399,10 @@ fun ResponseOptionButton(
     showIndonesian: Boolean = true
 ) {
     var isPressed by remember { mutableStateOf(false) }
-    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-    val idleGradient = if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
-                       else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
-    val pressedGradient = if (isDark) listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-                          else        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
-    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+    val colors = MaterialTheme.appColors
+    val idleGradient = colors.tileAmber.asList()
+    val pressedGradient = colors.tileBlue.asList()
+    val labelColor = colors.onLightTile
 
     Card(
         modifier = Modifier.fillMaxWidth(),

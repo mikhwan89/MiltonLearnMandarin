@@ -11,15 +11,19 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.LockOpen
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.res.painterResource
+import com.ikhwan.mandarinkids.ui.theme.AppThemes
+import com.ikhwan.mandarinkids.ui.theme.appColors
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -61,8 +65,10 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
     val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
     val scenarios = remember { JsonScenarioRepository.getAll() }
     val scope = rememberCoroutineScope()
-    val isDarkMode = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-    val labelColor = if (isDarkMode) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+    val colors = MaterialTheme.appColors
+    val labelColor = colors.onLightTile
+    val themeIndex by userPrefs.colorThemeIndex.collectAsState(initial = 0)
+    val currentVariant = AppThemes[themeIndex.coerceIn(0, AppThemes.lastIndex)]
 
     val xp by repo.getTotalXp().collectAsState(initial = 0)
     val streak = remember { repo.getStreak() }
@@ -144,6 +150,28 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
                     }
                 },
                 actions = {
+                    // Theme cycle button — tap to step through the 5 colour themes
+                    Box(
+                        modifier = Modifier
+                            .padding(end = 4.dp)
+                            .size(36.dp)
+                            .clip(CircleShape)
+                            .background(
+                                Brush.verticalGradient(
+                                    listOf(
+                                        currentVariant.palette.tileBlue.start,
+                                        currentVariant.palette.tileGreen.start
+                                    )
+                                )
+                            )
+                            .clickable {
+                                val next = (themeIndex + 1) % AppThemes.size
+                                scope.launch { userPrefs.saveColorThemeIndex(next) }
+                            },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(currentVariant.emoji, fontSize = 18.sp)
+                    }
                     IconButton(onClick = onParentClick) {
                         Icon(Icons.Default.Lock, contentDescription = "Parental Control")
                     }
@@ -163,10 +191,7 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
 
             // ── XP + Streak + Words card ──────────────────────────────────
             item {
-                val statsGradient = if (isDarkMode)
-                    listOf(Color(0xFF1A4E30), Color(0xFF10382A))
-                else
-                    listOf(Color(0xFFD4EDD0), Color(0xFFE8F5E2))
+                val statsGradient = colors.tileGreen.asList()
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     colors = CardDefaults.cardColors(containerColor = Color.Transparent),
@@ -258,7 +283,6 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
                         BadgeCard(
                             badge = badge,
                             earned = badge.id in earnedBadgeIds,
-                            isDark = isDarkMode,
                             modifier = Modifier.weight(1f)
                         )
                     }
@@ -356,7 +380,7 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
                 val completedInCat = categoryScenarios.count { (progressMap[it.id]?.stars ?: 0) == 3 }
 
                 item(key = "cat_${category.name}") {
-                    val catGradient = categoryProgressGradient(category, isDarkMode)
+                    val catGradient = colors.categoryGradient(category.name).asList()
                     Surface(
                         onClick = { expandedCategories[category.name] = !isExpanded },
                         color = Color.Transparent,
@@ -414,7 +438,6 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
                             emoji = scenario.characterEmoji,
                             title = scenario.title,
                             stars = stars,
-                            isDark = isDarkMode,
                             onClick = { navController.navigate(Routes.roleplay(scenario.id)) }
                         )
                     }
@@ -437,54 +460,26 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
     }
 }
 
-private fun categoryProgressGradient(category: ScenarioCategory, isDark: Boolean): List<Color> =
-    if (isDark) when (category) {
-        ScenarioCategory.ESSENTIALS          -> listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-        ScenarioCategory.AT_SCHOOL           -> listOf(Color(0xFF1A4E30), Color(0xFF10382A))
-        ScenarioCategory.SCHOOL_SUBJECTS     -> listOf(Color(0xFF342670), Color(0xFF261B55))
-        ScenarioCategory.FOOD_AND_EATING     -> listOf(Color(0xFF7A4210), Color(0xFF5C3008))
-        ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFF7A1830), Color(0xFF5C1024))
-        ScenarioCategory.PLAY_AND_HOBBIES   -> listOf(Color(0xFF1A4E28), Color(0xFF103818))
-        ScenarioCategory.HOME                -> listOf(Color(0xFF1A4558), Color(0xFF0F3242))
-        ScenarioCategory.OUT_AND_ABOUT       -> listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
-        else                                 -> listOf(Color(0xFF2A2A2A), Color(0xFF222222))
-    } else when (category) {
-        ScenarioCategory.ESSENTIALS          -> listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
-        ScenarioCategory.AT_SCHOOL           -> listOf(Color(0xFFD4EDD0), Color(0xFFE6F4E4))
-        ScenarioCategory.SCHOOL_SUBJECTS     -> listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))
-        ScenarioCategory.FOOD_AND_EATING     -> listOf(Color(0xFFFFDDB5), Color(0xFFFFEDD4))
-        ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFFF5E0E0), Color(0xFFFAEEEE))
-        ScenarioCategory.PLAY_AND_HOBBIES   -> listOf(Color(0xFFD5EDD5), Color(0xFFE6F5E6))
-        ScenarioCategory.HOME                -> listOf(Color(0xFFB8E4F0), Color(0xFFD4EFF8))
-        ScenarioCategory.OUT_AND_ABOUT       -> listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
-        else                                 -> listOf(Color(0xFFF5F4ED), Color(0xFFF5F4ED))
-    }
+// categoryProgressGradient removed — replaced by colors.categoryGradient(category.name)
 
 @Composable
 private fun MasteryTypeChip(emoji: String, label: String, count: Int, labelColor: Color) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(emoji, fontSize = 16.sp)
+        Text(emoji, fontSize = 16.sp, color = labelColor)
         Text("$count", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = labelColor)
         Text(label, fontSize = 10.sp, color = labelColor.copy(alpha = 0.7f))
     }
 }
 
 @Composable
-private fun BadgeCard(badge: Badge, earned: Boolean, isDark: Boolean, modifier: Modifier = Modifier) {
+private fun BadgeCard(badge: Badge, earned: Boolean, modifier: Modifier = Modifier) {
     var showInfo by remember { mutableStateOf(false) }
+    val colors = MaterialTheme.appColors
 
-    val badgeGradient = if (earned) {
-        if (isDark) listOf(Color(0xFF1A4E30), Color(0xFF10382A))
-        else        listOf(Color(0xFFD4EDD0), Color(0xFFE8F5E2))
-    } else {
-        if (isDark) listOf(Color(0xFF3A3A3A), Color(0xFF2A2A2A))
-        else        listOf(Color(0xFFEEEEEE), Color(0xFFF5F5F5))
-    }
-    val badgeLabelColor = if (earned) {
-        if (isDark) Color(0xFFB8DFB8) else Color(0xFF1A3D1A)
-    } else {
-        if (isDark) Color(0xFF757575) else Color(0xFF9E9E9E)
-    }
+    val badgeGradient = if (earned) colors.achievementUnlocked.asList()
+                        else        colors.achievementLocked.asList()
+    val badgeLabelColor = if (earned) colors.achievementUnlockedText
+                          else        colors.textSecondary
 
     Card(
         onClick = { showInfo = true },
@@ -574,6 +569,7 @@ private fun MilestoneRewardCard(
     onDelete: () -> Unit,
     onClaim: () -> Unit
 ) {
+    val colors = MaterialTheme.appColors
     val conditions = reward.decodeConditions()
     // (condition, currentValue, isMet)
     val results = conditions.map { cond ->
@@ -624,7 +620,7 @@ private fun MilestoneRewardCard(
                         Text(
                             lineText,
                             fontSize = 12.sp,
-                            color = if (met) Color(0xFF4CAF50) else MaterialTheme.colorScheme.onSurfaceVariant
+                            color = if (met) colors.xpGainText else MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
                 }
@@ -648,7 +644,7 @@ private fun MilestoneRewardCard(
                 LinearProgressIndicator(
                     progress = { overallProgress },
                     modifier = Modifier.fillMaxWidth(),
-                    color = if (isComplete) Color(0xFF4CAF50) else MaterialTheme.colorScheme.primary
+                    color = if (isComplete) colors.xpGainText else MaterialTheme.colorScheme.primary
                 )
             }
         }
@@ -857,15 +853,10 @@ private fun ConditionRow(
 }
 
 @Composable
-private fun ScenarioStarRow(emoji: String, title: String, stars: Int, isDark: Boolean, onClick: () -> Unit) {
-    val rowGradient = if (stars > 0) {
-        if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
-        else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
-    } else {
-        if (isDark) listOf(Color(0xFF3A3A3A), Color(0xFF2A2A2A))
-        else        listOf(Color(0xFFEEEEEE), Color(0xFFF5F5F5))
-    }
-    val rowLabelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+private fun ScenarioStarRow(emoji: String, title: String, stars: Int, onClick: () -> Unit) {
+    val colors = MaterialTheme.appColors
+    val rowGradient = if (stars > 0) colors.tileAmber.asList() else colors.tileGrey.asList()
+    val rowLabelColor = colors.onLightTile
 
     Card(
         onClick = onClick,
@@ -889,7 +880,7 @@ private fun ScenarioStarRow(emoji: String, title: String, stars: Int, isDark: Bo
                         Text(
                             text = if (i < stars) "★" else "☆",
                             fontSize = 18.sp,
-                            color = if (i < stars) Color(0xFFFFC107) else Color(0xFFBDBDBD)
+                            color = if (i < stars) colors.starFilled else colors.starEmpty
                         )
                     }
                     Icon(
