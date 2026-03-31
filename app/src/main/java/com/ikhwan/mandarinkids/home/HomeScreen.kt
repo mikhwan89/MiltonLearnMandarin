@@ -36,6 +36,10 @@ import com.ikhwan.mandarinkids.db.MasteredWordEntity
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 import com.ikhwan.mandarinkids.tts.rememberTtsManager
+import androidx.compose.ui.layout.boundsInRoot
+import androidx.compose.ui.layout.onGloballyPositioned
+import com.ikhwan.mandarinkids.onboarding.LocalOnboardingCoords
+import com.ikhwan.mandarinkids.onboarding.OnboardingKey
 import com.ikhwan.mandarinkids.ui.theme.AppThemes
 import com.ikhwan.mandarinkids.ui.theme.appColors
 import kotlinx.coroutines.launch
@@ -85,6 +89,7 @@ fun HomeScreen(
     val scope = rememberCoroutineScope()
     val themeIndex by userPrefs.colorThemeIndex.collectAsState(initial = 0)
     val currentVariant = AppThemes[themeIndex.coerceIn(0, AppThemes.lastIndex)]
+    val tourCoords = LocalOnboardingCoords.current
 
     Scaffold(
         containerColor = Color.Transparent,
@@ -118,6 +123,9 @@ fun HomeScreen(
                             .clickable {
                                 val next = (themeIndex + 1) % AppThemes.size
                                 scope.launch { userPrefs.saveColorThemeIndex(next) }
+                            }
+                            .onGloballyPositioned { lc ->
+                                tourCoords[OnboardingKey.THEME_BUTTON] = lc.boundsInRoot()
                             },
                         contentAlignment = Alignment.Center
                     ) {
@@ -146,7 +154,11 @@ fun HomeScreen(
 
                 Spacer(modifier = Modifier.height(4.dp))
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .onGloballyPositioned { lc ->
+                            tourCoords[OnboardingKey.STATS_ROW] = lc.boundsInRoot()
+                        },
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     val streakShape = RoundedCornerShape(20.dp)
@@ -231,7 +243,12 @@ fun HomeScreen(
                     activeCategories.take(4),
                     activeCategories.drop(4)
                 )
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = Modifier.onGloballyPositioned { lc ->
+                        tourCoords[OnboardingKey.CATEGORY_GRID] = lc.boundsInRoot()
+                    }
+                ) {
                     rows.forEach { rowCategories ->
                         Row(
                             modifier = Modifier.fillMaxWidth(),

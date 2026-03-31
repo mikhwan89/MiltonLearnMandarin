@@ -22,7 +22,13 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.ikhwan.mandarinkids.FlashcardScreen
-import com.ikhwan.mandarinkids.onboarding.OnboardingScreen
+import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.layout.boundsInRoot
+import androidx.compose.ui.layout.onGloballyPositioned
+import com.ikhwan.mandarinkids.onboarding.InteractiveOnboardingOverlay
+import com.ikhwan.mandarinkids.onboarding.LocalOnboardingCoords
+import com.ikhwan.mandarinkids.onboarding.OnboardingKey
 import kotlinx.coroutines.launch
 import com.ikhwan.mandarinkids.QuizScreen
 import com.ikhwan.mandarinkids.RolePlayScreen
@@ -70,6 +76,9 @@ fun MandarinKidsApp() {
         }
     }
 
+    // Shared element-bounds map for the interactive onboarding tour
+    val onboardingCoords = remember { mutableStateMapOf<String, Rect>() }
+
     // Shared icon colors — preserve original PNG colors, just dim when unselected
     val navItemColors = NavigationBarItemDefaults.colors(
         selectedIconColor   = Color.Unspecified,
@@ -79,6 +88,7 @@ fun MandarinKidsApp() {
         indicatorColor      = MaterialTheme.colorScheme.primaryContainer,
     )
 
+    CompositionLocalProvider(LocalOnboardingCoords provides onboardingCoords) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -96,7 +106,12 @@ fun MandarinKidsApp() {
         containerColor = Color.Transparent,
         bottomBar = {
             if (currentRoute in topLevelRoutes) {
-                NavigationBar(containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f)) {
+                NavigationBar(
+                    containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f),
+                    modifier = Modifier.onGloballyPositioned { lc ->
+                        onboardingCoords[OnboardingKey.NAV_BAR] = lc.boundsInRoot()
+                    }
+                ) {
                     if ("roleplay" !in disabledTabs) {
                         NavigationBarItem(
                             icon = {
@@ -332,15 +347,17 @@ fun MandarinKidsApp() {
             }
         }
     }
-        // ── First-run onboarding overlay ──────────────────────────────────────
+        // ── Interactive onboarding tour overlay ───────────────────────────
         // Shown on top of everything until the user completes or skips it.
         // onboardingCompleted == null while DataStore is loading (show nothing).
         if (onboardingCompleted == false) {
-            OnboardingScreen(
+            InteractiveOnboardingOverlay(
+                coords     = onboardingCoords,
                 onComplete = {
                     scope.launch { userPrefs.saveOnboardingCompleted(true) }
                 }
             )
         }
-    } // end Box (background)
+    } // end Surface
+    } // end CompositionLocalProvider
 }
