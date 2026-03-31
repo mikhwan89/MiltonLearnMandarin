@@ -1,8 +1,8 @@
 # Mandarinku 🇨🇳
 
-[![Download APK](https://img.shields.io/badge/Download-APK%20v1.1.1-brightgreen?logo=android)](https://github.com/mikhwan89/MiltonLearnMandarin/releases/download/v1.1.1/Mandarinku-v1.1.1.apk)
+[![Download APK](https://img.shields.io/badge/Download-APK%20v1.2.1-brightgreen?logo=android)](https://github.com/mikhwan89/MiltonLearnMandarin/releases/download/v1.2.1/app-release.apk)
 
-An Android app that teaches Mandarin Chinese to young children (age 4–8) through interactive role-play conversations, flashcard drills, tone training, and sentence-building games. Built by a dad for his son Milton.
+An Android app that teaches Mandarin Chinese to young children (age 4–8) through interactive role-play conversations, flashcard drills, tone training, and sentence-building games.
 
 ---
 
@@ -12,10 +12,12 @@ Mandarinku puts a child in real-world situations and guides them through Mandari
 
 1. **Flashcards** — learn vocabulary before a conversation. Each card shows the Chinese character, pinyin (colour-coded by tone), English, and Indonesian translation. Tap to flip, mark as "Got it" or "Still learning".
 2. **Role-play** — have a back-and-forth conversation with a character (teacher, classmate, etc.). Tap any pinyin word to see its tone colour, translation, and a child-friendly grammar note. Grammar particles like 了, 的, and 吗 include a plain-language tip so a 5-year-old understands what they do. Each role-play ends with a quiz — multiple-choice questions about what was just practised, with stars and XP awarded based on performance.
-3. **Tone Trainer** — hear a spoken word and identify which of the four Mandarin tones it uses.
-4. **Sentence Builder** — arrange pinyin tiles in the correct order to form a sentence.
+3. **Tone Trainer** — hear a spoken word and identify which of the four Mandarin tones it uses. Includes an info guide explaining each tone.
+4. **Sentence Builder** — arrange pinyin tiles in the correct order to form a sentence. Includes an info guide explaining Mandarin SVO sentence structure.
 
 Progress (stars, XP, streak, mastered words) is saved locally. Parents can unlock a dashboard with a PIN to view detailed progress, set reward milestones, and control which content is available.
+
+New users are greeted with an **interactive onboarding tour** — a spotlight overlay that highlights real UI elements and explains each tab as the app itself navigates along with the tour.
 
 ---
 
@@ -71,6 +73,25 @@ Pinyin is colour-coded by tone throughout the app — in flashcards, conversatio
 
 ---
 
+## Themes
+
+The app ships with **10 colour themes** — 5 light and 5 dark — switchable via a circular gradient button in the top-right corner of the Roleplay and Progress tabs. The selected theme is persisted via DataStore.
+
+| # | Theme | Mode |
+|---|-------|------|
+| 🌿 Sage | Calm green | Light |
+| 🌊 Ocean | Cool blue | Light |
+| 🌅 Sunset | Warm amber | Light |
+| 🌳 Forest | Deep green | Light |
+| 🫐 Berry | Purple/pink | Light |
+| 🌙 Night | Soft dark | Dark |
+| 🌌 Midnight | Deep indigo | Dark |
+| 🔥 Ember | Warm dark | Dark |
+| 🌴 Jungle | Tropical dark | Dark |
+| 🌆 Dusk | Muted dark | Dark |
+
+---
+
 ## Tech Stack
 
 | Layer | Technology |
@@ -94,7 +115,7 @@ Pinyin is colour-coded by tone throughout the app — in flashcards, conversatio
 ```
 app/src/main/
 ├── assets/
-│   └── scenarios/              # 50 JSON scenario files + index.json
+│   └── scenarios/              # 53 JSON scenario files + index.json
 └── java/com/ikhwan/mandarinkids/
     ├── MainActivity.kt
     ├── RolePlayScreen.kt / RolePlayViewModel.kt
@@ -121,29 +142,37 @@ app/src/main/
     │   ├── ProgressRepository.kt
     │   └── Badge.kt
     ├── home/
-    │   ├── HomeScreen.kt               # Roleplay tab — category list, word-of-day
+    │   ├── HomeScreen.kt               # Roleplay tab — category grid, word-of-day, theme toggle
     │   ├── ScenarioListScreen.kt
-    │   └── ProgressScreen.kt           # Progress tab — XP, badges, parent entry
+    │   └── ProgressScreen.kt           # Progress tab — XP, badges, parent entry, theme toggle
+    ├── onboarding/
+    │   ├── InteractiveOnboardingOverlay.kt  # spotlight tour overlay (BlendMode.Clear cutouts)
+    │   └── LocalOnboardingCoords.kt         # CompositionLocal + OnboardingKey constants
     ├── practice/
     │   ├── PracticeScreen.kt           # cross-scenario flashcard drill
     │   ├── PracticeSessionViewModel.kt
-    │   ├── ToneTrainerScreen.kt        # tone recognition game
-    │   ├── SentenceBuilderScreen.kt    # tile-arrangement game
+    │   ├── ToneTrainerScreen.kt        # tone recognition game + info dialog
+    │   ├── SentenceBuilderScreen.kt    # tile-arrangement game + SVO info dialog
     │   └── PracticeMode.kt
     ├── parent/
     │   ├── ParentDashboardScreen.kt    # PIN-gated progress + controls
     │   └── PinScreen.kt
     ├── navigation/
-    │   ├── AppNavigation.kt            # NavHost, 5-tab bottom nav
+    │   ├── AppNavigation.kt            # NavHost, 5-tab bottom nav, onboarding overlay
     │   └── Routes.kt                   # route constants + URL builders
     ├── preferences/
-    │   └── UserPreferencesRepository.kt  # DataStore: speech rate, parental controls
+    │   └── UserPreferencesRepository.kt  # DataStore: speech rate, theme index, parental controls
     ├── tts/
     │   └── TtsManager.kt
     └── ui/
         ├── ConfettiEffect.kt
         ├── StrokeOrderSheet.kt
-        └── theme/ (Color.kt, Theme.kt, Type.kt)
+        └── theme/
+            ├── Color.kt                # base palette
+            ├── Theme.kt               # MandarinKidsTheme + AppThemes (10 variants)
+            ├── AppColorPalettes.kt    # 10 light/dark theme definitions
+            ├── AppColorScheme.kt      # semantic colour tokens (actionPositive, tilePurple, etc.)
+            └── Type.kt
 ```
 
 ---
@@ -292,4 +321,4 @@ The app works entirely offline. All scenario content is bundled as JSON assets. 
 
 ## License
 
-This project is released into the public domain under the [MIT License](LICENSE). Feel free to copy, fork, modify, and use it for anything — no permission needed. Built with ❤️ for Milton.
+This project is released into the public domain under the [MIT License](LICENSE). Feel free to copy, fork, modify, and use it for anything — no permission needed.
