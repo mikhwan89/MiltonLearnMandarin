@@ -15,6 +15,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.filled.FilterList
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -120,6 +121,7 @@ fun SentenceBuilderScreen() {
     var totalAnswered by remember(sessionKey) { mutableStateOf(0) }
     var showSummary  by remember(sessionKey) { mutableStateOf(false) }
     var showConfetti by remember { mutableStateOf(false) }
+    var showInfo     by remember { mutableStateOf(false) }
 
     val totalQuestions = minOf(SESSION_LENGTH, activePool.size)
     val question = if (activePool.isNotEmpty()) activePool[questionIndex] else null
@@ -634,6 +636,19 @@ fun SentenceBuilderScreen() {
             }
         }
 
+        // Info icon — top right
+        IconButton(
+            onClick  = { showInfo = true },
+            modifier = Modifier.align(Alignment.TopEnd).statusBarsPadding().size(36.dp)
+        ) {
+            Icon(
+                Icons.Default.Info,
+                contentDescription = "Sentence structure guide",
+                modifier = Modifier.size(18.dp),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.55f)
+            )
+        }
+        if (showInfo) { SentenceStructureDialog(onDismiss = { showInfo = false }) }
     }
 }
 
@@ -850,4 +865,73 @@ private fun SbStatItem(label: String, value: String, emoji: String) {
         Text(value, fontSize = 24.sp, fontWeight = FontWeight.Bold)
         Text(label, fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
+}
+
+@Composable
+private fun SentenceStructureDialog(onDismiss: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("How Mandarin Sentences Work", fontWeight = FontWeight.Bold) },
+        text = {
+            Column(
+                modifier = Modifier.verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                Text(
+                    "Mandarin follows the same SVO order as English.",
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 14.sp
+                )
+                Text(
+                    "Mandarin uses a Subject + Verb + Object (SVO) structure, just like English, making basic sentences straightforward to form.",
+                    fontSize = 13.sp
+                )
+                Text(
+                    "For example, 'I eat apples' translates directly as:",
+                    fontSize = 13.sp
+                )
+                Text(
+                    "我吃苹果 (Wǒ chī píngguǒ)",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 15.sp,
+                    color = MaterialTheme.colorScheme.primary
+                )
+                Text(
+                    "• 我 (wǒ) — I (subject)\n• 吃 (chī) — eat (verb)\n• 苹果 (píngguǒ) — apples (object)",
+                    fontSize = 13.sp
+                )
+                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
+                Text("Key Differences", fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
+                Text(
+                    "Mandarin has no verb tenses or articles. Instead, it uses context, particles (like 了 for completed actions), or time words before the verb.",
+                    fontSize = 13.sp
+                )
+                Text(
+                    "Questions don't change word order — just add 吗 (ma) at the end:",
+                    fontSize = 13.sp
+                )
+                Text(
+                    "你吃苹果吗？(Nǐ chī píngguǒ ma?)",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 14.sp,
+                    color = MaterialTheme.colorScheme.secondary
+                )
+                Text("'Do you eat apples?'", fontSize = 13.sp)
+                Text(
+                    "With two objects (indirect + direct), use:\nSubject + Verb + Indirect Object + Direct Object",
+                    fontSize = 13.sp
+                )
+                Text(
+                    "他给我买书 (Tā gěi wǒ mǎi shū)",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 14.sp,
+                    color = MaterialTheme.colorScheme.secondary
+                )
+                Text("'He buys me a book'", fontSize = 13.sp)
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) { Text("Got it!") }
+        }
+    )
 }
