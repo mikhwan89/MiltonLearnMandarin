@@ -11,15 +11,13 @@ object ProgressManager {
         }
     }
 
-    fun getLevel(xp: Int): String = when {
-        xp >= 180 -> "中文小明星"
-        xp >= 60 -> "小达人"
-        else -> "初学者"
-    }
+    fun getLevel(xp: Int): String = getLevelLabel(xp)
 
     fun getLevelLabel(xp: Int): String = when {
-        xp >= 180 -> "Mandarin Star 🌟"
-        xp >= 60 -> "Junior Expert ⭐"
-        else -> "Beginner 📚"
+        xp >= 50000 -> "XP Mythical"
+        xp >= 10000 -> "XP Legend"
+        xp >= 1000  -> "XP Hunter"
+        xp >= 100   -> "XP Seeker"
+        else        -> "Beginner"
     }
 }

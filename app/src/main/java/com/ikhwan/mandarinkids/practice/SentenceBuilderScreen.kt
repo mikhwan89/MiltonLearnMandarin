@@ -19,7 +19,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -68,6 +70,13 @@ fun SentenceBuilderScreen() {
     val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
     val showIndonesian by userPrefs.showIndonesian.collectAsState(initial = true)
     val density = LocalDensity.current
+
+    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+    val promptGradient = if (isDark)
+        listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+    else
+        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
 
     // ── Question pool — built once from all scenarios ─────────────────────────
     val questionPool: List<SentenceQuestion> = remember {
@@ -267,40 +276,44 @@ fun SentenceBuilderScreen() {
                     Card(
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(20.dp),
-                        colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.primaryContainer
-                        )
+                        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
                     ) {
-                        Column(
+                        Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(20.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally
+                                .background(Brush.verticalGradient(promptGradient))
                         ) {
-                            Text(
-                                "🧩 Fill in the blanks:",
-                                fontSize = 13.sp,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer
-                            )
-                            Spacer(modifier = Modifier.height(8.dp))
-                            Text(
-                                question.english,
-                                fontSize = 20.sp,
-                                fontWeight = FontWeight.Bold,
-                                textAlign = TextAlign.Center,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer,
-                                lineHeight = 28.sp
-                            )
-                            if (showIndonesian) {
-                                Spacer(modifier = Modifier.height(4.dp))
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(20.dp),
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
                                 Text(
-                                    "🇮🇩 ${question.indonesian}",
-                                    fontSize = 14.sp,
-                                    textAlign = TextAlign.Center,
-                                    color = MaterialTheme.colorScheme.onPrimaryContainer
-                                        .copy(alpha = 0.8f),
-                                    lineHeight = 20.sp
+                                    "🧩 Fill in the blanks:",
+                                    fontSize = 13.sp,
+                                    color = labelColor.copy(alpha = 0.75f)
                                 )
+                                Spacer(modifier = Modifier.height(8.dp))
+                                Text(
+                                    question.english,
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    textAlign = TextAlign.Center,
+                                    color = labelColor,
+                                    lineHeight = 28.sp
+                                )
+                                if (showIndonesian) {
+                                    Spacer(modifier = Modifier.height(4.dp))
+                                    Text(
+                                        "🇮🇩 ${question.indonesian}",
+                                        fontSize = 14.sp,
+                                        textAlign = TextAlign.Center,
+                                        color = labelColor.copy(alpha = 0.75f),
+                                        lineHeight = 20.sp
+                                    )
+                                }
                             }
                         }
                     }
@@ -340,6 +353,7 @@ fun SentenceBuilderScreen() {
                                         enabled = false,
                                         tint    = if (checkResult == false) TileColor.Correct
                                                   else TileColor.Locked,
+                                        isDark  = isDark,
                                         onClick = {}
                                     )
                                 } else {
@@ -358,6 +372,7 @@ fun SentenceBuilderScreen() {
                                             word    = blankTiles[tileIdx],
                                             enabled = checkResult == null,
                                             tint    = tileColor,
+                                            isDark  = isDark,
                                             onClick = {
                                                 if (checkResult == null) {
                                                     placedSlots = placedSlots.toMutableList()
@@ -409,12 +424,13 @@ fun SentenceBuilderScreen() {
                                         word    = word,
                                         enabled = false,
                                         tint    = TileColor.Correct,
+                                        isDark  = isDark,
                                         onClick = {}
                                     )
                                 }
                             }
                             Spacer(modifier = Modifier.height(10.dp))
-                            OutlinedButton(
+                            Surface(
                                 onClick = {
                                     scope.launch {
                                         tts.speakAndAwait(
@@ -423,25 +439,57 @@ fun SentenceBuilderScreen() {
                                             ttsRate
                                         )
                                     }
-                                }
+                                },
+                                shape = RoundedCornerShape(50),
+                                color = Color.Transparent,
+                                modifier = Modifier.fillMaxWidth().height(48.dp)
                             ) {
-                                Icon(
-                                    Icons.AutoMirrored.Filled.VolumeUp,
-                                    contentDescription = "Hear sentence"
-                                )
-                                Spacer(modifier = Modifier.width(6.dp))
-                                Text("Hear it")
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(Brush.verticalGradient(
+                                            if (isDark) listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+                                            else        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+                                        )),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        "Hear it",
+                                        fontSize = 15.sp,
+                                        color = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27),
+                                        fontWeight = FontWeight.SemiBold
+                                    )
+                                }
                             }
                             Spacer(modifier = Modifier.height(8.dp))
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.spacedBy(8.dp)
                             ) {
-                                OutlinedButton(
+                                Surface(
                                     onClick = { stateKey++ },
-                                    modifier = Modifier.weight(1f)
-                                ) { Text("Try Again") }
-                                Button(
+                                    shape = RoundedCornerShape(50),
+                                    color = Color.Transparent,
+                                    modifier = Modifier.weight(1f).height(52.dp)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                            .background(Brush.verticalGradient(
+                                                if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
+                                                else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+                                            )),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Text(
+                                            "Try Again",
+                                            fontSize = 15.sp,
+                                            color = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27),
+                                            fontWeight = FontWeight.SemiBold
+                                        )
+                                    }
+                                }
+                                Surface(
                                     onClick = {
                                         totalAnswered++
                                         val next = questionIndex + 1
@@ -452,8 +500,26 @@ fun SentenceBuilderScreen() {
                                             stateKey++
                                         }
                                     },
-                                    modifier = Modifier.weight(1f)
-                                ) { Text("Next →") }
+                                    shape = RoundedCornerShape(50),
+                                    color = Color.Transparent,
+                                    modifier = Modifier.weight(1f).height(52.dp)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                            .background(Brush.verticalGradient(
+                                                listOf(Color(0xFF388E3C), Color(0xFF66BB6A))
+                                            )),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Text(
+                                            "Next →",
+                                            fontSize = 15.sp,
+                                            color = Color.White,
+                                            fontWeight = FontWeight.SemiBold
+                                        )
+                                    }
+                                }
                             }
                         }
                         null -> {}
@@ -482,6 +548,7 @@ fun SentenceBuilderScreen() {
                                     word    = tile,
                                     enabled = !isPlaced,
                                     tint    = if (isPlaced) TileColor.Faded else TileColor.Normal,
+                                    isDark  = isDark,
                                     onClick = {
                                         if (!isPlaced) {
                                             val firstEmpty = placedSlots.indexOfFirst { it == null }
@@ -623,50 +690,59 @@ private fun SbBlankSlot() {
 
 private enum class TileColor { Normal, Correct, Wrong, Faded, Locked }
 
+private fun sbTileGradient(tint: TileColor, isDark: Boolean): List<Color> = when (tint) {
+    TileColor.Normal  -> if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
+                         else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+    TileColor.Locked  -> if (isDark) listOf(Color(0xFF2D1B69), Color(0xFF3F2B96))
+                         else        listOf(Color(0xFFE8E4F5), Color(0xFFF0EDFB))
+    TileColor.Correct ->             listOf(Color(0xFF388E3C), Color(0xFF66BB6A))
+    TileColor.Wrong   ->             listOf(Color(0xFFC62828), Color(0xFFEF5350))
+    TileColor.Faded   ->             listOf(Color(0xFF9E9E9E), Color(0xFFBDBDBD))
+}
+
 @Composable
 private fun SbWordTile(
     word: PinyinWord,
     enabled: Boolean,
     tint: TileColor,
+    isDark: Boolean,
     onClick: () -> Unit
 ) {
-    val containerColor = when (tint) {
-        TileColor.Normal  -> MaterialTheme.colorScheme.secondaryContainer
-        TileColor.Correct -> Color(0xFF4CAF50).copy(alpha = 0.18f)
-        TileColor.Wrong   -> Color(0xFFF44336).copy(alpha = 0.12f)
-        TileColor.Faded   -> MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.35f)
-        TileColor.Locked  -> MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.75f)
-    }
+    val gradientColors = sbTileGradient(tint, isDark)
     val textColor = when (tint) {
-        TileColor.Normal  -> MaterialTheme.colorScheme.onSecondaryContainer
-        TileColor.Correct -> Color(0xFF2E7D32)
-        TileColor.Wrong   -> Color(0xFFC62828)
-        TileColor.Faded   -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.28f)
-        TileColor.Locked  -> MaterialTheme.colorScheme.onTertiaryContainer
+        TileColor.Normal  -> if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+        TileColor.Locked  -> if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+        TileColor.Correct -> Color.White
+        TileColor.Wrong   -> Color.White
+        TileColor.Faded   -> Color.White.copy(alpha = 0.45f)
     }
 
     Surface(
         onClick         = onClick,
         enabled         = enabled,
         shape           = RoundedCornerShape(20.dp),
-        color           = containerColor,
+        color           = Color.Transparent,
         shadowElevation = if (enabled && tint == TileColor.Normal) 4.dp else 0.dp
     ) {
-        Column(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+        Box(
+            modifier = Modifier.background(Brush.verticalGradient(gradientColors))
         ) {
-            Text(
-                text       = word.chinese,
-                fontSize   = 26.sp,
-                fontWeight = FontWeight.Bold,
-                color      = textColor
-            )
-            Text(
-                text     = word.pinyin,
-                fontSize = 11.sp,
-                color    = textColor.copy(alpha = 0.75f)
-            )
+            Column(
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text       = word.chinese,
+                    fontSize   = 26.sp,
+                    fontWeight = FontWeight.Bold,
+                    color      = textColor
+                )
+                Text(
+                    text     = word.pinyin,
+                    fontSize = 11.sp,
+                    color    = textColor.copy(alpha = 0.75f)
+                )
+            }
         }
     }
 }
@@ -759,13 +835,20 @@ private fun SentenceBuilderSummary(
                 lineHeight = 22.sp,
                 modifier = Modifier.padding(bottom = 32.dp)
             )
-            Button(
-                onClick  = onRestart,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(60.dp)
+            Surface(
+                onClick = onRestart,
+                shape = RoundedCornerShape(50),
+                color = Color.Transparent,
+                modifier = Modifier.fillMaxWidth().height(60.dp)
             ) {
-                Text("Play Again 🔁", fontSize = 18.sp)
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Brush.verticalGradient(listOf(Color(0xFF388E3C), Color(0xFF66BB6A)))),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("Play Again", fontSize = 18.sp, color = Color.White, fontWeight = FontWeight.SemiBold)
+                }
             }
         }
         if (showConfetti) ConfettiEffect()

@@ -21,17 +21,16 @@ class MainActivity : ComponentActivity() {
         JsonScenarioRepository.init(applicationContext)
         setContent {
             val userPrefs = remember { UserPreferencesRepository.getInstance(this) }
-            val isDarkMode by userPrefs.darkMode.collectAsState(initial = false)
 
-            // Keep status bar icons in sync: dark icons on light bg, light icons on dark bg
+            // Always light mode — force dark status bar icons
             val view = LocalView.current
             SideEffect {
                 val window = (view.context as Activity).window
                 WindowCompat.getInsetsController(window, window.decorView)
-                    .isAppearanceLightStatusBars = !isDarkMode
+                    .isAppearanceLightStatusBars = true
             }
 
-            MandarinKidsTheme(darkTheme = isDarkMode) {
+            MandarinKidsTheme(darkTheme = false) {
                 MandarinKidsApp()
             }
         }

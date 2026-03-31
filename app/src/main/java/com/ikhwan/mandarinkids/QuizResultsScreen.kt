@@ -8,10 +8,14 @@ import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -82,6 +86,13 @@ fun QuizResultsScreen(
         ),
         label = "bounceY"
     )
+
+    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+    val resultsGradient = if (isDark) listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+                          else        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+    val tipGradient = if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
+                      else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -159,10 +170,9 @@ fun QuizResultsScreen(
 
             Card(
                 modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer
-                )
+                colors = CardDefaults.cardColors(containerColor = Color.Transparent)
             ) {
+                Box(modifier = Modifier.background(Brush.verticalGradient(resultsGradient))) {
                 Column(
                     modifier = Modifier.padding(24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -171,18 +181,19 @@ fun QuizResultsScreen(
                     Text(
                         text = "Your Results",
                         fontSize = 18.sp,
-                        color = MaterialTheme.colorScheme.secondary
+                        color = labelColor.copy(alpha = 0.7f)
                     )
 
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        Text("💬 Conversation:", fontSize = 16.sp)
+                        Text("💬 Conversation:", fontSize = 16.sp, color = labelColor)
                         Text(
                             "$rolePlayScore steps",
                             fontSize = 16.sp,
-                            style = MaterialTheme.typography.titleMedium
+                            style = MaterialTheme.typography.titleMedium,
+                            color = labelColor
                         )
                     }
 
@@ -190,15 +201,16 @@ fun QuizResultsScreen(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        Text("📝 Quiz:", fontSize = 16.sp)
+                        Text("📝 Quiz:", fontSize = 16.sp, color = labelColor)
                         Text(
                             "$quizScore / $totalQuestions",
                             fontSize = 16.sp,
-                            style = MaterialTheme.typography.titleMedium
+                            style = MaterialTheme.typography.titleMedium,
+                            color = labelColor
                         )
                     }
 
-                    HorizontalDivider()
+                    HorizontalDivider(color = labelColor.copy(alpha = 0.2f))
 
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -207,26 +219,32 @@ fun QuizResultsScreen(
                         Text(
                             "Total Score:",
                             fontSize = 18.sp,
-                            style = MaterialTheme.typography.titleLarge
+                            style = MaterialTheme.typography.titleLarge,
+                            color = labelColor
                         )
                         Text(
                             "$totalScore points",
                             fontSize = 18.sp,
                             style = MaterialTheme.typography.titleLarge,
-                            color = MaterialTheme.colorScheme.primary
+                            color = labelColor
                         )
                     }
                 }
+                } // Box
             }
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            Card(modifier = Modifier.fillMaxWidth()) {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(containerColor = Color.Transparent)
+            ) {
+                Box(modifier = Modifier.background(Brush.verticalGradient(tipGradient))) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
                         text = "💡 Learning Tip:",
                         fontSize = 14.sp,
-                        color = MaterialTheme.colorScheme.secondary
+                        color = labelColor.copy(alpha = 0.7f)
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
@@ -236,32 +254,52 @@ fun QuizResultsScreen(
                             else -> "Learning takes time! Try this scenario again and listen carefully to how the characters speak."
                         },
                         fontSize = 14.sp,
-                        lineHeight = 20.sp
+                        lineHeight = 20.sp,
+                        color = labelColor
                     )
                 }
+                } // Box
             }
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            Button(
+            Surface(
                 onClick = onComplete,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(56.dp)
+                shape = RoundedCornerShape(50),
+                color = Color.Transparent,
+                modifier = Modifier.fillMaxWidth().height(56.dp)
             ) {
-                Text("Back to Home 回家", fontSize = 18.sp)
+                Box(
+                    modifier = Modifier.fillMaxSize()
+                        .background(Brush.verticalGradient(listOf(Color(0xFF388E3C), Color(0xFF66BB6A)))),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("Back to Home 回家", fontSize = 18.sp,
+                        color = Color.White, fontWeight = FontWeight.SemiBold)
+                }
             }
 
             Spacer(modifier = Modifier.height(12.dp))
 
             if (onTryAgain != null) {
-                OutlinedButton(
+                Surface(
                     onClick = onTryAgain,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(56.dp)
+                    shape = RoundedCornerShape(50),
+                    color = Color.Transparent,
+                    modifier = Modifier.fillMaxWidth().height(56.dp)
                 ) {
-                    Text("Try Again 再试一次", fontSize = 18.sp)
+                    Box(
+                        modifier = Modifier.fillMaxSize()
+                            .background(Brush.verticalGradient(
+                                if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
+                                else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+                            )),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text("Try Again 再试一次", fontSize = 18.sp,
+                            color = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27),
+                            fontWeight = FontWeight.SemiBold)
+                    }
                 }
             }
         }
