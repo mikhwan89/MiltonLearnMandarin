@@ -21,8 +21,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.input.pointer.pointerInput
+import com.ikhwan.mandarinkids.ui.theme.appColors
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
@@ -71,12 +71,9 @@ fun SentenceBuilderScreen() {
     val showIndonesian by userPrefs.showIndonesian.collectAsState(initial = true)
     val density = LocalDensity.current
 
-    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
-    val promptGradient = if (isDark)
-        listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-    else
-        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+    val colors = MaterialTheme.appColors
+    val labelColor = colors.onLightTile
+    val promptGradient = colors.tileBlue.asList()
 
     // ── Question pool — built once from all scenarios ─────────────────────────
     val questionPool: List<SentenceQuestion> = remember {
@@ -323,8 +320,8 @@ fun SentenceBuilderScreen() {
                     // ── Answer area ───────────────────────────────────────────
                     val answerBgColor by animateColorAsState(
                         targetValue = when (checkResult) {
-                            true  -> Color(0xFF4CAF50).copy(alpha = 0.15f)
-                            false -> Color(0xFFF44336).copy(alpha = 0.12f)
+                            true  -> colors.answerCorrect.start.copy(alpha = 0.15f)
+                            false -> colors.actionNegative.start.copy(alpha = 0.12f)
                             null  -> MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
                         },
                         animationSpec = tween(300),
@@ -353,7 +350,7 @@ fun SentenceBuilderScreen() {
                                         enabled = false,
                                         tint    = if (checkResult == false) TileColor.Correct
                                                   else TileColor.Locked,
-                                        isDark  = isDark,
+                                        colors  = colors,
                                         onClick = {}
                                     )
                                 } else {
@@ -372,7 +369,7 @@ fun SentenceBuilderScreen() {
                                             word    = blankTiles[tileIdx],
                                             enabled = checkResult == null,
                                             tint    = tileColor,
-                                            isDark  = isDark,
+                                            colors  = colors,
                                             onClick = {
                                                 if (checkResult == null) {
                                                     placedSlots = placedSlots.toMutableList()
@@ -394,13 +391,13 @@ fun SentenceBuilderScreen() {
                                 "🎉 Correct! Well done!",
                                 fontSize = 20.sp,
                                 fontWeight = FontWeight.Bold,
-                                color = Color(0xFF388E3C)
+                                color = colors.answerCorrectText
                             )
                             Text(
                                 "+10 XP ✨",
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.SemiBold,
-                                color = Color(0xFF4CAF50)
+                                color = colors.xpGainText
                             )
                         }
                         false -> {
@@ -408,7 +405,7 @@ fun SentenceBuilderScreen() {
                             Text(
                                 "Not quite! Correct order:",
                                 fontSize = 14.sp,
-                                color = Color(0xFFC62828),
+                                color = colors.answerWrongText,
                                 fontWeight = FontWeight.SemiBold
                             )
                             Spacer(modifier = Modifier.height(8.dp))
@@ -424,7 +421,7 @@ fun SentenceBuilderScreen() {
                                         word    = word,
                                         enabled = false,
                                         tint    = TileColor.Correct,
-                                        isDark  = isDark,
+                                        colors  = colors,
                                         onClick = {}
                                     )
                                 }
@@ -447,16 +444,13 @@ fun SentenceBuilderScreen() {
                                 Box(
                                     modifier = Modifier
                                         .fillMaxSize()
-                                        .background(Brush.verticalGradient(
-                                            if (isDark) listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-                                            else        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
-                                        )),
+                                        .background(Brush.verticalGradient(colors.tileBlue.asList())),
                                     contentAlignment = Alignment.Center
                                 ) {
                                     Text(
                                         "Hear it",
                                         fontSize = 15.sp,
-                                        color = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27),
+                                        color = colors.onLightTile,
                                         fontWeight = FontWeight.SemiBold
                                     )
                                 }
@@ -475,16 +469,13 @@ fun SentenceBuilderScreen() {
                                     Box(
                                         modifier = Modifier
                                             .fillMaxSize()
-                                            .background(Brush.verticalGradient(
-                                                if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
-                                                else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
-                                            )),
+                                            .background(Brush.verticalGradient(colors.tileAmber.asList())),
                                         contentAlignment = Alignment.Center
                                     ) {
                                         Text(
                                             "Try Again",
                                             fontSize = 15.sp,
-                                            color = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27),
+                                            color = colors.onLightTile,
                                             fontWeight = FontWeight.SemiBold
                                         )
                                     }
@@ -507,9 +498,7 @@ fun SentenceBuilderScreen() {
                                     Box(
                                         modifier = Modifier
                                             .fillMaxSize()
-                                            .background(Brush.verticalGradient(
-                                                listOf(Color(0xFF388E3C), Color(0xFF66BB6A))
-                                            )),
+                                            .background(Brush.verticalGradient(colors.actionPositive.asList())),
                                         contentAlignment = Alignment.Center
                                     ) {
                                         Text(
@@ -548,7 +537,7 @@ fun SentenceBuilderScreen() {
                                     word    = tile,
                                     enabled = !isPlaced,
                                     tint    = if (isPlaced) TileColor.Faded else TileColor.Normal,
-                                    isDark  = isDark,
+                                    colors  = colors,
                                     onClick = {
                                         if (!isPlaced) {
                                             val firstEmpty = placedSlots.indexOfFirst { it == null }
@@ -690,28 +679,26 @@ private fun SbBlankSlot() {
 
 private enum class TileColor { Normal, Correct, Wrong, Faded, Locked }
 
-private fun sbTileGradient(tint: TileColor, isDark: Boolean): List<Color> = when (tint) {
-    TileColor.Normal  -> if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
-                         else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
-    TileColor.Locked  -> if (isDark) listOf(Color(0xFF2D1B69), Color(0xFF3F2B96))
-                         else        listOf(Color(0xFFE8E4F5), Color(0xFFF0EDFB))
-    TileColor.Correct ->             listOf(Color(0xFF388E3C), Color(0xFF66BB6A))
-    TileColor.Wrong   ->             listOf(Color(0xFFC62828), Color(0xFFEF5350))
-    TileColor.Faded   ->             listOf(Color(0xFF9E9E9E), Color(0xFFBDBDBD))
-}
+// Gradient and text color for SbWordTile are resolved via AppColorScheme (see SbWordTile below)
 
 @Composable
 private fun SbWordTile(
     word: PinyinWord,
     enabled: Boolean,
     tint: TileColor,
-    isDark: Boolean,
+    colors: com.ikhwan.mandarinkids.ui.theme.AppColorScheme,
     onClick: () -> Unit
 ) {
-    val gradientColors = sbTileGradient(tint, isDark)
+    val gradientColors = when (tint) {
+        TileColor.Normal  -> colors.tileAmber.asList()
+        TileColor.Locked  -> colors.tilePurple.asList()
+        TileColor.Correct -> colors.actionPositive.asList()
+        TileColor.Wrong   -> colors.actionNegative.asList()
+        TileColor.Faded   -> colors.tileGrey.asList()
+    }
     val textColor = when (tint) {
-        TileColor.Normal  -> if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
-        TileColor.Locked  -> if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+        TileColor.Normal  -> colors.onLightTile
+        TileColor.Locked  -> colors.onLightTile
         TileColor.Correct -> Color.White
         TileColor.Wrong   -> Color.White
         TileColor.Faded   -> Color.White.copy(alpha = 0.45f)
@@ -835,6 +822,7 @@ private fun SentenceBuilderSummary(
                 lineHeight = 22.sp,
                 modifier = Modifier.padding(bottom = 32.dp)
             )
+            val summaryColors = MaterialTheme.appColors
             Surface(
                 onClick = onRestart,
                 shape = RoundedCornerShape(50),
@@ -844,7 +832,7 @@ private fun SentenceBuilderSummary(
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Brush.verticalGradient(listOf(Color(0xFF388E3C), Color(0xFF66BB6A)))),
+                        .background(Brush.verticalGradient(summaryColors.actionPositive.asList())),
                     contentAlignment = Alignment.Center
                 ) {
                     Text("Play Again", fontSize = 18.sp, color = Color.White, fontWeight = FontWeight.SemiBold)

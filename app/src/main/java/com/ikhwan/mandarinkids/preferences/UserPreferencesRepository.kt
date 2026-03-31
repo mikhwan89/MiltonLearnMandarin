@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.floatPreferencesKey
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
@@ -39,6 +40,10 @@ class UserPreferencesRepository private constructor(private val context: Context
     val onboardingCompleted: Flow<Boolean> =
         context.userPrefsDataStore.data.map { it[ONBOARDING_COMPLETED] ?: false }
 
+    /** Index into [com.ikhwan.mandarinkids.ui.theme.AppThemes] for the active colour theme. */
+    val colorThemeIndex: Flow<Int> =
+        context.userPrefsDataStore.data.map { it[COLOR_THEME_INDEX] ?: 0 }
+
     suspend fun saveSpeechRate(rate: Float) {
         context.userPrefsDataStore.edit { it[SPEECH_RATE] = rate }
     }
@@ -53,6 +58,10 @@ class UserPreferencesRepository private constructor(private val context: Context
 
     suspend fun saveOnboardingCompleted(completed: Boolean) {
         context.userPrefsDataStore.edit { it[ONBOARDING_COMPLETED] = completed }
+    }
+
+    suspend fun saveColorThemeIndex(index: Int) {
+        context.userPrefsDataStore.edit { it[COLOR_THEME_INDEX] = index }
     }
 
     /** Tab IDs that are disabled. Empty = all enabled. Values: "roleplay","flashcard","tone","build" */
@@ -83,6 +92,7 @@ class UserPreferencesRepository private constructor(private val context: Context
         private val SHOW_INDONESIAN     = booleanPreferencesKey("show_indonesian")
         private val DARK_MODE           = booleanPreferencesKey("dark_mode")
         private val ONBOARDING_COMPLETED = booleanPreferencesKey("onboarding_completed")
+        private val COLOR_THEME_INDEX    = intPreferencesKey("color_theme_index")
         private val DISABLED_TABS       = stringSetPreferencesKey("disabled_tabs")
         private val DISABLED_CATEGORIES = stringSetPreferencesKey("disabled_categories")
         private val DISABLED_SCENARIOS  = stringSetPreferencesKey("disabled_scenarios")

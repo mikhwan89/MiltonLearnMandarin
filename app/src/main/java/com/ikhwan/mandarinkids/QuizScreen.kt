@@ -20,8 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalContext
+import com.ikhwan.mandarinkids.ui.theme.appColors
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -112,10 +112,9 @@ fun QuizScreen(
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     item {
-                        val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-                        val questionGradient = if (isDark) listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-                                               else        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
-                        val questionLabelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+                        val colors = MaterialTheme.appColors
+                        val questionGradient = colors.tileBlue.asList()
+                        val questionLabelColor = colors.contentColorFor(colors.tileBlue)
                         Card(
                             modifier = Modifier.fillMaxWidth(),
                             colors = CardDefaults.cardColors(containerColor = Color.Transparent)
@@ -274,16 +273,15 @@ fun QuizOptionButton(
     tts: TtsManager,
     direction: QuizDirection  // NEW: Pass direction
 ) {
-    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-    val idleGradient = if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
-                       else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+    val colors = MaterialTheme.appColors
+    val idleGradient = colors.tileAmber.asList()
     val gradientColors = when {
-        showFeedback && isSelected && isCorrect  -> listOf(Color(0xFF388E3C), Color(0xFF66BB6A))
-        showFeedback && isSelected && !isCorrect -> listOf(Color(0xFFC62828), Color(0xFFEF5350))
-        showFeedback && !isSelected && isCorrect -> listOf(Color(0xFF388E3C), Color(0xFF66BB6A))
+        showFeedback && isSelected && isCorrect  -> colors.answerCorrect.asList()
+        showFeedback && isSelected && !isCorrect -> colors.actionNegative.asList()
+        showFeedback && !isSelected && isCorrect -> colors.answerCorrect.asList()
         else -> idleGradient
     }
-    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+    val labelColor = colors.onLightTile
     val contentColor = if (showFeedback && (isCorrect || isSelected)) Color.White else labelColor
 
     val isCorrectAndSelected = showFeedback && isSelected && isCorrect

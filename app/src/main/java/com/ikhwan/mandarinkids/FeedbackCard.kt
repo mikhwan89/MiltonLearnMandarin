@@ -8,25 +8,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ikhwan.mandarinkids.ui.theme.appColors
 
 @Composable
 fun FeedbackCard(
     isCorrect: Boolean,
     explanation: String
 ) {
-    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-    val gradient = if (isCorrect) {
-        if (isDark) listOf(Color(0xFF1A4E30), Color(0xFF10382A))
-        else        listOf(Color(0xFFD4EDD0), Color(0xFFE8F5E2))
-    } else {
-        if (isDark) listOf(Color(0xFF4A1515), Color(0xFF3B0D0D))
-        else        listOf(Color(0xFFFFCDD2), Color(0xFFFFEBEE))
-    }
-    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
-    val headlineColor = if (isCorrect) Color(0xFF2E7D32) else Color(0xFFC62828)
+    val colors = MaterialTheme.appColors
+    val gradient = if (isCorrect) colors.tileGreen.asList() else colors.answerWrongSoft.asList()
+    val labelColor = colors.onLightTile
+    val headlineColor = if (isCorrect) colors.answerCorrectText else colors.answerWrongText
 
     Card(
         modifier = Modifier.fillMaxWidth(),

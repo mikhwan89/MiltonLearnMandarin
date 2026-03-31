@@ -21,8 +21,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.graphicsLayer
+import com.ikhwan.mandarinkids.ui.theme.appColors
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -157,12 +157,10 @@ fun FlashcardScreen(
                 )
 
                 // Flip card
-                val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-                val frontGradient = if (isDark) listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-                                    else        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
-                val backGradient  = if (isDark) listOf(Color(0xFF1A4E30), Color(0xFF10382A))
-                                    else        listOf(Color(0xFFD4EDD0), Color(0xFFE8F5E2))
-                val cardLabelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+                val colors = MaterialTheme.appColors
+                val frontGradient = colors.tileBlue.asList()
+                val backGradient  = colors.tileGreen.asList()
+                val cardLabelColor = colors.onLightTile
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -203,7 +201,7 @@ fun FlashcardScreen(
                                     textAlign = TextAlign.Center
                                 )
                                 Text(
-                                    text = ToneUtils.coloredAnnotatedPinyin(word.pinyin),
+                                    text = ToneUtils.coloredAnnotatedPinyin(word.pinyin, colors),
                                     fontSize = 24.sp,
                                     fontWeight = FontWeight.Medium,
                                     textAlign = TextAlign.Center,
@@ -248,7 +246,7 @@ fun FlashcardScreen(
                                     modifier = Modifier.padding(bottom = 8.dp)
                                 )
                                 Text(
-                                    text = ToneUtils.coloredAnnotatedPinyin(word.pinyin),
+                                    text = ToneUtils.coloredAnnotatedPinyin(word.pinyin, colors),
                                     fontSize = 26.sp,
                                     fontWeight = FontWeight.SemiBold,
                                     textAlign = TextAlign.Center
@@ -308,13 +306,12 @@ fun FlashcardScreen(
                                 .padding(top = 12.dp)
                         ) {
                             Box(modifier = Modifier.background(Brush.verticalGradient(
-                                if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
-                                else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+                                colors.tileAmber.asList()
                             ))) {
                                 Text(
                                     text = "💡 $note",
                                     fontSize = 14.sp,
-                                    color = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27),
+                                    color = colors.onLightTile,
                                     textAlign = TextAlign.Center,
                                     lineHeight = 20.sp,
                                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
@@ -341,7 +338,7 @@ fun FlashcardScreen(
                             Box(
                                 modifier = Modifier
                                     .fillMaxSize()
-                                    .background(Brush.verticalGradient(listOf(Color(0xFFC62828), Color(0xFFEF5350)))),
+                                    .background(Brush.verticalGradient(colors.actionNegative.asList())),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text("✗  Still learning", fontSize = 15.sp, color = Color.White)
@@ -357,7 +354,7 @@ fun FlashcardScreen(
                             Box(
                                 modifier = Modifier
                                     .fillMaxSize()
-                                    .background(Brush.verticalGradient(listOf(Color(0xFF388E3C), Color(0xFF66BB6A)))),
+                                    .background(Brush.verticalGradient(colors.actionPositive.asList())),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text("✓  Got it!", fontSize = 15.sp, color = Color.White)
@@ -422,7 +419,7 @@ fun FlashcardCompleteScreen(
             lineHeight = 24.sp
         )
         Spacer(modifier = Modifier.height(40.dp))
-        val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+        val colors = MaterialTheme.appColors
         Surface(
             onClick = onStartConversation,
             shape = RoundedCornerShape(50),
@@ -432,7 +429,7 @@ fun FlashcardCompleteScreen(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Brush.verticalGradient(listOf(Color(0xFF388E3C), Color(0xFF66BB6A)))),
+                    .background(Brush.verticalGradient(colors.actionPositive.asList())),
                 contentAlignment = Alignment.Center
             ) {
                 Text("Start Conversation", fontSize = 18.sp,

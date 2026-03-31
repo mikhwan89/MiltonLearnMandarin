@@ -2,9 +2,11 @@ package com.ikhwan.mandarinkids.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
@@ -15,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -35,6 +36,9 @@ import com.ikhwan.mandarinkids.db.MasteredWordEntity
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 import com.ikhwan.mandarinkids.tts.rememberTtsManager
+import com.ikhwan.mandarinkids.ui.theme.AppThemes
+import com.ikhwan.mandarinkids.ui.theme.appColors
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -77,6 +81,11 @@ fun HomeScreen(
         }
     }
 
+    val colors = MaterialTheme.appColors
+    val scope = rememberCoroutineScope()
+    val themeIndex by userPrefs.colorThemeIndex.collectAsState(initial = 0)
+    val currentVariant = AppThemes[themeIndex.coerceIn(0, AppThemes.lastIndex)]
+
     Scaffold(
         containerColor = Color.Transparent,
         contentWindowInsets = WindowInsets(0),
@@ -90,6 +99,29 @@ fun HomeScreen(
                             fontSize = 14.sp,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
+                    }
+                },
+                actions = {
+                    Box(
+                        modifier = Modifier
+                            .padding(end = 8.dp)
+                            .size(36.dp)
+                            .clip(CircleShape)
+                            .background(
+                                Brush.verticalGradient(
+                                    listOf(
+                                        currentVariant.palette.tileBlue.start,
+                                        currentVariant.palette.tileGreen.start
+                                    )
+                                )
+                            )
+                            .clickable {
+                                val next = (themeIndex + 1) % AppThemes.size
+                                scope.launch { userPrefs.saveColorThemeIndex(next) }
+                            },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(currentVariant.emoji, fontSize = 18.sp)
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -108,16 +140,9 @@ fun HomeScreen(
         ) {
             // ── Progress summary — two gradient tiles ─────────────────────
             item {
-                val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-                val statTextColor  = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
-                val streakGradient = if (isDark)
-                    listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
-                else
-                    listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
-                val xpGradient = if (isDark)
-                    listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-                else
-                    listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+                val streakGradient = colors.tileAmber.asList()
+                val xpGradient = colors.tileBlue.asList()
+                val statTextColor = colors.onLightTile
 
                 Spacer(modifier = Modifier.height(4.dp))
                 Row(
@@ -249,10 +274,9 @@ private fun WordOfDayDialog(
     onDismiss: () -> Unit,
     onPlay: () -> Unit
 ) {
-    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-    val dialogGradient = if (isDark) listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-                         else        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
-    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+    val colors = MaterialTheme.appColors
+    val dialogGradient = colors.tileBlue.asList()
+    val labelColor = colors.contentColorFor(colors.tileBlue)
     Dialog(onDismissRequest = onDismiss) {
         Surface(
             shape = RoundedCornerShape(20.dp),
@@ -278,7 +302,7 @@ private fun WordOfDayDialog(
                         color = labelColor
                     )
                     Text(
-                        ToneUtils.coloredAnnotatedPinyin(word.pinyin),
+                        ToneUtils.coloredAnnotatedPinyin(word.pinyin, colors),
                         fontSize = 24.sp,
                         fontWeight = FontWeight.SemiBold,
                         textAlign = TextAlign.Center,
@@ -300,14 +324,11 @@ private fun WordOfDayDialog(
                             shape = RoundedCornerShape(16.dp),
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Box(modifier = Modifier.background(Brush.verticalGradient(
-                                if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
-                                else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
-                            ))) {
+                            Box(modifier = Modifier.background(Brush.verticalGradient(colors.tileAmber.asList()))) {
                                 Text(
                                     "💡 ${word.note}",
                                     fontSize = 13.sp,
-                                    color = labelColor,
+                                    color = colors.contentColorFor(colors.tileAmber),
                                     textAlign = TextAlign.Center,
                                     lineHeight = 18.sp,
                                     modifier = Modifier.padding(10.dp)
@@ -332,10 +353,9 @@ private fun WordOfDayDialog(
 
 @Composable
 fun SectionHeader(text: String) {
-    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-    val gradient = if (isDark) listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-                   else        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
-    val textColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+    val colors = MaterialTheme.appColors
+    val gradient = colors.tileBlue.asList()
+    val textColor = colors.contentColorFor(colors.tileBlue)
     Surface(
         color = Color.Transparent,
         shape = RoundedCornerShape(16.dp),
@@ -398,33 +418,9 @@ fun categoryIconRes(category: ScenarioCategory): Int? = when (category) {
 
 @Composable
 fun CategoryCard(category: ScenarioCategory, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-    val gradientColors = if (isDark) {
-        when (category) {
-            ScenarioCategory.ESSENTIALS          -> listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-            ScenarioCategory.AT_SCHOOL           -> listOf(Color(0xFF1A4E30), Color(0xFF10382A))
-            ScenarioCategory.SCHOOL_SUBJECTS     -> listOf(Color(0xFF342670), Color(0xFF261B55))
-            ScenarioCategory.FOOD_AND_EATING     -> listOf(Color(0xFF7A4210), Color(0xFF5C3008))
-            ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFF7A1830), Color(0xFF5C1024))
-            ScenarioCategory.PLAY_AND_HOBBIES    -> listOf(Color(0xFF1A4E28), Color(0xFF103818))
-            ScenarioCategory.HOME                -> listOf(Color(0xFF1A4558), Color(0xFF0F3242))
-            ScenarioCategory.OUT_AND_ABOUT       -> listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
-            else                                 -> listOf(Color(0xFF2A2A2A), Color(0xFF222222))
-        }
-    } else {
-        when (category) {
-            ScenarioCategory.ESSENTIALS          -> listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
-            ScenarioCategory.AT_SCHOOL           -> listOf(Color(0xFFD4EDD0), Color(0xFFE6F4E4))
-            ScenarioCategory.SCHOOL_SUBJECTS     -> listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))
-            ScenarioCategory.FOOD_AND_EATING     -> listOf(Color(0xFFFFDDB5), Color(0xFFFFEDD4))
-            ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFFF5E0E0), Color(0xFFFAEEEE))
-            ScenarioCategory.PLAY_AND_HOBBIES    -> listOf(Color(0xFFD5EDD5), Color(0xFFE6F5E6))
-            ScenarioCategory.HOME                -> listOf(Color(0xFFB8E4F0), Color(0xFFD4EFF8))
-            ScenarioCategory.OUT_AND_ABOUT       -> listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
-            else                                 -> listOf(Color(0xFFF5F4ED), Color(0xFFF5F4ED))
-        }
-    }
-    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+    val colors = MaterialTheme.appColors
+    val categoryGradient = colors.categoryGradient(category.name)
+    val labelColor = colors.contentColorFor(categoryGradient)
     val categoryIcon = categoryIconRes(category)
     val shape = RoundedCornerShape(20.dp)
     Card(
@@ -437,7 +433,7 @@ fun CategoryCard(category: ScenarioCategory, onClick: () -> Unit, modifier: Modi
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Brush.verticalGradient(gradientColors), shape = shape),
+                .background(Brush.verticalGradient(categoryGradient.asList()), shape = shape),
             contentAlignment = Alignment.Center
         ) {
             Column(
@@ -471,10 +467,9 @@ fun CategoryCard(category: ScenarioCategory, onClick: () -> Unit, modifier: Modi
 
 @Composable
 fun ScenarioCard(scenario: Scenario, stars: Int, onClick: () -> Unit) {
-    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-    val cardGradient = if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
-                       else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
-    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+    val colors = MaterialTheme.appColors
+    val cardGradient = colors.tileAmber.asList()
+    val labelColor = colors.contentColorFor(colors.tileAmber)
     Card(
         onClick = onClick,
         modifier = Modifier
@@ -519,7 +514,7 @@ fun ScenarioCard(scenario: Scenario, stars: Int, onClick: () -> Unit) {
                                 Text(
                                     text = if (i < stars) "★" else "☆",
                                     fontSize = 20.sp,
-                                    color = if (i < stars) Color(0xFFFFC107) else Color(0xFFBDBDBD)
+                                    color = if (i < stars) colors.starFilled else colors.starEmpty
                                 )
                             }
                         }

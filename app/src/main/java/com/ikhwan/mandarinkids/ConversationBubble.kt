@@ -18,8 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.text.font.FontWeight
+import com.ikhwan.mandarinkids.ui.theme.appColors
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -69,15 +69,10 @@ fun ConversationBubble(
             )
         }
 
-        val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-        val bubbleGradient = if (isCharacter) {
-            if (isDark) listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-            else        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
-        } else {
-            if (isDark) listOf(Color(0xFF1A4E30), Color(0xFF10382A))
-            else        listOf(Color(0xFFD4EDD0), Color(0xFFE8F5E2))
-        }
-        val bubbleLabelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+        val colors = MaterialTheme.appColors
+        val bubbleTile = if (isCharacter) colors.tileBlue else colors.tileGreen
+        val bubbleGradient = bubbleTile.asList()
+        val bubbleLabelColor = colors.contentColorFor(bubbleTile)
         val bubbleShape = RoundedCornerShape(
             topStart = 16.dp,
             topEnd = 16.dp,
@@ -138,10 +133,10 @@ fun ConversationBubble(
                             ) {
                                 message.pinyinWords.forEach { word ->
                                     val pillBg = ToneUtils.pinyinColor(
-                                        ToneUtils.splitSyllables(word.pinyin).first()
+                                        ToneUtils.splitSyllables(word.pinyin).first(), colors
                                     ).copy(alpha = 0.18f)
                                     Text(
-                                        text = ToneUtils.coloredAnnotatedPinyin(word.pinyin),
+                                        text = ToneUtils.coloredAnnotatedPinyin(word.pinyin, colors),
                                         fontSize = 14.sp,
                                         fontWeight = FontWeight.SemiBold,
                                         modifier = Modifier
@@ -212,6 +207,7 @@ private fun WordDetailDialog(
     onDismiss: () -> Unit
 ) {
     val syllables = ToneUtils.splitSyllables(word.pinyin)
+    val colors = MaterialTheme.appColors
     Dialog(onDismissRequest = onDismiss) {
         Surface(
             shape = RoundedCornerShape(16.dp),
@@ -227,7 +223,7 @@ private fun WordDetailDialog(
                     modifier = Modifier.padding(bottom = 4.dp)
                 )
                 Text(
-                    text = ToneUtils.coloredAnnotatedPinyin(word.pinyin),
+                    text = ToneUtils.coloredAnnotatedPinyin(word.pinyin, colors),
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(bottom = 4.dp)
@@ -239,7 +235,7 @@ private fun WordDetailDialog(
                 ) {
                     syllables.forEach { syllable ->
                         val tone = ToneUtils.detectTone(syllable)
-                        val toneCol = ToneUtils.toneColor(tone)
+                        val toneCol = colors.toneColor(tone)
                         Surface(
                             color = toneCol.copy(alpha = 0.12f),
                             shape = RoundedCornerShape(50)

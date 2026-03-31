@@ -13,6 +13,7 @@ import androidx.core.view.WindowCompat
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.navigation.MandarinKidsApp
 import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
+import com.ikhwan.mandarinkids.ui.theme.AppThemes
 import com.ikhwan.mandarinkids.ui.theme.MandarinKidsTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,16 +22,18 @@ class MainActivity : ComponentActivity() {
         JsonScenarioRepository.init(applicationContext)
         setContent {
             val userPrefs = remember { UserPreferencesRepository.getInstance(this) }
+            val themeIndex by userPrefs.colorThemeIndex.collectAsState(initial = 0)
+            val variant = AppThemes[themeIndex.coerceIn(0, AppThemes.lastIndex)]
 
-            // Always light mode — force dark status bar icons
+            // Status bar icon colour flips with the theme (dark icons on light, light icons on dark)
             val view = LocalView.current
             SideEffect {
                 val window = (view.context as Activity).window
                 WindowCompat.getInsetsController(window, window.decorView)
-                    .isAppearanceLightStatusBars = true
+                    .isAppearanceLightStatusBars = !variant.isDark
             }
 
-            MandarinKidsTheme(darkTheme = false) {
+            MandarinKidsTheme(variant = variant) {
                 MandarinKidsApp()
             }
         }

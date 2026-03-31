@@ -22,8 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.input.pointer.pointerInput
+import com.ikhwan.mandarinkids.ui.theme.appColors
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
@@ -46,11 +46,7 @@ import com.ikhwan.mandarinkids.tts.rememberTtsManager
 import com.ikhwan.mandarinkids.ui.ConfettiEffect
 import kotlinx.coroutines.launch
 
-private fun masteryColor(level: Int): Color = when {
-    level <= 3 -> Color(0xFFEF5350)
-    level <= 6 -> Color(0xFFFFA726)
-    else       -> Color(0xFF66BB6A)
-}
+// masteryColor removed — replaced by colors.masteryColor(level)
 
 private fun masteryEmoji(level: Int): String = when (level) {
     1  -> "\u2B52"
@@ -65,33 +61,7 @@ private fun masteryEmoji(level: Int): String = when (level) {
     else -> "🌟"
 }
 
-private fun masteryGradient(level: Int): List<Color> = when {
-    level <= 3 -> listOf(Color(0xFFEF5350), Color(0xFFE57373))
-    level <= 6 -> listOf(Color(0xFFFF8F00), Color(0xFFFFA726))
-    else       -> listOf(Color(0xFF43A047), Color(0xFF66BB6A))
-}
-
-private fun practiceTypeGradient(type: PracticeType, isDark: Boolean): List<Color> =
-    if (isDark) when (type) {
-        PracticeType.DEFAULT   -> listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-        PracticeType.LISTENING -> listOf(Color(0xFF1A4558), Color(0xFF0F3242))
-        PracticeType.READING   -> listOf(Color(0xFF342670), Color(0xFF261B55))
-    } else when (type) {
-        PracticeType.DEFAULT   -> listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
-        PracticeType.LISTENING -> listOf(Color(0xFFB8E4F0), Color(0xFFD4EFF8))
-        PracticeType.READING   -> listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))
-    }
-
-private fun practiceModeGradient(mode: PracticeMode, isDark: Boolean): List<Color> =
-    if (isDark) when (mode) {
-        PracticeMode.ALL     -> listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-        PracticeMode.WEAK    -> listOf(Color(0xFF7A1830), Color(0xFF5C1024))
-        PracticeMode.MASTERY -> listOf(Color(0xFF1A4E30), Color(0xFF10382A))
-    } else when (mode) {
-        PracticeMode.ALL     -> listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
-        PracticeMode.WEAK    -> listOf(Color(0xFFF5E0E0), Color(0xFFFAEEEE))
-        PracticeMode.MASTERY -> listOf(Color(0xFFD4EDD0), Color(0xFFE8F5E2))
-    }
+// masteryGradient, practiceTypeGradient, practiceModeGradient removed — replaced by colors.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -129,17 +99,10 @@ fun PracticeScreen(onBack: () -> Unit) {
 
     val scope = rememberCoroutineScope()
 
-    // ── Dark-mode-aware gradient theme ────────────────────────────────────────
-    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
-    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
-    val wordCardGradient = if (isDark)
-        listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
-    else
-        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
-    val optionIdleGradient = if (isDark)
-        listOf(Color(0xFF2A2550), Color(0xFF1E1A40))
-    else
-        listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))
+    val colors = MaterialTheme.appColors
+    val labelColor = colors.onLightTile
+    val wordCardGradient = colors.tileBlue.asList()
+    val optionIdleGradient = colors.tilePurple.asList()
     val neutralGradient = listOf(
         MaterialTheme.colorScheme.surfaceVariant,
         MaterialTheme.colorScheme.surfaceVariant
@@ -210,7 +173,11 @@ fun PracticeScreen(onBack: () -> Unit) {
                             selected = isSelected,
                             onClick = { selectedType = type },
                             modifier = if (isSelected) Modifier.background(
-                                Brush.verticalGradient(practiceTypeGradient(type, isDark))
+                                Brush.verticalGradient(when (type) {
+                                    PracticeType.DEFAULT   -> colors.practiceTypeDefault.asList()
+                                    PracticeType.LISTENING -> colors.practiceTypeListening.asList()
+                                    PracticeType.READING   -> colors.practiceTypeReading.asList()
+                                })
                             ) else Modifier,
                             text = {
                                 Text(
@@ -305,7 +272,11 @@ fun PracticeScreen(onBack: () -> Unit) {
                                     onClick = { vm.setMode(mode) },
                                     shape = SegmentedButtonDefaults.itemShape(index = index, count = 3),
                                     colors = SegmentedButtonDefaults.colors(
-                                        activeContainerColor = practiceModeGradient(mode, isDark).first(),
+                                        activeContainerColor = when (mode) {
+                                            PracticeMode.ALL     -> colors.modeAll.start
+                                            PracticeMode.WEAK    -> colors.modeWeak.start
+                                            PracticeMode.MASTERY -> colors.modeMastery.start
+                                        },
                                         activeContentColor = labelColor,
                                         inactiveContainerColor = MaterialTheme.colorScheme.secondaryContainer,
                                         inactiveContentColor = MaterialTheme.colorScheme.onSecondaryContainer
@@ -340,7 +311,7 @@ fun PracticeScreen(onBack: () -> Unit) {
                                 Box(
                                     modifier = Modifier
                                         .clip(pillShape)
-                                        .background(Brush.verticalGradient(masteryGradient(level)))
+                                        .background(Brush.verticalGradient(colors.masteryGradient(level).asList()))
                                         .padding(horizontal = 9.dp, vertical = 4.dp)
                                 ) {
                                     Text(
@@ -419,7 +390,7 @@ fun PracticeScreen(onBack: () -> Unit) {
                                                 )
                                                 Spacer(modifier = Modifier.height(4.dp))
                                                 Text(
-                                                    ToneUtils.coloredAnnotatedPinyin(word.pinyin),
+                                                    ToneUtils.coloredAnnotatedPinyin(word.pinyin, colors),
                                                     fontSize = 18.sp, fontWeight = FontWeight.SemiBold,
                                                     textAlign = TextAlign.Center
                                                 )
@@ -438,7 +409,7 @@ fun PracticeScreen(onBack: () -> Unit) {
                                                 Box(
                                                     modifier = Modifier
                                                         .clip(RoundedCornerShape(50))
-                                                        .background(Brush.verticalGradient(masteryGradient(word.boxLevel)))
+                                                        .background(Brush.verticalGradient(colors.masteryGradient(word.boxLevel).asList()))
                                                         .padding(horizontal = 10.dp, vertical = 4.dp)
                                                 ) {
                                                     Text(
@@ -463,7 +434,7 @@ fun PracticeScreen(onBack: () -> Unit) {
                                                 Box(
                                                     modifier = Modifier
                                                         .clip(RoundedCornerShape(50))
-                                                        .background(Brush.verticalGradient(masteryGradient(word.boxLevel)))
+                                                        .background(Brush.verticalGradient(colors.masteryGradient(word.boxLevel).asList()))
                                                         .padding(horizontal = 10.dp, vertical = 4.dp)
                                                 ) {
                                                     Text(
@@ -498,26 +469,24 @@ fun PracticeScreen(onBack: () -> Unit) {
                                     "+1 XP ✨",
                                     fontSize = 13.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                    color = Color(0xFF4CAF50),
+                                    color = colors.xpGainText,
                                     modifier = Modifier.padding(top = 4.dp)
                                 )
                             }
 
                             // ── Note bubble ────────────────────────────────
                             if (isAnswered && word.note != null) {
-                                val noteDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
                                 Surface(
                                     color = Color.Transparent,
                                     shape = RoundedCornerShape(16.dp),
                                     modifier = Modifier.fillMaxWidth().padding(top = 8.dp)
                                 ) {
                                     Box(modifier = Modifier.background(Brush.verticalGradient(
-                                        if (noteDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
-                                        else          listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+                                        colors.tileAmber.asList()
                                     ))) {
                                         Text(
                                             "💡 ${word.note}", fontSize = 13.sp,
-                                            color = if (noteDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27),
+                                            color = colors.onLightTile,
                                             textAlign = TextAlign.Center, lineHeight = 19.sp,
                                             modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp)
                                         )
@@ -538,8 +507,8 @@ fun PracticeScreen(onBack: () -> Unit) {
                                         val isWrongSelection = isAnswered && option == selectedAnswer && !answeredCorrectly
                                         val isIdleAfter      = isAnswered && !isCorrectOption && option != selectedAnswer
                                         val tileGradient = when {
-                                            isCorrectOption  -> listOf(Color(0xFF43A047), Color(0xFF66BB6A))
-                                            isWrongSelection -> listOf(Color(0xFFE53935), Color(0xFFEF5350))
+                                            isCorrectOption  -> colors.answerCorrect.asList()
+                                            isWrongSelection -> colors.actionNegative.asList()
                                             isIdleAfter      -> neutralGradient
                                             else             -> optionIdleGradient
                                         }
@@ -724,6 +693,7 @@ private fun PracticeSummaryScreen(
                 color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 22.sp,
                 modifier = Modifier.padding(bottom = 24.dp)
             )
+            val summaryColors = MaterialTheme.appColors
             Surface(
                 onClick = onDone,
                 shape = RoundedCornerShape(50),
@@ -733,7 +703,7 @@ private fun PracticeSummaryScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Brush.verticalGradient(listOf(Color(0xFF388E3C), Color(0xFF66BB6A)))),
+                        .background(Brush.verticalGradient(summaryColors.actionPositive.asList())),
                     contentAlignment = Alignment.Center
                 ) {
                     Text("Done", fontSize = 18.sp, color = Color.White, fontWeight = FontWeight.SemiBold)
