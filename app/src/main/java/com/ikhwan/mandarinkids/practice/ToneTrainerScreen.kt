@@ -1,7 +1,6 @@
 package com.ikhwan.mandarinkids.practice
 
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,7 +12,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -69,6 +71,13 @@ fun ToneTrainerScreen() {
     val prefs = remember { context.getSharedPreferences("tone_trainer", 0) }
     var showIntro by remember { mutableStateOf(!prefs.getBoolean("tone_intro_seen", false)) }
 
+    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+    val wordCardGradient = if (isDark)
+        listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+    else
+        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+
     val questionPool: List<ToneQuestion> = remember {
         JsonScenarioRepository.getAll()
             .flatMap { scenario ->
@@ -117,7 +126,7 @@ fun ToneTrainerScreen() {
         }
     }
 
-    // Auto-advance after a correct answer
+    // Auto-advance after every answer (correct = 1.6 s, wrong = 2.0 s)
     LaunchedEffect(selectedTone, stateKey) {
         val sel = selectedTone ?: return@LaunchedEffect
         if (question == null) return@LaunchedEffect
@@ -126,12 +135,16 @@ fun ToneTrainerScreen() {
             totalAnswered++
             repo.addToneTrainerXp(2)
             showConfetti = true
-            delay(1600)
+            delay(900)   // success sound ~770 ms + short pause
             showConfetti = false
-            val next = questionIndex + 1
-            if (next >= totalQuestions) showSummary = true
-            else { questionIndex = next; stateKey++ }
+        } else {
+            // Wrong: wait for sound to finish then briefly show correct answer highlighted
+            delay(1000)  // wrong sound ~800 ms + short pause to register correct tone
+            totalAnswered++
         }
+        val next = questionIndex + 1
+        if (next >= totalQuestions) showSummary = true
+        else { questionIndex = next; stateKey++ }
     }
 
     // Perfect Pitch badge when session ends
@@ -191,13 +204,13 @@ fun ToneTrainerScreen() {
                             .fillMaxWidth()
                             .height(200.dp),
                         shape  = RoundedCornerShape(24.dp),
-                        colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.primaryContainer
-                        ),
+                        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
                         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
                     ) {
                         Box(
-                            modifier         = Modifier.fillMaxSize(),
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(Brush.verticalGradient(wordCardGradient)),
                             contentAlignment = Alignment.Center
                         ) {
                             Column(
@@ -209,7 +222,7 @@ fun ToneTrainerScreen() {
                                     text       = question.pinyinBare,
                                     fontSize   = 36.sp,
                                     fontWeight = FontWeight.Bold,
-                                    color      = MaterialTheme.colorScheme.onPrimaryContainer,
+                                    color      = labelColor,
                                     letterSpacing = 2.sp
                                 )
                                 Spacer(modifier = Modifier.height(4.dp))
@@ -218,7 +231,7 @@ fun ToneTrainerScreen() {
                                     text       = question.chinese,
                                     fontSize   = 56.sp,
                                     fontWeight = FontWeight.Bold,
-                                    color      = MaterialTheme.colorScheme.onPrimaryContainer
+                                    color      = labelColor
                                 )
                                 // Translations — revealed after answering
                                 if (isAnswered) {
@@ -226,16 +239,14 @@ fun ToneTrainerScreen() {
                                     Text(
                                         text     = "🇬🇧 ${question.english}",
                                         fontSize = 14.sp,
-                                        color    = MaterialTheme.colorScheme.onPrimaryContainer
-                                            .copy(alpha = 0.8f),
+                                        color    = labelColor.copy(alpha = 0.8f),
                                         textAlign = TextAlign.Center
                                     )
                                     if (showIndonesian) {
                                         Text(
                                             text     = "🇮🇩 ${question.indonesian}",
                                             fontSize = 14.sp,
-                                            color    = MaterialTheme.colorScheme.onPrimaryContainer
-                                                .copy(alpha = 0.8f),
+                                            color    = labelColor.copy(alpha = 0.8f),
                                             textAlign = TextAlign.Center
                                         )
                                     }
@@ -249,7 +260,7 @@ fun ToneTrainerScreen() {
                                 Icon(
                                     Icons.AutoMirrored.Filled.VolumeUp,
                                     contentDescription = "Hear pronunciation",
-                                    tint = MaterialTheme.colorScheme.onPrimaryContainer
+                                    tint = labelColor.copy(alpha = 0.8f)
                                 )
                             }
                         }
@@ -271,7 +282,7 @@ fun ToneTrainerScreen() {
                             color      = Color(0xFF4CAF50)
                         )
                         else -> Text(
-                            "Not quite — correct tone highlighted in green",
+                            "Not quite — see the correct tone in green",
                             fontSize = 13.sp,
                             color    = Color(0xFFC62828)
                         )
@@ -281,18 +292,23 @@ fun ToneTrainerScreen() {
                     if (isAnswered && question.note != null) {
                         Spacer(modifier = Modifier.height(6.dp))
                         Surface(
-                            color  = MaterialTheme.colorScheme.tertiaryContainer,
-                            shape  = RoundedCornerShape(16.dp),
+                            color    = Color.Transparent,
+                            shape    = RoundedCornerShape(16.dp),
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Text(
-                                "💡 ${question.note}",
-                                fontSize  = 13.sp,
-                                color     = MaterialTheme.colorScheme.onTertiaryContainer,
-                                textAlign = TextAlign.Center,
-                                lineHeight = 19.sp,
-                                modifier  = Modifier.padding(horizontal = 14.dp, vertical = 8.dp)
-                            )
+                            Box(modifier = Modifier.background(Brush.verticalGradient(
+                                if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
+                                else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+                            ))) {
+                                Text(
+                                    "💡 ${question.note}",
+                                    fontSize  = 13.sp,
+                                    color     = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27),
+                                    textAlign = TextAlign.Center,
+                                    lineHeight = 19.sp,
+                                    modifier  = Modifier.padding(horizontal = 14.dp, vertical = 8.dp)
+                                )
+                            }
                         }
                     }
 
@@ -310,6 +326,7 @@ fun ToneTrainerScreen() {
                             isWrong   = isWrongTone,
                             isIdle    = isAnswered && !isSelected && !isCorrectTone,
                             enabled   = !isAnswered,
+                            isDark    = isDark,
                             modifier  = mod,
                             compact   = true,
                             onClick   = {
@@ -345,24 +362,6 @@ fun ToneTrainerScreen() {
                         horizontalArrangement = Arrangement.Center
                     ) {
                         toneBtn(0, Modifier.fillMaxWidth(0.5f))
-                    }
-
-                    // Next button for wrong answers
-                    if (isAnswered && !answeredCorrectly) {
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Button(
-                            onClick = {
-                                totalAnswered++
-                                val next = questionIndex + 1
-                                if (next >= totalQuestions) showSummary = true
-                                else { questionIndex = next; stateKey++ }
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(56.dp)
-                        ) {
-                            Text("Next →", fontSize = 16.sp)
-                        }
                     }
 
                     Spacer(modifier = Modifier.height(24.dp))
@@ -411,6 +410,21 @@ private val TONE_META = mapOf(
     0 to Triple("•", "Neutral",    "light")
 )
 
+private fun toneButtonGradient(tone: Int, isDark: Boolean): List<Color> =
+    if (isDark) when (tone) {
+        1    -> listOf(Color(0xFFB71C1C), Color(0xFFEF5350))
+        2    -> listOf(Color(0xFFE65100), Color(0xFFFF6D00))
+        3    -> listOf(Color(0xFF1B5E20), Color(0xFF2E7D32))
+        4    -> listOf(Color(0xFF0D47A1), Color(0xFF1565C0))
+        else -> listOf(Color(0xFF424242), Color(0xFF616161))
+    } else when (tone) {
+        1    -> listOf(Color(0xFFEF5350), Color(0xFFEF9A9A))
+        2    -> listOf(Color(0xFFFF6D00), Color(0xFFFFAB40))
+        3    -> listOf(Color(0xFF2E7D32), Color(0xFF66BB6A))
+        4    -> listOf(Color(0xFF1565C0), Color(0xFF42A5F5))
+        else -> listOf(Color(0xFF616161), Color(0xFF9E9E9E))
+    }
+
 @Composable
 private fun ToneChoiceButton(
     tone: Int,
@@ -418,73 +432,72 @@ private fun ToneChoiceButton(
     isWrong: Boolean,
     isIdle: Boolean,
     enabled: Boolean,
+    isDark: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     compact: Boolean = false
 ) {
-    val baseColor = ToneUtils.toneColor(tone)
     val (symbol, label, sublabel) = TONE_META[tone]!!
 
-    val containerColor by animateColorAsState(
-        targetValue = when {
-            isCorrect -> Color(0xFF4CAF50)
-            isWrong   -> Color(0xFFF44336)
-            isIdle    -> MaterialTheme.colorScheme.surfaceVariant
-            else      -> baseColor
-        },
-        animationSpec = tween(250),
-        label = "toneBtn_$tone"
-    )
-    val contentColor = when {
-        isIdle -> MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
-        else   -> Color.White
+    val gradientColors = when {
+        isCorrect -> listOf(Color(0xFF388E3C), Color(0xFF66BB6A))
+        isWrong   -> listOf(Color(0xFFC62828), Color(0xFFEF5350))
+        isIdle    -> listOf(Color(0xFF9E9E9E), Color(0xFFBDBDBD))
+        else      -> toneButtonGradient(tone, isDark)
     }
+    val contentColor = if (isIdle) Color.White.copy(alpha = 0.5f) else Color.White
 
     Surface(
         onClick   = onClick,
         enabled   = enabled,
         shape     = RoundedCornerShape(20.dp),
-        color     = containerColor,
+        color     = Color.Transparent,
         shadowElevation = 2.dp,
         modifier  = modifier.height(72.dp)
     ) {
-        Row(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = if (compact) 8.dp else 20.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+                .background(Brush.verticalGradient(gradientColors))
         ) {
-            Text(
-                text       = symbol,
-                fontSize   = if (compact) 24.sp else 28.sp,
-                fontWeight = FontWeight.Bold,
-                color      = contentColor
-            )
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Row(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = if (compact) 8.dp else 20.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
                 Text(
-                    text       = label,
-                    fontSize   = if (compact) 15.sp else 17.sp,
-                    fontWeight = FontWeight.SemiBold,
+                    text       = symbol,
+                    fontSize   = if (compact) 24.sp else 28.sp,
+                    fontWeight = FontWeight.Bold,
                     color      = contentColor
                 )
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(
+                        text       = label,
+                        fontSize   = if (compact) 15.sp else 17.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color      = contentColor
+                    )
+                    Text(
+                        text     = sublabel,
+                        fontSize = if (compact) 11.sp else 12.sp,
+                        color    = contentColor.copy(alpha = 0.75f)
+                    )
+                }
+                // Checkmark / cross indicator after answering
                 Text(
-                    text     = sublabel,
-                    fontSize = if (compact) 11.sp else 12.sp,
-                    color    = contentColor.copy(alpha = 0.75f)
+                    text     = when {
+                        isCorrect -> "✓"
+                        isWrong   -> "✗"
+                        else      -> ""
+                    },
+                    fontSize   = if (compact) 16.sp else 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    color      = Color.White
                 )
             }
-            // Checkmark / cross indicator after answering
-            Text(
-                text     = when {
-                    isCorrect -> "✓"
-                    isWrong   -> "✗"
-                    else      -> ""
-                },
-                fontSize   = if (compact) 16.sp else 20.sp,
-                fontWeight = FontWeight.Bold,
-                color      = Color.White
-            )
         }
     }
 }
@@ -574,13 +587,20 @@ private fun ToneTrainerSummary(
                 lineHeight = 22.sp,
                 modifier  = Modifier.padding(bottom = 32.dp)
             )
-            Button(
-                onClick  = onRestart,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(60.dp)
+            Surface(
+                onClick = onRestart,
+                shape = RoundedCornerShape(50),
+                color = Color.Transparent,
+                modifier = Modifier.fillMaxWidth().height(60.dp)
             ) {
-                Text("Play Again 🔁", fontSize = 18.sp)
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Brush.verticalGradient(listOf(Color(0xFF388E3C), Color(0xFF66BB6A)))),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("Play Again", fontSize = 18.sp, color = Color.White, fontWeight = FontWeight.SemiBold)
+                }
             }
         }
         if (showConfetti) ConfettiEffect()

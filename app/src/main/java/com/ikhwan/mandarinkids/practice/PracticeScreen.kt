@@ -3,6 +3,7 @@ package com.ikhwan.mandarinkids.practice
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
@@ -18,7 +19,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -61,6 +65,34 @@ private fun masteryEmoji(level: Int): String = when (level) {
     else -> "🌟"
 }
 
+private fun masteryGradient(level: Int): List<Color> = when {
+    level <= 3 -> listOf(Color(0xFFEF5350), Color(0xFFE57373))
+    level <= 6 -> listOf(Color(0xFFFF8F00), Color(0xFFFFA726))
+    else       -> listOf(Color(0xFF43A047), Color(0xFF66BB6A))
+}
+
+private fun practiceTypeGradient(type: PracticeType, isDark: Boolean): List<Color> =
+    if (isDark) when (type) {
+        PracticeType.DEFAULT   -> listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+        PracticeType.LISTENING -> listOf(Color(0xFF1A4558), Color(0xFF0F3242))
+        PracticeType.READING   -> listOf(Color(0xFF342670), Color(0xFF261B55))
+    } else when (type) {
+        PracticeType.DEFAULT   -> listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+        PracticeType.LISTENING -> listOf(Color(0xFFB8E4F0), Color(0xFFD4EFF8))
+        PracticeType.READING   -> listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))
+    }
+
+private fun practiceModeGradient(mode: PracticeMode, isDark: Boolean): List<Color> =
+    if (isDark) when (mode) {
+        PracticeMode.ALL     -> listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+        PracticeMode.WEAK    -> listOf(Color(0xFF7A1830), Color(0xFF5C1024))
+        PracticeMode.MASTERY -> listOf(Color(0xFF1A4E30), Color(0xFF10382A))
+    } else when (mode) {
+        PracticeMode.ALL     -> listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+        PracticeMode.WEAK    -> listOf(Color(0xFFF5E0E0), Color(0xFFFAEEEE))
+        PracticeMode.MASTERY -> listOf(Color(0xFFD4EDD0), Color(0xFFE8F5E2))
+    }
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PracticeScreen(onBack: () -> Unit) {
@@ -96,6 +128,23 @@ fun PracticeScreen(onBack: () -> Unit) {
     }
 
     val scope = rememberCoroutineScope()
+
+    // ── Dark-mode-aware gradient theme ────────────────────────────────────────
+    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+    val wordCardGradient = if (isDark)
+        listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+    else
+        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+    val optionIdleGradient = if (isDark)
+        listOf(Color(0xFF2A2550), Color(0xFF1E1A40))
+    else
+        listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))
+    val neutralGradient = listOf(
+        MaterialTheme.colorScheme.surfaceVariant,
+        MaterialTheme.colorScheme.surfaceVariant
+    )
+
     val density = LocalDensity.current
     val drawerWidthPx = with(density) { 220.dp.toPx() }
     val closedPx     = -drawerWidthPx
@@ -156,14 +205,21 @@ fun PracticeScreen(onBack: () -> Unit) {
                     contentColor = MaterialTheme.colorScheme.onSecondaryContainer
                 ) {
                     PracticeType.values().forEach { type ->
+                        val isSelected = selectedType == type
                         Tab(
-                            selected = selectedType == type,
+                            selected = isSelected,
                             onClick = { selectedType = type },
+                            modifier = if (isSelected) Modifier.background(
+                                Brush.verticalGradient(practiceTypeGradient(type, isDark))
+                            ) else Modifier,
                             text = {
                                 Text(
                                     "${type.emoji} ${type.displayName}",
                                     fontSize = 12.sp,
-                                    maxLines = 1
+                                    maxLines = 1,
+                                    color = if (isSelected) labelColor
+                                            else MaterialTheme.colorScheme.onSecondaryContainer,
+                                    fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal
                                 )
                             }
                         )
@@ -238,23 +294,26 @@ fun PracticeScreen(onBack: () -> Unit) {
                                 .fillMaxWidth()
                                 .padding(top = 4.dp, bottom = 4.dp)
                         ) {
-                            SegmentedButton(
-                                selected = vm.practiceMode == PracticeMode.ALL,
-                                onClick = { vm.setMode(PracticeMode.ALL) },
-                                shape = SegmentedButtonDefaults.itemShape(index = 0, count = 3)
-                            ) { Text("All Words", fontSize = 11.sp, textAlign = TextAlign.Center) }
-
-                            SegmentedButton(
-                                selected = vm.practiceMode == PracticeMode.WEAK,
-                                onClick = { vm.setMode(PracticeMode.WEAK) },
-                                shape = SegmentedButtonDefaults.itemShape(index = 1, count = 3)
-                            ) { Text("Weak Words", fontSize = 11.sp, textAlign = TextAlign.Center) }
-
-                            SegmentedButton(
-                                selected = vm.practiceMode == PracticeMode.MASTERY,
-                                onClick = { vm.setMode(PracticeMode.MASTERY) },
-                                shape = SegmentedButtonDefaults.itemShape(index = 2, count = 3)
-                            ) { Text("Maintain", fontSize = 11.sp, textAlign = TextAlign.Center) }
+                            PracticeMode.values().forEachIndexed { index, mode ->
+                                val modeLabel = when (mode) {
+                                    PracticeMode.ALL     -> "All Words"
+                                    PracticeMode.WEAK    -> "Weak Words"
+                                    PracticeMode.MASTERY -> "Maintain"
+                                }
+                                SegmentedButton(
+                                    selected = vm.practiceMode == mode,
+                                    onClick = { vm.setMode(mode) },
+                                    shape = SegmentedButtonDefaults.itemShape(index = index, count = 3),
+                                    colors = SegmentedButtonDefaults.colors(
+                                        activeContainerColor = practiceModeGradient(mode, isDark).first(),
+                                        activeContentColor = labelColor,
+                                        inactiveContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+                                        inactiveContentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                                    )
+                                ) {
+                                    Text(modeLabel, fontSize = 11.sp, textAlign = TextAlign.Center)
+                                }
+                            }
                         }
 
                         // ── Star rating distribution (respects both category filter and mode) ──
@@ -277,16 +336,17 @@ fun PracticeScreen(onBack: () -> Unit) {
                             horizontalArrangement = Arrangement.spacedBy(6.dp)
                         ) {
                             items(levelCounts) { (level, words) ->
-                                val color = masteryColor(level)
-                                Surface(
-                                    color = color,
-                                    shape = RoundedCornerShape(50)
+                                val pillShape = RoundedCornerShape(50)
+                                Box(
+                                    modifier = Modifier
+                                        .clip(pillShape)
+                                        .background(Brush.verticalGradient(masteryGradient(level)))
+                                        .padding(horizontal = 9.dp, vertical = 4.dp)
                                 ) {
                                     Text(
                                         "${masteryEmoji(level)} $level ✦ ${words.size}",
                                         fontSize = 12.sp, color = Color.White,
-                                        fontWeight = FontWeight.SemiBold,
-                                        modifier = Modifier.padding(horizontal = 9.dp, vertical = 4.dp)
+                                        fontWeight = FontWeight.SemiBold
                                     )
                                 }
                             }
@@ -334,12 +394,12 @@ fun PracticeScreen(onBack: () -> Unit) {
                                 modifier = Modifier.fillMaxWidth().height(160.dp),
                                 shape = RoundedCornerShape(24.dp),
                                 elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
-                                colors = CardDefaults.cardColors(
-                                    containerColor = MaterialTheme.colorScheme.primaryContainer
-                                )
+                                colors = CardDefaults.cardColors(containerColor = Color.Transparent)
                             ) {
                                 Box(
-                                    modifier = Modifier.fillMaxSize(),
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(Brush.verticalGradient(wordCardGradient)),
                                     contentAlignment = Alignment.Center
                                 ) {
                                     Column(
@@ -354,7 +414,8 @@ fun PracticeScreen(onBack: () -> Unit) {
                                                     text = word.chinese,
                                                     fontSize = 38.sp,
                                                     fontWeight = FontWeight.Bold,
-                                                    textAlign = TextAlign.Center
+                                                    textAlign = TextAlign.Center,
+                                                    color = labelColor
                                                 )
                                                 Spacer(modifier = Modifier.height(4.dp))
                                                 Text(
@@ -365,7 +426,7 @@ fun PracticeScreen(onBack: () -> Unit) {
                                                 Spacer(modifier = Modifier.height(2.dp))
                                                 if (showIndonesian) Text(
                                                     "🇮🇩  ${word.indonesian}", fontSize = 12.sp,
-                                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                                    color = labelColor.copy(alpha = 0.7f),
                                                     textAlign = TextAlign.Center
                                                 )
                                             }
@@ -374,16 +435,17 @@ fun PracticeScreen(onBack: () -> Unit) {
                                             selectedType == PracticeType.LISTENING -> {
                                                 Text("🔊", fontSize = 52.sp)
                                                 Spacer(modifier = Modifier.height(4.dp))
-                                                Surface(
-                                                    color = masteryColor(word.boxLevel),
-                                                    shape = RoundedCornerShape(50)
+                                                Box(
+                                                    modifier = Modifier
+                                                        .clip(RoundedCornerShape(50))
+                                                        .background(Brush.verticalGradient(masteryGradient(word.boxLevel)))
+                                                        .padding(horizontal = 10.dp, vertical = 4.dp)
                                                 ) {
                                                     Text(
                                                         "${masteryEmoji(word.boxLevel)} Mastery ${word.boxLevel}/10",
                                                         fontSize = 12.sp,
                                                         fontWeight = FontWeight.SemiBold,
-                                                        color = Color.White,
-                                                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
+                                                        color = Color.White
                                                     )
                                                 }
                                             }
@@ -394,19 +456,21 @@ fun PracticeScreen(onBack: () -> Unit) {
                                                     text = word.chinese,
                                                     fontSize = 56.sp,
                                                     fontWeight = FontWeight.Bold,
-                                                    textAlign = TextAlign.Center
+                                                    textAlign = TextAlign.Center,
+                                                    color = labelColor
                                                 )
                                                 Spacer(modifier = Modifier.height(6.dp))
-                                                Surface(
-                                                    color = masteryColor(word.boxLevel),
-                                                    shape = RoundedCornerShape(50)
+                                                Box(
+                                                    modifier = Modifier
+                                                        .clip(RoundedCornerShape(50))
+                                                        .background(Brush.verticalGradient(masteryGradient(word.boxLevel)))
+                                                        .padding(horizontal = 10.dp, vertical = 4.dp)
                                                 ) {
                                                     Text(
                                                         "${masteryEmoji(word.boxLevel)} Mastery ${word.boxLevel}/10",
                                                         fontSize = 12.sp,
                                                         fontWeight = FontWeight.SemiBold,
-                                                        color = Color.White,
-                                                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
+                                                        color = Color.White
                                                     )
                                                 }
                                             }
@@ -421,7 +485,7 @@ fun PracticeScreen(onBack: () -> Unit) {
                                         ) {
                                             Icon(
                                                 Icons.Default.VolumeUp, "Hear pronunciation",
-                                                tint = MaterialTheme.colorScheme.onPrimaryContainer
+                                                tint = labelColor.copy(alpha = 0.8f)
                                             )
                                         }
                                     }
@@ -441,17 +505,23 @@ fun PracticeScreen(onBack: () -> Unit) {
 
                             // ── Note bubble ────────────────────────────────
                             if (isAnswered && word.note != null) {
+                                val noteDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
                                 Surface(
-                                    color = MaterialTheme.colorScheme.tertiaryContainer,
+                                    color = Color.Transparent,
                                     shape = RoundedCornerShape(16.dp),
                                     modifier = Modifier.fillMaxWidth().padding(top = 8.dp)
                                 ) {
-                                    Text(
-                                        "💡 ${word.note}", fontSize = 13.sp,
-                                        color = MaterialTheme.colorScheme.onTertiaryContainer,
-                                        textAlign = TextAlign.Center, lineHeight = 19.sp,
-                                        modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp)
-                                    )
+                                    Box(modifier = Modifier.background(Brush.verticalGradient(
+                                        if (noteDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
+                                        else          listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+                                    ))) {
+                                        Text(
+                                            "💡 ${word.note}", fontSize = 13.sp,
+                                            color = if (noteDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27),
+                                            textAlign = TextAlign.Center, lineHeight = 19.sp,
+                                            modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp)
+                                        )
+                                    }
                                 }
                             }
 
@@ -464,18 +534,22 @@ fun PracticeScreen(onBack: () -> Unit) {
                                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                                 ) {
                                     rowOptions.forEach { option ->
-                                        val containerColor = when {
-                                            !isAnswered -> MaterialTheme.colorScheme.secondaryContainer
-                                            option == word.english -> Color(0xFF4CAF50)
-                                            option == selectedAnswer -> Color(0xFFF44336)
-                                            else -> MaterialTheme.colorScheme.surfaceVariant
+                                        val isCorrectOption  = isAnswered && option == word.english
+                                        val isWrongSelection = isAnswered && option == selectedAnswer && !answeredCorrectly
+                                        val isIdleAfter      = isAnswered && !isCorrectOption && option != selectedAnswer
+                                        val tileGradient = when {
+                                            isCorrectOption  -> listOf(Color(0xFF43A047), Color(0xFF66BB6A))
+                                            isWrongSelection -> listOf(Color(0xFFE53935), Color(0xFFEF5350))
+                                            isIdleAfter      -> neutralGradient
+                                            else             -> optionIdleGradient
                                         }
                                         val contentColor = when {
-                                            !isAnswered -> MaterialTheme.colorScheme.onSecondaryContainer
-                                            option == word.english || option == selectedAnswer -> Color.White
-                                            else -> MaterialTheme.colorScheme.onSurfaceVariant
+                                            isIdleAfter                     -> MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
+                                            isCorrectOption || isWrongSelection -> Color.White
+                                            else                            -> labelColor
                                         }
-                                        Button(
+                                        val tileShape = RoundedCornerShape(12.dp)
+                                        Surface(
                                             onClick = {
                                                 if (!isAnswered) {
                                                     selectedAnswer = option
@@ -483,21 +557,24 @@ fun PracticeScreen(onBack: () -> Unit) {
                                                     else playWrongSound()
                                                 }
                                             },
+                                            shape = tileShape,
                                             modifier = Modifier.weight(1f).height(74.dp),
-                                            colors = ButtonDefaults.buttonColors(
-                                                containerColor = containerColor,
-                                                contentColor = contentColor,
-                                                disabledContainerColor = containerColor,
-                                                disabledContentColor = contentColor
-                                            ),
-                                            enabled = !isAnswered,
-                                            shape = RoundedCornerShape(12.dp)
+                                            color = Color.Transparent
                                         ) {
-                                            Text(
-                                                option, fontSize = 14.sp,
-                                                fontWeight = FontWeight.Medium,
-                                                textAlign = TextAlign.Center, lineHeight = 18.sp
-                                            )
+                                            Box(
+                                                modifier = Modifier
+                                                    .fillMaxSize()
+                                                    .background(Brush.verticalGradient(tileGradient)),
+                                                contentAlignment = Alignment.Center
+                                            ) {
+                                                Text(
+                                                    option, fontSize = 14.sp,
+                                                    fontWeight = FontWeight.Medium,
+                                                    textAlign = TextAlign.Center, lineHeight = 18.sp,
+                                                    color = contentColor,
+                                                    modifier = Modifier.padding(horizontal = 8.dp)
+                                                )
+                                            }
                                         }
                                     }
                                 }
@@ -647,8 +724,20 @@ private fun PracticeSummaryScreen(
                 color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 22.sp,
                 modifier = Modifier.padding(bottom = 24.dp)
             )
-            Button(onClick = onDone, modifier = Modifier.fillMaxWidth().height(60.dp)) {
-                Text("Done", fontSize = 18.sp)
+            Surface(
+                onClick = onDone,
+                shape = RoundedCornerShape(50),
+                color = Color.Transparent,
+                modifier = Modifier.fillMaxWidth().height(60.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Brush.verticalGradient(listOf(Color(0xFF388E3C), Color(0xFF66BB6A)))),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("Done", fontSize = 18.sp, color = Color.White, fontWeight = FontWeight.SemiBold)
+                }
             }
         }
         if (showConfetti) ConfettiEffect()

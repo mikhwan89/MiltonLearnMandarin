@@ -367,8 +367,8 @@ class ProgressRepository private constructor(
             .putInt(KEY_STREAK, newStreak)
             .apply()
 
-        if (newStreak >= 3) awardBadge(Badge.STREAK_STARTER.id)
-        if (newStreak >= 7) awardBadge(Badge.STREAK_CHAMPION.id)
+        if (newStreak >= 5)  awardBadge(Badge.STREAK_STARTER.id)
+        if (newStreak >= 15) awardBadge(Badge.STREAK_CHAMPION.id)
         if (newStreak >= 30) awardBadge(Badge.STREAK_LEGEND.id)
 
         return newStreak

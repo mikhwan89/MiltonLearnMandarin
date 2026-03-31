@@ -27,11 +27,11 @@ enum class Badge(
     // ── Login streak ─────────────────────────────────────────────────────────
     STREAK_STARTER(
         "streak_starter", "🔥", "Streak Starter",
-        "Open the app 3 days in a row"
+        "Open the app 5 days in a row"
     ),
     STREAK_CHAMPION(
         "streak_champion", "🌈", "Streak Champion",
-        "Open the app 7 days in a row"
+        "Open the app 15 days in a row"
     ),
     STREAK_LEGEND(
         "streak_legend", "💫", "Streak Legend",

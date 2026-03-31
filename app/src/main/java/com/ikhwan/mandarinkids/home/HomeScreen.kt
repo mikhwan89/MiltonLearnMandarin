@@ -9,10 +9,13 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.*
+import androidx.compose.ui.window.Dialog
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -103,58 +106,81 @@ fun HomeScreen(
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // ── Progress summary card ─────────────────────────────────────
+            // ── Progress summary — two gradient tiles ─────────────────────
             item {
+                val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+                val statTextColor  = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+                val streakGradient = if (isDark)
+                    listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
+                else
+                    listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+                val xpGradient = if (isDark)
+                    listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+                else
+                    listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+
                 Spacer(modifier = Modifier.height(4.dp))
-                Card(
+                Row(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(24.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer
-                    ),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    Row(
+                    val streakShape = RoundedCornerShape(20.dp)
+                    Box(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        horizontalArrangement = Arrangement.SpaceEvenly
+                            .weight(1f)
+                            .clip(streakShape)
+                            .background(Brush.verticalGradient(streakGradient))
+                            .padding(vertical = 16.dp),
+                        contentAlignment = Alignment.Center
                     ) {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = Modifier
-                                .weight(1f)
-                                .defaultMinSize(minHeight = 40.dp)
-                        ) {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Image(
-                                painter = painterResource(R.drawable.day_streak),
+                                painter = painterResource(streakIconRes(streak)),
                                 contentDescription = "Day streak",
-                                modifier = Modifier.size(56.dp)
+                                modifier = Modifier.size(52.dp),
+                                contentScale = ContentScale.Fit
                             )
-                            Text("$streak", fontSize = 22.sp, fontWeight = FontWeight.Bold)
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                "$streak",
+                                fontSize = 22.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = statTextColor
+                            )
                             Text(
                                 "day streak",
                                 fontSize = 11.sp,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                color = statTextColor.copy(alpha = 0.65f)
                             )
                         }
-                        Spacer(modifier = Modifier.width(16.dp))
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = Modifier
-                                .weight(1f)
-                                .defaultMinSize(minHeight = 40.dp)
-                        ) {
+                    }
+                    val xpShape = RoundedCornerShape(20.dp)
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .clip(xpShape)
+                            .background(Brush.verticalGradient(xpGradient))
+                            .padding(vertical = 16.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Image(
                                 painter = painterResource(xpIconRes(xp)),
                                 contentDescription = "XP",
-                                modifier = Modifier.size(56.dp)
+                                modifier = Modifier.size(52.dp),
+                                contentScale = ContentScale.Fit
                             )
-                            Text("$xp XP", fontSize = 22.sp, fontWeight = FontWeight.Bold)
+                            Spacer(modifier = Modifier.height(4.dp))
                             Text(
-                                ProgressManager.getLevel(xp),
+                                "$xp XP",
+                                fontSize = 22.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = statTextColor
+                            )
+                            Text(
+                                ProgressManager.getLevelLabel(xp),
                                 fontSize = 11.sp,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                color = statTextColor.copy(alpha = 0.65f)
                             )
                         }
                     }
@@ -163,7 +189,15 @@ fun HomeScreen(
 
             // ── Section header ────────────────────────────────────────────
             item {
-                SectionHeader(text = "📚 Choose a Category")
+                Text(
+                    text = "Choose a Category",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 4.dp)
+                )
             }
 
             // ── Category grid — 4 top row, 3 bottom row ───────────────────
@@ -215,81 +249,111 @@ private fun WordOfDayDialog(
     onDismiss: () -> Unit,
     onPlay: () -> Unit
 ) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = {
-            Text("📅 Word of the Day", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-        },
-        text = {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(
-                    word.chinese,
-                    fontSize = 64.sp,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center
-                )
-                Text(
-                    ToneUtils.coloredAnnotatedPinyin(word.pinyin),
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(bottom = 12.dp)
-                )
-                Text("🇬🇧  ${word.english}", fontSize = 16.sp, textAlign = TextAlign.Center)
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    "🇮🇩  ${word.indonesian}",
-                    fontSize = 14.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    textAlign = TextAlign.Center
-                )
-                if (word.note != null) {
-                    Spacer(modifier = Modifier.height(10.dp))
-                    Surface(
-                        color = MaterialTheme.colorScheme.tertiaryContainer,
-                        shape = RoundedCornerShape(16.dp),
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Text(
-                            "💡 ${word.note}",
-                            fontSize = 13.sp,
-                            color = MaterialTheme.colorScheme.onTertiaryContainer,
-                            textAlign = TextAlign.Center,
-                            lineHeight = 18.sp,
-                            modifier = Modifier.padding(10.dp)
-                        )
+    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+    val dialogGradient = if (isDark) listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+                         else        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+    Dialog(onDismissRequest = onDismiss) {
+        Surface(
+            shape = RoundedCornerShape(20.dp),
+            color = Color.Transparent
+        ) {
+            Box(modifier = Modifier.background(Brush.verticalGradient(dialogGradient))) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.fillMaxWidth().padding(24.dp)
+                ) {
+                    Text(
+                        "📅 Word of the Day",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = labelColor,
+                        modifier = Modifier.padding(bottom = 16.dp)
+                    )
+                    Text(
+                        word.chinese,
+                        fontSize = 64.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center,
+                        color = labelColor
+                    )
+                    Text(
+                        ToneUtils.coloredAnnotatedPinyin(word.pinyin),
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(bottom = 12.dp)
+                    )
+                    Text("🇬🇧  ${word.english}", fontSize = 16.sp,
+                        textAlign = TextAlign.Center, color = labelColor)
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        "🇮🇩  ${word.indonesian}",
+                        fontSize = 14.sp,
+                        color = labelColor.copy(alpha = 0.75f),
+                        textAlign = TextAlign.Center
+                    )
+                    if (word.note != null) {
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Surface(
+                            color = Color.Transparent,
+                            shape = RoundedCornerShape(16.dp),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Box(modifier = Modifier.background(Brush.verticalGradient(
+                                if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
+                                else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+                            ))) {
+                                Text(
+                                    "💡 ${word.note}",
+                                    fontSize = 13.sp,
+                                    color = labelColor,
+                                    textAlign = TextAlign.Center,
+                                    lineHeight = 18.sp,
+                                    modifier = Modifier.padding(10.dp)
+                                )
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        OutlinedButton(onClick = onPlay) {
+                            Icon(Icons.Default.PlayArrow, contentDescription = "Play word pronunciation")
+                            Spacer(modifier = Modifier.width(6.dp))
+                            Text("Play again")
+                        }
+                        TextButton(onClick = onDismiss) { Text("Close") }
                     }
                 }
-                Spacer(modifier = Modifier.height(12.dp))
-                OutlinedButton(onClick = onPlay) {
-                    Icon(Icons.Default.PlayArrow, contentDescription = "Play word pronunciation")
-                    Spacer(modifier = Modifier.width(6.dp))
-                    Text("Play again")
-                }
             }
-        },
-        confirmButton = {
-            TextButton(onClick = onDismiss) { Text("Close") }
         }
-    )
+    }
 }
 
 @Composable
 fun SectionHeader(text: String) {
+    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+    val gradient = if (isDark) listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+                   else        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+    val textColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
     Surface(
-        color = MaterialTheme.colorScheme.primaryContainer,
+        color = Color.Transparent,
         shape = RoundedCornerShape(16.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
-        )
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Brush.verticalGradient(gradient))
+        ) {
+            Text(
+                text = text,
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold,
+                color = textColor,
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+            )
+        }
     }
 }
 
@@ -301,12 +365,23 @@ fun xpIconRes(xp: Int): Int = when {
     else        -> R.drawable.xp1
 }
 
+fun streakIconRes(streak: Int): Int = when {
+    streak >= 30 -> R.drawable.streak_30day
+    streak >= 15 -> R.drawable.streak_15day
+    streak >= 10 -> R.drawable.streak_10day
+    streak >= 5  -> R.drawable.streak_5day
+    else         -> R.drawable.streak_1day
+}
+
 fun badgeIconRes(badge: Badge): Int? = when (badge) {
-    Badge.XP_SEEKER   -> R.drawable.xp2
-    Badge.XP_HUNTER   -> R.drawable.xp3
-    Badge.XP_LEGEND   -> R.drawable.xp4
-    Badge.XP_MYTHICAL -> R.drawable.xp5
-    else              -> null
+    Badge.XP_SEEKER        -> R.drawable.xp2
+    Badge.XP_HUNTER        -> R.drawable.xp3
+    Badge.XP_LEGEND        -> R.drawable.xp4
+    Badge.XP_MYTHICAL      -> R.drawable.xp5
+    Badge.STREAK_STARTER   -> R.drawable.streak_5day
+    Badge.STREAK_CHAMPION  -> R.drawable.streak_15day
+    Badge.STREAK_LEGEND    -> R.drawable.streak_30day
+    else                   -> null
 }
 
 fun categoryIconRes(category: ScenarioCategory): Int? = when (category) {
@@ -323,17 +398,33 @@ fun categoryIconRes(category: ScenarioCategory): Int? = when (category) {
 
 @Composable
 fun CategoryCard(category: ScenarioCategory, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    val gradientColors = when (category) {
-        ScenarioCategory.ESSENTIALS          -> listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
-        ScenarioCategory.AT_SCHOOL           -> listOf(Color(0xFFD4EDD0), Color(0xFFE6F4E4))
-        ScenarioCategory.SCHOOL_SUBJECTS     -> listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))
-        ScenarioCategory.FOOD_AND_EATING     -> listOf(Color(0xFFFFDDB5), Color(0xFFFFEDD4))
-        ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFFF5E0E0), Color(0xFFFAEEEE))
-        ScenarioCategory.PLAY_AND_HOBBIES    -> listOf(Color(0xFFD5EDD5), Color(0xFFE6F5E6))
-        ScenarioCategory.HOME                -> listOf(Color(0xFFB8E4F0), Color(0xFFD4EFF8))
-        ScenarioCategory.OUT_AND_ABOUT       -> listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
-        else                                 -> listOf(Color(0xFFF5F4ED), Color(0xFFF5F4ED))
+    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+    val gradientColors = if (isDark) {
+        when (category) {
+            ScenarioCategory.ESSENTIALS          -> listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+            ScenarioCategory.AT_SCHOOL           -> listOf(Color(0xFF1A4E30), Color(0xFF10382A))
+            ScenarioCategory.SCHOOL_SUBJECTS     -> listOf(Color(0xFF342670), Color(0xFF261B55))
+            ScenarioCategory.FOOD_AND_EATING     -> listOf(Color(0xFF7A4210), Color(0xFF5C3008))
+            ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFF7A1830), Color(0xFF5C1024))
+            ScenarioCategory.PLAY_AND_HOBBIES    -> listOf(Color(0xFF1A4E28), Color(0xFF103818))
+            ScenarioCategory.HOME                -> listOf(Color(0xFF1A4558), Color(0xFF0F3242))
+            ScenarioCategory.OUT_AND_ABOUT       -> listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
+            else                                 -> listOf(Color(0xFF2A2A2A), Color(0xFF222222))
+        }
+    } else {
+        when (category) {
+            ScenarioCategory.ESSENTIALS          -> listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+            ScenarioCategory.AT_SCHOOL           -> listOf(Color(0xFFD4EDD0), Color(0xFFE6F4E4))
+            ScenarioCategory.SCHOOL_SUBJECTS     -> listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))
+            ScenarioCategory.FOOD_AND_EATING     -> listOf(Color(0xFFFFDDB5), Color(0xFFFFEDD4))
+            ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFFF5E0E0), Color(0xFFFAEEEE))
+            ScenarioCategory.PLAY_AND_HOBBIES    -> listOf(Color(0xFFD5EDD5), Color(0xFFE6F5E6))
+            ScenarioCategory.HOME                -> listOf(Color(0xFFB8E4F0), Color(0xFFD4EFF8))
+            ScenarioCategory.OUT_AND_ABOUT       -> listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+            else                                 -> listOf(Color(0xFFF5F4ED), Color(0xFFF5F4ED))
+        }
     }
+    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
     val categoryIcon = categoryIconRes(category)
     val shape = RoundedCornerShape(20.dp)
     Card(
@@ -369,8 +460,7 @@ fun CategoryCard(category: ScenarioCategory, onClick: () -> Unit, modifier: Modi
                     fontSize = 11.sp,
                     fontWeight = FontWeight.SemiBold,
                     textAlign = TextAlign.Center,
-                    // Gradients are always light — use a fixed dark colour for both modes
-                    color = Color(0xFF2A2D27),
+                    color = labelColor,
                     lineHeight = 14.sp,
                     maxLines = 2
                 )
@@ -381,57 +471,68 @@ fun CategoryCard(category: ScenarioCategory, onClick: () -> Unit, modifier: Modi
 
 @Composable
 fun ScenarioCard(scenario: Scenario, stars: Int, onClick: () -> Unit) {
+    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+    val cardGradient = if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
+                       else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
     Card(
         onClick = onClick,
         modifier = Modifier
             .fillMaxWidth()
             .defaultMinSize(minHeight = 72.dp),
         shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFFFFFFF)),
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
-        Row(
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .background(Brush.verticalGradient(cardGradient))
         ) {
-            Text(
-                text = scenario.characterEmoji,
-                fontSize = 48.sp,
-                modifier = Modifier.padding(end = 16.dp)
-            )
-            Column(modifier = Modifier.weight(1f)) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Text(
-                    text = scenario.title,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.SemiBold
+                    text = scenario.characterEmoji,
+                    fontSize = 48.sp,
+                    modifier = Modifier.padding(end = 16.dp)
                 )
-                Text(
-                    text = scenario.description,
-                    fontSize = 13.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                if (stars > 0) {
-                    Row {
-                        repeat(3) { i ->
-                            Text(
-                                text = if (i < stars) "★" else "☆",
-                                fontSize = 20.sp,
-                                color = if (i < stars) Color(0xFFFFC107) else Color(0xFFBDBDBD)
-                            )
-                        }
-                    }
-                } else {
+                Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = "Not played yet",
-                        fontSize = 12.sp,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        text = scenario.title,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = labelColor
                     )
+                    Text(
+                        text = scenario.description,
+                        fontSize = 13.sp,
+                        color = labelColor.copy(alpha = 0.75f)
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    if (stars > 0) {
+                        Row {
+                            repeat(3) { i ->
+                                Text(
+                                    text = if (i < stars) "★" else "☆",
+                                    fontSize = 20.sp,
+                                    color = if (i < stars) Color(0xFFFFC107) else Color(0xFFBDBDBD)
+                                )
+                            }
+                        }
+                    } else {
+                        Text(
+                            text = "Not played yet",
+                            fontSize = 12.sp,
+                            color = labelColor.copy(alpha = 0.65f)
+                        )
+                    }
                 }
+                Text("▶", fontSize = 24.sp, color = MaterialTheme.colorScheme.primary)
             }
-            Text("▶", fontSize = 24.sp, color = MaterialTheme.colorScheme.primary)
         }
     }
 }

@@ -4,6 +4,7 @@ import androidx.compose.animation.*
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,8 +17,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -60,6 +63,7 @@ fun QuizScreen(
     }
 
     Scaffold(
+        contentWindowInsets = WindowInsets(0),
         topBar = {
             TopAppBar(
                 title = {
@@ -108,19 +112,22 @@ fun QuizScreen(
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     item {
+                        val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+                        val questionGradient = if (isDark) listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+                                               else        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+                        val questionLabelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
                         Card(
                             modifier = Modifier.fillMaxWidth(),
-                            colors = CardDefaults.cardColors(
-                                containerColor = MaterialTheme.colorScheme.primaryContainer
-                            )
+                            colors = CardDefaults.cardColors(containerColor = Color.Transparent)
                         ) {
+                            Box(modifier = Modifier.background(Brush.verticalGradient(questionGradient))) {
                             Column(
                                 modifier = Modifier.padding(20.dp)
                             ) {
                                 Text(
                                     text = "Question ${vm.currentQuestionIndex + 1}",
                                     fontSize = 14.sp,
-                                    color = MaterialTheme.colorScheme.secondary
+                                    color = questionLabelColor.copy(alpha = 0.7f)
                                 )
 
                                 Spacer(modifier = Modifier.height(8.dp))
@@ -132,19 +139,20 @@ fun QuizScreen(
                                         Text(
                                             text = question.questionChinese,
                                             fontSize = 28.sp,
-                                            style = MaterialTheme.typography.headlineMedium
+                                            style = MaterialTheme.typography.headlineMedium,
+                                            color = questionLabelColor
                                         )
                                         Spacer(modifier = Modifier.height(4.dp))
                                         Text(
                                             text = question.questionPinyin,
                                             fontSize = 18.sp,
-                                            color = MaterialTheme.colorScheme.secondary
+                                            color = questionLabelColor.copy(alpha = 0.75f)
                                         )
                                         Spacer(modifier = Modifier.height(8.dp))
                                         Text(
                                             text = question.questionText,
                                             fontSize = 16.sp,
-                                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                                            color = questionLabelColor.copy(alpha = 0.7f)
                                         )
                                     }
                                     QuizDirection.TRANSLATION_TO_CHINESE -> {
@@ -152,7 +160,8 @@ fun QuizScreen(
                                         Text(
                                             text = question.questionText,
                                             fontSize = 20.sp,
-                                            style = MaterialTheme.typography.titleLarge
+                                            style = MaterialTheme.typography.titleLarge,
+                                            color = questionLabelColor
                                         )
                                     }
                                     QuizDirection.AUDIO_TO_TRANSLATION -> {
@@ -161,6 +170,7 @@ fun QuizScreen(
                                             text = "🎧 Listen and choose!",
                                             fontSize = 18.sp,
                                             fontWeight = FontWeight.SemiBold,
+                                            color = questionLabelColor,
                                             modifier = Modifier.padding(bottom = 12.dp)
                                         )
                                         Button(
@@ -174,6 +184,7 @@ fun QuizScreen(
                                     }
                                 }
                             }
+                            } // Box
                         }
                     }
 
@@ -263,18 +274,17 @@ fun QuizOptionButton(
     tts: TtsManager,
     direction: QuizDirection  // NEW: Pass direction
 ) {
-    val backgroundColor = when {
-        !showFeedback -> MaterialTheme.colorScheme.surface
-        isSelected && isCorrect -> Color(0xFF4CAF50)
-        isSelected && !isCorrect -> Color(0xFFF44336)
-        !isSelected && isCorrect -> Color(0xFF4CAF50)
-        else -> MaterialTheme.colorScheme.surface
+    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+    val idleGradient = if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
+                       else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+    val gradientColors = when {
+        showFeedback && isSelected && isCorrect  -> listOf(Color(0xFF388E3C), Color(0xFF66BB6A))
+        showFeedback && isSelected && !isCorrect -> listOf(Color(0xFFC62828), Color(0xFFEF5350))
+        showFeedback && !isSelected && isCorrect -> listOf(Color(0xFF388E3C), Color(0xFF66BB6A))
+        else -> idleGradient
     }
-
-    val contentColor = when {
-        showFeedback && (isCorrect || isSelected) -> Color.White
-        else -> MaterialTheme.colorScheme.onSurface
-    }
+    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+    val contentColor = if (showFeedback && (isCorrect || isSelected)) Color.White else labelColor
 
     val isCorrectAndSelected = showFeedback && isSelected && isCorrect
     val popScale by animateFloatAsState(
@@ -288,13 +298,10 @@ fun QuizOptionButton(
             .fillMaxWidth()
             .graphicsLayer { scaleX = popScale; scaleY = popScale },
         onClick = onClick,
-        colors = CardDefaults.cardColors(
-            containerColor = backgroundColor,
-            disabledContainerColor = backgroundColor,
-            disabledContentColor = contentColor
-        ),
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
         enabled = !showFeedback
     ) {
+        Box(modifier = Modifier.background(Brush.verticalGradient(gradientColors))) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -340,10 +347,7 @@ fun QuizOptionButton(
                         Text(
                             text = option.pinyin,
                             fontSize = 14.sp,
-                            color = if (showFeedback && (isCorrect || isSelected))
-                                Color.White.copy(alpha = 0.8f)
-                            else
-                                MaterialTheme.colorScheme.secondary
+                            color = contentColor.copy(alpha = 0.8f)
                         )
                     }
                     QuizDirection.CHINESE_TO_TRANSLATION,
@@ -396,6 +400,7 @@ fun QuizOptionButton(
                 }
             }
         }
+        } // Box
     }
 }
 

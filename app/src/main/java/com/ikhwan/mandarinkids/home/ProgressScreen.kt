@@ -1,6 +1,7 @@
 package com.ikhwan.mandarinkids.home
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -8,8 +9,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.DarkMode
-import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.LockOpen
 import androidx.compose.material3.*
@@ -17,7 +16,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.platform.LocalContext
@@ -60,7 +61,8 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
     val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
     val scenarios = remember { JsonScenarioRepository.getAll() }
     val scope = rememberCoroutineScope()
-    val isDarkMode by userPrefs.darkMode.collectAsState(initial = false)
+    val isDarkMode = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+    val labelColor = if (isDarkMode) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
 
     val xp by repo.getTotalXp().collectAsState(initial = 0)
     val streak = remember { repo.getStreak() }
@@ -142,12 +144,6 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
                     }
                 },
                 actions = {
-                    IconButton(onClick = { scope.launch { userPrefs.saveDarkMode(!isDarkMode) } }) {
-                        Icon(
-                            if (isDarkMode) Icons.Default.LightMode else Icons.Default.DarkMode,
-                            contentDescription = if (isDarkMode) "Switch to light mode" else "Switch to dark mode"
-                        )
-                    }
                     IconButton(onClick = onParentClick) {
                         Icon(Icons.Default.Lock, contentDescription = "Parental Control")
                     }
@@ -167,64 +163,73 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
 
             // ── XP + Streak + Words card ──────────────────────────────────
             item {
+                val statsGradient = if (isDarkMode)
+                    listOf(Color(0xFF1A4E30), Color(0xFF10382A))
+                else
+                    listOf(Color(0xFFD4EDD0), Color(0xFFE8F5E2))
                 Card(
                     modifier = Modifier.fillMaxWidth(),
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer
-                    )
+                    colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
                 ) {
-                    Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceEvenly
-                        ) {
-                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Image(
-                                    painter = painterResource(R.drawable.day_streak),
-                                    contentDescription = "Day streak",
-                                    modifier = Modifier.size(64.dp)
-                                )
-                                Text("$streak", fontSize = 26.sp, fontWeight = FontWeight.Bold)
-                                Text("day streak", fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                            }
-                            HorizontalDivider(modifier = Modifier.height(72.dp).width(1.dp))
-                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Image(
-                                    painter = painterResource(xpIconRes(xp)),
-                                    contentDescription = "XP",
-                                    modifier = Modifier.size(64.dp)
-                                )
-                                Text("$xp XP", fontSize = 26.sp, fontWeight = FontWeight.Bold)
-                                Text(ProgressManager.getLevel(xp), fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                            }
-                            HorizontalDivider(modifier = Modifier.height(72.dp).width(1.dp))
-                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Image(
-                                    painter = painterResource(R.drawable.words),
-                                    contentDescription = "Words encountered",
-                                    modifier = Modifier.size(64.dp)
-                                )
-                                Text("$masteredCount", fontSize = 26.sp, fontWeight = FontWeight.Bold)
-                                Text("words", fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                            }
-                        }
-
-                        if (masteredCountDefault + masteredCountListening + masteredCountReading > 0) {
-                            HorizontalDivider(modifier = Modifier.padding(vertical = 10.dp))
-                            Text(
-                                "★7+ mastered words",
-                                fontSize = 11.sp,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                modifier = Modifier.align(Alignment.CenterHorizontally)
-                                    .padding(bottom = 6.dp)
-                            )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Brush.verticalGradient(statsGradient))
+                    ) {
+                        Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceEvenly
                             ) {
-                                MasteryTypeChip(emoji = "🔊字", label = "Default", count = masteredCountDefault)
-                                MasteryTypeChip(emoji = "🔊", label = "Listening", count = masteredCountListening)
-                                MasteryTypeChip(emoji = "字", label = "Reading", count = masteredCountReading)
+                                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                    Image(
+                                        painter = painterResource(streakIconRes(streak)),
+                                        contentDescription = "Day streak",
+                                        modifier = Modifier.size(64.dp)
+                                    )
+                                    Text("$streak", fontSize = 26.sp, fontWeight = FontWeight.Bold, color = labelColor)
+                                    Text("day streak", fontSize = 11.sp, color = labelColor.copy(alpha = 0.7f))
+                                }
+                                HorizontalDivider(modifier = Modifier.height(72.dp).width(1.dp))
+                                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                    Image(
+                                        painter = painterResource(xpIconRes(xp)),
+                                        contentDescription = "XP",
+                                        modifier = Modifier.size(64.dp)
+                                    )
+                                    Text("$xp XP", fontSize = 26.sp, fontWeight = FontWeight.Bold, color = labelColor)
+                                    Text(ProgressManager.getLevelLabel(xp), fontSize = 11.sp, color = labelColor.copy(alpha = 0.7f))
+                                }
+                                HorizontalDivider(modifier = Modifier.height(72.dp).width(1.dp))
+                                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                    Image(
+                                        painter = painterResource(R.drawable.words),
+                                        contentDescription = "Words encountered",
+                                        modifier = Modifier.size(64.dp)
+                                    )
+                                    Text("$masteredCount", fontSize = 26.sp, fontWeight = FontWeight.Bold, color = labelColor)
+                                    Text("words", fontSize = 11.sp, color = labelColor.copy(alpha = 0.7f))
+                                }
+                            }
+
+                            if (masteredCountDefault + masteredCountListening + masteredCountReading > 0) {
+                                HorizontalDivider(modifier = Modifier.padding(vertical = 10.dp))
+                                Text(
+                                    "★7+ mastered words",
+                                    fontSize = 11.sp,
+                                    color = labelColor.copy(alpha = 0.7f),
+                                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                                        .padding(bottom = 6.dp)
+                                )
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceEvenly
+                                ) {
+                                    MasteryTypeChip(emoji = "🔊字", label = "Default", count = masteredCountDefault, labelColor = labelColor)
+                                    MasteryTypeChip(emoji = "🔊", label = "Listening", count = masteredCountListening, labelColor = labelColor)
+                                    MasteryTypeChip(emoji = "字", label = "Reading", count = masteredCountReading, labelColor = labelColor)
+                                }
                             }
                         }
                     }
@@ -253,6 +258,7 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
                         BadgeCard(
                             badge = badge,
                             earned = badge.id in earnedBadgeIds,
+                            isDark = isDarkMode,
                             modifier = Modifier.weight(1f)
                         )
                     }
@@ -350,46 +356,53 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
                 val completedInCat = categoryScenarios.count { (progressMap[it.id]?.stars ?: 0) == 3 }
 
                 item(key = "cat_${category.name}") {
+                    val catGradient = categoryProgressGradient(category, isDarkMode)
                     Surface(
                         onClick = { expandedCategories[category.name] = !isExpanded },
-                        color = MaterialTheme.colorScheme.secondaryContainer,
+                        color = Color.Transparent,
                         shape = RoundedCornerShape(12.dp),
                         modifier = Modifier.fillMaxWidth().padding(top = 4.dp)
                     ) {
-                        Row(
-                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
-                            verticalAlignment = Alignment.CenterVertically
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .background(Brush.verticalGradient(catGradient))
                         ) {
-                            val iconRes = categoryIconRes(category)
-                            if (iconRes != null) {
-                                Image(
-                                    painter = painterResource(iconRes),
-                                    contentDescription = category.displayName,
-                                    modifier = Modifier.size(22.dp)
+                            Row(
+                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                val iconRes = categoryIconRes(category)
+                                if (iconRes != null) {
+                                    Image(
+                                        painter = painterResource(iconRes),
+                                        contentDescription = category.displayName,
+                                        modifier = Modifier.size(22.dp)
+                                    )
+                                } else {
+                                    Text(category.emoji, fontSize = 16.sp)
+                                }
+                                Spacer(Modifier.width(8.dp))
+                                Text(
+                                    category.displayName,
+                                    fontSize = 13.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    color = labelColor,
+                                    modifier = Modifier.weight(1f)
                                 )
-                            } else {
-                                Text(category.emoji, fontSize = 16.sp)
+                                Text(
+                                    "$completedInCat / ${categoryScenarios.size}",
+                                    fontSize = 12.sp,
+                                    color = labelColor.copy(alpha = 0.75f)
+                                )
+                                Spacer(Modifier.width(4.dp))
+                                Icon(
+                                    imageVector = if (isExpanded) Icons.Default.ExpandLess else Icons.Default.ExpandMore,
+                                    contentDescription = if (isExpanded) "Collapse" else "Expand",
+                                    modifier = Modifier.size(18.dp),
+                                    tint = labelColor
+                                )
                             }
-                            Spacer(Modifier.width(8.dp))
-                            Text(
-                                category.displayName,
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                color = MaterialTheme.colorScheme.onSecondaryContainer,
-                                modifier = Modifier.weight(1f)
-                            )
-                            Text(
-                                "$completedInCat / ${categoryScenarios.size}",
-                                fontSize = 12.sp,
-                                color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.75f)
-                            )
-                            Spacer(Modifier.width(4.dp))
-                            Icon(
-                                imageVector = if (isExpanded) Icons.Default.ExpandLess else Icons.Default.ExpandMore,
-                                contentDescription = if (isExpanded) "Collapse" else "Expand",
-                                modifier = Modifier.size(18.dp),
-                                tint = MaterialTheme.colorScheme.onSecondaryContainer
-                            )
                         }
                     }
                 }
@@ -401,6 +414,7 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
                             emoji = scenario.characterEmoji,
                             title = scenario.title,
                             stars = stars,
+                            isDark = isDarkMode,
                             onClick = { navController.navigate(Routes.roleplay(scenario.id)) }
                         )
                     }
@@ -423,63 +437,102 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
     }
 }
 
+private fun categoryProgressGradient(category: ScenarioCategory, isDark: Boolean): List<Color> =
+    if (isDark) when (category) {
+        ScenarioCategory.ESSENTIALS          -> listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+        ScenarioCategory.AT_SCHOOL           -> listOf(Color(0xFF1A4E30), Color(0xFF10382A))
+        ScenarioCategory.SCHOOL_SUBJECTS     -> listOf(Color(0xFF342670), Color(0xFF261B55))
+        ScenarioCategory.FOOD_AND_EATING     -> listOf(Color(0xFF7A4210), Color(0xFF5C3008))
+        ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFF7A1830), Color(0xFF5C1024))
+        ScenarioCategory.PLAY_AND_HOBBIES   -> listOf(Color(0xFF1A4E28), Color(0xFF103818))
+        ScenarioCategory.HOME                -> listOf(Color(0xFF1A4558), Color(0xFF0F3242))
+        ScenarioCategory.OUT_AND_ABOUT       -> listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
+        else                                 -> listOf(Color(0xFF2A2A2A), Color(0xFF222222))
+    } else when (category) {
+        ScenarioCategory.ESSENTIALS          -> listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+        ScenarioCategory.AT_SCHOOL           -> listOf(Color(0xFFD4EDD0), Color(0xFFE6F4E4))
+        ScenarioCategory.SCHOOL_SUBJECTS     -> listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))
+        ScenarioCategory.FOOD_AND_EATING     -> listOf(Color(0xFFFFDDB5), Color(0xFFFFEDD4))
+        ScenarioCategory.FEELINGS_AND_HEALTH -> listOf(Color(0xFFF5E0E0), Color(0xFFFAEEEE))
+        ScenarioCategory.PLAY_AND_HOBBIES   -> listOf(Color(0xFFD5EDD5), Color(0xFFE6F5E6))
+        ScenarioCategory.HOME                -> listOf(Color(0xFFB8E4F0), Color(0xFFD4EFF8))
+        ScenarioCategory.OUT_AND_ABOUT       -> listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+        else                                 -> listOf(Color(0xFFF5F4ED), Color(0xFFF5F4ED))
+    }
+
 @Composable
-private fun MasteryTypeChip(emoji: String, label: String, count: Int) {
+private fun MasteryTypeChip(emoji: String, label: String, count: Int, labelColor: Color) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(emoji, fontSize = 16.sp)
-        Text("$count", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-        Text(label, fontSize = 10.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Text("$count", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = labelColor)
+        Text(label, fontSize = 10.sp, color = labelColor.copy(alpha = 0.7f))
     }
 }
 
 @Composable
-private fun BadgeCard(badge: Badge, earned: Boolean, modifier: Modifier = Modifier) {
+private fun BadgeCard(badge: Badge, earned: Boolean, isDark: Boolean, modifier: Modifier = Modifier) {
     var showInfo by remember { mutableStateOf(false) }
+
+    val badgeGradient = if (earned) {
+        if (isDark) listOf(Color(0xFF1A4E30), Color(0xFF10382A))
+        else        listOf(Color(0xFFD4EDD0), Color(0xFFE8F5E2))
+    } else {
+        if (isDark) listOf(Color(0xFF3A3A3A), Color(0xFF2A2A2A))
+        else        listOf(Color(0xFFEEEEEE), Color(0xFFF5F5F5))
+    }
+    val badgeLabelColor = if (earned) {
+        if (isDark) Color(0xFFB8DFB8) else Color(0xFF1A3D1A)
+    } else {
+        if (isDark) Color(0xFF757575) else Color(0xFF9E9E9E)
+    }
 
     Card(
         onClick = { showInfo = true },
         modifier = modifier,
-        colors = CardDefaults.cardColors(
-            containerColor = if (earned) Color(0xFFD5EDD5)
-                             else MaterialTheme.colorScheme.surfaceVariant
-        ),
-        shape = RoundedCornerShape(16.dp)
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+        shape = RoundedCornerShape(16.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
-        Column(
-            modifier = Modifier.fillMaxWidth().padding(vertical = 10.dp, horizontal = 6.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Brush.verticalGradient(badgeGradient))
         ) {
-            val badgeRes = badgeIconRes(badge)
-            Box(
-                modifier = Modifier.size(48.dp),
-                contentAlignment = Alignment.Center
+            Column(
+                modifier = Modifier.fillMaxWidth().padding(vertical = 10.dp, horizontal = 6.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                if (badgeRes != null) {
-                    Image(
-                        painter = painterResource(badgeRes),
-                        contentDescription = badge.label,
-                        modifier = (if (earned) Modifier else Modifier.alpha(0.25f)).size(48.dp)
-                    )
-                } else {
-                    Text(
-                        badge.emoji, fontSize = 26.sp,
-                        modifier = if (earned) Modifier else Modifier.alpha(0.25f)
-                    )
+                val badgeRes = badgeIconRes(badge)
+                Box(
+                    modifier = Modifier.size(48.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    if (badgeRes != null) {
+                        Image(
+                            painter = painterResource(badgeRes),
+                            contentDescription = badge.label,
+                            modifier = (if (earned) Modifier else Modifier.alpha(0.25f)).size(48.dp)
+                        )
+                    } else {
+                        Text(
+                            badge.emoji, fontSize = 26.sp,
+                            modifier = if (earned) Modifier else Modifier.alpha(0.25f)
+                        )
+                    }
                 }
+                Spacer(Modifier.height(3.dp))
+                Text(
+                    badge.label,
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Medium,
+                    textAlign = TextAlign.Center,
+                    maxLines = 2,
+                    color = badgeLabelColor
+                )
+                Spacer(Modifier.height(2.dp))
+                // Always rendered to keep card height uniform; visible only when locked
+                Text("🔒", fontSize = 11.sp, modifier = Modifier.alpha(if (earned) 0f else 1f))
             }
-            Spacer(Modifier.height(3.dp))
-            Text(
-                badge.label,
-                fontSize = 10.sp,
-                fontWeight = FontWeight.Medium,
-                textAlign = TextAlign.Center,
-                maxLines = 2,
-                color = if (earned) Color(0xFF1A3D1A)
-                        else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
-            )
-            Spacer(Modifier.height(2.dp))
-            // Always rendered to keep card height uniform; visible only when locked
-            Text("🔒", fontSize = 11.sp, modifier = Modifier.alpha(if (earned) 0f else 1f))
         }
     }
 
@@ -804,35 +857,48 @@ private fun ConditionRow(
 }
 
 @Composable
-private fun ScenarioStarRow(emoji: String, title: String, stars: Int, onClick: () -> Unit) {
+private fun ScenarioStarRow(emoji: String, title: String, stars: Int, isDark: Boolean, onClick: () -> Unit) {
+    val rowGradient = if (stars > 0) {
+        if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
+        else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+    } else {
+        if (isDark) listOf(Color(0xFF3A3A3A), Color(0xFF2A2A2A))
+        else        listOf(Color(0xFFEEEEEE), Color(0xFFF5F5F5))
+    }
+    val rowLabelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+
     Card(
         onClick = onClick,
         modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
-            containerColor = if (stars > 0) MaterialTheme.colorScheme.surface
-            else MaterialTheme.colorScheme.surfaceVariant
-        )
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 10.dp),
-            verticalAlignment = Alignment.CenterVertically
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Brush.verticalGradient(rowGradient))
         ) {
-            Text(emoji, fontSize = 26.sp, modifier = Modifier.padding(end = 12.dp))
-            Text(title, fontSize = 14.sp, modifier = Modifier.weight(1f))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                repeat(3) { i ->
-                    Text(
-                        text = if (i < stars) "★" else "☆",
-                        fontSize = 18.sp,
-                        color = if (i < stars) Color(0xFFFFC107) else Color(0xFFBDBDBD)
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 10.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(emoji, fontSize = 26.sp, modifier = Modifier.padding(end = 12.dp))
+                Text(title, fontSize = 14.sp, modifier = Modifier.weight(1f), color = rowLabelColor)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    repeat(3) { i ->
+                        Text(
+                            text = if (i < stars) "★" else "☆",
+                            fontSize = 18.sp,
+                            color = if (i < stars) Color(0xFFFFC107) else Color(0xFFBDBDBD)
+                        )
+                    }
+                    Icon(
+                        Icons.Default.ChevronRight,
+                        contentDescription = "Play scenario",
+                        modifier = Modifier.size(18.dp).padding(start = 4.dp),
+                        tint = rowLabelColor.copy(alpha = 0.6f)
                     )
                 }
-                Icon(
-                    Icons.Default.ChevronRight,
-                    contentDescription = "Play scenario",
-                    modifier = Modifier.size(18.dp).padding(start = 4.dp),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
-                )
             }
         }
     }

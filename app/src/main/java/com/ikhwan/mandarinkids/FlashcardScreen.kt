@@ -6,6 +6,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -18,7 +19,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -92,6 +95,7 @@ fun FlashcardScreen(
     )
 
     Scaffold(
+        contentWindowInsets = WindowInsets(0),
         topBar = {
             TopAppBar(
                 title = {
@@ -153,6 +157,12 @@ fun FlashcardScreen(
                 )
 
                 // Flip card
+                val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+                val frontGradient = if (isDark) listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+                                    else        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+                val backGradient  = if (isDark) listOf(Color(0xFF1A4E30), Color(0xFF10382A))
+                                    else        listOf(Color(0xFFD4EDD0), Color(0xFFE8F5E2))
+                val cardLabelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -166,15 +176,12 @@ fun FlashcardScreen(
                         },
                     shape = RoundedCornerShape(24.dp),
                     elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = if (rotation <= 90f)
-                            MaterialTheme.colorScheme.primaryContainer
-                        else
-                            MaterialTheme.colorScheme.secondaryContainer
-                    )
+                    colors = CardDefaults.cardColors(containerColor = Color.Transparent)
                 ) {
                     Box(
-                        modifier = Modifier.fillMaxSize(),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Brush.verticalGradient(if (rotation <= 90f) frontGradient else backGradient)),
                         contentAlignment = Alignment.Center
                     ) {
                         if (rotation <= 90f) {
@@ -294,20 +301,25 @@ fun FlashcardScreen(
                 ) {
                     word.note?.let { note ->
                         Surface(
-                            color = MaterialTheme.colorScheme.tertiaryContainer,
+                            color = Color.Transparent,
                             shape = RoundedCornerShape(16.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(top = 12.dp)
                         ) {
-                            Text(
-                                text = "💡 $note",
-                                fontSize = 14.sp,
-                                color = MaterialTheme.colorScheme.onTertiaryContainer,
-                                textAlign = TextAlign.Center,
-                                lineHeight = 20.sp,
-                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
-                            )
+                            Box(modifier = Modifier.background(Brush.verticalGradient(
+                                if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
+                                else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+                            ))) {
+                                Text(
+                                    text = "💡 $note",
+                                    fontSize = 14.sp,
+                                    color = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27),
+                                    textAlign = TextAlign.Center,
+                                    lineHeight = 20.sp,
+                                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+                                )
+                            }
                         }
                     }
                 }
@@ -320,32 +332,36 @@ fun FlashcardScreen(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
-                        OutlinedButton(
-                            onClick = {
-                                vm.markStillLearning()
-                            },
-                            modifier = Modifier
-                                .weight(1f)
-                                .height(60.dp),
-                            colors = ButtonDefaults.outlinedButtonColors(
-                                contentColor = Color(0xFFF44336)
-                            )
+                        Surface(
+                            onClick = { vm.markStillLearning() },
+                            shape = RoundedCornerShape(16.dp),
+                            color = Color.Transparent,
+                            modifier = Modifier.weight(1f).height(60.dp)
                         ) {
-                            Text("✗  Still learning", fontSize = 15.sp)
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(Brush.verticalGradient(listOf(Color(0xFFC62828), Color(0xFFEF5350)))),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text("✗  Still learning", fontSize = 15.sp, color = Color.White)
+                            }
                         }
 
-                        Button(
-                            onClick = {
-                                vm.markMastered()
-                            },
-                            modifier = Modifier
-                                .weight(1f)
-                                .height(60.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = Color(0xFF4CAF50)
-                            )
+                        Surface(
+                            onClick = { vm.markMastered() },
+                            shape = RoundedCornerShape(16.dp),
+                            color = Color.Transparent,
+                            modifier = Modifier.weight(1f).height(60.dp)
                         ) {
-                            Text("✓  Got it!", fontSize = 15.sp)
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(Brush.verticalGradient(listOf(Color(0xFF388E3C), Color(0xFF66BB6A)))),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text("✓  Got it!", fontSize = 15.sp, color = Color.White)
+                            }
                         }
                     }
                 }
@@ -385,7 +401,7 @@ fun FlashcardCompleteScreen(
         Text("🎉", fontSize = 80.sp)
         Spacer(modifier = Modifier.height(16.dp))
         Text(
-            "All Words Mastered!",
+            "All Words Reviewed!",
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center
@@ -399,20 +415,29 @@ fun FlashcardCompleteScreen(
         )
         Spacer(modifier = Modifier.height(12.dp))
         Text(
-            "You remembered all $totalWords words!\nNow let's use them in a real conversation.",
+            "You reviewed all $totalWords words!\nNow let's use them in a real conversation.",
             fontSize = 16.sp,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             lineHeight = 24.sp
         )
         Spacer(modifier = Modifier.height(40.dp))
-        Button(
+        val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+        Surface(
             onClick = onStartConversation,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(64.dp)
+            shape = RoundedCornerShape(50),
+            color = Color.Transparent,
+            modifier = Modifier.fillMaxWidth().height(64.dp)
         ) {
-            Text("Start Conversation! 开始对话 ▶", fontSize = 18.sp)
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Brush.verticalGradient(listOf(Color(0xFF388E3C), Color(0xFF66BB6A)))),
+                contentAlignment = Alignment.Center
+            ) {
+                Text("Start Conversation", fontSize = 18.sp,
+                    color = Color.White, fontWeight = FontWeight.SemiBold)
+            }
         }
     }
 }

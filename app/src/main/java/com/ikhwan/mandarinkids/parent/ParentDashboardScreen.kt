@@ -1,6 +1,7 @@
 package com.ikhwan.mandarinkids.parent
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -12,11 +13,15 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import com.ikhwan.mandarinkids.ProgressManager
 import com.ikhwan.mandarinkids.R
 import com.ikhwan.mandarinkids.home.categoryIconRes
+import com.ikhwan.mandarinkids.home.streakIconRes
 import com.ikhwan.mandarinkids.home.xpIconRes
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -76,6 +81,8 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
         }
     }
     val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
+    val isDarkMode = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+    val labelColor = if (isDarkMode) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
     val showIndonesian by userPrefs.showIndonesian.collectAsState(initial = true)
     val disabledTabs by userPrefs.disabledTabs.collectAsState(initial = emptySet())
     val disabledCategories by userPrefs.disabledCategories.collectAsState(initial = emptySet())
@@ -123,22 +130,31 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
                         fontWeight = FontWeight.Bold
                     )
                 }
+                val summaryGradient = if (isDarkMode)
+                    listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+                else
+                    listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
                 Card(
                     modifier = Modifier.fillMaxWidth(),
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer
-                    )
+                    colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
                 ) {
-                    Row(
+                    Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(16.dp),
-                        horizontalArrangement = Arrangement.SpaceEvenly
+                            .background(Brush.verticalGradient(summaryGradient))
                     ) {
-                        StatColumn("", "$streak", "Streak", drawableRes = R.drawable.day_streak)
-                        StatColumn("", "$xp XP", "Total XP", drawableRes = xpIconRes(xp))
-                        StatColumn("", "$masteredCount", "Words", drawableRes = R.drawable.words)
-                        StatColumn("🌟", "$perfectCount/${scenarios.size}", "3-star")
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
+                            horizontalArrangement = Arrangement.SpaceEvenly
+                        ) {
+                            StatColumn("", "$streak", "Streak", labelColor = labelColor, drawableRes = streakIconRes(streak))
+                            StatColumn("", "$xp XP", ProgressManager.getLevelLabel(xp), labelColor = labelColor, drawableRes = xpIconRes(xp))
+                            StatColumn("", "$masteredCount", "Words", labelColor = labelColor, drawableRes = R.drawable.words)
+                            StatColumn("", "$perfectCount/${scenarios.size}", "3-star", labelColor = labelColor, drawableRes = R.drawable.three_star)
+                        }
                     }
                 }
             }
@@ -181,7 +197,20 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
             item {
                 Spacer(modifier = Modifier.height(4.dp))
                 SectionHeader("⚙️ Content Settings")
-                Card(modifier = Modifier.fillMaxWidth()) {
+                val settingsGradient = if (isDarkMode)
+                    listOf(Color(0xFF342670), Color(0xFF261B55))
+                else
+                    listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Brush.verticalGradient(settingsGradient))
+                    ) {
                     Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
 
                         // ── Translation ───────────────────────────────────────
@@ -331,6 +360,7 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
                             Text("🗑️ Reset All Progress")
                         }
                     }
+                    } // Box
                 }
             }
 
@@ -656,7 +686,7 @@ private fun SectionHeader(text: String, modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun StatColumn(emoji: String, value: String, label: String, drawableRes: Int? = null) {
+private fun StatColumn(emoji: String, value: String, label: String, labelColor: Color = Color.Unspecified, drawableRes: Int? = null) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         if (drawableRes != null) {
             Image(
@@ -667,7 +697,7 @@ private fun StatColumn(emoji: String, value: String, label: String, drawableRes:
         } else {
             Text(emoji, fontSize = 24.sp)
         }
-        Text(value, fontSize = 18.sp, fontWeight = FontWeight.Bold)
-        Text(label, fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Text(value, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = labelColor)
+        Text(label, fontSize = 11.sp, color = labelColor.copy(alpha = if (labelColor == Color.Unspecified) 1f else 0.7f))
     }
 }

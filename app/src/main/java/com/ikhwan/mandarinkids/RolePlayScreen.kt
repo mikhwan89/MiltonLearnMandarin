@@ -1,11 +1,11 @@
 package com.ikhwan.mandarinkids
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -20,6 +20,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -113,6 +116,7 @@ fun RolePlayScreen(
     }
 
     Scaffold(
+        contentWindowInsets = WindowInsets(0),
         topBar = {
             TopAppBar(
                 title = {
@@ -310,26 +314,32 @@ fun NameInputSection(
             modifier = Modifier.padding(bottom = 8.dp)
         )
 
+        val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+        val inputGradient = if (isDark) listOf(Color(0xFF342670), Color(0xFF261B55))
+                            else        listOf(Color(0xFFE8E4F5), Color(0xFFF2EFF9))
+        val inputLabelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
+
         Surface(
-            color = MaterialTheme.colorScheme.surfaceVariant,
+            color = Color.Transparent,
             shape = RoundedCornerShape(16.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
+            Box(modifier = Modifier.background(Brush.verticalGradient(inputGradient))) {
             Row(
                 modifier = Modifier.padding(12.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(text = option.chinese, fontSize = 18.sp)
+                    Text(text = option.chinese, fontSize = 18.sp, color = inputLabelColor)
                     Text(
                         text = option.pinyin,
                         fontSize = 14.sp,
-                        color = MaterialTheme.colorScheme.secondary
+                        color = inputLabelColor.copy(alpha = 0.75f)
                     )
                     Text(
                         text = "🇬🇧 ${option.english}",
                         fontSize = 12.sp,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = inputLabelColor.copy(alpha = 0.7f)
                     )
                 }
 
@@ -341,7 +351,8 @@ fun NameInputSection(
                     Icon(Icons.Default.PlayArrow, "Play")
                 }
             }
-        }
+            } // Box
+        } // Surface
 
         Spacer(modifier = Modifier.height(12.dp))
 
@@ -356,16 +367,25 @@ fun NameInputSection(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        Button(
-            onClick = {
-                if (name.isNotBlank()) {
-                    onNameEntered(name.trim())
-                }
-            },
-            modifier = Modifier.fillMaxWidth(),
-            enabled = name.isNotBlank()
+        val sayItEnabled = name.isNotBlank()
+        Surface(
+            onClick = { if (sayItEnabled) onNameEntered(name.trim()) },
+            shape = RoundedCornerShape(50),
+            color = Color.Transparent,
+            modifier = Modifier.fillMaxWidth().height(52.dp)
         ) {
-            Text("Say it! 说吧！", fontSize = 16.sp)
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Brush.verticalGradient(
+                        if (sayItEnabled) listOf(Color(0xFF388E3C), Color(0xFF66BB6A))
+                        else              listOf(Color(0xFF9E9E9E), Color(0xFFBDBDBD))
+                    )),
+                contentAlignment = Alignment.Center
+            ) {
+                Text("Say it! 说吧！", fontSize = 16.sp, color = Color.White,
+                    fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold)
+            }
         }
     }
 }
@@ -380,11 +400,12 @@ fun ResponseOptionButton(
     showIndonesian: Boolean = true
 ) {
     var isPressed by remember { mutableStateOf(false) }
-    val containerColor by animateColorAsState(
-        targetValue = if (isPressed) MaterialTheme.colorScheme.primaryContainer
-                      else MaterialTheme.colorScheme.surface,
-        label = "buttonColor"
-    )
+    val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
+    val idleGradient = if (isDark) listOf(Color(0xFF6B5208), Color(0xFF4E3C06))
+                       else        listOf(Color(0xFFFFF0B3), Color(0xFFFFF8D9))
+    val pressedGradient = if (isDark) listOf(Color(0xFF1A3D6E), Color(0xFF0F2A50))
+                          else        listOf(Color(0xFFD0E8F8), Color(0xFFE4F2FB))
+    val labelColor = if (isDark) Color(0xFFE8E4D9) else Color(0xFF2A2D27)
 
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -392,72 +413,71 @@ fun ResponseOptionButton(
             isPressed = true
             onClick()
         },
-        colors = CardDefaults.cardColors(containerColor = containerColor)
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent)
     ) {
-        Row(
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(min = 80.dp)
-                .padding(12.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .background(Brush.verticalGradient(if (isPressed) pressedGradient else idleGradient))
         ) {
-            Surface(
-                color = MaterialTheme.colorScheme.primary,
-                shape = RoundedCornerShape(50),
-                modifier = Modifier.size(40.dp)
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(min = 80.dp)
+                    .padding(12.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier.fillMaxSize()
+                Surface(
+                    color = MaterialTheme.colorScheme.primary,
+                    shape = RoundedCornerShape(50),
+                    modifier = Modifier.size(40.dp)
                 ) {
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        Text(
+                            text = (index + 1).toString(),
+                            fontSize = 16.sp,
+                            color = MaterialTheme.colorScheme.onPrimary
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.width(12.dp))
+
+                Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = (index + 1).toString(),
-                        fontSize = 16.sp,
-                        color = MaterialTheme.colorScheme.onPrimary
+                        text = option.chinese,
+                        fontSize = 18.sp,
+                        fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
+                        color = labelColor
+                    )
+                    Text(
+                        text = option.pinyin,
+                        fontSize = 14.sp,
+                        color = labelColor.copy(alpha = 0.75f)
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = "🇬🇧 ${option.english}",
+                        fontSize = 12.sp,
+                        color = labelColor.copy(alpha = 0.7f)
+                    )
+                    if (showIndonesian) Text(
+                        text = "🇮🇩 ${option.indonesian}",
+                        fontSize = 12.sp,
+                        color = labelColor.copy(alpha = 0.7f)
                     )
                 }
-            }
 
-            Spacer(modifier = Modifier.width(12.dp))
-
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = option.chinese,
-                    fontSize = 18.sp,
-                    style = MaterialTheme.typography.titleMedium
-                )
-
-                Text(
-                    text = option.pinyin,
-                    fontSize = 14.sp,
-                    color = MaterialTheme.colorScheme.secondary
-                )
-
-                Spacer(modifier = Modifier.height(4.dp))
-
-                Text(
-                    text = "🇬🇧 ${option.english}",
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-
-                if (showIndonesian) Text(
-                    text = "🇮🇩 ${option.indonesian}",
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-
-            IconButton(
-                onClick = {
-                    tts.speak(option.chinese, speechSpeed)
+                IconButton(onClick = { tts.speak(option.chinese, speechSpeed) }) {
+                    Icon(
+                        Icons.Default.PlayArrow,
+                        contentDescription = "Play",
+                        tint = labelColor.copy(alpha = 0.8f)
+                    )
                 }
-            ) {
-                Icon(
-                    Icons.Default.PlayArrow,
-                    contentDescription = "Play",
-                    tint = MaterialTheme.colorScheme.primary
-                )
             }
         }
     }
