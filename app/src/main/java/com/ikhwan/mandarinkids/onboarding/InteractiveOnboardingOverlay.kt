@@ -76,31 +76,55 @@ private val STEPS = listOf(
         key     = OnboardingKey.THEME_BUTTON,
         emoji   = "🎨",
         title   = "Pick Your Theme",
-        message = "Tap this button to cycle through 10 colour themes — light and dark. Find the one Milton loves most!"
+        message = "Tap this button to cycle through 10 colour themes — light and dark. Find the one you love most!"
     ),
     CoachStep(
         key     = OnboardingKey.STATS_ROW,
         emoji   = "🔥",
         title   = "Your Progress",
-        message = "Your daily streak and total XP live here. Come back every day to keep the streak alive!"
+        message = "Your daily streak and total XP live here. Come back every day to keep the streak alive and gain more experience points!"
     ),
     CoachStep(
         key     = OnboardingKey.CATEGORY_GRID,
-        emoji   = "📚",
-        title   = "Choose a Category",
-        message = "Tap any tile to see scenarios in that category — School, Food, Home, Out & About, and more!"
+        emoji   = "🗣️",
+        title   = "Practice Mandarin Conversations",
+        message = "Choose a real-life conversation scenario in Mandarin that you'd like to practice — from greetings and school life to food, home, and community. Tap any category to get started!"
     ),
     CoachStep(
-        key     = OnboardingKey.NAV_BAR,
-        emoji   = "🗺️",
-        title   = "Explore the App",
-        message = "Use the bottom bar to switch between Roleplay, Flashcards, Tones, Sentence Builder, and Progress."
+        key     = OnboardingKey.NAV_FLASHCARD,
+        emoji   = "🃏",
+        title   = "Flashcard Practice",
+        message = "Tap here to practice memorising words you've encountered in role-play scenarios. Filter by category, switch between Listening and Reading modes, and choose to drill weak words or maintain the ones you already know well."
+    ),
+    CoachStep(
+        key     = OnboardingKey.NAV_TONE,
+        emoji   = "🎵",
+        title   = "Tone Practice",
+        message = "In Mandarin, the same sound with a different tone is a completely different word! Tap here to train your ear on the four Mandarin tones and sharpen your listening skills."
+    ),
+    CoachStep(
+        key     = OnboardingKey.NAV_BUILD,
+        emoji   = "🧱",
+        title   = "Sentence Builder",
+        message = "Tap here to practice building sentences in Mandarin by arranging word tiles in the correct order. Great for understanding grammar and natural word structure."
+    ),
+    CoachStep(
+        key     = OnboardingKey.NAV_PROGRESS,
+        emoji   = "📊",
+        title   = "Track Your Journey",
+        message = "Tap here to see all your badges, scenario star ratings, mastered words, and XP level. Watch your progress grow over time!"
+    ),
+    CoachStep(
+        key     = null,
+        emoji   = "🔒",
+        title   = "Parental Controls",
+        message = "Parents: on the Progress tab, tap the 🔒 lock icon to open the Parental Dashboard — where you can set custom rewards for your child when they reach milestones in the app!"
     ),
     CoachStep(
         key     = null,
         emoji   = "🚀",
         title   = "You're All Set!",
-        message = "加油！(Jiā yóu!) Tap any category card to start your very first Mandarin lesson!"
+        message = "加油！(Jiā yóu!) Head to the Roleplay tab and tap any category card to start your first Mandarin conversation!"
     ),
 )
 

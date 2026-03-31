@@ -135,6 +135,9 @@ fun MandarinKidsApp() {
                     }
                     if ("flashcard" !in disabledTabs) {
                         NavigationBarItem(
+                            modifier = Modifier.onGloballyPositioned { lc ->
+                                onboardingCoords[OnboardingKey.NAV_FLASHCARD] = lc.boundsInRoot()
+                            },
                             icon = {
                                 Icon(
                                     painter = painterResource(R.drawable.nav_flashcard),
@@ -156,6 +159,9 @@ fun MandarinKidsApp() {
                     }
                     if ("tone" !in disabledTabs) {
                         NavigationBarItem(
+                            modifier = Modifier.onGloballyPositioned { lc ->
+                                onboardingCoords[OnboardingKey.NAV_TONE] = lc.boundsInRoot()
+                            },
                             icon = {
                                 Icon(
                                     painter = painterResource(R.drawable.nav_tone),
@@ -177,6 +183,9 @@ fun MandarinKidsApp() {
                     }
                     if ("build" !in disabledTabs) {
                         NavigationBarItem(
+                            modifier = Modifier.onGloballyPositioned { lc ->
+                                onboardingCoords[OnboardingKey.NAV_BUILD] = lc.boundsInRoot()
+                            },
                             icon = {
                                 Icon(
                                     painter = painterResource(R.drawable.nav_build),
@@ -197,6 +206,9 @@ fun MandarinKidsApp() {
                         )
                     }
                     NavigationBarItem(
+                        modifier = Modifier.onGloballyPositioned { lc ->
+                            onboardingCoords[OnboardingKey.NAV_PROGRESS] = lc.boundsInRoot()
+                        },
                         icon = {
                             Icon(
                                 painter = painterResource(R.drawable.nav_progress),

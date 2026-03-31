@@ -17,8 +17,12 @@ val LocalOnboardingCoords = compositionLocalOf<SnapshotStateMap<String, Rect>> {
 
 /** Stable string keys for each element targeted by the tour. */
 object OnboardingKey {
-    const val THEME_BUTTON  = "theme_button"
-    const val STATS_ROW     = "stats_row"
-    const val CATEGORY_GRID = "category_grid"
-    const val NAV_BAR       = "nav_bar"
+    const val THEME_BUTTON   = "theme_button"
+    const val STATS_ROW      = "stats_row"
+    const val CATEGORY_GRID  = "category_grid"
+    const val NAV_BAR        = "nav_bar"
+    const val NAV_FLASHCARD  = "nav_flashcard"
+    const val NAV_TONE       = "nav_tone"
+    const val NAV_BUILD      = "nav_build"
+    const val NAV_PROGRESS   = "nav_progress"
 }
