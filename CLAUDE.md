@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Mandarinku** is an Android app that teaches Mandarin to young children (age 4–8) through interactive role-play scenarios, flashcard drills, tone training, and sentence-building games. Built for the developer's son Milton.
+**Mandarinku** is an Android app that teaches Mandarin to young children (age 4–8) through interactive role-play scenarios, flashcard drills, tone training, and sentence-building games.
 
 **GitHub:** https://github.com/mikhwan89/MiltonLearnMandarin
 **Package:** `com.ikhwan.mandarinkids`
@@ -37,7 +37,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **State management:** ViewModels (`RolePlayViewModel`, `QuizViewModel`, `FlashcardViewModel`, `PracticeSessionViewModel`) + Compose `collectAsState()`
 **Navigation:** Jetpack Navigation Compose (`NavHostController`), string routes defined in `navigation/Routes.kt`
 **Data storage:** Room database v8 + DataStore preferences
-**Content:** JSON files in `app/src/main/assets/scenarios/` (50 scenarios), loaded at runtime via `JsonScenarioLoader`
+**Content:** JSON files in `app/src/main/assets/scenarios/` (53 scenarios across 8 categories), loaded at runtime via `JsonScenarioLoader`
 
 ### Screen Flow
 
@@ -88,9 +88,11 @@ All under `app/src/main/java/com/ikhwan/mandarinkids/`:
 | File | Contents |
 |------|----------|
 | `MainActivity.kt` | `ComponentActivity`, entry point, `MandarinKidsApp` host composable |
-| `home/HomeScreen.kt` | Roleplay home — word-of-day popup, category list, XP/streak display |
+| `home/HomeScreen.kt` | Roleplay home — word-of-day popup, category grid, XP/streak display, theme toggle |
 | `home/ScenarioListScreen.kt` | Scenario cards filtered by category |
-| `home/ProgressScreen.kt` | Progress tab — XP, badges, mastered words, parent dashboard entry |
+| `home/ProgressScreen.kt` | Progress tab — XP, badges, mastered words, parent dashboard entry, theme toggle |
+| `onboarding/InteractiveOnboardingOverlay.kt` | 10-step spotlight tour — `BlendMode.Clear` cutouts, pulsing ring, tooltip bubble, background nav |
+| `onboarding/LocalOnboardingCoords.kt` | `LocalOnboardingCoords` CompositionLocal + `OnboardingKey` string constants |
 | `RolePlayScreen.kt` | Dialogue flow, `ResponseOptionButton`, `NameInputSection` |
 | `RolePlayViewModel.kt` | Step progression, option selection, TTS coordination, score tracking |
 | `ConversationBubble.kt` | Chat bubble composable with pinyin pills, bounce animation, word detail dialog |
@@ -102,8 +104,8 @@ All under `app/src/main/java/com/ikhwan/mandarinkids/`:
 | `FlashcardViewModel.kt` | Flashcard state — flip, got-it/skip |
 | `practice/PracticeScreen.kt` | Cross-scenario flashcard drill mode |
 | `practice/PracticeSessionViewModel.kt` | Practice session state |
-| `practice/ToneTrainerScreen.kt` | Tone recognition game — hear a word, identify its tone |
-| `practice/SentenceBuilderScreen.kt` | Sentence assembly game — arrange pinyin tiles in correct order |
+| `practice/ToneTrainerScreen.kt` | Tone recognition game — hear a word, identify its tone; info dialog on first launch |
+| `practice/SentenceBuilderScreen.kt` | Sentence assembly game — arrange pinyin tiles in correct order; SVO info dialog |
 | `practice/PracticeMode.kt` | Enum/data class for practice modalities |
 | `PhrasesScreen.kt` | Standalone phrase browser with TTS |
 | `parent/ParentDashboardScreen.kt` | Parent progress view and milestone rewards manager |
@@ -126,7 +128,8 @@ All under `app/src/main/java/com/ikhwan/mandarinkids/`:
 | `db/MilestoneRewardDao.kt` | Room DAO for milestone rewards |
 | `db/ProgressRepository.kt` | Wraps DAO — star/XP saves, speech rate override, streak |
 | `db/Badge.kt` | Badge definitions and unlock logic |
-| `preferences/UserPreferencesRepository.kt` | DataStore — global speech rate, streak, onboarding flag, showIndonesian, disabledTabs, disabledCategories, disabledScenarios |
+| `navigation/AppNavigation.kt` | `NavHost`, 5-tab bottom nav, `LocalOnboardingCoords` provider, `InteractiveOnboardingOverlay` host |
+| `preferences/UserPreferencesRepository.kt` | DataStore — global speech rate, colorThemeIndex, onboarding flag, showIndonesian, disabledTabs, disabledCategories, disabledScenarios |
 | `ProgressManager.kt` | Star calculation, XP award, badge unlock coordination |
 
 #### Utilities & UI
@@ -136,8 +139,10 @@ All under `app/src/main/java/com/ikhwan/mandarinkids/`:
 | `ToneUtils.kt` | Pinyin tone detection → `Color` for each tone (1–4 + neutral) |
 | `ui/ConfettiEffect.kt` | Canvas-based confetti particle animation |
 | `ui/StrokeOrderSheet.kt` | Stroke order bottom sheet for Chinese characters |
-| `ui/theme/Color.kt` | Material 3 colour palette |
-| `ui/theme/Theme.kt` | `MandarinKidsTheme` composable |
+| `ui/theme/Color.kt` | Base Material 3 colour palette |
+| `ui/theme/Theme.kt` | `MandarinKidsTheme` composable — applies active `AppThemeVariant` |
+| `ui/theme/AppColorPalettes.kt` | 10 theme variants (`AppThemes` list) — 5 light, 5 dark; `AppThemeVariant(index, name, emoji, palette, md3ColorScheme, isDark)` |
+| `ui/theme/AppColorScheme.kt` | Semantic colour tokens (`actionPositive`, `actionNegative`, `tileAmber`, `tilePurple`, `tileGrey`, `masteryGradient`, etc.) + `LocalAppColors` CompositionLocal |
 | `ui/theme/Type.kt` | Typography scale |
 
 ### Data Model Hierarchy
@@ -146,7 +151,8 @@ All under `app/src/main/java/com/ikhwan/mandarinkids/`:
 Scenario
 ├── id, title, description, characterName, characterEmoji, characterRole
 ├── category: ScenarioCategory (ESSENTIALS | AT_SCHOOL | SCHOOL_SUBJECTS |
-│             FOOD_AND_EATING | FEELINGS_AND_HEALTH | PLAY_AND_HOBBIES)
+│             FOOD_AND_EATING | FEELINGS_AND_HEALTH | PLAY_AND_HOBBIES |
+│             HOME | OUT_AND_ABOUT)
 ├── dialogues: List<DialogueStep>
 │   ├── speaker: Speaker (CHARACTER | STUDENT)
 │   ├── textChinese, textPinyin, textEnglish, textIndonesian
@@ -164,12 +170,30 @@ Scenario
 
 ### Learning Content
 
-50 scenarios across 6 categories. All content lives in `app/src/main/assets/scenarios/`.
+53 scenarios across 8 categories. All content lives in `app/src/main/assets/scenarios/`.
 Each scenario has: Chinese + pinyin + English + Indonesian, dialogue steps, TTS, and 3–5 quiz questions.
 The index of loaded files is `app/src/main/assets/scenarios/index.json`.
 
 To add a new scenario: create `scenario_XX.json` in assets, add the filename to `index.json`.
 Use the `/scenario` command for guided creation with QA checks.
+
+### Theme System
+
+10 colour themes (5 light, 5 dark) defined in `ui/theme/AppColorPalettes.kt` as `AppThemes: List<AppThemeVariant>`.
+- **`AppThemeVariant`** — bundles index, name, emoji, `AppColorScheme` palette, MD3 `ColorScheme`, and `isDark` flag
+- **`AppColorScheme`** — semantic tokens consumed throughout the app via `MaterialTheme.appColors`
+- **`LocalAppColors`** — CompositionLocal providing the active `AppColorScheme`
+- Active theme index is persisted in DataStore via `UserPreferencesRepository.saveColorThemeIndex()`
+- Theme toggle button is in the `TopAppBar` of `HomeScreen` and `ProgressScreen`, tagged with `OnboardingKey.THEME_BUTTON` for the onboarding spotlight
+
+### Interactive Onboarding
+
+New users see a 10-step spotlight tour (`InteractiveOnboardingOverlay`) drawn on top of the live app:
+- Uses `CompositingStrategy.Offscreen` + `BlendMode.Clear` on a Canvas to cut a transparent hole over the target element
+- Element bounds are captured via `onGloballyPositioned { lc -> coords[key] = lc.boundsInRoot() }` and shared through `LocalOnboardingCoords`
+- `OnboardingKey` object defines string constants for each tagged element: `THEME_BUTTON`, `STATS_ROW`, `CATEGORY_GRID`, `NAV_BAR`, `NAV_FLASHCARD`, `NAV_TONE`, `NAV_BUILD`, `NAV_PROGRESS`
+- Steps 5–8 navigate the background to the actual tab being explained via `onNavigateToRoute` callback
+- Onboarding completion state is stored in DataStore (`userPrefs.onboardingCompleted`); overlay shown only when `onboardingCompleted == false`
 
 ### Text-to-Speech
 
@@ -220,6 +244,8 @@ Migrations tracked: 1→2, 2→3, 3→4, 4→5, 5→6, 6→7, 7→8.
 - **Room migrations are required** whenever a database entity changes — bump the version and add a migration to `AppDatabase.kt`.
 - **Parental controls** (disabledTabs, disabledCategories, disabledScenarios) are stored in DataStore and enforced in navigation and the home screen. Do not bypass these when building new features.
 - **MasteredWordEntity primary key** is a composite of `(scenarioId, chinese, practiceType)` — queries must include all three fields.
+- **Theme colours** — always use `MaterialTheme.appColors` (the semantic `AppColorScheme`) for UI colours rather than hardcoding. The only exceptions are fixed semantic feedback colours (green correct, red wrong, amber stars).
+- **Onboarding coord tags** — when adding new UI elements that the onboarding tour should spotlight, add an `onGloballyPositioned` modifier with a new `OnboardingKey` constant and a matching step in `InteractiveOnboardingOverlay.kt`.
 
 ## Claude Skills & Commands
 
