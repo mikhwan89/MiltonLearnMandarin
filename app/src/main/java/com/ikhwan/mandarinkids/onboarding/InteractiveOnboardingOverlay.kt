@@ -135,7 +135,7 @@ private val STEPS = listOf(
         key     = null,
         emoji   = "🔒",
         title   = "Parental Controls",
-        message = "Parents: on the Progress tab, tap the 🔒 lock icon to open the Parental Dashboard — where you can set custom rewards for your child when they reach milestones in the app!"
+        message = "Parents: tap the 🔒 lock icon on the Progress tab to open the Parental Dashboard. Here you can set custom milestone rewards, and control which categories or scenarios appear in the app — so you can guide your child to focus on the topics that matter most to them right now."
     ),
     CoachStep(
         key     = null,
