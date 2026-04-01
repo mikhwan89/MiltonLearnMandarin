@@ -67,7 +67,9 @@ fun ToneTrainerScreen() {
     val scope = rememberCoroutineScope()
     val repo      = remember { ProgressRepository.getInstance(context) }
     val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
-    val showIndonesian by userPrefs.showIndonesian.collectAsState(initial = true)
+    val showIndonesian     by userPrefs.showIndonesian.collectAsState(initial = true)
+    val disabledCategories by userPrefs.disabledCategories.collectAsState(initial = emptySet())
+    val disabledScenarios  by userPrefs.disabledScenarios.collectAsState(initial = emptySet())
     val prefs = remember { context.getSharedPreferences("tone_trainer", 0) }
     var showIntro by remember { mutableStateOf(!prefs.getBoolean("tone_intro_seen", false)) }
 
@@ -76,8 +78,9 @@ fun ToneTrainerScreen() {
     val labelColor = colors.onLightTile
     val wordCardGradient = colors.tileBlue.asList()
 
-    val questionPool: List<ToneQuestion> = remember {
+    val questionPool: List<ToneQuestion> = remember(disabledCategories, disabledScenarios) {
         JsonScenarioRepository.getAll()
+            .filter { it.category.name !in disabledCategories && it.id !in disabledScenarios }
             .flatMap { scenario ->
                 scenario.dialogues.flatMap { step ->
                     step.pinyinWords + step.options.flatMap { it.pinyinWords }

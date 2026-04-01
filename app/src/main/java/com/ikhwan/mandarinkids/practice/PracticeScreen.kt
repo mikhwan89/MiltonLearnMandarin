@@ -72,7 +72,9 @@ fun PracticeScreen(onBack: () -> Unit) {
     val repo = remember { ProgressRepository.getInstance(context) }
     val tts: TtsManager = rememberTtsManager()
     val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
-    val showIndonesian by userPrefs.showIndonesian.collectAsState(initial = true)
+    val showIndonesian     by userPrefs.showIndonesian.collectAsState(initial = true)
+    val disabledCategories by userPrefs.disabledCategories.collectAsState(initial = emptySet())
+    val disabledScenarios  by userPrefs.disabledScenarios.collectAsState(initial = emptySet())
 
     // One ViewModel per practice type — each tracks its own progress independently
     val vmDefault: PracticeSessionViewModel = viewModel(
@@ -97,6 +99,13 @@ fun PracticeScreen(onBack: () -> Unit) {
         JsonScenarioRepository.getAll().associate { it.id to it.category }
     }
 
+    // Push parental-control filters into all three VMs whenever they change
+    LaunchedEffect(disabledCategories, disabledScenarios) {
+        vmDefault.setDisabledFilters(disabledCategories, disabledScenarios)
+        vmListening.setDisabledFilters(disabledCategories, disabledScenarios)
+        vmReading.setDisabledFilters(disabledCategories, disabledScenarios)
+    }
+
     val scope = rememberCoroutineScope()
 
     val colors = MaterialTheme.appColors
@@ -114,8 +123,16 @@ fun PracticeScreen(onBack: () -> Unit) {
     val offsetX      = remember { Animatable(closedPx) }
 
     // Hoisted so the drawer can read it even when the card area hasn't rendered yet
-    val availableCategories = remember(vm.allWords) {
-        vm.allWords.mapNotNull { scenarioCategoryMap[it.scenarioId] }.distinct()
+    // Excludes categories/scenarios that a parent has disabled
+    val availableCategories = remember(vm.allWords, disabledCategories, disabledScenarios) {
+        vm.allWords
+            .filter { word ->
+                val cat = scenarioCategoryMap[word.scenarioId]
+                (cat == null || cat.name !in disabledCategories) &&
+                word.scenarioId !in disabledScenarios
+            }
+            .mapNotNull { scenarioCategoryMap[it.scenarioId] }
+            .distinct()
     }
 
     // Auto-play TTS: DEFAULT and LISTENING auto-play; READING does not (test visual recognition)

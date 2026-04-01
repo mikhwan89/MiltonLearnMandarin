@@ -69,16 +69,19 @@ fun SentenceBuilderScreen() {
     val scope = rememberCoroutineScope()
     val repo      = remember { ProgressRepository.getInstance(context) }
     val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
-    val showIndonesian by userPrefs.showIndonesian.collectAsState(initial = true)
+    val showIndonesian     by userPrefs.showIndonesian.collectAsState(initial = true)
+    val disabledCategories by userPrefs.disabledCategories.collectAsState(initial = emptySet())
+    val disabledScenarios  by userPrefs.disabledScenarios.collectAsState(initial = emptySet())
     val density = LocalDensity.current
 
     val colors = MaterialTheme.appColors
     val labelColor = colors.onLightTile
     val promptGradient = colors.tileBlue.asList()
 
-    // ── Question pool — built once from all scenarios ─────────────────────────
-    val questionPool: List<SentenceQuestion> = remember {
+    // ── Question pool — filtered by parental controls ─────────────────────────
+    val questionPool: List<SentenceQuestion> = remember(disabledCategories, disabledScenarios) {
         JsonScenarioRepository.getAll()
+            .filter { it.category.name !in disabledCategories && it.id !in disabledScenarios }
             .flatMap { scenario ->
                 scenario.dialogues
                     .filter { step -> step.pinyinWords.size >= 2 }
@@ -99,7 +102,7 @@ fun SentenceBuilderScreen() {
     val availableCategories = remember(questionPool) {
         questionPool.map { it.category }.distinct()
     }
-    val activePool = remember(selectedCategory) {
+    val activePool = remember(questionPool, selectedCategory) {
         if (selectedCategory == null) questionPool
         else questionPool.filter { it.category == selectedCategory }
     }
