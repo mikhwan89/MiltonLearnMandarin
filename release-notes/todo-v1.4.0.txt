@@ -53,10 +53,71 @@ SUGGESTED ADDITIONS (for your consideration)
         the 50 most common characters from existing scenarios.
 
 [ ] 7. Listening Comprehension Quiz Mode
-      - A new quiz direction: AUDIO_ONLY — TTS speaks a full sentence,
-        child picks which English/Indonesian sentence matches.
-      - Exercises full sentence comprehension rather than single words.
-      - Natural extension of the existing AUDIO_TO_TRANSLATION direction.
+
+      WHERE IT LIVES
+      ──────────────
+      NOT a new tab. The bottom nav already has 5 tabs (Roleplay, Flashcard,
+      Tone Trainer, Sentence Builder, Progress) — adding a 6th would make it
+      cramped, especially on small screens. Instead, this becomes Level 6 in
+      the existing 5-level mastery system, unlocked after the child earns 3★
+      on Level 5 of a scenario.
+
+      Rationale for Level 6 placement:
+        - Tone Trainer = single-word tone recognition (simplest audio task)
+        - Flashcard LISTENING mode = single-word listen → identify character
+        - AUDIO_TO_TRANSLATION quiz = single-word listen → pick meaning
+        - Sentence Builder = assemble words into a sentence (reading/order)
+        - Level 6 = hear a full sentence → pick the correct meaning
+          This is the hardest audio task and logically sits above all of
+          the above, making it a natural mastery ceiling.
+
+      HOW IT WORKS
+      ────────────
+      - TTS automatically speaks the full textChinese of each dialogue line
+        from the scenario (same sentences the child already knows from L1–L5).
+      - Child sees 4 English/Indonesian choices and picks the correct meaning.
+      - No Chinese characters shown — pure listening, no visual cues.
+      - A "Replay 🔊" button lets the child hear the sentence again (max 3
+        replays per question to keep it a listening test, not a memory test).
+      - 5 questions per run: drawn from the scenario's dialogue lines, not
+        just the existing quizQuestions — so it uses all the content already
+        in the JSON at no extra authoring cost.
+
+      QUESTION GENERATION (no new JSON fields needed)
+      ────────────────────────────────────────────────
+      - QuizQuestionGenerator adds a generateLevel6Questions() function.
+      - For each dialogue step where speaker = CHARACTER and responseType !=
+        TEXT_INPUT, create one question:
+          questionChinese  = step.textChinese   (spoken by TTS, hidden visually)
+          correct option   = step.textEnglish (or textIndonesian)
+          3 distractors    = textEnglish lines from other dialogue steps in
+                             the same scenario (shuffled), ensuring they are
+                             plausibly similar in length/topic.
+      - correctAnswerIndex is randomised across 0–3 as per existing rules.
+
+      SCREEN
+      ──────
+      - Reuses SentenceBuilderQuizScreen layout with minimal changes:
+          - Hide the word-tile assembly area.
+          - Show a large 🔊 speaker button in its place.
+          - TTS auto-plays when the question appears (same as AUDIO_TO_TRANSLATION).
+          - Option buttons show English/Indonesian text only (no Chinese).
+      - A new route: quiz/{scenarioId}/{rolePlayScore}/6  (level param added)
+        OR handled inside the existing SentenceBuilderQuizScreen by checking
+        masteryLevel == 6.
+
+      PARENTAL CONTROLS
+      ─────────────────
+      - No new disable toggle needed — it inherits the scenario's existing
+        disable flag from Parent Dashboard.
+      - Parent Dashboard milestone rewards: add LEVEL_6_COMPLETIONS to
+        MilestoneType for reward tracking.
+
+      BADGES (3 new, consistent with L2–L5 pattern)
+      ───────────────────────────────────────────────
+        LEVEL_6_DEBUT   🎧  — first scenario passed at Level 6 (3★)
+        LEVEL_6_ACE     🦻  — 3 scenarios passed at Level 6 (3★)
+        LEVEL_6_MASTER  👂  — all scenarios passed at Level 6 (3★)
 
 [ ] 8. Scenario Bookmarks / Favourites
       - Child (or parent) can star a scenario to pin it to the top of the
