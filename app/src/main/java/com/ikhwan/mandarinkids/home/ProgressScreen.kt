@@ -55,6 +55,10 @@ import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 import com.ikhwan.mandarinkids.navigation.Routes
 import com.ikhwan.mandarinkids.parent.PinMode
 import com.ikhwan.mandarinkids.parent.PinScreen
+import androidx.compose.ui.layout.boundsInRoot
+import androidx.compose.ui.layout.onGloballyPositioned
+import com.ikhwan.mandarinkids.onboarding.LocalOnboardingCoords
+import com.ikhwan.mandarinkids.onboarding.OnboardingKey
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -89,26 +93,45 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
     val perfectScenarioCount = remember(progressMap) {
         progressMap.values.count { it.stars == 3 }
     }
+    // Count of scenarios where the user achieved 3★ at each mastery level.
+    // Passing level N requires 3★ at that level, which advances masteryLevel to N+1.
+    val level1Count = remember(progressMap) { progressMap.values.count { it.masteryLevel >= 2 } }
+    val level2Count = remember(progressMap) { progressMap.values.count { it.masteryLevel >= 3 } }
+    val level3Count = remember(progressMap) { progressMap.values.count { it.masteryLevel >= 4 } }
+    val level4Count = remember(progressMap) { progressMap.values.count { it.masteryLevel >= 5 } }
+    val level5Count = remember(progressMap) {
+        progressMap.values.count { it.masteryLevel == 5 && it.starsAtCurrentLevel == 3 }
+    }
     val highMasteryCount by repo.getHighMasteryWordCount().collectAsState(initial = 0)
     val earnedBadgeIds = remember(masteredCount, streak) { repo.getEarnedBadges() }
+    val toneCorrectTotal = remember { repo.getToneCorrectTotal() }
+    val sentenceCorrectTotal = remember { repo.getSentenceCorrectTotal() }
     val progressForCondition: (MilestoneCondition) -> Int = remember(
         perfectScenarioCount, highMasteryCount, highMasteryDefault,
-        highMasteryListening, highMasteryReading, xp, earnedBadgeIds
+        highMasteryListening, highMasteryReading, xp, earnedBadgeIds,
+        level1Count, level2Count, level3Count, level4Count, level5Count,
+        toneCorrectTotal, sentenceCorrectTotal
     ) {
         { cond ->
             when (MilestoneType.entries.find { it.name == cond.type }) {
-                MilestoneType.PERFECT_SCENARIOS  -> perfectScenarioCount
-                MilestoneType.HIGH_MASTERY_WORDS -> highMasteryCount
-                MilestoneType.MASTERY_DEFAULT    -> highMasteryDefault
-                MilestoneType.MASTERY_LISTENING  -> highMasteryListening
-                MilestoneType.MASTERY_READING    -> highMasteryReading
-                MilestoneType.TOTAL_XP           -> xp
-                MilestoneType.SPECIFIC_BADGE     -> if (cond.badgeId != null && cond.badgeId in earnedBadgeIds) 1 else 0
-                null                             -> 0
+                MilestoneType.MASTERY_DEFAULT        -> highMasteryDefault
+                MilestoneType.MASTERY_LISTENING      -> highMasteryListening
+                MilestoneType.MASTERY_READING        -> highMasteryReading
+                MilestoneType.TOTAL_XP               -> xp
+                MilestoneType.SPECIFIC_BADGE         -> if (cond.badgeId != null && cond.badgeId in earnedBadgeIds) 1 else 0
+                MilestoneType.LEVEL_1_COMPLETIONS    -> level1Count
+                MilestoneType.LEVEL_2_COMPLETIONS    -> level2Count
+                MilestoneType.LEVEL_3_COMPLETIONS    -> level3Count
+                MilestoneType.LEVEL_4_COMPLETIONS    -> level4Count
+                MilestoneType.LEVEL_5_COMPLETIONS    -> level5Count
+                MilestoneType.TONE_CORRECT_SINCE     -> (toneCorrectTotal - cond.baselineValue).coerceAtLeast(0)
+                MilestoneType.SENTENCE_CORRECT_SINCE -> (sentenceCorrectTotal - cond.baselineValue).coerceAtLeast(0)
+                null                                 -> 0
             }
         }
     }
 
+    val tourCoords = LocalOnboardingCoords.current
     val scenariosByCategory = remember(scenarios) { scenarios.groupBy { it.category } }
     val expandedCategories = remember { mutableStateMapOf<String, Boolean>() }
 
@@ -172,7 +195,12 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
                     ) {
                         Text(currentVariant.emoji, fontSize = 18.sp)
                     }
-                    IconButton(onClick = onParentClick) {
+                    IconButton(
+                        onClick = onParentClick,
+                        modifier = Modifier.onGloballyPositioned { lc ->
+                            tourCoords[OnboardingKey.PARENT_LOCK] = lc.boundsInRoot()
+                        }
+                    ) {
                         Icon(Icons.Default.Lock, contentDescription = "Parental Control")
                     }
                 },
@@ -433,12 +461,19 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
 
                 if (isExpanded) {
                     items(categoryScenarios, key = { it.id }) { scenario ->
-                        val stars = progressMap[scenario.id]?.stars ?: 0
+                        val progress = progressMap[scenario.id]
+                        val starsAtLevel = progress?.starsAtCurrentLevel ?: 0
+                        val everPlayed = (progress?.stars ?: 0) > 0 || (progress?.masteryLevel ?: 1) > 1
+                        val masteryLevel = progress?.masteryLevel ?: 1
+                        val newLevelPending = everPlayed && starsAtLevel == 0
                         ScenarioStarRow(
                             emoji = scenario.characterEmoji,
                             title = scenario.title,
-                            stars = stars,
-                            onClick = { navController.navigate(Routes.roleplay(scenario.id)) }
+                            starsAtCurrentLevel = starsAtLevel,
+                            everPlayed = everPlayed,
+                            newLevelPending = newLevelPending,
+                            masteryLevel = masteryLevel,
+                            onClick = { navController.navigate(Routes.flashcard(scenario.id, masteryLevel)) }
                         )
                     }
                 }
@@ -451,6 +486,8 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
     // ── Add Reward dialog ─────────────────────────────────────────────────
     if (showAddReward && rewardsUnlocked) {
         AddRewardDialog(
+            toneCorrectTotal = toneCorrectTotal,
+            sentenceCorrectTotal = sentenceCorrectTotal,
             onDismiss = { showAddReward = false },
             onAdd = { conditions, logic, text ->
                 scope.launch { repo.addReward(conditions, logic, text) }
@@ -653,11 +690,13 @@ private fun MilestoneRewardCard(
 
 @Composable
 private fun AddRewardDialog(
+    toneCorrectTotal: Int,
+    sentenceCorrectTotal: Int,
     onDismiss: () -> Unit,
     onAdd: (List<MilestoneCondition>, String, String) -> Unit
 ) {
     var conditions by remember {
-        mutableStateOf(listOf(MilestoneCondition(MilestoneType.PERFECT_SCENARIOS.name, 1)))
+        mutableStateOf(listOf(MilestoneCondition(MilestoneType.TOTAL_XP.name, 1)))
     }
     var logic by remember { mutableStateOf("AND") }
     var rewardText by remember { mutableStateOf("") }
@@ -710,7 +749,7 @@ private fun AddRewardDialog(
                 if (conditions.size < 3) {
                     TextButton(onClick = {
                         conditions = conditions + MilestoneCondition(
-                            MilestoneType.PERFECT_SCENARIOS.name, 1
+                            MilestoneType.TOTAL_XP.name, 1
                         )
                     }) { Text("+ Add another condition", fontSize = 12.sp) }
                 }
@@ -736,7 +775,15 @@ private fun AddRewardDialog(
                     else cond.targetValue <= 0
                 }
                 if (invalid) return@TextButton
-                onAdd(conditions, logic, rewardText)
+                // Stamp baselines for goal-based counters so progress is measured from now.
+                val finalConditions = conditions.map { cond ->
+                    when (MilestoneType.entries.find { it.name == cond.type }) {
+                        MilestoneType.TONE_CORRECT_SINCE     -> cond.copy(baselineValue = toneCorrectTotal)
+                        MilestoneType.SENTENCE_CORRECT_SINCE -> cond.copy(baselineValue = sentenceCorrectTotal)
+                        else -> cond
+                    }
+                }
+                onAdd(finalConditions, logic, rewardText)
             }) { Text("Add") }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text("Cancel") } }
@@ -750,7 +797,7 @@ private fun ConditionRow(
     onRemove: (() -> Unit)?
 ) {
     val selectedType = MilestoneType.entries.find { it.name == condition.type }
-        ?: MilestoneType.PERFECT_SCENARIOS
+        ?: MilestoneType.TOTAL_XP
     var typeExpanded by remember { mutableStateOf(false) }
     var badgeExpanded by remember { mutableStateOf(false) }
 
@@ -810,7 +857,8 @@ private fun ConditionRow(
                 }
                 DropdownMenu(
                     expanded = badgeExpanded,
-                    onDismissRequest = { badgeExpanded = false }
+                    onDismissRequest = { badgeExpanded = false },
+                    modifier = Modifier.heightIn(max = 280.dp)
                 ) {
                     Badge.entries.forEach { b ->
                         DropdownMenuItem(
@@ -853,9 +901,17 @@ private fun ConditionRow(
 }
 
 @Composable
-private fun ScenarioStarRow(emoji: String, title: String, stars: Int, onClick: () -> Unit) {
+private fun ScenarioStarRow(
+    emoji: String,
+    title: String,
+    starsAtCurrentLevel: Int,
+    everPlayed: Boolean,
+    newLevelPending: Boolean,
+    masteryLevel: Int,
+    onClick: () -> Unit
+) {
     val colors = MaterialTheme.appColors
-    val rowGradient = if (stars > 0) colors.tileAmber.asList() else colors.tileGrey.asList()
+    val rowGradient = if (everPlayed) colors.tileAmber.asList() else colors.tileGrey.asList()
     val rowLabelColor = colors.onLightTile
 
     Card(
@@ -875,18 +931,49 @@ private fun ScenarioStarRow(emoji: String, title: String, stars: Int, onClick: (
             ) {
                 Text(emoji, fontSize = 26.sp, modifier = Modifier.padding(end = 12.dp))
                 Text(title, fontSize = 14.sp, modifier = Modifier.weight(1f), color = rowLabelColor)
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    repeat(3) { i ->
-                        Text(
-                            text = if (i < stars) "★" else "☆",
-                            fontSize = 18.sp,
-                            color = if (i < stars) colors.starFilled else colors.starEmpty
-                        )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    // Level badge
+                    if (everPlayed) {
+                        Surface(
+                            shape = RoundedCornerShape(50),
+                            color = when {
+                                masteryLevel >= 5 -> Color(0xFFFFC107)
+                                masteryLevel >= 3 -> MaterialTheme.colorScheme.primary
+                                masteryLevel >= 2 -> MaterialTheme.colorScheme.secondary
+                                else -> MaterialTheme.colorScheme.outline
+                            }
+                        ) {
+                            Text(
+                                text = "Lv.$masteryLevel",
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color.White,
+                                modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                            )
+                        }
+                    }
+                    // Stars
+                    Row {
+                        repeat(3) { i ->
+                            val filled = i < starsAtCurrentLevel
+                            Text(
+                                text = if (filled) "★" else "☆",
+                                fontSize = 18.sp,
+                                color = when {
+                                    filled -> colors.starFilled
+                                    newLevelPending -> colors.starFilled  // amber outline = new level waiting
+                                    else -> colors.starEmpty
+                                }
+                            )
+                        }
                     }
                     Icon(
                         Icons.Default.ChevronRight,
                         contentDescription = "Play scenario",
-                        modifier = Modifier.size(18.dp).padding(start = 4.dp),
+                        modifier = Modifier.size(18.dp),
                         tint = rowLabelColor.copy(alpha = 0.6f)
                     )
                 }

@@ -419,7 +419,7 @@
           "indonesian": "sembuh"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "谢谢老师！",
@@ -438,6 +438,64 @@
               "chinese": "老师",
               "english": "teacher",
               "indonesian": "guru"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好的，老师！我会多喝水！",
+          "pinyin": "Hǎo de, lǎoshī! Wǒ huì duō hē shuǐ!",
+          "english": "OK, teacher! I will drink more water!",
+          "indonesian": "Baik, guru! Saya akan banyak minum air!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "OK",
+              "indonesian": "baik"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(agreement particle)",
+              "indonesian": "(partikel setuju)",
+              "note": "好的 is a polite way to say 'OK' or 'alright'"
+            },
+            {
+              "pinyin": "lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "huì",
+              "chinese": "会",
+              "english": "will",
+              "indonesian": "akan"
+            },
+            {
+              "pinyin": "duō",
+              "chinese": "多",
+              "english": "more",
+              "indonesian": "banyak"
+            },
+            {
+              "pinyin": "hē",
+              "chinese": "喝",
+              "english": "drink",
+              "indonesian": "minum"
+            },
+            {
+              "pinyin": "shuǐ",
+              "chinese": "水",
+              "english": "water",
+              "indonesian": "air"
             }
           ],
           "isCorrect": true

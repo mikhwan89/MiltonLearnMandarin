@@ -347,7 +347,7 @@
           "note": "好不好 is a friendly way to ask 'OK?' — literally 'good or not good?' Great for asking agreement!"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "好的，爸爸！我现在就去睡！",
@@ -390,6 +390,57 @@
               "chinese": "去睡",
               "english": "go to sleep",
               "indonesian": "pergi tidur"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "知道了！我马上睡觉！晚安爸爸！",
+          "pinyin": "Zhīdào le! Wǒ mǎshàng shuìjiào! Wǎn'ān bàba!",
+          "english": "Got it! I'll sleep right away! Goodnight dad!",
+          "indonesian": "Iya! Aku segera tidur! Selamat malam papa!",
+          "pinyinWords": [
+            {
+              "pinyin": "Zhīdào",
+              "chinese": "知道",
+              "english": "know",
+              "indonesian": "tahu"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "already",
+              "indonesian": "sudah"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "mǎshàng",
+              "chinese": "马上",
+              "english": "right away",
+              "indonesian": "segera"
+            },
+            {
+              "pinyin": "shuìjiào",
+              "chinese": "睡觉",
+              "english": "sleep",
+              "indonesian": "tidur"
+            },
+            {
+              "pinyin": "Wǎn'ān",
+              "chinese": "晚安",
+              "english": "goodnight",
+              "indonesian": "selamat malam"
+            },
+            {
+              "pinyin": "bàba",
+              "chinese": "爸爸",
+              "english": "dad",
+              "indonesian": "papa"
             }
           ],
           "isCorrect": true

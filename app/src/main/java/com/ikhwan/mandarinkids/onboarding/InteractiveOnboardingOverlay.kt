@@ -10,7 +10,9 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -42,10 +44,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.RoundRect
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.CompositingStrategy
@@ -57,7 +57,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ikhwan.mandarinkids.R
@@ -65,7 +64,7 @@ import com.ikhwan.mandarinkids.R
 // ── Tour step data ─────────────────────────────────────────────────────────
 
 private data class CoachStep(
-    val key: String?,               // null = no spotlight (Welcome / Outro)
+    val keys: List<String> = emptyList(), // spotlight keys; empty = no spotlight (Welcome / Outro)
     val emoji: String,              // fallback when iconRes is null
     val iconRes: Int? = null,       // drawable resource; shown instead of emoji when set
     val navigateToRoute: String? = null,  // route to navigate to when this step becomes active
@@ -75,70 +74,72 @@ private data class CoachStep(
 
 private val STEPS = listOf(
     CoachStep(
-        key     = null,
         emoji   = "👋",
         title   = "Welcome to Mandarinku!",
         message = "Let's take a quick tour so you know your way around. Tap Next to begin!"
     ),
     CoachStep(
-        key     = OnboardingKey.THEME_BUTTON,
-        emoji   = "🎨",
-        title   = "Pick Your Theme",
-        message = "Tap this button to cycle through 10 colour themes — light and dark. Find the one you love most!"
+        keys            = listOf(OnboardingKey.THEME_BUTTON, OnboardingKey.NAV_ROLEPLAY),
+        emoji           = "🎨",
+        navigateToRoute = "home",
+        title           = "Pick Your Theme",
+        message         = "Tap this button to cycle through 10 colour themes — light and dark. Find the one you love most!"
     ),
     CoachStep(
-        key     = OnboardingKey.STATS_ROW,
-        emoji   = "🔥",
-        title   = "Your Progress",
-        message = "Your daily streak and total XP live here. Come back every day to keep the streak alive and gain more experience points!"
+        keys            = listOf(OnboardingKey.STATS_ROW, OnboardingKey.NAV_ROLEPLAY),
+        emoji           = "🔥",
+        navigateToRoute = "home",
+        title           = "Your Progress",
+        message         = "Your daily streak and total XP live here. Come back every day to keep the streak alive and gain more experience points!"
     ),
     CoachStep(
-        key      = OnboardingKey.CATEGORY_GRID,
-        emoji    = "🗣️",
-        iconRes  = R.drawable.nav_roleplay,
-        title    = "Practice Mandarin Conversations",
-        message  = "Choose a real-life conversation scenario in Mandarin that you'd like to practice — from greetings and school life to food, home, and community. Tap any category to get started!"
+        keys            = listOf(OnboardingKey.CATEGORY_GRID, OnboardingKey.NAV_ROLEPLAY),
+        emoji           = "🗣️",
+        iconRes         = R.drawable.nav_roleplay,
+        navigateToRoute = "home",
+        title           = "Practice Mandarin Conversations",
+        message         = "Choose a real-life conversation scenario in Mandarin that you'd like to practice — from greetings and school life to food, home, and community. Tap any category to get started!"
     ),
     CoachStep(
-        key              = OnboardingKey.NAV_FLASHCARD,
-        emoji            = "🃏",
-        iconRes          = R.drawable.nav_flashcard,
-        navigateToRoute  = "practice",
-        title            = "Flashcard Practice",
-        message          = "Practice memorising words you've encountered in role-play scenarios. Filter by category, switch between Listening and Reading modes, and choose to drill weak words or maintain the ones you already know well."
+        keys            = listOf(OnboardingKey.NAV_FLASHCARD),
+        emoji           = "🃏",
+        iconRes         = R.drawable.nav_flashcard,
+        navigateToRoute = "practice",
+        title           = "Flashcard Practice",
+        message         = "Practice memorising words you've encountered in role-play scenarios. Filter by category, switch between Listening and Reading modes, and choose to drill weak words or maintain the ones you already know well."
     ),
     CoachStep(
-        key              = OnboardingKey.NAV_TONE,
-        emoji            = "🎵",
-        iconRes          = R.drawable.nav_tone,
-        navigateToRoute  = "tone_trainer",
-        title            = "Tone Practice",
-        message          = "In Mandarin, the same sound with a different tone is a completely different word! Train your ear on the four Mandarin tones and sharpen your listening skills."
+        keys            = listOf(OnboardingKey.NAV_TONE),
+        emoji           = "🎵",
+        iconRes         = R.drawable.nav_tone,
+        navigateToRoute = "tone_trainer",
+        title           = "Tone Practice",
+        message         = "In Mandarin, the same sound with a different tone is a completely different word! Train your ear on the four Mandarin tones and sharpen your listening skills."
     ),
     CoachStep(
-        key              = OnboardingKey.NAV_BUILD,
-        emoji            = "🧱",
-        iconRes          = R.drawable.nav_build,
-        navigateToRoute  = "sentence_builder",
-        title            = "Sentence Builder",
-        message          = "Practice building sentences in Mandarin by arranging word tiles in the correct order. Great for understanding grammar and natural word structure."
+        keys            = listOf(OnboardingKey.NAV_BUILD),
+        emoji           = "🧱",
+        iconRes         = R.drawable.nav_build,
+        navigateToRoute = "sentence_builder",
+        title           = "Sentence Builder",
+        message         = "Practice building sentences in Mandarin by arranging word tiles in the correct order. Great for understanding grammar and natural word structure."
     ),
     CoachStep(
-        key              = OnboardingKey.NAV_PROGRESS,
-        emoji            = "📊",
-        iconRes          = R.drawable.nav_progress,
-        navigateToRoute  = "progress",
-        title            = "Track Your Journey",
-        message          = "See all your badges, scenario star ratings, mastered words, and XP level. Watch your progress grow over time!"
+        keys            = listOf(OnboardingKey.NAV_PROGRESS),
+        emoji           = "📊",
+        iconRes         = R.drawable.nav_progress,
+        navigateToRoute = "progress",
+        title           = "Track Your Journey",
+        message         = "See all your badges, scenario star ratings, mastered words, and XP level. Watch your progress grow over time!"
     ),
     CoachStep(
-        key     = null,
-        emoji   = "🔒",
-        title   = "Parental Controls",
-        message = "Parents: tap the 🔒 lock icon on the Progress tab to open the Parental Dashboard. Here you can set custom milestone rewards, and control which categories or scenarios appear in the app — so you can guide your child to focus on the topics that matter most to them right now."
+        keys            = listOf(OnboardingKey.PARENT_LOCK),
+        emoji           = "🔒",
+        navigateToRoute = "progress",
+        title           = "Parental Controls",
+        message         = "Tap this lock icon to open the Parental Dashboard — set milestone rewards for your child, and choose which categories or scenarios appear in the app so you can guide their focus."
     ),
     CoachStep(
-        key     = null,
         emoji   = "🚀",
         title   = "You're All Set!",
         message = "加油！(Jiā yóu!) Head to the Roleplay tab and tap any category card to start your first Mandarin conversation!"
@@ -174,7 +175,9 @@ fun InteractiveOnboardingOverlay(
         step.navigateToRoute?.let { onNavigateToRoute(it) }
     }
 
-    val spotlightRect: Rect? = step.key?.let { coords[it] }
+    val spotlightRects: List<Rect> = step.keys.mapNotNull { coords[it] }
+    // Primary spotlight is the first key (used for bubble positioning)
+    val spotlightRect: Rect? = spotlightRects.firstOrNull()
 
     val density = LocalDensity.current
 
@@ -212,26 +215,45 @@ fun InteractiveOnboardingOverlay(
                     indication = null,
                     onClick = {}
                 )
+                // Swipe left = previous step; swipe right = next step
+                .pointerInput(Unit) {
+                    var totalDx = 0f
+                    detectHorizontalDragGestures(
+                        onDragEnd = {
+                            when {
+                                totalDx < -80f -> if (stepIndex > 0) stepIndex--
+                                totalDx > 80f  -> if (stepIndex == STEPS.lastIndex) onComplete() else stepIndex++
+                            }
+                            totalDx = 0f
+                        },
+                        onDragCancel = { totalDx = 0f },
+                        onHorizontalDrag = { change, dragAmount ->
+                            change.consume()
+                            totalDx += dragAmount
+                        }
+                    )
+                }
         ) {
             // 1. Dark scrim
             drawRect(Color.Black.copy(alpha = 0.70f))
 
-            if (spotlightRect != null) {
-                val pad    = 14f
-                val corner = with(density) { 20.dp.toPx() }
+            val pad    = 14f
+            val corner = with(density) { 20.dp.toPx() }
 
-                val rx = spotlightRect.left   - pad
-                val ry = spotlightRect.top    - pad
-                val rw = spotlightRect.width  + pad * 2
-                val rh = spotlightRect.height + pad * 2
-
-                // 2. Punch transparent hole — BlendMode.Clear on Offscreen layer
+            // 2. Punch transparent holes for every spotlight rect
+            for (rect in spotlightRects) {
+                val rx = rect.left   - pad
+                val ry = rect.top    - pad
+                val rw = rect.width  + pad * 2
+                val rh = rect.height + pad * 2
                 val holePath = Path().apply {
                     addRoundRect(RoundRect(rx, ry, rx + rw, ry + rh, CornerRadius(corner)))
                 }
                 drawPath(holePath, Color.Black, blendMode = BlendMode.Clear)
+            }
 
-                // 3. Pulsing ring outside the spotlight
+            // 3. Pulsing ring — only on the primary (first) spotlight
+            if (spotlightRect != null) {
                 val ep = pad + pulseExpand
                 val ringPath = Path().apply {
                     addRoundRect(
@@ -251,12 +273,9 @@ fun InteractiveOnboardingOverlay(
             }
         }
 
-        // ── Pointer arrow + bubble card ───────────────────────────────────
-        val bubbleColor = MaterialTheme.colorScheme.surface
-        val bubbleHPad  = 20.dp
-        val gapDp       = 14.dp
-        val pointerH    = 12.dp
-        val pointerW    = 22.dp
+        // ── Bubble card ─────────────────────────────────────────────────
+        val bubbleHPad = 20.dp
+        val gapDp      = 14.dp
 
         when {
             spotlightRect == null -> {
@@ -279,21 +298,12 @@ fun InteractiveOnboardingOverlay(
             spotlightRect.center.y < screenHeightPx * 0.5f -> {
                 // Spotlight in TOP half → bubble below
                 val bubbleTopDp = with(density) { spotlightRect.bottom.toDp() } + gapDp
-                Column(
+                Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .offset(y = bubbleTopDp)
-                        .padding(horizontal = bubbleHPad),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                        .padding(horizontal = bubbleHPad)
                 ) {
-                    // Arrow tip points UP toward spotlight
-                    PointerTriangle(
-                        pointUp      = true,
-                        widthDp      = pointerW,
-                        heightDp     = pointerH,
-                        color        = bubbleColor,
-                        spotCenterXDp = with(density) { spotlightRect.center.x.toDp() },
-                    )
                     BubbleCard(
                         step       = step,
                         stepIndex  = stepIndex,
@@ -307,17 +317,14 @@ fun InteractiveOnboardingOverlay(
 
             else -> {
                 // Spotlight in BOTTOM half → bubble above
-                // align(BottomCenter) + offset(y = -X) positions the bubble's
-                // bottom at (screenHeight - X) from top = spotlightRect.top - gap
                 val offsetUpDp = screenHeightDp -
                     with(density) { spotlightRect.top.toDp() } + gapDp
-                Column(
+                Box(
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
                         .offset(y = -offsetUpDp)
                         .fillMaxWidth()
-                        .padding(horizontal = bubbleHPad),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                        .padding(horizontal = bubbleHPad)
                 ) {
                     BubbleCard(
                         step       = step,
@@ -326,14 +333,6 @@ fun InteractiveOnboardingOverlay(
                         isLast     = isLast,
                         onNext     = { if (isLast) onComplete() else stepIndex++ },
                         onSkip     = onComplete,
-                    )
-                    // Arrow tip points DOWN toward spotlight
-                    PointerTriangle(
-                        pointUp      = false,
-                        widthDp      = pointerW,
-                        heightDp     = pointerH,
-                        color        = bubbleColor,
-                        spotCenterXDp = with(density) { spotlightRect.center.x.toDp() },
                     )
                 }
             }
@@ -361,41 +360,6 @@ fun InteractiveOnboardingOverlay(
                 )
             }
         }
-    }
-}
-
-// ── Pointer triangle ─────────────────────────────────────────────────────────
-
-@Composable
-private fun PointerTriangle(
-    pointUp: Boolean,
-    widthDp: Dp,
-    heightDp: Dp,
-    color: Color,
-    spotCenterXDp: Dp,
-) {
-    Canvas(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(heightDp)
-    ) {
-        val w  = widthDp.toPx()
-        val h  = heightDp.toPx()
-        val cx = spotCenterXDp.toPx().coerceIn(w / 2f, size.width - w / 2f)
-        val path = Path()
-        if (pointUp) {
-            // Tip at top, base at bottom
-            path.moveTo(cx, 0f)
-            path.lineTo(cx - w / 2f, h)
-            path.lineTo(cx + w / 2f, h)
-        } else {
-            // Tip at bottom, base at top
-            path.moveTo(cx - w / 2f, 0f)
-            path.lineTo(cx + w / 2f, 0f)
-            path.lineTo(cx, h)
-        }
-        path.close()
-        drawPath(path, color)
     }
 }
 
@@ -453,25 +417,34 @@ private fun BubbleCard(
                 lineHeight = 20.sp
             )
             Spacer(modifier = Modifier.height(6.dp))
-            Button(
-                onClick  = onNext,
-                shape    = RoundedCornerShape(12.dp),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(48.dp)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text       = if (isLast) "Let's go! 🚀" else "Next →",
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize   = 15.sp
-                )
-            }
-            if (!isLast) {
-                TextButton(onClick = onSkip) {
+                if (!isLast) {
+                    TextButton(
+                        onClick  = onSkip,
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Text(
+                            text     = "Skip tour",
+                            color    = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontSize = 13.sp
+                        )
+                    }
+                }
+                Button(
+                    onClick  = onNext,
+                    shape    = RoundedCornerShape(12.dp),
+                    modifier = Modifier
+                        .weight(if (isLast) 2f else 1f)
+                        .height(48.dp)
+                ) {
                     Text(
-                        text  = "Skip tour",
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontSize = 13.sp
+                        text       = if (isLast) "Let's go! 🚀" else "Next →",
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize   = 15.sp
                     )
                 }
             }

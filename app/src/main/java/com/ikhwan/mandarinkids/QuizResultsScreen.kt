@@ -37,6 +37,7 @@ fun QuizResultsScreen(
     rolePlayScore: Int,
     quizScore: Int,
     totalQuestions: Int,
+    level: Int = 1,
     onComplete: () -> Unit,
     onTryAgain: (() -> Unit)? = null
 ) {
@@ -44,12 +45,13 @@ fun QuizResultsScreen(
     val quizPercentage = (quizScore.toFloat() / totalQuestions * 100).toInt()
     val totalScore = rolePlayScore + quizScore
     val isPerfect = quizScore == totalQuestions
+    val leveledUp = isPerfect && level < 5
 
     val stars = remember { ProgressManager.calculateStars(quizScore, totalQuestions) }
     var xpGained by remember { mutableStateOf(0) }
     LaunchedEffect(Unit) {
         val repo = ProgressRepository.getInstance(context)
-        xpGained = repo.saveProgress(scenario.id, stars)
+        xpGained = repo.saveProgress(scenario.id, stars, level)
         // Seed every word from this scenario into the flashcard DB regardless of score.
         // Uses INSERT OR IGNORE so existing mastery progress is never overwritten.
         val seedWords = scenario.getFlashcardWords().map { pw ->
@@ -146,6 +148,16 @@ fun QuizResultsScreen(
                         color = if (i < stars) colors.starFilled else colors.starEmpty
                     )
                 }
+            }
+
+            if (leveledUp) {
+                Text(
+                    text = "🔓 Level ${level + 1} Unlocked!",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
             }
 
             if (xpGained > 0) {

@@ -324,7 +324,7 @@
           "indonesian": "untuk kamu"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "谢谢阿姨！",
@@ -343,6 +343,33 @@
               "chinese": "阿姨",
               "english": "Auntie",
               "indonesian": "Tante / Bibi"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "阿姨，谢谢你！",
+          "pinyin": "Āyí, xièxie nǐ!",
+          "english": "Auntie, thank you!",
+          "indonesian": "Tante, terima kasih!",
+          "pinyinWords": [
+            {
+              "pinyin": "Āyí",
+              "chinese": "阿姨",
+              "english": "auntie",
+              "indonesian": "tante"
+            },
+            {
+              "pinyin": "xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            },
+            {
+              "pinyin": "nǐ",
+              "chinese": "你",
+              "english": "you",
+              "indonesian": "kamu"
             }
           ],
           "isCorrect": true

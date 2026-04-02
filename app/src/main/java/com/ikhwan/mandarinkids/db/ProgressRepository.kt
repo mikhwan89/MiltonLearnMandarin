@@ -24,6 +24,18 @@ class ProgressRepository private constructor(
 
     fun getAllProgress(): Flow<List<ScenarioProgressEntity>> = dao.getAll()
 
+    suspend fun getMasteryLevel(scenarioId: String): Int =
+        dao.getMasteryLevel(scenarioId) ?: 1
+
+    fun getMasteryLevelFlow(scenarioId: String): Flow<Int> =
+        dao.getById(scenarioId).map { it?.masteryLevel ?: 1 }
+
+    /** Current cumulative count of correctly-answered tone questions (all-time). */
+    fun getToneCorrectTotal(): Int = prefs().getInt(KEY_TONE_TRAINER_CORRECT_TOTAL, 0)
+
+    /** Current cumulative count of correctly-built sentences (all-time). */
+    fun getSentenceCorrectTotal(): Int = prefs().getInt(KEY_SB_CORRECT_TOTAL, 0)
+
     // ── Per-scenario speech rate ──────────────────────────────────────────
 
     suspend fun getSpeechRateForScenario(scenarioId: String): Float? =
@@ -39,33 +51,87 @@ class ProgressRepository private constructor(
 
     // ── Room-backed write ────────────────────────────────────────────────
 
-    /** Saves scenario progress. Returns XP gained (0 if no improvement). */
-    suspend fun saveProgress(scenarioId: String, newStars: Int): Int {
+    /** Saves scenario progress. Returns XP gained (0 if no improvement on this level). */
+    suspend fun saveProgress(scenarioId: String, newStars: Int, level: Int = 1): Int {
         val current = dao.getById(scenarioId).first()
         val oldStars = current?.stars ?: 0
         val oldXp = current?.xp ?: 0
-        val xpGained = if (newStars > oldStars) (newStars - oldStars) * 10 else 0
+        val oldLevel = current?.masteryLevel ?: 1
+        val oldStarsAtLevel = current?.starsAtCurrentLevel ?: 0
+
+        // XP is based on improvement within the current level, not all-time best stars.
+        // First time on a new level (level > oldLevel shouldn't happen normally, but guard it):
+        // we treat prior starsAtLevel as 0 so the full star count earns XP.
+        val prevStarsAtLevel = if (level > oldLevel) 0 else oldStarsAtLevel
+        val xpGained = maxOf(0, newStars - prevStarsAtLevel) * 10
+
+        // Perfect score on the current level unlocks the next (max 5)
+        val newLevel = if (newStars >= 3 && level >= oldLevel && oldLevel < 5) {
+            maxOf(oldLevel, level) + 1
+        } else {
+            maxOf(oldLevel, level)
+        }.coerceAtMost(5)
+
+        // When a new level is unlocked, reset starsAtCurrentLevel to 0 for the fresh level.
+        val newStarsAtCurrentLevel = if (newLevel > oldLevel) 0 else maxOf(oldStarsAtLevel, newStars)
+
         dao.upsert(
             ScenarioProgressEntity(
                 scenarioId = scenarioId,
                 stars = maxOf(oldStars, newStars),
                 xp = oldXp + xpGained,
-                lastPlayedAt = System.currentTimeMillis()
+                lastPlayedAt = System.currentTimeMillis(),
+                speechRateOverride = current?.speechRateOverride,
+                masteryLevel = newLevel,
+                starsAtCurrentLevel = newStarsAtCurrentLevel
             )
         )
 
-        // Check scenario-based badges
+        // ── Scenario-based badges (level-aware) ──────────────────────────────
         if (newStars >= 1) awardBadge(Badge.FIRST_STEPS.id)
-        if (newStars >= 3) awardBadge(Badge.PERFECT_SCORE.id)
         val allProgress = dao.getAll().first()
-        val perfectCount = allProgress.count { it.stars >= 3 }
-        if (perfectCount >= 5) awardBadge(Badge.SCENARIO_ACE.id)
         val sentinelIds = setOf(FLASHCARD_XP_ID, SENTENCE_BUILDER_XP_ID, TONE_TRAINER_XP_ID)
         val scenarioEntries = allProgress.filter { it.scenarioId !in sentinelIds }
         val totalScenarios = JsonScenarioRepository.getAll().size
-        if (totalScenarios > 0 && scenarioEntries.size >= totalScenarios && scenarioEntries.all { it.stars >= 3 }) {
-            awardBadge(Badge.ALL_STARS.id)
-        }
+
+        // Counts of scenarios that have been 3-starred at each level.
+        // Passing level N (3★) advances masteryLevel to N+1, so:
+        //   Level 1 passed  → masteryLevel >= 2
+        //   Level 2 passed  → masteryLevel >= 3
+        //   Level 3 passed  → masteryLevel >= 4
+        //   Level 4 passed  → masteryLevel >= 5
+        //   Level 5 passed  → masteryLevel == 5 && starsAtCurrentLevel == 3
+        val lv1 = scenarioEntries.count { it.masteryLevel >= 2 }
+        val lv2 = scenarioEntries.count { it.masteryLevel >= 3 }
+        val lv3 = scenarioEntries.count { it.masteryLevel >= 4 }
+        val lv4 = scenarioEntries.count { it.masteryLevel >= 5 }
+        val lv5 = scenarioEntries.count { it.masteryLevel == 5 && it.starsAtCurrentLevel == 3 }
+
+        // Level 1
+        if (lv1 >= 1)             awardBadge(Badge.PERFECT_SCORE.id)
+        if (lv1 >= 5)             awardBadge(Badge.SCENARIO_ACE.id)
+        if (totalScenarios > 0 && lv1 >= totalScenarios) awardBadge(Badge.ALL_STARS.id)
+
+        // Level 2
+        if (lv2 >= 1)             awardBadge(Badge.LEVEL_2_DEBUT.id)
+        if (lv2 >= 5)             awardBadge(Badge.LEVEL_2_ACE.id)
+        if (totalScenarios > 0 && lv2 >= totalScenarios) awardBadge(Badge.LEVEL_2_MASTER.id)
+
+        // Level 3
+        if (lv3 >= 1)             awardBadge(Badge.LEVEL_3_DEBUT.id)
+        if (lv3 >= 5)             awardBadge(Badge.LEVEL_3_ACE.id)
+        if (totalScenarios > 0 && lv3 >= totalScenarios) awardBadge(Badge.LEVEL_3_MASTER.id)
+
+        // Level 4
+        if (lv4 >= 1)             awardBadge(Badge.LEVEL_4_DEBUT.id)
+        if (lv4 >= 5)             awardBadge(Badge.LEVEL_4_ACE.id)
+        if (totalScenarios > 0 && lv4 >= totalScenarios) awardBadge(Badge.LEVEL_4_MASTER.id)
+
+        // Level 5
+        if (lv5 >= 1)             awardBadge(Badge.LEVEL_5_DEBUT.id)
+        if (lv5 >= 5)             awardBadge(Badge.LEVEL_5_ACE.id)
+        if (totalScenarios > 0 && lv5 >= totalScenarios) awardBadge(Badge.LEVEL_5_MASTER.id)
+
         checkGrandMasterBadge(allProgress)
 
         // XP milestone badges
@@ -292,22 +358,15 @@ class ProgressRepository private constructor(
     // ── Grand Master check ───────────────────────────────────────────────────
 
     /**
-     * Awards GRAND_MASTER if:
-     *  • every visited scenario has 3 stars, AND
-     *  • every word in DEFAULT, LISTENING, and READING modes is at ★10.
+     * Awards GRAND_MASTER if every other badge has already been earned.
      */
-    private suspend fun checkGrandMasterBadge(allProgress: List<ScenarioProgressEntity>) {
-        val sentinelIds = setOf(FLASHCARD_XP_ID, SENTENCE_BUILDER_XP_ID, TONE_TRAINER_XP_ID)
-        val scenarioEntries = allProgress.filter { it.scenarioId !in sentinelIds }
-        if (scenarioEntries.isEmpty() || !scenarioEntries.all { it.stars >= 3 }) return
-
-        for (type in PracticeType.values()) {
-            val total = masteredWordDao.getTotalCountByType(type.name).first()
-            val high  = masteredWordDao.getHighMasteryCountByType(type.name).first()
-            if (total == 0 || high < total) return
-        }
-
-        awardBadge(Badge.GRAND_MASTER.id)
+    private fun checkGrandMasterBadge(@Suppress("UNUSED_PARAMETER") allProgress: List<ScenarioProgressEntity>) {
+        val allOtherIds = Badge.values()
+            .filter { it != Badge.GRAND_MASTER }
+            .map { it.id }
+            .toSet()
+        val earned = getEarnedBadges()
+        if (allOtherIds.all { it in earned }) awardBadge(Badge.GRAND_MASTER.id)
     }
 
     // ── Badges ────────────────────────────────────────────────────────────

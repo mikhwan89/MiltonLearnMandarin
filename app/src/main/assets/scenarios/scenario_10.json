@@ -64,7 +64,7 @@
           "indonesian": "tidak senang"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "对不起！我不是故意的。",
@@ -102,6 +102,39 @@
               "english": "'s — shows who it belongs to",
               "indonesian": "punya (kepunyaan)",
               "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "对不起！我下次小心！",
+          "pinyin": "Duìbuqǐ! Wǒ xiàcì xiǎoxīn!",
+          "english": "Sorry! I'll be careful next time!",
+          "indonesian": "Maaf! Lain kali saya hati-hati!",
+          "pinyinWords": [
+            {
+              "pinyin": "Duìbuqǐ",
+              "chinese": "对不起",
+              "english": "sorry",
+              "indonesian": "maaf"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "xiàcì",
+              "chinese": "下次",
+              "english": "next time",
+              "indonesian": "lain kali"
+            },
+            {
+              "pinyin": "xiǎoxīn",
+              "chinese": "小心",
+              "english": "careful",
+              "indonesian": "hati-hati"
             }
           ],
           "isCorrect": true
@@ -307,7 +340,7 @@
           "indonesian": "teman baik"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "谢谢你！我们是最好的朋友！",
@@ -351,6 +384,64 @@
               "english": "'s — shows who it belongs to",
               "indonesian": "punya (kepunyaan)",
               "note": "的 is like 's in English. '我的书' means 'my book'. '你的' means 'yours'. It shows who something belongs to!"
+            },
+            {
+              "pinyin": "péngyou",
+              "chinese": "朋友",
+              "english": "friends",
+              "indonesian": "teman"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "太好了！我们永远是好朋友！",
+          "pinyin": "Tài hǎo le! Wǒmen yǒngyuǎn shì hǎo péngyou!",
+          "english": "Great! We'll always be good friends!",
+          "indonesian": "Bagus! Kita selamanya teman baik!",
+          "pinyinWords": [
+            {
+              "pinyin": "Tài",
+              "chinese": "太",
+              "english": "so",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "hǎo",
+              "chinese": "好",
+              "english": "good",
+              "indonesian": "baik"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(change marker)",
+              "indonesian": "(penanda perubahan)",
+              "note": "了 shows something has changed or is now the case"
+            },
+            {
+              "pinyin": "Wǒmen",
+              "chinese": "我们",
+              "english": "we",
+              "indonesian": "kita"
+            },
+            {
+              "pinyin": "yǒngyuǎn",
+              "chinese": "永远",
+              "english": "forever",
+              "indonesian": "selamanya"
+            },
+            {
+              "pinyin": "shì",
+              "chinese": "是",
+              "english": "are",
+              "indonesian": "adalah"
+            },
+            {
+              "pinyin": "hǎo",
+              "chinese": "好",
+              "english": "good",
+              "indonesian": "baik"
             },
             {
               "pinyin": "péngyou",

@@ -39,6 +39,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun RolePlayScreen(
     scenario: Scenario,
+    canSkip: Boolean = false,
     onComplete: (score: Int) -> Unit,
     onBack: () -> Unit
 ) {
@@ -135,6 +136,11 @@ fun RolePlayScreen(
                     }
                 },
                 actions = {
+                    if (canSkip) {
+                        TextButton(onClick = { onComplete(0) }) {
+                            Text("Skip →", fontSize = 14.sp)
+                        }
+                    }
                     // Speed toggle
                     IconButton(
                         onClick = {

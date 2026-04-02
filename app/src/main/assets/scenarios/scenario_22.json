@@ -65,7 +65,7 @@
           "indonesian": "(kata tanya)"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "要！我帮你！我喜欢做饭！",
@@ -96,6 +96,57 @@
               "chinese": "做饭",
               "english": "cooking / making food",
               "indonesian": "memasak"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好的！我来帮忙！做饭好玩！",
+          "pinyin": "Hǎo de! Wǒ lái bāngmáng! Zuò fàn hǎo wán!",
+          "english": "OK! I'll help! Cooking is fun!",
+          "indonesian": "Baik! Aku bantu! Memasak seru!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "OK",
+              "indonesian": "baik"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(agreement particle)",
+              "indonesian": "(partikel setuju)"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "lái",
+              "chinese": "来",
+              "english": "come to",
+              "indonesian": "datang"
+            },
+            {
+              "pinyin": "bāngmáng",
+              "chinese": "帮忙",
+              "english": "help",
+              "indonesian": "membantu"
+            },
+            {
+              "pinyin": "Zuò fàn",
+              "chinese": "做饭",
+              "english": "cook",
+              "indonesian": "memasak"
+            },
+            {
+              "pinyin": "hǎo wán",
+              "chinese": "好玩",
+              "english": "fun",
+              "indonesian": "seru"
             }
           ],
           "isCorrect": true
@@ -155,7 +206,7 @@
           "indonesian": "hati-hati"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "好的！我来切菜！我会小心的！",
@@ -193,6 +244,51 @@
               "chinese": "小心的",
               "english": "be careful",
               "indonesian": "hati-hati"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我来！我会慢慢切！",
+          "pinyin": "Wǒ lái! Wǒ huì mànmàn qiē!",
+          "english": "I'll do it! I'll cut slowly and carefully!",
+          "indonesian": "Aku yang potong! Aku akan potong pelan-pelan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "lái",
+              "chinese": "来",
+              "english": "come to (do it)",
+              "indonesian": "datang"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "huì",
+              "chinese": "会",
+              "english": "will",
+              "indonesian": "akan"
+            },
+            {
+              "pinyin": "mànmàn",
+              "chinese": "慢慢",
+              "english": "slowly",
+              "indonesian": "pelan-pelan"
+            },
+            {
+              "pinyin": "qiē",
+              "chinese": "切",
+              "english": "cut",
+              "indonesian": "memotong"
             }
           ],
           "isCorrect": true
@@ -359,7 +455,7 @@
           "note": "好不好 is a common way to ask a yes/no question: 好 (good) + 不 (not) + 好 (good) = 'good or not?'"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "好吃！非常好吃！谢谢爸爸！",
@@ -391,6 +487,64 @@
               "chinese": "谢谢爸爸",
               "english": "thank you dad",
               "indonesian": "terima kasih ayah"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "太好吃了！爸爸做得真棒！",
+          "pinyin": "Tài hǎo chī le! Bàba zuò de zhēn bàng!",
+          "english": "So delicious! Dad cooked so well!",
+          "indonesian": "Enak sekali! Papa masak hebat!",
+          "pinyinWords": [
+            {
+              "pinyin": "Tài",
+              "chinese": "太",
+              "english": "so",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "hǎo chī",
+              "chinese": "好吃",
+              "english": "delicious",
+              "indonesian": "enak"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(emphasis)",
+              "indonesian": "(penekanan)"
+            },
+            {
+              "pinyin": "Bàba",
+              "chinese": "爸爸",
+              "english": "dad",
+              "indonesian": "papa"
+            },
+            {
+              "pinyin": "zuò",
+              "chinese": "做",
+              "english": "make",
+              "indonesian": "membuat"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "得",
+              "english": "(adverb marker)",
+              "indonesian": "(penanda keterangan)",
+              "note": "得 links a verb to how well it was done — '做得好' means 'did well'"
+            },
+            {
+              "pinyin": "zhēn",
+              "chinese": "真",
+              "english": "really",
+              "indonesian": "sungguh"
+            },
+            {
+              "pinyin": "bàng",
+              "chinese": "棒",
+              "english": "great",
+              "indonesian": "hebat"
             }
           ],
           "isCorrect": true

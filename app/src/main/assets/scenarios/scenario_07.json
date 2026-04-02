@@ -342,7 +342,7 @@
           "indonesian": "teman baik"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "好的，谢谢你！",
@@ -367,6 +367,39 @@
               "chinese": "你",
               "english": "you",
               "indonesian": "kamu"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "谢谢！你真好！",
+          "pinyin": "Xièxie! Nǐ zhēn hǎo!",
+          "english": "Thank you! You're so kind!",
+          "indonesian": "Terima kasih! Kamu baik sekali!",
+          "pinyinWords": [
+            {
+              "pinyin": "Xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            },
+            {
+              "pinyin": "Nǐ",
+              "chinese": "你",
+              "english": "you",
+              "indonesian": "kamu"
+            },
+            {
+              "pinyin": "zhēn",
+              "chinese": "真",
+              "english": "really",
+              "indonesian": "sungguh"
+            },
+            {
+              "pinyin": "hǎo",
+              "chinese": "好",
+              "english": "kind",
+              "indonesian": "baik"
             }
           ],
           "isCorrect": true

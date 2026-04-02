@@ -2,6 +2,10 @@ package com.ikhwan.mandarinkids.practice
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -16,6 +20,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -49,6 +54,7 @@ private const val SESSION_LENGTH = 10
 
 private data class SentenceQuestion(
     val words: List<PinyinWord>,
+    val originalText: String,   // full punctuated Chinese sentence — used for TTS
     val english: String,
     val indonesian: String,
     val category: ScenarioCategory
@@ -69,9 +75,11 @@ fun SentenceBuilderScreen() {
     val scope = rememberCoroutineScope()
     val repo      = remember { ProgressRepository.getInstance(context) }
     val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
-    val showIndonesian     by userPrefs.showIndonesian.collectAsState(initial = true)
-    val disabledCategories by userPrefs.disabledCategories.collectAsState(initial = emptySet())
-    val disabledScenarios  by userPrefs.disabledScenarios.collectAsState(initial = emptySet())
+    val showIndonesian      by userPrefs.showIndonesian.collectAsState(initial = true)
+    val disabledCategories  by userPrefs.disabledCategories.collectAsState(initial = emptySet())
+    val disabledScenarios   by userPrefs.disabledScenarios.collectAsState(initial = emptySet())
+    val onboardingCompleted by userPrefs.onboardingCompleted.collectAsState(initial = false)
+    val prefs = remember { context.getSharedPreferences("sentence_builder", 0) }
     val density = LocalDensity.current
 
     val colors = MaterialTheme.appColors
@@ -87,10 +95,11 @@ fun SentenceBuilderScreen() {
                     .filter { step -> step.pinyinWords.size >= 2 }
                     .map { step ->
                         SentenceQuestion(
-                            words      = step.pinyinWords,
-                            english    = step.textEnglish,
-                            indonesian = step.textIndonesian,
-                            category   = scenario.category
+                            words        = step.pinyinWords,
+                            originalText = step.textChinese,
+                            english      = step.textEnglish,
+                            indonesian   = step.textIndonesian,
+                            category     = scenario.category
                         )
                     }
             }
@@ -124,7 +133,10 @@ fun SentenceBuilderScreen() {
     var totalAnswered by remember(sessionKey) { mutableStateOf(0) }
     var showSummary  by remember(sessionKey) { mutableStateOf(false) }
     var showConfetti by remember { mutableStateOf(false) }
-    var showInfo     by remember { mutableStateOf(false) }
+    // Only show the intro after onboarding is done — suppress it during the onboarding preview
+    var showInfo by remember(onboardingCompleted) {
+        mutableStateOf(!prefs.getBoolean("sentence_intro_seen", false) && onboardingCompleted)
+    }
 
     val totalQuestions = minOf(SESSION_LENGTH, activePool.size)
     val question = if (activePool.isNotEmpty()) activePool[questionIndex] else null
@@ -172,7 +184,7 @@ fun SentenceBuilderScreen() {
             showConfetti = true
             playSuccessSound()
             tts.speakAndAwait(
-                words.joinToString("") { it.chinese },
+                question?.originalText ?: words.joinToString("") { it.chinese },
                 "sb_correct_$stateKey",
                 ttsRate
             )
@@ -436,7 +448,7 @@ fun SentenceBuilderScreen() {
                                 onClick = {
                                     scope.launch {
                                         tts.speakAndAwait(
-                                            question.words.joinToString("") { it.chinese },
+                                            question.originalText,
                                             "sb_hear_$stateKey",
                                             ttsRate
                                         )
@@ -651,7 +663,12 @@ fun SentenceBuilderScreen() {
                 tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.55f)
             )
         }
-        if (showInfo) { SentenceStructureDialog(onDismiss = { showInfo = false }) }
+        if (showInfo) {
+            SentenceStructureDialog(onDismiss = {
+                prefs.edit().putBoolean("sentence_intro_seen", true).apply()
+                showInfo = false
+            })
+        }
     }
 }
 
@@ -872,65 +889,108 @@ private fun SbStatItem(label: String, value: String, emoji: String) {
 
 @Composable
 private fun SentenceStructureDialog(onDismiss: () -> Unit) {
+    val scrollState = rememberScrollState()
+    val hasMore by remember { derivedStateOf { scrollState.canScrollForward } }
+
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text("How Mandarin Sentences Work", fontWeight = FontWeight.Bold) },
         text = {
-            Column(
-                modifier = Modifier.verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                Text(
-                    "Mandarin follows the same SVO order as English.",
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 14.sp
-                )
-                Text(
-                    "Mandarin uses a Subject + Verb + Object (SVO) structure, just like English, making basic sentences straightforward to form.",
-                    fontSize = 13.sp
-                )
-                Text(
-                    "For example, 'I eat apples' translates directly as:",
-                    fontSize = 13.sp
-                )
-                Text(
-                    "我吃苹果 (Wǒ chī píngguǒ)",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 15.sp,
-                    color = MaterialTheme.colorScheme.primary
-                )
-                Text(
-                    "• 我 (wǒ) — I (subject)\n• 吃 (chī) — eat (verb)\n• 苹果 (píngguǒ) — apples (object)",
-                    fontSize = 13.sp
-                )
-                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
-                Text("Key Differences", fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
-                Text(
-                    "Mandarin has no verb tenses or articles. Instead, it uses context, particles (like 了 for completed actions), or time words before the verb.",
-                    fontSize = 13.sp
-                )
-                Text(
-                    "Questions don't change word order — just add 吗 (ma) at the end:",
-                    fontSize = 13.sp
-                )
-                Text(
-                    "你吃苹果吗？(Nǐ chī píngguǒ ma?)",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp,
-                    color = MaterialTheme.colorScheme.secondary
-                )
-                Text("'Do you eat apples?'", fontSize = 13.sp)
-                Text(
-                    "With two objects (indirect + direct), use:\nSubject + Verb + Indirect Object + Direct Object",
-                    fontSize = 13.sp
-                )
-                Text(
-                    "他给我买书 (Tā gěi wǒ mǎi shū)",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp,
-                    color = MaterialTheme.colorScheme.secondary
-                )
-                Text("'He buys me a book'", fontSize = 13.sp)
+            Box {
+                Column(
+                    modifier = Modifier.verticalScroll(scrollState),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    Text(
+                        "Mandarin follows the same SVO order as English.",
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 14.sp
+                    )
+                    Text(
+                        "Mandarin uses a Subject + Verb + Object (SVO) structure, just like English, making basic sentences straightforward to form.",
+                        fontSize = 13.sp
+                    )
+                    Text(
+                        "For example, 'I eat apples' translates directly as:",
+                        fontSize = 13.sp
+                    )
+                    Text(
+                        "我吃苹果 (Wǒ chī píngguǒ)",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 15.sp,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    Text(
+                        "• 我 (wǒ) — I (subject)\n• 吃 (chī) — eat (verb)\n• 苹果 (píngguǒ) — apples (object)",
+                        fontSize = 13.sp
+                    )
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
+                    Text("Key Differences", fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
+                    Text(
+                        "Mandarin has no verb tenses or articles. Instead, it uses context, particles (like 了 for completed actions), or time words before the verb.",
+                        fontSize = 13.sp
+                    )
+                    Text(
+                        "Questions don't change word order — just add 吗 (ma) at the end:",
+                        fontSize = 13.sp
+                    )
+                    Text(
+                        "你吃苹果吗？(Nǐ chī píngguǒ ma?)",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp,
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                    Text("'Do you eat apples?'", fontSize = 13.sp)
+                    Text(
+                        "With two objects (indirect + direct), use:\nSubject + Verb + Indirect Object + Direct Object",
+                        fontSize = 13.sp
+                    )
+                    Text(
+                        "他给我买书 (Tā gěi wǒ mǎi shū)",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp,
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                    Text("'He buys me a book'", fontSize = 13.sp)
+                    // Bottom breathing room so last item isn't hidden under the fade
+                    Spacer(Modifier.height(32.dp))
+                }
+
+                // Fade + bouncing arrow — only shown when more content is below
+                if (hasMore) {
+                    val bounce = rememberInfiniteTransition(label = "scroll_cue")
+                    val arrowOffset by bounce.animateFloat(
+                        initialValue = 0f,
+                        targetValue  = 5f,
+                        animationSpec = infiniteRepeatable(
+                            animation  = tween(550),
+                            repeatMode = RepeatMode.Reverse
+                        ),
+                        label = "arrow_offset"
+                    )
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.BottomCenter)
+                            .fillMaxWidth()
+                            .height(52.dp)
+                            .background(
+                                Brush.verticalGradient(
+                                    listOf(
+                                        Color.Transparent,
+                                        MaterialTheme.colorScheme.surface
+                                    )
+                                )
+                            ),
+                        contentAlignment = Alignment.BottomCenter
+                    ) {
+                        Icon(
+                            imageVector        = Icons.Default.KeyboardArrowDown,
+                            contentDescription = "Scroll for more",
+                            modifier           = Modifier.offset(y = arrowOffset.dp).padding(bottom = 2.dp),
+                            tint               = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
             }
         },
         confirmButton = {

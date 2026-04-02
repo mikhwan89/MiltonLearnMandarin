@@ -21,8 +21,10 @@ object OnboardingKey {
     const val STATS_ROW      = "stats_row"
     const val CATEGORY_GRID  = "category_grid"
     const val NAV_BAR        = "nav_bar"
+    const val NAV_ROLEPLAY   = "nav_roleplay"
     const val NAV_FLASHCARD  = "nav_flashcard"
     const val NAV_TONE       = "nav_tone"
     const val NAV_BUILD      = "nav_build"
     const val NAV_PROGRESS   = "nav_progress"
+    const val PARENT_LOCK    = "parent_lock"
 }

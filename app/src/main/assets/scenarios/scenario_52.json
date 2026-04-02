@@ -15,15 +15,60 @@
       "textEnglish": "Welcome to the library! What kind of book are you looking for?",
       "textIndonesian": "Selamat datang di perpustakaan! Kamu mau cari buku apa?",
       "pinyinWords": [
-        { "pinyin": "Huānyíng", "chinese": "欢迎", "english": "Welcome", "indonesian": "Selamat datang" },
-        { "pinyin": "lái", "chinese": "来", "english": "come", "indonesian": "datang" },
-        { "pinyin": "dào", "chinese": "到", "english": "to / arrive at", "indonesian": "ke / tiba di" },
-        { "pinyin": "túshūguǎn", "chinese": "图书馆", "english": "library", "indonesian": "perpustakaan" },
-        { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
-        { "pinyin": "xiǎng", "chinese": "想", "english": "want to / thinking of", "indonesian": "ingin" },
-        { "pinyin": "zhǎo", "chinese": "找", "english": "look for", "indonesian": "mencari" },
-        { "pinyin": "shénme", "chinese": "什么", "english": "what", "indonesian": "apa" },
-        { "pinyin": "shū", "chinese": "书", "english": "book", "indonesian": "buku" }
+        {
+          "pinyin": "Huānyíng",
+          "chinese": "欢迎",
+          "english": "Welcome",
+          "indonesian": "Selamat datang"
+        },
+        {
+          "pinyin": "lái",
+          "chinese": "来",
+          "english": "come",
+          "indonesian": "datang"
+        },
+        {
+          "pinyin": "dào",
+          "chinese": "到",
+          "english": "to / arrive at",
+          "indonesian": "ke / tiba di"
+        },
+        {
+          "pinyin": "túshūguǎn",
+          "chinese": "图书馆",
+          "english": "library",
+          "indonesian": "perpustakaan"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "xiǎng",
+          "chinese": "想",
+          "english": "want to / thinking of",
+          "indonesian": "ingin"
+        },
+        {
+          "pinyin": "zhǎo",
+          "chinese": "找",
+          "english": "look for",
+          "indonesian": "mencari"
+        },
+        {
+          "pinyin": "shénme",
+          "chinese": "什么",
+          "english": "what",
+          "indonesian": "apa"
+        },
+        {
+          "pinyin": "shū",
+          "chinese": "书",
+          "english": "book",
+          "indonesian": "buku"
+        }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -33,13 +78,48 @@
           "english": "I want to find children's books. Where are they?",
           "indonesian": "Saya mau cari buku anak-anak. Di mana?",
           "pinyinWords": [
-            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
-            { "pinyin": "xiǎng", "chinese": "想", "english": "want to", "indonesian": "ingin" },
-            { "pinyin": "zhǎo", "chinese": "找", "english": "look for", "indonesian": "mencari" },
-            { "pinyin": "értóng", "chinese": "儿童", "english": "children's", "indonesian": "anak-anak" },
-            { "pinyin": "shū", "chinese": "书", "english": "book", "indonesian": "buku" },
-            { "pinyin": "Zài", "chinese": "在", "english": "At / In", "indonesian": "Di" },
-            { "pinyin": "nǎlǐ", "chinese": "哪里", "english": "where", "indonesian": "mana" }
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "ingin"
+            },
+            {
+              "pinyin": "zhǎo",
+              "chinese": "找",
+              "english": "look for",
+              "indonesian": "mencari"
+            },
+            {
+              "pinyin": "értóng",
+              "chinese": "儿童",
+              "english": "children's",
+              "indonesian": "anak-anak"
+            },
+            {
+              "pinyin": "shū",
+              "chinese": "书",
+              "english": "book",
+              "indonesian": "buku"
+            },
+            {
+              "pinyin": "Zài",
+              "chinese": "在",
+              "english": "At / In",
+              "indonesian": "Di"
+            },
+            {
+              "pinyin": "nǎlǐ",
+              "chinese": "哪里",
+              "english": "where",
+              "indonesian": "mana"
+            }
           ],
           "isCorrect": true
         },
@@ -49,11 +129,36 @@
           "english": "I don't like reading books.",
           "indonesian": "Saya tidak suka membaca buku.",
           "pinyinWords": [
-            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
-            { "pinyin": "bù", "chinese": "不", "english": "not", "indonesian": "tidak" },
-            { "pinyin": "xǐhuān", "chinese": "喜欢", "english": "like", "indonesian": "suka" },
-            { "pinyin": "kàn", "chinese": "看", "english": "read / look at", "indonesian": "membaca / melihat" },
-            { "pinyin": "shū", "chinese": "书", "english": "book", "indonesian": "buku" }
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "bù",
+              "chinese": "不",
+              "english": "not",
+              "indonesian": "tidak"
+            },
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "kàn",
+              "chinese": "看",
+              "english": "read / look at",
+              "indonesian": "membaca / melihat"
+            },
+            {
+              "pinyin": "shū",
+              "chinese": "书",
+              "english": "book",
+              "indonesian": "buku"
+            }
           ],
           "isCorrect": false
         }
@@ -68,19 +173,74 @@
       "textEnglish": "Children's books are over there! You can borrow a book to take home.",
       "textIndonesian": "Buku anak-anak ada di sana! Kamu bisa meminjam buku untuk dibawa pulang.",
       "pinyinWords": [
-        { "pinyin": "Értóng", "chinese": "儿童", "english": "Children's", "indonesian": "Anak-anak" },
-        { "pinyin": "shū", "chinese": "书", "english": "book", "indonesian": "buku" },
-        { "pinyin": "zài", "chinese": "在", "english": "at / is located", "indonesian": "ada di" },
-        { "pinyin": "nà", "chinese": "那", "english": "that / over there", "indonesian": "itu / sana" },
-        { "pinyin": "biān", "chinese": "边", "english": "side / direction", "indonesian": "sisi / arah" },
-        { "pinyin": "Nǐ", "chinese": "你", "english": "You", "indonesian": "Kamu" },
-        { "pinyin": "kěyǐ", "chinese": "可以", "english": "can / may", "indonesian": "bisa / boleh" },
-        { "pinyin": "jiè", "chinese": "借", "english": "borrow", "indonesian": "meminjam" },
-        { "pinyin": "shū", "chinese": "书", "english": "book", "indonesian": "buku" },
-        { "pinyin": "huí", "chinese": "回", "english": "return / go back", "indonesian": "kembali / pulang" },
-        { "pinyin": "jiā", "chinese": "家", "english": "home", "indonesian": "rumah" }
+        {
+          "pinyin": "Értóng",
+          "chinese": "儿童",
+          "english": "Children's",
+          "indonesian": "Anak-anak"
+        },
+        {
+          "pinyin": "shū",
+          "chinese": "书",
+          "english": "book",
+          "indonesian": "buku"
+        },
+        {
+          "pinyin": "zài",
+          "chinese": "在",
+          "english": "at / is located",
+          "indonesian": "ada di"
+        },
+        {
+          "pinyin": "nà",
+          "chinese": "那",
+          "english": "that / over there",
+          "indonesian": "itu / sana"
+        },
+        {
+          "pinyin": "biān",
+          "chinese": "边",
+          "english": "side / direction",
+          "indonesian": "sisi / arah"
+        },
+        {
+          "pinyin": "Nǐ",
+          "chinese": "你",
+          "english": "You",
+          "indonesian": "Kamu"
+        },
+        {
+          "pinyin": "kěyǐ",
+          "chinese": "可以",
+          "english": "can / may",
+          "indonesian": "bisa / boleh"
+        },
+        {
+          "pinyin": "jiè",
+          "chinese": "借",
+          "english": "borrow",
+          "indonesian": "meminjam"
+        },
+        {
+          "pinyin": "shū",
+          "chinese": "书",
+          "english": "book",
+          "indonesian": "buku"
+        },
+        {
+          "pinyin": "huí",
+          "chinese": "回",
+          "english": "return / go back",
+          "indonesian": "kembali / pulang"
+        },
+        {
+          "pinyin": "jiā",
+          "chinese": "家",
+          "english": "home",
+          "indonesian": "rumah"
+        }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "太好了！我想借这本书。",
@@ -88,15 +248,120 @@
           "english": "Great! I want to borrow this book.",
           "indonesian": "Bagus sekali! Saya mau meminjam buku ini.",
           "pinyinWords": [
-            { "pinyin": "Tài", "chinese": "太", "english": "So / Too", "indonesian": "Sangat / Terlalu" },
-            { "pinyin": "hǎo", "chinese": "好", "english": "good", "indonesian": "bagus" },
-            { "pinyin": "le", "chinese": "了", "english": "(exclamation particle)", "indonesian": "(partikel seru)", "note": "Makes the sentence sound excited — like saying 'That's great!'" },
-            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
-            { "pinyin": "xiǎng", "chinese": "想", "english": "want to", "indonesian": "ingin" },
-            { "pinyin": "jiè", "chinese": "借", "english": "borrow", "indonesian": "meminjam" },
-            { "pinyin": "zhè", "chinese": "这", "english": "this", "indonesian": "ini" },
-            { "pinyin": "běn", "chinese": "本", "english": "(book counter)", "indonesian": "(satuan buku)", "note": "Used when counting books — like saying 'one copy of a book'" },
-            { "pinyin": "shū", "chinese": "书", "english": "book", "indonesian": "buku" }
+            {
+              "pinyin": "Tài",
+              "chinese": "太",
+              "english": "So / Too",
+              "indonesian": "Sangat / Terlalu"
+            },
+            {
+              "pinyin": "hǎo",
+              "chinese": "好",
+              "english": "good",
+              "indonesian": "bagus"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(exclamation particle)",
+              "indonesian": "(partikel seru)",
+              "note": "Makes the sentence sound excited — like saying 'That's great!'"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "ingin"
+            },
+            {
+              "pinyin": "jiè",
+              "chinese": "借",
+              "english": "borrow",
+              "indonesian": "meminjam"
+            },
+            {
+              "pinyin": "zhè",
+              "chinese": "这",
+              "english": "this",
+              "indonesian": "ini"
+            },
+            {
+              "pinyin": "běn",
+              "chinese": "本",
+              "english": "(book counter)",
+              "indonesian": "(satuan buku)",
+              "note": "Used when counting books — like saying 'one copy of a book'"
+            },
+            {
+              "pinyin": "shū",
+              "chinese": "书",
+              "english": "book",
+              "indonesian": "buku"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好的！我要借这本！谢谢！",
+          "pinyin": "Hǎo de! Wǒ yào jiè zhè běn! Xièxie!",
+          "english": "OK! I want to borrow this one! Thanks!",
+          "indonesian": "Baik! Saya mau pinjam yang ini! Terima kasih!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "OK",
+              "indonesian": "baik"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(agreement particle)",
+              "indonesian": "(partikel setuju)"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "yào",
+              "chinese": "要",
+              "english": "want",
+              "indonesian": "mau"
+            },
+            {
+              "pinyin": "jiè",
+              "chinese": "借",
+              "english": "borrow",
+              "indonesian": "meminjam"
+            },
+            {
+              "pinyin": "zhè",
+              "chinese": "这",
+              "english": "this",
+              "indonesian": "ini"
+            },
+            {
+              "pinyin": "běn",
+              "chinese": "本",
+              "english": "volume",
+              "indonesian": "buah",
+              "note": "本 is the measure word for books — like saying 'one copy of'"
+            },
+            {
+              "pinyin": "Xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            }
           ],
           "isCorrect": true
         }
@@ -111,15 +376,61 @@
       "textEnglish": "Great! Remember to return the book in two weeks. Goodbye!",
       "textIndonesian": "Baik! Ingat kembalikan bukunya dua minggu lagi ya. Sampai jumpa!",
       "pinyinWords": [
-        { "pinyin": "Hǎo", "chinese": "好", "english": "Good / Okay", "indonesian": "Baik / Oke" },
-        { "pinyin": "Jìde", "chinese": "记得", "english": "Remember to", "indonesian": "Ingat untuk" },
-        { "pinyin": "liǎng", "chinese": "两", "english": "two", "indonesian": "dua" },
-        { "pinyin": "zhōu", "chinese": "周", "english": "week", "indonesian": "minggu" },
-        { "pinyin": "hòu", "chinese": "后", "english": "after / later", "indonesian": "setelah / kemudian" },
-        { "pinyin": "huán", "chinese": "还", "english": "return / give back", "indonesian": "mengembalikan" },
-        { "pinyin": "shū", "chinese": "书", "english": "book", "indonesian": "buku" },
-        { "pinyin": "ō", "chinese": "哦", "english": "(friendly reminder particle)", "indonesian": "(partikel pengingat ramah)", "note": "A gentle reminder tone — like saying 'okay?' at the end" },
-        { "pinyin": "Zàijiàn", "chinese": "再见", "english": "Goodbye", "indonesian": "Sampai jumpa" }
+        {
+          "pinyin": "Hǎo",
+          "chinese": "好",
+          "english": "Good / Okay",
+          "indonesian": "Baik / Oke"
+        },
+        {
+          "pinyin": "Jìde",
+          "chinese": "记得",
+          "english": "Remember to",
+          "indonesian": "Ingat untuk"
+        },
+        {
+          "pinyin": "liǎng",
+          "chinese": "两",
+          "english": "two",
+          "indonesian": "dua"
+        },
+        {
+          "pinyin": "zhōu",
+          "chinese": "周",
+          "english": "week",
+          "indonesian": "minggu"
+        },
+        {
+          "pinyin": "hòu",
+          "chinese": "后",
+          "english": "after / later",
+          "indonesian": "setelah / kemudian"
+        },
+        {
+          "pinyin": "huán",
+          "chinese": "还",
+          "english": "return / give back",
+          "indonesian": "mengembalikan"
+        },
+        {
+          "pinyin": "shū",
+          "chinese": "书",
+          "english": "book",
+          "indonesian": "buku"
+        },
+        {
+          "pinyin": "ō",
+          "chinese": "哦",
+          "english": "(friendly reminder particle)",
+          "indonesian": "(partikel pengingat ramah)",
+          "note": "A gentle reminder tone — like saying 'okay?' at the end"
+        },
+        {
+          "pinyin": "Zàijiàn",
+          "chinese": "再见",
+          "english": "Goodbye",
+          "indonesian": "Sampai jumpa"
+        }
       ],
       "responseType": "MULTIPLE_OPTIONS",
       "options": [
@@ -129,11 +440,37 @@
           "english": "Okay, thank you, auntie! Goodbye!",
           "indonesian": "Baik, terima kasih, tante! Sampai jumpa!",
           "pinyinWords": [
-            { "pinyin": "Hǎo", "chinese": "好", "english": "Okay", "indonesian": "Baik" },
-            { "pinyin": "de", "chinese": "的", "english": "(particle)", "indonesian": "(partikel)", "note": "Softens the agreement" },
-            { "pinyin": "xièxie", "chinese": "谢谢", "english": "thank you", "indonesian": "terima kasih" },
-            { "pinyin": "āyí", "chinese": "阿姨", "english": "auntie (polite for older woman)", "indonesian": "tante / ibu (sopan)" },
-            { "pinyin": "Zàijiàn", "chinese": "再见", "english": "Goodbye", "indonesian": "Sampai jumpa" }
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "Okay",
+              "indonesian": "Baik"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(particle)",
+              "indonesian": "(partikel)",
+              "note": "Softens the agreement"
+            },
+            {
+              "pinyin": "xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            },
+            {
+              "pinyin": "āyí",
+              "chinese": "阿姨",
+              "english": "auntie (polite for older woman)",
+              "indonesian": "tante / ibu (sopan)"
+            },
+            {
+              "pinyin": "Zàijiàn",
+              "chinese": "再见",
+              "english": "Goodbye",
+              "indonesian": "Sampai jumpa"
+            }
           ],
           "isCorrect": true
         },
@@ -143,11 +480,36 @@
           "english": "I don't want to return the book.",
           "indonesian": "Saya tidak mau mengembalikan bukunya.",
           "pinyinWords": [
-            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Saya" },
-            { "pinyin": "bù", "chinese": "不", "english": "not", "indonesian": "tidak" },
-            { "pinyin": "xiǎng", "chinese": "想", "english": "want to", "indonesian": "ingin" },
-            { "pinyin": "huán", "chinese": "还", "english": "return", "indonesian": "mengembalikan" },
-            { "pinyin": "shū", "chinese": "书", "english": "book", "indonesian": "buku" }
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "Saya"
+            },
+            {
+              "pinyin": "bù",
+              "chinese": "不",
+              "english": "not",
+              "indonesian": "tidak"
+            },
+            {
+              "pinyin": "xiǎng",
+              "chinese": "想",
+              "english": "want to",
+              "indonesian": "ingin"
+            },
+            {
+              "pinyin": "huán",
+              "chinese": "还",
+              "english": "return",
+              "indonesian": "mengembalikan"
+            },
+            {
+              "pinyin": "shū",
+              "chinese": "书",
+              "english": "book",
+              "indonesian": "buku"
+            }
           ],
           "isCorrect": false
         }
@@ -162,10 +524,26 @@
       "questionChinese": "图书馆",
       "questionPinyin": "túshūguǎn",
       "options": [
-        { "chinese": "", "pinyin": "", "translation": "Bookshop" },
-        { "chinese": "", "pinyin": "", "translation": "Library" },
-        { "chinese": "", "pinyin": "", "translation": "School" },
-        { "chinese": "", "pinyin": "", "translation": "Museum" }
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Bookshop"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Library"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "School"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Museum"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "图书馆 (túshūguǎn) means 'library' — 图书 means books/publications, 馆 means a place or hall!"
@@ -176,10 +554,26 @@
       "questionChinese": "",
       "questionPinyin": "",
       "options": [
-        { "chinese": "买", "pinyin": "mǎi", "translation": "buy" },
-        { "chinese": "借", "pinyin": "jiè", "translation": "borrow" },
-        { "chinese": "还", "pinyin": "huán", "translation": "return" },
-        { "chinese": "找", "pinyin": "zhǎo", "translation": "look for" }
+        {
+          "chinese": "买",
+          "pinyin": "mǎi",
+          "translation": "buy"
+        },
+        {
+          "chinese": "借",
+          "pinyin": "jiè",
+          "translation": "borrow"
+        },
+        {
+          "chinese": "还",
+          "pinyin": "huán",
+          "translation": "return"
+        },
+        {
+          "chinese": "找",
+          "pinyin": "zhǎo",
+          "translation": "look for"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "借 (jiè) means 'borrow' — remember, you also use 借 to mean 'lend' in Chinese!"
@@ -190,10 +584,26 @@
       "questionChinese": "还书",
       "questionPinyin": "huán shū",
       "options": [
-        { "chinese": "Borrow a book", "pinyin": "", "translation": "Borrow a book" },
-        { "chinese": "Read a book", "pinyin": "", "translation": "Read a book" },
-        { "chinese": "Return a book", "pinyin": "", "translation": "Return a book" },
-        { "chinese": "Buy a book", "pinyin": "", "translation": "Buy a book" }
+        {
+          "chinese": "Borrow a book",
+          "pinyin": "",
+          "translation": "Borrow a book"
+        },
+        {
+          "chinese": "Read a book",
+          "pinyin": "",
+          "translation": "Read a book"
+        },
+        {
+          "chinese": "Return a book",
+          "pinyin": "",
+          "translation": "Return a book"
+        },
+        {
+          "chinese": "Buy a book",
+          "pinyin": "",
+          "translation": "Buy a book"
+        }
       ],
       "correctAnswerIndex": 2,
       "explanation": "还书 (huán shū) means 'return a book' — 还 means to return something, 书 means book!"
@@ -204,10 +614,26 @@
       "questionChinese": "在哪里",
       "questionPinyin": "zài nǎlǐ",
       "options": [
-        { "chinese": "", "pinyin": "", "translation": "How much?" },
-        { "chinese": "", "pinyin": "", "translation": "Where is it?" },
-        { "chinese": "", "pinyin": "", "translation": "What time?" },
-        { "chinese": "", "pinyin": "", "translation": "Who is it?" }
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "How much?"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Where is it?"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "What time?"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "Who is it?"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "在哪里 (zài nǎlǐ) means 'where is it?' — 在 means 'at/in', 哪里 means 'where'!"

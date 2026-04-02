@@ -238,7 +238,7 @@
           "indonesian": "siswa"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "我是一年级的。我的教室在哪里？",
@@ -288,6 +288,51 @@
               "chinese": "在哪里",
               "english": "where is",
               "indonesian": "di mana"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "一年级！请问教室怎么走？",
+          "pinyin": "Yī niánjí! Qǐngwèn jiàoshì zěnme zǒu?",
+          "english": "Grade one! How do I get to the classroom?",
+          "indonesian": "Kelas satu! Bagaimana caranya ke ruang kelas?",
+          "pinyinWords": [
+            {
+              "pinyin": "Yī",
+              "chinese": "一",
+              "english": "one",
+              "indonesian": "satu"
+            },
+            {
+              "pinyin": "niánjí",
+              "chinese": "年级",
+              "english": "grade",
+              "indonesian": "kelas"
+            },
+            {
+              "pinyin": "Qǐngwèn",
+              "chinese": "请问",
+              "english": "excuse me",
+              "indonesian": "permisi"
+            },
+            {
+              "pinyin": "jiàoshì",
+              "chinese": "教室",
+              "english": "classroom",
+              "indonesian": "ruang kelas"
+            },
+            {
+              "pinyin": "zěnme",
+              "chinese": "怎么",
+              "english": "how",
+              "indonesian": "bagaimana"
+            },
+            {
+              "pinyin": "zǒu",
+              "chinese": "走",
+              "english": "go",
+              "indonesian": "jalan"
             }
           ],
           "isCorrect": true
@@ -463,7 +508,7 @@
           "indonesian": "lancar"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "谢谢老师，再见！",
@@ -488,6 +533,33 @@
               "chinese": "再见",
               "english": "goodbye",
               "indonesian": "selamat tinggal"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "谢谢！老师再见！",
+          "pinyin": "Xièxie! Lǎoshī zàijiàn!",
+          "english": "Thanks! Goodbye teacher!",
+          "indonesian": "Terima kasih! Sampai jumpa guru!",
+          "pinyinWords": [
+            {
+              "pinyin": "Xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            },
+            {
+              "pinyin": "Lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
+              "pinyin": "zàijiàn",
+              "chinese": "再见",
+              "english": "goodbye",
+              "indonesian": "sampai jumpa"
             }
           ],
           "isCorrect": true

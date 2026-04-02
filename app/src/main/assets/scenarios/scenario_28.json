@@ -171,7 +171,7 @@
           "indonesian": "apa?"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "会长出植物！种子需要水和阳光！",
@@ -202,6 +202,57 @@
               "chinese": "水和阳光",
               "english": "water and sunlight",
               "indonesian": "air dan sinar matahari"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "会长大！种子要水和太阳！",
+          "pinyin": "Huì zhǎng dà! Zhǒngzi yào shuǐ hé tàiyáng!",
+          "english": "It will grow! Seeds need water and sun!",
+          "indonesian": "Akan tumbuh besar! Biji butuh air dan matahari!",
+          "pinyinWords": [
+            {
+              "pinyin": "Huì",
+              "chinese": "会",
+              "english": "will",
+              "indonesian": "akan"
+            },
+            {
+              "pinyin": "zhǎng dà",
+              "chinese": "长大",
+              "english": "grow up",
+              "indonesian": "tumbuh besar"
+            },
+            {
+              "pinyin": "Zhǒngzi",
+              "chinese": "种子",
+              "english": "seed",
+              "indonesian": "biji"
+            },
+            {
+              "pinyin": "yào",
+              "chinese": "要",
+              "english": "need",
+              "indonesian": "butuh"
+            },
+            {
+              "pinyin": "shuǐ",
+              "chinese": "水",
+              "english": "water",
+              "indonesian": "air"
+            },
+            {
+              "pinyin": "hé",
+              "chinese": "和",
+              "english": "and",
+              "indonesian": "dan"
+            },
+            {
+              "pinyin": "tàiyáng",
+              "chinese": "太阳",
+              "english": "sun",
+              "indonesian": "matahari"
             }
           ],
           "isCorrect": true

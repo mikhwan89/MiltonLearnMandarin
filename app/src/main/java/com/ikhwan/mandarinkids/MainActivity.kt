@@ -11,6 +11,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.ikhwan.mandarinkids.data.scenarios.CustomScenarioRepository
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.navigation.MandarinKidsApp
 import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
@@ -21,6 +22,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         JsonScenarioRepository.init(applicationContext)
+        CustomScenarioRepository.getInstance(applicationContext)
         setContent {
             val userPrefs = remember { UserPreferencesRepository.getInstance(this) }
             val themeIndex by userPrefs.colorThemeIndex.collectAsState(initial = 0)
