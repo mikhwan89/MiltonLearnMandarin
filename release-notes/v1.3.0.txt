@@ -1,0 +1,134 @@
+Mandarinku — Release Notes
+Version: 1.3.0 (versionCode 3)
+Released: 2026-04-02
+Previous version: 1.2.1 (versionCode 2)
+
+════════════════════════════════════════════════════════════════
+NEW FEATURES
+════════════════════════════════════════════════════════════════
+
+5-Level Mastery System
+  - Each scenario now has 5 progressive difficulty levels.
+      Level 1 — Original quiz (same as before)
+      Level 2 — 12 targeted vocabulary questions from the scenario
+      Level 3 — All words in the scenario tested
+      Level 4 — Sentence Builder (multiple-choice mode)
+      Level 5 — Sentence Builder (all sentences, no hints)
+  - Stars reset to 0 (amber) when a new level is unlocked.
+  - XP is earned independently on each level.
+  - A level badge (L2–L5) appears on scenario cards once unlocked.
+  - At Level 2+, the flashcard review step before roleplay can be skipped.
+  - Levels 4 and 5 route to the new SentenceBuilderQuizScreen (fill-in-
+    the-blanks) instead of the standard QuizScreen.
+
+Custom Scenarios (Parent Feature)
+  - Parents can add their own scenarios directly inside the app via
+    Parental Controls → Custom Scenarios.
+  - A "Copy AI Prompt" button generates a ready-to-use prompt for
+    Claude or ChatGPT. Paste the resulting JSON into the input field.
+  - Full validation on save: required fields, pinyinWords completeness,
+    ID collision with built-in scenarios.
+  - Custom scenarios appear in all tabs: Roleplay, Flashcard, Practice,
+    Tone Trainer, Sentence Builder, and Progress.
+  - Custom scenarios can be deleted by the parent at any time.
+  - Stored in Room database (custom_scenarios table).
+
+New Badges (12 added)
+  - Level-specific achievement badges for Levels 2–5:
+      Debut (first 3★ pass), Ace (3★ on three scenarios),
+      Master (3★ on all scenarios in the level)
+  - All badge icons are now unique — no two badges share the same emoji.
+  - Grand Master badge now requires earning every other badge in the game.
+
+New Milestone Reward Conditions
+  - Tone Trainer correct answers (since goal was set)
+  - Sentence Builder correct answers (since goal was set)
+  - Both use a baseline snapshot so progress counts only from when the
+    parent created the goal, not the all-time total.
+  - Level completion conditions: scenarios passed at Level 1–5 (3★ required).
+
+════════════════════════════════════════════════════════════════
+IMPROVEMENTS
+════════════════════════════════════════════════════════════════
+
+Parental Controls — Content Filtering Extended
+  - Disabled categories and scenarios now also suppress content in:
+    Flashcard drill, Tone Trainer, and Sentence Builder tabs.
+  - Filters update reactively — no app restart needed.
+  - The onboarding spotlight step for Parental Controls now mentions
+    this content-filtering capability.
+
+Category Tile Colors
+  - Each category now has a fixed hue identity that is consistent across
+    all 10 color themes, eliminating near-identical pairs reported in
+    previous builds.
+  - Fixed pairs: AT_SCHOOL ≈ PLAY (both green), ESSENTIALS ≈ HOME
+    (both blue), FOOD ≈ OUT_AND_ABOUT (both amber), and others.
+
+Theme — Navigation Bar
+  - The system navigation bar (Home / Back / Recents) now matches the
+    active app theme background color.
+  - Navigation bar icon tint (light/dark) flips automatically to remain
+    readable against the theme background.
+
+Milestone Reward Dialog
+  - Badge picker dropdown is now scrollable (capped at 280 dp) so all
+    badges including XP Mythical are reachable.
+  - Removed PERFECT_SCENARIOS and HIGH_MASTERY_WORDS condition types
+    (replaced by more granular level-completion conditions above).
+  - Flashcard mastery conditions relabelled from "Words at ★10" to
+    "Flashcard at ★10" for clarity.
+
+════════════════════════════════════════════════════════════════
+BUG FIXES
+════════════════════════════════════════════════════════════════
+
+TTS Pronunciation — Sentence Builder & Level 4/5 Quiz
+  - Words spoken in Sentence Builder practice and Level 4/5 quiz
+    previously had no pauses between words because punctuation was
+    stripped when building the TTS string from individual word tokens.
+  - Fixed: TTS now uses the original punctuated Chinese sentence
+    (textChinese / option.chinese), matching the natural rhythm heard
+    in the Roleplay screen.
+
+Custom Scenario AI Prompt — Quiz Answer Randomization
+  - The AI prompt example previously showed correctAnswerIndex = 0 on
+    every quiz question, causing AI-generated scenarios to always place
+    the correct answer in the first position.
+  - Fixed: example questions now use indices 2, 1, 3 respectively, and
+    an explicit rule instructs the AI to randomize answer placement
+    across all positions (0–3).
+
+════════════════════════════════════════════════════════════════
+DATABASE CHANGES
+════════════════════════════════════════════════════════════════
+
+  v8  → v9  : Added masteryLevel column to scenario_progress
+  v9  → v10 : Added starsAtCurrentLevel column to scenario_progress
+  v10 → v11 : Added custom_scenarios table
+
+All migrations are non-destructive. Existing progress data is preserved.
+
+════════════════════════════════════════════════════════════════
+CONTENT UPDATES
+════════════════════════════════════════════════════════════════
+
+  - pinyinWords filled in / corrected on 26 existing scenarios:
+    02, 04, 06, 07, 08, 09, 10, 11, 12, 15, 16, 18, 20, 21, 22,
+    23, 24, 26, 27, 28, 29, 30, 32, 35, 37
+  - scenario_51.json (坐公共汽车 — Taking the Bus) updated with full
+    pinyinWords coverage
+  - scenario_52.json (去图书馆 — At the Library) updated with full
+    pinyinWords coverage
+
+════════════════════════════════════════════════════════════════
+TECHNICAL
+════════════════════════════════════════════════════════════════
+
+  - New screen: SentenceBuilderQuizScreen (Level 4/5 fill-in-the-blanks)
+  - New class: QuizQuestionGenerator (dynamic question generation per level)
+  - New entities: CustomScenarioEntity, CustomScenarioDao
+  - New repository: CustomScenarioRepository (singleton, syncs to
+    JsonScenarioRepository on each Room emission)
+  - JsonScenarioRepository now separates builtIn and custom scenario lists
+    and exposes builtInIds for collision checking
