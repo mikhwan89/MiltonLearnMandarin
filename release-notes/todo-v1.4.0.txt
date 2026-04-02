@@ -119,6 +119,168 @@ SUGGESTED ADDITIONS (for your consideration)
         LEVEL_6_ACE     🦻  — 3 scenarios passed at Level 6 (3★)
         LEVEL_6_MASTER  👂  — all scenarios passed at Level 6 (3★)
 
+[ ] 7b. Level 7 Mastery — Speaking Practice
+
+      FEASIBILITY VERDICT
+      ───────────────────
+      Possible — but NOT via GBoard. Here is why, and what to do instead.
+
+      WHY GBOARD IS THE WRONG TOOL
+      ─────────────────────────────
+      GBoard is a separate system app (an IME — Input Method Editor).
+      Android provides no public API to:
+        - Hide the keyboard layout while keeping only the microphone visible.
+        - Force GBoard into voice-only mode programmatically.
+        - Intercept or suppress its typing surface from another app.
+      Any approach that tries to overlay or manipulate GBoard's window
+      would be fragile, break on non-GBoard devices (Samsung, OPPO, etc.),
+      and is likely to stop working on future Android versions.
+
+      THE RIGHT TOOL: Android SpeechRecognizer API
+      ─────────────────────────────────────────────
+      Android ships a built-in SpeechRecognizer (android.speech.SpeechRecognizer)
+      that is completely independent of the keyboard. It:
+        - Records from the microphone directly.
+        - Sends audio to Google's speech-to-text engine (same engine GBoard uses).
+        - Returns simplified Chinese characters when locale is set to zh-CN.
+        - Gives full programmatic control — no keyboard involved at all.
+        - Works on ALL Android devices regardless of which keyboard is installed.
+      This is how Duolingo, Google Translate, and every serious language app
+      handle in-app speaking. It is the standard approach.
+
+      REQUIRES INTERNET (first use) / OFFLINE MODEL (optional)
+      ──────────────────────────────────────────────────────────
+      The app already has android.permission.INTERNET declared.
+      Speech recognition sends audio to Google's servers by default.
+      Google also ships an offline Chinese speech model downloadable via
+      Settings → Language & Input → Offline Speech Recognition.
+      The app can detect offline availability and show a gentle notice
+      if only online recognition is available (similar to the TTS voice
+      pack notice in item 10).
+
+      NEW PERMISSION REQUIRED
+      ───────────────────────
+      AndroidManifest.xml needs:
+        <uses-permission android:name="android.permission.RECORD_AUDIO" />
+      The app must request this at runtime (Android 6+). A one-time
+      permission prompt is shown the first time the child reaches L7.
+
+      WHERE IT LIVES
+      ──────────────
+      Level 7 in the mastery system — unlocked after 3★ on Level 6.
+      The full mastery ladder becomes:
+        L1  Standard quiz
+        L2  12 targeted vocab questions
+        L3  All words in scenario tested
+        L4  Sentence Builder (multiple choice)
+        L5  Sentence Builder (all sentences, no hints)
+        L6  Listening Comprehension (hear sentence → pick meaning)
+        L7  Speaking Practice (hear sentence → speak it back)
+
+      HOW IT WORKS — FLOW
+      ────────────────────
+      1. A dialogue line from the scenario is selected (CHARACTER lines only).
+      2. TTS speaks the line at normal speed so the child hears a model.
+      3. A large animated 🎤 microphone button is shown.
+         Tapping it starts recording (SpeechRecognizer.startListening).
+      4. A waveform / pulsing ring animation plays while recording.
+         Recording stops automatically when silence is detected
+         (SpeechRecognizer handles this) or after a 6-second max.
+      5. Recognized text (simplified Chinese characters) is compared to
+         the expected textChinese.
+      6. Score and feedback are shown (see Scoring below).
+      7. 5 questions per L7 run, drawn from the scenario's CHARACTER lines.
+
+      SCREEN LAYOUT (no TextField, no keyboard ever appears)
+      ───────────────────────────────────────────────────────
+      ┌────────────────────────────────────────┐
+      │  [Character emoji + name]              │
+      │                                        │
+      │  Listen first:                         │
+      │  ┌──────────────────────────────────┐  │
+      │  │  🔊  "你今天吃了什么？"           │  │  ← tap to replay TTS
+      │  │      Nǐ jīntiān chī le shénme?   │  │
+      │  └──────────────────────────────────┘  │
+      │                                        │
+      │  Now you say it:                       │
+      │                                        │
+      │         [ 🎤  TAP TO SPEAK ]           │  ← large 56dp+ button
+      │                                        │
+      │  [waveform animation while recording]  │
+      │                                        │
+      │  [result / feedback card after done]   │
+      └────────────────────────────────────────┘
+
+      No text input field is ever shown. No keyboard is ever triggered.
+      The mic button is the only interactive element during recording.
+
+      SCORING — CHARACTER MATCH RATE
+      ────────────────────────────────
+      Compare recognised Chinese characters against expected textChinese
+      using a character-level similarity score:
+
+        score = (matching characters / total expected characters) × 100
+
+      Thresholds:
+        ≥ 90%  → ✅ Perfect / 很好！   — full marks
+        70–89% → 🟡 Close / 再试一次   — half marks, encouraged to retry
+        < 70%  → ❌ Try again / 加油！  — no marks, one free retry
+
+      Why character match (not exact string match):
+        - SpeechRecognizer may return traditional characters on some engines.
+        - Particles (吗, 了, 的) are often dropped in natural speech.
+        - An overly strict match would discourage children unfairly.
+
+      ALTERNATIVE SCORING — PINYIN PHONETIC COMPARISON
+      ──────────────────────────────────────────────────
+      If character match proves too strict (e.g. engine returns wrong
+      characters for homophones), fall back to pinyin comparison:
+        - Convert expected textChinese → pinyin using the pinyinWords
+          field already in the JSON (no extra library needed).
+        - Convert recognized Chinese → pinyin using the same mapping.
+        - Compare syllable sequences.
+      This tolerates character-level errors while still checking pronunciation.
+      Can be implemented as a second-pass fallback if the character score
+      is below threshold.
+
+      RETRY LOGIC
+      ────────────
+      - 70–89%: "Almost! Try again 🎤" button offered once.
+      - < 70%:  Same retry offer, plus a "Skip this one" option so the
+                child is never stuck.
+      - After retry, best score of the two attempts is kept.
+
+      BADGES (3 new, consistent with L2–L6 pattern)
+      ───────────────────────────────────────────────
+        LEVEL_7_DEBUT   🗣️  — first scenario passed at Level 7 (3★)
+        LEVEL_7_ACE     🎤  — 3 scenarios passed at Level 7 (3★)
+        LEVEL_7_MASTER  🌟  — all scenarios passed at Level 7 (3★)
+
+      MILESTONE REWARD
+      ─────────────────
+      Add LEVEL_7_COMPLETIONS to MilestoneType.
+
+      PARENTAL CONTROLS
+      ─────────────────
+      - Inherits the scenario's existing disable flag.
+      - No separate toggle needed unless parents request it later.
+
+      IMPLEMENTATION NOTES
+      ─────────────────────
+      New file: speech/SpeechRecognitionManager.kt
+        - Wraps SpeechRecognizer lifecycle (create, startListening,
+          stopListening, destroy).
+        - Exposes a coroutine-friendly suspendCoroutine wrapper, mirroring
+          the existing TtsManager.speakAndAwait() pattern.
+        - Handles INSUFFICIENT_PERMISSIONS, ERROR_NO_MATCH, ERROR_NETWORK
+          with user-friendly error messages.
+      New file: quiz/SpeakingQuizScreen.kt
+        - Similar structure to SentenceBuilderQuizScreen but with the
+          mic button replacing the word-tile area.
+      New route: Routes.SPEAKING_QUIZ ("speaking_quiz/{scenarioId}/{rolePlayScore}")
+      QuizQuestionGenerator: add generateLevel7Questions() — selects
+        CHARACTER dialogue lines, shuffles, takes up to 5.
+
 [ ] 8. Scenario Bookmarks / Favourites
       - Child (or parent) can star a scenario to pin it to the top of the
         category list or a dedicated "Favourites" section.
