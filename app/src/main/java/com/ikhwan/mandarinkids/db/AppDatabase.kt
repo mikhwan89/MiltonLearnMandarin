@@ -8,8 +8,8 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
-    entities = [ScenarioProgressEntity::class, MasteredWordEntity::class, MilestoneReward::class],
-    version = 8,
+    entities = [ScenarioProgressEntity::class, MasteredWordEntity::class, MilestoneReward::class, CustomScenarioEntity::class],
+    version = 11,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -17,6 +17,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun progressDao(): ProgressDao
     abstract fun masteredWordDao(): MasteredWordDao
     abstract fun milestoneRewardDao(): MilestoneRewardDao
+    abstract fun customScenarioDao(): CustomScenarioDao
 
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null
@@ -148,6 +149,37 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        // Add masteryLevel column to scenario_progress (default 1 = first quiz).
+        private val MIGRATION_8_9 = object : Migration(8, 9) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE scenario_progress ADD COLUMN masteryLevel INTEGER NOT NULL DEFAULT 1")
+            }
+        }
+
+        // Add starsAtCurrentLevel — tracks stars for the active level; resets to 0 on level-up.
+        private val MIGRATION_9_10 = object : Migration(9, 10) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE scenario_progress ADD COLUMN starsAtCurrentLevel INTEGER NOT NULL DEFAULT 0")
+                // Seed existing rows: if they have stars, those were earned at level 1
+                db.execSQL("UPDATE scenario_progress SET starsAtCurrentLevel = stars WHERE masteryLevel = 1")
+            }
+        }
+
+        // Add custom_scenarios table to store parent-created scenario JSON blobs.
+        private val MIGRATION_10_11 = object : Migration(10, 11) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    """
+                    CREATE TABLE IF NOT EXISTS custom_scenarios (
+                        id TEXT NOT NULL PRIMARY KEY,
+                        scenarioJson TEXT NOT NULL,
+                        createdAt INTEGER NOT NULL
+                    )
+                    """.trimIndent()
+                )
+            }
+        }
+
         fun getInstance(context: Context): AppDatabase =
             INSTANCE ?: synchronized(this) {
                 INSTANCE ?: Room.databaseBuilder(
@@ -157,7 +189,8 @@ abstract class AppDatabase : RoomDatabase() {
                 )
                     .addMigrations(
                         MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4,
-                        MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8
+                        MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8,
+                        MIGRATION_8_9, MIGRATION_9_10, MIGRATION_10_11
                     )
                     .build()
                     .also { INSTANCE = it }

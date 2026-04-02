@@ -49,7 +49,7 @@
           "note": "了 at the end of a sentence shows something has happened or changed. '七点了' means 'it IS seven already'!"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "好的妈妈！我起床了！",
@@ -68,6 +68,57 @@
               "chinese": "我起床了",
               "english": "I am getting up",
               "indonesian": "Saya sudah bangun"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "来了来了！我醒了！",
+          "pinyin": "Lái le lái le! Wǒ xǐng le!",
+          "english": "Coming coming! I'm awake!",
+          "indonesian": "Iya iya! Aku sudah bangun!",
+          "pinyinWords": [
+            {
+              "pinyin": "Lái",
+              "chinese": "来",
+              "english": "come",
+              "indonesian": "datang"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "already",
+              "indonesian": "sudah"
+            },
+            {
+              "pinyin": "lái",
+              "chinese": "来",
+              "english": "come",
+              "indonesian": "datang"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "already",
+              "indonesian": "sudah"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "xǐng",
+              "chinese": "醒",
+              "english": "awake",
+              "indonesian": "bangun"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "already",
+              "indonesian": "sudah"
             }
           ],
           "isCorrect": true
@@ -122,7 +173,7 @@
           "indonesian": "sikat gigi"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "好！我去刷牙！刷刷刷！",
@@ -147,6 +198,51 @@
               "chinese": "刷刷刷",
               "english": "brush brush brush",
               "indonesian": "gosok gosok gosok"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "知道了！我马上去刷牙！",
+          "pinyin": "Zhīdào le! Wǒ mǎshàng qù shuā yá!",
+          "english": "Got it! I'll brush my teeth right away!",
+          "indonesian": "Iya! Aku segera sikat gigi!",
+          "pinyinWords": [
+            {
+              "pinyin": "Zhīdào",
+              "chinese": "知道",
+              "english": "know",
+              "indonesian": "tahu"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "already",
+              "indonesian": "sudah"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "mǎshàng",
+              "chinese": "马上",
+              "english": "right away",
+              "indonesian": "segera"
+            },
+            {
+              "pinyin": "qù",
+              "chinese": "去",
+              "english": "go",
+              "indonesian": "pergi"
+            },
+            {
+              "pinyin": "shuā yá",
+              "chinese": "刷牙",
+              "english": "brush teeth",
+              "indonesian": "sikat gigi"
             }
           ],
           "isCorrect": true
@@ -300,7 +396,7 @@
           "indonesian": "(menunjukkan sudah waktunya)"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "太好了！我肚子饿了！我要吃早饭！",
@@ -332,6 +428,63 @@
               "chinese": "我要吃",
               "english": "I want to eat",
               "indonesian": "Saya mau makan"
+            },
+            {
+              "pinyin": "zǎofàn",
+              "chinese": "早饭",
+              "english": "breakfast",
+              "indonesian": "sarapan"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好！我好饿！我要吃早饭！",
+          "pinyin": "Hǎo! Wǒ hǎo è! Wǒ yào chī zǎofàn!",
+          "english": "OK! I'm so hungry! I want breakfast!",
+          "indonesian": "Baik! Aku lapar sekali! Aku mau sarapan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "OK",
+              "indonesian": "baik"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "hǎo",
+              "chinese": "好",
+              "english": "so",
+              "indonesian": "sangat"
+            },
+            {
+              "pinyin": "è",
+              "chinese": "饿",
+              "english": "hungry",
+              "indonesian": "lapar"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "yào",
+              "chinese": "要",
+              "english": "want",
+              "indonesian": "mau"
+            },
+            {
+              "pinyin": "chī",
+              "chinese": "吃",
+              "english": "eat",
+              "indonesian": "makan"
             },
             {
               "pinyin": "zǎofàn",

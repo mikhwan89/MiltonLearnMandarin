@@ -292,7 +292,7 @@
           "indonesian": "datang mencari kami"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "好的！一、二、三、四、五、六、七、八、九、十！我来了！",
@@ -329,6 +329,111 @@
               "chinese": "我来了",
               "english": "I'm coming",
               "indonesian": "Saya datang"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好！我来数！一二三四五六七八九十！来了！",
+          "pinyin": "Hǎo! Wǒ lái shǔ! Yī èr sān sì wǔ liù qī bā jiǔ shí! Lái le!",
+          "english": "OK! I'll count! 1-2-3-4-5-6-7-8-9-10! Here I come!",
+          "indonesian": "Baik! Aku hitung! 1-2-3-4-5-6-7-8-9-10! Aku datang!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "OK",
+              "indonesian": "baik"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "lái",
+              "chinese": "来",
+              "english": "come to",
+              "indonesian": "datang"
+            },
+            {
+              "pinyin": "shǔ",
+              "chinese": "数",
+              "english": "count",
+              "indonesian": "menghitung"
+            },
+            {
+              "pinyin": "Yī",
+              "chinese": "一",
+              "english": "1",
+              "indonesian": "1"
+            },
+            {
+              "pinyin": "èr",
+              "chinese": "二",
+              "english": "2",
+              "indonesian": "2"
+            },
+            {
+              "pinyin": "sān",
+              "chinese": "三",
+              "english": "3",
+              "indonesian": "3"
+            },
+            {
+              "pinyin": "sì",
+              "chinese": "四",
+              "english": "4",
+              "indonesian": "4"
+            },
+            {
+              "pinyin": "wǔ",
+              "chinese": "五",
+              "english": "5",
+              "indonesian": "5"
+            },
+            {
+              "pinyin": "liù",
+              "chinese": "六",
+              "english": "6",
+              "indonesian": "6"
+            },
+            {
+              "pinyin": "qī",
+              "chinese": "七",
+              "english": "7",
+              "indonesian": "7"
+            },
+            {
+              "pinyin": "bā",
+              "chinese": "八",
+              "english": "8",
+              "indonesian": "8"
+            },
+            {
+              "pinyin": "jiǔ",
+              "chinese": "九",
+              "english": "9",
+              "indonesian": "9"
+            },
+            {
+              "pinyin": "shí",
+              "chinese": "十",
+              "english": "10",
+              "indonesian": "10"
+            },
+            {
+              "pinyin": "Lái",
+              "chinese": "来",
+              "english": "come",
+              "indonesian": "datang"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "already",
+              "indonesian": "sudah"
             }
           ],
           "isCorrect": true

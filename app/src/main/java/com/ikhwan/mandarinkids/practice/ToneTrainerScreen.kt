@@ -33,7 +33,7 @@ import com.ikhwan.mandarinkids.ui.ConfettiEffect
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-private const val TONE_SESSION_LENGTH = 10
+private const val TONE_SESSION_LENGTH = 100
 
 private data class ToneExample(
     val pinyin: String,
@@ -67,17 +67,24 @@ fun ToneTrainerScreen() {
     val scope = rememberCoroutineScope()
     val repo      = remember { ProgressRepository.getInstance(context) }
     val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
-    val showIndonesian by userPrefs.showIndonesian.collectAsState(initial = true)
+    val showIndonesian      by userPrefs.showIndonesian.collectAsState(initial = true)
+    val disabledCategories  by userPrefs.disabledCategories.collectAsState(initial = emptySet())
+    val disabledScenarios   by userPrefs.disabledScenarios.collectAsState(initial = emptySet())
+    val onboardingCompleted by userPrefs.onboardingCompleted.collectAsState(initial = false)
     val prefs = remember { context.getSharedPreferences("tone_trainer", 0) }
-    var showIntro by remember { mutableStateOf(!prefs.getBoolean("tone_intro_seen", false)) }
+    // Only show the intro after onboarding is done — suppress it during the onboarding preview
+    var showIntro by remember(onboardingCompleted) {
+        mutableStateOf(!prefs.getBoolean("tone_intro_seen", false) && onboardingCompleted)
+    }
 
     val colors = MaterialTheme.appColors
 
     val labelColor = colors.onLightTile
     val wordCardGradient = colors.tileBlue.asList()
 
-    val questionPool: List<ToneQuestion> = remember {
+    val questionPool: List<ToneQuestion> = remember(disabledCategories, disabledScenarios) {
         JsonScenarioRepository.getAll()
+            .filter { it.category.name !in disabledCategories && it.id !in disabledScenarios }
             .flatMap { scenario ->
                 scenario.dialogues.flatMap { step ->
                     step.pinyinWords + step.options.flatMap { it.pinyinWords }
@@ -145,10 +152,14 @@ fun ToneTrainerScreen() {
         else { questionIndex = next; stateKey++ }
     }
 
-    // Perfect Pitch badge when session ends
+    // Badge awards when session ends
     LaunchedEffect(showSummary) {
-        if (showSummary && totalAnswered > 0 && correctCount == totalAnswered) {
+        if (!showSummary || totalAnswered == 0) return@LaunchedEffect
+        if (correctCount == totalAnswered) {
             repo.awardBadge(Badge.PERFECT_PITCH.id)
+        }
+        if (correctCount == totalAnswered && totalAnswered >= TONE_SESSION_LENGTH) {
+            repo.awardBadge(Badge.PITCH_PERFECT.id)
         }
     }
 

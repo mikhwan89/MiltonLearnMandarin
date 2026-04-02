@@ -46,6 +46,9 @@ class PracticeSessionViewModel(
     private val scenarioCategoryMap: Map<String, ScenarioCategory> =
         JsonScenarioRepository.getAll().associate { it.id to it.category }
 
+    private var disabledCategories: Set<String> = emptySet()
+    private var disabledScenarios: Set<String> = emptySet()
+
     var correctCount by mutableStateOf(0)
         private set
     var totalAnswered by mutableStateOf(0)
@@ -108,11 +111,24 @@ class PracticeSessionViewModel(
         }
     }
 
-    /** Words eligible for the current practice mode, filtered by category if set. */
+    /** Update parental-control filters; re-picks the current card if needed. */
+    fun setDisabledFilters(disabledCats: Set<String>, disabledScens: Set<String>) {
+        if (disabledCats == disabledCategories && disabledScens == disabledScenarios) return
+        disabledCategories = disabledCats
+        disabledScenarios  = disabledScens
+        currentWord = pickNextWord()
+        cardToken++
+    }
+
+    /** Words eligible for the current practice mode, filtered by category and parental controls. */
     private fun poolForMode(words: List<MasteredWordEntity> = allWords): List<MasteredWordEntity> {
-        val base = if (categoryFilter != null) {
-            words.filter { scenarioCategoryMap[it.scenarioId] == categoryFilter }
-        } else words
+        val base = words
+            .filter { word ->
+                val cat = scenarioCategoryMap[word.scenarioId]
+                (cat == null || cat.name !in disabledCategories) &&
+                word.scenarioId !in disabledScenarios
+            }
+            .let { if (categoryFilter != null) it.filter { w -> scenarioCategoryMap[w.scenarioId] == categoryFilter } else it }
         val levels = base.map { it.boxLevel }.distinct().sorted()
         return when (practiceMode) {
             PracticeMode.ALL -> base

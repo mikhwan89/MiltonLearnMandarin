@@ -335,7 +335,7 @@
           "indonesian": "harus"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "好的，妈妈！我去洗手！",
@@ -360,6 +360,51 @@
               "chinese": "我",
               "english": "I",
               "indonesian": "Aku"
+            },
+            {
+              "pinyin": "qù",
+              "chinese": "去",
+              "english": "go",
+              "indonesian": "pergi"
+            },
+            {
+              "pinyin": "xǐshǒu",
+              "chinese": "洗手",
+              "english": "wash hands",
+              "indonesian": "cuci tangan"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "知道了！我马上去洗手！",
+          "pinyin": "Zhīdào le! Wǒ mǎshàng qù xǐshǒu!",
+          "english": "Got it! I'll wash my hands right away!",
+          "indonesian": "Iya! Aku segera cuci tangan!",
+          "pinyinWords": [
+            {
+              "pinyin": "Zhīdào",
+              "chinese": "知道",
+              "english": "know",
+              "indonesian": "tahu"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "already",
+              "indonesian": "sudah"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "mǎshàng",
+              "chinese": "马上",
+              "english": "right away",
+              "indonesian": "segera"
             },
             {
               "pinyin": "qù",

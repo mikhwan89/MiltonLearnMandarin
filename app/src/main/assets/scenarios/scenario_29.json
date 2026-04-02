@@ -302,7 +302,7 @@
           "indonesian": "ucapkan?"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "谢谢你！你真好！我也会帮助你的！",
@@ -333,6 +333,69 @@
               "chinese": "帮助你的",
               "english": "help you",
               "indonesian": "membantumu"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "多谢！你是好朋友！我也帮你！",
+          "pinyin": "Duōxiè! Nǐ shì hǎo péngyou! Wǒ yě bāng nǐ!",
+          "english": "Many thanks! You're a good friend! I'll help you too!",
+          "indonesian": "Terima kasih banyak! Kamu teman baik! Aku juga bantu kamu!",
+          "pinyinWords": [
+            {
+              "pinyin": "Duōxiè",
+              "chinese": "多谢",
+              "english": "many thanks",
+              "indonesian": "terima kasih banyak"
+            },
+            {
+              "pinyin": "Nǐ",
+              "chinese": "你",
+              "english": "you",
+              "indonesian": "kamu"
+            },
+            {
+              "pinyin": "shì",
+              "chinese": "是",
+              "english": "are",
+              "indonesian": "adalah"
+            },
+            {
+              "pinyin": "hǎo",
+              "chinese": "好",
+              "english": "good",
+              "indonesian": "baik"
+            },
+            {
+              "pinyin": "péngyou",
+              "chinese": "朋友",
+              "english": "friend",
+              "indonesian": "teman"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "yě",
+              "chinese": "也",
+              "english": "also",
+              "indonesian": "juga"
+            },
+            {
+              "pinyin": "bāng",
+              "chinese": "帮",
+              "english": "help",
+              "indonesian": "membantu"
+            },
+            {
+              "pinyin": "nǐ",
+              "chinese": "你",
+              "english": "you",
+              "indonesian": "kamu"
             }
           ],
           "isCorrect": true

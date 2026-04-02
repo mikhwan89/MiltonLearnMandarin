@@ -46,7 +46,7 @@
           "indonesian": "ini apa?"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "这是钢琴！黑色和白色的键！",
@@ -82,6 +82,69 @@
             {
               "pinyin": "de jiàn",
               "chinese": "的键",
+              "english": "keys",
+              "indonesian": "tuts"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我知道！那是钢琴！有黑白键！",
+          "pinyin": "Wǒ zhīdào! Nà shì gāngqín! Yǒu hēi bái jiàn!",
+          "english": "I know! That's a piano! It has black and white keys!",
+          "indonesian": "Saya tahu! Itu piano! Ada tuts hitam dan putih!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "zhīdào",
+              "chinese": "知道",
+              "english": "know",
+              "indonesian": "tahu"
+            },
+            {
+              "pinyin": "Nà",
+              "chinese": "那",
+              "english": "that",
+              "indonesian": "itu"
+            },
+            {
+              "pinyin": "shì",
+              "chinese": "是",
+              "english": "is",
+              "indonesian": "adalah"
+            },
+            {
+              "pinyin": "gāngqín",
+              "chinese": "钢琴",
+              "english": "piano",
+              "indonesian": "piano"
+            },
+            {
+              "pinyin": "Yǒu",
+              "chinese": "有",
+              "english": "has",
+              "indonesian": "punya"
+            },
+            {
+              "pinyin": "hēi",
+              "chinese": "黑",
+              "english": "black",
+              "indonesian": "hitam"
+            },
+            {
+              "pinyin": "bái",
+              "chinese": "白",
+              "english": "white",
+              "indonesian": "putih"
+            },
+            {
+              "pinyin": "jiàn",
+              "chinese": "键",
               "english": "keys",
               "indonesian": "tuts"
             }

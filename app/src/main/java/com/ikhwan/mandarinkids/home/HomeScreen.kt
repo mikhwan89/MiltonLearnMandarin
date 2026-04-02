@@ -483,10 +483,19 @@ fun CategoryCard(category: ScenarioCategory, onClick: () -> Unit, modifier: Modi
 }
 
 @Composable
-fun ScenarioCard(scenario: Scenario, stars: Int, onClick: () -> Unit) {
+fun ScenarioCard(
+    scenario: Scenario,
+    starsAtCurrentLevel: Int = 0,
+    everPlayed: Boolean = false,
+    masteryLevel: Int = 1,
+    onClick: () -> Unit
+) {
     val colors = MaterialTheme.appColors
     val cardGradient = colors.tileAmber.asList()
     val labelColor = colors.contentColorFor(colors.tileAmber)
+    // New level pending = played before but no stars yet on this level
+    val newLevelPending = everPlayed && starsAtCurrentLevel == 0
+
     Card(
         onClick = onClick,
         modifier = Modifier
@@ -507,11 +516,37 @@ fun ScenarioCard(scenario: Scenario, stars: Int, onClick: () -> Unit) {
                     .padding(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = scenario.characterEmoji,
-                    fontSize = 48.sp,
-                    modifier = Modifier.padding(end = 16.dp)
-                )
+                // Character emoji with level badge overlaid at top-right
+                Box(
+                    modifier = Modifier.padding(end = 16.dp),
+                    contentAlignment = Alignment.TopEnd
+                ) {
+                    Text(
+                        text = scenario.characterEmoji,
+                        fontSize = 48.sp,
+                        modifier = Modifier.padding(top = 8.dp, end = 4.dp)
+                    )
+                    if (everPlayed) {
+                        Surface(
+                            shape = RoundedCornerShape(50),
+                            color = when {
+                                masteryLevel >= 5 -> Color(0xFFFFC107)
+                                masteryLevel >= 3 -> MaterialTheme.colorScheme.primary
+                                masteryLevel >= 2 -> MaterialTheme.colorScheme.secondary
+                                else -> MaterialTheme.colorScheme.outline
+                            }
+                        ) {
+                            Text(
+                                text = "Lv.$masteryLevel",
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color.White,
+                                modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                            )
+                        }
+                    }
+                }
+
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = scenario.title,
@@ -525,22 +560,27 @@ fun ScenarioCard(scenario: Scenario, stars: Int, onClick: () -> Unit) {
                         color = labelColor.copy(alpha = 0.75f)
                     )
                     Spacer(modifier = Modifier.height(8.dp))
-                    if (stars > 0) {
-                        Row {
-                            repeat(3) { i ->
-                                Text(
-                                    text = if (i < stars) "★" else "☆",
-                                    fontSize = 20.sp,
-                                    color = if (i < stars) colors.starFilled else colors.starEmpty
-                                )
-                            }
-                        }
-                    } else {
-                        Text(
+                    when {
+                        !everPlayed -> Text(
                             text = "Not played yet",
                             fontSize = 12.sp,
                             color = labelColor.copy(alpha = 0.65f)
                         )
+                        newLevelPending -> Row {
+                            // Empty stars in amber — new level unlocked, waiting to be played
+                            repeat(3) {
+                                Text("☆", fontSize = 20.sp, color = colors.starFilled)
+                            }
+                        }
+                        else -> Row {
+                            repeat(3) { i ->
+                                Text(
+                                    text = if (i < starsAtCurrentLevel) "★" else "☆",
+                                    fontSize = 20.sp,
+                                    color = if (i < starsAtCurrentLevel) colors.starFilled else colors.starEmpty
+                                )
+                            }
+                        }
                     }
                 }
                 Text("▶", fontSize = 24.sp, color = MaterialTheme.colorScheme.primary)

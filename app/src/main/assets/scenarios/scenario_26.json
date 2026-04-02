@@ -315,7 +315,7 @@
           "indonesian": "tunjukkan ke saya"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "画好了！老师，请看！漂亮吗？",
@@ -340,6 +340,70 @@
               "chinese": "漂亮吗",
               "english": "is it beautiful?",
               "indonesian": "cantik tidak?"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "老师快看！我画好了！好看吗？",
+          "pinyin": "Lǎoshī kuài kàn! Wǒ huà hǎo le! Hǎokàn ma?",
+          "english": "Teacher, look! I'm done drawing! Is it nice?",
+          "indonesian": "Guru lihat! Aku sudah selesai gambar! Bagus tidak?",
+          "pinyinWords": [
+            {
+              "pinyin": "Lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
+              "pinyin": "kuài",
+              "chinese": "快",
+              "english": "quickly",
+              "indonesian": "cepat"
+            },
+            {
+              "pinyin": "kàn",
+              "chinese": "看",
+              "english": "look",
+              "indonesian": "lihat"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "huà",
+              "chinese": "画",
+              "english": "draw",
+              "indonesian": "menggambar"
+            },
+            {
+              "pinyin": "hǎo",
+              "chinese": "好",
+              "english": "done",
+              "indonesian": "selesai"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(completed)",
+              "indonesian": "(sudah)"
+            },
+            {
+              "pinyin": "Hǎokàn",
+              "chinese": "好看",
+              "english": "pretty",
+              "indonesian": "bagus"
+            },
+            {
+              "pinyin": "ma",
+              "chinese": "吗",
+              "english": "?",
+              "indonesian": "?",
+              "note": "吗 turns a statement into a yes/no question"
             }
           ],
           "isCorrect": true

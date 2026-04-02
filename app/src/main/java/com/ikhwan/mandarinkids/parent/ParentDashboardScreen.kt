@@ -1,5 +1,6 @@
 package com.ikhwan.mandarinkids.parent
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -8,6 +9,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -15,7 +17,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.AnnotatedString
 import com.ikhwan.mandarinkids.ui.theme.appColors
 import androidx.compose.ui.res.painterResource
 import com.ikhwan.mandarinkids.ProgressManager
@@ -27,6 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ikhwan.mandarinkids.data.models.ScenarioCategory
+import com.ikhwan.mandarinkids.data.scenarios.CustomScenarioRepository
 import com.ikhwan.mandarinkids.data.scenarios.JsonScenarioRepository
 import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 import androidx.compose.foundation.rememberScrollState
@@ -43,6 +48,7 @@ import com.ikhwan.mandarinkids.db.PracticeType
 import com.ikhwan.mandarinkids.db.ProgressRepository
 import com.ikhwan.mandarinkids.db.decodeConditions
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -62,21 +68,37 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
     val highMasteryListening by repo.getHighMasteryCountByType(PracticeType.LISTENING).collectAsState(initial = 0)
     val highMasteryReading by repo.getHighMasteryCountByType(PracticeType.READING).collectAsState(initial = 0)
     val earnedBadges = remember(masteredCount, allProgress) { repo.getEarnedBadges() }
+    val toneCorrectTotal = remember { repo.getToneCorrectTotal() }
+    val sentenceCorrectTotal = remember { repo.getSentenceCorrectTotal() }
     val perfectCount = allProgress.count { it.stars >= 3 }
+    val level1Count = remember(allProgress) { allProgress.count { it.masteryLevel >= 2 } }
+    val level2Count = remember(allProgress) { allProgress.count { it.masteryLevel >= 3 } }
+    val level3Count = remember(allProgress) { allProgress.count { it.masteryLevel >= 4 } }
+    val level4Count = remember(allProgress) { allProgress.count { it.masteryLevel >= 5 } }
+    val level5Count = remember(allProgress) {
+        allProgress.count { it.masteryLevel == 5 && it.starsAtCurrentLevel == 3 }
+    }
     val progressForCondition: (MilestoneCondition) -> Int = remember(
         perfectCount, highMasteryCount, highMasteryDefault,
-        highMasteryListening, highMasteryReading, xp, earnedBadges
+        highMasteryListening, highMasteryReading, xp, earnedBadges,
+        level1Count, level2Count, level3Count, level4Count, level5Count,
+        toneCorrectTotal, sentenceCorrectTotal
     ) {
         { cond ->
             when (MilestoneType.entries.find { it.name == cond.type }) {
-                MilestoneType.PERFECT_SCENARIOS  -> perfectCount
-                MilestoneType.HIGH_MASTERY_WORDS -> highMasteryCount
-                MilestoneType.MASTERY_DEFAULT    -> highMasteryDefault
-                MilestoneType.MASTERY_LISTENING  -> highMasteryListening
-                MilestoneType.MASTERY_READING    -> highMasteryReading
-                MilestoneType.TOTAL_XP           -> xp
-                MilestoneType.SPECIFIC_BADGE     -> if (cond.badgeId != null && cond.badgeId in earnedBadges) 1 else 0
-                null                             -> 0
+                MilestoneType.MASTERY_DEFAULT        -> highMasteryDefault
+                MilestoneType.MASTERY_LISTENING      -> highMasteryListening
+                MilestoneType.MASTERY_READING        -> highMasteryReading
+                MilestoneType.TOTAL_XP               -> xp
+                MilestoneType.SPECIFIC_BADGE         -> if (cond.badgeId != null && cond.badgeId in earnedBadges) 1 else 0
+                MilestoneType.LEVEL_1_COMPLETIONS    -> level1Count
+                MilestoneType.LEVEL_2_COMPLETIONS    -> level2Count
+                MilestoneType.LEVEL_3_COMPLETIONS    -> level3Count
+                MilestoneType.LEVEL_4_COMPLETIONS    -> level4Count
+                MilestoneType.LEVEL_5_COMPLETIONS    -> level5Count
+                MilestoneType.TONE_CORRECT_SINCE     -> (toneCorrectTotal - cond.baselineValue).coerceAtLeast(0)
+                MilestoneType.SENTENCE_CORRECT_SINCE -> (sentenceCorrectTotal - cond.baselineValue).coerceAtLeast(0)
+                null                                 -> 0
             }
         }
     }
@@ -90,6 +112,9 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
     var expandedCategories by remember { mutableStateOf<Set<String>>(emptySet()) }
     var showResetConfirm by remember { mutableStateOf(false) }
     var showAddReward by remember { mutableStateOf(false) }
+    val customRepo = remember { CustomScenarioRepository.getInstance(context) }
+    val customScenarios by customRepo.scenariosFlow.collectAsState(initial = emptyList())
+    var showAddCustomScenario by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -190,7 +215,68 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
                 }
             }
 
-            // ── 3. Content Settings ───────────────────────────────────────────
+            // ── 3. Custom Scenarios ───────────────────────────────────────────
+            item {
+                Spacer(modifier = Modifier.height(4.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    SectionHeader("📝 Custom Scenarios", modifier = Modifier.weight(1f))
+                    IconButton(onClick = { showAddCustomScenario = true }) {
+                        Icon(Icons.Default.Add, contentDescription = "Add Custom Scenario")
+                    }
+                }
+            }
+
+            if (customScenarios.isEmpty()) {
+                item {
+                    Text(
+                        "No custom scenarios yet. Tap + to add one using an AI-generated JSON.",
+                        fontSize = 13.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(start = 4.dp, bottom = 8.dp)
+                    )
+                }
+            } else {
+                items(customScenarios, key = { it.id }) { scenario ->
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 12.dp, vertical = 8.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                    "${scenario.characterEmoji} ${scenario.title}",
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                                Text(
+                                    "${scenario.category.displayName} · ${scenario.dialogues.size} dialogues · ${scenario.quizQuestions.size} questions",
+                                    fontSize = 11.sp,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                            IconButton(onClick = {
+                                scope.launch { customRepo.delete(scenario.id) }
+                            }) {
+                                Icon(
+                                    Icons.Default.Delete,
+                                    contentDescription = "Delete",
+                                    tint = MaterialTheme.colorScheme.error
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+
+            // ── 4. Content Settings ───────────────────────────────────────────
             item {
                 Spacer(modifier = Modifier.height(4.dp))
                 SectionHeader("⚙️ Content Settings")
@@ -384,10 +470,23 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
 
     if (showAddReward) {
         AddRewardDialog(
+            toneCorrectTotal = toneCorrectTotal,
+            sentenceCorrectTotal = sentenceCorrectTotal,
             onDismiss = { showAddReward = false },
             onAdd = { conditions, logic, text ->
                 scope.launch { repo.addReward(conditions, logic, text) }
                 showAddReward = false
+            }
+        )
+    }
+
+    if (showAddCustomScenario) {
+        AddCustomScenarioDialog(
+            onDismiss = { showAddCustomScenario = false },
+            onAdd = { json ->
+                val error = customRepo.addFromJson(json)
+                if (error == null) showAddCustomScenario = false
+                error
             }
         )
     }
@@ -478,11 +577,13 @@ private fun RewardItem(
 
 @Composable
 private fun AddRewardDialog(
+    toneCorrectTotal: Int,
+    sentenceCorrectTotal: Int,
     onDismiss: () -> Unit,
     onAdd: (List<MilestoneCondition>, String, String) -> Unit
 ) {
     var conditions by remember {
-        mutableStateOf(listOf(MilestoneCondition(MilestoneType.PERFECT_SCENARIOS.name, 1)))
+        mutableStateOf(listOf(MilestoneCondition(MilestoneType.TOTAL_XP.name, 1)))
     }
     var logic by remember { mutableStateOf("AND") }
     var rewardText by remember { mutableStateOf("") }
@@ -534,7 +635,7 @@ private fun AddRewardDialog(
                 if (conditions.size < 3) {
                     TextButton(onClick = {
                         conditions = conditions + MilestoneCondition(
-                            MilestoneType.PERFECT_SCENARIOS.name, 1
+                            MilestoneType.TOTAL_XP.name, 1
                         )
                     }) { Text("+ Add another condition", fontSize = 12.sp) }
                 }
@@ -560,7 +661,15 @@ private fun AddRewardDialog(
                     else cond.targetValue <= 0
                 }
                 if (invalid) return@TextButton
-                onAdd(conditions, logic, rewardText)
+                // Stamp baselines for goal-based counters so progress is measured from now.
+                val finalConditions = conditions.map { cond ->
+                    when (MilestoneType.entries.find { it.name == cond.type }) {
+                        MilestoneType.TONE_CORRECT_SINCE     -> cond.copy(baselineValue = toneCorrectTotal)
+                        MilestoneType.SENTENCE_CORRECT_SINCE -> cond.copy(baselineValue = sentenceCorrectTotal)
+                        else -> cond
+                    }
+                }
+                onAdd(finalConditions, logic, rewardText)
             }) { Text("Add") }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text("Cancel") } }
@@ -574,7 +683,7 @@ private fun ConditionRow(
     onRemove: (() -> Unit)?
 ) {
     val selectedType = MilestoneType.entries.find { it.name == condition.type }
-        ?: MilestoneType.PERFECT_SCENARIOS
+        ?: MilestoneType.TOTAL_XP
     var typeExpanded by remember { mutableStateOf(false) }
     var badgeExpanded by remember { mutableStateOf(false) }
 
@@ -630,7 +739,8 @@ private fun ConditionRow(
                 }
                 DropdownMenu(
                     expanded = badgeExpanded,
-                    onDismissRequest = { badgeExpanded = false }
+                    onDismissRequest = { badgeExpanded = false },
+                    modifier = Modifier.heightIn(max = 280.dp)
                 ) {
                     Badge.entries.forEach { b ->
                         DropdownMenuItem(
@@ -668,6 +778,372 @@ private fun ConditionRow(
             Spacer(modifier = Modifier.size(36.dp))
         }
     }
+}
+
+private val SCENARIO_AI_PROMPT = """
+You are a Mandarin learning content creator for a children's app (ages 4–8). Generate a scenario JSON following this specification EXACTLY. Any deviation will cause the app to reject the file.
+
+════════════════════════════════════════
+VALID ENUM VALUES — USE ONLY THESE EXACT STRINGS
+════════════════════════════════════════
+
+"category" — pick exactly one:
+  ESSENTIALS | AT_SCHOOL | SCHOOL_SUBJECTS | FOOD_AND_EATING |
+  FEELINGS_AND_HEALTH | PLAY_AND_HOBBIES | HOME | OUT_AND_ABOUT
+
+"speaker" — pick exactly one:
+  CHARACTER | STUDENT
+
+"responseType" — pick exactly one:
+  LISTEN_ONLY | SINGLE_CHOICE | MULTIPLE_OPTIONS | TEXT_INPUT
+
+"direction" (quiz) — pick exactly one:
+  CHINESE_TO_TRANSLATION | TRANSLATION_TO_CHINESE | AUDIO_TO_TRANSLATION
+
+⛔ DO NOT USE any other values. In particular, these are INVALID and will break the app:
+  PINYIN_TO_CHINESE, CHINESE_TO_PINYIN, AUDIO_TO_CHINESE, PINYIN_TO_TRANSLATION,
+  LISTEN, CHOICE, MULTIPLE, INPUT, AUDIO, PINYIN — none of these exist.
+
+════════════════════════════════════════
+COMPLETE JSON FORMAT
+════════════════════════════════════════
+
+{
+  "id": "custom_unique_snake_case_id",
+  "title": "Chinese title — e.g. 今天天气怎么样？",
+  "description": "One-line English description",
+  "characterName": "Character display name",
+  "characterEmoji": "🌤️",
+  "characterRole": "friend",
+  "category": "OUT_AND_ABOUT",
+  "dialogues": [
+    {
+      "id": 1,
+      "speaker": "CHARACTER",
+      "textChinese": "你好！今天天气很好。",
+      "textPinyin": "Nǐ hǎo! Jīntiān tiānqì hěn hǎo.",
+      "textEnglish": "Hello! The weather is great today.",
+      "textIndonesian": "Halo! Cuaca hari ini sangat bagus.",
+      "pinyinWords": [
+        { "pinyin": "Nǐ hǎo", "chinese": "你好", "english": "Hello", "indonesian": "Halo" },
+        { "pinyin": "jīntiān", "chinese": "今天", "english": "today", "indonesian": "hari ini" },
+        { "pinyin": "tiānqì", "chinese": "天气", "english": "weather", "indonesian": "cuaca" },
+        { "pinyin": "hěn", "chinese": "很", "english": "very", "indonesian": "sangat" },
+        { "pinyin": "hǎo", "chinese": "好", "english": "good", "indonesian": "bagus" }
+      ],
+      "responseType": "LISTEN_ONLY",
+      "options": []
+    },
+    {
+      "id": 2,
+      "speaker": "CHARACTER",
+      "textChinese": "你喜欢什么天气？",
+      "textPinyin": "Nǐ xǐhuān shénme tiānqì?",
+      "textEnglish": "What kind of weather do you like?",
+      "textIndonesian": "Cuaca seperti apa yang kamu suka?",
+      "pinyinWords": [
+        { "pinyin": "Nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
+        { "pinyin": "xǐhuān", "chinese": "喜欢", "english": "like", "indonesian": "suka" },
+        { "pinyin": "shénme", "chinese": "什么", "english": "what", "indonesian": "apa" },
+        { "pinyin": "tiānqì", "chinese": "天气", "english": "weather", "indonesian": "cuaca" }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "我喜欢晴天！",
+          "pinyin": "Wǒ xǐhuān qíngtiān!",
+          "english": "I like sunny days!",
+          "indonesian": "Aku suka hari cerah!",
+          "pinyinWords": [
+            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Aku" },
+            { "pinyin": "xǐhuān", "chinese": "喜欢", "english": "like", "indonesian": "suka" },
+            { "pinyin": "qíngtiān", "chinese": "晴天", "english": "sunny day", "indonesian": "hari cerah" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我喜欢下雨！",
+          "pinyin": "Wǒ xǐhuān xià yǔ!",
+          "english": "I like rain!",
+          "indonesian": "Aku suka hujan!",
+          "pinyinWords": [
+            { "pinyin": "Wǒ", "chinese": "我", "english": "I", "indonesian": "Aku" },
+            { "pinyin": "xǐhuān", "chinese": "喜欢", "english": "like", "indonesian": "suka" },
+            { "pinyin": "xià yǔ", "chinese": "下雨", "english": "rain", "indonesian": "hujan" }
+          ],
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "speaker": "CHARACTER",
+      "textChinese": "下雨的时候你带雨伞吗？",
+      "textPinyin": "Xià yǔ de shíhou nǐ dài yǔsǎn ma?",
+      "textEnglish": "Do you bring an umbrella when it rains?",
+      "textIndonesian": "Kamu bawa payung saat hujan?",
+      "pinyinWords": [
+        { "pinyin": "xià yǔ", "chinese": "下雨", "english": "rain", "indonesian": "hujan" },
+        { "pinyin": "de", "chinese": "的", "english": "(particle)", "indonesian": "(partikel)" },
+        { "pinyin": "shíhou", "chinese": "时候", "english": "when", "indonesian": "saat" },
+        { "pinyin": "nǐ", "chinese": "你", "english": "you", "indonesian": "kamu" },
+        { "pinyin": "dài", "chinese": "带", "english": "bring", "indonesian": "membawa" },
+        { "pinyin": "yǔsǎn", "chinese": "雨伞", "english": "umbrella", "indonesian": "payung" },
+        { "pinyin": "ma", "chinese": "吗", "english": "(question particle)", "indonesian": "(partikel tanya)" }
+      ],
+      "responseType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "chinese": "带，我带雨伞。",
+          "pinyin": "Dài, wǒ dài yǔsǎn.",
+          "english": "Yes, I bring an umbrella.",
+          "indonesian": "Ya, aku bawa payung.",
+          "pinyinWords": [
+            { "pinyin": "Dài", "chinese": "带", "english": "bring", "indonesian": "membawa" },
+            { "pinyin": "wǒ", "chinese": "我", "english": "I", "indonesian": "aku" },
+            { "pinyin": "dài", "chinese": "带", "english": "bring", "indonesian": "membawa" },
+            { "pinyin": "yǔsǎn", "chinese": "雨伞", "english": "umbrella", "indonesian": "payung" }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "不带。",
+          "pinyin": "Bù dài.",
+          "english": "No, I don't.",
+          "indonesian": "Tidak.",
+          "pinyinWords": [
+            { "pinyin": "Bù", "chinese": "不", "english": "no/not", "indonesian": "tidak" },
+            { "pinyin": "dài", "chinese": "带", "english": "bring", "indonesian": "membawa" }
+          ],
+          "isCorrect": false
+        }
+      ]
+    }
+  ],
+  "quizQuestions": [
+    {
+      "direction": "TRANSLATION_TO_CHINESE",
+      "questionText": "How do you say 'weather' in Mandarin?",
+      "questionChinese": "",
+      "questionPinyin": "",
+      "options": [
+        { "chinese": "天空", "pinyin": "tiānkōng", "translation": "sky" },
+        { "chinese": "下雨", "pinyin": "xià yǔ", "translation": "raining" },
+        { "chinese": "天气", "pinyin": "tiānqì", "translation": "weather" },
+        { "chinese": "太阳", "pinyin": "tàiyáng", "translation": "sun" }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "天气 (tiānqì) means weather. It is at index 2 (the 3rd option)."
+    },
+    {
+      "direction": "CHINESE_TO_TRANSLATION",
+      "questionText": "What does this mean?",
+      "questionChinese": "晴天",
+      "questionPinyin": "qíngtiān",
+      "options": [
+        { "chinese": "", "pinyin": "", "translation": "cloudy day" },
+        { "chinese": "", "pinyin": "", "translation": "sunny day" },
+        { "chinese": "", "pinyin": "", "translation": "rainy day" },
+        { "chinese": "", "pinyin": "", "translation": "snowy day" }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "晴天 (qíngtiān) means sunny day. It is at index 1 (the 2nd option)."
+    },
+    {
+      "direction": "AUDIO_TO_TRANSLATION",
+      "questionText": "Listen and choose the correct meaning!",
+      "questionChinese": "雨伞",
+      "questionPinyin": "yǔsǎn",
+      "options": [
+        { "chinese": "hat", "pinyin": "", "translation": "hat" },
+        { "chinese": "raincoat", "pinyin": "", "translation": "raincoat" },
+        { "chinese": "boots", "pinyin": "", "translation": "boots" },
+        { "chinese": "umbrella", "pinyin": "", "translation": "umbrella" }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "雨伞 (yǔsǎn) means umbrella. It is at index 3 (the 4th option)."
+    }
+  ]
+}
+
+════════════════════════════════════════
+RULES — follow all of these strictly
+════════════════════════════════════════
+
+1. "id": must start with "custom_", use only lowercase letters, digits, underscores. Example: custom_at_the_park
+2. "dialogues": include at least 3 steps. Mix responseType values (some LISTEN_ONLY, some SINGLE_CHOICE).
+3. "pinyinWords": REQUIRED on every dialogue step and every option. Cover every word — do NOT skip particles (吗, 了, 的, 啊, 呢, etc.).
+4. "quizQuestions": include 3–5 questions. Use a mix of CHINESE_TO_TRANSLATION, TRANSLATION_TO_CHINESE, and AUDIO_TO_TRANSLATION.
+5. Each quiz question must have EXACTLY 4 options. "correctAnswerIndex" is 0-based (0 = first option, 3 = last option).
+   ⚠️ RANDOMIZE correctAnswerIndex across all questions — NEVER put the correct answer at index 0 for every question.
+   Spread the correct answer across different positions. Example: Q1→index 2, Q2→index 0, Q3→index 3, Q4→index 1.
+   The example above intentionally uses indices 2, 1, 3 to show this. Always place the correct answer text at the position matching correctAnswerIndex.
+6. For CHINESE_TO_TRANSLATION and AUDIO_TO_TRANSLATION questions, the options only need "translation" filled in; "chinese" and "pinyin" can be empty strings "".
+7. For TRANSLATION_TO_CHINESE questions, fill in "chinese" and "pinyin" for each option; "translation" is the English label.
+8. All Chinese text must use simplified characters.
+9. Include both English AND Indonesian (Bahasa Indonesia) translations for ALL text fields.
+10. Output ONLY the raw JSON object. No markdown code fences, no explanation text around it.
+
+Now generate a scenario about: [DESCRIBE YOUR TOPIC HERE — e.g. "going to the market" or "playing at the park"]
+""".trimIndent()
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun AddCustomScenarioDialog(
+    onDismiss: () -> Unit,
+    onAdd: suspend (String) -> String?   // returns error string or null on success
+) {
+    var jsonInput by remember { mutableStateOf("") }
+    var validatedScenario by remember { mutableStateOf<com.ikhwan.mandarinkids.data.models.Scenario?>(null) }
+    var validationError by remember { mutableStateOf<String?>(null) }
+    var isSaving by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
+    val clipboardManager = LocalClipboardManager.current
+    val context = LocalContext.current
+    val json = remember { Json { ignoreUnknownKeys = true; coerceInputValues = true } }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Add Custom Scenario") },
+        text = {
+            Column(
+                modifier = Modifier
+                    .verticalScroll(rememberScrollState())
+                    .fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                // ── Instructions ─────────────────────────────────────────────────
+                Text(
+                    "1. Copy the AI prompt below.\n2. Paste it into Claude or ChatGPT and describe your topic.\n3. Copy the generated JSON and paste it here.",
+                    fontSize = 12.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+
+                // ── Copy prompt button ────────────────────────────────────────────
+                OutlinedButton(
+                    onClick = {
+                        clipboardManager.setText(AnnotatedString(SCENARIO_AI_PROMPT))
+                        Toast.makeText(context, "AI prompt copied!", Toast.LENGTH_SHORT).show()
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Icon(Icons.Default.ContentCopy, contentDescription = null, modifier = Modifier.size(16.dp))
+                    Spacer(Modifier.width(6.dp))
+                    Text("Copy AI Prompt", fontSize = 13.sp)
+                }
+
+                HorizontalDivider()
+
+                // ── JSON input ────────────────────────────────────────────────────
+                OutlinedTextField(
+                    value = jsonInput,
+                    onValueChange = {
+                        jsonInput = it
+                        validatedScenario = null
+                        validationError = null
+                    },
+                    label = { Text("Paste JSON here") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .heightIn(min = 160.dp, max = 260.dp),
+                    maxLines = 30,
+                    isError = validationError != null
+                )
+
+                // ── Validation error ──────────────────────────────────────────────
+                if (validationError != null) {
+                    Text(
+                        "⚠️ ${validationError}",
+                        fontSize = 12.sp,
+                        color = MaterialTheme.colorScheme.error
+                    )
+                }
+
+                // ── Validate button ───────────────────────────────────────────────
+                if (validatedScenario == null) {
+                    Button(
+                        onClick = {
+                            val trimmed = jsonInput.trim()
+                            if (trimmed.isBlank()) {
+                                validationError = "Please paste the JSON first."
+                                return@Button
+                            }
+                            try {
+                                val parsed = json.decodeFromString<com.ikhwan.mandarinkids.data.models.Scenario>(trimmed)
+                                // Basic field checks (full checks happen in repo on save)
+                                when {
+                                    parsed.id.isBlank() -> validationError = "\"id\" field is missing or blank."
+                                    parsed.title.isBlank() -> validationError = "\"title\" field is missing or blank."
+                                    parsed.dialogues.isEmpty() -> validationError = "No dialogue steps found."
+                                    parsed.quizQuestions.isEmpty() -> validationError = "No quiz questions found."
+                                    parsed.dialogues.any { it.pinyinWords.isEmpty() } ->
+                                        validationError = "Some dialogue steps are missing pinyinWords."
+                                    else -> {
+                                        validatedScenario = parsed
+                                        validationError = null
+                                    }
+                                }
+                            } catch (e: Exception) {
+                                validationError = "Cannot parse JSON: ${e.message?.take(100)}"
+                            }
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                    ) { Text("Validate JSON") }
+                }
+
+                // ── Preview (after successful validation) ─────────────────────────
+                validatedScenario?.let { s ->
+                    Card(
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.secondaryContainer
+                        )
+                    ) {
+                        Column(modifier = Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                            Text("✅ Valid scenario", fontSize = 12.sp, fontWeight = FontWeight.Bold,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer)
+                            Text("${s.characterEmoji} ${s.title}", fontSize = 14.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer)
+                            Text(s.description, fontSize = 12.sp,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer)
+                            Text("Category: ${s.category.displayName}", fontSize = 11.sp,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer)
+                            Text("${s.dialogues.size} dialogues · ${s.quizQuestions.size} quiz questions",
+                                fontSize = 11.sp,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer)
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            if (validatedScenario != null) {
+                Button(
+                    onClick = {
+                        if (isSaving) return@Button
+                        isSaving = true
+                        scope.launch {
+                            val error = onAdd(jsonInput.trim())
+                            isSaving = false
+                            if (error != null) {
+                                validationError = error
+                                validatedScenario = null
+                            }
+                            // success: dialog dismissed by caller
+                        }
+                    },
+                    enabled = !isSaving
+                ) { Text(if (isSaving) "Saving…" else "Save Scenario") }
+            } else {
+                TextButton(onClick = onDismiss) { Text("Cancel") }
+            }
+        },
+        dismissButton = {
+            if (validatedScenario != null) {
+                TextButton(onClick = onDismiss) { Text("Cancel") }
+            }
+        }
+    )
 }
 
 @Composable

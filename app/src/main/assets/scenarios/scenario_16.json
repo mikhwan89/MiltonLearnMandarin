@@ -320,7 +320,7 @@
           "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "好的，谢谢阿姨！",
@@ -345,6 +345,57 @@
               "chinese": "阿姨",
               "english": "auntie",
               "indonesian": "tante / bibi"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "谢谢阿姨！我会多喝水！",
+          "pinyin": "Xièxie āyí! Wǒ huì duō hē shuǐ!",
+          "english": "Thank you auntie! I'll drink more water!",
+          "indonesian": "Terima kasih tante! Saya akan banyak minum air!",
+          "pinyinWords": [
+            {
+              "pinyin": "Xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            },
+            {
+              "pinyin": "āyí",
+              "chinese": "阿姨",
+              "english": "auntie",
+              "indonesian": "tante"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "huì",
+              "chinese": "会",
+              "english": "will",
+              "indonesian": "akan"
+            },
+            {
+              "pinyin": "duō",
+              "chinese": "多",
+              "english": "more",
+              "indonesian": "banyak"
+            },
+            {
+              "pinyin": "hē",
+              "chinese": "喝",
+              "english": "drink",
+              "indonesian": "minum"
+            },
+            {
+              "pinyin": "shuǐ",
+              "chinese": "水",
+              "english": "water",
+              "indonesian": "air"
             }
           ],
           "isCorrect": true

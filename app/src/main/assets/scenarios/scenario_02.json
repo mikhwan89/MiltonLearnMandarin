@@ -226,7 +226,7 @@
           "note": "Put 吗 at the end of any sentence to make it a yes/no question. '你好吗？' means 'Are you well?' Easy!"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "好的！我很想！",
@@ -264,6 +264,52 @@
               "chinese": "想",
               "english": "want",
               "indonesian": "mau"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "当然可以！我们做朋友吧！",
+          "pinyin": "Dāngrán kěyǐ! Wǒmen zuò péngyou ba!",
+          "english": "Of course! Let's be friends!",
+          "indonesian": "Tentu saja! Ayo berteman!",
+          "pinyinWords": [
+            {
+              "pinyin": "Dāngrán",
+              "chinese": "当然",
+              "english": "of course",
+              "indonesian": "tentu saja"
+            },
+            {
+              "pinyin": "kěyǐ",
+              "chinese": "可以",
+              "english": "can",
+              "indonesian": "bisa"
+            },
+            {
+              "pinyin": "Wǒmen",
+              "chinese": "我们",
+              "english": "we",
+              "indonesian": "kita"
+            },
+            {
+              "pinyin": "zuò",
+              "chinese": "做",
+              "english": "be",
+              "indonesian": "jadi"
+            },
+            {
+              "pinyin": "péngyou",
+              "chinese": "朋友",
+              "english": "friends",
+              "indonesian": "teman"
+            },
+            {
+              "pinyin": "ba",
+              "chinese": "吧",
+              "english": "let's",
+              "indonesian": "yuk",
+              "note": "吧 softens a suggestion — like saying 'let's' or 'shall we?'"
             }
           ],
           "isCorrect": true

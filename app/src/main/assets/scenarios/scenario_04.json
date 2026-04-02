@@ -169,7 +169,7 @@
           "indonesian": "kembali"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "谢谢老师！",
@@ -188,6 +188,34 @@
               "chinese": "老师",
               "english": "teacher",
               "indonesian": "guru"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "老师，谢谢您！",
+          "pinyin": "Lǎoshī, xièxie nín!",
+          "english": "Teacher, thank you!",
+          "indonesian": "Guru, terima kasih!",
+          "pinyinWords": [
+            {
+              "pinyin": "Lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
+              "pinyin": "xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            },
+            {
+              "pinyin": "nín",
+              "chinese": "您",
+              "english": "you (respectful)",
+              "indonesian": "Anda",
+              "note": "您 is the polite form of 你 — use it with elders and teachers to show respect!"
             }
           ],
           "isCorrect": true

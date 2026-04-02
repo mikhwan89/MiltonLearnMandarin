@@ -20,6 +20,9 @@ interface ProgressDao {
     @Upsert
     suspend fun upsert(entity: ScenarioProgressEntity)
 
+    @Query("SELECT COALESCE(masteryLevel, 1) FROM scenario_progress WHERE scenarioId = :id")
+    suspend fun getMasteryLevel(id: String): Int?
+
     @Query("DELETE FROM scenario_progress")
     suspend fun deleteAll()
 }

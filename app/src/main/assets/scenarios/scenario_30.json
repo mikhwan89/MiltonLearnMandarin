@@ -157,7 +157,7 @@
           "indonesian": "bilang 'aaa'"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "啊～！（张开嘴巴）",
@@ -176,6 +176,39 @@
               "chinese": "张开嘴巴",
               "english": "opens mouth wide",
               "indonesian": "membuka mulut lebar-lebar"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "啊——！（张大嘴巴）",
+          "pinyin": "Ā——! (Zhāng dà zuǐba)",
+          "english": "Ahhh~! (opens mouth wide)",
+          "indonesian": "Aaa~! (buka mulut lebar-lebar)",
+          "pinyinWords": [
+            {
+              "pinyin": "Ā",
+              "chinese": "啊",
+              "english": "ahh",
+              "indonesian": "aaa"
+            },
+            {
+              "pinyin": "Zhāng",
+              "chinese": "张",
+              "english": "open",
+              "indonesian": "membuka"
+            },
+            {
+              "pinyin": "dà",
+              "chinese": "大",
+              "english": "big",
+              "indonesian": "besar"
+            },
+            {
+              "pinyin": "zuǐba",
+              "chinese": "嘴巴",
+              "english": "mouth",
+              "indonesian": "mulut"
             }
           ],
           "isCorrect": true
@@ -366,10 +399,26 @@
       "questionChinese": "发烧",
       "questionPinyin": "fāshāo",
       "options": [
-        { "chinese": "", "pinyin": "", "translation": "headache" },
-        { "chinese": "", "pinyin": "", "translation": "fever" },
-        { "chinese": "", "pinyin": "", "translation": "stomachache" },
-        { "chinese": "", "pinyin": "", "translation": "cough" }
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "headache"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "fever"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "stomachache"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "cough"
+        }
       ],
       "correctAnswerIndex": 1,
       "explanation": "发烧 (fāshāo) means fever! 烧 = burn. When you have a fever your body feels like it's burning!"
@@ -380,10 +429,26 @@
       "questionChinese": "",
       "questionPinyin": "",
       "options": [
-        { "chinese": "我头疼", "pinyin": "wǒ tóuténg", "translation": "I have a headache" },
-        { "chinese": "我不舒服", "pinyin": "wǒ bù shūfu", "translation": "I feel unwell" },
-        { "chinese": "我肚子疼", "pinyin": "wǒ dùzi téng", "translation": "I have a stomachache" },
-        { "chinese": "我发烧了", "pinyin": "wǒ fāshāo le", "translation": "I have a fever" }
+        {
+          "chinese": "我头疼",
+          "pinyin": "wǒ tóuténg",
+          "translation": "I have a headache"
+        },
+        {
+          "chinese": "我不舒服",
+          "pinyin": "wǒ bù shūfu",
+          "translation": "I feel unwell"
+        },
+        {
+          "chinese": "我肚子疼",
+          "pinyin": "wǒ dùzi téng",
+          "translation": "I have a stomachache"
+        },
+        {
+          "chinese": "我发烧了",
+          "pinyin": "wǒ fāshāo le",
+          "translation": "I have a fever"
+        }
       ],
       "correctAnswerIndex": 2,
       "explanation": "我肚子疼 (wǒ dùzi téng)! 肚子 = tummy/stomach, 疼 = ache/hurt. Tell the doctor straight away!"
@@ -394,10 +459,26 @@
       "questionChinese": "打针",
       "questionPinyin": "dǎzhēn",
       "options": [
-        { "chinese": "", "pinyin": "", "translation": "take medicine" },
-        { "chinese": "", "pinyin": "", "translation": "see a doctor" },
-        { "chinese": "", "pinyin": "", "translation": "get an injection / shot" },
-        { "chinese": "", "pinyin": "", "translation": "rest" }
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "take medicine"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "see a doctor"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "get an injection / shot"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "rest"
+        }
       ],
       "correctAnswerIndex": 2,
       "explanation": "打针 (dǎzhēn) means get an injection! 针 = needle. Be brave — it's over quickly!"
@@ -408,10 +489,26 @@
       "questionChinese": "多休息",
       "questionPinyin": "duō xiūxi",
       "options": [
-        { "chinese": "", "pinyin": "", "translation": "take medicine" },
-        { "chinese": "", "pinyin": "", "translation": "drink more water" },
-        { "chinese": "", "pinyin": "", "translation": "get lots of rest" },
-        { "chinese": "", "pinyin": "", "translation": "go to the hospital" }
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "take medicine"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "drink more water"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "get lots of rest"
+        },
+        {
+          "chinese": "",
+          "pinyin": "",
+          "translation": "go to the hospital"
+        }
       ],
       "correctAnswerIndex": 2,
       "explanation": "多休息 (duō xiūxi) means get lots of rest! 多 = more/lots, 休息 = rest. The doctor's top advice!"

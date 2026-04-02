@@ -75,7 +75,8 @@ Routes.PIN               // "pin"
 Routes.CATEGORY          // "category/{categoryName}"
 Routes.FLASHCARD         // "flashcard/{scenarioId}"
 Routes.ROLEPLAY          // "roleplay/{scenarioId}"
-Routes.QUIZ              // "quiz/{scenarioId}/{rolePlayScore}"
+Routes.QUIZ              // "quiz/{scenarioId}/{rolePlayScore}/{level}"
+Routes.SENTENCE_QUIZ     // "sentence_quiz/{scenarioId}/{level}"
 ```
 
 Navigation is wired in `navigation/AppNavigation.kt`. The bottom nav shows 5 tabs (HOME, PRACTICE, TONE_TRAINER, SENTENCE_BUILDER, PROGRESS) and hides on child routes (PIN, PARENT_DASHBOARD, CATEGORY, FLASHCARD, ROLEPLAY, QUIZ). Individual tabs can be disabled via parental controls.
@@ -207,20 +208,21 @@ New users see a 10-step spotlight tour (`InteractiveOnboardingOverlay`) drawn on
 
 ### Room Database
 
-`AppDatabase` (version 8) — three entities:
+`AppDatabase` (version 9) — three entities:
 
 | Entity | Table | Key columns |
 |--------|-------|-------------|
-| `ScenarioProgressEntity` | `scenario_progress` | `scenarioId`, `stars`, `xp`, `lastPlayedAt`, `speechRateOverride` |
+| `ScenarioProgressEntity` | `scenario_progress` | `scenarioId`, `stars`, `xp`, `lastPlayedAt`, `speechRateOverride`, `masteryLevel` |
 | `MasteredWordEntity` | `mastered_words` | `scenarioId`, `chinese`, `isMastered`, `boxLevel`, `nextReviewDate`, `practiceType` |
 | `MilestoneReward` | `milestone_rewards` | `id`, `conditionsJson`, `logic` (AND/OR), `rewardText`, `isClaimed` |
 
-Migrations tracked: 1→2, 2→3, 3→4, 4→5, 5→6, 6→7, 7→8.
+Migrations tracked: 1→2, 2→3, 3→4, 4→5, 5→6, 6→7, 7→8, 8→9.
 
 **Migration notes:**
 - **5→6:** Deleted stale mastered_words entries (pre-split flashcards with 5+ CJK characters)
 - **6→7:** Added `practiceType` to mastered_words primary key — tracks mastery per modality (DEFAULT, LISTENING, READING)
 - **7→8:** Migrated `milestone_rewards` from single `milestoneType+targetValue` to `conditionsJson` + `logic` (AND/OR) for multi-condition reward support
+- **8→9:** Added `masteryLevel` column to `scenario_progress` (default 1) for 5-level mastery system
 
 ## SDK & Dependencies
 

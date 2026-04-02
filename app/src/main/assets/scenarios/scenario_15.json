@@ -69,7 +69,7 @@
           "indonesian": "berapa"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "三加二等于五！",
@@ -100,6 +100,45 @@
               "chinese": "等于",
               "english": "equals",
               "indonesian": "sama dengan"
+            },
+            {
+              "pinyin": "wǔ",
+              "chinese": "五",
+              "english": "five",
+              "indonesian": "lima"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我知道！答案是五！",
+          "pinyin": "Wǒ zhīdào! Dá'àn shì wǔ!",
+          "english": "I know! The answer is five!",
+          "indonesian": "Saya tahu! Jawabannya lima!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "zhīdào",
+              "chinese": "知道",
+              "english": "know",
+              "indonesian": "tahu"
+            },
+            {
+              "pinyin": "Dá'àn",
+              "chinese": "答案",
+              "english": "answer",
+              "indonesian": "jawaban"
+            },
+            {
+              "pinyin": "shì",
+              "chinese": "是",
+              "english": "is",
+              "indonesian": "adalah"
             },
             {
               "pinyin": "wǔ",

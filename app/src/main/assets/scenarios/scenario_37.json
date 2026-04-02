@@ -260,7 +260,7 @@
           "note": "好不好 is a friendly way to ask 'OK?' — literally 'good or not good?' Great for asking agreement!"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "好的！我去拿苹果！",
@@ -291,6 +291,45 @@
               "chinese": "苹果",
               "english": "apples",
               "indonesian": "apel"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "我去！苹果在哪里？",
+          "pinyin": "Wǒ qù! Píngguǒ zài nǎlǐ?",
+          "english": "I'll go! Where are the apples?",
+          "indonesian": "Aku pergi! Apelnya di mana?",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "qù",
+              "chinese": "去",
+              "english": "go",
+              "indonesian": "pergi"
+            },
+            {
+              "pinyin": "Píngguǒ",
+              "chinese": "苹果",
+              "english": "apple",
+              "indonesian": "apel"
+            },
+            {
+              "pinyin": "zài",
+              "chinese": "在",
+              "english": "at",
+              "indonesian": "di"
+            },
+            {
+              "pinyin": "nǎlǐ",
+              "chinese": "哪里",
+              "english": "where",
+              "indonesian": "mana"
             }
           ],
           "isCorrect": true
@@ -487,7 +526,7 @@
           "indonesian": "ibu"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "谢谢阿姨！",
@@ -506,6 +545,39 @@
               "chinese": "阿姨",
               "english": "Miss / Auntie",
               "indonesian": "Bu / Ibu"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "阿姨，谢谢你！再见！",
+          "pinyin": "Āyí, xièxie nǐ! Zàijiàn!",
+          "english": "Auntie, thank you! Goodbye!",
+          "indonesian": "Tante, terima kasih! Sampai jumpa!",
+          "pinyinWords": [
+            {
+              "pinyin": "Āyí",
+              "chinese": "阿姨",
+              "english": "auntie",
+              "indonesian": "tante"
+            },
+            {
+              "pinyin": "xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
+            },
+            {
+              "pinyin": "nǐ",
+              "chinese": "你",
+              "english": "you",
+              "indonesian": "kamu"
+            },
+            {
+              "pinyin": "Zàijiàn",
+              "chinese": "再见",
+              "english": "goodbye",
+              "indonesian": "sampai jumpa"
             }
           ],
           "isCorrect": true

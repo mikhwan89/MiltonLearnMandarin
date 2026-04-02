@@ -48,6 +48,7 @@ fun Scenario.getFlashcardWords(): List<PinyinWord> {
 @Composable
 fun FlashcardScreen(
     scenario: Scenario,
+    canSkip: Boolean = false,
     onComplete: () -> Unit,
     onBack: () -> Unit
 ) {
@@ -111,6 +112,13 @@ fun FlashcardScreen(
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back")
+                    }
+                },
+                actions = {
+                    if (canSkip) {
+                        TextButton(onClick = onComplete) {
+                            Text("Skip →", fontSize = 14.sp)
+                        }
                     }
                 }
             )

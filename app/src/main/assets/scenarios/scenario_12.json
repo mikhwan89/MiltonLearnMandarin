@@ -51,7 +51,7 @@
           "indonesian": "angkat tangan"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "（举手）老师，我知道！",
@@ -82,6 +82,45 @@
               "chinese": "知道",
               "english": "know",
               "indonesian": "tahu"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "（举手）老师，让我回答！",
+          "pinyin": "(Jǔshǒu) Lǎoshī, ràng wǒ huídá!",
+          "english": "(Raises hand) Teacher, let me answer!",
+          "indonesian": "(Angkat tangan) Guru, biar saya jawab!",
+          "pinyinWords": [
+            {
+              "pinyin": "Jǔshǒu",
+              "chinese": "举手",
+              "english": "raise hand",
+              "indonesian": "angkat tangan"
+            },
+            {
+              "pinyin": "Lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
+              "pinyin": "ràng",
+              "chinese": "让",
+              "english": "let",
+              "indonesian": "biarkan"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "me",
+              "indonesian": "saya"
+            },
+            {
+              "pinyin": "huídá",
+              "chinese": "回答",
+              "english": "answer",
+              "indonesian": "menjawab"
             }
           ],
           "isCorrect": true
@@ -350,7 +389,7 @@
           "indonesian": "sampai besok"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "明天见，老师！",
@@ -369,6 +408,39 @@
               "chinese": "老师",
               "english": "teacher",
               "indonesian": "guru"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "老师再见！明天见！",
+          "pinyin": "Lǎoshī zàijiàn! Míngtiān jiàn!",
+          "english": "Goodbye teacher! See you tomorrow!",
+          "indonesian": "Sampai jumpa guru! Besok ketemu!",
+          "pinyinWords": [
+            {
+              "pinyin": "Lǎoshī",
+              "chinese": "老师",
+              "english": "teacher",
+              "indonesian": "guru"
+            },
+            {
+              "pinyin": "zàijiàn",
+              "chinese": "再见",
+              "english": "goodbye",
+              "indonesian": "sampai jumpa"
+            },
+            {
+              "pinyin": "Míngtiān",
+              "chinese": "明天",
+              "english": "tomorrow",
+              "indonesian": "besok"
+            },
+            {
+              "pinyin": "jiàn",
+              "chinese": "见",
+              "english": "see",
+              "indonesian": "bertemu"
             }
           ],
           "isCorrect": true

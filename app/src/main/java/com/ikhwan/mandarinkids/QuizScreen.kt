@@ -38,17 +38,18 @@ import com.ikhwan.mandarinkids.tts.rememberTtsManager
 fun QuizScreen(
     scenario: Scenario,
     rolePlayScore: Int,
+    level: Int = 1,
     onComplete: () -> Unit,
     onBack: () -> Unit,
-    onTryAgain: (() -> Unit)? = null  // NEW: Callback for try again
+    onTryAgain: (() -> Unit)? = null
 ) {
     val context = LocalContext.current
     val tts = rememberTtsManager()
     val coroutineScope = rememberCoroutineScope()
 
     val vm: QuizViewModel = viewModel(
-        key = "${scenario.id}_$rolePlayScore",
-        factory = QuizViewModel.factory(scenario, rolePlayScore)
+        key = "${scenario.id}_${rolePlayScore}_$level",
+        factory = QuizViewModel.factory(scenario, rolePlayScore, level)
     )
 
     val currentQuestion = vm.currentQuestion
@@ -68,9 +69,12 @@ fun QuizScreen(
             TopAppBar(
                 title = {
                     Column {
-                        Text("Quiz Time! 测验", fontSize = 16.sp)
                         Text(
-                            "Question ${vm.currentQuestionIndex + 1}/${vm.scenario.quizQuestions.size}",
+                            if (level > 1) "Level $level Quiz 测验" else "Quiz Time! 测验",
+                            fontSize = 16.sp
+                        )
+                        Text(
+                            "Question ${vm.currentQuestionIndex + 1}/${vm.totalQuestions}",
                             fontSize = 12.sp,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -89,9 +93,10 @@ fun QuizScreen(
                 scenario = vm.scenario,
                 rolePlayScore = vm.rolePlayScore,
                 quizScore = vm.correctAnswersCount,
-                totalQuestions = vm.scenario.quizQuestions.size,
+                totalQuestions = vm.totalQuestions,
+                level = vm.level,
                 onComplete = onComplete,
-                onTryAgain = onTryAgain  // Pass through the callback
+                onTryAgain = onTryAgain
             )
         } else if (currentQuestion != null) {
             val question = currentQuestion
@@ -101,7 +106,7 @@ fun QuizScreen(
                     .padding(padding)
             ) {
                 LinearProgressIndicator(
-                    progress = { (vm.currentQuestionIndex + 1).toFloat() / vm.scenario.quizQuestions.size },
+                    progress = { (vm.currentQuestionIndex + 1).toFloat() / vm.totalQuestions },
                     modifier = Modifier.fillMaxWidth(),
                 )
 

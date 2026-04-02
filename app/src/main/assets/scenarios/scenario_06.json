@@ -229,7 +229,7 @@
           "indonesian": "kamu"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "明天见，刘明！谢谢你做我的朋友！",
@@ -297,6 +297,45 @@
               "chinese": "朋友",
               "english": "friend",
               "indonesian": "teman"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "再见，刘明！明天一起玩！",
+          "pinyin": "Zàijiàn, Liú Míng! Míngtiān yīqǐ wán!",
+          "english": "Bye, Liu Ming! Let's play together tomorrow!",
+          "indonesian": "Sampai jumpa, Liu Ming! Besok main bareng!",
+          "pinyinWords": [
+            {
+              "pinyin": "Zàijiàn",
+              "chinese": "再见",
+              "english": "goodbye",
+              "indonesian": "sampai jumpa"
+            },
+            {
+              "pinyin": "Liú Míng",
+              "chinese": "刘明",
+              "english": "Liu Ming",
+              "indonesian": "Liu Ming"
+            },
+            {
+              "pinyin": "Míngtiān",
+              "chinese": "明天",
+              "english": "tomorrow",
+              "indonesian": "besok"
+            },
+            {
+              "pinyin": "yīqǐ",
+              "chinese": "一起",
+              "english": "together",
+              "indonesian": "bersama"
+            },
+            {
+              "pinyin": "wán",
+              "chinese": "玩",
+              "english": "play",
+              "indonesian": "bermain"
             }
           ],
           "isCorrect": true

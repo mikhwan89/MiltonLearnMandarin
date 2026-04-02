@@ -114,6 +114,9 @@ fun MandarinKidsApp() {
                 ) {
                     if ("roleplay" !in disabledTabs) {
                         NavigationBarItem(
+                            modifier = Modifier.onGloballyPositioned { lc ->
+                                onboardingCoords[OnboardingKey.NAV_ROLEPLAY] = lc.boundsInRoot()
+                            },
                             icon = {
                                 Icon(
                                     painter = painterResource(R.drawable.nav_roleplay),
@@ -293,8 +296,9 @@ fun MandarinKidsApp() {
                 val category = ScenarioCategory.entries.find { it.name == categoryName } ?: return@composable
                 ScenarioListScreen(
                     category = category,
-                    onScenarioClick = { scenario ->
-                        navController.navigate(Routes.flashcard(scenario.id))
+                    onScenarioClick = { scenario, masteryLevel ->
+                        // All levels start with flashcard (skippable); level is threaded through
+                        navController.navigate(Routes.flashcard(scenario.id, masteryLevel))
                     },
                     onBack = { navController.popBackStack() }
                 )
@@ -302,29 +306,43 @@ fun MandarinKidsApp() {
 
             composable(
                 route = Routes.FLASHCARD,
-                arguments = listOf(navArgument("scenarioId") { type = NavType.StringType })
+                arguments = listOf(
+                    navArgument("scenarioId") { type = NavType.StringType },
+                    navArgument("level") { type = NavType.IntType; defaultValue = 1 }
+                )
             ) { backStackEntry ->
                 val scenarioId = backStackEntry.arguments?.getString("scenarioId") ?: return@composable
+                val level = backStackEntry.arguments?.getInt("level") ?: 1
                 val scenario = remember(scenarioId) { JsonScenarioRepository.getById(scenarioId) }
                     ?: return@composable
                 FlashcardScreen(
                     scenario = scenario,
-                    onComplete = { navController.navigate(Routes.roleplay(scenarioId)) },
+                    canSkip = true,
+                    onComplete = { navController.navigate(Routes.roleplay(scenarioId, level)) },
                     onBack = { navController.popBackStack() }
                 )
             }
 
             composable(
                 route = Routes.ROLEPLAY,
-                arguments = listOf(navArgument("scenarioId") { type = NavType.StringType })
+                arguments = listOf(
+                    navArgument("scenarioId") { type = NavType.StringType },
+                    navArgument("level") { type = NavType.IntType; defaultValue = 1 }
+                )
             ) { backStackEntry ->
                 val scenarioId = backStackEntry.arguments?.getString("scenarioId") ?: return@composable
+                val level = backStackEntry.arguments?.getInt("level") ?: 1
                 val scenario = remember(scenarioId) { JsonScenarioRepository.getById(scenarioId) }
                     ?: return@composable
                 RolePlayScreen(
                     scenario = scenario,
+                    canSkip = level >= 2,
                     onComplete = { score ->
-                        navController.navigate(Routes.quiz(scenarioId, score))
+                        if (level >= 4) {
+                            navController.navigate(Routes.sentenceQuiz(scenarioId, level))
+                        } else {
+                            navController.navigate(Routes.quiz(scenarioId, score, level))
+                        }
                     },
                     onBack = { navController.popBackStack() }
                 )
@@ -334,16 +352,19 @@ fun MandarinKidsApp() {
                 route = Routes.QUIZ,
                 arguments = listOf(
                     navArgument("scenarioId") { type = NavType.StringType },
-                    navArgument("rolePlayScore") { type = NavType.IntType }
+                    navArgument("rolePlayScore") { type = NavType.IntType },
+                    navArgument("level") { type = NavType.IntType; defaultValue = 1 }
                 )
             ) { backStackEntry ->
                 val scenarioId = backStackEntry.arguments?.getString("scenarioId") ?: return@composable
                 val rolePlayScore = backStackEntry.arguments?.getInt("rolePlayScore") ?: 0
+                val level = backStackEntry.arguments?.getInt("level") ?: 1
                 val scenario = remember(scenarioId) { JsonScenarioRepository.getById(scenarioId) }
                     ?: return@composable
                 QuizScreen(
                     scenario = scenario,
                     rolePlayScore = rolePlayScore,
+                    level = level,
                     onComplete = {
                         navController.navigate(Routes.HOME) {
                             popUpTo(Routes.HOME) { inclusive = true }
@@ -351,10 +372,33 @@ fun MandarinKidsApp() {
                     },
                     onBack = { navController.popBackStack() },
                     onTryAgain = {
-                        navController.navigate(Routes.flashcard(scenarioId)) {
+                        navController.navigate(Routes.flashcard(scenarioId, level)) {
                             popUpTo(Routes.HOME)
                         }
                     }
+                )
+            }
+
+            composable(
+                route = Routes.SENTENCE_QUIZ,
+                arguments = listOf(
+                    navArgument("scenarioId") { type = NavType.StringType },
+                    navArgument("level") { type = NavType.IntType }
+                )
+            ) { backStackEntry ->
+                val scenarioId = backStackEntry.arguments?.getString("scenarioId") ?: return@composable
+                val level = backStackEntry.arguments?.getInt("level") ?: 4
+                val scenario = remember(scenarioId) { JsonScenarioRepository.getById(scenarioId) }
+                    ?: return@composable
+                com.ikhwan.mandarinkids.quiz.SentenceBuilderQuizScreen(
+                    scenario = scenario,
+                    level = level,
+                    onComplete = {
+                        navController.navigate(Routes.HOME) {
+                            popUpTo(Routes.HOME) { inclusive = true }
+                        }
+                    },
+                    onBack = { navController.popBackStack() }
                 )
             }
         }

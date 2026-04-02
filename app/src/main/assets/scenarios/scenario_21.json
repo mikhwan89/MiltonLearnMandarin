@@ -252,7 +252,7 @@
           "note": "多少钱 is the key shopping phrase — it means 'how much does it cost?' Use it everywhere!"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "给你钱！谢谢阿姨！",
@@ -284,6 +284,51 @@
               "chinese": "阿姨",
               "english": "auntie (polite address for adult woman)",
               "indonesian": "tante (panggilan sopan untuk wanita dewasa)"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好的！这是钱。谢谢！",
+          "pinyin": "Hǎo de! Zhè shì qián. Xièxie!",
+          "english": "OK! Here's the money. Thank you!",
+          "indonesian": "Baik! Ini uangnya. Terima kasih!",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "OK",
+              "indonesian": "baik"
+            },
+            {
+              "pinyin": "de",
+              "chinese": "的",
+              "english": "(agreement particle)",
+              "indonesian": "(partikel setuju)"
+            },
+            {
+              "pinyin": "Zhè",
+              "chinese": "这",
+              "english": "this",
+              "indonesian": "ini"
+            },
+            {
+              "pinyin": "shì",
+              "chinese": "是",
+              "english": "is",
+              "indonesian": "adalah"
+            },
+            {
+              "pinyin": "qián",
+              "chinese": "钱",
+              "english": "money",
+              "indonesian": "uang"
+            },
+            {
+              "pinyin": "Xièxie",
+              "chinese": "谢谢",
+              "english": "thank you",
+              "indonesian": "terima kasih"
             }
           ],
           "isCorrect": true

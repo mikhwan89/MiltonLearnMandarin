@@ -140,7 +140,7 @@
           "indonesian": "baru tidur"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "好的！我去洗澡！洗好了就来！",
@@ -171,6 +171,51 @@
               "chinese": "就来",
               "english": "come right over",
               "indonesian": "langsung kesini"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "来了！我马上去洗澡！",
+          "pinyin": "Lái le! Wǒ mǎshàng qù xǐzǎo!",
+          "english": "Coming! I'll take a bath right away!",
+          "indonesian": "Iya! Aku segera mandi!",
+          "pinyinWords": [
+            {
+              "pinyin": "Lái",
+              "chinese": "来",
+              "english": "come",
+              "indonesian": "datang"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "already",
+              "indonesian": "sudah"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "mǎshàng",
+              "chinese": "马上",
+              "english": "right away",
+              "indonesian": "segera"
+            },
+            {
+              "pinyin": "qù",
+              "chinese": "去",
+              "english": "go",
+              "indonesian": "pergi"
+            },
+            {
+              "pinyin": "xǐzǎo",
+              "chinese": "洗澡",
+              "english": "take a bath",
+              "indonesian": "mandi"
             }
           ],
           "isCorrect": true
@@ -212,7 +257,7 @@
           "note": "讲 means to tell or speak, 故事 means story. 讲故事 = tell a story. One of the best parts of bedtime!"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "太好了！我喜欢听故事！快讲！",
@@ -244,6 +289,69 @@
               "chinese": "快讲",
               "english": "tell me quickly",
               "indonesian": "cepat ceritakan"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "好！我最喜欢听故事了！讲什么？",
+          "pinyin": "Hǎo! Wǒ zuì xǐhuān tīng gùshi le! Jiǎng shénme?",
+          "english": "OK! I love stories the most! What story?",
+          "indonesian": "Baik! Aku paling suka dengar cerita! Cerita apa?",
+          "pinyinWords": [
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "OK",
+              "indonesian": "baik"
+            },
+            {
+              "pinyin": "Wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "zuì",
+              "chinese": "最",
+              "english": "most",
+              "indonesian": "paling"
+            },
+            {
+              "pinyin": "xǐhuān",
+              "chinese": "喜欢",
+              "english": "like",
+              "indonesian": "suka"
+            },
+            {
+              "pinyin": "tīng",
+              "chinese": "听",
+              "english": "listen",
+              "indonesian": "mendengar"
+            },
+            {
+              "pinyin": "gùshi",
+              "chinese": "故事",
+              "english": "story",
+              "indonesian": "cerita"
+            },
+            {
+              "pinyin": "le",
+              "chinese": "了",
+              "english": "(emphasis)",
+              "indonesian": "(penekanan)"
+            },
+            {
+              "pinyin": "Jiǎng",
+              "chinese": "讲",
+              "english": "tell",
+              "indonesian": "ceritakan"
+            },
+            {
+              "pinyin": "shénme",
+              "chinese": "什么",
+              "english": "what",
+              "indonesian": "apa"
             }
           ],
           "isCorrect": true
@@ -292,7 +400,7 @@
           "indonesian": "Aku sayang kamu"
         }
       ],
-      "responseType": "SINGLE_CHOICE",
+      "responseType": "MULTIPLE_OPTIONS",
       "options": [
         {
           "chinese": "晚安妈妈！我也爱你！做好梦！",
@@ -318,6 +426,57 @@
               "english": "sweet dreams",
               "indonesian": "mimpi indah",
               "note": "做 means do/have, 好 means good, 梦 means dream. 做好梦 = have good dreams = sweet dreams!"
+            }
+          ],
+          "isCorrect": true
+        },
+        {
+          "chinese": "晚安！妈妈我爱你！好梦！",
+          "pinyin": "Wǎn'ān! Māma wǒ ài nǐ! Hǎo mèng!",
+          "english": "Goodnight! Mom I love you! Sweet dreams!",
+          "indonesian": "Selamat malam! Mama aku sayang mama! Mimpi indah!",
+          "pinyinWords": [
+            {
+              "pinyin": "Wǎn'ān",
+              "chinese": "晚安",
+              "english": "goodnight",
+              "indonesian": "selamat malam"
+            },
+            {
+              "pinyin": "Māma",
+              "chinese": "妈妈",
+              "english": "mom",
+              "indonesian": "mama"
+            },
+            {
+              "pinyin": "wǒ",
+              "chinese": "我",
+              "english": "I",
+              "indonesian": "aku"
+            },
+            {
+              "pinyin": "ài",
+              "chinese": "爱",
+              "english": "love",
+              "indonesian": "sayang"
+            },
+            {
+              "pinyin": "nǐ",
+              "chinese": "你",
+              "english": "you",
+              "indonesian": "kamu"
+            },
+            {
+              "pinyin": "Hǎo",
+              "chinese": "好",
+              "english": "good",
+              "indonesian": "indah"
+            },
+            {
+              "pinyin": "mèng",
+              "chinese": "梦",
+              "english": "dream",
+              "indonesian": "mimpi"
             }
           ],
           "isCorrect": true

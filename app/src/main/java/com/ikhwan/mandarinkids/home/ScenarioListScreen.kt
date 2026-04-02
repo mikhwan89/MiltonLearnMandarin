@@ -27,13 +27,14 @@ import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 @Composable
 fun ScenarioListScreen(
     category: ScenarioCategory,
-    onScenarioClick: (Scenario) -> Unit,
+    onScenarioClick: (Scenario, Int) -> Unit,
     onBack: () -> Unit
 ) {
     val context = LocalContext.current
     val repo = remember { ProgressRepository.getInstance(context) }
     val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
     val disabledScenarios by userPrefs.disabledScenarios.collectAsState(initial = emptySet())
+    val allProgress by repo.getAllProgress().collectAsState(initial = emptyList())
     val allScenarios = remember(category) {
         JsonScenarioRepository.getAll().filter { it.category == category }
     }
@@ -87,11 +88,16 @@ fun ScenarioListScreen(
             }
 
             items(scenarios, key = { it.id }) { scenario ->
-                val stars by repo.getStars(scenario.id).collectAsState(initial = 0)
+                val progress = allProgress.find { it.scenarioId == scenario.id }
+                val starsAtLevel = progress?.starsAtCurrentLevel ?: 0
+                val everPlayed = (progress?.stars ?: 0) > 0 || (progress?.masteryLevel ?: 1) > 1
+                val masteryLevel = progress?.masteryLevel ?: 1
                 ScenarioCard(
                     scenario = scenario,
-                    stars = stars,
-                    onClick = { onScenarioClick(scenario) }
+                    starsAtCurrentLevel = starsAtLevel,
+                    everPlayed = everPlayed,
+                    masteryLevel = masteryLevel,
+                    onClick = { onScenarioClick(scenario, masteryLevel) }
                 )
             }
 
