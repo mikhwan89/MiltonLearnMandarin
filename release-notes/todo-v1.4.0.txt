@@ -1,0 +1,89 @@
+Mandarinku — To-Do List for Next Version (v1.4.0)
+====================================================
+
+────────────────────────────────────────────────────
+PARENT DASHBOARD / SECURITY
+────────────────────────────────────────────────────
+
+[ ] 1. Change PIN
+      - Option in Parent Dashboard to change the current 4-digit PIN.
+      - Flow: enter current PIN → enter new PIN → confirm new PIN → save.
+      - Stored in DataStore (same as current PIN).
+
+[ ] 2. Math Password Mode
+      - Alternative to PIN: app presents a simple arithmetic challenge
+        that a 4–8 year old cannot reliably solve mentally.
+      - Examples: "What is 47 + 38?", "What is 9 × 7?", "What is 84 ÷ 4?"
+      - Questions generated randomly each time the lock screen is shown
+        (so kids can't memorise the answer).
+      - Configurable difficulty: Easy (2-digit addition/subtraction),
+        Medium (multiplication up to 12×), Hard (division, multi-step).
+      - Wrong answer shows a brief cooldown (3 s) before retry, same as PIN.
+
+[ ] 3. Password Mode Selector
+      - Setting in Parent Dashboard: "Lock Method — PIN / Math Question".
+      - Switching modes prompts parent to authenticate with the current
+        method first before the change takes effect.
+      - PinScreen updated to render either the PIN pad or the math
+        challenge depending on the stored mode preference.
+
+────────────────────────────────────────────────────
+SUGGESTED ADDITIONS (for your consideration)
+────────────────────────────────────────────────────
+
+[ ] 4. Weekly Progress Report (Parent)
+      - Auto-summary card in Parent Dashboard: XP earned this week,
+        scenarios played, tone accuracy %, sentence builder score.
+      - Optional local notification reminder on a parent-set schedule
+        (e.g. every Sunday evening): "Milton's weekly Mandarin report is ready."
+
+[ ] 5. Daily Learning Goal / Streak Goal
+      - Parent sets a daily XP or scenario target for the child
+        (e.g. "earn 50 XP per day" or "complete 1 scenario per day").
+      - Progress bar on HomeScreen shows today's goal progress.
+      - Streak counter already exists — tie it to meeting the daily goal,
+        not just launching the app.
+
+[ ] 6. Handwriting Practice Screen
+      - Show stroke order animation for a Chinese character (already have
+        StrokeOrderSheet as a bottom sheet).
+      - Promote it to a full practice tab: child traces the character on
+        screen, basic stroke-order scoring.
+      - Requires SVG/canvas stroke data per character — could start with
+        the 50 most common characters from existing scenarios.
+
+[ ] 7. Listening Comprehension Quiz Mode
+      - A new quiz direction: AUDIO_ONLY — TTS speaks a full sentence,
+        child picks which English/Indonesian sentence matches.
+      - Exercises full sentence comprehension rather than single words.
+      - Natural extension of the existing AUDIO_TO_TRANSLATION direction.
+
+[ ] 8. Scenario Bookmarks / Favourites
+      - Child (or parent) can star a scenario to pin it to the top of the
+        category list or a dedicated "Favourites" section.
+      - Useful for scenarios the child loves replaying.
+
+[ ] 9. Character Profile & Avatar
+      - Child picks or customises a simple avatar at first launch
+        (shown on HomeScreen and Progress tab).
+      - Name (already collected in roleplay) displayed on HomeScreen
+        as a personalised greeting: "你好, Milton! 🎉"
+
+[ ] 10. Offline TTS Voice Pack Notice
+      - Detect if the device has a Chinese TTS voice installed.
+      - If not, show a one-time banner with instructions to download
+        the Google Chinese (Mandarin) voice for better pronunciation.
+      - Many budget Android devices ship without it; this is a common
+        parent complaint for language-learning apps.
+
+[ ] 11. Scenario Difficulty Tags
+      - Tag each scenario as Beginner / Intermediate / Advanced
+        (field in the JSON, shown as a colour badge on scenario cards).
+      - Parent Dashboard filter: hide Advanced scenarios until child
+        reaches a mastery threshold.
+
+[ ] 12. Export / Backup Progress
+      - "Export Progress" button in Parent Dashboard: writes a JSON
+        snapshot of all Room data to a file the parent can save.
+      - "Restore" option to reload from that file.
+      - Safety net before an app reinstall or device change.
