@@ -927,13 +927,13 @@ COMPLETE JSON FORMAT
       "questionChinese": "",
       "questionPinyin": "",
       "options": [
-        { "chinese": "天气", "pinyin": "tiānqì", "translation": "weather" },
         { "chinese": "天空", "pinyin": "tiānkōng", "translation": "sky" },
         { "chinese": "下雨", "pinyin": "xià yǔ", "translation": "raining" },
+        { "chinese": "天气", "pinyin": "tiānqì", "translation": "weather" },
         { "chinese": "太阳", "pinyin": "tàiyáng", "translation": "sun" }
       ],
-      "correctAnswerIndex": 0,
-      "explanation": "天气 (tiānqì) means weather."
+      "correctAnswerIndex": 2,
+      "explanation": "天气 (tiānqì) means weather. It is at index 2 (the 3rd option)."
     },
     {
       "direction": "CHINESE_TO_TRANSLATION",
@@ -941,13 +941,13 @@ COMPLETE JSON FORMAT
       "questionChinese": "晴天",
       "questionPinyin": "qíngtiān",
       "options": [
-        { "chinese": "", "pinyin": "", "translation": "sunny day" },
         { "chinese": "", "pinyin": "", "translation": "cloudy day" },
+        { "chinese": "", "pinyin": "", "translation": "sunny day" },
         { "chinese": "", "pinyin": "", "translation": "rainy day" },
         { "chinese": "", "pinyin": "", "translation": "snowy day" }
       ],
-      "correctAnswerIndex": 0,
-      "explanation": "晴天 (qíngtiān) means sunny day."
+      "correctAnswerIndex": 1,
+      "explanation": "晴天 (qíngtiān) means sunny day. It is at index 1 (the 2nd option)."
     },
     {
       "direction": "AUDIO_TO_TRANSLATION",
@@ -955,13 +955,13 @@ COMPLETE JSON FORMAT
       "questionChinese": "雨伞",
       "questionPinyin": "yǔsǎn",
       "options": [
-        { "chinese": "umbrella", "pinyin": "", "translation": "umbrella" },
         { "chinese": "hat", "pinyin": "", "translation": "hat" },
         { "chinese": "raincoat", "pinyin": "", "translation": "raincoat" },
-        { "chinese": "boots", "pinyin": "", "translation": "boots" }
+        { "chinese": "boots", "pinyin": "", "translation": "boots" },
+        { "chinese": "umbrella", "pinyin": "", "translation": "umbrella" }
       ],
-      "correctAnswerIndex": 0,
-      "explanation": "雨伞 (yǔsǎn) means umbrella — 雨 means rain and 伞 means umbrella."
+      "correctAnswerIndex": 3,
+      "explanation": "雨伞 (yǔsǎn) means umbrella. It is at index 3 (the 4th option)."
     }
   ]
 }
@@ -974,7 +974,10 @@ RULES — follow all of these strictly
 2. "dialogues": include at least 3 steps. Mix responseType values (some LISTEN_ONLY, some SINGLE_CHOICE).
 3. "pinyinWords": REQUIRED on every dialogue step and every option. Cover every word — do NOT skip particles (吗, 了, 的, 啊, 呢, etc.).
 4. "quizQuestions": include 3–5 questions. Use a mix of CHINESE_TO_TRANSLATION, TRANSLATION_TO_CHINESE, and AUDIO_TO_TRANSLATION.
-5. Each quiz question must have EXACTLY 4 options. "correctAnswerIndex" is 0-based (0 = first option).
+5. Each quiz question must have EXACTLY 4 options. "correctAnswerIndex" is 0-based (0 = first option, 3 = last option).
+   ⚠️ RANDOMIZE correctAnswerIndex across all questions — NEVER put the correct answer at index 0 for every question.
+   Spread the correct answer across different positions. Example: Q1→index 2, Q2→index 0, Q3→index 3, Q4→index 1.
+   The example above intentionally uses indices 2, 1, 3 to show this. Always place the correct answer text at the position matching correctAnswerIndex.
 6. For CHINESE_TO_TRANSLATION and AUDIO_TO_TRANSLATION questions, the options only need "translation" filled in; "chinese" and "pinyin" can be empty strings "".
 7. For TRANSLATION_TO_CHINESE questions, fill in "chinese" and "pinyin" for each option; "translation" is the English label.
 8. All Chinese text must use simplified characters.
