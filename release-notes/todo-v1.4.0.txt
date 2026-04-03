@@ -5,12 +5,12 @@ Mandarinku — To-Do List for Next Version (v1.4.0)
 PARENT DASHBOARD / SECURITY
 ────────────────────────────────────────────────────
 
-[ ] 1. Change PIN
+[x] 1. Change PIN
       - Option in Parent Dashboard to change the current 4-digit PIN.
       - Flow: enter current PIN → enter new PIN → confirm new PIN → save.
       - Stored in DataStore (same as current PIN).
 
-[ ] 2. Math Password Mode
+[x] 2. Math Password Mode
       - Alternative to PIN: app presents a simple arithmetic challenge
         that a 4–8 year old cannot reliably solve mentally.
       - Examples: "What is 47 + 38?", "What is 9 × 7?", "What is 84 ÷ 4?"
@@ -20,7 +20,7 @@ PARENT DASHBOARD / SECURITY
         Medium (multiplication up to 12×), Hard (division, multi-step).
       - Wrong answer shows a brief cooldown (3 s) before retry, same as PIN.
 
-[ ] 3. Password Mode Selector
+[x] 3. Password Mode Selector
       - Setting in Parent Dashboard: "Lock Method — PIN / Math Question".
       - Switching modes prompts parent to authenticate with the current
         method first before the change takes effect.
