@@ -115,6 +115,12 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
     val customRepo = remember { CustomScenarioRepository.getInstance(context) }
     val customScenarios by customRepo.scenariosFlow.collectAsState(initial = emptyList())
     var showAddCustomScenario by remember { mutableStateOf(false) }
+    var currentLockMode by remember { mutableStateOf(repo.getLockMode()) }
+    var mathDifficulty by remember { mutableStateOf(repo.getMathDifficulty()) }
+    var showChangePinOverlay by remember { mutableStateOf(false) }
+    var showSwitchModeAuth by remember { mutableStateOf(false) }
+    var pendingLockMode by remember { mutableStateOf("") }
+    var showSetPinAfterSwitch by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -276,7 +282,79 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
                 }
             }
 
-            // ── 4. Content Settings ───────────────────────────────────────────
+            // ── 4. Security Settings ──────────────────────────────────────────
+            item {
+                Spacer(modifier = Modifier.height(4.dp))
+                SectionHeader("🔐 Security Settings")
+                val securityGradient = colors.tileGrey.asList()
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Brush.verticalGradient(securityGradient))
+                    ) {
+                        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+
+                            Text("🔒 Lock Method", fontSize = 13.sp, fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant)
+
+                            val lockOptions = listOf("PIN", "Math Question")
+                            SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+                                lockOptions.forEachIndexed { index, label ->
+                                    val isSelected = (currentLockMode == "MATH") == (index == 1)
+                                    SegmentedButton(
+                                        selected = isSelected,
+                                        onClick = {
+                                            val chosen = if (index == 0) "PIN" else "MATH"
+                                            if (chosen != currentLockMode) {
+                                                pendingLockMode = chosen
+                                                showSwitchModeAuth = true
+                                            }
+                                        },
+                                        shape = SegmentedButtonDefaults.itemShape(index, lockOptions.size)
+                                    ) { Text(label) }
+                                }
+                            }
+
+                            if (currentLockMode == "MATH") {
+                                HorizontalDivider()
+                                Text("🧮 Math Difficulty", fontSize = 13.sp, fontWeight = FontWeight.SemiBold,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                val diffOptions = listOf("Easy", "Medium", "Hard")
+                                SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+                                    diffOptions.forEachIndexed { index, label ->
+                                        val diffKey = label.uppercase()
+                                        SegmentedButton(
+                                            selected = mathDifficulty == diffKey,
+                                            onClick = {
+                                                mathDifficulty = diffKey
+                                                repo.setMathDifficulty(diffKey)
+                                            },
+                                            shape = SegmentedButtonDefaults.itemShape(index, diffOptions.size)
+                                        ) { Text(label) }
+                                    }
+                                }
+                            }
+
+                            if (currentLockMode == "PIN") {
+                                HorizontalDivider()
+                                TextButton(
+                                    onClick = { showChangePinOverlay = true },
+                                    contentPadding = PaddingValues(0.dp)
+                                ) {
+                                    Text("🔑 Change PIN")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // ── 5. Content Settings ───────────────────────────────────────────
             item {
                 Spacer(modifier = Modifier.height(4.dp))
                 SectionHeader("⚙️ Content Settings")
@@ -489,6 +567,56 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
                 error
             }
         )
+    }
+
+    // Change PIN overlay
+    if (showChangePinOverlay) {
+        PinScreen(
+            mode = PinMode.CHANGE,
+            lockMode = LockMode.PIN,
+            onSuccess = { showChangePinOverlay = false },
+            onBack = { showChangePinOverlay = false },
+            onVerify = { repo.verifyPin(it) },
+            onSetPin = { repo.setPin(it) }
+        )
+        return
+    }
+
+    // Auth overlay for lock mode switch
+    if (showSwitchModeAuth) {
+        val currentDifficulty = when (mathDifficulty) {
+            "EASY" -> MathDifficulty.EASY
+            "HARD" -> MathDifficulty.HARD
+            else -> MathDifficulty.MEDIUM
+        }
+        PinScreen(
+            mode = PinMode.VERIFY,
+            lockMode = if (currentLockMode == "MATH") LockMode.MATH else LockMode.PIN,
+            mathDifficulty = currentDifficulty,
+            onSuccess = {
+                showSwitchModeAuth = false
+                repo.setLockMode(pendingLockMode)
+                currentLockMode = pendingLockMode
+                if (pendingLockMode == "PIN") showSetPinAfterSwitch = true
+            },
+            onBack = { showSwitchModeAuth = false },
+            onVerify = { repo.verifyPin(it) },
+            onSetPin = {}
+        )
+        return
+    }
+
+    // Set up PIN after switching from MATH to PIN mode
+    if (showSetPinAfterSwitch) {
+        PinScreen(
+            mode = PinMode.SET,
+            lockMode = LockMode.PIN,
+            onSuccess = { showSetPinAfterSwitch = false },
+            onBack = { showSetPinAfterSwitch = false },
+            onVerify = { false },
+            onSetPin = { repo.setPin(it) }
+        )
+        return
     }
 }
 

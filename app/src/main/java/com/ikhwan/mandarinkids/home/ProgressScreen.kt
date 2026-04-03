@@ -55,6 +55,8 @@ import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 import com.ikhwan.mandarinkids.navigation.Routes
 import com.ikhwan.mandarinkids.parent.PinMode
 import com.ikhwan.mandarinkids.parent.PinScreen
+import com.ikhwan.mandarinkids.parent.LockMode
+import com.ikhwan.mandarinkids.parent.MathDifficulty
 import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.layout.onGloballyPositioned
 import com.ikhwan.mandarinkids.onboarding.LocalOnboardingCoords
@@ -142,9 +144,21 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
 
     // PIN overlay — renders over the whole screen
     if (showPinForRewards) {
-        val pinMode = if (repo.isPinSet()) PinMode.VERIFY else PinMode.SET
+        val lockModeStr = repo.getLockMode()
+        val lockMode = if (lockModeStr == "MATH") LockMode.MATH else LockMode.PIN
+        val mathDiff = when (repo.getMathDifficulty()) {
+            "EASY" -> MathDifficulty.EASY
+            "HARD" -> MathDifficulty.HARD
+            else -> MathDifficulty.MEDIUM
+        }
         PinScreen(
-            mode = pinMode,
+            mode = when {
+                lockMode == LockMode.MATH -> PinMode.VERIFY
+                repo.isPinSet() -> PinMode.VERIFY
+                else -> PinMode.SET
+            },
+            lockMode = lockMode,
+            mathDifficulty = mathDiff,
             onSuccess = {
                 showPinForRewards = false
                 rewardsUnlocked = true

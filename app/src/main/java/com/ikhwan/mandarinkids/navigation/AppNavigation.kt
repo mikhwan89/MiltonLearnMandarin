@@ -42,6 +42,8 @@ import com.ikhwan.mandarinkids.home.ScenarioListScreen
 import com.ikhwan.mandarinkids.parent.ParentDashboardScreen
 import com.ikhwan.mandarinkids.parent.PinScreen
 import com.ikhwan.mandarinkids.parent.PinMode
+import com.ikhwan.mandarinkids.parent.LockMode
+import com.ikhwan.mandarinkids.parent.MathDifficulty
 import com.ikhwan.mandarinkids.practice.PracticeScreen
 import com.ikhwan.mandarinkids.practice.SentenceBuilderScreen
 import com.ikhwan.mandarinkids.practice.ToneTrainerScreen
@@ -271,8 +273,21 @@ fun MandarinKidsApp() {
 
             composable(Routes.PIN) {
                 val repo = remember { ProgressRepository.getInstance(context) }
+                val lockModeStr = repo.getLockMode()
+                val lockMode = if (lockModeStr == "MATH") LockMode.MATH else LockMode.PIN
+                val mathDiff = when (repo.getMathDifficulty()) {
+                    "EASY" -> MathDifficulty.EASY
+                    "HARD" -> MathDifficulty.HARD
+                    else -> MathDifficulty.MEDIUM
+                }
                 PinScreen(
-                    mode = if (repo.isPinSet()) PinMode.VERIFY else PinMode.SET,
+                    mode = when {
+                        lockMode == LockMode.MATH -> PinMode.VERIFY
+                        repo.isPinSet() -> PinMode.VERIFY
+                        else -> PinMode.SET
+                    },
+                    lockMode = lockMode,
+                    mathDifficulty = mathDiff,
                     onSuccess = {
                         navController.navigate(Routes.PARENT_DASHBOARD) {
                             popUpTo(Routes.PIN) { inclusive = true }

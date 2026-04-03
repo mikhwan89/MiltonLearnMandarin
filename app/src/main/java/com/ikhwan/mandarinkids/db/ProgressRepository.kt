@@ -399,6 +399,13 @@ class ProgressRepository private constructor(
         return bytes.joinToString("") { "%02x".format(it) }
     }
 
+    // ── Lock mode ────────────────────────────────────────────────────────────
+    fun getLockMode(): String = prefs().getString(KEY_LOCK_MODE, "PIN") ?: "PIN"
+    fun setLockMode(mode: String) { prefs().edit().putString(KEY_LOCK_MODE, mode).apply() }
+
+    fun getMathDifficulty(): String = prefs().getString(KEY_MATH_DIFFICULTY, "MEDIUM") ?: "MEDIUM"
+    fun setMathDifficulty(diff: String) { prefs().edit().putString(KEY_MATH_DIFFICULTY, diff).apply() }
+
     // ── Indonesian toggle ─────────────────────────────────────────────────
 
     fun getShowIndonesian(): Boolean = prefs().getBoolean(KEY_SHOW_INDONESIAN, true)
@@ -498,6 +505,8 @@ class ProgressRepository private constructor(
         private const val KEY_WORD_OF_DAY_DATE = "word_of_day_date"
         private const val KEY_WORD_OF_DAY_CHINESE = "word_of_day_chinese"
         private const val KEY_PIN_HASH = "parent_pin_hash"
+        private const val KEY_LOCK_MODE = "parent_lock_mode"
+        private const val KEY_MATH_DIFFICULTY = "parent_math_difficulty"
         private const val KEY_SHOW_INDONESIAN = "show_indonesian"
         private const val KEY_FLASHCARD_STREAK    = "flashcard_streak"
         private const val KEY_FLASHCARD_LAST_DATE  = "flashcard_last_date"
