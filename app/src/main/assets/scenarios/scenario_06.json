@@ -196,13 +196,15 @@
           "pinyin": "Liú",
           "chinese": "刘",
           "english": "Liu",
-          "indonesian": "Liu"
+          "indonesian": "Liu",
+          "isName": true
         },
         {
           "pinyin": "Míng",
           "chinese": "明",
           "english": "Ming",
-          "indonesian": "Ming"
+          "indonesian": "Ming",
+          "isName": true
         },
         {
           "pinyin": "yě",
@@ -253,13 +255,15 @@
               "pinyin": "Liú",
               "chinese": "刘",
               "english": "Liu",
-              "indonesian": "Liu"
+              "indonesian": "Liu",
+              "isName": true
             },
             {
               "pinyin": "Míng",
               "chinese": "明",
               "english": "Ming",
-              "indonesian": "Ming"
+              "indonesian": "Ming",
+              "isName": true
             },
             {
               "pinyin": "Xièxie",
@@ -317,7 +321,8 @@
               "pinyin": "Liú Míng",
               "chinese": "刘明",
               "english": "Liu Ming",
-              "indonesian": "Liu Ming"
+              "indonesian": "Liu Ming",
+              "isName": true
             },
             {
               "pinyin": "Míngtiān",

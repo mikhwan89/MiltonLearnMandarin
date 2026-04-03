@@ -36,7 +36,8 @@ data class PinyinWord(
     val chinese: String,
     val english: String,
     val indonesian: String,
-    val note: String? = null   // Child-friendly explanation shown in flashcard/dialog
+    val note: String? = null,  // Child-friendly explanation shown in flashcard/dialog
+    val isName: Boolean = false // Proper nouns (character names) — excluded from flashcard/quiz pools
 )
 
 // Individual dialogue step in scenario

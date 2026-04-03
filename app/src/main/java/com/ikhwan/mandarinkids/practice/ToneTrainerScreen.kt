@@ -90,7 +90,7 @@ fun ToneTrainerScreen() {
                     step.pinyinWords + step.options.flatMap { it.pinyinWords }
                 }
             }
-            .filter { word -> ToneUtils.splitSyllables(word.pinyin).size == 1 }
+            .filter { word -> !word.isName && ToneUtils.splitSyllables(word.pinyin).size == 1 }
             .distinctBy { it.chinese }
             .map { word ->
                 ToneQuestion(

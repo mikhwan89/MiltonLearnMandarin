@@ -41,7 +41,7 @@ fun Scenario.getFlashcardWords(): List<PinyinWord> {
     return dialogues
         .flatMap { step -> step.pinyinWords + step.options.flatMap { it.pinyinWords } }
         .distinctBy { it.chinese }
-        .filter { it.chinese.isNotBlank() }
+        .filter { it.chinese.isNotBlank() && !it.isName }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

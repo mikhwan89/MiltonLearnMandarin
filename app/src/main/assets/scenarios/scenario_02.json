@@ -66,13 +66,15 @@
           "pinyin": "Liú",
           "chinese": "刘",
           "english": "Liu",
-          "indonesian": "Liu"
+          "indonesian": "Liu",
+          "isName": true
         },
         {
           "pinyin": "Míng",
           "chinese": "明",
           "english": "Ming",
-          "indonesian": "Ming"
+          "indonesian": "Ming",
+          "isName": true
         }
       ],
       "responseType": "LISTEN_ONLY",
@@ -136,13 +138,15 @@
               "pinyin": "Liú",
               "chinese": "刘",
               "english": "Liu",
-              "indonesian": "Liu"
+              "indonesian": "Liu",
+              "isName": true
             },
             {
               "pinyin": "Míng",
               "chinese": "明",
               "english": "Ming",
-              "indonesian": "Ming"
+              "indonesian": "Ming",
+              "isName": true
             },
             {
               "pinyin": "Wǒ",
