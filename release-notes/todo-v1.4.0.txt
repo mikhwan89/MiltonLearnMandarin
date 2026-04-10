@@ -765,3 +765,42 @@ QUIZ SCREEN UX CLEAN-UP
       that use QuizScreen.kt / FeedbackCard.kt). Do not change feedback
       behaviour on Sentence Builder (L4/L5), Listening Comprehension (L6), or
       Speaking Practice (L7) — those modes may rely on feedback differently.
+
+[ ] 23. Remove Per-Question "Try Again" on Sentence Builder Levels 4 & 5
+      SCREENS: SentenceBuilderScreen.kt (or SentenceBuilderQuizScreen.kt)
+      AFFECTS: Level 4 and Level 5 of the roleplay mastery progression
+
+      WHAT TO CHANGE
+      ───────────────
+      Currently, when the user gets a question wrong on L4 or L5, a "Try Again"
+      button appears that lets them re-attempt that specific question in place
+      before moving on.
+
+      Remove the per-question "Try Again" button entirely. The correct behaviour:
+      - Wrong answer → green highlight reveals the correct arrangement (same as
+        now), then the flow automatically advances to the next question.
+      - User moves forward through all questions regardless of right or wrong.
+      - At the end of the level (results/summary screen), a "Try Again" button
+        is available to restart the entire level from question 1.
+
+      WHY
+      ───
+      Per-question retries let the child "grind" a single question until they
+      get it right by elimination, which doesn't reflect real learning. Forcing
+      a full restart means the child has to hold all the sentences in memory and
+      get them all right in one run — a more honest measure of mastery, and
+      consistent with how L1–L3 already work.
+
+      WHAT TO KEEP
+      ─────────────
+      - Green highlight showing the correct sentence order after a wrong answer
+        — keep this, it is the learning moment.
+      - The brief pause / feedback display after an answer before auto-advancing
+        — keep a short delay (≈ 1–1.5 s) so the child can read the correct
+        answer before the next question appears.
+      - "Try Again" button on the end-of-level results screen — keep this,
+        it restarts from question 1.
+
+      SCOPE
+      ─────
+      L4 and L5 only. Do not change retry behaviour on L1–L3, L6, or L7.
