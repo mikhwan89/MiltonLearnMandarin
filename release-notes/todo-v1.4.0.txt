@@ -468,3 +468,193 @@ DEVICE COMPATIBILITY & CROSS-DEVICE UX
         catch obvious layout issues before every release.
       - Add at least one Compose UI screenshot test (Paparazzi or Roborazzi)
         for QuizResultsScreen and HomeScreen to catch regressions automatically.
+
+────────────────────────────────────────────────────
+QUIZ RESULT SCREEN & UI POLISH
+────────────────────────────────────────────────────
+
+[ ] 17. Simplify Quiz Result Screen — Show Correct / Total Only
+      SCREEN: QuizResultsScreen.kt
+
+      WHAT TO REMOVE
+      ───────────────
+      - "Total Score" row with raw points/XP breakdown.
+      - "Conversation" summary showing number of dialogue steps completed.
+
+      WHAT TO KEEP / ADD
+      ──────────────────
+      - Under the "Your Result" heading, display a single clear line:
+          "You got X / Y correct"  (e.g. "You got 4 / 5 correct")
+      - Star rating and XP award remain as-is — they are still the main reward.
+      - Keep the retry and home CTAs unchanged.
+
+      RATIONALE
+      ─────────
+      The target user is age 4–8. A simple fraction ("4 out of 5") is far more
+      meaningful than a point total, and conversation step counts add noise for
+      a child audience. Cleaner result = more motivating.
+
+[ ] 18. Apply Active Color Theme to Quiz Result Screen
+      SCREEN: QuizResultsScreen.kt
+
+      PROBLEM
+      ───────
+      The quiz result screen does not fully respond to the user's selected app
+      colour theme (theme toggle in HomeScreen / ProgressScreen top bar).
+      Background, card surfaces, and text colours appear hardcoded rather than
+      using MaterialTheme.appColors semantic tokens.
+
+      WHAT TO DO
+      ──────────
+      - Audit every Color literal in QuizResultsScreen.kt and replace with the
+        appropriate MaterialTheme.appColors or MaterialTheme.colorScheme token.
+      - Exceptions (do NOT theme these — they are fixed semantic feedback):
+          • Star fill colour (amber — always amber regardless of theme)
+          • Correct answer green / wrong answer red on FeedbackCard
+      - Ensure the confetti particle colours in ConfettiEffect also pull from
+        the active theme palette so they feel cohesive on dark themes.
+      - Quick smoke-test: cycle through all 10 themes and confirm the result
+        screen looks intentional on each one (no clashing hardcoded colours).
+
+────────────────────────────────────────────────────
+FLASHCARD — NEW PRACTICE MODES
+────────────────────────────────────────────────────
+
+[ ] 19. Flashcard Speaking Mode
+      SCOPE: FlashcardScreen.kt, FlashcardViewModel.kt, PracticeScreen.kt,
+             Badges, MilestoneRewards
+
+      BACKGROUND — MODE FLIP BEHAVIOUR
+      ──────────────────────────────────
+      The flashcard tab currently has two mode buttons: "Listening" and "Reading".
+      To avoid adding more buttons and crowding the UI, the new modes use a
+      flip-toggle pattern:
+
+        Listening button (active) → tap again → switches to Speaking mode
+        Speaking button (active)  → tap again → switches back to Listening mode
+
+        Reading button (active)   → tap again → switches to Writing mode
+        Writing button (active)   → tap again → switches back to Reading mode
+
+      Rationale: Listening/Speaking are inverse skills (input vs output for audio);
+      Reading/Writing are inverse skills (input vs output for characters). The flip
+      makes the relationship intuitive and adds zero extra UI chrome.
+
+      SPEAKING MODE — HOW IT WORKS
+      ─────────────────────────────
+      - The flashcard shows the Chinese character + pinyin (same as Reading mode
+        so the child can see what they are expected to say).
+      - A large 🎤 "Tap to Speak" button replaces the "Got it / Skip" controls.
+      - Tapping starts SpeechRecognizer (android.speech.SpeechRecognizer, zh-CN)
+        — the same engine planned for Level 7 Speaking Practice (item 7b).
+      - Recognised text is compared against the card's textChinese using the same
+        character-match-rate scoring defined in item 7b:
+            ≥ 90%  → ✅ Correct — card is marked mastered for SPEAKING practiceType
+            70–89% → 🟡 Close   — show the correct pinyin, offer a retry tap
+            < 70%  → ❌ Try again — no mastery credit; card stays in the deck
+      - After speaking, the result card shows: recognised text vs expected text,
+        with a "Hear correct pronunciation 🔊" replay button (TtsManager).
+      - "Skip" option always available so the child is never stuck.
+
+      DATA
+      ────
+      - Mastery tracked under practiceType = SPEAKING (new enum value in
+        PracticeType.kt alongside existing DEFAULT, LISTENING, READING).
+      - MasteredWordEntity primary key: (scenarioId, chinese, practiceType) —
+        no schema change needed beyond adding the new enum value.
+      - Room migration required only if the enum is stored as a string (safe) —
+        verify that the existing @TypeConverter handles unknown enum values
+        gracefully before adding the new value.
+
+      PERMISSION
+      ──────────
+      - Requires RECORD_AUDIO permission (same as item 7b).
+      - If permission not yet granted, show a friendly one-time prompt when the
+        child first taps the Speaking mode button.
+      - Reuse SpeechRecognitionManager.kt from item 7b once that is built;
+        if item 7b is not yet done, build SpeechRecognitionManager.kt here first.
+
+      BADGES (3 new)
+      ──────────────
+        SPEAKING_DEBUT   🗣️  — first word mastered in Speaking mode
+        SPEAKING_ACE     🎤  — 25 words mastered in Speaking mode
+        SPEAKING_MASTER  🌟  — 100 words mastered in Speaking mode
+
+      MILESTONE REWARDS
+      ─────────────────
+      - Add SPEAKING_WORDS_MASTERED to MilestoneType so parents can set a target
+        like "Master 20 words in Speaking mode" as a custom reward criterion.
+      - Visible in the milestone reward creation UI in Parent Dashboard alongside
+        existing mastery milestone types.
+
+      NOTE: Implement Speaking mode fully and ship it before starting item 20
+      (Writing mode). One new mode at a time.
+
+[ ] 20. Flashcard Writing Mode
+      SCOPE: FlashcardScreen.kt, FlashcardViewModel.kt, PracticeScreen.kt,
+             StrokeOrderSheet.kt (or a new WritingPracticeCanvas.kt),
+             Badges, MilestoneRewards
+
+      BACKGROUND
+      ──────────
+      Writing mode is the flip of Reading mode (see item 19 for the flip-toggle
+      pattern). It tests whether the child can correctly reproduce the stroke
+      order of a Chinese character by drawing it on screen.
+
+      WRITING MODE — HOW IT WORKS
+      ─────────────────────────────
+      - The flashcard shows the English / pinyin prompt only — the Chinese
+        character is hidden (this is the test).
+      - A blank canvas occupies the centre of the card where the child draws
+        the character with their finger.
+      - A faint grid (米字格, 田字格) overlaid on the canvas helps with proportion,
+        matching standard Chinese handwriting practice sheets.
+      - Below the canvas: a "Check" button and a "Show Answer" button.
+        "Show Answer" reveals the character and its stroke order animation
+        (reusing or promoting StrokeOrderSheet logic).
+
+      STROKE-ORDER CHECKING (two-phase approach)
+      ────────────────────────────────────────────
+      Phase 1 (MVP — self-assessment):
+        - After the child draws, the correct character + stroke order animation
+          plays over or beside their drawing.
+        - Child self-rates: "I got it ✅" or "Not yet ❌".
+        - No automated recognition needed — keeps scope small and avoids the
+          complexity of handwriting OCR.
+        - Mastery credited when child taps "I got it ✅".
+
+      Phase 2 (future enhancement — automated OCR, separate task):
+        - Send the canvas bitmap to an on-device ML Kit handwriting model
+          (or a lightweight stroke-order recognition library) for automated scoring.
+        - Noted here for reference; do NOT implement Phase 2 in this task.
+
+      STROKE ORDER DATA
+      ─────────────────
+      - StrokeOrderSheet.kt already exists as a bottom sheet.
+      - Evaluate whether its stroke data source is sufficient to drive a full
+        canvas animation for every character in the scenario pool.
+      - If stroke data is missing for a character, fall back gracefully:
+        show "Stroke order not available — practice writing and self-check" with
+        the static character displayed large.
+
+      DATA
+      ────
+      - Mastery tracked under practiceType = WRITING (new enum value in
+        PracticeType.kt alongside DEFAULT, LISTENING, READING, SPEAKING).
+      - Same composite primary key (scenarioId, chinese, practiceType).
+      - Room migration: add WRITING to the enum. Verify TypeConverter handles it.
+
+      BADGES (3 new)
+      ──────────────
+        WRITING_DEBUT   ✍️  — first character mastered in Writing mode
+        WRITING_ACE     🖊️  — 25 characters mastered in Writing mode
+        WRITING_MASTER  📝  — 100 characters mastered in Writing mode
+
+      MILESTONE REWARDS
+      ─────────────────
+      - Add WRITING_CHARS_MASTERED to MilestoneType so parents can set a target
+        like "Master 20 characters in Writing mode" as a custom reward criterion.
+      - Visible in milestone reward creation UI in Parent Dashboard.
+
+      NOTE: Do NOT start this task until item 19 (Speaking mode) is fully
+      implemented and tested. One new mode at a time.
