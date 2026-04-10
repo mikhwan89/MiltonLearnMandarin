@@ -728,3 +728,40 @@ FLASHCARD — NEW PRACTICE MODES
         like "Master 30 words in Reverse mode" as a custom reward criterion.
       - Visible in the milestone reward creation UI in Parent Dashboard alongside
         all other mastery milestone types.
+
+────────────────────────────────────────────────────
+QUIZ SCREEN UX CLEAN-UP
+────────────────────────────────────────────────────
+
+[ ] 22. Remove Redundant Feedback Tiles on Quiz Screen (Levels 1–3)
+      SCREENS: QuizScreen.kt, FeedbackCard.kt
+      AFFECTS: Level 1, Level 2, Level 3 of the roleplay quiz flow
+
+      WHAT TO REMOVE
+      ───────────────
+      After the user selects an answer, two feedback tiles currently appear:
+
+      1. Wrong answer tile — shows "Not quite" + the correct answer text.
+         REDUNDANT because: the correct answer option already turns green
+         immediately on selection, so the child can see which one was right
+         without a separate tile calling it out.
+
+      2. Correct answer tile — shows "Correct ✅  <Chinese> means <translation>".
+         REDUNDANT because: the child just demonstrated they know the meaning
+         by choosing correctly — restating the translation adds no value and
+         slows down the quiz flow.
+
+      WHAT TO KEEP
+      ─────────────
+      - The green highlight on the correct option and the red highlight on the
+        wrong option — these stay, they are the core visual feedback.
+      - The "Next" / advance button that appears after an answer is selected —
+        keep the pacing mechanic, just remove the tile above it.
+      - Any audio feedback (correct/wrong sound effects) — keep those.
+
+      SCOPE NOTE
+      ──────────
+      Remove the tiles on Levels 1, 2, and 3 only (the standard quiz levels
+      that use QuizScreen.kt / FeedbackCard.kt). Do not change feedback
+      behaviour on Sentence Builder (L4/L5), Listening Comprehension (L6), or
+      Speaking Practice (L7) — those modes may rely on feedback differently.
