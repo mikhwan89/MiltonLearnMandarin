@@ -998,3 +998,85 @@ ROLEPLAY MASTERY — SPEAKING LEVELS
       - Add L7_SCENARIO_COMPLETIONS to MilestoneType for parent reward criteria.
       - Add L8_SCENARIO_COMPLETIONS to MilestoneType for parent reward criteria.
       - Both visible in the milestone reward creation UI in Parent Dashboard.
+
+────────────────────────────────────────────────────
+AUDIO BUG FIXES
+────────────────────────────────────────────────────
+
+[ ] 25. Fix Earphone Audio Cut-Off at the Start of Playback
+      FILE: tts/TtsManager.kt (primary), possibly MainActivity.kt
+
+      SYMPTOM
+      ───────
+      When the user has earphones/headphones connected and the app has been
+      silent for a moment, the first word — or even the first syllable — of a
+      TTS utterance is clipped. The audio then plays normally for the rest of
+      the sentence. Affects: roleplay conversation lines, flashcard audio,
+      tone trainer, and any other screen that triggers TTS after a period of
+      silence.
+
+      ROOT CAUSE
+      ──────────
+      This is a known Android audio hardware behaviour. When no audio has been
+      playing for several seconds, the audio output path (DAC, amplifier, and
+      the earphone driver circuit) enters a low-power idle state. When audio
+      suddenly starts, the hardware takes 30–150 ms to "wake up" before it
+      begins passing signal to the earphone jack or BT codec. The first
+      30–150 ms of audio is produced by the app but not yet delivered to the
+      earphone, resulting in the clipped-beginning effect.
+
+      The same issue can occur on Bluetooth earphones but is usually more
+      pronounced (BT codec reconnection latency can be 100–500 ms).
+
+      SOLUTIONS (in order of preference — try each and keep the one that works
+      cleanly without introducing audible artefacts)
+      ──────────────────────────────────────────────
+
+      Option A — Silent Audio Primer (recommended first attempt)
+        Play a very short (200–300 ms) silent audio clip immediately before
+        every TTS utterance. The silence wakes the audio hardware and warms
+        the output path without the user hearing anything. The TTS then starts
+        into an already-active audio path.
+
+        Implementation:
+        - Add a raw resource: res/raw/silence_300ms.mp3 (or .wav) — a 300 ms
+          file of pure silence encoded at 44.1 kHz / 16-bit mono.
+        - In TtsManager.speak() and speakAndAwait(), play the silence clip via
+          MediaPlayer or SoundPool before calling TextToSpeech.speak().
+        - For speakAndAwait(), await the silence completion before starting TTS
+          so there is no overlap.
+        - Silence clip must use the same audio stream as TTS
+          (AudioManager.STREAM_MUSIC or the stream TTS is routed to).
+
+      Option B — AudioTrack Keep-Alive
+        Create a looping AudioTrack that continuously writes zero-value samples
+        (silence) to the audio output at very low volume. This keeps the audio
+        hardware permanently active so it is never in the idle state.
+        Downside: small continuous battery drain; should only run while the app
+        is in the foreground (pause in onStop, resume in onStart).
+
+      Option C — TTS setAudioAttributes with USAGE_MEDIA
+        Some OEM TTS engines route audio through a different stream than
+        STREAM_MUSIC, which can cause the hardware warm-up issue. Force TTS to
+        use AudioAttributes with USAGE_MEDIA and CONTENT_TYPE_SPEECH:
+          val attrs = AudioAttributes.Builder()
+              .setUsage(AudioAttributes.USAGE_MEDIA)
+              .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+              .build()
+          tts.setAudioAttributes(attrs)
+        This ensures TTS and all other app audio share the same hardware path
+        and the warm-up from one stream benefits the other.
+        Try this first — it is the cheapest fix (one line) and may resolve the
+        issue on wired earphones without a silence primer.
+
+      TESTING CHECKLIST
+      ─────────────────
+      After implementing, verify on:
+        □ Wired 3.5 mm earphones — most affected by DAC warm-up latency
+        □ Bluetooth earphones (classic A2DP) — most affected by codec reconnect
+        □ Bluetooth earphones (aptX / LDAC) — similar to A2DP
+        □ Phone speaker (no earphones) — confirm no regression; silence primer
+          should be inaudible or absent on speaker path
+        □ Samsung One UI device — audio stack differs from stock Android
+        □ After a long period of app silence (≥ 10 s) — worst-case scenario
+        □ First utterance after app launch — cold-start audio path
