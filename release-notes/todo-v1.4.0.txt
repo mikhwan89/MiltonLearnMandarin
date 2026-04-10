@@ -804,3 +804,197 @@ QUIZ SCREEN UX CLEAN-UP
       SCOPE
       ─────
       L4 and L5 only. Do not change retry behaviour on L1–L3, L6, or L7.
+
+────────────────────────────────────────────────────
+ROLEPLAY MASTERY — SPEAKING LEVELS
+────────────────────────────────────────────────────
+
+[ ] 24. Roleplay Quiz Level 7 & Level 8 — Speaking Practice (Word & Sentence)
+      SCREENS: new SpeakingWordQuizScreen.kt (L7),
+               new SpeakingSentenceQuizScreen.kt (L8)
+               (or unified SpeakingQuizScreen.kt with a level parameter)
+      RELATED: item 7b (previously planned a single L7 for sentence speaking —
+               this item supersedes it by splitting speaking into two levels)
+
+      REVISED MASTERY LADDER
+      ───────────────────────
+        L1  Standard quiz (multiple choice, Chinese → English)
+        L2  12 targeted vocab questions
+        L3  All words in scenario tested
+        L4  Sentence Builder (multiple choice)
+        L5  Sentence Builder (all sentences, no hints)
+        L6  Listening Comprehension (hear sentence → pick meaning)
+        L7  Speaking — Word Pronunciation (speak each word in the scenario)
+        L8  Speaking — Full Sentences (speak every sentence in the scenario)
+
+      NOTE ON ITEM 7b
+      ────────────────
+      Item 7b described a single L7 for sentence-level speaking. This item
+      replaces that plan. When implementing, disregard the L7 content in item 7b
+      and follow the two-level design here instead. The technical groundwork in
+      item 7b (SpeechRecognitionManager.kt, RECORD_AUDIO permission, scoring
+      algorithm) is still valid and should be reused.
+
+      ════════════════════════════════════════════════
+      LEVEL 7 — WORD PRONUNCIATION
+      ════════════════════════════════════════════════
+
+      WHAT IT TESTS
+      ─────────────
+      The child must correctly pronounce each individual word (character/token)
+      that appears across all dialogue lines in the scenario. Words are drawn
+      from the pinyinWords lists already present in the JSON — no new content
+      authoring needed.
+
+      QUESTION POOL
+      ─────────────
+      - Collect every unique Chinese word from all pinyinWords entries in the
+        scenario's dialogues (both CHARACTER and STUDENT lines).
+      - Deduplicate by textChinese so the same word is not tested twice.
+      - Present words one at a time in shuffled order.
+      - Total questions = number of unique words in the scenario (varies by
+        scenario; typically 15–40 words). Cap at 20 per run if the pool is
+        large; remaining words carry over to the next run.
+
+      FLOW PER QUESTION
+      ──────────────────
+      1. Card shows the Chinese character(s) for the word, large and centred.
+         Pinyin is hidden initially (it would give away the pronunciation).
+      2. TTS auto-plays the word once at normal speed so the child hears a model.
+         A 🔊 replay button lets them hear it again (unlimited replays — this is
+         a pronunciation drill, not a listening test).
+      3. A large 🎤 "Tap to Speak" button is shown.
+         Tapping starts SpeechRecognizer (zh-CN locale).
+      4. After recognition:
+         - Pinyin is revealed on the card so the child can compare visually.
+         - Scored using the character-match-rate algorithm (same as item 7b):
+             ≥ 90%  → ✅ Correct  — word counted as pronounced correctly
+             70–89% → 🟡 Close    — show pinyin breakdown, offer one retry
+             < 70%  → ❌ Try again — show pinyin breakdown, offer one retry
+         - After the retry (or if the child skips), advance to next word.
+      5. No per-word "try again from the start" — the level-restart option is
+         only on the end-of-level results screen (consistent with item 23).
+
+      SCORING
+      ───────
+      - A word is "passed" if the child scores ≥ 90% on first or second attempt.
+      - Star rating at the end of the level:
+          3★  ≥ 90% of words passed
+          2★  70–89% of words passed
+          1★  50–69% of words passed
+          0★  < 50% passed (no mastery credit; retry prompted)
+      - L8 unlocks when the child earns 3★ on L7.
+
+      SCREEN LAYOUT
+      ─────────────
+      ┌─────────────────────────────────────────┐
+      │  Word 3 of 18           [progress bar]  │
+      │                                         │
+      │         你                              │  ← large character
+      │    (pinyin hidden until after attempt)  │
+      │                                         │
+      │     [ 🔊 Hear it ]                      │
+      │                                         │
+      │     [ 🎤  TAP TO SPEAK ]                │  ← 56dp+ button
+      │                                         │
+      │  [result / pinyin reveal after attempt] │
+      └─────────────────────────────────────────┘
+
+      ════════════════════════════════════════════
+      LEVEL 8 — FULL SENTENCE PRONUNCIATION
+      ════════════════════════════════════════════
+
+      WHAT IT TESTS
+      ─────────────
+      The child must correctly pronounce every full dialogue line (textChinese)
+      from the scenario — both CHARACTER and STUDENT lines. This is the hardest
+      speaking task and the mastery ceiling of the entire progression.
+
+      QUESTION POOL
+      ─────────────
+      - One question per unique dialogue line in the scenario (textChinese).
+      - Present in scenario order (not shuffled) — reading a conversation in
+        order is more natural and reinforces the story structure.
+      - Total questions = number of dialogue steps in the scenario (typically
+        8–20 lines). No cap — the child must attempt all lines in one run.
+
+      FLOW PER QUESTION
+      ──────────────────
+      1. Card shows the full Chinese sentence, large and centred.
+         Below it, the English translation is shown in smaller text so the
+         child understands what they are about to say.
+         Pinyin is hidden initially.
+      2. TTS auto-plays the sentence once at normal speed.
+         🔊 replay button available (max 3 replays per sentence — this is a
+         sentence-level test, so unlimited replay would be too easy).
+      3. Large 🎤 "Tap to Speak" button.
+         Tapping starts SpeechRecognizer (zh-CN).
+      4. After recognition:
+         - Full pinyin is revealed beneath the characters.
+         - Scored using character-match-rate (same algorithm):
+             ≥ 90%  → ✅ Excellent
+             70–89% → 🟡 Good — show which characters differed; one retry offered
+             < 70%  → ❌ Try again — show full pinyin; one retry offered
+         - After retry or skip, advance to next sentence.
+      5. No per-sentence restart — end-of-level results screen has "Try Again"
+         to restart all sentences from the beginning (consistent with item 23).
+
+      SCORING
+      ───────
+      - A sentence is "passed" if the child scores ≥ 90% on first or second attempt.
+      - Star rating:
+          3★  ≥ 90% of sentences passed
+          2★  70–89% of sentences passed
+          1★  50–69% of sentences passed
+          0★  < 50% passed (retry prompted)
+      - Completing L8 with 3★ = full scenario mastery (the highest achievable).
+
+      SCREEN LAYOUT
+      ─────────────
+      ┌─────────────────────────────────────────┐
+      │  Sentence 2 of 12       [progress bar]  │
+      │                                         │
+      │     你今天吃了什么？                     │  ← full sentence, large
+      │     What did you eat today?             │  ← translation always visible
+      │  (pinyin hidden until after attempt)    │
+      │                                         │
+      │     [ 🔊 Hear it ]  (max 3 replays)     │
+      │                                         │
+      │     [ 🎤  TAP TO SPEAK ]                │
+      │                                         │
+      │  [result / pinyin reveal after attempt] │
+      └─────────────────────────────────────────┘
+
+      SHARED TECHNICAL NOTES (L7 & L8)
+      ──────────────────────────────────
+      - Reuse SpeechRecognitionManager.kt from item 7b / item 19 (build it
+        there first if not yet done; do not duplicate the implementation).
+      - RECORD_AUDIO permission: request once on first entry to L7; reuse for L8.
+      - Both levels use the same SpeechRecognizer lifecycle pattern:
+        create on screen entry, destroy on screen exit.
+      - For L8, sentences may be long enough that SpeechRecognizer's default
+        silence timeout cuts off the child mid-sentence — set
+        RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS to
+        2000 ms (2 s) and EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS
+        to 1500 ms to give more time.
+      - Routes:
+          Routes.SPEAKING_WORD_QUIZ     "speaking_word_quiz/{scenarioId}/{rolePlayScore}"
+          Routes.SPEAKING_SENTENCE_QUIZ "speaking_sentence_quiz/{scenarioId}/{rolePlayScore}"
+
+      BADGES (6 new — 3 per level)
+      ──────────────────────────────
+      Level 7 — Word Pronunciation:
+        L7_WORD_DEBUT   🗣️  — first scenario completed at L7 (3★)
+        L7_WORD_ACE     🎙️  — 5 scenarios completed at L7 (3★)
+        L7_WORD_MASTER  🥇  — all scenarios completed at L7 (3★)
+
+      Level 8 — Full Sentence:
+        L8_SENTENCE_DEBUT   🌟  — first scenario completed at L8 (3★)
+        L8_SENTENCE_ACE     🏅  — 5 scenarios completed at L8 (3★)
+        L8_SENTENCE_MASTER  🏆  — all scenarios completed at L8 (3★)
+
+      MILESTONE REWARDS
+      ─────────────────
+      - Add L7_SCENARIO_COMPLETIONS to MilestoneType for parent reward criteria.
+      - Add L8_SCENARIO_COMPLETIONS to MilestoneType for parent reward criteria.
+      - Both visible in the milestone reward creation UI in Parent Dashboard.
