@@ -658,3 +658,73 @@ FLASHCARD — NEW PRACTICE MODES
 
       NOTE: Do NOT start this task until item 19 (Speaking mode) is fully
       implemented and tested. One new mode at a time.
+
+[ ] 21. Flashcard Reverse Mode — English → Chinese
+      SCOPE: FlashcardScreen.kt, FlashcardViewModel.kt, PracticeScreen.kt,
+             PracticeType.kt, Badge.kt, MilestoneReward.kt / MilestoneType
+
+      WHAT IT IS
+      ──────────
+      The inverse of the existing DEFAULT flashcard mode:
+
+        DEFAULT (current):  card shows Chinese character + pinyin
+                            → user picks the correct English meaning from options
+
+        REVERSE (new):      card shows the English word
+                            → user picks the correct Chinese character from options
+
+      This completes the bidirectional vocab loop: recognition in both directions.
+      Knowing a word in one direction does not guarantee recall in the other —
+      English → Chinese is harder and is a natural next challenge once the child
+      has mastered the DEFAULT direction.
+
+      UI — WHERE THE BUTTON LIVES
+      ────────────────────────────
+      Following the same flip-toggle pattern introduced in items 19 & 20:
+
+        DEFAULT button (active) → tap again → flips to REVERSE mode
+        REVERSE button (active) → tap again → flips back to DEFAULT mode
+
+      This keeps the mode selector to two visible buttons (DEFAULT and READING)
+      with their flip counterparts (REVERSE and WRITING) appearing in-place when
+      active, adding zero extra UI chrome.
+
+      HOW IT WORKS
+      ─────────────
+      - Card face shows: the English word (large, centred).
+        Optional: show the Indonesian translation below it in smaller text
+        (toggle controlled by the existing "Show Indonesian" user preference).
+      - Four answer options displayed as buttons below the card, each showing
+        a Chinese character (and its pinyin in small text beneath) — consistent
+        with how the DEFAULT mode shows four English options.
+      - Distractors: 3 wrong Chinese words drawn from the same scenario's word
+        pool, chosen so they are plausibly similar (same character count where
+        possible) to make it a genuine test rather than trivial elimination.
+      - Correct / wrong feedback: reuse FeedbackCard.kt (same green/red feedback
+        as DEFAULT mode).
+      - "Got it / Skip" controls replaced by the multiple-choice option buttons,
+        mirroring the DEFAULT mode flow exactly (no separate controls needed).
+
+      DATA
+      ────
+      - Mastery tracked under practiceType = REVERSE (new enum value in
+        PracticeType.kt alongside DEFAULT, LISTENING, READING, SPEAKING, WRITING).
+      - Composite primary key (scenarioId, chinese, practiceType) — no schema
+        change needed beyond adding the new enum value.
+      - Verify the existing Room TypeConverter handles the new enum value
+        gracefully before adding it (unknown enum → exception risk).
+      - No Room migration required if the enum is stored as a String column
+        and the TypeConverter uses name-based serialisation.
+
+      BADGES (3 new)
+      ──────────────
+        REVERSE_DEBUT   🔄  — first word mastered in Reverse mode
+        REVERSE_ACE     🔁  — 25 words mastered in Reverse mode
+        REVERSE_MASTER  🏆  — 100 words mastered in Reverse mode
+
+      MILESTONE REWARDS
+      ─────────────────
+      - Add REVERSE_WORDS_MASTERED to MilestoneType so parents can set a target
+        like "Master 30 words in Reverse mode" as a custom reward criterion.
+      - Visible in the milestone reward creation UI in Parent Dashboard alongside
+        all other mastery milestone types.
