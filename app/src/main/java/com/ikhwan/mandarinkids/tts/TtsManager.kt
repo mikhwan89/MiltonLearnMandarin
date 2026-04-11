@@ -1,6 +1,7 @@
 package com.ikhwan.mandarinkids.tts
 
 import android.content.Context
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
@@ -8,12 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
+import com.ikhwan.mandarinkids.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.util.Locale
 import kotlin.coroutines.resume
 
-class TtsManager(context: Context) {
+class TtsManager(private val context: Context) {
     private var tts: TextToSpeech? = null
 
     init {
@@ -24,14 +26,67 @@ class TtsManager(context: Context) {
         }
     }
 
+    /**
+     * Plays a 300 ms silent WAV clip that wakes the audio hardware (DAC / earphone amp)
+     * before TTS begins, preventing the first syllable from being clipped on wired or
+     * Bluetooth earphones after a period of silence.
+     *
+     * Returns immediately (fire-and-forget). The primer is ~300 ms so TTS queued right
+     * after will start into an already-active audio path.
+     */
+    private fun primeSilence() {
+        try {
+            MediaPlayer.create(context, R.raw.silence_300ms)?.apply {
+                setOnCompletionListener { release() }
+                start()
+            }
+        } catch (_: Exception) {
+            // If the resource is missing or playback fails, proceed without the primer
+            // rather than crashing or blocking TTS.
+        }
+    }
+
+    /**
+     * Plays a 300 ms silent WAV and suspends until it finishes, then returns.
+     * Used by [speakAndAwait] so TTS starts only after the audio path is warm.
+     */
+    private suspend fun primeSilenceAndAwait() {
+        try {
+            suspendCancellableCoroutine<Unit> { cont ->
+                val mp = MediaPlayer.create(context, R.raw.silence_300ms)
+                if (mp == null) {
+                    cont.resume(Unit)
+                    return@suspendCancellableCoroutine
+                }
+                mp.setOnCompletionListener {
+                    it.release()
+                    if (cont.isActive) cont.resume(Unit)
+                }
+                mp.setOnErrorListener { it, _, _ ->
+                    it.release()
+                    if (cont.isActive) cont.resume(Unit)
+                    true
+                }
+                cont.invokeOnCancellation { runCatching { mp.release() } }
+                mp.start()
+            }
+        } catch (_: Exception) {
+            // Proceed without the primer on any failure.
+        }
+    }
+
     /** Fire-and-forget speech at the given rate (default 1.0x). */
     fun speak(text: String, rate: Float = 1.0f) {
+        primeSilence()
         tts?.setSpeechRate(rate)
-        tts?.speak(text, TextToSpeech.QUEUE_FLUSH, Bundle(), null)
+        // Small delay so the silence primer has time to start before TTS is queued.
+        // TTS is queued onto the engine's own thread so the 300 ms primer plays first.
+        tts?.speak(text, TextToSpeech.QUEUE_ADD, Bundle(), null)
     }
 
     /** Suspend until the utterance completes or is interrupted. Cancellation stops TTS. */
     suspend fun speakAndAwait(text: String, utteranceId: String, rate: Float = 1.0f) {
+        primeSilenceAndAwait()
         tts?.setSpeechRate(rate)
         suspendCancellableCoroutine<Unit> { continuation ->
             tts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {

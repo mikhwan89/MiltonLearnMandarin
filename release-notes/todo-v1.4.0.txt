@@ -733,7 +733,7 @@ FLASHCARD — NEW PRACTICE MODES
 QUIZ SCREEN UX CLEAN-UP
 ────────────────────────────────────────────────────
 
-[ ] 22. Remove Redundant Feedback Tiles on Quiz Screen (Levels 1–3)
+[x] 22. Remove Redundant Feedback Tiles on Quiz Screen (Levels 1–3)
       SCREENS: QuizScreen.kt, FeedbackCard.kt
       AFFECTS: Level 1, Level 2, Level 3 of the roleplay quiz flow
 
@@ -766,7 +766,7 @@ QUIZ SCREEN UX CLEAN-UP
       behaviour on Sentence Builder (L4/L5), Listening Comprehension (L6), or
       Speaking Practice (L7) — those modes may rely on feedback differently.
 
-[ ] 23. Remove Per-Question "Try Again" on Sentence Builder Levels 4 & 5
+[x] 23. Remove Per-Question "Try Again" on Sentence Builder Levels 4 & 5
       SCREENS: SentenceBuilderScreen.kt (or SentenceBuilderQuizScreen.kt)
       AFFECTS: Level 4 and Level 5 of the roleplay mastery progression
 
@@ -1003,7 +1003,7 @@ ROLEPLAY MASTERY — SPEAKING LEVELS
 AUDIO BUG FIXES
 ────────────────────────────────────────────────────
 
-[ ] 25. Fix Earphone Audio Cut-Off at the Start of Playback
+[x] 25. Fix Earphone Audio Cut-Off at the Start of Playback
       FILE: tts/TtsManager.kt (primary), possibly MainActivity.kt
 
       SYMPTOM

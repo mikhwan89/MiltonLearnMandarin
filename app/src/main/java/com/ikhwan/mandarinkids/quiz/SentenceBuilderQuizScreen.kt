@@ -140,6 +140,15 @@ fun SentenceBuilderQuizScreen(
             }
         } else {
             playWrongSound()
+            // Show correct arrangement for 1.5 s then auto-advance (no per-question retry)
+            delay(1500)
+            val next = questionIndex + 1
+            if (next >= totalQuestions) {
+                showSummary = true
+            } else {
+                questionIndex = next
+                stateKey++
+            }
         }
     }
 
@@ -375,15 +384,6 @@ fun SentenceBuilderQuizScreen(
                             }
                         }
 
-                        // Wrong answer — show retry
-                        if (checkResult == false) {
-                            Spacer(modifier = Modifier.height(20.dp))
-                            Button(onClick = {
-                                stateKey++
-                            }) {
-                                Text("Try again")
-                            }
-                        }
                     }
                 }
             }

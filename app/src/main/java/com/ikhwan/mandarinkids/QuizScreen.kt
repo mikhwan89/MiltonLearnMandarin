@@ -1,6 +1,5 @@
 package com.ikhwan.mandarinkids
 
-import androidx.compose.animation.*
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
@@ -224,19 +223,6 @@ fun QuizScreen(
                         )
                     }
 
-                    if (vm.showFeedback) {
-                        item {
-                            AnimatedVisibility(
-                                visible = true,
-                                enter = fadeIn() + expandVertically()
-                            ) {
-                                FeedbackCard(
-                                    isCorrect = vm.selectedAnswerIndex == question.correctAnswerIndex,
-                                    explanation = question.explanation
-                                )
-                            }
-                        }
-                    }
                 }
             }
         } else {
