@@ -238,7 +238,7 @@ fun SentenceBuilderQuizScreen(
                                 )
                             }
                         }
-                        if (isPerfect && level < 5) {
+                        if (isPerfect && level < 6) {
                             Spacer(modifier = Modifier.height(12.dp))
                             Text(
                                 "🔓 Level ${level + 1} Unlocked!",

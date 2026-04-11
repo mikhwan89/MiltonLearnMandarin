@@ -100,7 +100,8 @@ class ProgressRepository private constructor(
         //   Level 2 passed  → masteryLevel >= 3
         //   Level 3 passed  → masteryLevel >= 4
         //   Level 4 passed  → masteryLevel >= 5
-        //   Level 5 passed  → masteryLevel == 5 && starsAtCurrentLevel == 3
+        //   Level 5 passed  → masteryLevel >= 6
+        //   Level 6 passed  → masteryLevel == 6 && starsAtCurrentLevel == 3
         val lv1 = scenarioEntries.count { it.masteryLevel >= 2 }
         val lv2 = scenarioEntries.count { it.masteryLevel >= 3 }
         val lv3 = scenarioEntries.count { it.masteryLevel >= 4 }

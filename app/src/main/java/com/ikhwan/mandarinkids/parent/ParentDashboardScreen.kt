@@ -76,7 +76,7 @@ fun ParentDashboardScreen(onBack: () -> Unit) {
     val level3Count = remember(allProgress) { allProgress.count { it.masteryLevel >= 4 } }
     val level4Count = remember(allProgress) { allProgress.count { it.masteryLevel >= 5 } }
     val level5Count = remember(allProgress) {
-        allProgress.count { it.masteryLevel == 5 && it.starsAtCurrentLevel == 3 }
+        allProgress.count { it.masteryLevel >= 6 }
     }
     val progressForCondition: (MilestoneCondition) -> Int = remember(
         perfectCount, highMasteryCount, highMasteryDefault,

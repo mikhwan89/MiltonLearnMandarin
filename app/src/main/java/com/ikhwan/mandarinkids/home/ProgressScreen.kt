@@ -102,7 +102,7 @@ fun ProgressScreen(navController: NavController, onParentClick: () -> Unit = {})
     val level3Count = remember(progressMap) { progressMap.values.count { it.masteryLevel >= 4 } }
     val level4Count = remember(progressMap) { progressMap.values.count { it.masteryLevel >= 5 } }
     val level5Count = remember(progressMap) {
-        progressMap.values.count { it.masteryLevel == 5 && it.starsAtCurrentLevel == 3 }
+        progressMap.values.count { it.masteryLevel >= 6 }
     }
     val highMasteryCount by repo.getHighMasteryWordCount().collectAsState(initial = 0)
     val earnedBadgeIds = remember(masteredCount, streak) { repo.getEarnedBadges() }
