@@ -2,32 +2,6 @@ Mandarinku — To-Do List for Next Version (v1.4.0)
 ====================================================
 
 ────────────────────────────────────────────────────
-PARENT DASHBOARD / SECURITY
-────────────────────────────────────────────────────
-
-[x] 1. Change PIN
-      - Option in Parent Dashboard to change the current 4-digit PIN.
-      - Flow: enter current PIN → enter new PIN → confirm new PIN → save.
-      - Stored in DataStore (same as current PIN).
-
-[x] 2. Math Password Mode
-      - Alternative to PIN: app presents a simple arithmetic challenge
-        that a 4–8 year old cannot reliably solve mentally.
-      - Examples: "What is 47 + 38?", "What is 9 × 7?", "What is 84 ÷ 4?"
-      - Questions generated randomly each time the lock screen is shown
-        (so kids can't memorise the answer).
-      - Configurable difficulty: Easy (2-digit addition/subtraction),
-        Medium (multiplication up to 12×), Hard (division, multi-step).
-      - Wrong answer shows a brief cooldown (3 s) before retry, same as PIN.
-
-[x] 3. Password Mode Selector
-      - Setting in Parent Dashboard: "Lock Method — PIN / Math Question".
-      - Switching modes prompts parent to authenticate with the current
-        method first before the change takes effect.
-      - PinScreen updated to render either the PIN pad or the math
-        challenge depending on the stored mode preference.
-
-────────────────────────────────────────────────────
 SUGGESTED ADDITIONS (for your consideration)
 ────────────────────────────────────────────────────
 
@@ -730,82 +704,6 @@ FLASHCARD — NEW PRACTICE MODES
         all other mastery milestone types.
 
 ────────────────────────────────────────────────────
-QUIZ SCREEN UX CLEAN-UP
-────────────────────────────────────────────────────
-
-[x] 22. Remove Redundant Feedback Tiles on Quiz Screen (Levels 1–3)
-      SCREENS: QuizScreen.kt, FeedbackCard.kt
-      AFFECTS: Level 1, Level 2, Level 3 of the roleplay quiz flow
-
-      WHAT TO REMOVE
-      ───────────────
-      After the user selects an answer, two feedback tiles currently appear:
-
-      1. Wrong answer tile — shows "Not quite" + the correct answer text.
-         REDUNDANT because: the correct answer option already turns green
-         immediately on selection, so the child can see which one was right
-         without a separate tile calling it out.
-
-      2. Correct answer tile — shows "Correct ✅  <Chinese> means <translation>".
-         REDUNDANT because: the child just demonstrated they know the meaning
-         by choosing correctly — restating the translation adds no value and
-         slows down the quiz flow.
-
-      WHAT TO KEEP
-      ─────────────
-      - The green highlight on the correct option and the red highlight on the
-        wrong option — these stay, they are the core visual feedback.
-      - The "Next" / advance button that appears after an answer is selected —
-        keep the pacing mechanic, just remove the tile above it.
-      - Any audio feedback (correct/wrong sound effects) — keep those.
-
-      SCOPE NOTE
-      ──────────
-      Remove the tiles on Levels 1, 2, and 3 only (the standard quiz levels
-      that use QuizScreen.kt / FeedbackCard.kt). Do not change feedback
-      behaviour on Sentence Builder (L4/L5), Listening Comprehension (L6), or
-      Speaking Practice (L7) — those modes may rely on feedback differently.
-
-[x] 23. Remove Per-Question "Try Again" on Sentence Builder Levels 4 & 5
-      SCREENS: SentenceBuilderScreen.kt (or SentenceBuilderQuizScreen.kt)
-      AFFECTS: Level 4 and Level 5 of the roleplay mastery progression
-
-      WHAT TO CHANGE
-      ───────────────
-      Currently, when the user gets a question wrong on L4 or L5, a "Try Again"
-      button appears that lets them re-attempt that specific question in place
-      before moving on.
-
-      Remove the per-question "Try Again" button entirely. The correct behaviour:
-      - Wrong answer → green highlight reveals the correct arrangement (same as
-        now), then the flow automatically advances to the next question.
-      - User moves forward through all questions regardless of right or wrong.
-      - At the end of the level (results/summary screen), a "Try Again" button
-        is available to restart the entire level from question 1.
-
-      WHY
-      ───
-      Per-question retries let the child "grind" a single question until they
-      get it right by elimination, which doesn't reflect real learning. Forcing
-      a full restart means the child has to hold all the sentences in memory and
-      get them all right in one run — a more honest measure of mastery, and
-      consistent with how L1–L3 already work.
-
-      WHAT TO KEEP
-      ─────────────
-      - Green highlight showing the correct sentence order after a wrong answer
-        — keep this, it is the learning moment.
-      - The brief pause / feedback display after an answer before auto-advancing
-        — keep a short delay (≈ 1–1.5 s) so the child can read the correct
-        answer before the next question appears.
-      - "Try Again" button on the end-of-level results screen — keep this,
-        it restarts from question 1.
-
-      SCOPE
-      ─────
-      L4 and L5 only. Do not change retry behaviour on L1–L3, L6, or L7.
-
-────────────────────────────────────────────────────
 ROLEPLAY MASTERY — SPEAKING LEVELS
 ────────────────────────────────────────────────────
 
@@ -998,6 +896,112 @@ ROLEPLAY MASTERY — SPEAKING LEVELS
       - Add L7_SCENARIO_COMPLETIONS to MilestoneType for parent reward criteria.
       - Add L8_SCENARIO_COMPLETIONS to MilestoneType for parent reward criteria.
       - Both visible in the milestone reward creation UI in Parent Dashboard.
+
+────────────────────────────────────────────────────
+COMPLETED
+────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────
+PARENT DASHBOARD / SECURITY
+────────────────────────────────────────────────────
+
+[x] 1. Change PIN
+      - Option in Parent Dashboard to change the current 4-digit PIN.
+      - Flow: enter current PIN → enter new PIN → confirm new PIN → save.
+      - Stored in DataStore (same as current PIN).
+
+[x] 2. Math Password Mode
+      - Alternative to PIN: app presents a simple arithmetic challenge
+        that a 4–8 year old cannot reliably solve mentally.
+      - Examples: "What is 47 + 38?", "What is 9 × 7?", "What is 84 ÷ 4?"
+      - Questions generated randomly each time the lock screen is shown
+        (so kids can't memorise the answer).
+      - Configurable difficulty: Easy (2-digit addition/subtraction),
+        Medium (multiplication up to 12×), Hard (division, multi-step).
+      - Wrong answer shows a brief cooldown (3 s) before retry, same as PIN.
+
+[x] 3. Password Mode Selector
+      - Setting in Parent Dashboard: "Lock Method — PIN / Math Question".
+      - Switching modes prompts parent to authenticate with the current
+        method first before the change takes effect.
+      - PinScreen updated to render either the PIN pad or the math
+        challenge depending on the stored mode preference.
+
+────────────────────────────────────────────────────
+QUIZ SCREEN UX CLEAN-UP
+────────────────────────────────────────────────────
+
+[x] 22. Remove Redundant Feedback Tiles on Quiz Screen (Levels 1–3)
+      SCREENS: QuizScreen.kt, FeedbackCard.kt
+      AFFECTS: Level 1, Level 2, Level 3 of the roleplay quiz flow
+
+      WHAT TO REMOVE
+      ───────────────
+      After the user selects an answer, two feedback tiles currently appear:
+
+      1. Wrong answer tile — shows "Not quite" + the correct answer text.
+         REDUNDANT because: the correct answer option already turns green
+         immediately on selection, so the child can see which one was right
+         without a separate tile calling it out.
+
+      2. Correct answer tile — shows "Correct ✅  <Chinese> means <translation>".
+         REDUNDANT because: the child just demonstrated they know the meaning
+         by choosing correctly — restating the translation adds no value and
+         slows down the quiz flow.
+
+      WHAT TO KEEP
+      ─────────────
+      - The green highlight on the correct option and the red highlight on the
+        wrong option — these stay, they are the core visual feedback.
+      - The "Next" / advance button that appears after an answer is selected —
+        keep the pacing mechanic, just remove the tile above it.
+      - Any audio feedback (correct/wrong sound effects) — keep those.
+
+      SCOPE NOTE
+      ──────────
+      Remove the tiles on Levels 1, 2, and 3 only (the standard quiz levels
+      that use QuizScreen.kt / FeedbackCard.kt). Do not change feedback
+      behaviour on Sentence Builder (L4/L5), Listening Comprehension (L6), or
+      Speaking Practice (L7) — those modes may rely on feedback differently.
+
+[x] 23. Remove Per-Question "Try Again" on Sentence Builder Levels 4 & 5
+      SCREENS: SentenceBuilderScreen.kt (or SentenceBuilderQuizScreen.kt)
+      AFFECTS: Level 4 and Level 5 of the roleplay mastery progression
+
+      WHAT TO CHANGE
+      ───────────────
+      Currently, when the user gets a question wrong on L4 or L5, a "Try Again"
+      button appears that lets them re-attempt that specific question in place
+      before moving on.
+
+      Remove the per-question "Try Again" button entirely. The correct behaviour:
+      - Wrong answer → green highlight reveals the correct arrangement (same as
+        now), then the flow automatically advances to the next question.
+      - User moves forward through all questions regardless of right or wrong.
+      - At the end of the level (results/summary screen), a "Try Again" button
+        is available to restart the entire level from question 1.
+
+      WHY
+      ───
+      Per-question retries let the child "grind" a single question until they
+      get it right by elimination, which doesn't reflect real learning. Forcing
+      a full restart means the child has to hold all the sentences in memory and
+      get them all right in one run — a more honest measure of mastery, and
+      consistent with how L1–L3 already work.
+
+      WHAT TO KEEP
+      ─────────────
+      - Green highlight showing the correct sentence order after a wrong answer
+        — keep this, it is the learning moment.
+      - The brief pause / feedback display after an answer before auto-advancing
+        — keep a short delay (≈ 1–1.5 s) so the child can read the correct
+        answer before the next question appears.
+      - "Try Again" button on the end-of-level results screen — keep this,
+        it restarts from question 1.
+
+      SCOPE
+      ─────
+      L4 and L5 only. Do not change retry behaviour on L1–L3, L6, or L7.
 
 ────────────────────────────────────────────────────
 AUDIO BUG FIXES
