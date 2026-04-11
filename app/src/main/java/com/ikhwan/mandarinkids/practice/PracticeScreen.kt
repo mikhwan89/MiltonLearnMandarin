@@ -14,7 +14,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FilterList
-import androidx.compose.material.icons.filled.VolumeUp
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -28,6 +28,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -201,6 +202,7 @@ fun PracticeScreen(onBack: () -> Unit) {
                                     "${type.emoji} ${type.displayName}",
                                     fontSize = 12.sp,
                                     maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
                                     color = if (isSelected) labelColor
                                             else MaterialTheme.colorScheme.onSecondaryContainer,
                                     fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal
@@ -472,7 +474,7 @@ fun PracticeScreen(onBack: () -> Unit) {
                                             modifier = Modifier.align(Alignment.TopEnd)
                                         ) {
                                             Icon(
-                                                Icons.Default.VolumeUp, "Hear pronunciation",
+                                                Icons.AutoMirrored.Filled.VolumeUp, "Hear pronunciation",
                                                 tint = labelColor.copy(alpha = 0.8f)
                                             )
                                         }

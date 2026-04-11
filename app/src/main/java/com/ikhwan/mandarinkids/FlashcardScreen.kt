@@ -1,6 +1,6 @@
 package com.ikhwan.mandarinkids
 
-import android.speech.tts.TextToSpeech
+import com.ikhwan.mandarinkids.tts.rememberTtsManager
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -33,9 +33,6 @@ import com.ikhwan.mandarinkids.data.models.PinyinWord
 import com.ikhwan.mandarinkids.data.models.Scenario
 import com.ikhwan.mandarinkids.preferences.UserPreferencesRepository
 import com.ikhwan.mandarinkids.ui.StrokeOrderSheet
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import java.util.*
 
 fun Scenario.getFlashcardWords(): List<PinyinWord> {
     return dialogues
@@ -56,9 +53,7 @@ fun FlashcardScreen(
     val repo = remember { com.ikhwan.mandarinkids.db.ProgressRepository.getInstance(context) }
     val userPrefs = remember { UserPreferencesRepository.getInstance(context) }
     val showIndonesian by userPrefs.showIndonesian.collectAsState(initial = true)
-    var tts by remember { mutableStateOf<TextToSpeech?>(null) }
-    var ttsReady by remember { mutableStateOf(false) }
-    val coroutineScope = rememberCoroutineScope()
+    val tts = rememberTtsManager()
 
     val vm: FlashcardViewModel = viewModel(
         key = scenario.id,
@@ -68,25 +63,13 @@ fun FlashcardScreen(
     val currentWord = vm.currentWord
     var showStrokeOrder by remember { mutableStateOf(false) }
 
-    LaunchedEffect(Unit) {
-        tts = TextToSpeech(context) { status ->
-            if (status == TextToSpeech.SUCCESS) {
-                tts?.language = Locale.CHINESE
-                ttsReady = true
-            }
-        }
-    }
-
-    // Auto-play when card changes, or when TTS becomes ready for the first card
-    LaunchedEffect(vm.currentIndex, vm.deck.size, ttsReady) {
+    // Auto-play when card changes, or when TTS finishes initialising for the first card.
+    // tts.isReady is a Compose state so this LaunchedEffect re-runs when TTS becomes ready.
+    LaunchedEffect(vm.currentIndex, vm.deck.size, tts.isReady) {
         val w = vm.currentWord
-        if (ttsReady && w != null && !vm.isFlipped) {
-            tts?.speak(w.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+        if (tts.isReady && w != null && !vm.isFlipped) {
+            tts.speak(w.chinese)
         }
-    }
-
-    DisposableEffect(Unit) {
-        onDispose { tts?.shutdown() }
     }
 
     val rotation by animateFloatAsState(
@@ -177,7 +160,7 @@ fun FlashcardScreen(
                         .clickable {
                             vm.flip()
                             if (!vm.isFlipped) {
-                                tts?.speak(word.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
+                                tts.speak(word.chinese)
                             }
                         },
                     shape = RoundedCornerShape(24.dp),
@@ -216,20 +199,10 @@ fun FlashcardScreen(
                                     modifier = Modifier.padding(top = 6.dp)
                                 )
                                 Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                                    TextButton(onClick = {
-                                        tts?.setSpeechRate(1.0f)
-                                        tts?.speak(word.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
-                                    }) {
+                                    TextButton(onClick = { tts.speak(word.chinese) }) {
                                         Text("🔊 Normal", fontSize = 13.sp)
                                     }
-                                    TextButton(onClick = {
-                                        coroutineScope.launch {
-                                            tts?.setSpeechRate(0.5f)
-                                            tts?.speak(word.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
-                                            delay(3000)
-                                            tts?.setSpeechRate(1.0f)
-                                        }
-                                    }) {
+                                    TextButton(onClick = { tts.speak(word.chinese, rate = 0.5f) }) {
                                         Text("🐢 Slow", fontSize = 13.sp)
                                     }
                                 }
@@ -260,22 +233,12 @@ fun FlashcardScreen(
                                     textAlign = TextAlign.Center
                                 )
                                 Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                                    TextButton(onClick = {
-                                        tts?.setSpeechRate(1.0f)
-                                        tts?.speak(word.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
-                                    }) {
+                                    TextButton(onClick = { tts.speak(word.chinese) }) {
                                         Icon(Icons.Default.PlayArrow, contentDescription = "Play pronunciation", modifier = Modifier.size(16.dp))
                                         Spacer(modifier = Modifier.width(2.dp))
                                         Text("Normal", fontSize = 12.sp)
                                     }
-                                    TextButton(onClick = {
-                                        coroutineScope.launch {
-                                            tts?.setSpeechRate(0.5f)
-                                            tts?.speak(word.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
-                                            delay(3000)
-                                            tts?.setSpeechRate(1.0f)
-                                        }
-                                    }) {
+                                    TextButton(onClick = { tts.speak(word.chinese, rate = 0.5f) }) {
                                         Text("🐢 Slow", fontSize = 12.sp)
                                     }
                                 }

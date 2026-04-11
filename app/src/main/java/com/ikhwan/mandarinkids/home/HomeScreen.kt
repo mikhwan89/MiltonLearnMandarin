@@ -23,6 +23,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ikhwan.mandarinkids.R
@@ -475,7 +476,8 @@ fun CategoryCard(category: ScenarioCategory, onClick: () -> Unit, modifier: Modi
                     textAlign = TextAlign.Center,
                     color = labelColor,
                     lineHeight = 14.sp,
-                    maxLines = 2
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }

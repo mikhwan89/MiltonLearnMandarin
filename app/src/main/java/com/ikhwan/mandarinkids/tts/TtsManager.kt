@@ -1,13 +1,20 @@
 package com.ikhwan.mandarinkids.tts
 
 import android.content.Context
+import android.media.AudioAttributes
+import android.media.AudioFocusRequest
+import android.media.AudioManager
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import com.ikhwan.mandarinkids.R
 import kotlinx.coroutines.delay
@@ -17,11 +24,60 @@ import kotlin.coroutines.resume
 
 class TtsManager(private val context: Context) {
     private var tts: TextToSpeech? = null
+    private val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+
+    /**
+     * True once TTS is initialised and a Chinese voice is confirmed available.
+     * Backed by Compose [mutableStateOf] so composables observing it will recompose
+     * when it changes (e.g. to trigger auto-play on the first flashcard).
+     */
+    var isReady: Boolean by mutableStateOf(false)
+        private set
+
+    /**
+     * Set by the caller to receive a one-time callback when TTS is ready but no
+     * Chinese voice is installed. The callback is invoked on the TTS init thread.
+     * Use it to show an in-app banner guiding the user to install the voice pack.
+     */
+    var onChineseVoiceMissing: (() -> Unit)? = null
+
+    // AudioFocus plumbing ---------------------------------------------------
+
+    private val focusAttributes = AudioAttributes.Builder()
+        .setUsage(AudioAttributes.USAGE_MEDIA)
+        .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+        .build()
+
+    private val focusRequest: AudioFocusRequest =
+        AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK)
+            .setAudioAttributes(focusAttributes)
+            .setAcceptsDelayedFocusGain(false)
+            .setOnAudioFocusChangeListener { /* no-op: we stop on cancellation */ }
+            .build()
+
+    private fun acquireFocus() {
+        audioManager.requestAudioFocus(focusRequest)
+    }
+
+    private fun releaseFocus() {
+        audioManager.abandonAudioFocusRequest(focusRequest)
+    }
+
+    // -----------------------------------------------------------------------
 
     init {
         tts = TextToSpeech(context) { status ->
             if (status == TextToSpeech.SUCCESS) {
-                tts?.language = Locale.CHINESE
+                val result = tts?.setLanguage(Locale.CHINESE)
+                val voiceAvailable = result != TextToSpeech.LANG_MISSING_DATA &&
+                                     result != TextToSpeech.LANG_NOT_SUPPORTED
+                if (voiceAvailable) {
+                    isReady = true
+                } else {
+                    // Chinese voice pack not installed — notify the caller so the UI
+                    // can show a one-time actionable banner (see item 10 / item 13).
+                    onChineseVoiceMissing?.invoke()
+                }
             }
         }
     }
@@ -77,56 +133,69 @@ class TtsManager(private val context: Context) {
 
     /** Fire-and-forget speech at the given rate (default 1.0x). */
     fun speak(text: String, rate: Float = 1.0f) {
+        if (!isReady) return
+        acquireFocus()
         primeSilence()
         tts?.setSpeechRate(rate)
-        // Small delay so the silence primer has time to start before TTS is queued.
         // TTS is queued onto the engine's own thread so the 300 ms primer plays first.
         tts?.speak(text, TextToSpeech.QUEUE_ADD, Bundle(), null)
+        // AudioFocus released in shutdown() or when the utterance ends naturally;
+        // for fire-and-forget we release shortly after queuing — the audio path
+        // stays active until the engine finishes draining its queue.
+        releaseFocus()
     }
 
     /** Suspend until the utterance completes or is interrupted. Cancellation stops TTS. */
     suspend fun speakAndAwait(text: String, utteranceId: String, rate: Float = 1.0f) {
-        primeSilenceAndAwait()
-        tts?.setSpeechRate(rate)
-        suspendCancellableCoroutine<Unit> { continuation ->
-            tts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
-                override fun onStart(id: String?) {}
+        if (!isReady) return
+        acquireFocus()
+        try {
+            primeSilenceAndAwait()
+            tts?.setSpeechRate(rate)
+            suspendCancellableCoroutine<Unit> { continuation ->
+                tts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+                    override fun onStart(id: String?) {}
 
-                override fun onDone(id: String?) {
-                    if (id == utteranceId && continuation.isActive) continuation.resume(Unit)
-                }
+                    override fun onDone(id: String?) {
+                        if (id == utteranceId && continuation.isActive) continuation.resume(Unit)
+                    }
 
-                override fun onError(id: String?) {
-                    if (id == utteranceId && continuation.isActive) continuation.resume(Unit)
-                }
+                    override fun onError(id: String?) {
+                        if (id == utteranceId && continuation.isActive) continuation.resume(Unit)
+                    }
 
-                // API 23+: called when an utterance is interrupted by QUEUE_FLUSH or stop().
-                // Without this override, interrupted long utterances leave the coroutine hanging.
-                override fun onStop(id: String?, interrupted: Boolean) {
-                    if (id == utteranceId && continuation.isActive) continuation.resume(Unit)
+                    // API 23+: called when an utterance is interrupted by QUEUE_FLUSH or stop().
+                    // Without this override, interrupted long utterances leave the coroutine hanging.
+                    override fun onStop(id: String?, interrupted: Boolean) {
+                        if (id == utteranceId && continuation.isActive) continuation.resume(Unit)
+                    }
+                })
+                val params = Bundle().apply {
+                    putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, utteranceId)
                 }
-            })
-            val params = Bundle().apply {
-                putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, utteranceId)
+                tts?.speak(text, TextToSpeech.QUEUE_FLUSH, params, utteranceId)
+                continuation.invokeOnCancellation { tts?.stop() }
             }
-            tts?.speak(text, TextToSpeech.QUEUE_FLUSH, params, utteranceId)
-            continuation.invokeOnCancellation { tts?.stop() }
-        }
-        // Some TTS engines fire onDone before the audio buffer has fully played out —
-        // this is especially noticeable on long sentences. Poll until the engine is
-        // truly silent before returning, so the caller can safely start the next line.
-        while (tts?.isSpeaking == true) {
-            delay(50)
+            // Some TTS engines fire onDone before the audio buffer has fully played out —
+            // this is especially noticeable on long sentences. Poll until the engine is
+            // truly silent before returning, so the caller can safely start the next line.
+            while (tts?.isSpeaking == true) {
+                delay(50)
+            }
+        } finally {
+            releaseFocus()
         }
     }
 
     fun stop() {
         tts?.stop()
+        releaseFocus()
     }
 
     fun shutdown() {
         tts?.shutdown()
         tts = null
+        releaseFocus()
     }
 }
 

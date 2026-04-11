@@ -390,7 +390,7 @@ DEVICE COMPATIBILITY & CROSS-DEVICE UX
       - No text clipping on QuizResultsScreen at any system font scale or
         display density. All text containers use flexible sizing.
 
-[ ] 16. Cross-Device UI Consistency Initiative
+[x] 16. Cross-Device UI Consistency Initiative
       SCOPE: All screens — ensure the app looks and works correctly across
       a range of Android OEM skins, screen sizes, nav modes, and API levels.
 

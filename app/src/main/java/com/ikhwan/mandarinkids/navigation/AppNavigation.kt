@@ -3,6 +3,7 @@ package com.ikhwan.mandarinkids.navigation
 import androidx.compose.foundation.Image
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -106,6 +107,7 @@ fun MandarinKidsApp() {
 
     Scaffold(
         containerColor = Color.Transparent,
+        contentWindowInsets = WindowInsets(0),
         bottomBar = {
             if (currentRoute in topLevelRoutes) {
                 NavigationBar(

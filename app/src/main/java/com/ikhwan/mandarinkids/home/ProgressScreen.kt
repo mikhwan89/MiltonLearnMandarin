@@ -573,6 +573,7 @@ private fun BadgeCard(badge: Badge, earned: Boolean, modifier: Modifier = Modifi
                     fontWeight = FontWeight.Medium,
                     textAlign = TextAlign.Center,
                     maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
                     color = badgeLabelColor
                 )
                 Spacer(Modifier.height(2.dp))

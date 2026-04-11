@@ -29,6 +29,7 @@ fun PhrasesScreen(category: String, onBack: () -> Unit) {
     val phrases = getPhrasesByCategory(category)
 
     Scaffold(
+        contentWindowInsets = WindowInsets(0),
         topBar = {
             TopAppBar(
                 title = { Text(category) },
