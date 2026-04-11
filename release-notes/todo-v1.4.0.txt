@@ -11,20 +11,6 @@ SUGGESTED ADDITIONS (for your consideration)
       - Optional local notification reminder on a parent-set schedule
         (e.g. every Sunday evening): "Milton's weekly Mandarin report is ready."
 
-[ ] 5. Daily Learning Goal / Streak Goal
-      - Parent sets a daily XP or scenario target for the child
-        (e.g. "earn 50 XP per day" or "complete 1 scenario per day").
-      - Progress bar on HomeScreen shows today's goal progress.
-      - Streak counter already exists — tie it to meeting the daily goal,
-        not just launching the app.
-
-[ ] 6. Handwriting Practice Screen
-      - Show stroke order animation for a Chinese character (already have
-        StrokeOrderSheet as a bottom sheet).
-      - Promote it to a full practice tab: child traces the character on
-        screen, basic stroke-order scoring.
-      - Requires SVG/canvas stroke data per character — could start with
-        the 50 most common characters from existing scenarios.
 
 [ ] 7. Listening Comprehension Quiz Mode
 
@@ -1140,3 +1126,22 @@ QUIZ RESULT SCREEN & UI POLISH
       - Results card now shows a single line: "You got X / Y correct".
       - Removed Learning Tip tile to eliminate need for scrolling.
       - Fixed results card and question card widths (fillMaxWidth on Box + Column).
+
+────────────────────────────────────────────────────
+PENDING — NEXT VERSION (v1.5.0 or later)
+────────────────────────────────────────────────────
+
+[ ] 5. Daily Learning Goal / Streak Goal
+      - Parent sets a daily XP or scenario target for the child
+        (e.g. "earn 50 XP per day" or "complete 1 scenario per day").
+      - Progress bar on HomeScreen shows today's goal progress.
+      - Streak counter already exists — tie it to meeting the daily goal,
+        not just launching the app.
+
+[ ] 6. Handwriting Practice Screen
+      - Show stroke order animation for a Chinese character (already have
+        StrokeOrderSheet as a bottom sheet).
+      - Promote it to a full practice tab: child traces the character on
+        screen, basic stroke-order scoring.
+      - Requires SVG/canvas stroke data per character — could start with
+        the 50 most common characters from existing scenarios.
