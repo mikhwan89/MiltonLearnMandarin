@@ -241,35 +241,12 @@ SUGGESTED ADDITIONS (for your consideration)
       QuizQuestionGenerator: add generateLevel7Questions() — selects
         CHARACTER dialogue lines, shuffles, takes up to 5.
 
-[ ] 8. Scenario Bookmarks / Favourites
-      - Child (or parent) can star a scenario to pin it to the top of the
-        category list or a dedicated "Favourites" section.
-      - Useful for scenarios the child loves replaying.
-
-[ ] 9. Character Profile & Avatar
-      - Child picks or customises a simple avatar at first launch
-        (shown on HomeScreen and Progress tab).
-      - Name (already collected in roleplay) displayed on HomeScreen
-        as a personalised greeting: "你好, Milton! 🎉"
-
 [ ] 10. Offline TTS Voice Pack Notice
       - Detect if the device has a Chinese TTS voice installed.
       - If not, show a one-time banner with instructions to download
         the Google Chinese (Mandarin) voice for better pronunciation.
       - Many budget Android devices ship without it; this is a common
         parent complaint for language-learning apps.
-
-[ ] 11. Scenario Difficulty Tags
-      - Tag each scenario as Beginner / Intermediate / Advanced
-        (field in the JSON, shown as a colour badge on scenario cards).
-      - Parent Dashboard filter: hide Advanced scenarios until child
-        reaches a mastery threshold.
-
-[ ] 12. Export / Backup Progress
-      - "Export Progress" button in Parent Dashboard: writes a JSON
-        snapshot of all Room data to a file the parent can save.
-      - "Restore" option to reload from that file.
-      - Safety net before an app reinstall or device change.
 
 ────────────────────────────────────────────────────
 DEVICE COMPATIBILITY & CROSS-DEVICE UX
@@ -1145,3 +1122,26 @@ PENDING — NEXT VERSION (v1.5.0 or later)
         screen, basic stroke-order scoring.
       - Requires SVG/canvas stroke data per character — could start with
         the 50 most common characters from existing scenarios.
+
+[ ] 8. Scenario Bookmarks / Favourites
+      - Child (or parent) can star a scenario to pin it to the top of the
+        category list or a dedicated "Favourites" section.
+      - Useful for scenarios the child loves replaying.
+
+[ ] 9. Character Profile & Avatar
+      - Child picks or customises a simple avatar at first launch
+        (shown on HomeScreen and Progress tab).
+      - Name (already collected in roleplay) displayed on HomeScreen
+        as a personalised greeting: "你好, Milton! 🎉"
+
+[ ] 11. Scenario Difficulty Tags
+      - Tag each scenario as Beginner / Intermediate / Advanced
+        (field in the JSON, shown as a colour badge on scenario cards).
+      - Parent Dashboard filter: hide Advanced scenarios until child
+        reaches a mastery threshold.
+
+[ ] 12. Export / Backup Progress
+      - "Export Progress" button in Parent Dashboard: writes a JSON
+        snapshot of all Room data to a file the parent can save.
+      - "Restore" option to reload from that file.
+      - Safety net before an app reinstall or device change.
