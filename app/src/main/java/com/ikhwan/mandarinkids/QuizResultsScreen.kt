@@ -10,9 +10,7 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.runtime.*
@@ -91,13 +89,11 @@ fun QuizResultsScreen(
     val colors = MaterialTheme.appColors
     val labelColor = colors.onLightTile
     val resultsGradient = colors.tileBlue.asList()
-    val tipGradient = colors.tileAmber.asList()
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState())
                 .padding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
@@ -201,34 +197,6 @@ fun QuizResultsScreen(
                         )
                     }
                 }
-            }
-
-            Spacer(modifier = Modifier.height(32.dp))
-
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(containerColor = Color.Transparent)
-            ) {
-                Box(modifier = Modifier.background(Brush.verticalGradient(tipGradient))) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Text(
-                        text = "💡 Learning Tip:",
-                        fontSize = 14.sp,
-                        color = labelColor.copy(alpha = 0.7f)
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = when {
-                            isPerfect -> "You're a natural! Keep practicing to remember these phrases. Try using them with your friends!"
-                            quizPercentage >= 70 -> "Good progress! Review the phrases you missed and try this scenario again tomorrow."
-                            else -> "Learning takes time! Try this scenario again and listen carefully to how the characters speak."
-                        },
-                        fontSize = 14.sp,
-                        lineHeight = 20.sp,
-                        color = labelColor
-                    )
-                }
-                } // Box
             }
 
             Spacer(modifier = Modifier.height(24.dp))
