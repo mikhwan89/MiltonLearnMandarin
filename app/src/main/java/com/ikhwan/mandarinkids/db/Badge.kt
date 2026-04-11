@@ -80,6 +80,20 @@ enum class Badge(
         "Get 3★ at Level 5 on every single scenario"
     ),
 
+    // ── Scenario — Level 6 ───────────────────────────────────────────────────
+    LEVEL_6_DEBUT(
+        "level_6_debut", "🎧", "Audio Debut",
+        "Pass Level 6 on your first scenario"
+    ),
+    LEVEL_6_ACE(
+        "level_6_ace", "🦻", "Audio Ace",
+        "Get 3★ at Level 6 on 3 scenarios"
+    ),
+    LEVEL_6_MASTER(
+        "level_6_master", "👂", "Audio Champion",
+        "Get 3★ at Level 6 on every single scenario"
+    ),
+
     // ── Login streak ─────────────────────────────────────────────────────────
     STREAK_STARTER(
         "streak_starter", "🔥", "Streak Starter",

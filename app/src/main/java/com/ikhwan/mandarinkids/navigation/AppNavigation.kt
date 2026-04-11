@@ -355,7 +355,7 @@ fun MandarinKidsApp() {
                     scenario = scenario,
                     canSkip = level >= 2,
                     onComplete = { score ->
-                        if (level >= 4) {
+                        if (level in 4..5) {
                             navController.navigate(Routes.sentenceQuiz(scenarioId, level))
                         } else {
                             navController.navigate(Routes.quiz(scenarioId, score, level))

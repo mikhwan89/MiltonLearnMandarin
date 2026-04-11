@@ -12,7 +12,7 @@ SUGGESTED ADDITIONS (for your consideration)
         (e.g. every Sunday evening): "Milton's weekly Mandarin report is ready."
 
 
-[ ] 7. Listening Comprehension Quiz Mode
+[x] 7. Listening Comprehension Quiz Mode
 
       WHERE IT LIVES
       ──────────────
@@ -240,41 +240,6 @@ SUGGESTED ADDITIONS (for your consideration)
       New route: Routes.SPEAKING_QUIZ ("speaking_quiz/{scenarioId}/{rolePlayScore}")
       QuizQuestionGenerator: add generateLevel7Questions() — selects
         CHARACTER dialogue lines, shuffles, takes up to 5.
-
-────────────────────────────────────────────────────
-DEVICE COMPATIBILITY & CROSS-DEVICE UX
-(reported issues from real-device testing)
-────────────────────────────────────────────────────
-
-[x] 15. "Question #/#" Text Cut Off on Quiz Result Screen (reported: Pixel 8 Pro)
-      DEVICE: Google Pixel 8 Pro — stock Android, high-resolution display
-
-      SYMPTOMS
-      ────────
-      - On QuizResultsScreen.kt the label showing "Question 3/5" (or similar
-        progress indicator) is clipped or partially hidden, likely at the edge
-        of a Card, Column, or Row that does not account for larger system font
-        scale settings or the Pixel 8 Pro's display density (3.0x).
-
-      INVESTIGATION CHECKLIST
-      ───────────────────────
-      1. Locate the "question #/#" composable in QuizResultsScreen.kt and check
-         whether its container has a fixed height or maxLines = 1 without
-         overflow = TextOverflow.Visible.
-      2. Replace any fixed-height containers around text with wrapContentHeight()
-         or use Modifier.heightIn(min = ...) instead of Modifier.height(...).
-      3. Ensure the text style uses sp units (not dp) so it scales with the
-         user's accessibility font size preference — critical for child users
-         whose parents may have increased font size.
-      4. Add softWrap = true and overflow = TextOverflow.Clip (or Ellipsis with
-         a tooltip) as a safety net for extreme font scales.
-      5. Test at font scale 1.0×, 1.3×, and 1.5× via Developer Options on a
-         high-density screen.
-
-      DELIVERABLE
-      ───────────
-      - No text clipping on QuizResultsScreen at any system font scale or
-        display density. All text containers use flexible sizing.
 
 ────────────────────────────────────────────────────
 QUIZ RESULT SCREEN & UI POLISH
@@ -828,6 +793,25 @@ COMPLETED
 ────────────────────────────────────────────────────
 
 ────────────────────────────────────────────────────
+SUGGESTED ADDITIONS
+────────────────────────────────────────────────────
+
+[x] 7. Listening Comprehension Quiz Mode — Level 6
+      WHAT WAS DONE
+      ─────────────
+      - QuizQuestionGenerator.generateLevel6(): generates up to 5
+        AUDIO_TO_TRANSLATION questions from CHARACTER dialogue lines.
+        TTS auto-plays on question load; "Play again" button available.
+        3 distractors drawn from other dialogue lines in the same scenario.
+      - Badge.kt: added LEVEL_6_DEBUT (🎧), LEVEL_6_ACE (🦻),
+        LEVEL_6_MASTER (👂) — awarded at 1 / 3 / all scenarios at L6 (3★).
+      - ProgressRepository: raised mastery level cap from 5 → 6; lv5 badge
+        threshold updated to masteryLevel >= 6; lv6 counting added.
+      - QuizResultsScreen: leveledUp check updated to level < 6.
+      - AppNavigation: level 6 routes to Routes.quiz() (standard QuizScreen
+        with AUDIO_TO_TRANSLATION questions); sentence quiz only for L4–L5.
+
+────────────────────────────────────────────────────
 PARENT DASHBOARD / SECURITY
 ────────────────────────────────────────────────────
 
@@ -1013,6 +997,16 @@ AUDIO BUG FIXES
 ────────────────────────────────────────────────────
 DEVICE COMPATIBILITY & CROSS-DEVICE UX
 ────────────────────────────────────────────────────
+
+[x] 15. "Question #/#" Text Cut Off on Quiz Result Screen (reported: Pixel 8 Pro)
+      WHAT WAS DONE
+      ─────────────
+      - Added verticalScroll(rememberScrollState()) to QuizResultsScreen Column
+        so all content is accessible at any font scale.
+      - Replaced .height(56.dp) with .heightIn(min = 56.dp) on both CTA buttons
+        so they grow with system font size.
+      - Added TextOverflow.Ellipsis + maxLines = 1 on both TopAppBar title texts
+        in QuizScreen to prevent label overflow.
 
 [x] 14. Bottom Navigation Bar Overflowing into System Nav Bar (reported: OPPO A60)
       DEVICE: OPPO A60 — Android 16, ColorOS, Kernel 5.15.180

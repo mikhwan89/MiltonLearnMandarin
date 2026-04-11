@@ -44,7 +44,7 @@ fun QuizResultsScreen(
     val context = LocalContext.current
     val quizPercentage = (quizScore.toFloat() / totalQuestions * 100).toInt()
     val isPerfect = quizScore == totalQuestions
-    val leveledUp = isPerfect && level < 5
+    val leveledUp = isPerfect && level < 6
 
     val stars = remember { ProgressManager.calculateStars(quizScore, totalQuestions) }
     var xpGained by remember { mutableStateOf(0) }

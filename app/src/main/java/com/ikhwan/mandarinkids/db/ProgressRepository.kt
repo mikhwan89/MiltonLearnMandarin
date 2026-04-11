@@ -65,12 +65,12 @@ class ProgressRepository private constructor(
         val prevStarsAtLevel = if (level > oldLevel) 0 else oldStarsAtLevel
         val xpGained = maxOf(0, newStars - prevStarsAtLevel) * 10
 
-        // Perfect score on the current level unlocks the next (max 5)
-        val newLevel = if (newStars >= 3 && level >= oldLevel && oldLevel < 5) {
+        // Perfect score on the current level unlocks the next (max 6)
+        val newLevel = if (newStars >= 3 && level >= oldLevel && oldLevel < 6) {
             maxOf(oldLevel, level) + 1
         } else {
             maxOf(oldLevel, level)
-        }.coerceAtMost(5)
+        }.coerceAtMost(6)
 
         // When a new level is unlocked, reset starsAtCurrentLevel to 0 for the fresh level.
         val newStarsAtCurrentLevel = if (newLevel > oldLevel) 0 else maxOf(oldStarsAtLevel, newStars)
@@ -105,7 +105,8 @@ class ProgressRepository private constructor(
         val lv2 = scenarioEntries.count { it.masteryLevel >= 3 }
         val lv3 = scenarioEntries.count { it.masteryLevel >= 4 }
         val lv4 = scenarioEntries.count { it.masteryLevel >= 5 }
-        val lv5 = scenarioEntries.count { it.masteryLevel == 5 && it.starsAtCurrentLevel == 3 }
+        val lv5 = scenarioEntries.count { it.masteryLevel >= 6 }
+        val lv6 = scenarioEntries.count { it.masteryLevel == 6 && it.starsAtCurrentLevel == 3 }
 
         // Level 1
         if (lv1 >= 1)             awardBadge(Badge.PERFECT_SCORE.id)
@@ -131,6 +132,11 @@ class ProgressRepository private constructor(
         if (lv5 >= 1)             awardBadge(Badge.LEVEL_5_DEBUT.id)
         if (lv5 >= 5)             awardBadge(Badge.LEVEL_5_ACE.id)
         if (totalScenarios > 0 && lv5 >= totalScenarios) awardBadge(Badge.LEVEL_5_MASTER.id)
+
+        // Level 6
+        if (lv6 >= 1)             awardBadge(Badge.LEVEL_6_DEBUT.id)
+        if (lv6 >= 3)             awardBadge(Badge.LEVEL_6_ACE.id)
+        if (totalScenarios > 0 && lv6 >= totalScenarios) awardBadge(Badge.LEVEL_6_MASTER.id)
 
         checkGrandMasterBadge(allProgress)
 

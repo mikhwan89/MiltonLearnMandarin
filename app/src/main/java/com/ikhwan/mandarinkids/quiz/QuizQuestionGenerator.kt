@@ -5,6 +5,7 @@ import com.ikhwan.mandarinkids.data.models.QuizDirection
 import com.ikhwan.mandarinkids.data.models.QuizOption
 import com.ikhwan.mandarinkids.data.models.QuizQuestion
 import com.ikhwan.mandarinkids.data.models.Scenario
+import com.ikhwan.mandarinkids.data.models.Speaker
 import com.ikhwan.mandarinkids.getFlashcardWords
 
 /**
@@ -24,6 +25,7 @@ object QuizQuestionGenerator {
         1 -> scenario.quizQuestions
         2 -> generateLevel2(scenario)
         3 -> generateLevel3(scenario)
+        6 -> generateLevel6(scenario)
         else -> scenario.quizQuestions
     }
 
@@ -40,6 +42,49 @@ object QuizQuestionGenerator {
     private fun generateLevel3(scenario: Scenario): List<QuizQuestion> {
         val words = scenario.getFlashcardWords()
         return generateVocabQuestions(words).shuffled()
+    }
+
+    private fun generateLevel6(scenario: Scenario): List<QuizQuestion> {
+        val characterSteps = scenario.dialogues
+            .filter { it.speaker == Speaker.CHARACTER && it.textChinese.isNotBlank() && it.textEnglish.isNotBlank() }
+        if (characterSteps.isEmpty()) return scenario.quizQuestions
+
+        // All unique English translations from all dialogue steps as the distractor pool
+        val allTranslations = scenario.dialogues
+            .map { it.textEnglish }
+            .filter { it.isNotBlank() }
+            .distinct()
+
+        val questions = mutableListOf<QuizQuestion>()
+        for (step in characterSteps.shuffled()) {
+            val distractors = allTranslations
+                .filter { it != step.textEnglish }
+                .shuffled()
+                .take(3)
+            if (distractors.size < 3) continue
+
+            val correctOption = QuizOption(
+                chinese = step.textChinese,
+                pinyin = step.textPinyin,
+                translation = step.textEnglish
+            )
+            val allOptions = (distractors.map { QuizOption("", "", it) } + correctOption).shuffled()
+            val correctIndex = allOptions.indexOfFirst { it.translation == step.textEnglish }
+
+            questions.add(
+                QuizQuestion(
+                    direction = QuizDirection.AUDIO_TO_TRANSLATION,
+                    questionText = "Listen and choose the correct meaning!",
+                    questionChinese = step.textChinese,
+                    questionPinyin = step.textPinyin,
+                    options = allOptions,
+                    correctAnswerIndex = correctIndex,
+                    explanation = "${step.textChinese} (${step.textPinyin}) means '${step.textEnglish}'"
+                )
+            )
+            if (questions.size >= 5) break
+        }
+        return if (questions.isEmpty()) scenario.quizQuestions else questions
     }
 
     private fun generateVocabQuestions(words: List<PinyinWord>): List<QuizQuestion> {
