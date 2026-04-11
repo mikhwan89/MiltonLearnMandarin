@@ -5,6 +5,42 @@ Mandarinku — To-Do List for Next Version (v1.4.0)
 CRITICAL BUGS (fix first)
 ────────────────────────────────────────────────────
 
+[ ] 31. Tone Trainer Tab — Top Bar Overlaps System Status Bar
+      SYMPTOM
+      ───────
+      On ToneTrainerScreen, the "Question #/100" progress label, the ℹ️ info
+      icon button, and the correct-answer counter are drawn behind / overlapping
+      the phone's top notification/status bar instead of sitting below it.
+
+      AFFECTED FILE
+      ─────────────
+      practice/ToneTrainerScreen.kt — top bar / header row composable.
+
+      FIX
+      ───
+      Apply statusBarsPadding() (or windowInsetsPadding with statusBars) to
+      the top-level Column / Scaffold in ToneTrainerScreen so all content
+      starts below the system status bar. If the screen already uses a
+      Scaffold, set contentWindowInsets = WindowInsets(0) on it and add
+      statusBarsPadding() to the inner content instead.
+
+[ ] 32. Sentence Builder Tab — Top Controls Overlap System Status Bar
+      SYMPTOM
+      ───────
+      On SentenceBuilderScreen, the filter chips, correct-answer counter, and
+      speech-rate adjustment controls at the top of the screen are drawn
+      behind / overlapping the phone's top notification/status bar.
+
+      AFFECTED FILE
+      ─────────────
+      practice/SentenceBuilderScreen.kt — top controls / header area.
+
+      FIX
+      ───
+      Same fix as item 31: apply statusBarsPadding() to the top-level
+      container so controls render below the status bar. Verify the fix on
+      both gesture-nav and 3-button-nav devices and on screens with a notch.
+
 [ ] 29. Level 6 Quiz Shows Level 1 Questions Instead of Listening Quiz
       SYMPTOM
       ───────
