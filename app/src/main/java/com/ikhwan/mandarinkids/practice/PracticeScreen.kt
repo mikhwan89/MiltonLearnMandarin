@@ -154,6 +154,7 @@ fun PracticeScreen(onBack: () -> Unit) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
+                .statusBarsPadding()
         ) {
             // ── Practice type tab row ──────────────────────────────────────
             Row(

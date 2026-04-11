@@ -177,9 +177,9 @@ fun QuizResultsScreen(
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(containerColor = Color.Transparent)
             ) {
-                Box(modifier = Modifier.background(Brush.verticalGradient(resultsGradient))) {
+                Box(modifier = Modifier.fillMaxWidth().background(Brush.verticalGradient(resultsGradient))) {
                     Column(
-                        modifier = Modifier.padding(24.dp),
+                        modifier = Modifier.fillMaxWidth().padding(24.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {

@@ -178,7 +178,7 @@ fun RolePlayScreen(
             )
 
             Box(
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize().navigationBarsPadding()
             ) {
                 // Conversation area
                 LazyColumn(

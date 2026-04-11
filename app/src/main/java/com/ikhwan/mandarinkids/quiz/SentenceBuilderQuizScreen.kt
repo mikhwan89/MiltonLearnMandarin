@@ -139,6 +139,12 @@ fun SentenceBuilderQuizScreen(
                 stateKey++
             }
         } else {
+            // Fill every slot with the correct tile so the user can see the right answer.
+            val correctSlots = blankPosList.indices.map { slotIdx ->
+                val correctChinese = words[blankPosList[slotIdx]].chinese
+                blankTiles.indexOfFirst { it.chinese == correctChinese }.takeIf { it >= 0 }
+            }
+            placedSlots = correctSlots
             playWrongSound()
             // Show correct arrangement for 1.5 s then auto-advance (no per-question retry)
             delay(1500)

@@ -123,9 +123,9 @@ fun QuizScreen(
                             modifier = Modifier.fillMaxWidth(),
                             colors = CardDefaults.cardColors(containerColor = Color.Transparent)
                         ) {
-                            Box(modifier = Modifier.background(Brush.verticalGradient(questionGradient))) {
+                            Box(modifier = Modifier.fillMaxWidth().background(Brush.verticalGradient(questionGradient))) {
                             Column(
-                                modifier = Modifier.padding(20.dp)
+                                modifier = Modifier.fillMaxWidth().padding(20.dp)
                             ) {
                                 Text(
                                     text = "Question ${vm.currentQuestionIndex + 1}",
