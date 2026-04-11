@@ -326,40 +326,6 @@ DEVICE COMPATIBILITY & CROSS-DEVICE UX
       - AudioFocus acquisition/release in TtsManager.speak() and speakAndAwait().
       - One-time banner if Chinese TTS voice is absent (share logic with item 10).
 
-[ ] 14. Bottom Navigation Bar Overflowing into System Nav Bar (reported: OPPO A60)
-      DEVICE: OPPO A60 — Android 16, ColorOS, Kernel 5.15.180
-
-      SYMPTOMS
-      ────────
-      - The app's bottom tab bar (5-tab nav in AppNavigation.kt) renders below
-        the system navigation bar area (home / back / recents buttons), making
-        the bottom tabs partially or fully untappable on gesture-nav devices.
-      - Likely cause: window insets not applied — the app is not consuming
-        WindowInsetsCompat.Type.navigationBars() so Compose draws into the
-        system-reserved zone.
-
-      INVESTIGATION CHECKLIST
-      ───────────────────────
-      1. In MainActivity.kt, ensure WindowCompat.setDecorFitsSystemWindows(window, false)
-         is called so the app goes edge-to-edge and handles insets itself.
-      2. The Scaffold or the BottomNavigation composable in AppNavigation.kt must
-         apply Modifier.windowInsetsPadding(WindowInsets.navigationBars) or use
-         Scaffold's contentWindowInsets parameter so content never overlaps the
-         system nav bar.
-      3. Verify that the NavigationBar composable uses
-         NavigationBarDefaults.windowInsets (built into Material 3) — this is
-         the most idiomatic fix and requires no manual padding.
-      4. Test on both 3-button nav and gesture-nav modes on OPPO ColorOS, as
-         the inset height differs significantly between the two.
-      5. Also check StatusBar overlap at the top — same root cause can clip the
-         top app bar on other OEM skins.
-
-      DELIVERABLE
-      ───────────
-      - Edge-to-edge enabled in MainActivity with correct inset handling in
-        Scaffold / BottomNavigation so no UI element overlaps system bars on any
-        OEM skin or nav mode.
-
 [ ] 15. "Question #/#" Text Cut Off on Quiz Result Screen (reported: Pixel 8 Pro)
       DEVICE: Google Pixel 8 Pro — stock Android, high-resolution display
 
@@ -390,83 +356,9 @@ DEVICE COMPATIBILITY & CROSS-DEVICE UX
       - No text clipping on QuizResultsScreen at any system font scale or
         display density. All text containers use flexible sizing.
 
-[x] 16. Cross-Device UI Consistency Initiative
-      SCOPE: All screens — ensure the app looks and works correctly across
-      a range of Android OEM skins, screen sizes, nav modes, and API levels.
-
-      WHY THIS MATTERS
-      ────────────────
-      Issues 13–15 above were discovered via informal user reports. We have no
-      systematic process for catching device-specific regressions before release.
-
-      CHECKLIST
-      ─────────
-      A. Edge-to-Edge & Insets (all screens)
-         - Audit every Scaffold in the app for correct windowInsets handling.
-         - Confirm status bar and navigation bar never clip any UI element.
-         - Test both 3-button and gesture nav modes.
-
-      B. Adaptive Text & Layout
-         - Replace all fixed-height text containers with flexible equivalents.
-         - Ensure all text uses sp, not dp.
-         - Test at system font scale 1.0×, 1.3×, 1.5×.
-         - Test at display sizes: compact (360dp), medium (600dp), expanded (840dp+).
-
-      C. TTS / Audio Resilience
-         - Wrap all TtsManager calls in error-handled coroutines — never silently
-           drop audio failures.
-         - Detect missing Chinese TTS voice and show actionable guidance.
-         - Acquire/release AudioFocus correctly for OEM audio policy compliance.
-
-      D. Screen Size & Orientation
-         - App currently targets portrait only — confirm portrait lock is set in
-           AndroidManifest to prevent layout breaks on tablets or foldables.
-         - If tablet support is desired in future, note it as a separate task.
-
-      E. API Level Coverage
-         - Min SDK is 24 (Android 7). Test critical flows on API 24–26 (old
-           devices) where some Compose behaviours differ.
-         - Android 16 (API 36) is now in the wild (OPPO A60 above) — ensure
-           no deprecated APIs trigger warnings or crashes.
-
-      F. OEM Skin Checklist (manual QA targets)
-         - Samsung One UI (Galaxy A-series) — audio, battery optimisation
-         - OPPO ColorOS — navigation insets, gesture nav
-         - Xiaomi MIUI/HyperOS — notification & permission dialogs
-         - Stock Android (Pixel) — baseline / reference device
-         - Realme UI — close to ColorOS, worth a spot-check
-
-      TOOLING
-      ───────
-      - Use Android Studio's Layout Validation tool (multi-device preview) to
-        catch obvious layout issues before every release.
-      - Add at least one Compose UI screenshot test (Paparazzi or Roborazzi)
-        for QuizResultsScreen and HomeScreen to catch regressions automatically.
-
 ────────────────────────────────────────────────────
 QUIZ RESULT SCREEN & UI POLISH
 ────────────────────────────────────────────────────
-
-[x] 17. Simplify Quiz Result Screen — Show Correct / Total Only
-      SCREEN: QuizResultsScreen.kt
-
-      WHAT TO REMOVE
-      ───────────────
-      - "Total Score" row with raw points/XP breakdown.
-      - "Conversation" summary showing number of dialogue steps completed.
-
-      WHAT TO KEEP / ADD
-      ──────────────────
-      - Under the "Your Result" heading, display a single clear line:
-          "You got X / Y correct"  (e.g. "You got 4 / 5 correct")
-      - Star rating and XP award remain as-is — they are still the main reward.
-      - Keep the retry and home CTAs unchanged.
-
-      RATIONALE
-      ─────────
-      The target user is age 4–8. A simple fraction ("4 out of 5") is far more
-      meaningful than a point total, and conversation step counts add noise for
-      a child audience. Cleaner result = more motivating.
 
 [ ] 18. Apply Active Color Theme to Quiz Result Screen
       SCREEN: QuizResultsScreen.kt
@@ -898,6 +790,120 @@ ROLEPLAY MASTERY — SPEAKING LEVELS
       - Both visible in the milestone reward creation UI in Parent Dashboard.
 
 ────────────────────────────────────────────────────
+VOICE & THEME CONTROLS
+────────────────────────────────────────────────────
+
+[ ] 26. In-App TTS Voice Selector
+      SCREENS: HomeScreen.kt (TopAppBar), ProgressScreen.kt (TopAppBar)
+      RELATED: item 27 (long-press dropdown), UserPreferencesRepository, TtsManager
+
+      WHAT IT DOES
+      ────────────
+      Lets the user cycle through available Chinese TTS voices installed on
+      the device, similar to how the colour-theme button works today.
+      A single tap advances to the next voice AND immediately plays a short
+      preview phrase (e.g. "你好！" Nǐ hǎo!) in that voice so the user can
+      hear the difference.
+
+      WHERE IT LIVES
+      ──────────────
+      - New icon button placed immediately to the LEFT of the existing
+        colour-theme button in the TopAppBar of HomeScreen and ProgressScreen.
+      - Icon: Icons.Default.RecordVoiceOver (or similar mic/voice icon).
+      - Label below or tooltip: show the voice name or index (e.g. "Voice 2").
+
+      HOW IT WORKS
+      ────────────
+      1. On first load, enumerate available voices via tts.voices filtered
+         to Locale.CHINESE (zh-CN / zh-TW / cmn). Build a stable ordered list.
+      2. Store the active voice name in DataStore
+         (UserPreferencesRepository — new key: `ttsVoiceName`).
+      3. TtsManager.setVoice(name) selects the voice before every speak call.
+         Falls back to default locale voice if the stored name is not found.
+      4. Tapping the button:
+         - Advances to the next voice in the enumerated list (wraps around).
+         - Saves the new voice name to DataStore.
+         - Immediately calls tts.speak("你好！", rate = 1.0f) as a preview.
+      5. If fewer than 2 voices are available for Chinese, hide the button
+         (no point showing a selector with nothing to select).
+
+      TECHNICAL NOTES
+      ───────────────
+      - Voice enumeration must happen after TTS init completes (use the
+        existing onInit callback in TtsManager).
+      - Expose `availableChineseVoices: List<Voice>` and
+        `activeVoiceIndex: Int` as mutableStateOf fields on TtsManager so
+        Compose reacts to changes.
+      - Preview phrase should use QUEUE_FLUSH so it plays immediately even
+        if another utterance is queued.
+
+[ ] 27. Long-Press Dropdown for Voice & Theme Buttons
+      SCREENS: HomeScreen.kt (TopAppBar), ProgressScreen.kt (TopAppBar)
+      RELATED: item 26 (voice button), existing theme button
+
+      WHAT IT DOES
+      ────────────
+      When the user long-presses the voice button OR the colour-theme button,
+      a dropdown menu appears listing ALL available choices so the user can
+      jump directly to any option instead of tapping through them one by one.
+
+      VOICE DROPDOWN (long-press on voice button)
+      ───────────────────────────────────────────
+      - One DropdownMenuItem per available Chinese voice.
+      - Each item shows the voice name and a 🔊 icon.
+      - Tapping an item: selects that voice, saves to DataStore, plays preview.
+      - Active voice is shown with a checkmark or highlighted row.
+
+      THEME DROPDOWN (long-press on theme button)
+      ───────────────────────────────────────────
+      - One DropdownMenuItem per AppThemeVariant (emoji + name, e.g. "🌊 Ocean").
+      - Tapping an item: applies that theme, saves index to DataStore.
+      - Active theme is shown with a checkmark or highlighted row.
+
+      IMPLEMENTATION NOTES
+      ─────────────────────
+      - Use Compose DropdownMenu anchored to the button's position.
+      - Detect long-press via Modifier.pointerInput + detectTapGestures
+        { onLongPress = { expanded = true } } on the button Surface/IconButton.
+      - Single-tap behaviour remains unchanged (cycle to next, as per item 26
+        for voice and existing behaviour for theme).
+      - Both dropdowns should dismiss on outside tap or on item selection.
+
+[ ] 28. Revise Onboarding Tour for v1.4 Features
+      SCREEN: onboarding/InteractiveOnboardingOverlay.kt
+      RELATED: LocalOnboardingCoords, OnboardingKey, UserPreferencesRepository
+
+      WHAT IT COVERS
+      ──────────────
+      The existing 10-step tour was designed for the original feature set.
+      v1.4 adds several new elements that new users should be introduced to:
+
+        1. Voice selector button (item 26) — explain "tap to change voice,
+           long-press to pick from a list"
+        2. Theme button long-press (item 27) — explain the new dropdown
+        3. Sentence Builder tab — now a fully-featured sentence assembly game
+           (was absent or minimal in original onboarding)
+        4. Mastery level ladder (L1–L8) — brief callout on the scenario card
+           showing the level badge, explaining the progression system
+        5. Parent Dashboard PIN entry — mention it exists for parents so kids
+           know there is a "parent area" (optional — may keep this adults-only)
+        6. Indonesian translation toggle — if showIndonesian is exposed in UI,
+           show it in onboarding
+
+      APPROACH
+      ────────
+      - Audit the current 10 steps against the live UI; remove any steps that
+        reference UI elements that have been moved or removed in v1.4.
+      - Add new OnboardingKey constants for newly tagged elements
+        (voice button, sentence builder tab, mastery badge on scenario card).
+      - Re-number and reorder steps so the tour flows naturally from top-level
+        UI (app bar) → tabs → content area.
+      - Keep total step count ≤ 12 to avoid overwhelming new users.
+      - Reset onboarding completion flag for existing users on first v1.4 launch
+        so they see the updated tour (or offer a "What's new?" replay option
+        in the app settings / parent dashboard).
+
+────────────────────────────────────────────────────
 COMPLETED
 ────────────────────────────────────────────────────
 
@@ -1084,3 +1090,53 @@ AUDIO BUG FIXES
         □ Samsung One UI device — audio stack differs from stock Android
         □ After a long period of app silence (≥ 10 s) — worst-case scenario
         □ First utterance after app launch — cold-start audio path
+────────────────────────────────────────────────────
+DEVICE COMPATIBILITY & CROSS-DEVICE UX
+────────────────────────────────────────────────────
+
+[x] 14. Bottom Navigation Bar Overflowing into System Nav Bar (reported: OPPO A60)
+      DEVICE: OPPO A60 — Android 16, ColorOS, Kernel 5.15.180
+
+      SYMPTOMS
+      ────────
+      - The app's bottom tab bar (5-tab nav in AppNavigation.kt) renders below
+        the system navigation bar area (home / back / recents buttons), making
+        the bottom tabs partially or fully untappable on gesture-nav devices.
+      - Likely cause: window insets not applied — the app is not consuming
+        WindowInsetsCompat.Type.navigationBars() so Compose draws into the
+        system-reserved zone.
+
+      DELIVERABLE
+      ───────────
+      - Edge-to-edge enabled in MainActivity with correct inset handling in
+        Scaffold / BottomNavigation so no UI element overlaps system bars on any
+        OEM skin or nav mode.
+
+[x] 16. Cross-Device UI Consistency Initiative
+      SCOPE: All screens — ensure the app looks and works correctly across
+      a range of Android OEM skins, screen sizes, nav modes, and API levels.
+
+      CHECKLIST
+      ─────────
+      A. Edge-to-Edge & Insets — enableEdgeToEdge() + contentWindowInsets =
+         WindowInsets(0) on all Scaffolds; navigationBarsPadding() /
+         statusBarsPadding() where needed.
+      B. Adaptive Text — TextOverflow.Ellipsis on truncatable labels.
+      C. TTS / Audio Resilience — AudioFocus acquire/release + silence primer
+         + onChineseVoiceMissing callback wired.
+      D. Portrait lock — android:screenOrientation="portrait" in Manifest.
+      E–F. API coverage and OEM skin QA — ongoing manual testing.
+
+────────────────────────────────────────────────────
+QUIZ RESULT SCREEN & UI POLISH
+────────────────────────────────────────────────────
+
+[x] 17. Simplify Quiz Result Screen — Show Correct / Total Only
+      SCREEN: QuizResultsScreen.kt
+
+      WHAT WAS DONE
+      ─────────────
+      - Removed "Total Score" row and "Conversation" summary row.
+      - Results card now shows a single line: "You got X / Y correct".
+      - Removed Learning Tip tile to eliminate need for scrolling.
+      - Fixed results card and question card widths (fillMaxWidth on Box + Column).

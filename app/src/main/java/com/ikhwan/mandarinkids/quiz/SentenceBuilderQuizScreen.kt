@@ -139,15 +139,10 @@ fun SentenceBuilderQuizScreen(
                 stateKey++
             }
         } else {
-            // Fill every slot with the correct tile so the user can see the right answer.
-            val correctSlots = blankPosList.indices.map { slotIdx ->
-                val correctChinese = words[blankPosList[slotIdx]].chinese
-                blankTiles.indexOfFirst { it.chinese == correctChinese }.takeIf { it >= 0 }
-            }
-            placedSlots = correctSlots
+            // Keep user's placed tiles visible (red/green per slot) — correct answer shown below
             playWrongSound()
-            // Show correct arrangement for 1.5 s then auto-advance (no per-question retry)
-            delay(1500)
+            // Show feedback for 2.5 s then auto-advance (no per-question retry)
+            delay(2500)
             val next = questionIndex + 1
             if (next >= totalQuestions) {
                 showSummary = true
@@ -212,7 +207,8 @@ fun SentenceBuilderQuizScreen(
                             .fillMaxSize()
                             .padding(padding)
                             .verticalScroll(rememberScrollState())
-                            .padding(24.dp),
+                            .padding(24.dp)
+                            .navigationBarsPadding(),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
@@ -276,7 +272,8 @@ fun SentenceBuilderQuizScreen(
                             .fillMaxSize()
                             .padding(padding)
                             .verticalScroll(rememberScrollState())
-                            .padding(16.dp),
+                            .padding(16.dp)
+                            .navigationBarsPadding(),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         // Progress
@@ -387,6 +384,27 @@ fun SentenceBuilderQuizScreen(
                                         }
                                     }
                                 )
+                            }
+                        }
+
+                        // Correct answer row — shown only after a wrong submission
+                        if (checkResult == false) {
+                            Spacer(modifier = Modifier.height(20.dp))
+                            Text(
+                                "✅ Correct answer:",
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                            FlowRow(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.Center,
+                                verticalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                for (word in words) {
+                                    SbqTile(word = word, isPreFilled = false, isCorrect = true)
+                                }
                             }
                         }
 

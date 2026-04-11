@@ -78,7 +78,8 @@ fun ScenarioListScreen(
                 .fillMaxSize()
                 .background(Color.Transparent)
                 .padding(padding)
-                .padding(horizontal = 16.dp),
+                .padding(horizontal = 16.dp)
+                .navigationBarsPadding(),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
                 item {
