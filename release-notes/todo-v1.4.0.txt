@@ -241,55 +241,12 @@ SUGGESTED ADDITIONS (for your consideration)
       QuizQuestionGenerator: add generateLevel7Questions() — selects
         CHARACTER dialogue lines, shuffles, takes up to 5.
 
-[x] 10. Offline TTS Voice Pack Notice
-      - Detect if the device has a Chinese TTS voice installed.
-      - If not, show a one-time banner with instructions to download
-        the Google Chinese (Mandarin) voice for better pronunciation.
-      - Many budget Android devices ship without it; this is a common
-        parent complaint for language-learning apps.
-
 ────────────────────────────────────────────────────
 DEVICE COMPATIBILITY & CROSS-DEVICE UX
 (reported issues from real-device testing)
 ────────────────────────────────────────────────────
 
-[x] 13. Audio / TTS Not Working on Samsung One UI (reported: Samsung A51)
-      DEVICE: Samsung A51 — Android 13, One UI 5.1, Kernel 4.14.113, Knox 3.9
-
-      SYMPTOMS
-      ────────
-      - TTS audio does not play or plays silently during roleplay, flashcard,
-        and tone trainer screens.
-      - Likely caused by One UI's battery optimisation aggressively suppressing
-        background audio, or the Samsung TTS engine being initialised instead of
-        Google TTS, which may not have a Chinese voice pack installed.
-
-      INVESTIGATION CHECKLIST
-      ───────────────────────
-      1. Detect active TTS engine at runtime (TextToSpeech.getDefaultEngine()) —
-         log it in debug builds so we can see whether Samsung TTS or Google TTS
-         is being used.
-      2. Check TTS initialisation status in TtsManager — if status != SUCCESS,
-         currently we silently fail. Show a one-time in-app notice guiding the
-         user to install the Google Text-to-Speech engine + Chinese voice pack
-         (ties into item 10 — Offline TTS Voice Pack Notice).
-      3. Ensure TtsManager requests AudioFocus before speaking
-         (AudioManager.requestAudioFocus) and releases it after — required on
-         Samsung One UI 5+ to avoid being muted by the OS.
-      4. Test against Samsung's Knox audio policy: Knox 3.9 can block certain
-         audio streams in "secure mode". Add a fallback that plays audio on
-         STREAM_MUSIC instead of STREAM_SPEECH if the latter is blocked.
-      5. In AndroidManifest.xml confirm we are not declaring
-         android:largeHeap="true" or aggressive doze-exempt flags that Samsung
-         One UI penalises with audio throttling.
-
-      DELIVERABLE
-      ───────────
-      - Robust TTS initialisation with visible error feedback (not silent failure).
-      - AudioFocus acquisition/release in TtsManager.speak() and speakAndAwait().
-      - One-time banner if Chinese TTS voice is absent (share logic with item 10).
-
-[ ] 15. "Question #/#" Text Cut Off on Quiz Result Screen (reported: Pixel 8 Pro)
+[x] 15. "Question #/#" Text Cut Off on Quiz Result Screen (reported: Pixel 8 Pro)
       DEVICE: Google Pixel 8 Pro — stock Android, high-resolution display
 
       SYMPTOMS
@@ -1145,3 +1102,21 @@ PENDING — NEXT VERSION (v1.5.0 or later)
         snapshot of all Room data to a file the parent can save.
       - "Restore" option to reload from that file.
       - Safety net before an app reinstall or device change.
+
+────────────────────────────────────────────────────
+TTS & AUDIO RELIABILITY
+────────────────────────────────────────────────────
+
+[x] 10. Offline TTS Voice Pack Notice
+      - Detects missing Chinese TTS voice via setLanguage() return value.
+      - TtsManager exposes ttsFailureReason ("VOICE_MISSING" | "INIT_FAILED")
+        and fires onChineseVoiceMissing callback in both cases.
+      - TtsNoticeBanner shown at top of HomeScreen with device-appropriate
+        instructions; dismissed permanently via DataStore.
+
+[x] 13. Audio / TTS Not Working on Samsung One UI (reported: Samsung A51)
+      - Active TTS engine name logged on startup (Log.d) for debugging.
+      - onChineseVoiceMissing now also fired when TTS init status != SUCCESS,
+        covering Samsung TTS / non-Google engine failures (previously silent).
+      - AudioFocus acquire/release already implemented (task #25).
+      - One-time banner shared with task #10.

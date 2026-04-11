@@ -10,7 +10,9 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.runtime.*
@@ -94,6 +96,7 @@ fun QuizResultsScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .verticalScroll(rememberScrollState())
                 .padding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
@@ -205,7 +208,7 @@ fun QuizResultsScreen(
                 onClick = onComplete,
                 shape = RoundedCornerShape(50),
                 color = Color.Transparent,
-                modifier = Modifier.fillMaxWidth().height(56.dp)
+                modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)
             ) {
                 Box(
                     modifier = Modifier.fillMaxSize()
@@ -224,7 +227,7 @@ fun QuizResultsScreen(
                     onClick = onTryAgain,
                     shape = RoundedCornerShape(50),
                     color = Color.Transparent,
-                    modifier = Modifier.fillMaxWidth().height(56.dp)
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)
                 ) {
                     Box(
                         modifier = Modifier.fillMaxSize()
