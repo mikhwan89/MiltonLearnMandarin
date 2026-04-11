@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
@@ -35,11 +36,21 @@ class TtsManager(private val context: Context) {
         private set
 
     /**
-     * Set by the caller to receive a one-time callback when TTS is ready but no
-     * Chinese voice is installed. The callback is invoked on the TTS init thread.
+     * Set by the caller to receive a one-time callback when TTS is unavailable —
+     * either because the engine failed to initialise or because no Chinese voice
+     * is installed. Invoked on the TTS init thread.
      * Use it to show an in-app banner guiding the user to install the voice pack.
      */
     var onChineseVoiceMissing: (() -> Unit)? = null
+
+    /**
+     * Populated after init with the reason TTS is unavailable:
+     *  "VOICE_MISSING"  — engine OK but Chinese voice pack not installed
+     *  "INIT_FAILED"    — TTS engine itself failed to start
+     * Null when TTS is working correctly.
+     */
+    var ttsFailureReason: String? by mutableStateOf(null)
+        private set
 
     // AudioFocus plumbing ---------------------------------------------------
 
@@ -67,6 +78,9 @@ class TtsManager(private val context: Context) {
 
     init {
         tts = TextToSpeech(context) { status ->
+            val engineName = tts?.defaultEngine ?: "unknown"
+            Log.d("TtsManager", "init status=$status engine=$engineName")
+
             if (status == TextToSpeech.SUCCESS) {
                 val result = tts?.setLanguage(Locale.CHINESE)
                 val voiceAvailable = result != TextToSpeech.LANG_MISSING_DATA &&
@@ -74,10 +88,16 @@ class TtsManager(private val context: Context) {
                 if (voiceAvailable) {
                     isReady = true
                 } else {
-                    // Chinese voice pack not installed — notify the caller so the UI
-                    // can show a one-time actionable banner (see item 10 / item 13).
+                    Log.w("TtsManager", "Chinese voice not installed (engine=$engineName)")
+                    ttsFailureReason = "VOICE_MISSING"
                     onChineseVoiceMissing?.invoke()
                 }
+            } else {
+                // TTS engine failed to initialise entirely (e.g. Samsung TTS with no
+                // Chinese support, or engine not installed).
+                Log.e("TtsManager", "TTS init failed status=$status engine=$engineName")
+                ttsFailureReason = "INIT_FAILED"
+                onChineseVoiceMissing?.invoke()
             }
         }
     }

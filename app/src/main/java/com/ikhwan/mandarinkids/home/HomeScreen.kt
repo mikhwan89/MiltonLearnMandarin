@@ -71,6 +71,12 @@ fun HomeScreen(
 
     var showWordOfDayDialog by remember { mutableStateOf(false) }
 
+    // TTS voice / init-failure banner (tasks #10 & #13)
+    val ttsNoticeDismissed by userPrefs.ttsNoticeDismissed.collectAsState(initial = false)
+    var ttsIssueDetected by remember { mutableStateOf(false) }
+    tts.onChineseVoiceMissing = { ttsIssueDetected = true }
+    val showTtsBanner = ttsIssueDetected && !ttsNoticeDismissed
+
     // Show word-of-day popup automatically once per session
     LaunchedEffect(wordOfDay) {
         if (wordOfDay != null && showWordOfDayOnLaunch) {
@@ -147,6 +153,16 @@ fun HomeScreen(
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
+            // ── TTS voice-missing / init-failed notice ────────────────────
+            if (showTtsBanner) {
+                item {
+                    TtsNoticeBanner(
+                        reason = tts.ttsFailureReason,
+                        onDismiss = { scope.launch { userPrefs.saveTtsNoticeDismissed(true) } }
+                    )
+                }
+            }
+
             // ── Progress summary — two gradient tiles ─────────────────────
             item {
                 val streakGradient = colors.tileAmber.asList()
@@ -364,6 +380,52 @@ private fun WordOfDayDialog(
                         TextButton(onClick = onDismiss) { Text("Close") }
                     }
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun TtsNoticeBanner(reason: String?, onDismiss: () -> Unit) {
+    val isInitFailed = reason == "INIT_FAILED"
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.errorContainer
+        ),
+        shape = RoundedCornerShape(16.dp)
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(
+                text = if (isInitFailed) "⚠️ Text-to-Speech Not Working"
+                       else "⚠️ Chinese Voice Not Installed",
+                fontSize = 15.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onErrorContainer
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+            Text(
+                text = if (isInitFailed)
+                    "The Text-to-Speech engine failed to start. " +
+                    "Go to your phone Settings → General Management → " +
+                    "Language and Input → Text-to-speech → switch to " +
+                    "\"Google Text-to-Speech\" and make sure it is installed."
+                else
+                    "Your device does not have the Chinese (Mandarin) voice pack installed. " +
+                    "Go to your phone Settings → General Management → " +
+                    "Language and Input → Text-to-speech → Google Text-to-Speech settings → " +
+                    "Install voice data → Chinese.",
+                fontSize = 13.sp,
+                color = MaterialTheme.colorScheme.onErrorContainer.copy(alpha = 0.85f)
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+            TextButton(
+                onClick = onDismiss,
+                colors = ButtonDefaults.textButtonColors(
+                    contentColor = MaterialTheme.colorScheme.onErrorContainer
+                )
+            ) {
+                Text("Got it, dismiss", fontWeight = FontWeight.SemiBold)
             }
         }
     }

@@ -241,7 +241,7 @@ SUGGESTED ADDITIONS (for your consideration)
       QuizQuestionGenerator: add generateLevel7Questions() — selects
         CHARACTER dialogue lines, shuffles, takes up to 5.
 
-[ ] 10. Offline TTS Voice Pack Notice
+[x] 10. Offline TTS Voice Pack Notice
       - Detect if the device has a Chinese TTS voice installed.
       - If not, show a one-time banner with instructions to download
         the Google Chinese (Mandarin) voice for better pronunciation.
@@ -253,7 +253,7 @@ DEVICE COMPATIBILITY & CROSS-DEVICE UX
 (reported issues from real-device testing)
 ────────────────────────────────────────────────────
 
-[ ] 13. Audio / TTS Not Working on Samsung One UI (reported: Samsung A51)
+[x] 13. Audio / TTS Not Working on Samsung One UI (reported: Samsung A51)
       DEVICE: Samsung A51 — Android 13, One UI 5.1, Kernel 4.14.113, Knox 3.9
 
       SYMPTOMS

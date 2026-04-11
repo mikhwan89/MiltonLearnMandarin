@@ -86,16 +86,29 @@ class UserPreferencesRepository private constructor(private val context: Context
         context.userPrefsDataStore.edit { it[DISABLED_SCENARIOS] = ids }
     }
 
+    /**
+     * Whether the user has dismissed the TTS voice-missing / init-failed notice.
+     * Defaults to false (not dismissed) so the banner shows on first detection.
+     * Stored as a string key so we can reset it per-reason if needed in future.
+     */
+    val ttsNoticeDismissed: Flow<Boolean> =
+        context.userPrefsDataStore.data.map { it[TTS_NOTICE_DISMISSED] ?: false }
+
+    suspend fun saveTtsNoticeDismissed(dismissed: Boolean) {
+        context.userPrefsDataStore.edit { it[TTS_NOTICE_DISMISSED] = dismissed }
+    }
+
     companion object {
         // Key name kept as "speech_speed" to preserve any existing saved value.
-        private val SPEECH_RATE         = floatPreferencesKey("speech_speed")
-        private val SHOW_INDONESIAN     = booleanPreferencesKey("show_indonesian")
-        private val DARK_MODE           = booleanPreferencesKey("dark_mode")
+        private val SPEECH_RATE          = floatPreferencesKey("speech_speed")
+        private val SHOW_INDONESIAN      = booleanPreferencesKey("show_indonesian")
+        private val DARK_MODE            = booleanPreferencesKey("dark_mode")
         private val ONBOARDING_COMPLETED = booleanPreferencesKey("onboarding_completed")
         private val COLOR_THEME_INDEX    = intPreferencesKey("color_theme_index")
-        private val DISABLED_TABS       = stringSetPreferencesKey("disabled_tabs")
-        private val DISABLED_CATEGORIES = stringSetPreferencesKey("disabled_categories")
-        private val DISABLED_SCENARIOS  = stringSetPreferencesKey("disabled_scenarios")
+        private val DISABLED_TABS        = stringSetPreferencesKey("disabled_tabs")
+        private val DISABLED_CATEGORIES  = stringSetPreferencesKey("disabled_categories")
+        private val DISABLED_SCENARIOS   = stringSetPreferencesKey("disabled_scenarios")
+        private val TTS_NOTICE_DISMISSED = booleanPreferencesKey("tts_notice_dismissed")
 
         @Volatile private var _instance: UserPreferencesRepository? = null
 
