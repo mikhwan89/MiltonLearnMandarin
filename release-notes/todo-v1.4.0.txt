@@ -447,7 +447,7 @@ DEVICE COMPATIBILITY & CROSS-DEVICE UX
 QUIZ RESULT SCREEN & UI POLISH
 ────────────────────────────────────────────────────
 
-[ ] 17. Simplify Quiz Result Screen — Show Correct / Total Only
+[x] 17. Simplify Quiz Result Screen — Show Correct / Total Only
       SCREEN: QuizResultsScreen.kt
 
       WHAT TO REMOVE

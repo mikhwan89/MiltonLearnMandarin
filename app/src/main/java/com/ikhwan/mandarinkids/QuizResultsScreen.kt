@@ -43,7 +43,6 @@ fun QuizResultsScreen(
 ) {
     val context = LocalContext.current
     val quizPercentage = (quizScore.toFloat() / totalQuestions * 100).toInt()
-    val totalScore = rolePlayScore + quizScore
     val isPerfect = quizScore == totalQuestions
     val leveledUp = isPerfect && level < 5
 
@@ -183,64 +182,25 @@ fun QuizResultsScreen(
                 colors = CardDefaults.cardColors(containerColor = Color.Transparent)
             ) {
                 Box(modifier = Modifier.background(Brush.verticalGradient(resultsGradient))) {
-                Column(
-                    modifier = Modifier.padding(24.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
-                    Text(
-                        text = "Your Results",
-                        fontSize = 18.sp,
-                        color = labelColor.copy(alpha = 0.7f)
-                    )
-
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Text("💬 Conversation:", fontSize = 16.sp, color = labelColor)
-                        Text(
-                            "$rolePlayScore steps",
-                            fontSize = 16.sp,
-                            style = MaterialTheme.typography.titleMedium,
-                            color = labelColor
-                        )
-                    }
-
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Text("📝 Quiz:", fontSize = 16.sp, color = labelColor)
-                        Text(
-                            "$quizScore / $totalQuestions",
-                            fontSize = 16.sp,
-                            style = MaterialTheme.typography.titleMedium,
-                            color = labelColor
-                        )
-                    }
-
-                    HorizontalDivider(color = labelColor.copy(alpha = 0.2f))
-
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
+                    Column(
+                        modifier = Modifier.padding(24.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         Text(
-                            "Total Score:",
+                            text = "Your Results",
                             fontSize = 18.sp,
-                            style = MaterialTheme.typography.titleLarge,
-                            color = labelColor
+                            color = labelColor.copy(alpha = 0.7f)
                         )
                         Text(
-                            "$totalScore points",
-                            fontSize = 18.sp,
-                            style = MaterialTheme.typography.titleLarge,
-                            color = labelColor
+                            text = "You got $quizScore / $totalQuestions correct",
+                            fontSize = 22.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = labelColor,
+                            textAlign = TextAlign.Center
                         )
                     }
                 }
-                } // Box
             }
 
             Spacer(modifier = Modifier.height(32.dp))
