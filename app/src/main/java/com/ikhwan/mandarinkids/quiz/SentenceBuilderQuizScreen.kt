@@ -206,9 +206,9 @@ fun SentenceBuilderQuizScreen(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(padding)
+                            .navigationBarsPadding()
                             .verticalScroll(rememberScrollState())
-                            .padding(24.dp)
-                            .navigationBarsPadding(),
+                            .padding(24.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
@@ -271,9 +271,9 @@ fun SentenceBuilderQuizScreen(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(padding)
+                            .navigationBarsPadding()
                             .verticalScroll(rememberScrollState())
-                            .padding(16.dp)
-                            .navigationBarsPadding(),
+                            .padding(16.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         // Progress
